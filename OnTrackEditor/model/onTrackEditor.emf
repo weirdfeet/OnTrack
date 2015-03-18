@@ -1,132 +1,81 @@
 @namespace(uri="http://www.example.org/onTrackEditor", prefix="onTrackEditor")
 package onTrackEditor;
 
-class Node {
+class SchemePlan {
+  val ControlTable[1] hasControlTable;
+  val TrackPlan[1] hasTrackPlan;
+  val ReleaseTable[*] hasReleaseTables;
+}
+
+class TrackPlan {
+  val Connector[*] hasConnectors;
   val Unit[*] hasUnits;
 }
 
-@gmf.node(label="name")
-class Unit {
-  ref Connector[1]#hasUnit1 hasC1;
-  ref Connector[1]#hasUnit2 hasC2;
-  attr String name;
-  attr int[1] length;
+class ControlTable {
+  val ControlTableEntry[*] hasEntries;
 }
 
-class Track extends Unit {
-  ref Signal[0..2]#placedOnTrack hasSignals;
-  ref Signal[0..2] hasSignal;
-  ref Direction[1..2] hasTrackDirection;
-}
-
-class Point extends Unit {
-  attr String pointName;
-  ref Connector[1] hasC3_Point;
-  ref Direction[2..4] hasPointDirection;
+class ReleaseTable {
+  ref Unit[1] hasReleaseUnit;
+  ref RouteName[1] hasRouteName;
 }
 
 class Connector {
-  ref Unit#hasC1 hasUnit1;
-  ref Point[0..2] hasPoint;
-  ref Unit#hasC2 hasUnit2;
-  attr String ID;
 }
 
-class Path {
-  ref Connector[1] hasPC2;
-  ref Connector[1] hasPC1;
+class Unit {
+  ref Direction[0..4] hasDirection;
+  ref Connector[1] hasC1;
+  ref Connector[1] hasC2;
 }
 
-class UnitPathPair {
-  ref Path[1] hasPath;
+class Track extends Unit {
+  ref Signal#placedAt hasSignal;
+}
+
+class Point extends Unit {
+  ref ReleaseTable hasReleaseTable;
+  ref Connector[1] hasC3;
+  ref Direction[1] normal;
+  ref Direction[1] reverse;
+}
+
+class Crossover extends Unit {
+  ref Connector[1] hasC3;
+  ref Connector[1] hasC4;
+}
+
+class Direction {
+  ref Connector[1] from;
+  ref Connector[1] to;
+}
+
+class UnitDirectionPair {
   ref Unit[1] hasUnit;
+  ref Direction[1] hasDirection;
+}
+
+class TopologicalRoute {
+  val UnitDirectionPair[+] hasUnitsWithDirections;
+  ref Signal[1]#controlsEntryTo entrySignal;
 }
 
 class Signal {
-  ref RouteName[*]#controlledBySignal controlsRoutes;
-  attr String name;
-  ref Track[1]#hasSignals placedOnTrack;
-  ref Connector[1] placedAtConnector;
-  ref Track[1] placedAt;
+  ref Track[1]#hasSignal placedAt;
+  ref TopologicalRoute[+]#entrySignal controlsEntryTo;
   ref Direction[1] hasDirection;
 }
 
 class RouteName {
-  ref UnitPathPair[*] hasUPPs;
-  ref Signal[1]#controlsRoutes controlledBySignal;
-  attr String name;
-  ref Point[*] hasNormalPoints;
-  ref Point[*] hasReversePoints;
-  ref TopologicalRoute[1] associatedWith;
-}
-
-class ControlTable {
-  ref RouteName[*] hasRoutes;
-  ref ControlTableEntry[*] hasEntry;
-}
-
-@gmf.diagram
-class SchemePlan {
-  val Unit[*] hasUnits;
-  val Connector[*] hasConnectors;
-  val Signal[*] hasSignals;
-  val ControlTable[1] hasControlTable;
-}
-
-class Crossing extends Unit {
-  ref Connector[1] hasC3_Crossing;
-  ref Connector[1] hasC4_Crossing;
-  ref Direction[2..4] hasCrossingDirection;
-}
-
-class Terminal extends Track {
-  ref Signal[1] hasTerminalSignal;
-}
-
-class Direction {
-  ref Connector[2] hasConnectors;
+  ref Signal[1] controllingSignal;
 }
 
 class ControlTableEntry {
-  ref ControlTable hasControlTable;
-  val RouteName[1] hasRouteName;
-  ref ClearUnits dfgfgfd;
-  ref RouteName hdghf;
-  val ClearUnits[1] hasClearUnits;
-  val NormalPoints[1] hasNormalPoints;
-  val ReversePoints[1] hasReversePoints;
+  ref Unit[*] hasClearUnits;
+  ref Point[*] hasNormalPoints;
+  ref Point[*] hasReversePoints;
+  ref RouteName[*] hasConflictingRouteNames;
+  ref RouteName[1] hasRouteName;
 }
-
-class ClearUnits {
-  val ControlTableEntry[1] hasClearUnits;
-  ref Unit[*] hasUnits;
-}
-
-class NormalPoints {
-  val ControlTableEntry[1] hasNormalPoints;
-  ref Point[*] hasNPoints;
-}
-
-class ReversePoints {
-  ref Point[*] hasRPoints;
-}
-
-class FixedSignal extends Signal {
-}
-
-class RouteSignal extends Signal {
-}
-
-class TopologicalRoute {
-  ref Signal exitSignal;
-  ref RouteSignal[1] entrySignal;
-  ref DirectedUnit[*] hasDirectedUnits;
-}
-
-class DirectedUnit {
-  val Direction[1] hasUnitDirectiom;
-  val Unit[1] hasUnit;
-  ref TopologicalRoute[*] belongsTo;
-}
-
 
