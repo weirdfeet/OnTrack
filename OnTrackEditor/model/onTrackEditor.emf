@@ -1,0 +1,86 @@
+@namespace(uri="http://www.example.org/onTrackEditor", prefix="onTrackEditor")
+package onTrackEditor;
+
+@gmf.diagram
+class SchemePlan {
+  val ControlTable[1] hasControlTable;
+  val TrackPlan[1] hasTrackPlan;
+  val ReleaseTable[*] hasReleaseTables;
+}
+
+
+class TrackPlan {
+  val Connector[*] hasConnectors;
+  val Unit[*] hasUnits;
+}
+
+class ControlTable {
+  @gmf.compartment
+  val ControlTableEntry[*] hasEntries;
+}
+
+@gmf.node(label.placement="none")
+class ReleaseTable {
+  ref Unit[1] hasReleaseUnit;
+  ref RouteName[1] hasRouteName;
+}
+
+
+class Connector {
+}
+
+class Unit {
+  ref Direction[0..4] hasDirection;
+  ref Connector[1] hasC1;
+  ref Connector[1] hasC2;
+}
+
+class Track extends Unit {
+  ref Signal#placedAt hasSignal;
+}
+
+class Point extends Unit {
+  ref ReleaseTable hasReleaseTable;
+  ref Connector[1] hasC3;
+  ref Direction[1] normal;
+  ref Direction[1] reverse;
+}
+
+class Crossover extends Unit {
+  ref Connector[1] hasC3;
+  ref Connector[1] hasC4;
+}
+
+class Direction {
+  ref Connector[1] from;
+  ref Connector[1] to;
+}
+
+class UnitDirectionPair {
+  ref Unit[1] hasUnit;
+  ref Direction[1] hasDirection;
+}
+
+class TopologicalRoute {
+  val UnitDirectionPair[+] hasUnitsWithDirections;
+  ref Signal[1]#controlsEntryTo entrySignal;
+}
+
+class Signal {
+  ref Track[1]#hasSignal placedAt;
+  ref TopologicalRoute[+]#entrySignal controlsEntryTo;
+  ref Direction[1] hasDirection;
+}
+
+class RouteName {
+  ref Signal[1] controllingSignal;
+}
+
+class ControlTableEntry {
+  ref Unit[*] hasClearUnits;
+  ref Point[*] hasNormalPoints;
+  ref Point[*] hasReversePoints;
+  ref RouteName[*] hasConflictingRouteNames;
+  ref RouteName[1] hasRouteName;
+}
+
