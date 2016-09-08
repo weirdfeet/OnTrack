@@ -1,0 +1,158 @@
+////////
+// This program provides operations that can be used by ETL files that import it
+////////
+
+operation setupPlanVars() {
+	var trackplan = safetrack!TrackPlan.all().first();
+	var subplan = trackplan.selectedSubTrackPlan;
+	var plan;
+	if (plan.isDefined()) plan = subplan;
+	else plan = trackplan;
+}
+
+////////
+// creates a new CSP!SET and adds it to the main CSP!CSPScript
+// note: operation assumes a CSP!CSPScript already exists
+////////
+operation newCSPSet(setName : String) : CSP!SET {
+	
+	var s = new CSP!SET;
+	s.name = setName;
+	s.item.clear();
+	CSP!CSPScript.all().first().set.add(s);
+	
+	return s;
+}
+
+////////
+// creates a new CSP!Datatype and adds it to the main CSP!CSPScript
+// note: operation assumes a CSP!CSPScript already exists
+////////
+operation newCSPDatatype(name : String) : CSP!Datatype {
+
+	var dt = new CSP!Datatype;
+	dt.typeName = name;
+	CSP!CSPScript.all().first().dataType.add(dt);
+	
+	return dt;
+}
+
+////////
+// creates a new CSP!DatatypeItemList for the given CSP!Datatype element
+////////
+operation newCSPDatatypeItemList(dt : CSP!Datatype) : CSP!DatatypeItemList {
+
+	var list = new CSP!DatatypeItemList;
+	list.firstItem = null;
+	dt.itemList = list;
+	list.size = 0;
+	
+	return list;
+}
+
+////////
+// creates a new BMachine!BSet and adds it to the main BMachine!Machine
+// note: operation assumes a BMachine!Machine already exists
+////////
+operation newBSet(setName : String) : BMachine!BSet {
+	
+	var s = new BMachine!BSet;
+	s.name = setName;
+	s.hasSetElements.clear();
+	BMachine!Machine.all().first().hasSets.add(s);
+	
+	return s;
+}
+
+////////
+// creates new BMachine!Element and adds it to the BMachine!Set
+////////
+operation newBSetElement(elementName : String, set : BMachine!BSet) {
+
+	var se = new BMachine!Element;
+	se.name = elementName;
+	set.hasSetElements.add(se);
+}
+
+////////
+// creates a new BMachine!Property and adds it to the main BMachine!Machine
+// note: operation assumes a BMachine!Machine already exists
+////////
+operation newBProperty(propName : String) : BMachine!Property {
+
+	var p = new BMachine!Property;
+	p.name = propName;
+	p.hasPropElements.clear();
+	BMachine!Machine.all().first().hasProperties.add(p);
+	
+	return p;
+}
+
+////////
+// creates a new BMachine!Element and adds it
+// to the BMachine!PropElement hasDomainElements list
+////////
+operation newBDomainElement(elementName : String, pe : BMachine!PropElement) {
+
+	var de = new BMachine!Element;
+	de.name = elementName;
+	pe.hasDomainElements.add(de);
+}
+
+////////
+// creates a new BMachine!Element and adds it
+// to the BMachine!PropElement hasRangeElements list
+////////
+operation newBRangeElement(elementName : String, pe : BMachine!PropElement) {
+
+	var de = new BMachine!Element;
+	de.name = elementName;
+	pe.hasRangeElements.add(de);
+}
+
+////////
+// returns the first unit found that is connected to the connector
+////////
+operation safetrack!Connector findFirstTrack(plan) : safetrack!Track {
+
+	for(t in self.track1s) {
+		if (plan.tracks.includes(t)) return t;
+	}
+	for(t in self.track2s) {
+		if (plan.tracks.includes(t)) return t;
+	}
+	return null;
+}
+
+operation safetrack!Connector includesEntrance(plan) : Boolean {
+
+	for(e in self.entrances) {
+		if (plan.entrances.includes(e)) return true;
+	}
+	return false;
+}
+
+operation safetrack!Connector includesExit(plan) : Boolean {
+
+	for(e in self.exits) {
+		if (plan.exits.includes(e)) return true;
+	}
+	return false;
+}
+
+operation safetrack!Track includesSignal(plan) : Boolean {
+
+	for(e in self.signals) {
+		if (plan.signals.includes(e)) return true;
+	}
+	return false;
+}
+
+operation safetrack!Track getName() : String {
+		var tname = self.name;
+		if (self.pointReverse.isDefined())
+			tname = self.pointReverse.normalTrack.name;
+		if (self.crossing2.isDefined()) 
+			tname = self.crossing2.track1.name;
+		return tname;
+}

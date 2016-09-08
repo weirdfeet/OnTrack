@@ -1,0 +1,33 @@
+import "OnTrack.etl";
+
+pre {
+	var trackplan = safetrack!TrackPlan.all().first();
+	var subplan = trackplan.selectedSubTrackPlan;
+	var plan;
+	if (subplan.isDefined()) plan = subplan;
+	else plan = trackplan;
+
+	// Main B Machine
+	new BMachine!Machine;
+	BMachine!Machine.all().first().hasSets.clear();
+	BMachine!Machine.all().first().hasProperties.clear();
+
+	// Property releaseTable
+	var releaseTable = newBProperty("releaseTable");
+}
+
+//////// Transformation Rules ////////
+
+// construct release table elements
+// when a train is on a track immediately after a point, the point is released
+rule transformReleaseTable
+transform r : safetrack!ReleaseTableItem
+to pe : BMachine!PropElement {
+
+    guard : plan.releaseTable.includes(r)
+
+	releaseTable.hasPropElements.add(pe);
+	newBDomainElement(r.track.getName(), pe);
+	newBRangeElement(r.route, pe);
+	newBRangeElement(r.point.name, pe);
+}

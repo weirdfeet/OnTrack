@@ -1,0 +1,222 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<gmftool:ToolRegistry
+    xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:gmftool="http://www.eclipse.org/gmf/2005/ToolDefinition">
+  <palette
+      title="ontrackPalette">
+    <tools
+        xsi:type="gmftool:ToolGroup"
+        title="Track Equipment">
+      <tools
+          xsi:type="gmftool:CreationTool"
+          title="Connector"
+          description="Add a new connector">
+        <smallIcon
+            xsi:type="gmftool:BundleImage"
+            path="icons/full/obj16/connector.gif"
+            bundle="OnTrack.dsl.edit"/>
+        <largeIcon
+            xsi:type="gmftool:BundleImage"
+            path="icons/full/obj32/connector.gif"
+            bundle="OnTrack.dsl.edit"/>
+      </tools>
+      <tools
+          xsi:type="gmftool:CreationTool"
+          title="Track"
+          description="Link two connectors to create a new track">
+        <smallIcon
+            xsi:type="gmftool:BundleImage"
+            path="icons/full/obj16/track.gif"
+            bundle="OnTrack.dsl.edit"/>
+        <largeIcon
+            xsi:type="gmftool:BundleImage"
+            path="icons/full/obj32/track.gif"
+            bundle="OnTrack.dsl.edit"/>
+      </tools>
+      <tools
+          xsi:type="gmftool:CreationTool"
+          title="New Track"
+          description="Add new track with new two connectors">
+        <smallIcon
+            xsi:type="gmftool:BundleImage"
+            path="icons/full/obj16/track.gif"
+            bundle="OnTrack.dsl.edit"/>
+        <largeIcon
+            xsi:type="gmftool:BundleImage"
+            path="icons/full/obj32/track.gif"
+            bundle="OnTrack.dsl.edit"/>
+      </tools>
+      <tools
+          xsi:type="gmftool:CreationTool"
+          title="Point"
+          description="Associate two tracks to form a new point">
+        <smallIcon
+            xsi:type="gmftool:BundleImage"
+            path="icons/full/obj16/point.gif"
+            bundle="OnTrack.dsl.edit"/>
+        <largeIcon
+            xsi:type="gmftool:BundleImage"
+            path="icons/full/obj32/point.gif"
+            bundle="OnTrack.dsl.edit"/>
+      </tools>
+      <tools
+          xsi:type="gmftool:CreationTool"
+          title="New Point"
+          description="Add new point with two new tracks">
+        <smallIcon
+            xsi:type="gmftool:BundleImage"
+            path="icons/full/obj16/point.gif"
+            bundle="OnTrack.dsl.edit"/>
+        <largeIcon
+            xsi:type="gmftool:BundleImage"
+            path="icons/full/obj32/point.gif"
+            bundle="OnTrack.dsl.edit"/>
+      </tools>
+      <tools
+          xsi:type="gmftool:CreationTool"
+          title="Crossing"
+          description="Associate two tracks to form a new crossing">
+        <smallIcon
+            xsi:type="gmftool:BundleImage"
+            path="icons/full/obj16/crossing.gif"
+            bundle="OnTrack.dsl.edit"/>
+        <largeIcon
+            xsi:type="gmftool:BundleImage"
+            path="icons/full/obj32/crossing.gif"
+            bundle="OnTrack.dsl.edit"/>
+      </tools>
+      <tools
+          xsi:type="gmftool:CreationTool"
+          title="New Crossing"
+          description="Add new crossing with two new tracks">
+        <smallIcon
+            xsi:type="gmftool:BundleImage"
+            path="icons/full/obj16/crossing.gif"
+            bundle="OnTrack.dsl.edit"/>
+        <largeIcon
+            xsi:type="gmftool:BundleImage"
+            path="icons/full/obj32/crossing.gif"
+            bundle="OnTrack.dsl.edit"/>
+      </tools>
+      <tools
+          xsi:type="gmftool:CreationTool"
+          title="Signal"
+          description="Add a new signal">
+        <smallIcon
+            xsi:type="gmftool:BundleImage"
+            path="icons/full/obj16/signal.gif"
+            bundle="OnTrack.dsl.edit"/>
+        <largeIcon
+            xsi:type="gmftool:BundleImage"
+            path="icons/full/obj32/signal.gif"
+            bundle="OnTrack.dsl.edit"/>
+      </tools>
+      <tools
+          xsi:type="gmftool:CreationTool"
+          title="Signal placement"
+          description="Link a signal to a track">
+        <smallIcon
+            xsi:type="gmftool:BundleImage"
+            path="icons/full/obj16/setsignal.gif"
+            bundle="OnTrack.dsl.edit"/>
+        <largeIcon
+            xsi:type="gmftool:BundleImage"
+            path="icons/full/obj32/setsignal.gif"
+            bundle="OnTrack.dsl.edit"/>
+      </tools>
+      <tools
+          xsi:type="gmftool:CreationTool"
+          title="Signal direction"
+          description="Link a signal to a connector to indicate direction protected">
+        <smallIcon
+            xsi:type="gmftool:BundleImage"
+            path="icons/full/obj16/setsignal.gif"
+            bundle="OnTrack.dsl.edit"/>
+        <largeIcon
+            xsi:type="gmftool:BundleImage"
+            path="icons/full/obj32/setsignal.gif"
+            bundle="OnTrack.dsl.edit"/>
+      </tools>
+      <tools
+          xsi:type="gmftool:CreationTool"
+          title="Entrance"
+          description="Add an entrance">
+        <smallIcon
+            xsi:type="gmftool:BundleImage"
+            path="icons/full/obj16/entrance.gif"
+            bundle="OnTrack.dsl.edit"/>
+        <largeIcon
+            xsi:type="gmftool:BundleImage"
+            path="icons/full/obj32/entrance.gif"
+            bundle="OnTrack.dsl.edit"/>
+      </tools>
+      <tools
+          xsi:type="gmftool:CreationTool"
+          title="Entrance placement"
+          description="Link entrance to connector">
+        <smallIcon
+            xsi:type="gmftool:BundleImage"
+            path="icons/full/obj16/entrance.gif"
+            bundle="OnTrack.dsl.edit"/>
+        <largeIcon
+            xsi:type="gmftool:BundleImage"
+            path="icons/full/obj32/entrance.gif"
+            bundle="OnTrack.dsl.edit"/>
+      </tools>
+      <tools
+          xsi:type="gmftool:CreationTool"
+          title="Exit"
+          description="Add an exit">
+        <smallIcon
+            xsi:type="gmftool:BundleImage"
+            path="icons/full/obj16/exit.gif"
+            bundle="OnTrack.dsl.edit"/>
+        <largeIcon
+            xsi:type="gmftool:BundleImage"
+            path="icons/full/obj32/exit.gif"
+            bundle="OnTrack.dsl.edit"/>
+      </tools>
+      <tools
+          xsi:type="gmftool:CreationTool"
+          title="Exit placement"
+          description="Link exit to connector">
+        <smallIcon
+            xsi:type="gmftool:BundleImage"
+            path="icons/full/obj16/exit.gif"
+            bundle="OnTrack.dsl.edit"/>
+        <largeIcon
+            xsi:type="gmftool:BundleImage"
+            path="icons/full/obj32/exit.gif"
+            bundle="OnTrack.dsl.edit"/>
+      </tools>
+      <tools
+          xsi:type="gmftool:CreationTool"
+          title="Terminal"
+          description="Add a terminal">
+        <smallIcon
+            xsi:type="gmftool:BundleImage"
+            path="icons/full/obj16/terminal.gif"
+            bundle="OnTrack.dsl.edit"/>
+        <largeIcon
+            xsi:type="gmftool:BundleImage"
+            path="icons/full/obj32/terminal.gif"
+            bundle="OnTrack.dsl.edit"/>
+      </tools>
+      <tools
+          xsi:type="gmftool:CreationTool"
+          title="Terminal placement"
+          description="Link terminal to connector">
+        <smallIcon
+            xsi:type="gmftool:BundleImage"
+            path="icons/full/obj16/terminal.gif"
+            bundle="OnTrack.dsl.edit"/>
+        <largeIcon
+            xsi:type="gmftool:BundleImage"
+            path="icons/full/obj32/terminal.gif"
+            bundle="OnTrack.dsl.edit"/>
+      </tools>
+    </tools>
+  </palette>
+</gmftool:ToolRegistry>

@@ -1,0 +1,192 @@
+import "OnTrack.etl";
+
+pre {
+	var trackplan = safetrack!TrackPlan.all().first();
+	var subplan = trackplan.selectedSubTrackPlan;
+	var plan;
+	if (subplan.isDefined()) plan = subplan;
+	else plan = trackplan;
+	
+
+	// Main B Machine
+	new BMachine!Machine;
+	BMachine!Machine.all().first().hasSets.clear();
+	BMachine!Machine.all().first().hasProperties.clear();
+
+	// Set ALLTRACK = all units + nullUnit + offUnit
+	var allTracks = newBSet("UNIT");
+	
+	var nullTrack = new BMachine!Element;
+	nullTrack.name = "nullUnit";
+	var offTrack = new BMachine!Element;
+	offTrack.name = "offUnit";
+	allTracks.hasSetElements.add(nullTrack);	
+	allTracks.hasSetElements.add(offTrack);
+	
+	// property CRITICAL = critical units (for the full plan are all tracks except null, off and entrances)
+	var criticals = newBProperty("CRITICAL");
+
+	// Set SIGNAL = all signal names
+	var allsignals = newBSet("ALLSIGNAL");
+	var dummySignal = new BMachine!Element;
+	dummySignal.name = "dummySignal"; // to avoid declaring an empty set if there is no signal
+	allsignals.hasSetElements.add(dummySignal);	
+
+	// Set POINTS = all point pointNames
+	var allpoints = newBSet("ALLPOINT");
+	var dummyPoint = new BMachine!Element;
+	dummyPoint.name = "dummyPoint"; // to avoid declaring an empty set if there is no point
+	allpoints.hasSetElements.add(dummyPoint);	
+
+	// Set ROUTE = all route names
+	var allroutes = newBSet("ALLROUTE");
+	var dummyRoute = new BMachine!Element;
+	dummyRoute.name = "dummyRoute"; // to avoid declaring an empty set if there is no route
+	allroutes.hasSetElements.add(dummyRoute);	
+	
+	// Property Connector
+	var connectors = newBProperty("CONNECTOR");
+	var minusOne = new BMachine!PropElement;
+	var zero = new BMachine!PropElement;
+	newBDomainElement("-1",minusOne);
+	newBDomainElement("0",zero);
+	connectors.hasPropElements.add(minusOne);
+	connectors.hasPropElements.add(zero);
+
+	// Property Route
+	var routes = newBProperty("ROUTE");
+	// Property Route
+	var hiddenroutes = newBProperty("HIDDENROUTE");
+
+	// Property Point
+	var points = newBProperty("POINT");
+	
+}
+
+//////// Transformation Rules ////////
+
+@greedy
+rule transformTrack
+transform u : safetrack!Track
+to se : BMachine!Element {
+
+	guard : 
+	plan.tracks.includes(u) and
+	(not u.pointReverse.isDefined()) and (not u.crossing2.isDefined())
+
+	se.name = u.getName();
+	allTracks.hasSetElements.add(se);
+}
+
+// Add all signal names to SIGNAL
+rule transformSignal
+transform s : safetrack!Signal
+to se : BMachine!Element {
+
+	guard : plan.signals.includes(s)
+
+	se.name = s.name;
+	allsignals.hasSetElements.add(se);
+
+}
+
+// Add all point pointNames to POINTS
+rule transformPointWithDummy
+transform p : safetrack!Point
+to se : BMachine!Element {
+
+	guard : plan.points.includes(p)
+	
+	se.name = p.name;
+	allpoints.hasSetElements.add(se);
+}
+
+// Add all necessary route names to ROUTE
+rule transformRoute
+transform r : safetrack!ControlTableItem
+to se : BMachine!Element {
+
+	guard : plan.controlTable.includes(r)
+
+	se.name = r.route;
+	allroutes.hasSetElements.add(se); 
+}
+
+// filter route with signal only
+rule transformRouteWithSignal
+transform r : safetrack!ControlTableItem
+to pe : BMachine!PropElement, e : BMachine!Element {
+
+	guard : 
+	plan.controlTable.includes(r) and r.signal.isDefined()
+
+	e.name = r.route;
+	pe.hasDomainElements.add(e);
+	
+	routes.hasPropElements.add(pe);	
+}
+
+// filter route without signal 
+rule transformRouteWithoutSignal
+transform r : safetrack!ControlTableItem
+to pe : BMachine!PropElement, e : BMachine!Element {
+
+	guard : 
+	plan.controlTable.includes(r) and (not r.signal.isDefined())
+
+	e.name = r.route;
+	pe.hasDomainElements.add(e);
+	
+	hiddenroutes.hasPropElements.add(pe);	
+}
+
+// connectors
+rule transformConnector
+transform c : safetrack!Connector
+to pe : BMachine!PropElement, e : BMachine!Element {
+
+	guard : plan.connectors.includes(c)
+
+	e.name = c.id.toString();
+	pe.hasDomainElements.add(e);
+	
+	connectors.hasPropElements.add(pe);	
+}
+
+// point
+rule transformPoint
+transform c : safetrack!Point
+to pe : BMachine!PropElement, e : BMachine!Element {
+
+	guard : plan.points.includes(c)
+	
+	e.name = c.name;
+	pe.hasDomainElements.add(e);
+	
+	points.hasPropElements.add(pe);	
+}
+
+// critical
+rule transformCriticalSub
+transform t : safetrack!Track
+to pe : BMachine!PropElement, e : BMachine!Element {
+
+	guard : subplan.isDefined() and plan.criticals.includes(t) and 
+	(not t.pointReverse.isDefined()) and (not t.crossing2.isDefined()) 
+
+	e.name = t.getName();
+	pe.hasDomainElements.add(e);
+	criticals.hasPropElements.add(pe);
+}
+
+rule transformCriticalFull
+transform t : safetrack!Track
+to pe : BMachine!PropElement, e : BMachine!Element {
+
+	guard : not subplan.isDefined() and 
+	(not t.pointReverse.isDefined()) and (not t.crossing2.isDefined()) 
+
+	e.name = t.getName();
+	pe.hasDomainElements.add(e);
+	criticals.hasPropElements.add(pe);
+}

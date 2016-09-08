@@ -1,0 +1,7 @@
+# Tracing options for the OnTrack.dsl.diagram plug-in
+
+# Common issues
+OnTrack.dsl.diagram/debug=false
+
+# Visual IDs
+OnTrack.dsl.diagram/debug/visualID=false

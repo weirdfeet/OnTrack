@@ -1,0 +1,147 @@
+import "Ontrack.etl";
+
+pre {
+	var trackplan = safetrack!TrackPlan.all().last();
+	var subplan = null;
+	if (trackplan.selectedSubTrackPlan.isDefined())
+		subplan = trackplan.selectedSubTrackPlan;
+	trackplan.println();
+	subplan.println();
+	var plan;
+	if (subplan.isDefined()) plan = subplan;
+	else plan = trackplan;
+
+	// Main CSP script
+	new CSP!CSPScript;
+	CSP!CSPScript.all().first().set.clear();
+	CSP!CSPScript.all().first().dataType.clear();
+
+	// Datatype POS = all units + nullTrack
+	var pos = newCSPDatatype("POS");
+	// DatatypItemList for POS
+	var pos_list = newCSPDatatypeItemList(pos);
+
+	// add null and off units
+	var nullTrack = new CSP!DatatypeItem;
+	nullTrack.name = "nullUnit";
+	var offTrack = new CSP!DatatypeItem;
+	offTrack.name = "offUnit";
+	offTrack.preceeds = nullTrack;
+	pos_list.firstItem = offTrack;
+	pos_list.size = 2;	
+
+	
+
+	// Datatype ROUTE = all routes (data comes from control table)
+	var allroute = newCSPDatatype("ALLROUTE");
+	// DatatypeItemList for ROUTE
+	var route_list = newCSPDatatypeItemList(allroute);
+	var dummyRoute = new CSP!DatatypeItem; // add a dummy route to prevent having no route
+	dummyRoute.name = "dummyRoute";
+	dummyRoute.type = allroute;
+	route_list.firstItem = dummyRoute;
+	route_list.size = 1;
+
+	// Set BUFFER = all entry units end with a terminal
+	var buffer = newCSPSet("BUFFER");
+
+	// Set SIGNALHOME = all units with signals
+	var signalhome = newCSPSet("SIGNALHOME");
+
+	var route = newCSPSet("ROUTE");
+	var hiddenroute = newCSPSet("HIDDENROUTE");
+}
+
+//////// Transformation Rules ////////
+
+// Add unit names to POS
+@greedy
+rule transformTrack
+transform u : safetrack!Track
+to d : CSP!DatatypeItem {
+
+	guard : 
+	plan.tracks.includes(u) and
+	(not u.pointReverse.isDefined()) and (not u.crossing2.isDefined())
+
+	d.name = u.name;
+	d.type = pos;
+	d.preceeds = pos_list.firstItem;
+	
+	// increase pos_list size and set new first item
+	pos_list.size = pos_list.size + 1;
+	pos_list.firstItem = d;
+	
+}
+
+// Add necessary routes to ALLROUTE
+rule transformRoute
+transform cti : safetrack!ControlTableItem
+to d : CSP!DatatypeItem {
+
+	guard : plan.controlTable.includes(cti)
+	
+	d.name = cti.route;
+	d.type = allroute;
+	d.preceeds = route_list.firstItem;
+	
+	// increase route_list size and set new first item
+	route_list.size = route_list.size + 1;
+	route_list.firstItem = d;
+}
+
+// Add signaled routes to ROUTE
+rule transformRouteWithSignal
+transform cti : safetrack!ControlTableItem
+to s : CSP!SETElement, i : CSP!TypedItem  {
+
+	// only transform if route is in control table
+	guard : plan.controlTable.includes(cti) and cti.signal.isDefined()
+	
+	i.name = cti.route;
+	s.item = i;
+		
+	route.item.add(s);
+}
+
+rule transformRouteWithoutSignal
+transform cti : safetrack!ControlTableItem
+to s : CSP!SETElement, i : CSP!TypedItem  {
+
+	// only transform if route is in control table
+	guard : plan.controlTable.includes(cti) and (not cti.signal.isDefined())
+	
+	i.name = cti.route;
+	s.item = i;
+		
+	hiddenroute.item.add(s);
+}
+
+
+// Add terminal tracks to BUFFER
+rule transformTerminal
+transform c : safetrack!Connector
+to s : CSP!SETElement, i : CSP!TypedItem {
+
+	// Only transform if connector is attached a terminal
+	guard : plan.connectors.includes(c) and c.terminal.isDefined()
+
+	// Find unit
+	i.name = c.findFirstTrack(plan).name;
+	s.item = i;
+	
+	buffer.item.add(s);
+}
+
+// Add linears with signals to SIGNALHOMES
+rule transformTrackWithSignal
+transform l : safetrack!Track
+to s : CSP!SETElement, i : CSP!TypedItem {
+
+	// Only transform if linear has signals
+	guard : plan.tracks.includes(l) and l.includesSignal(plan)
+
+	i.name = l.getName();
+	s.item = i;
+	signalhome.item.add(s);
+}

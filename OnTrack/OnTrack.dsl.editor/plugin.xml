@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+
+<!--
+-->
+
+<plugin>
+
+   <extension point="org.eclipse.ui.newWizards">
+      <!-- @generated ontrack -->
+      <category
+            id="org.eclipse.emf.ecore.Wizard.category.ID"
+            name="%_UI_Wizard_category"/>
+      <wizard
+            id="uk.ac.swanseacoventry.cmt.ontrack.presentation.OntrackModelWizardID"
+            name="%_UI_OntrackModelWizard_label"
+            class="uk.ac.swanseacoventry.cmt.ontrack.presentation.OntrackModelWizard"
+            category="org.eclipse.emf.ecore.Wizard.category.ID"
+            icon="icons/full/obj16/OntrackModelFile.gif">
+         <description>%_UI_OntrackModelWizard_description</description>
+         <selection class="org.eclipse.core.resources.IResource"/>
+      </wizard>
+   </extension>
+
+   <extension point="org.eclipse.ui.editors">
+      <!-- @generated ontrack -->
+      <editor
+            id="uk.ac.swanseacoventry.cmt.ontrack.presentation.OntrackEditorID"
+            name="%_UI_OntrackEditor_label"
+            icon="icons/full/obj16/OntrackModelFile.gif"
+            extensions="ontrack"
+            class="uk.ac.swanseacoventry.cmt.ontrack.presentation.OntrackEditor"
+            contributorClass="uk.ac.swanseacoventry.cmt.ontrack.presentation.OntrackActionBarContributor">
+      </editor>
+   </extension>
+
+</plugin>

@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="ontrack" nsURI="http:///uk/ac/swanseacoventry/cmt/ontrack.ecore"
+    nsPrefix="uk.ac.swanseacoventry.cmt.ontrack">
+  <eClassifiers xsi:type="ecore:EClass" name="Connector">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="id" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="track1s" upperBound="-1"
+        eType="#//Track" eOpposite="#//Track/c1"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="track2s" upperBound="-1"
+        eType="#//Track" eOpposite="#//Track/c2"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="signals" upperBound="-1"
+        eType="#//Signal" eOpposite="#//Signal/connector"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="terminal" eType="#//Terminal"
+        eOpposite="#//Terminal/connector"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="entrances" upperBound="-1"
+        eType="#//Entrance" eOpposite="#//Entrance/connector"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="exits" upperBound="-1"
+        eType="#//Exit" eOpposite="#//Exit/connector"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ControlTableItem">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="signal" eType="#//Signal"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="route" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="normals" upperBound="-1"
+        eType="#//Point"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="reverses" upperBound="-1"
+        eType="#//Point"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="clears" upperBound="-1"
+        eType="#//Track"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="directions" upperBound="-1"
+        eType="#//DirectedTrack"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Crossing">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="track1" eType="#//Track"
+        eOpposite="#//Track/crossing1"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="track2" eType="#//Track"
+        eOpposite="#//Track/crossing2"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="DirectedTrack">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="track" eType="#//Track"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="connector" eType="#//Connector"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Entrance">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="connector" eType="#//Connector"
+        eOpposite="#//Connector/entrances"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Exit">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="connector" eType="#//Connector"
+        eOpposite="#//Connector/exits"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="NewCrossing"/>
+  <eClassifiers xsi:type="ecore:EClass" name="NewPoint"/>
+  <eClassifiers xsi:type="ecore:EClass" name="NewTrack"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Point">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="normalTrack" eType="#//Track"
+        eOpposite="#//Track/pointNormal"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="reverseTrack" eType="#//Track"
+        eOpposite="#//Track/pointReverse"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ReleaseTableItem">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="route" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="point" eType="#//Point"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="track" eType="#//Track"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Signal">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="track" eType="#//Track"
+        eOpposite="#//Track/signals"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="connector" eType="#//Connector"
+        eOpposite="#//Connector/signals"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="SubTrackPlan">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="criticals" upperBound="-1"
+        eType="#//Track"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="tracks" upperBound="-1"
+        eType="#//Track"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="connectors" upperBound="-1"
+        eType="#//Connector"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="points" upperBound="-1"
+        eType="#//Point"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="crossings" upperBound="-1"
+        eType="#//Crossing"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="signals" upperBound="-1"
+        eType="#//Signal"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="entrances" upperBound="-1"
+        eType="#//Entrance" containment="true" resolveProxies="false"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="exits" upperBound="-1"
+        eType="#//Exit" containment="true" resolveProxies="false"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="terminals" upperBound="-1"
+        eType="#//Terminal"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="topoRoutes" upperBound="-1"
+        eType="#//TopoRoute" containment="true" resolveProxies="false"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="controlTable" upperBound="-1"
+        eType="#//ControlTableItem" containment="true" resolveProxies="false"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="releaseTable" upperBound="-1"
+        eType="#//ReleaseTableItem" containment="true" resolveProxies="false"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Terminal">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="connector" eType="#//Connector"
+        eOpposite="#//Connector/terminal"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="TopoRoute">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="names" upperBound="-1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="directedTracks" upperBound="-1"
+        eType="#//DirectedTrack"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="startSignal" eType="#//Signal"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="endSignal" eType="#//Signal"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Track">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="c1" eType="#//Connector"
+        eOpposite="#//Connector/track1s"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="c2" eType="#//Connector"
+        eOpposite="#//Connector/track2s"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="pointReverse" eType="#//Point"
+        eOpposite="#//Point/reverseTrack"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="pointNormal" eType="#//Point"
+        eOpposite="#//Point/normalTrack"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="crossing2" eType="#//Crossing"
+        eOpposite="#//Crossing/track2"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="crossing1" eType="#//Crossing"
+        eOpposite="#//Crossing/track1"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="directedTracks" upperBound="-1"
+        eType="#//DirectedTrack" containment="true" resolveProxies="false"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="signals" upperBound="-1"
+        eType="#//Signal" eOpposite="#//Signal/track"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="TrackPlan">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="tracks" upperBound="-1"
+        eType="#//Track" containment="true" resolveProxies="false"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="connectors" upperBound="-1"
+        eType="#//Connector" containment="true" resolveProxies="false"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="points" upperBound="-1"
+        eType="#//Point" containment="true" resolveProxies="false"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="crossings" upperBound="-1"
+        eType="#//Crossing" containment="true" resolveProxies="false"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="signals" upperBound="-1"
+        eType="#//Signal" containment="true" resolveProxies="false"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="entrances" upperBound="-1"
+        eType="#//Entrance" containment="true" resolveProxies="false"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="exits" upperBound="-1"
+        eType="#//Exit" containment="true" resolveProxies="false"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="terminals" upperBound="-1"
+        eType="#//Terminal" containment="true" resolveProxies="false"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="topoRoutes" upperBound="-1"
+        eType="#//TopoRoute" containment="true" resolveProxies="false"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="controlTable" upperBound="-1"
+        eType="#//ControlTableItem" containment="true" resolveProxies="false"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="releaseTable" upperBound="-1"
+        eType="#//ReleaseTableItem" containment="true" resolveProxies="false"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="newTrack" eType="#//NewTrack"
+        containment="true" resolveProxies="false"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="newPoint" eType="#//NewPoint"
+        containment="true" resolveProxies="false"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="newCrossing" eType="#//NewCrossing"
+        containment="true" resolveProxies="false"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="subTrackPlans" upperBound="-1"
+        eType="#//SubTrackPlan" containment="true" resolveProxies="false"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="selectedSubTrackPlan" eType="#//SubTrackPlan"/>
+  </eClassifiers>
+</ecore:EPackage>

@@ -1,0 +1,7 @@
+eclipse.preferences.version=1
+gmf_dashboard/domainGenerationModel=platform\:/resource/OnTrack.dsl/model/ontrack.genmodel
+gmf_dashboard/domainModel=platform\:/resource/OnTrack.dsl/model/ontrack.ecore
+gmf_dashboard/generationModel=platform\:/resource/OnTrack.dsl/model/ontrack.gmfgen
+gmf_dashboard/graphicalDefinitionModel=platform\:/resource/OnTrack.dsl/model/ontrack.gmfgraph
+gmf_dashboard/mappingModel=platform\:/resource/OnTrack.dsl/model/ontrack.gmfmap
+gmf_dashboard/toolingDefinitionModel=platform\:/resource/OnTrack.dsl/model/ontrack.gmftool

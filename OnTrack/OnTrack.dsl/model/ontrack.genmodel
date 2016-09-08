@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/OnTrack.dsl/src" modelPluginID="OnTrack.dsl" modelName="Ontrack"
+    rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container" importerID="org.eclipse.emf.importer.java"
+    complianceLevel="6.0" copyrightFields="false" operationReflection="true" importOrganizing="true">
+  <foreignModel>@model</foreignModel>
+  <genPackages prefix="Ontrack" basePackage="uk.ac.swanseacoventry.cmt" disposableProviderFactory="true"
+      ecorePackage="ontrack.ecore#/">
+    <genClasses ecoreClass="ontrack.ecore#//Connector">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ontrack.ecore#//Connector/id"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference ontrack.ecore#//Connector/track1s"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference ontrack.ecore#//Connector/track2s"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference ontrack.ecore#//Connector/signals"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference ontrack.ecore#//Connector/terminal"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference ontrack.ecore#//Connector/entrances"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference ontrack.ecore#//Connector/exits"/>
+    </genClasses>
+    <genClasses ecoreClass="ontrack.ecore#//ControlTableItem">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference ontrack.ecore#//ControlTableItem/signal"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ontrack.ecore#//ControlTableItem/route"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference ontrack.ecore#//ControlTableItem/normals"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference ontrack.ecore#//ControlTableItem/reverses"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference ontrack.ecore#//ControlTableItem/clears"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference ontrack.ecore#//ControlTableItem/directions"/>
+    </genClasses>
+    <genClasses ecoreClass="ontrack.ecore#//Crossing">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference ontrack.ecore#//Crossing/track1"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference ontrack.ecore#//Crossing/track2"/>
+    </genClasses>
+    <genClasses ecoreClass="ontrack.ecore#//DirectedTrack">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference ontrack.ecore#//DirectedTrack/track"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference ontrack.ecore#//DirectedTrack/connector"/>
+    </genClasses>
+    <genClasses ecoreClass="ontrack.ecore#//Entrance">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference ontrack.ecore#//Entrance/connector"/>
+    </genClasses>
+    <genClasses ecoreClass="ontrack.ecore#//Exit">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference ontrack.ecore#//Exit/connector"/>
+    </genClasses>
+    <genClasses ecoreClass="ontrack.ecore#//NewCrossing"/>
+    <genClasses ecoreClass="ontrack.ecore#//NewPoint"/>
+    <genClasses ecoreClass="ontrack.ecore#//NewTrack"/>
+    <genClasses ecoreClass="ontrack.ecore#//Point">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference ontrack.ecore#//Point/normalTrack"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference ontrack.ecore#//Point/reverseTrack"/>
+    </genClasses>
+    <genClasses ecoreClass="ontrack.ecore#//ReleaseTableItem">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ontrack.ecore#//ReleaseTableItem/route"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference ontrack.ecore#//ReleaseTableItem/point"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference ontrack.ecore#//ReleaseTableItem/track"/>
+    </genClasses>
+    <genClasses ecoreClass="ontrack.ecore#//Signal">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ontrack.ecore#//Signal/name"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference ontrack.ecore#//Signal/track"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference ontrack.ecore#//Signal/connector"/>
+    </genClasses>
+    <genClasses ecoreClass="ontrack.ecore#//SubTrackPlan">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference ontrack.ecore#//SubTrackPlan/criticals"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference ontrack.ecore#//SubTrackPlan/tracks"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference ontrack.ecore#//SubTrackPlan/connectors"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference ontrack.ecore#//SubTrackPlan/points"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference ontrack.ecore#//SubTrackPlan/crossings"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference ontrack.ecore#//SubTrackPlan/signals"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ontrack.ecore#//SubTrackPlan/entrances"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ontrack.ecore#//SubTrackPlan/exits"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference ontrack.ecore#//SubTrackPlan/terminals"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ontrack.ecore#//SubTrackPlan/topoRoutes"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ontrack.ecore#//SubTrackPlan/controlTable"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ontrack.ecore#//SubTrackPlan/releaseTable"/>
+    </genClasses>
+    <genClasses ecoreClass="ontrack.ecore#//Terminal">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference ontrack.ecore#//Terminal/connector"/>
+    </genClasses>
+    <genClasses ecoreClass="ontrack.ecore#//TopoRoute">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ontrack.ecore#//TopoRoute/names"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference ontrack.ecore#//TopoRoute/directedTracks"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference ontrack.ecore#//TopoRoute/startSignal"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference ontrack.ecore#//TopoRoute/endSignal"/>
+    </genClasses>
+    <genClasses ecoreClass="ontrack.ecore#//Track">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference ontrack.ecore#//Track/c1"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference ontrack.ecore#//Track/c2"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference ontrack.ecore#//Track/pointReverse"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference ontrack.ecore#//Track/pointNormal"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference ontrack.ecore#//Track/crossing2"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference ontrack.ecore#//Track/crossing1"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ontrack.ecore#//Track/directedTracks"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference ontrack.ecore#//Track/signals"/>
+    </genClasses>
+    <genClasses ecoreClass="ontrack.ecore#//TrackPlan">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ontrack.ecore#//TrackPlan/tracks"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ontrack.ecore#//TrackPlan/connectors"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ontrack.ecore#//TrackPlan/points"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ontrack.ecore#//TrackPlan/crossings"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ontrack.ecore#//TrackPlan/signals"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ontrack.ecore#//TrackPlan/entrances"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ontrack.ecore#//TrackPlan/exits"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ontrack.ecore#//TrackPlan/terminals"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ontrack.ecore#//TrackPlan/topoRoutes"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ontrack.ecore#//TrackPlan/controlTable"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ontrack.ecore#//TrackPlan/releaseTable"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ontrack.ecore#//TrackPlan/newTrack"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ontrack.ecore#//TrackPlan/newPoint"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ontrack.ecore#//TrackPlan/newCrossing"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ontrack.ecore#//TrackPlan/subTrackPlans"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference ontrack.ecore#//TrackPlan/selectedSubTrackPlan"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="ontrack.ecore#//Unit">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ontrack.ecore#//Unit/name"/>
+    </genClasses>
+  </genPackages>
+</genmodel:GenModel>

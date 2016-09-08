@@ -1,0 +1,226 @@
+import "OnTrack.etl";
+
+pre {
+	var trackplan = safetrack!TrackPlan.all().first();
+	var subplan = trackplan.selectedSubTrackPlan;
+	var plan;
+	if (subplan.isDefined()) plan = subplan;
+	else plan = trackplan;
+
+	// Main B Machine
+	new BMachine!Machine;
+	BMachine!Machine.all().first().hasSets.clear();
+	BMachine!Machine.all().first().hasProperties.clear();
+
+	// Properties
+	var signal = newBProperty("signal");
+	var homeSignal = newBProperty("homeSignal");
+	var homePoint = newBProperty("homePoint");
+	var crossing = newBProperty("CROSSING");
+	var entry = newBProperty("ENTRY");
+	var exit = newBProperty("EXIT");
+	var terminal = newBProperty("TERMINAL");
+	var directedUnits = newBProperty("directedUnits");
+	var dynamicDirection = newBProperty("dynamicDirection");
+	var topoRouteTable = newBProperty("topoRouteTable");
+	
+	// add two initial nullunit and offunit to directedUnits
+	var directedNullUnit = new BMachine!PropElement;
+	newBDomainElement("nullUnit", directedNullUnit);
+	newBRangeElement("-1", directedNullUnit);
+	newBRangeElement("-1", directedNullUnit);
+	directedUnits.hasPropElements.add(directedNullUnit);
+	var directedOffUnit = new BMachine!PropElement;
+	newBDomainElement("offUnit", directedOffUnit);
+	newBRangeElement("0", directedOffUnit);
+	newBRangeElement("0", directedOffUnit);
+	directedUnits.hasPropElements.add(directedOffUnit);
+
+}
+
+//////// Transformation Rules ////////
+
+rule transformSignal
+transform r : safetrack!ControlTableItem
+to pe : BMachine!PropElement {
+	
+	// only transform if route is in control table
+	guard : 
+		plan.controlTable.includes(r) and 
+		r.signal.isDefined()
+	
+	// add property element to signal
+	signal.hasPropElements.add(pe);
+	// route name as domain element
+	newBDomainElement(r.route,pe);
+	// signal name as range element
+	newBRangeElement(r.signal.name, pe);
+}
+
+rule transformHomeSignal
+transform s: safetrack!Signal
+to pe : BMachine!PropElement {
+
+	guard : plan.signals.includes(s)
+
+	// add property element to homeSignal
+	homeSignal.hasPropElements.add(pe);
+	// signal name as domain element
+	newBDomainElement(s.name, pe);
+	// unit name as range element
+	newBRangeElement(s.track.getName(), pe);
+	
+	if (s.connector=s.track.c1)
+		newBRangeElement(s.track.c2.id.toString(), pe);
+	else
+		newBRangeElement(s.track.c1.id.toString(), pe);
+	newBRangeElement(s.connector.id.toString(), pe);
+}
+
+rule transformHomePoint
+transform p : safetrack!Point
+to pe : BMachine!PropElement {
+
+	guard : plan.points.includes(p)
+
+	// add property element to homePoint
+	homePoint.hasPropElements.add(pe);
+	// pointName as domain element
+	newBDomainElement(p.name, pe);
+	// unit name as range element
+	newBRangeElement(p.normalTrack.name, pe);
+}
+
+rule transformCrossing
+transform c : safetrack!Crossing
+to pe : BMachine!PropElement {
+
+	guard : plan.crossings.includes(c)
+	
+	crossing.hasPropElements.add(pe);
+	newBDomainElement(c.track1.getName(), pe);
+}
+
+
+rule transformEntry
+transform c : safetrack!Connector
+to pe : BMachine!PropElement {
+
+	guard : c.includesEntrance(plan)
+
+	entry.hasPropElements.add(pe);
+	var e = c.findFirstTrack(plan);
+	newBDomainElement(e.getName(), pe);
+	newBRangeElement(c.id.toString(), pe);
+	if (e.c1=c)
+		newBRangeElement(e.c2.id.toString(), pe);
+	else
+		newBRangeElement(e.c1.id.toString(), pe);
+}
+
+rule transformExit
+transform c : safetrack!Connector
+to pe : BMachine!PropElement {
+
+	guard : c.includesExit(plan)
+
+	exit.hasPropElements.add(pe);
+	var e = c.findFirstTrack(plan);
+	newBDomainElement(e.getName(), pe);
+	if (e.c1=c)
+		newBRangeElement(e.c2.id.toString(), pe);
+	else
+		newBRangeElement(e.c1.id.toString(), pe);
+	newBRangeElement(c.id.toString(), pe);
+}
+
+rule transformTerminal
+transform c : safetrack!Connector
+to pe : BMachine!PropElement {
+
+	guard : plan.connectors.includes(c) and c.terminal.isDefined()
+
+	terminal.hasPropElements.add(pe);
+	newBDomainElement(c.findFirstTrack(plan).name, pe);
+}
+
+rule transformDirectedUnit
+transform t : safetrack!Track
+to pe1 : BMachine!PropElement, pe2 : BMachine!PropElement {
+
+	guard : plan.tracks.includes(t)
+
+	newBDomainElement(t.getName(), pe1);
+	newBRangeElement(t.c1.id.toString(), pe1);
+	newBRangeElement(t.c2.id.toString(), pe1);
+
+	newBDomainElement(t.getName(), pe2);
+	newBRangeElement(t.c2.id.toString(), pe2);
+	newBRangeElement(t.c1.id.toString(), pe2);
+
+	directedUnits.hasPropElements.add(pe1);
+	directedUnits.hasPropElements.add(pe2);
+}
+
+rule transformdynamicDirection
+transform p : safetrack!Point
+to pe1 : BMachine!PropElement, 
+   pe2 : BMachine!PropElement,
+   pe3 : BMachine!PropElement,
+   pe4 : BMachine!PropElement {
+   
+   guard : plan.points.includes(p)
+
+	newBDomainElement(p.name, pe1);
+	newBDomainElement("normal", pe1);
+	newBRangeElement(p.normalTrack.c1.id.toString(), pe1);
+	newBRangeElement(p.normalTrack.c2.id.toString(), pe1);
+
+	newBDomainElement(p.name, pe2);
+	newBDomainElement("normal", pe2);
+	newBRangeElement(p.normalTrack.c2.id.toString(), pe2);
+	newBRangeElement(p.normalTrack.c1.id.toString(), pe2);
+
+	newBDomainElement(p.name, pe3);
+	newBDomainElement("reverse", pe3);
+	newBRangeElement(p.reverseTrack.c1.id.toString(), pe3);
+	newBRangeElement(p.reverseTrack.c2.id.toString(), pe3);
+
+	newBDomainElement(p.name, pe4);
+	newBDomainElement("reverse", pe4);
+	newBRangeElement(p.reverseTrack.c2.id.toString(), pe4);
+	newBRangeElement(p.reverseTrack.c1.id.toString(), pe4);
+
+	dynamicDirection.hasPropElements.add(pe1);
+	dynamicDirection.hasPropElements.add(pe2);
+	dynamicDirection.hasPropElements.add(pe3);
+	dynamicDirection.hasPropElements.add(pe4);
+}
+
+rule transformTopoRouteTable
+transform r : safetrack!TopoRoute
+to pe : BMachine!PropElement {
+
+	guard : plan.topoRoutes.includes(r)
+
+	var pei = null;
+	for(name in r.names) for( dt in r.directedTracks) {
+		if (pei=null)
+			pei = pe;
+		else
+			pei = new BMachine!PropElement;
+			
+		newBDomainElement(name, pei);
+		newBDomainElement(dt.track.getName(), pei);
+		
+		if (dt.connector = dt.track.c1) 
+			newBRangeElement(dt.track.c2.id.toString(), pei);
+		else
+		 	newBRangeElement(dt.track.c1.id.toString(), pei);
+		 	
+		newBRangeElement(dt.connector.id.toString(), pei);
+		
+		topoRouteTable.hasPropElements.add(pei);
+	}
+}
+

@@ -1,0 +1,167 @@
+import "OnTrack.etl";
+
+pre {
+	var trackplan = safetrack!TrackPlan.all().first();
+	var subplan = trackplan.selectedSubTrackPlan;
+	var plan;
+	if (subplan.isDefined()) plan = subplan;
+	else plan = trackplan;
+	
+	// Main B Machine
+	new BMachine!Machine;
+	BMachine!Machine.all().first().hasSets.clear();
+	BMachine!Machine.all().first().hasProperties.clear();
+
+	// Property normalTable
+	var entryTable = newBProperty("entryTable");
+
+	// Property normalTable
+	var normalTable = newBProperty("normalTable");
+	
+	// Property reverseTable
+	var reverseTable = newBProperty("reverseTable");
+	
+	// Property clearTable
+	var clearTable = newBProperty("clearTable");
+	
+	// Property lockTable
+	var directedTable = newBProperty("directedTable");
+}
+
+//////// Transformation Rules ////////
+
+// Add normal points to normalTable and lockTable
+rule transformNormalTable
+transform r : safetrack!ControlTableItem
+to pe : BMachine!PropElement {
+
+	// only transform if route is in control table and has normal points
+	// guard : r.signal.isDefined()
+	guard : plan.controlTable.includes(r) 
+	
+	// delete auto-generated BMachine!PropElement as we may want more than one
+	// bit of a bodge!
+	delete pe;
+	
+	// for every normal point
+	for (p in r.normals) {
+	
+		// create new property element
+		var pe = new BMachine!PropElement;
+		
+		// add to both normalTable
+		normalTable.hasPropElements.add(pe);
+	
+		// create new domain element
+		newBDomainElement(r.route, pe);
+	
+		// create new range element
+		newBRangeElement(p.name, pe);
+	}
+}
+
+// Add reverse points to reverseTable and lockTable
+rule transformReverseTable
+transform r : safetrack!ControlTableItem
+to pe : BMachine!PropElement {
+
+	guard : plan.controlTable.includes(r) 
+
+	// delete auto-generated BMachine!PropElement as we may want more than one
+	// bit of a bodge!!
+	delete pe;
+	
+	// for every reverse point
+	for (p in r.reverses) {
+	
+		// create new property element
+		var pe = new BMachine!PropElement;
+		
+		// add to both reverseTable and lockTable
+		reverseTable.hasPropElements.add(pe);
+
+		// create new domain element
+		newBDomainElement(r.route, pe);
+	
+		// create new range element
+		newBRangeElement(p.name, pe);
+	}
+}
+
+// Add clear tracks to clearTable
+rule transformClearTable
+transform r : safetrack!ControlTableItem
+to pe : BMachine!PropElement {
+
+	// only transform if route is in control table
+	guard : plan.controlTable.includes(r) and r.signal.isDefined()
+	
+	delete pe;
+	
+	// for every reverse point
+	for (t in r.clears) {
+	
+		// create new property element
+		var pe = new BMachine!PropElement;
+		
+		// add to both reverseTable and lockTable
+		clearTable.hasPropElements.add(pe);
+
+		// create new domain element
+		newBDomainElement(r.route, pe);
+	
+		// create new range element
+		newBRangeElement(t.getName(), pe);
+	}
+
+}
+
+rule transformDirectedTable
+transform r : safetrack!ControlTableItem
+to pe : BMachine!PropElement {
+
+	// only transform if route is in control table
+	guard : plan.controlTable.includes(r) and r.signal.isDefined()
+	
+	delete pe;
+	
+	// for every reverse point
+	for (t in r.directions) {
+	
+		// create new property element
+		var pe = new BMachine!PropElement;
+		
+		// add to both reverseTable and lockTable
+		directedTable.hasPropElements.add(pe);
+
+		// create new domain element
+		newBDomainElement(r.route, pe);
+	
+		// create new range element
+		newBRangeElement(t.track.getName(), pe);
+		if (t.connector = t.track.c1)
+			newBRangeElement(t.track.c2.id.toString(), pe);
+		else
+			newBRangeElement(t.track.c1.id.toString(), pe);
+		newBRangeElement(t.connector.id.toString(), pe);
+	}
+
+}
+
+
+rule transformEntryTable
+transform c : safetrack!Connector
+to pe : BMachine!PropElement {
+
+	guard : c.includesEntrance(plan)
+
+	entryTable.hasPropElements.add(pe);
+	var e = c.findFirstTrack(plan);
+	newBDomainElement(e.getName(), pe);
+	newBDomainElement(c.id.toString(), pe);
+	if (e.c1=c)
+		newBDomainElement(e.c2.id.toString(), pe);
+	else
+		newBDomainElement(e.c1.id.toString(), pe);
+	newBRangeElement(e.name,pe);
+}
