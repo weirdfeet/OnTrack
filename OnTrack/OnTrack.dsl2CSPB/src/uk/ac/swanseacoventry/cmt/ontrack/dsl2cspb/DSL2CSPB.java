@@ -40,9 +40,9 @@ public class DSL2CSPB {
 	private final String eglOutputFolder;
 	
 	// Epsilon Directories
-	private static final String ETL_SOURCE_DIR = "platform:/plugin/OnTrack.CSPB/etl/";
-	private static final String TEMPLATES_DIR = "platform:/plugin/OnTrack.CSPB/templates/";
-	private static final String META_MODELS_DIR = "platform:/plugin/OnTrack.CSPB/model/"; // All model files are assumed to be in this folder
+	private static final String ETL_SOURCE_DIR = "platform:/plugin/OnTrack.dsl2CSPB/etl/";
+	private static final String TEMPLATES_DIR = "platform:/plugin/OnTrack.dsl2CSPB/templates/";
+	private static final String META_MODELS_DIR = "platform:/plugin/OnTrack.dsl2CSPB/model/"; // All model files are assumed to be in this folder
 
 	//private String EGL_OUTPUT_DIR = "platform:/plugin/SafeTrack.diagram/output/egl/";
 	//private String OUTPUT_DIR = "platform:/plugin/SafeTrack.diagram/output/";
