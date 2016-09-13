@@ -1,0 +1,349 @@
+import "Ontrack.etl";
+
+pre {
+	var trackplan = safetrack!TrackPlan.all().last();
+	var plan = trackplan;
+
+	// Main CSP script
+	new CSP!CSPScript;
+	CSP!CSPScript.all().first().set.clear();
+	CSP!CSPScript.all().first().dataType.clear();
+	CSP!CSPScript.all().first().process.clear();
+	
+	var freshid = 1;
+	
+	var functions = CSP!CSPScript.all().first().process;
+	var sets = CSP!CSPScript.all().first().set;
+	var datatypes = CSP!CSPScript.all().first().dataType;
+
+	var UnitID = newCSPDatatype("UnitID");
+
+	var offTrack = new CSP!DatatypeItem;
+	offTrack.name = "OFFTRACK";
+	UnitID.items.add(offTrack);
+
+	var PortID = newCSPSet("PortID");
+
+	var PointID = newCSPDatatype("PointID");
+	if (plan.points.size==0) {
+		PointID.items.add(newCSPDatatypeItem("dummyPoint"));
+		functions.add(newFunc1Arg1Out("pointAt","dummyPoint","OFFTRACK"));
+		var emptySet = new CSP!SET;
+		emptySet.name = "";
+		functions.add(newFunc1Arg1SetOut("releaseTable", "dummyPoint", emptySet));
+	}
+	
+	var BiDirPointTC = newCSPSet("BiDirPointTC");
+	var UniDirPointTC = newCSPSet("UniDirPointTC");
+	var BiDirLineTC = newCSPSet("BiDirLineTC");
+	var UniDirLineTC = newCSPSet("UniDirLineTC");
+	var CrossingID = newCSPSet("CrossingID");
+	
+	var BiPointConfig = newCSPSet("BiPointConfig");
+	
+	var UniLineConfig = newCSPSet("UniLineConfig");
+	
+	var BiLineConfig = newCSPSet("BiLineConfig");
+	
+	var CrossingConfig = newCSPSet("CrossingConfig");
+	
+	var BannedDir = newCSPSet("BannedDir");
+
+	var SignalID = newCSPDatatype("SignalID");
+
+	var RouteID = newCSPDatatype("RouteID");
+	
+	var EntryRoute = newCSPSet("EntryRoute");
+}
+
+//////// Transformation Rules ////////
+
+@greedy
+rule transformUnitID
+transform u : safetrack!Track
+to d : CSP!DatatypeItem {
+
+	guard : 
+	plan.tracks.includes(u) and
+	(not u.pointReverse.isDefined()) and (not u.crossing2.isDefined())
+
+	d.name = u.name;
+	
+	UnitID.items.add(d);
+
+	if ((not u.pointReverse.isDefined()) and (not u.pointNormal.isDefined()) and
+	    (not u.crossing2.isDefined()) and (not u.crossing1.isDefined())) {
+		BiDirLineTC.item.add(newCSPSetItem(u.name));
+		
+		var t1 = u.c1.findFirstDiffTrack(plan,u);
+		var t2 = u.c2.findFirstDiffTrack(plan,u);
+		if (not t1.isDefined()) t1 = offTrack;
+		if (not t2.isDefined()) t2 = offTrack;
+		BiLineConfig.item.add(newCSP3Tuple(newCSPTypedItem(d.name),newCSPTypedItem(t1.name),newCSPTypedItem(t2.name)));    
+	}
+	
+	
+}
+
+rule transformPointID
+transform p : safetrack!Point
+to d : CSP!DatatypeItem {
+
+	guard :
+	plan.points.includes(p)
+
+	d.name = p.name;
+	PointID.items.add(d);
+
+	var pat = newFunc1Arg1Out("pointAt",p.name,p.normalTrack.name);
+	functions.add(pat);
+
+	BiDirPointTC.item.add(newCSPSetItem(p.normalTrack.name));
+
+	var normalTrack = p.normalTrack;
+	var reverseTrack = p.reverseTrack;
+	var c1 = normalTrack.c1;
+	var c2 = normalTrack.c2;
+	var c3 = reverseTrack.c1;
+	var c4 = reverseTrack.c2;
+	var t1;
+	var t2;
+	var t3;
+
+	if (c1 == c3){
+		t1 = c1.findFirstDiffTrack2(plan,normalTrack,reverseTrack); if (not t1.isDefined()) t1 = offTrack;
+		t2 = c2.findFirstDiffTrack2(plan,normalTrack,reverseTrack); if (not t2.isDefined()) t2 = offTrack;
+		t3 = c4.findFirstDiffTrack2(plan,normalTrack,reverseTrack); if (not t3.isDefined()) t3 = offTrack;
+	} else if (c1 == c4) {
+		t1 = c1.findFirstDiffTrack2(plan,normalTrack,reverseTrack); if (not t1.isDefined()) t1 = offTrack;
+		t2 = c2.findFirstDiffTrack2(plan,normalTrack,reverseTrack); if (not t2.isDefined()) t2 = offTrack;
+		t3 = c3.findFirstDiffTrack2(plan,normalTrack,reverseTrack); if (not t3.isDefined()) t3 = offTrack;
+	} else if (c2 == c3) {
+		t1 = c2.findFirstDiffTrack2(plan,normalTrack,reverseTrack); if (not t1.isDefined()) t1 = offTrack;
+		t2 = c1.findFirstDiffTrack2(plan,normalTrack,reverseTrack); if (not t2.isDefined()) t2 = offTrack;
+		t3 = c4.findFirstDiffTrack2(plan,normalTrack,reverseTrack); if (not t3.isDefined()) t3 = offTrack;
+	} else if (c2 == c4) {
+		t1 = c2.findFirstDiffTrack2(plan,normalTrack,reverseTrack); if (not t1.isDefined()) t1 = offTrack;
+		t2 = c1.findFirstDiffTrack2(plan,normalTrack,reverseTrack); if (not t2.isDefined()) t2 = offTrack;
+		t3 = c3.findFirstDiffTrack2(plan,normalTrack,reverseTrack); if (not t3.isDefined()) t3 = offTrack;
+	}
+
+	BiPointConfig.item.add(newCSP4Tuple(newCSPTypedItem(normalTrack.name), newCSPTypedItem(t1.name), newCSPTypedItem(t2.name), newCSPTypedItem(t3.name)));
+
+}
+
+rule transformEntryToPortID
+transform c : safetrack!Entrance
+to e : CSP!SETElement, i:CSP!TypedItem{
+
+	guard: plan.entrances.includes(c)
+
+	i.name = "C" + c.connector.id.toString();
+	e.item = i;
+	PortID.item.add(e);
+	
+	UnitID.items.add(newCSPDatatypeItem(i.name));
+
+	EntryRoute.item.add(newCSPSetItem("R" + i.name));
+	RouteID.items.add(newCSPDatatypeItem("R" + i.name));
+
+	var entryUsedBy = newFunc1Arg2Out("entryUsedBy","R" + i.name,i.name,c.connector.findFirstTrack(plan).name);
+	functions.add(entryUsedBy);
+}
+
+rule transformExitToPortID
+transform c : safetrack!Exit
+to e : CSP!SETElement, i:CSP!TypedItem{
+
+	guard: plan.exits.includes(c)
+
+	i.name = "C" + c.connector.id.toString();
+	e.item = i;
+	PortID.item.add(e);
+	
+	UnitID.items.add(newCSPDatatypeItem(i.name));
+
+}
+
+rule transformCrossingID
+transform c :safetrack!Crossing
+to e : CSP!SETElement {
+
+	guard : plan.crossings.includes(c)
+
+	delete e;
+
+	CrossingID.item.add(newCSPSetItem(c.track1.name));
+
+	var t1 = c.track1.c1.findFirstDiffTrack(plan,c.track1); if (not t1.isDefined()) t1 = offTrack;
+	var t2 = c.track1.c2.findFirstDiffTrack(plan,c.track1); if (not t2.isDefined()) t2 = offTrack;
+	var t3 = c.track2.c1.findFirstDiffTrack(plan,c.track2); if (not t3.isDefined()) t3 = offTrack;
+	var t4 = c.track2.c2.findFirstDiffTrack(plan,c.track2); if (not t4.isDefined()) t4 = offTrack;
+
+	CrossingConfig.item.add(newCSP3Tuple(newCSPTypedItem(c.track1.name), newCSP2Tuple(newCSPTypedItem(t1.name),newCSPTypedItem(t2.name)), newCSP2Tuple(newCSPTypedItem(t3.name),newCSPTypedItem(t4.name))));
+}
+
+rule transformSignalID
+transform s :safetrack!Signal
+to d : CSP!DatatypeItem {
+
+	guard : plan.signals.includes(s)
+
+	SignalID.items.add(newCSPDatatypeItem(s.name));
+
+	var t1 = s.connector.findFirstDiffTrack(plan,s.track); if (not t1.isDefined()) t1=offTrack;
+
+	var sat = newFunc1Arg2Out("signalAt",s.name,s.track.name,t1.name);
+	functions.add(sat);
+}
+
+rule transformRouteIDWithSignal
+transform cti : safetrack!ControlTableItem
+to d : CSP!DatatypeItem {
+
+	// only transform if route is in control table
+	guard : plan.controlTable.includes(cti) and cti.signal.isDefined()
+
+	d.name = cti.route;
+
+	RouteID.items.add(d);
+}
+
+rule transformRouteOpenBy
+transform s : safetrack!Signal
+to f : CSP!ProcessAssignment {
+
+	// only transform if route is in control table
+	guard : plan.signals.includes(s)
+
+	delete f;
+
+	var routeSet = new CSP!SET;
+	routeSet.name = "";
+	for(r in plan.controlTable){
+		if (r.signal=s)
+			routeSet.item.add(newCSPSetItem(r.route));
+	}
+
+	var nf = newFunc1Arg1SetOut("routeOpenBy",s.name,routeSet);
+	functions.add(nf);
+
+}
+
+rule transformRouteCloseBy
+transform s : safetrack!Signal
+to f : CSP!ProcessAssignment {
+
+	// only transform if route is in control table
+	guard : plan.signals.includes(s)
+
+	delete f;
+
+	var routeSet = new CSP!SET;
+	routeSet.name = "";
+	for(r in plan.controlTable){
+		if (r.clears.includes(s.track))
+			routeSet.item.add(newCSPSetItem(r.route));
+	}
+	
+	var c ;
+	if (s.track.c1 == s.connector) c = s.track.c2;
+	else c = s.track.c1;
+	for(e in c.entrances) {
+		if (plan.entrances.includes(e)) {
+			routeSet.item.add(newCSPSetItem("RC" + c.id.toString()));
+		}
+	}
+
+	var nf = newFunc1Arg1SetOut("routeCloseBy",s.name,routeSet);
+	functions.add(nf);
+
+}
+
+rule transformControlTable
+transform cti : safetrack!ControlTableItem
+to f : CSP!ProcessAssignment {
+
+	// only transform if route is in control table
+	guard : plan.controlTable.includes(cti) and cti.signal.isDefined()
+
+	delete f;
+	var normalSet = new CSP!SET; normalSet.name = "";
+	var reverseSet = new CSP!SET; reverseSet.name = "";
+	var clearSet = new CSP!SET; clearSet.name = "";
+	for(p in cti.normals) normalSet.item.add(newCSPSetItem(p.name));
+	for(p in cti.reverses) reverseSet.item.add(newCSPSetItem(p.name));
+	for(t in cti.clears) {
+		if (t.pointReverse.isDefined())
+			clearSet.item.add(newCSPSetItem(t.pointReverse.normalTrack.name));
+		else if (t.crossing2.isDefined())
+			clearSet.item.add(newCSPSetItem(t.crossing2.track1.name));
+		else
+			clearSet.item.add(newCSPSetItem(t.name));
+	}
+
+	var nf = newFunc1Arg3SetOut("ctrlTable",cti.route,normalSet, reverseSet, clearSet);
+	functions.add(nf);
+}
+
+rule transformEntryControlTable
+transform e : safetrack!Entrance
+to f : CSP!ProcessAssignment {
+
+	// only transform if route is in control table
+	guard : plan.entrances.includes(e)
+
+	delete f;
+	var normalSet = new CSP!SET; normalSet.name = "";
+	var reverseSet = new CSP!SET; reverseSet.name = "";
+	var clearSet = new CSP!SET; clearSet.name = "";
+	clearSet.item.add(newCSPSetItem(e.connector.findFirstTrack(plan).name));
+
+	var nf = newFunc1Arg3SetOut("ctrlTable","RC" + e.connector.id.toString(),normalSet, reverseSet, clearSet);
+	functions.add(nf);
+}
+
+rule transformReleaseTable
+transform p : safetrack!Point
+to f : CSP!ProcessAssignment {
+
+	guard :
+	plan.points.includes(p)
+
+
+	var rls = new CSP!SET;
+	rls.name = "";
+	for(i in plan.releaseTable){
+		if (i.point==p){
+			if (i.track.pointNormal.isDefined()){
+				rls.item.add(newCSP3Tuple(newCSPTypedItem(i.route),newCSPTypedItem(i.track.name),newCSPTypedItem(i.track.c1.findFirstDiffTrack(plan,i.track).name)));
+				rls.item.add(newCSP3Tuple(newCSPTypedItem(i.route),newCSPTypedItem(i.track.name),newCSPTypedItem(i.track.c2.findFirstDiffTrack(plan,i.track).name)));
+				rls.item.add(newCSP3Tuple(newCSPTypedItem(i.route),newCSPTypedItem(i.track.name),newCSPTypedItem(i.track.pointNormal.reverseTrack.c1.findFirstDiffTrack(plan,i.track).name)));
+				rls.item.add(newCSP3Tuple(newCSPTypedItem(i.route),newCSPTypedItem(i.track.name),newCSPTypedItem(i.track.pointNormal.reverseTrack.c2.findFirstDiffTrack(plan,i.track).name)));
+			} else if (i.track.pointReverse.isDefined()){
+				rls.item.add(newCSP3Tuple(newCSPTypedItem(i.route),newCSPTypedItem(i.track.pointReverse.normalTrack.name),newCSPTypedItem(i.track.c1.findFirstDiffTrack(plan,i.track).name)));
+				rls.item.add(newCSP3Tuple(newCSPTypedItem(i.route),newCSPTypedItem(i.track.pointReverse.normalTrack.name),newCSPTypedItem(i.track.c2.findFirstDiffTrack(plan,i.track).name)));
+				rls.item.add(newCSP3Tuple(newCSPTypedItem(i.route),newCSPTypedItem(i.track.pointReverse.normalTrack.name),newCSPTypedItem(i.track.pointReverse.normalTrack.c1.findFirstDiffTrack(plan,i.track).name)));
+				rls.item.add(newCSP3Tuple(newCSPTypedItem(i.route),newCSPTypedItem(i.track.pointReverse.normalTrack.name),newCSPTypedItem(i.track.pointReverse.normalTrack.c2.findFirstDiffTrack(plan,i.track).name)));
+			} else if (i.track.crossing1.isDefined()){
+				rls.item.add(newCSP3Tuple(newCSPTypedItem(i.route),newCSPTypedItem(i.track.name),newCSPTypedItem(i.track.c1.findFirstDiffTrack(plan,i.track).name)));
+				rls.item.add(newCSP3Tuple(newCSPTypedItem(i.route),newCSPTypedItem(i.track.name),newCSPTypedItem(i.track.c2.findFirstDiffTrack(plan,i.track).name)));
+				rls.item.add(newCSP3Tuple(newCSPTypedItem(i.route),newCSPTypedItem(i.track.name),newCSPTypedItem(i.track.crossing1.track2.c1.findFirstDiffTrack(plan,i.track).name)));
+				rls.item.add(newCSP3Tuple(newCSPTypedItem(i.route),newCSPTypedItem(i.track.name),newCSPTypedItem(i.track.crossing1.track2.c2.findFirstDiffTrack(plan,i.track).name)));
+			} else if (i.track.crossing2.isDefined()){
+				rls.item.add(newCSP3Tuple(newCSPTypedItem(i.route),newCSPTypedItem(i.track.crossing2.track1.name),newCSPTypedItem(i.track.c1.findFirstDiffTrack(plan,i.track).name)));
+				rls.item.add(newCSP3Tuple(newCSPTypedItem(i.route),newCSPTypedItem(i.track.crossing2.track1.name),newCSPTypedItem(i.track.c2.findFirstDiffTrack(plan,i.track).name)));
+				rls.item.add(newCSP3Tuple(newCSPTypedItem(i.route),newCSPTypedItem(i.track.crossing2.track1.name),newCSPTypedItem(i.track.crossing2.track1.c1.findFirstDiffTrack(plan,i.track).name)));
+				rls.item.add(newCSP3Tuple(newCSPTypedItem(i.route),newCSPTypedItem(i.track.crossing2.track1.name),newCSPTypedItem(i.track.crossing2.track1.c2.findFirstDiffTrack(plan,i.track).name)));
+			} else {
+				rls.item.add(newCSP3Tuple(newCSPTypedItem(i.route),newCSPTypedItem(i.track.name),newCSPTypedItem(i.track.c1.findFirstDiffTrack(plan,i.track).name)));
+				rls.item.add(newCSP3Tuple(newCSPTypedItem(i.route),newCSPTypedItem(i.track.name),newCSPTypedItem(i.track.c2.findFirstDiffTrack(plan,i.track).name)));
+			}
+		}
+	}
+
+	delete f;
+	var nf = newFunc1Arg1SetOut("releaseTable", p.name, rls);
+	functions.add(nf);
+
+}

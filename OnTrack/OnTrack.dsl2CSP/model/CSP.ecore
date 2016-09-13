@@ -1,0 +1,214 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="CSP" nsURI="CSP" nsPrefix="CSP">
+  <eClassifiers xsi:type="ecore:EClass" name="CSPScript">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="dataType" upperBound="-1"
+        eType="#//Datatype" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="set" upperBound="-1" eType="#//SET"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="channel" upperBound="-1"
+        eType="#//Channel" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="process" upperBound="-1"
+        eType="#//ProcessAssignment" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="assertion" upperBound="-1"
+        eType="#//Assertion" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Assertion"/>
+  <eClassifiers xsi:type="ecore:EClass" name="DeadlockFreedom" eSuperTypes="#//Assertion">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="toCheck" upperBound="-1"
+        eType="#//ProcessExpression"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Refinement" eSuperTypes="#//Assertion">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="lhp" lowerBound="1" eType="#//ProcessExpression"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="rhp" lowerBound="1" eType="#//ProcessExpression"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="type" eType="#//RefinementType"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="RefinementType">
+    <eLiterals name="traces"/>
+    <eLiterals name="failures" value="1"/>
+    <eLiterals name="failures_divergences" value="2"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Channel">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="parameterList" lowerBound="1"
+        eType="#//ChannelParameterList" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ChannelParameterList">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="size" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EIntegerObject"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="firstItem" eType="#//ChannelParameterListItem"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="item" upperBound="-1" eType="#//ChannelParameterListItem"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ChannelParameterListItem">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="preceeds" eType="#//ChannelParameterListItem"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="type" eType="#//Type"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="set" eType="#//SET"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ProcessAssignment">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="processID" lowerBound="1"
+        eType="#//ProcessID"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="processExpression" lowerBound="1"
+        eType="#//ProcessExpression"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="comment" upperBound="-1"
+        eType="#//Comment" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ProcessID" eSuperTypes="#//ProcessExpression">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="parameterList" lowerBound="1"
+        eType="#//ProcessParameterList" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ProcessParameterList" eSuperTypes="#//TypedItem">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="size" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EIntegerObject"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="item" upperBound="-1" eType="#//TypedItem"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="firstItem" eType="#//ProcessParameterListItem"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ProcessParameterListItem" eSuperTypes="#//TypedItem">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="preceeds" eType="#//ProcessParameterListItem"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ProcessExpression">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="hides" eType="#//SET"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="comment" upperBound="-1"
+        eType="#//Comment" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Comment">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="multiline" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBooleanObject"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="comment" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="position" eType="#//CommentPosition"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="CommentPosition">
+    <eLiterals name="above"/>
+    <eLiterals name="eol" value="1"/>
+    <eLiterals name="below" value="2"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Skip" eSuperTypes="#//ProcessExpression"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Stop" eSuperTypes="#//ProcessExpression"/>
+  <eClassifiers xsi:type="ecore:EClass" name="BinaryOp" eSuperTypes="#//ProcessExpression">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="binOpName" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="lhs" lowerBound="1" eType="#//ProcessExpression"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="rhs" lowerBound="1" eType="#//ProcessExpression"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="IndexedProcess" eSuperTypes="#//ProcessExpression">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="indexedOver" lowerBound="1"
+        upperBound="-1" eType="#//SET"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="childProcess" eType="#//ProcessExpression"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="indexedBy" lowerBound="1"
+        upperBound="-1" eType="#//TypedItem"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Choice" eSuperTypes="#//BinaryOp #//IndexedProcess #//MultipleOp">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="isBinary" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBooleanObject"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ExternalChoice" eSuperTypes="#//Choice"/>
+  <eClassifiers xsi:type="ecore:EClass" name="InternalChoice" eSuperTypes="#//Choice"/>
+  <eClassifiers xsi:type="ecore:EClass" name="ConcurrentProcess" eSuperTypes="#//IndexedProcess #//BinaryOp">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="isBinary" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBooleanObject"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Parallel" eSuperTypes="#//ConcurrentProcess"/>
+  <eClassifiers xsi:type="ecore:EClass" name="AlphabetisedParallel" eSuperTypes="#//Parallel">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="alphaLhs" lowerBound="1"
+        eType="#//SET"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="alphaRhs" lowerBound="1"
+        eType="#//SET"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="IntefaceParallel" eSuperTypes="#//Parallel">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="alpha" lowerBound="1" eType="#//SET"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Interleave" eSuperTypes="#//ConcurrentProcess"/>
+  <eClassifiers xsi:type="ecore:EClass" name="SequentialComposition" eSuperTypes="#//BinaryOp"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Interrupt" eSuperTypes="#//BinaryOp"/>
+  <eClassifiers xsi:type="ecore:EClass" name="SET" eSuperTypes="#//TypedItem">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="item" upperBound="-1" eType="#//SETElement"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="condition" upperBound="-1"
+        eType="#//Predicate" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="SETElement">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="item" eType="#//TypedItem"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="event" eType="#//Event"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="completionRequired" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Predicate">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="predicate" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="IF" eSuperTypes="#//ProcessExpression">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="trueProc" lowerBound="1"
+        eType="#//ProcessExpression" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="falseProc" lowerBound="1"
+        eType="#//ProcessExpression" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="condition" lowerBound="1"
+        eType="#//Predicate" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="EventParameter" eSuperTypes="#//TypedItem">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="parameterType" eType="#//ChannelParameterType"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="index" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EIntegerObject"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="ChannelParameterType">
+    <eLiterals name="input"/>
+    <eLiterals name="output" value="1"/>
+    <eLiterals name="dot" value="2"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Prefix" eSuperTypes="#//ProcessExpression">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="nextProcess" lowerBound="1"
+        eType="#//ProcessExpression"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="event" lowerBound="1" eType="#//Event"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Event">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="eventChannel" lowerBound="1"
+        eType="#//Channel"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="eventParameters" upperBound="-1"
+        eType="#//EventParameter" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ConcreteEvent" eSuperTypes="#//Event"/>
+  <eClassifiers xsi:type="ecore:EClass" name="DerivedEvent" eSuperTypes="#//Event">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="derivedFrom" lowerBound="1"
+        eType="#//Predicate" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="LocalisedProcess" eSuperTypes="#//ProcessExpression">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="firstProcess" lowerBound="1"
+        eType="#//ProcessAssignment"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="process" lowerBound="1"
+        upperBound="-1" eType="#//ProcessAssignment" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="TypedItem">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="type" eType="#//Type"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Type">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="typeName" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Bool" eSuperTypes="#//Type"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Int" eSuperTypes="#//Type"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Datatype" eSuperTypes="#//Type">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="itemList" lowerBound="1"
+        eType="#//DatatypeItemList"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="items" upperBound="-1"
+        eType="#//DatatypeItem"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="DatatypeItem" eSuperTypes="#//TypedItem">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="preceeds" eType="#//DatatypeItem"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="parameterList" eType="#//DataTypeItemParameterList"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="DatatypeItemList">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="size" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EIntegerObject"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="items" upperBound="-1"
+        eType="#//DatatypeItem"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="firstItem" lowerBound="1"
+        eType="#//DatatypeItem"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="DataTypeItemParameterList">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="size" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EIntegerObject"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="items" upperBound="-1"
+        eType="#//DataTypeItemParameterListItem"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="DataTypeItemParameterListItem">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="type" eType="#//Type"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="MultipleOp" eSuperTypes="#//ProcessExpression">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="multiOpName" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="expressions" lowerBound="2"
+        upperBound="-1" eType="#//ProcessExpression"/>
+  </eClassifiers>
+</ecore:EPackage>
