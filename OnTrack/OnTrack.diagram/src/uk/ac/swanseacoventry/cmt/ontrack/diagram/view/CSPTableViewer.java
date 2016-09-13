@@ -46,8 +46,9 @@ import uk.ac.swanseacoventry.cmt.ontrack.TrackPlan;
 import uk.ac.swanseacoventry.cmt.ontrack.diagram.custom.Util;
 import uk.ac.swanseacoventry.cmt.ontrack.diagram.edit.commands.custom.TrackPlanSelectSubCommand;
 import uk.ac.swanseacoventry.cmt.ontrack.diagram.view.listeners.PartListener2Impl;
+import uk.ac.swanseacoventry.cmt.ontrack.dsl2csp.DSL2CSP;
 import uk.ac.swanseacoventry.cmt.ontrack.dsl2cspb.DSL2CSPB;
-public class CSPBTableViewer extends ViewPart {
+public class CSPTableViewer extends ViewPart {
 	private Table table;
 	private Listener focusListener;
 	private SubTrackPlan highLighted;
@@ -55,10 +56,10 @@ public class CSPBTableViewer extends ViewPart {
 	private Map<SubTrackPlan,String> modelPaths = new HashMap<SubTrackPlan,String>();
 	private String fullModelPath = "";
 
-	private final String PATH_TO_PROB = "/Applications/ProB/prob"; // "/Users/hn/tools/ProB/prob"
-
+	private final String PATH_TO_FDR3 = "/Applications/FDR3.app/Contents/MacOS/fdr3";
 	
-	public CSPBTableViewer() {
+	
+	public CSPTableViewer() {
 		super();
     }
 
@@ -214,13 +215,8 @@ public class CSPBTableViewer extends ViewPart {
 	}
 
 	protected String generateForTrackPlan(String modelPath, SubTrackPlan sub){
-		DSL2CSPB tool = new DSL2CSPB(modelPath, sub);
-		tool.generateCSP("CTRL.csp");
-		tool.generateBMachine("Context.mch");
-		tool.generateBMachine("Topology.mch");
-		tool.generateBMachine("ControlTable.mch");
-		tool.generateBMachine("ReleaseTable.mch");
-		tool.generateBMachine("Interlocking.mch");
+		DSL2CSP tool = new DSL2CSP(modelPath, sub);
+		tool.generateCSP("Railway.csp");
 		String generatedModelPath = tool.getOutputFolder();
 		if (sub!=null) 
 			modelPaths.put(sub, generatedModelPath);
@@ -229,14 +225,12 @@ public class CSPBTableViewer extends ViewPart {
 		return generatedModelPath;
 	}
 	
-	protected void callProB(String path){
+	protected void callFDR3(String path){
 		try{
 			// copy csp file to have the sanme name with the interlocking
-			java.nio.file.Path ctrl = FileSystems.getDefault().getPath(path + "/CTRL.csp");
-			java.nio.file.Path intl = FileSystems.getDefault().getPath(path + "/Interlocking.csp");
-			Files.copy(ctrl, intl, REPLACE_EXISTING);
+			java.nio.file.Path csp = FileSystems.getDefault().getPath(path + "/Railway.csp");
 			String line;
-			String[] cmd = {PATH_TO_PROB,"Interlocking.mch" + ""};
+			String[] cmd = {PATH_TO_FDR3,"Railway.csp"};
 			ProcessBuilder pb = new ProcessBuilder(cmd);
 			pb.directory(new File(path));								
 			Process p = pb.start();
@@ -290,7 +284,7 @@ public class CSPBTableViewer extends ViewPart {
 					
 			 }
 		 });
-		 mgr.add(new Action("ProB"){
+		 mgr.add(new Action("FDR3"){
 			 public void run(){
 				DiagramEditPart diagramEditPart = Util.getDiagramEP();
 				if (diagramEditPart==null) return;
@@ -299,11 +293,11 @@ public class CSPBTableViewer extends ViewPart {
 					Object tp = item.getData();
 					if (tp instanceof TrackPlan){
 						if (!fullModelPath.equals("")){
-							callProB(fullModelPath);
+							callFDR3(fullModelPath);
 						}
 					} else if (tp instanceof SubTrackPlan) {
 						if (modelPaths.containsKey(tp)){
-							callProB(modelPaths.get(tp));
+							callFDR3(modelPaths.get(tp));
 						}
 					}
 				}
@@ -426,25 +420,25 @@ public class CSPBTableViewer extends ViewPart {
 		tit.setData(trackplan);
 		
 		
-		for(SubTrackPlan stp : trackplan.getSubTrackPlans()){
-			routes = 0;
-			hroutes = 0;
-			for(ControlTableItem cti : stp.getControlTable()){
-				if (cti.getSignal()!=null) routes++;
-				else hroutes++;
-			}
-			tit = new TableItem(table,SWT.NONE);
-			tit.setText(new String[]{
-					stp.getName(),
-					Integer.toString(stp.getTracks().size() - stp.getPoints().size() - stp.getCrossings().size()),
-					Integer.toString(stp.getPoints().size()),
-					Integer.toString(stp.getCrossings().size()),
-					Integer.toString(stp.getSignals().size()),
-					Integer.toString(routes) + (hroutes > 0 ? "(" + Integer.toString(hroutes) + ")" : ""),
-					}
-			);
-			tit.setData(stp);
-		}
+//		for(SubTrackPlan stp : trackplan.getSubTrackPlans()){
+//			routes = 0;
+//			hroutes = 0;
+//			for(ControlTableItem cti : stp.getControlTable()){
+//				if (cti.getSignal()!=null) routes++;
+//				else hroutes++;
+//			}
+//			tit = new TableItem(table,SWT.NONE);
+//			tit.setText(new String[]{
+//					stp.getName(),
+//					Integer.toString(stp.getTracks().size() - stp.getPoints().size() - stp.getCrossings().size()),
+//					Integer.toString(stp.getPoints().size()),
+//					Integer.toString(stp.getCrossings().size()),
+//					Integer.toString(stp.getSignals().size()),
+//					Integer.toString(routes) + (hroutes > 0 ? "(" + Integer.toString(hroutes) + ")" : ""),
+//					}
+//			);
+//			tit.setData(stp);
+//		}
 	}
 
 }

@@ -701,8 +701,14 @@
 
    <extension point="org.eclipse.ui.views">
       <view id="uk.ac.swanseacoventry.cmt.ontrack.diagram.view.CSPBTableViewer"
-            name="CSPB"
+            name="CSP||B"
             class="uk.ac.swanseacoventry.cmt.ontrack.diagram.view.CSPBTableViewer"/>   
+   </extension>
+
+   <extension point="org.eclipse.ui.views">
+      <view id="uk.ac.swanseacoventry.cmt.ontrack.diagram.view.CSPTableViewer"
+            name="CSP"
+            class="uk.ac.swanseacoventry.cmt.ontrack.diagram.view.CSPTableViewer"/>   
    </extension>
 
    <!-- optionally, specify keybindings -->
