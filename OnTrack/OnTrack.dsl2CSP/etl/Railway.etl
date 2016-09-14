@@ -159,7 +159,7 @@ rule transformExitToPortID
 transform c : safetrack!Exit
 to e : CSP!SETElement, i:CSP!TypedItem{
 
-	guard: plan.exits.includes(c)
+	guard: plan.exits.includes(c) and c.connector.entrances.excludingAll(c.connector.entrances.excludingAll(plan.entrances)).isEmpty()
 
 	i.name = "C" + c.connector.id.toString();
 	e.item = i;
