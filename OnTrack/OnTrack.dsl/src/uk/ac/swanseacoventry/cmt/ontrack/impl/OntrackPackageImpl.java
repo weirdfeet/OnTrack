@@ -994,6 +994,15 @@ public class OntrackPackageImpl extends EPackageImpl implements OntrackPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EAttribute getTrackPlan_Overlapped() {
+		return (EAttribute)trackPlanEClass.getEStructuralFeatures().get(16);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getUnit() {
 		return unitEClass;
 	}
@@ -1136,6 +1145,7 @@ public class OntrackPackageImpl extends EPackageImpl implements OntrackPackage {
 		createEReference(trackPlanEClass, TRACK_PLAN__NEW_CROSSING);
 		createEReference(trackPlanEClass, TRACK_PLAN__SUB_TRACK_PLANS);
 		createEReference(trackPlanEClass, TRACK_PLAN__SELECTED_SUB_TRACK_PLAN);
+		createEAttribute(trackPlanEClass, TRACK_PLAN__OVERLAPPED);
 
 		unitEClass = createEClass(UNIT);
 		createEAttribute(unitEClass, UNIT__NAME);
@@ -1275,6 +1285,7 @@ public class OntrackPackageImpl extends EPackageImpl implements OntrackPackage {
 		initEReference(getTrackPlan_NewCrossing(), this.getNewCrossing(), null, "newCrossing", null, 0, 1, TrackPlan.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getTrackPlan_SubTrackPlans(), this.getSubTrackPlan(), null, "subTrackPlans", null, 0, -1, TrackPlan.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getTrackPlan_SelectedSubTrackPlan(), this.getSubTrackPlan(), null, "selectedSubTrackPlan", null, 0, 1, TrackPlan.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getTrackPlan_Overlapped(), ecorePackage.getEBoolean(), "overlapped", null, 0, 1, TrackPlan.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(unitEClass, Unit.class, "Unit", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getUnit_Name(), ecorePackage.getEString(), "name", null, 0, 1, Unit.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

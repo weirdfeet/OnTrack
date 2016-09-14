@@ -156,6 +156,7 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="subTrackPlans" upperBound="-1"
         eType="#//SubTrackPlan" containment="true" resolveProxies="false"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="selectedSubTrackPlan" eType="#//SubTrackPlan"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="overlapped" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Unit" abstract="true">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>

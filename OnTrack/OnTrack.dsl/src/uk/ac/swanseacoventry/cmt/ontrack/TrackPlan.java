@@ -10,6 +10,21 @@ import org.eclipse.emf.ecore.EObject;
 public interface TrackPlan extends EObject {
 
 	/**
+	 * @model
+	 */
+	public boolean isOverlapped();
+
+	/**
+	 * Sets the value of the '{@link uk.ac.swanseacoventry.cmt.ontrack.TrackPlan#isOverlapped <em>Overlapped</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Overlapped</em>' attribute.
+	 * @see #isOverlapped()
+	 * @generated
+	 */
+	void setOverlapped(boolean value);
+
+	/**
 	 * @model containment="true"
 	 */
 	EList<Track> getTracks();

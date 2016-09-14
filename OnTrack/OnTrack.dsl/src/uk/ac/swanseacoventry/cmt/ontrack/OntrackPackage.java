@@ -1191,13 +1191,22 @@ public interface OntrackPackage extends EPackage {
 	int TRACK_PLAN__SELECTED_SUB_TRACK_PLAN = 15;
 
 	/**
+	 * The feature id for the '<em><b>Overlapped</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TRACK_PLAN__OVERLAPPED = 16;
+
+	/**
 	 * The number of structural features of the '<em>Track Plan</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int TRACK_PLAN_FEATURE_COUNT = 16;
+	int TRACK_PLAN_FEATURE_COUNT = 17;
 
 	/**
 	 * The number of operations of the '<em>Track Plan</em>' class.
@@ -2128,6 +2137,17 @@ public interface OntrackPackage extends EPackage {
 	EReference getTrackPlan_SelectedSubTrackPlan();
 
 	/**
+	 * Returns the meta object for the attribute '{@link uk.ac.swanseacoventry.cmt.ontrack.TrackPlan#isOverlapped <em>Overlapped</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Overlapped</em>'.
+	 * @see uk.ac.swanseacoventry.cmt.ontrack.TrackPlan#isOverlapped()
+	 * @see #getTrackPlan()
+	 * @generated
+	 */
+	EAttribute getTrackPlan_Overlapped();
+
+	/**
 	 * Returns the meta object for class '{@link uk.ac.swanseacoventry.cmt.ontrack.Unit <em>Unit</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2884,6 +2904,14 @@ public interface OntrackPackage extends EPackage {
 		 * @generated
 		 */
 		EReference TRACK_PLAN__SELECTED_SUB_TRACK_PLAN = eINSTANCE.getTrackPlan_SelectedSubTrackPlan();
+
+		/**
+		 * The meta object literal for the '<em><b>Overlapped</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute TRACK_PLAN__OVERLAPPED = eINSTANCE.getTrackPlan_Overlapped();
 
 		/**
 		 * The meta object literal for the '{@link uk.ac.swanseacoventry.cmt.ontrack.impl.UnitImpl <em>Unit</em>}' class.

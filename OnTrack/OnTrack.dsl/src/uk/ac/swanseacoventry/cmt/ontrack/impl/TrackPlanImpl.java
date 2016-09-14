@@ -60,6 +60,7 @@ import uk.ac.swanseacoventry.cmt.ontrack.TrackPlan;
  *   <li>{@link uk.ac.swanseacoventry.cmt.ontrack.impl.TrackPlanImpl#getNewCrossing <em>New Crossing</em>}</li>
  *   <li>{@link uk.ac.swanseacoventry.cmt.ontrack.impl.TrackPlanImpl#getSubTrackPlans <em>Sub Track Plans</em>}</li>
  *   <li>{@link uk.ac.swanseacoventry.cmt.ontrack.impl.TrackPlanImpl#getSelectedSubTrackPlan <em>Selected Sub Track Plan</em>}</li>
+ *   <li>{@link uk.ac.swanseacoventry.cmt.ontrack.impl.TrackPlanImpl#isOverlapped <em>Overlapped</em>}</li>
  * </ul>
  *
  * @generated
@@ -224,6 +225,26 @@ public class TrackPlanImpl extends MinimalEObjectImpl.Container implements Track
 	 * @ordered
 	 */
 	protected SubTrackPlan selectedSubTrackPlan;
+
+	/**
+	 * The default value of the '{@link #isOverlapped() <em>Overlapped</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isOverlapped()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final boolean OVERLAPPED_EDEFAULT = false;
+
+	/**
+	 * The cached value of the '{@link #isOverlapped() <em>Overlapped</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isOverlapped()
+	 * @generated
+	 * @ordered
+	 */
+	protected boolean overlapped = OVERLAPPED_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -560,6 +581,27 @@ public class TrackPlanImpl extends MinimalEObjectImpl.Container implements Track
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public boolean isOverlapped() {
+		return overlapped;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setOverlapped(boolean newOverlapped) {
+		boolean oldOverlapped = overlapped;
+		overlapped = newOverlapped;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, OntrackPackage.TRACK_PLAN__OVERLAPPED, oldOverlapped, overlapped));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
@@ -638,6 +680,8 @@ public class TrackPlanImpl extends MinimalEObjectImpl.Container implements Track
 			case OntrackPackage.TRACK_PLAN__SELECTED_SUB_TRACK_PLAN:
 				if (resolve) return getSelectedSubTrackPlan();
 				return basicGetSelectedSubTrackPlan();
+			case OntrackPackage.TRACK_PLAN__OVERLAPPED:
+				return isOverlapped();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -711,6 +755,9 @@ public class TrackPlanImpl extends MinimalEObjectImpl.Container implements Track
 			case OntrackPackage.TRACK_PLAN__SELECTED_SUB_TRACK_PLAN:
 				setSelectedSubTrackPlan((SubTrackPlan)newValue);
 				return;
+			case OntrackPackage.TRACK_PLAN__OVERLAPPED:
+				setOverlapped((Boolean)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -771,6 +818,9 @@ public class TrackPlanImpl extends MinimalEObjectImpl.Container implements Track
 			case OntrackPackage.TRACK_PLAN__SELECTED_SUB_TRACK_PLAN:
 				setSelectedSubTrackPlan((SubTrackPlan)null);
 				return;
+			case OntrackPackage.TRACK_PLAN__OVERLAPPED:
+				setOverlapped(OVERLAPPED_EDEFAULT);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -815,8 +865,26 @@ public class TrackPlanImpl extends MinimalEObjectImpl.Container implements Track
 				return subTrackPlans != null && !subTrackPlans.isEmpty();
 			case OntrackPackage.TRACK_PLAN__SELECTED_SUB_TRACK_PLAN:
 				return selectedSubTrackPlan != null;
+			case OntrackPackage.TRACK_PLAN__OVERLAPPED:
+				return overlapped != OVERLAPPED_EDEFAULT;
 		}
 		return super.eIsSet(featureID);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public String toString() {
+		if (eIsProxy()) return super.toString();
+
+		StringBuffer result = new StringBuffer(super.toString());
+		result.append(" (overlapped: ");
+		result.append(overlapped);
+		result.append(')');
+		return result.toString();
 	}
 
 } //TrackPlanImpl

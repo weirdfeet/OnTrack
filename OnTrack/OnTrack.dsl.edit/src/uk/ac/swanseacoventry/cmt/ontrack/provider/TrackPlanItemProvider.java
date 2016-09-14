@@ -20,6 +20,7 @@ import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.IItemPropertySource;
 import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
+import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ItemProviderAdapter;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 
@@ -63,6 +64,7 @@ public class TrackPlanItemProvider
 			super.getPropertyDescriptors(object);
 
 			addSelectedSubTrackPlanPropertyDescriptor(object);
+			addOverlappedPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -85,6 +87,28 @@ public class TrackPlanItemProvider
 				 false,
 				 true,
 				 null,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Overlapped feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addOverlappedPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_TrackPlan_overlapped_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_TrackPlan_overlapped_feature", "_UI_TrackPlan_type"),
+				 OntrackPackage.Literals.TRACK_PLAN__OVERLAPPED,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE,
 				 null,
 				 null));
 	}
@@ -152,7 +176,8 @@ public class TrackPlanItemProvider
 	 */
 	@Override
 	public String getText(Object object) {
-		return getString("_UI_TrackPlan_type");
+		TrackPlan trackPlan = (TrackPlan)object;
+		return getString("_UI_TrackPlan_type") + " " + trackPlan.isOverlapped();
 	}
 	
 
@@ -168,6 +193,9 @@ public class TrackPlanItemProvider
 		updateChildren(notification);
 
 		switch (notification.getFeatureID(TrackPlan.class)) {
+			case OntrackPackage.TRACK_PLAN__OVERLAPPED:
+				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
+				return;
 			case OntrackPackage.TRACK_PLAN__TRACKS:
 			case OntrackPackage.TRACK_PLAN__CONNECTORS:
 			case OntrackPackage.TRACK_PLAN__POINTS:
