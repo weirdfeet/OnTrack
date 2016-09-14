@@ -150,18 +150,44 @@ to pe : BMachine!PropElement {
 
 
 rule transformEntryTable
-transform c : safetrack!Connector
-to pe : BMachine!PropElement {
+transform e : safetrack!Entrance
+to p : BMachine!PropElement {
 
-	guard : c.includesEntrance(plan)
-
-	entryTable.hasPropElements.add(pe);
-	var e = c.findFirstTrack(plan);
-	newBDomainElement(e.getName(), pe);
-	newBDomainElement(c.id.toString(), pe);
-	if (e.c1=c)
-		newBDomainElement(e.c2.id.toString(), pe);
-	else
-		newBDomainElement(e.c1.id.toString(), pe);
-	newBRangeElement(e.name,pe);
+	guard : plan.entrances.includes(e)
+	
+	var c1 = e.connector;
+	for(t in c1.track1s.includingAll(c1.track2s)){
+		var c2;
+		if (t.c1==c1) c2 = t.c2; else c2 = t.c1;
+		var found = false;
+		if (trackplan.overlapped)
+			for(s in plan.signals) {
+				if (s.track==t and s.connector==c2) {
+					found = true;
+					break;
+				}
+			}
+		if (found) {
+			for(t1 in c2.track1s.includingAll(c2.track2s).including(t)){
+				var pe = newBPropElement();
+				newBDomainElement(t.getName(), pe);
+				newBDomainElement(c1.id.toString(), pe);
+				newBDomainElement(c2.id.toString(), pe);
+				//
+				newBRangeElement(t1.getName(), pe);
+				//
+				entryTable.hasPropElements.add(pe);
+			}
+		}
+		else {
+			var pe = newBPropElement();
+			newBDomainElement(t.getName(), pe);
+			newBDomainElement(c1.id.toString(), pe);
+			newBDomainElement(c2.id.toString(), pe);
+			//
+			newBRangeElement(t.getName(), pe);
+			//
+			entryTable.hasPropElements.add(pe);
+		}
+	}
 }

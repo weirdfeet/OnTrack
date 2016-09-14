@@ -156,3 +156,11 @@ operation safetrack!Track getName() : String {
 			tname = self.crossing2.track1.name;
 		return tname;
 }
+
+operation newBPropElement() : BMachine!PropElement {
+
+	var pe = new BMachine!PropElement;
+	
+	return pe;
+
+}

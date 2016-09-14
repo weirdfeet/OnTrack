@@ -36,6 +36,12 @@ public class TrackPlanCovering  {
 		for(DirectedTrack dt : begins){
 			Signal s = dt.getSignal();
 			if (s!=null) beginSignals.add(s);
+			if (trackplan.isOverlapped()){
+				for(DirectedTrack dt2 : dt.getNexts()){
+					Signal s2 = dt2.getTrack().getDirectedTrackByConnector(dt2.getConnector(), true).getSignal();
+					if (s2!=null) beginSignals.add(s2);
+				}
+			}
 		}
 
 		// collect reachables

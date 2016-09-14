@@ -213,8 +213,8 @@ public class CSPBTableViewer extends ViewPart {
 		}
 	}
 
-	protected String generateForTrackPlan(String modelPath, SubTrackPlan sub){
-		DSL2CSPB tool = new DSL2CSPB(modelPath, sub);
+	protected String generateForTrackPlan(String modelPath, boolean overlapped, SubTrackPlan sub){
+		DSL2CSPB tool = new DSL2CSPB(modelPath, overlapped, sub);
 		tool.generateCSP("CTRL.csp");
 		tool.generateBMachine("Context.mch");
 		tool.generateBMachine("Topology.mch");
@@ -275,7 +275,7 @@ public class CSPBTableViewer extends ViewPart {
 						cc.add(new ICommandProxy(new TrackPlanSelectSubCommand(diagramEditPart, null)));
 						cc.execute();
 						Util.getEditorPart().doSave(((WorkbenchWindow)Util.getWorkbenchWindow()).getStatusLineManager().getProgressMonitor());
-						generateForTrackPlan(modelPath, null);
+						generateForTrackPlan(modelPath, trackplan.isOverlapped(), null);
 					} else if (tp instanceof SubTrackPlan) {
 						// save the submodel to a file
 						TrackPlan trackplan = (TrackPlan)((View)diagramEditPart.getModel()).getElement();
@@ -284,7 +284,7 @@ public class CSPBTableViewer extends ViewPart {
 						cc.add(new ICommandProxy(new TrackPlanSelectSubCommand(diagramEditPart, (SubTrackPlan)tp)));
 						cc.execute();
 						Util.getEditorPart().doSave(((WorkbenchWindow)Util.getWorkbenchWindow()).getStatusLineManager().getProgressMonitor());
-						generateForTrackPlan(modelPath, (SubTrackPlan)tp);
+						generateForTrackPlan(modelPath, trackplan.isOverlapped(), (SubTrackPlan)tp);
 					}
 				}
 					

@@ -100,9 +100,10 @@ public class DSL2CSPB {
 	 * @param model the input model from the graphical editor
 	 */
 	SubTrackPlan subplan;
-	public DSL2CSPB(String model, SubTrackPlan sub) {
+	String overlap;
+	public DSL2CSPB(String model, boolean overlapped, SubTrackPlan sub) {
 		subplan = sub;
-		
+		overlap = overlapped ? "true" : "false";
 		// create input model
 		SAFETRACK_MODEL = model;
 		inputModel = TrackSchemeEpsilon.createEmfModel(SAFETRACK_MODEL_NAME, SAFETRACK_MODEL, META_MODELS_DIR + SAFETRACK_META_MODEL, false, false);
@@ -172,7 +173,7 @@ public class DSL2CSPB {
 		context.put("date", date.toString());
 		context.put("model", SAFETRACK_MODEL);
 		context.put("version", VERSION);
-		
+		context.put("overlapped", overlap);
 		try {
 
 			// Prepare output EGL file

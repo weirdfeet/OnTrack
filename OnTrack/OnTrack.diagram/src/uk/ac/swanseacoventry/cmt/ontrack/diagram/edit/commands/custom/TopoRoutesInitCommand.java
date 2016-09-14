@@ -79,15 +79,17 @@ public class TopoRoutesInitCommand extends AbstractTransactionalCommand {
 			
 			DirectedTrack dt = r.getDirectedTracks().get(r.getDirectedTracks().size() - 1);
 			Signal se = dt.getSignal();
+			if (se!=null && se!=r.getStartSignal() && r.getEndSignal()==null) r.setEndSignal(se);
 			HashSet<Exit> es = new HashSet<Exit>();
 			es.addAll(dt.getConnector().getExits());
 			es.retainAll(trackplan.getExits());
 			if (dt.getConnector().getTerminal()!=null || 
 					es.size() > 0 || 
-					(se!=null && se!=r.getStartSignal())
+					(se!=r.getStartSignal() && trackplan.isOverlapped() && se!=r.getEndSignal()) ||
+					(se!=r.getStartSignal() && !trackplan.isOverlapped() && r.getEndSignal()!=null)
 					) {
-				r.setEndSignal(se); 
-				TR.push(r);
+				if (dt.getTrack().getPointReverse()==null || dt.getTrack().getCrossing2()==null)
+					TR.push(r);
 				continue;
 			}
 				
