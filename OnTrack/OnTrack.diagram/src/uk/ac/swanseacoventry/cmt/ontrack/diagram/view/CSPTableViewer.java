@@ -128,7 +128,7 @@ public class CSPTableViewer extends ViewPart {
 		DiagramEditPart diagramEditPart = Util.getDiagramEP();
 		if (diagramEditPart==null) return;
 		TrackPlan trackplan = (TrackPlan)((View)diagramEditPart.getModel()).getElement();
-		refreshCSPBTableFrom(trackplan);
+		refreshCSPTableFrom(trackplan);
 		
 		registerActivatedListener();
 
@@ -390,14 +390,14 @@ public class CSPTableViewer extends ViewPart {
 				
 				TrackPlan trackplan = (TrackPlan)((View)diagramEditPart.getModel()).getElement();
 				
-				refreshCSPBTableFrom(trackplan);
+				refreshCSPTableFrom(trackplan);
 			}
 
 		});
 	}
 
 	
-	void refreshCSPBTableFrom(TrackPlan trackplan){
+	void refreshCSPTableFrom(TrackPlan trackplan){
 		table.removeAll();
 		
 		// for the full track plan

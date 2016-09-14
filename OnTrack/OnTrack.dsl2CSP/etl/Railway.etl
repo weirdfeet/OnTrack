@@ -75,8 +75,12 @@ to d : CSP!DatatypeItem {
 	    (not u.crossing2.isDefined()) and (not u.crossing1.isDefined())) {
 		BiDirLineTC.item.add(newCSPSetItem(u.name));
 		
-		var t1 = u.c1.findFirstDiffTrack(plan,u);
+		var t1 = u.c1.findFirstDiffTrack(plan,u); 
+		if ((not t1.isDefined()) and u.c1.entrances.excludingAll(u.c1.entrances.excludingAll(plan.entrances)).size() > 0) t1 = newCSPDatatypeItem("C" + u.c1.id.toString());
+		if ((not t1.isDefined()) and u.c1.exits.excludingAll(u.c1.exits.excludingAll(plan.exits)).size() > 0) t1 = newCSPDatatypeItem("C" + u.c1.id.toString());
 		var t2 = u.c2.findFirstDiffTrack(plan,u);
+		if ((not t2.isDefined()) and u.c2.entrances.excludingAll(u.c2.entrances.excludingAll(plan.entrances)).size() > 0) t2 = newCSPDatatypeItem("C" + u.c2.id.toString());
+		if ((not t2.isDefined()) and u.c2.exits.excludingAll(u.c2.exits.excludingAll(plan.exits)).size() > 0) t2 = newCSPDatatypeItem("C" + u.c2.id.toString());
 		if (not t1.isDefined()) t1 = offTrack;
 		if (not t2.isDefined()) t2 = offTrack;
 		BiLineConfig.item.add(newCSP3Tuple(newCSPTypedItem(d.name),newCSPTypedItem(t1.name),newCSPTypedItem(t2.name)));    
@@ -242,8 +246,9 @@ to f : CSP!ProcessAssignment {
 	var routeSet = new CSP!SET;
 	routeSet.name = "";
 	for(r in plan.controlTable){
-		if (r.clears.includes(s.track))
-			routeSet.item.add(newCSPSetItem(r.route));
+		for(tr in plan.topoRoutes)
+			if (tr.endSignal = s and tr.names.includes(r.route))
+				routeSet.item.add(newCSPSetItem(r.route));
 	}
 	
 	var c ;
@@ -316,25 +321,25 @@ to f : CSP!ProcessAssignment {
 	for(i in plan.releaseTable){
 		if (i.point==p){
 			if (i.track.pointNormal.isDefined()){
-				rls.item.add(newCSP3Tuple(newCSPTypedItem(i.route),newCSPTypedItem(i.track.name),newCSPTypedItem(i.track.c1.findFirstDiffTrack(plan,i.track).name)));
-				rls.item.add(newCSP3Tuple(newCSPTypedItem(i.route),newCSPTypedItem(i.track.name),newCSPTypedItem(i.track.c2.findFirstDiffTrack(plan,i.track).name)));
-				rls.item.add(newCSP3Tuple(newCSPTypedItem(i.route),newCSPTypedItem(i.track.name),newCSPTypedItem(i.track.pointNormal.reverseTrack.c1.findFirstDiffTrack(plan,i.track).name)));
-				rls.item.add(newCSP3Tuple(newCSPTypedItem(i.route),newCSPTypedItem(i.track.name),newCSPTypedItem(i.track.pointNormal.reverseTrack.c2.findFirstDiffTrack(plan,i.track).name)));
+				rls.item.add(newCSP3Tuple(newCSPTypedItem(i.route),newCSPTypedItem(i.track.name),newCSPTypedItem(i.track.c1.findFirstDiffTrack2(plan,i.track,i.track.pointNormal.reverseTrack).name)));
+				rls.item.add(newCSP3Tuple(newCSPTypedItem(i.route),newCSPTypedItem(i.track.name),newCSPTypedItem(i.track.c2.findFirstDiffTrack2(plan,i.track,i.track.pointNormal.reverseTrack).name)));
+				rls.item.add(newCSP3Tuple(newCSPTypedItem(i.route),newCSPTypedItem(i.track.name),newCSPTypedItem(i.track.pointNormal.reverseTrack.c1.findFirstDiffTrack2(plan,i.track,i.track.pointNormal.reverseTrack).name)));
+				rls.item.add(newCSP3Tuple(newCSPTypedItem(i.route),newCSPTypedItem(i.track.name),newCSPTypedItem(i.track.pointNormal.reverseTrack.c2.findFirstDiffTrack2(plan,i.track,i.track.pointNormal.reverseTrack).name)));
 			} else if (i.track.pointReverse.isDefined()){
-				rls.item.add(newCSP3Tuple(newCSPTypedItem(i.route),newCSPTypedItem(i.track.pointReverse.normalTrack.name),newCSPTypedItem(i.track.c1.findFirstDiffTrack(plan,i.track).name)));
-				rls.item.add(newCSP3Tuple(newCSPTypedItem(i.route),newCSPTypedItem(i.track.pointReverse.normalTrack.name),newCSPTypedItem(i.track.c2.findFirstDiffTrack(plan,i.track).name)));
-				rls.item.add(newCSP3Tuple(newCSPTypedItem(i.route),newCSPTypedItem(i.track.pointReverse.normalTrack.name),newCSPTypedItem(i.track.pointReverse.normalTrack.c1.findFirstDiffTrack(plan,i.track).name)));
-				rls.item.add(newCSP3Tuple(newCSPTypedItem(i.route),newCSPTypedItem(i.track.pointReverse.normalTrack.name),newCSPTypedItem(i.track.pointReverse.normalTrack.c2.findFirstDiffTrack(plan,i.track).name)));
+				rls.item.add(newCSP3Tuple(newCSPTypedItem(i.route),newCSPTypedItem(i.track.pointReverse.normalTrack.name),newCSPTypedItem(i.track.c1.findFirstDiffTrack2(plan,i.track,i.track.pointReverse.normalTrack).name)));
+				rls.item.add(newCSP3Tuple(newCSPTypedItem(i.route),newCSPTypedItem(i.track.pointReverse.normalTrack.name),newCSPTypedItem(i.track.c2.findFirstDiffTrack2(plan,i.track,i.track.pointReverse.normalTrack).name)));
+				rls.item.add(newCSP3Tuple(newCSPTypedItem(i.route),newCSPTypedItem(i.track.pointReverse.normalTrack.name),newCSPTypedItem(i.track.pointReverse.normalTrack.c1.findFirstDiffTrack2(plan,i.track,i.track.pointReverse.normalTrack).name)));
+				rls.item.add(newCSP3Tuple(newCSPTypedItem(i.route),newCSPTypedItem(i.track.pointReverse.normalTrack.name),newCSPTypedItem(i.track.pointReverse.normalTrack.c2.findFirstDiffTrack2(plan,i.track,i.track.pointReverse.normalTrack).name)));
 			} else if (i.track.crossing1.isDefined()){
-				rls.item.add(newCSP3Tuple(newCSPTypedItem(i.route),newCSPTypedItem(i.track.name),newCSPTypedItem(i.track.c1.findFirstDiffTrack(plan,i.track).name)));
-				rls.item.add(newCSP3Tuple(newCSPTypedItem(i.route),newCSPTypedItem(i.track.name),newCSPTypedItem(i.track.c2.findFirstDiffTrack(plan,i.track).name)));
-				rls.item.add(newCSP3Tuple(newCSPTypedItem(i.route),newCSPTypedItem(i.track.name),newCSPTypedItem(i.track.crossing1.track2.c1.findFirstDiffTrack(plan,i.track).name)));
-				rls.item.add(newCSP3Tuple(newCSPTypedItem(i.route),newCSPTypedItem(i.track.name),newCSPTypedItem(i.track.crossing1.track2.c2.findFirstDiffTrack(plan,i.track).name)));
+				rls.item.add(newCSP3Tuple(newCSPTypedItem(i.route),newCSPTypedItem(i.track.name),newCSPTypedItem(i.track.c1.findFirstDiffTrack2(plan,i.track,i.track.crossing1.track2).name)));
+				rls.item.add(newCSP3Tuple(newCSPTypedItem(i.route),newCSPTypedItem(i.track.name),newCSPTypedItem(i.track.c2.findFirstDiffTrack2(plan,i.track,i.track.crossing1.track2).name)));
+				rls.item.add(newCSP3Tuple(newCSPTypedItem(i.route),newCSPTypedItem(i.track.name),newCSPTypedItem(i.track.crossing1.track2.c1.findFirstDiffTrack2(plan,i.track,i.track.crossing1.track2).name)));
+				rls.item.add(newCSP3Tuple(newCSPTypedItem(i.route),newCSPTypedItem(i.track.name),newCSPTypedItem(i.track.crossing1.track2.c2.findFirstDiffTrack2(plan,i.track,i.track.crossing1.track2).name)));
 			} else if (i.track.crossing2.isDefined()){
-				rls.item.add(newCSP3Tuple(newCSPTypedItem(i.route),newCSPTypedItem(i.track.crossing2.track1.name),newCSPTypedItem(i.track.c1.findFirstDiffTrack(plan,i.track).name)));
-				rls.item.add(newCSP3Tuple(newCSPTypedItem(i.route),newCSPTypedItem(i.track.crossing2.track1.name),newCSPTypedItem(i.track.c2.findFirstDiffTrack(plan,i.track).name)));
-				rls.item.add(newCSP3Tuple(newCSPTypedItem(i.route),newCSPTypedItem(i.track.crossing2.track1.name),newCSPTypedItem(i.track.crossing2.track1.c1.findFirstDiffTrack(plan,i.track).name)));
-				rls.item.add(newCSP3Tuple(newCSPTypedItem(i.route),newCSPTypedItem(i.track.crossing2.track1.name),newCSPTypedItem(i.track.crossing2.track1.c2.findFirstDiffTrack(plan,i.track).name)));
+				rls.item.add(newCSP3Tuple(newCSPTypedItem(i.route),newCSPTypedItem(i.track.crossing2.track1.name),newCSPTypedItem(i.track.c1.findFirstDiffTrack2(plan,i.track,i.track.crossing2.track1).name)));
+				rls.item.add(newCSP3Tuple(newCSPTypedItem(i.route),newCSPTypedItem(i.track.crossing2.track1.name),newCSPTypedItem(i.track.c2.findFirstDiffTrack2(plan,i.track,i.track.crossing2.track1).name)));
+				rls.item.add(newCSP3Tuple(newCSPTypedItem(i.route),newCSPTypedItem(i.track.crossing2.track1.name),newCSPTypedItem(i.track.crossing2.track1.c1.findFirstDiffTrack2(plan,i.track,i.track.crossing2.track1).name)));
+				rls.item.add(newCSP3Tuple(newCSPTypedItem(i.route),newCSPTypedItem(i.track.crossing2.track1.name),newCSPTypedItem(i.track.crossing2.track1.c2.findFirstDiffTrack2(plan,i.track,i.track.crossing2.track1).name)));
 			} else {
 				rls.item.add(newCSP3Tuple(newCSPTypedItem(i.route),newCSPTypedItem(i.track.name),newCSPTypedItem(i.track.c1.findFirstDiffTrack(plan,i.track).name)));
 				rls.item.add(newCSP3Tuple(newCSPTypedItem(i.route),newCSPTypedItem(i.track.name),newCSPTypedItem(i.track.c2.findFirstDiffTrack(plan,i.track).name)));

@@ -142,7 +142,8 @@ public class ReleaseTableViewer extends ViewPart {
 		highLighted = i;
 		java.util.List<Track> tracks = new ArrayList<Track>();
 		
-		Track t = highLighted.getTrack(); 
+		Track t = highLighted.getTrack();
+		if (t==null) return; 
 		tracks.add(t);
 		if (t.getPoint()!=null) {
 			tracks.add(t.getPoint().getNormalTrack());
