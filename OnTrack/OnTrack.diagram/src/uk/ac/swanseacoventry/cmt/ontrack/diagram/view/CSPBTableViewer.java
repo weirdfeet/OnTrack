@@ -55,7 +55,7 @@ public class CSPBTableViewer extends ViewPart {
 	private Map<SubTrackPlan,String> modelPaths = new HashMap<SubTrackPlan,String>();
 	private String fullModelPath = "";
 
-	private final String PATH_TO_PROB = "/Applications/ProB/prob"; // "/Users/hn/tools/ProB/prob"
+	private final String PATH_TO_PROB = "/Applications/ProB/prob";
 
 	
 	public CSPBTableViewer() {
