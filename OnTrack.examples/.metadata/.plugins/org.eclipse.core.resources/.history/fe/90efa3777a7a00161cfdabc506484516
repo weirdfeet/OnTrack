@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<uk.ac.swanseacoventry.cmt.ontrack:TrackPlan xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:uk.ac.swanseacoventry.cmt.ontrack="http:///uk/ac/swanseacoventry/cmt/ontrack.ecore">
+  <tracks name="B20" c1="//@connectors.0" c2="//@connectors.1" signals="//@signals.0">
+    <directedTracks track="//@tracks.0" connector="//@connectors.0"/>
+    <directedTracks track="//@tracks.0" connector="//@connectors.1"/>
+  </tracks>
+  <tracks name="T20" c1="//@connectors.1" c2="//@connectors.2" signals="//@signals.1">
+    <directedTracks track="//@tracks.1" connector="//@connectors.1"/>
+    <directedTracks track="//@tracks.1" connector="//@connectors.2"/>
+  </tracks>
+  <tracks name="T11" c1="//@connectors.3" c2="//@connectors.6" pointNormal="//@points.0">
+    <directedTracks track="//@tracks.2" connector="//@connectors.3"/>
+    <directedTracks track="//@tracks.2" connector="//@connectors.6"/>
+  </tracks>
+  <tracks c1="//@connectors.3" c2="//@connectors.2" pointReverse="//@points.0">
+    <directedTracks track="//@tracks.3" connector="//@connectors.3"/>
+    <directedTracks track="//@tracks.3" connector="//@connectors.2"/>
+  </tracks>
+  <tracks name="B10" c1="//@connectors.4" c2="//@connectors.5" signals="//@signals.2">
+    <directedTracks track="//@tracks.4" connector="//@connectors.4"/>
+    <directedTracks track="//@tracks.4" connector="//@connectors.5"/>
+  </tracks>
+  <tracks name="T10" c1="//@connectors.5" c2="//@connectors.6" signals="//@signals.3">
+    <directedTracks track="//@tracks.5" connector="//@connectors.5"/>
+    <directedTracks track="//@tracks.5" connector="//@connectors.6"/>
+  </tracks>
+  <tracks name="T12" c1="//@connectors.3" c2="//@connectors.7" pointNormal="//@points.1">
+    <directedTracks track="//@tracks.6" connector="//@connectors.3"/>
+    <directedTracks track="//@tracks.6" connector="//@connectors.7"/>
+  </tracks>
+  <tracks c1="//@connectors.3" c2="//@connectors.10" pointReverse="//@points.1">
+    <directedTracks track="//@tracks.7" connector="//@connectors.3"/>
+    <directedTracks track="//@tracks.7" connector="//@connectors.10"/>
+  </tracks>
+  <tracks name="T13" c1="//@connectors.7" c2="//@connectors.8">
+    <directedTracks track="//@tracks.8" connector="//@connectors.7"/>
+    <directedTracks track="//@tracks.8" connector="//@connectors.8"/>
+  </tracks>
+  <tracks name="B13" c1="//@connectors.8" c2="//@connectors.9">
+    <directedTracks track="//@tracks.9" connector="//@connectors.8"/>
+    <directedTracks track="//@tracks.9" connector="//@connectors.9"/>
+  </tracks>
+  <tracks name="T30" c1="//@connectors.10" c2="//@connectors.11">
+    <directedTracks track="//@tracks.10" connector="//@connectors.10"/>
+    <directedTracks track="//@tracks.10" connector="//@connectors.11"/>
+  </tracks>
+  <tracks name="B30" c1="//@connectors.11" c2="//@connectors.12">
+    <directedTracks track="//@tracks.11" connector="//@connectors.11"/>
+    <directedTracks track="//@tracks.11" connector="//@connectors.12"/>
+  </tracks>
+  <connectors id="1" track1s="//@tracks.0" entrances="//@entrances.0" exits="//@exits.0"/>
+  <connectors id="3" track1s="//@tracks.1" track2s="//@tracks.0" signals="//@signals.0 //@signals.1"/>
+  <connectors id="4" track2s="//@tracks.1 //@tracks.3"/>
+  <connectors id="5" track1s="//@tracks.2 //@tracks.3 //@tracks.7 //@tracks.6"/>
+  <connectors id="8" track1s="//@tracks.4" entrances="//@entrances.1" exits="//@exits.1"/>
+  <connectors id="10" track1s="//@tracks.5" track2s="//@tracks.4"/>
+  <connectors id="11" track2s="//@tracks.5 //@tracks.2"/>
+  <connectors id="15" track1s="//@tracks.8" track2s="//@tracks.6"/>
+  <connectors id="17" track1s="//@tracks.9" track2s="//@tracks.8"/>
+  <connectors id="18" track2s="//@tracks.9" entrances="//@entrances.2" exits="//@exits.2"/>
+  <connectors id="19" track1s="//@tracks.10" track2s="//@tracks.7"/>
+  <connectors id="21" track1s="//@tracks.11" track2s="//@tracks.10"/>
+  <connectors id="22" track2s="//@tracks.11" entrances="//@entrances.3" exits="//@exits.3"/>
+  <points name="PT11" normalTrack="//@tracks.2" reverseTrack="//@tracks.3"/>
+  <points name="PT12" normalTrack="//@tracks.6" reverseTrack="//@tracks.7"/>
+  <signals name="MB20" track="//@tracks.0" connector="//@connectors.1"/>
+  <signals name="MB21" track="//@tracks.1" connector="//@connectors.1"/>
+  <signals name="MB10" track="//@tracks.4"/>
+  <signals name="MB11" track="//@tracks.5"/>
+  <signals name="MB12"/>
+  <signals name="MB13"/>
+  <signals name="MB30"/>
+  <signals name="MB31"/>
+  <entrances connector="//@connectors.0"/>
+  <entrances connector="//@connectors.4"/>
+  <entrances connector="//@connectors.9"/>
+  <entrances connector="//@connectors.12"/>
+  <exits connector="//@connectors.0"/>
+  <exits connector="//@connectors.4"/>
+  <exits connector="//@connectors.9"/>
+  <exits connector="//@connectors.12"/>
+</uk.ac.swanseacoventry.cmt.ontrack:TrackPlan>

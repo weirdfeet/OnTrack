@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<uk.ac.swanseacoventry.cmt.ontrack:TrackPlan xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:uk.ac.swanseacoventry.cmt.ontrack="http:///uk/ac/swanseacoventry/cmt/ontrack.ecore">
+  <tracks name="AA" c1="//@connectors.0" c2="//@connectors.1" signals="//@signals.0">
+    <directedTracks track="//@tracks.0" connector="//@connectors.0"/>
+    <directedTracks track="//@tracks.0" connector="//@connectors.1"/>
+  </tracks>
+  <tracks name="AB" c1="//@connectors.1" c2="//@connectors.2">
+    <directedTracks track="//@tracks.1" connector="//@connectors.1"/>
+    <directedTracks track="//@tracks.1" connector="//@connectors.2"/>
+  </tracks>
+  <tracks name="AC" c1="//@connectors.2" c2="//@connectors.3" signals="//@signals.1">
+    <directedTracks track="//@tracks.2" connector="//@connectors.2"/>
+    <directedTracks track="//@tracks.2" connector="//@connectors.3"/>
+  </tracks>
+  <tracks name="AD" c1="//@connectors.3" c2="//@connectors.4">
+    <directedTracks track="//@tracks.3" connector="//@connectors.3"/>
+    <directedTracks track="//@tracks.3" connector="//@connectors.4"/>
+  </tracks>
+  <tracks name="AE" c1="//@connectors.4" c2="//@connectors.5">
+    <directedTracks track="//@tracks.4" connector="//@connectors.4"/>
+    <directedTracks track="//@tracks.4" connector="//@connectors.5"/>
+  </tracks>
+  <connectors id="1" track1s="//@tracks.0" entrances="//@entrances.0"/>
+  <connectors id="3" track1s="//@tracks.1" track2s="//@tracks.0" signals="//@signals.0"/>
+  <connectors id="5" track1s="//@tracks.2" track2s="//@tracks.1"/>
+  <connectors id="7" track1s="//@tracks.3" track2s="//@tracks.2" signals="//@signals.1"/>
+  <connectors id="9" track1s="//@tracks.4" track2s="//@tracks.3"/>
+  <connectors id="10" track2s="//@tracks.4" exits="//@exits.0"/>
+  <signals name="S1" track="//@tracks.0" connector="//@connectors.1"/>
+  <signals name="S2" track="//@tracks.2" connector="//@connectors.3"/>
+  <entrances connector="//@connectors.0"/>
+  <exits connector="//@connectors.5"/>
+  <topoRoutes directedTracks="//@tracks.2/@directedTracks.1 //@tracks.3/@directedTracks.1 //@tracks.4/@directedTracks.1" startSignal="//@signals.1">
+    <names>R2</names>
+  </topoRoutes>
+  <topoRoutes directedTracks="//@tracks.0/@directedTracks.1 //@tracks.1/@directedTracks.1 //@tracks.2/@directedTracks.1" startSignal="//@signals.0" endSignal="//@signals.1">
+    <names>R1</names>
+  </topoRoutes>
+  <controlTable signal="//@signals.1" route="R2" clears="//@tracks.3 //@tracks.4"/>
+  <controlTable signal="//@signals.0" route="R1" clears="//@tracks.1 //@tracks.2"/>
+</uk.ac.swanseacoventry.cmt.ontrack:TrackPlan>

@@ -56,8 +56,8 @@ public class CSPTableViewer extends ViewPart {
 	private Map<SubTrackPlan,String> modelPaths = new HashMap<SubTrackPlan,String>();
 	private String fullModelPath = "";
 
-	private final String PATH_TO_FDR3 = "/Applications/FDR3.app/Contents/MacOS/fdr3";
-	
+	// private final String PATH_TO_FDR3 = "/Applications/FDR3.app/Contents/MacOS/fdr3"; // for mac
+	private final String PATH_TO_FDR3 = "C:\\Program Files\\FDR\\bin\\fdr3.exe"; // for windows
 	
 	public CSPTableViewer() {
 		super();

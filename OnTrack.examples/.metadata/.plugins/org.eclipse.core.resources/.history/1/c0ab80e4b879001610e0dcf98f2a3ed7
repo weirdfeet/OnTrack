@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<uk.ac.swanseacoventry.cmt.ontrack:TrackPlan xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:uk.ac.swanseacoventry.cmt.ontrack="http:///uk/ac/swanseacoventry/cmt/ontrack.ecore">
+  <tracks name="TC1" c1="//@connectors.0" c2="//@connectors.1">
+    <directedTracks track="//@tracks.0" connector="//@connectors.0"/>
+    <directedTracks track="//@tracks.0" connector="//@connectors.1"/>
+  </tracks>
+  <tracks name="TC2" c1="//@connectors.1" c2="//@connectors.4">
+    <directedTracks track="//@tracks.1" connector="//@connectors.1"/>
+    <directedTracks track="//@tracks.1" connector="//@connectors.4"/>
+  </tracks>
+  <tracks name="TC3" c1="//@connectors.2" c2="//@connectors.3" pointNormal="//@points.0">
+    <directedTracks track="//@tracks.2" connector="//@connectors.2"/>
+    <directedTracks track="//@tracks.2" connector="//@connectors.3"/>
+  </tracks>
+  <tracks c1="//@connectors.2" c2="//@connectors.4" pointReverse="//@points.0">
+    <directedTracks track="//@tracks.3" connector="//@connectors.2"/>
+    <directedTracks track="//@tracks.3" connector="//@connectors.4"/>
+  </tracks>
+  <tracks name="TC8" c1="//@connectors.5" c2="//@connectors.6">
+    <directedTracks track="//@tracks.4" connector="//@connectors.5"/>
+    <directedTracks track="//@tracks.4" connector="//@connectors.6"/>
+  </tracks>
+  <tracks name="TC9" c1="//@connectors.6" c2="//@connectors.3">
+    <directedTracks track="//@tracks.5" connector="//@connectors.6"/>
+    <directedTracks track="//@tracks.5" connector="//@connectors.3"/>
+  </tracks>
+  <tracks name="TC4" c1="//@connectors.2" c2="//@connectors.7" pointNormal="//@points.1">
+    <directedTracks track="//@tracks.6" connector="//@connectors.2"/>
+    <directedTracks track="//@tracks.6" connector="//@connectors.7"/>
+  </tracks>
+  <tracks c1="//@connectors.2" c2="//@connectors.8" pointReverse="//@points.1">
+    <directedTracks track="//@tracks.7" connector="//@connectors.2"/>
+    <directedTracks track="//@tracks.7" connector="//@connectors.8"/>
+  </tracks>
+  <tracks c1="//@connectors.9" c2="//@connectors.10" pointNormal="//@points.2">
+    <directedTracks track="//@tracks.8" connector="//@connectors.9"/>
+    <directedTracks track="//@tracks.8" connector="//@connectors.10"/>
+  </tracks>
+  <tracks c1="//@connectors.9" c2="//@connectors.11" pointReverse="//@points.2">
+    <directedTracks track="//@tracks.9" connector="//@connectors.9"/>
+    <directedTracks track="//@tracks.9" connector="//@connectors.11"/>
+  </tracks>
+  <tracks c1="//@connectors.12" c2="//@connectors.13">
+    <directedTracks track="//@tracks.10" connector="//@connectors.12"/>
+    <directedTracks track="//@tracks.10" connector="//@connectors.13"/>
+  </tracks>
+  <tracks c1="//@connectors.14" c2="//@connectors.15">
+    <directedTracks track="//@tracks.11" connector="//@connectors.14"/>
+    <directedTracks track="//@tracks.11" connector="//@connectors.15"/>
+  </tracks>
+  <tracks c1="//@connectors.16" c2="//@connectors.17" crossing1="//@crossings.0">
+    <directedTracks track="//@tracks.12" connector="//@connectors.16"/>
+    <directedTracks track="//@tracks.12" connector="//@connectors.17"/>
+  </tracks>
+  <tracks c1="//@connectors.18" c2="//@connectors.19" crossing2="//@crossings.0">
+    <directedTracks track="//@tracks.13" connector="//@connectors.18"/>
+    <directedTracks track="//@tracks.13" connector="//@connectors.19"/>
+  </tracks>
+  <tracks c1="//@connectors.20" c2="//@connectors.21">
+    <directedTracks track="//@tracks.14" connector="//@connectors.20"/>
+    <directedTracks track="//@tracks.14" connector="//@connectors.21"/>
+  </tracks>
+  <tracks c1="//@connectors.22" c2="//@connectors.23">
+    <directedTracks track="//@tracks.15" connector="//@connectors.22"/>
+    <directedTracks track="//@tracks.15" connector="//@connectors.23"/>
+  </tracks>
+  <tracks c1="//@connectors.24" c2="//@connectors.25" pointNormal="//@points.3">
+    <directedTracks track="//@tracks.16" connector="//@connectors.24"/>
+    <directedTracks track="//@tracks.16" connector="//@connectors.25"/>
+  </tracks>
+  <tracks c1="//@connectors.24" c2="//@connectors.26" pointReverse="//@points.3">
+    <directedTracks track="//@tracks.17" connector="//@connectors.24"/>
+    <directedTracks track="//@tracks.17" connector="//@connectors.26"/>
+  </tracks>
+  <tracks c1="//@connectors.27" c2="//@connectors.28" pointNormal="//@points.4">
+    <directedTracks track="//@tracks.18" connector="//@connectors.27"/>
+    <directedTracks track="//@tracks.18" connector="//@connectors.28"/>
+  </tracks>
+  <tracks c1="//@connectors.27" c2="//@connectors.29" pointReverse="//@points.4">
+    <directedTracks track="//@tracks.19" connector="//@connectors.27"/>
+    <directedTracks track="//@tracks.19" connector="//@connectors.29"/>
+  </tracks>
+  <tracks c1="//@connectors.30" c2="//@connectors.31" pointNormal="//@points.5">
+    <directedTracks track="//@tracks.20" connector="//@connectors.30"/>
+    <directedTracks track="//@tracks.20" connector="//@connectors.31"/>
+  </tracks>
+  <tracks c1="//@connectors.30" c2="//@connectors.32" pointReverse="//@points.5">
+    <directedTracks track="//@tracks.21" connector="//@connectors.30"/>
+    <directedTracks track="//@tracks.21" connector="//@connectors.32"/>
+  </tracks>
+  <tracks c1="//@connectors.33" c2="//@connectors.34">
+    <directedTracks track="//@tracks.22" connector="//@connectors.33"/>
+    <directedTracks track="//@tracks.22" connector="//@connectors.34"/>
+  </tracks>
+  <tracks c1="//@connectors.35" c2="//@connectors.36">
+    <directedTracks track="//@tracks.23" connector="//@connectors.35"/>
+    <directedTracks track="//@tracks.23" connector="//@connectors.36"/>
+  </tracks>
+  <tracks c1="//@connectors.37" c2="//@connectors.38">
+    <directedTracks track="//@tracks.24" connector="//@connectors.37"/>
+    <directedTracks track="//@tracks.24" connector="//@connectors.38"/>
+  </tracks>
+  <tracks c1="//@connectors.39" c2="//@connectors.40">
+    <directedTracks track="//@tracks.25" connector="//@connectors.39"/>
+    <directedTracks track="//@tracks.25" connector="//@connectors.40"/>
+  </tracks>
+  <connectors id="1" track1s="//@tracks.0"/>
+  <connectors id="3" track1s="//@tracks.1" track2s="//@tracks.0"/>
+  <connectors id="5" track1s="//@tracks.2 //@tracks.3 //@tracks.6 //@tracks.7"/>
+  <connectors id="6" track2s="//@tracks.2 //@tracks.5"/>
+  <connectors id="7" track2s="//@tracks.3 //@tracks.1"/>
+  <connectors id="8" track1s="//@tracks.4"/>
+  <connectors id="10" track1s="//@tracks.5" track2s="//@tracks.4"/>
+  <connectors id="13" track2s="//@tracks.6"/>
+  <connectors id="14" track2s="//@tracks.7"/>
+  <connectors id="15" track1s="//@tracks.8 //@tracks.9"/>
+  <connectors id="16" track2s="//@tracks.8"/>
+  <connectors id="17" track2s="//@tracks.9"/>
+  <connectors id="18" track1s="//@tracks.10"/>
+  <connectors id="19" track2s="//@tracks.10"/>
+  <connectors id="20" track1s="//@tracks.11"/>
+  <connectors id="21" track2s="//@tracks.11"/>
+  <connectors id="22" track1s="//@tracks.12"/>
+  <connectors id="23" track2s="//@tracks.12"/>
+  <connectors id="24" track1s="//@tracks.13"/>
+  <connectors id="25" track2s="//@tracks.13"/>
+  <connectors id="26" track1s="//@tracks.14"/>
+  <connectors id="27" track2s="//@tracks.14"/>
+  <connectors id="28" track1s="//@tracks.15"/>
+  <connectors id="29" track2s="//@tracks.15"/>
+  <connectors id="30" track1s="//@tracks.16 //@tracks.17"/>
+  <connectors id="31" track2s="//@tracks.16"/>
+  <connectors id="32" track2s="//@tracks.17"/>
+  <connectors id="33" track1s="//@tracks.18 //@tracks.19"/>
+  <connectors id="34" track2s="//@tracks.18"/>
+  <connectors id="35" track2s="//@tracks.19"/>
+  <connectors id="36" track1s="//@tracks.20 //@tracks.21"/>
+  <connectors id="37" track2s="//@tracks.20"/>
+  <connectors id="38" track2s="//@tracks.21"/>
+  <connectors id="39" track1s="//@tracks.22"/>
+  <connectors id="40" track2s="//@tracks.22"/>
+  <connectors id="41" track1s="//@tracks.23"/>
+  <connectors id="42" track2s="//@tracks.23"/>
+  <connectors id="43" track1s="//@tracks.24"/>
+  <connectors id="44" track2s="//@tracks.24"/>
+  <connectors id="45" track1s="//@tracks.25"/>
+  <connectors id="46" track2s="//@tracks.25"/>
+  <points name="P1" normalTrack="//@tracks.2" reverseTrack="//@tracks.3"/>
+  <points name="P2" normalTrack="//@tracks.6" reverseTrack="//@tracks.7"/>
+  <points normalTrack="//@tracks.8" reverseTrack="//@tracks.9"/>
+  <points normalTrack="//@tracks.16" reverseTrack="//@tracks.17"/>
+  <points normalTrack="//@tracks.18" reverseTrack="//@tracks.19"/>
+  <points normalTrack="//@tracks.20" reverseTrack="//@tracks.21"/>
+  <crossings track1="//@tracks.12" track2="//@tracks.13"/>
+</uk.ac.swanseacoventry.cmt.ontrack:TrackPlan>
