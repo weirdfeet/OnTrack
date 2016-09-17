@@ -1,5 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<notation:Diagram xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.2/notation" xmlns:uk.ac.swanseacoventry.cmt.ontrack="http:///uk/ac/swanseacoventry/cmt/ontrack.ecore" xmi:id="__f68MHmqEeahyoNvrdg_sA" type="Ontrack" name="Swansea.ontrack_diagram" measurementUnit="Pixel">
-  <styles xmi:type="notation:DiagramStyle" xmi:id="__f68MXmqEeahyoNvrdg_sA"/>
-  <element xmi:type="uk.ac.swanseacoventry.cmt.ontrack:TrackPlan" href="Swansea.ontrack#/"/>
-</notation:Diagram>
