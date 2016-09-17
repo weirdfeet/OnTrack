@@ -1,0 +1,6 @@
+channel move: TrackID.TrackID --Train Movement
+channel setRoute: RouteID --Route being Set
+channel cancelRoute: RouteID -- Route being cancelled
+channel switch: PointID -- Point direction being changed
+channel hangMove: TrackID.TrackID  -- Hang Signal
+channel turnAround: TrackID -- Train change direction

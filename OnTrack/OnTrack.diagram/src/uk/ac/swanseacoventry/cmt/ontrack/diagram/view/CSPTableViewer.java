@@ -214,9 +214,20 @@ public class CSPTableViewer extends ViewPart {
 		}
 	}
 
-	protected String generateForTrackPlan(String modelPath, SubTrackPlan sub){
-		DSL2CSP tool = new DSL2CSP(modelPath, sub);
+	protected String generateForTrackPlan(String modelPath, TrackPlan tp, SubTrackPlan sub, boolean exp){
+		DSL2CSP tool = new DSL2CSP(modelPath, tp, sub, tp.isOverlapped(), exp);
 		tool.generateCSP("Railway.csp");
+		if (exp) {
+			tool.generateCSP("Data.csp");
+			tool.generateCSP("RailEvent.csp");
+			tool.generateCSP("Util.csp");
+			tool.generateCSP("Track.csp");
+			tool.generateCSP("Point.csp");
+			tool.generateCSP("Signal.csp");
+			tool.generateCSP("Train.csp");
+			tool.generateCSP("Safety.csp");
+			//tool.generateCSP("Railway.csp");
+		}
 		String generatedModelPath = tool.getOutputFolder();
 		if (sub!=null) 
 			modelPaths.put(sub, generatedModelPath);
@@ -253,6 +264,7 @@ public class CSPTableViewer extends ViewPart {
 		}
 	}
 	
+	boolean experimental = true;
 	void createToolBar(){
 		 IToolBarManager mgr = getViewSite().getActionBars().getToolBarManager();
 		 mgr.add(new Action("Generate"){
@@ -269,8 +281,8 @@ public class CSPTableViewer extends ViewPart {
 						cc.add(new ICommandProxy(new TrackPlanSelectSubCommand(diagramEditPart, null)));
 						cc.execute();
 						Util.getEditorPart().doSave(((WorkbenchWindow)Util.getWorkbenchWindow()).getStatusLineManager().getProgressMonitor());
-						generateForTrackPlan(modelPath, null);
-					} else if (tp instanceof SubTrackPlan) {
+						generateForTrackPlan(modelPath, trackplan, null, experimental);
+					} else if (tp instanceof SubTrackPlan && experimental) {
 						// save the submodel to a file
 						TrackPlan trackplan = (TrackPlan)((View)diagramEditPart.getModel()).getElement();
 						String modelPath = trackplan.eResource().getURI().toString();
@@ -278,7 +290,7 @@ public class CSPTableViewer extends ViewPart {
 						cc.add(new ICommandProxy(new TrackPlanSelectSubCommand(diagramEditPart, (SubTrackPlan)tp)));
 						cc.execute();
 						Util.getEditorPart().doSave(((WorkbenchWindow)Util.getWorkbenchWindow()).getStatusLineManager().getProgressMonitor());
-						generateForTrackPlan(modelPath, (SubTrackPlan)tp);
+						generateForTrackPlan(modelPath, trackplan, (SubTrackPlan)tp, experimental);
 					}
 				}
 					
@@ -420,25 +432,25 @@ public class CSPTableViewer extends ViewPart {
 		tit.setData(trackplan);
 		
 		
-//		for(SubTrackPlan stp : trackplan.getSubTrackPlans()){
-//			routes = 0;
-//			hroutes = 0;
-//			for(ControlTableItem cti : stp.getControlTable()){
-//				if (cti.getSignal()!=null) routes++;
-//				else hroutes++;
-//			}
-//			tit = new TableItem(table,SWT.NONE);
-//			tit.setText(new String[]{
-//					stp.getName(),
-//					Integer.toString(stp.getTracks().size() - stp.getPoints().size() - stp.getCrossings().size()),
-//					Integer.toString(stp.getPoints().size()),
-//					Integer.toString(stp.getCrossings().size()),
-//					Integer.toString(stp.getSignals().size()),
-//					Integer.toString(routes) + (hroutes > 0 ? "(" + Integer.toString(hroutes) + ")" : ""),
-//					}
-//			);
-//			tit.setData(stp);
-//		}
+		for(SubTrackPlan stp : trackplan.getSubTrackPlans()){
+			routes = 0;
+			hroutes = 0;
+			for(ControlTableItem cti : stp.getControlTable()){
+				if (cti.getSignal()!=null) routes++;
+				else hroutes++;
+			}
+			tit = new TableItem(table,SWT.NONE);
+			tit.setText(new String[]{
+					stp.getName(),
+					Integer.toString(stp.getTracks().size() - stp.getPoints().size() - stp.getCrossings().size()),
+					Integer.toString(stp.getPoints().size()),
+					Integer.toString(stp.getCrossings().size()),
+					Integer.toString(stp.getSignals().size()),
+					Integer.toString(routes) + (hroutes > 0 ? "(" + Integer.toString(hroutes) + ")" : ""),
+					}
+			);
+			tit.setData(stp);
+		}
 	}
 
 }

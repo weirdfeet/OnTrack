@@ -1,0 +1,30 @@
+-- id : track id
+UnlockedTrackRouteBehave(id,rID) =
+  ([] rID':RouteID @ setRoute.rID' ->
+  if rID'==rID and member(id, directionTableDomain(rID)) then
+    [] lock : directionTable(rID,id) @ LockedTrackRouteBehave(id,rID,lock)
+  else
+    UnlockedTrackRouteBehave(id,rID))
+  []
+  ([] rID':RouteID @ rID'!=rID or not(member(id, directionTableDomain(rID))) &
+    cancelRoute.rID' -> UnlockedTrackRouteBehave(id,rID))
+  []
+  (move.id?t -> UnlockedTrackRouteBehave(id,rID))
+
+-- lock : lock direction to track
+LockedTrackRouteBehave(id,rID,lock) =
+  ([]rID' : RouteID @ cancelRoute.rID' ->
+  if rID'==rID then
+    UnlockedTrackRouteBehave(id,rID)
+  else
+    LockedTrackRouteBehave(id,rID,lock))
+  []
+  ([]rID' : RouteID @ not(member(id, directionTableDomain(rID'))) or member(lock,directionTable(rID',id)) &
+    setRoute.rID' -> LockedTrackRouteBehave(id,rID,lock))
+  []
+  (move.id?t -> UnlockedTrackRouteBehave(id,rID))
+
+TrackBehave(id) = [| {| move.id, setRoute, cancelRoute |} |] rID : RouteID @ UnlockedTrackRouteBehave(id,rID)
+
+Tracks = [| {| setRoute, cancelRoute|} |] id : TrackID @ TrackBehave(id)
+TracksAlpha = {| setRoute, cancelRoute, move |}

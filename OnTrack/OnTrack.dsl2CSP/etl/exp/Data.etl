@@ -1,0 +1,369 @@
+import "Ontrack.etl";
+
+pre {
+	var trackplan = safetrack!TrackPlan.all().first();
+	var subplan = null;
+	if (trackplan.selectedSubTrackPlan.isDefined())
+		subplan = trackplan.selectedSubTrackPlan;
+	trackplan.println();
+	subplan.println();
+	var plan;
+	if (subplan.isDefined()) plan = subplan;
+	else plan = trackplan;
+
+	// Main CSP script
+	new CSP!CSPScript;
+	CSP!CSPScript.all().first().set.clear();
+	CSP!CSPScript.all().first().dataType.clear();
+	CSP!CSPScript.all().first().process.clear();
+	
+	var freshid = 1;
+	
+	var functions = CSP!CSPScript.all().first().process;
+	var sets = CSP!CSPScript.all().first().set;
+	var datatypes = CSP!CSPScript.all().first().dataType;
+
+	var TrackID = newCSPDatatype("TrackID");
+
+	var offTrack = new CSP!DatatypeItem;
+	offTrack.name = "OFFTRACK";
+	TrackID.items.add(offTrack);
+
+	var PointID = newCSPDatatype("PointID");
+	if (plan.points.isEmpty()) {
+		// add a dummy point to make fdr happy
+		PointID.items.add(newCSPDatatypeItem("P__0"));
+		functions.add(newFunc1Arg1Out("pointAt","P__0","OFFTRACK"));
+		functions.add(newFunc1Arg1Out("normalNext","P__0","OFFTRACK"));
+		functions.add(newFunc1Arg1Out("reverseNext","P__0","OFFTRACK"));
+	}
+	
+	var SignalID = newCSPDatatype("SignalID");
+
+	var RouteID = newCSPDatatype("RouteID");
+
+	var TrackConfig = newCSPSet("TrackConfig");
+	
+	var EntryTrack = newCSPSet("EntryTrack");
+	var ExitTrack = newCSPSet("ExitTrack");
+
+	var EntryRoute = newCSPSet("EntryRoute");
+	var EntryRouteSignal = newCSPSet("EntryRouteSignal");
+	
+	var Terminal = newCSPSet("Terminal");
+}
+
+//////// Transformation Rules ////////
+
+@greedy
+rule transformTrackID
+transform u : safetrack!Track
+to d : CSP!DatatypeItem {
+
+	guard : 
+	plan.tracks.includes(u) and
+	(not u.pointReverse.isDefined()) and (not u.crossing2.isDefined())
+
+	d.name = u.name;
+	
+	TrackID.items.add(d);
+	
+	if (u.pointNormal.isDefined()) {
+		var t1 = u.c1.findFirstDiffTrack2(plan,u,u.pointNormal.reverseTrack); if (not t1.isDefined()) t1 = offTrack;
+		var t2 = u.c2.findFirstDiffTrack2(plan,u,u.pointNormal.reverseTrack); if (not t2.isDefined()) t2 = offTrack;
+		TrackConfig.item.add(newCSP3Tuple(newCSPTypedItem(u.name),
+			newCSPTypedItem(t1.name),
+			newCSPTypedItem(t2.name)));
+		var u2 = u.pointNormal.reverseTrack;
+		t1 = u2.c1.findFirstDiffTrack2(plan,u,u.pointNormal.reverseTrack); if (not t1.isDefined()) t1 = offTrack;
+		t2 = u2.c2.findFirstDiffTrack2(plan,u,u.pointNormal.reverseTrack); if (not t2.isDefined()) t2 = offTrack;
+		TrackConfig.item.add(newCSP3Tuple(newCSPTypedItem(u.name),
+			newCSPTypedItem(t1.name),
+			newCSPTypedItem(t2.name)));
+	}
+	else if (u.crossing1.isDefined()) {
+		var t1 = u.c1.findFirstDiffTrack2(plan,u,u.crossing1.track2); if (not t1.isDefined()) t1 = offTrack;
+		var t2 = u.c2.findFirstDiffTrack2(plan,u,u.crossing1.track2); if (not t2.isDefined()) t2 = offTrack;
+		TrackConfig.item.add(newCSP3Tuple(newCSPTypedItem(u.name),
+			newCSPTypedItem(t1.name),
+			newCSPTypedItem(t2.name)));
+		var u2 = u.crossing1.track2;
+		t1 = u2.c1.findFirstDiffTrack2(plan,u,u.crossing1.track2); if (not t1.isDefined()) t1 = offTrack;
+		t2 = u2.c2.findFirstDiffTrack2(plan,u,u.crossing1.track2); if (not t2.isDefined()) t2 = offTrack;
+		TrackConfig.item.add(newCSP3Tuple(newCSPTypedItem(u.name),
+			newCSPTypedItem(t1.name),
+			newCSPTypedItem(t2.name)));
+	}
+	else{
+		var t1 = u.c1.findFirstDiffTrack(plan,u); if (not t1.isDefined()) t1 = offTrack;
+		var t2 = u.c2.findFirstDiffTrack(plan,u); if (not t2.isDefined()) t2 = offTrack;
+		TrackConfig.item.add(newCSP3Tuple(newCSPTypedItem(u.name),
+			newCSPTypedItem(t1.name),
+			newCSPTypedItem(t2.name)));
+	}
+}
+
+rule transformPointID
+transform p : safetrack!Point
+to d : CSP!DatatypeItem {
+
+	guard :
+	plan.points.includes(p)
+
+	d.name = p.name;
+	PointID.items.add(d);
+
+	var pat = newFunc1Arg1Out("pointAt",p.name,p.normalTrack.name);
+	functions.add(pat);
+}
+
+rule transformNormalNext
+transform p : safetrack!Point
+to f : CSP!ProcessAssignment {
+
+	guard :
+	plan.points.includes(p)
+	
+	delete f;
+
+	var normalTrack = p.normalTrack;
+	var reverseTrack = p.reverseTrack;
+	var c1 = normalTrack.c1;
+	var c2 = normalTrack.c2;
+	var c3 = reverseTrack.c1;
+	var c4 = reverseTrack.c2;
+	var t;
+
+	if (c1 == c3 or c1==c4){
+		t = c2.findFirstDiffTrack2(plan,normalTrack,reverseTrack); if (not t.isDefined()) t = offTrack;
+	} else {
+		t = c1.findFirstDiffTrack2(plan,normalTrack,reverseTrack); if (not t.isDefined()) t = offTrack;
+	}
+
+	var nf = newFunc1Arg1Out("normalNext",p.name,t.name);
+	functions.add(nf);
+}
+
+rule transformReverseNext
+transform p : safetrack!Point
+to f : CSP!ProcessAssignment {
+
+	guard :
+	plan.points.includes(p)
+	
+	delete f;
+
+	var normalTrack = p.normalTrack;
+	var reverseTrack = p.reverseTrack;
+	var c1 = normalTrack.c1;
+	var c2 = normalTrack.c2;
+	var c3 = reverseTrack.c1;
+	var c4 = reverseTrack.c2;
+	var t;
+
+	if (c1 == c3 or c2==c3){
+		t = c4.findFirstDiffTrack2(plan,normalTrack,reverseTrack); if (not t.isDefined()) t = offTrack;
+	} else {
+		t = c3.findFirstDiffTrack2(plan,normalTrack,reverseTrack); if (not t.isDefined()) t = offTrack;
+	}
+
+	var nf = newFunc1Arg1Out("reverseNext",p.name,t.name);
+	functions.add(nf);
+}
+
+rule transformEntryTrack
+transform e : safetrack!Entrance
+to se : CSP!SETElement, ti:CSP!TypedItem{
+
+	guard: plan.entrances.includes(e)
+	
+	delete se;
+	delete ti;
+
+	RouteID.items.add(newCSPDatatypeItem("RE__" + e.connector.id.toString()));
+	EntryRoute.item.add(newCSPSetItem("RE__" + e.connector.id.toString()));
+	SignalID.items.add(newCSPDatatypeItem("SE__" + e.connector.id.toString()));
+	EntryRouteSignal.item.add(newCSPSetItem("SE__" + e.connector.id.toString()));
+	EntryTrack.item.add(newCSPSetItem(e.connector.findFirstTrack(plan).name));	
+}
+
+rule transformExitTrack
+transform e : safetrack!Exit
+to se : CSP!SETElement, ti:CSP!TypedItem{
+
+	guard: plan.exits.includes(e)
+	
+	delete se;
+	delete ti;
+
+	ExitTrack.item.add(newCSPSetItem(e.connector.findFirstTrack(plan).name));	
+
+}
+
+rule transformTerminal
+transform t : safetrack!Terminal
+to e : CSP!SETElement, i:CSP!TypedItem{
+
+	guard: plan.terminals.includes(t)
+	
+	delete e;
+	delete i;
+
+	Terminal.item.add(newCSPSetItem(t.connector.findFirstTrack(plan).name));	
+
+}
+
+rule transformSignalID
+transform s :safetrack!Signal
+to d : CSP!DatatypeItem {
+
+	guard : plan.signals.includes(s)
+
+	SignalID.items.add(newCSPDatatypeItem(s.name));
+
+	var t1 = s.connector.findFirstDiffTrack(plan,s.track); if (not t1.isDefined()) t1=offTrack;
+
+	var sat = newFunc1Arg1Out("signalAt",s.name,s.track.name + "." + t1.name);
+	functions.add(sat);
+}
+
+rule transformEntrySignalAt
+transform e : safetrack!Entrance
+to f : CSP!ProcessAssignment{
+
+	guard: plan.entrances.includes(e)
+	
+	delete f;
+
+	var sat = newFunc1Arg1Out("signalAt","SE__" + e.connector.id.toString(),offTrack.name + "." + e.connector.findFirstTrack(plan).name);
+	functions.add(sat);
+}
+
+rule transformRouteIDWithSignal
+transform cti : safetrack!ControlTableItem
+to d : CSP!DatatypeItem {
+
+	// only transform if route is in control table
+	guard : plan.controlTable.includes(cti) and cti.signal.isDefined()
+
+	d.name = cti.route;
+
+	RouteID.items.add(d);
+
+	var sig = newFunc1Arg1Out("signal",cti.route,cti.signal.name);
+	functions.add(sig);
+}
+
+rule transformEntryRouteSignal
+transform e : safetrack!Entrance
+to f : CSP!ProcessAssignment{
+
+	guard: plan.entrances.includes(e)
+	
+	delete f;
+
+	var sat = newFunc1Arg1Out("signal","RE__" + e.connector.id.toString(),"SE__" + e.connector.id.toString());
+	functions.add(sat);
+}
+
+rule transformControlTable
+transform cti : safetrack!ControlTableItem
+to f : CSP!ProcessAssignment {
+
+	// only transform if route is in control table
+	guard : plan.controlTable.includes(cti) and cti.signal.isDefined()
+
+	delete f;
+	var normalSet = new CSP!SET; normalSet.name = "";
+	var reverseSet = new CSP!SET; reverseSet.name = "";
+	var clearSet = new CSP!SET; clearSet.name = "";
+	var directionSet = new CSP!SET; directionSet.name = "";
+	for(p in cti.normals) normalSet.item.add(newCSPSetItem(p.name));
+	for(p in cti.reverses) reverseSet.item.add(newCSPSetItem(p.name));
+	for(t in cti.clears) {
+		if (t.pointReverse.isDefined())
+			clearSet.item.add(newCSPSetItem(t.pointReverse.normalTrack.name));
+		else if (t.crossing2.isDefined())
+			clearSet.item.add(newCSPSetItem(t.crossing2.track1.name));
+		else
+			clearSet.item.add(newCSPSetItem(t.name));
+	}
+	for(t in cti.directions) {
+	    var t1 = t.track;
+		if (t1.pointReverse.isDefined())
+			t1 = t1.pointReverse.normalTrack;
+		else if (t1.crossing2.isDefined())
+			t1 = t1.crossing2.track1;
+		var t2 = t.connector.findFirstDiffTrack(plan,t.track); 
+		if (not t2.isDefined()) t2 = offTrack;
+		else if (t2.pointReverse.isDefined())
+			t2 = t2.pointReverse.normalTrack;
+		else if (t2.crossing2.isDefined())
+			t2 = t2.crossing2.track1;
+		directionSet.item.add(newCSPSetItem(t1.name + "." + t2.name));
+	}
+
+	var nf = newFunc1Arg4SetOut("ctrlTable",cti.route,normalSet, reverseSet, clearSet, directionSet);
+	functions.add(nf);
+}
+
+rule transformEntryControlTable
+transform e : safetrack!Entrance
+to f : CSP!ProcessAssignment {
+
+	// only transform if route is in control table
+	guard : plan.entrances.includes(e)
+
+	delete f;
+	var normalSet = new CSP!SET; normalSet.name = "";
+	var reverseSet = new CSP!SET; reverseSet.name = "";
+	var clearSet = new CSP!SET; clearSet.name = "";
+	var directionSet = new CSP!SET; directionSet.name = "";
+	
+	var t1 = e.connector.findFirstTrack(plan);
+	var c;
+	if (e.connector==t1.c1)
+		c = t1.c2;
+	else 
+		c = t1.c1;
+	var t2 = c.findFirstDiffTrack(plan,t1);
+	clearSet.item.add(newCSPSetItem(t1.name));
+	if (trackplan.overlapped) clearSet.item.add(newCSPSetItem(t2.getName()));
+	
+	directionSet.item.add(newCSPSetItem(t1.name + "." + t2.getName()));
+		
+
+	var nf = newFunc1Arg4SetOut("ctrlTable","RE__" + e.connector.id.toString(),normalSet, reverseSet, clearSet, directionSet);
+	functions.add(nf);
+}
+
+rule transformReleaseTable
+transform p : safetrack!Point
+to f : CSP!ProcessAssignment {
+
+	guard :
+	plan.points.includes(p)
+
+	var map = new Map;
+
+	for(i in plan.releaseTable) {
+		if (not(i.point==p)) continue;
+		var rls;
+		if (not map.containsKey(i.route)) {
+			rls = new CSP!SET;
+			rls.name = "";
+			map.put(i.route,rls);
+		}
+		else {
+			rls = map.get(i.route);
+		}
+		rls.item.add(newCSPSetItem(i.track.getName()));
+	}
+
+	delete f;
+	for(r in map.keySet()) {
+		var nf = newFunc2Arg1SetOut("releaseTable", r, p.name, map.get(r));
+		functions.add(nf);
+	}
+
+}

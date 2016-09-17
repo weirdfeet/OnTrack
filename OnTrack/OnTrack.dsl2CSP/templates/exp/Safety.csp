@@ -1,0 +1,45 @@
+NoCollision(id) = UnoccupiedTrack(id)
+UnoccupiedTrack(id) = 
+  (move?t1.id -> OccupiedTrack(id))
+  []
+  (hangMove?t1.id -> OccupiedTrack(id))
+  
+OccupiedTrack(id) =  
+  (move.id?t2 -> UnoccupiedTrack(id))
+  []
+  (hangMove.id?t2 -> UnoccupiedTrack(id))
+  
+NoCollisionAlpha(id) = union({move.t1.id, hangMove.t1.id | t1 <- TrackID},{|move.id, hangMove.id|})
+
+NoDerailment(id) = UnoccupiedPoint(id)
+
+UnoccupiedPoint(id) =
+  (switch.id -> UnoccupiedPoint(id))
+  []
+  (let Tid = pointAt(id) within
+    (move?t1.Tid -> OccupiedPoint(id))
+    []
+    (hangMove?t1.Tid -> OccupiedPoint(id))
+  )
+  
+OccupiedPoint(id) = 
+  (move.pointAt(id)?t2 -> UnoccupiedPoint(id))
+  []
+  (hangMove.pointAt(id)?t2 -> UnoccupiedPoint(id))
+
+NoDerailmentAlpha(id) = union({move.t1.pointAt(id), hangMove.t1.pointAt(id) | t1 <- TrackID},{|move.pointAt(id),hangMove.pointAt(id),switch.id|})
+
+NoRunThru(id) = NoRunThruNormal(id)
+NoRunThruNormal(id) =
+  (move.normalNext(id).pointAt(id) -> NoRunThruNormal(id))
+  []
+  (hangMove.normalNext(id).pointAt(id) -> NoRunThruNormal(id))
+  []
+  (switch.id -> NoRunThruReverse(id))
+NoRunThruReverse(id) =
+  (hangMove.reverseNext(id).pointAt(id) -> NoRunThruReverse(id))
+  []
+  (move.reverseNext(id).pointAt(id) -> NoRunThruReverse(id))
+  []
+  (switch.id -> NoRunThruNormal(id))
+NoRunThruAlpha(id) = {move.normalNext(id).pointAt(id),hangMove.normalNext(id).pointAt(id),move.reverseNext(id).pointAt(id),hangMove.reverseNext(id).pointAt(id),switch.id}

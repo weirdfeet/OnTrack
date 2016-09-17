@@ -1,0 +1,299 @@
+////////
+// This program provides operations that can be used by ETL files that import it
+////////
+
+
+////////
+// creates a new CSP!SET and adds it to the main CSP!CSPScript
+// note: operation assumes a CSP!CSPScript already exists
+////////
+operation newCSPSet(setName : String) : CSP!SET {
+	
+	var s = new CSP!SET;
+	s.name = setName;
+	s.item.clear();
+	CSP!CSPScript.all().first().set.add(s);
+	
+	return s;
+}
+
+////////
+// creates a new CSP!Datatype and adds it to the main CSP!CSPScript
+// note: operation assumes a CSP!CSPScript already exists
+////////
+operation newCSPDatatype(name : String) : CSP!Datatype {
+
+	var dt = new CSP!Datatype;
+	dt.typeName = name;
+	CSP!CSPScript.all().first().dataType.add(dt);
+	
+	return dt;
+}
+
+////////
+// creates a new CSP!DatatypeItemList for the given CSP!Datatype element
+////////
+operation newCSPDatatypeItemList(dt : CSP!Datatype) : CSP!DatatypeItemList {
+
+	var list = new CSP!DatatypeItemList;
+	list.firstItem = null;
+	dt.itemList = list;
+	list.size = 0;
+	
+	return list;
+}
+
+
+operation append(item, list) {
+	item.preceeds = list.firstItem;
+	list.size = list.size + 1;
+	list.firstItem = item;
+}
+
+operation newCSPTypedItem(n) : CSP!TypedItem {
+
+	var i = new CSP!TypedItem;
+	i.name = n;
+	return i;
+
+}
+
+operation newFunc1Arg1Out(fn,fa,fd) : CSP!ProcessAssignment {
+	var f = new CSP!ProcessAssignment;
+
+	var lhs = new CSP!ProcessID;
+	lhs.name = fn;
+	lhs.parameterList = newCSP1Tuple(newCSPTypedItem(fa));
+
+	var rhs = new CSP!ProcessID;
+	rhs.name = fd;
+
+	f.processID = lhs;
+	f.processExpression = rhs;
+	return f;	
+}
+
+operation newFunc1Arg2Out(fn,fa,fd1,fd2) : CSP!ProcessAssignment {
+	var f = new CSP!ProcessAssignment;
+
+	var lhs = new CSP!ProcessID;
+	lhs.name = fn;
+	lhs.parameterList = newCSP1Tuple(newCSPTypedItem(fa));
+
+	var rhs = new CSP!ProcessID;
+	rhs.name = "";
+	rhs.parameterList = newCSP2Tuple(newCSPTypedItem(fd1),newCSPTypedItem(fd2));
+
+	f.processID = lhs;
+	f.processExpression = rhs;
+	return f;	
+}
+
+operation newFunc1Arg1SetOut(fn, fp, fs) : CSP!ProcessAssignment {
+	var f = new CSP!ProcessAssignment;
+	
+	var lhs = new CSP!ProcessID;
+	lhs.name = fn;
+	lhs.parameterList = newCSP1Tuple(newCSPTypedItem(fp));
+
+	var rhs = new CSP!ProcessID;
+	rhs.name = "";
+	rhs.parameterList = newCSP1Tuple(fs);
+
+	f.processID = lhs;
+	f.processExpression = rhs;
+	return f;	
+}
+
+operation newFunc2Arg1SetOut(fn, fp1, fp2, fs) : CSP!ProcessAssignment {
+	var f = new CSP!ProcessAssignment;
+	
+	var lhs = new CSP!ProcessID;
+	lhs.name = fn;
+	lhs.parameterList = newCSP2Tuple(newCSPTypedItem(fp1),newCSPTypedItem(fp2));
+
+	var rhs = new CSP!ProcessID;
+	rhs.name = "";
+	rhs.parameterList = newCSP1Tuple(fs);
+
+	f.processID = lhs;
+	f.processExpression = rhs;
+	return f;	
+}
+
+operation newFunc1Arg3SetOut(fn, fp, fs1, fs2, fs3) : CSP!ProcessAssignment {
+	var f = new CSP!ProcessAssignment;
+	
+	var lhs = new CSP!ProcessID;
+	lhs.name = fn;
+	lhs.parameterList = newCSP1Tuple(newCSPTypedItem(fp));
+
+	var rhs = new CSP!ProcessID;
+	rhs.name = "";
+	rhs.parameterList = newCSP3Tuple(fs1,fs2,fs3);
+
+	f.processID = lhs;
+	f.processExpression = rhs;
+	return f;	
+}
+
+operation newFunc1Arg4SetOut(fn, fp, fs1, fs2, fs3, fs4) : CSP!ProcessAssignment {
+	var f = new CSP!ProcessAssignment;
+	
+	var lhs = new CSP!ProcessID;
+	lhs.name = fn;
+	lhs.parameterList = newCSP1Tuple(newCSPTypedItem(fp));
+
+	var rhs = new CSP!ProcessID;
+	rhs.name = "";
+	rhs.parameterList = newCSP4Tuple(fs1,fs2,fs3,fs4);
+
+	f.processID = lhs;
+	f.processExpression = rhs;
+	return f;	
+}
+
+
+operation newCSP4Tuple(p1, p2, p3, p4) : CSP!ProcessParameterList {
+	var lst = new CSP!ProcessParameterList;
+	lst.item.add(p1);
+	lst.item.add(p2);
+	lst.item.add(p3);
+	lst.item.add(p4);
+	return lst;
+}
+
+operation newCSP3Tuple(p1, p2, p3) : CSP!ProcessParameterList {
+	var lst = new CSP!ProcessParameterList;
+	lst.item.add(p1);
+	lst.item.add(p2);
+	lst.item.add(p3);
+	return lst;
+}
+
+operation newCSP2Tuple(p1, p2) : CSP!ProcessParameterList {
+	var lst = new CSP!ProcessParameterList;
+	lst.item.add(p1);
+	lst.item.add(p2);
+	return lst;
+}
+
+operation newCSP1Tuple(p1) : CSP!ProcessParameterList {
+	var lst = new CSP!ProcessParameterList;
+	lst.item.add(p1);
+	return lst;
+}
+
+
+
+operation newCSPSetItem(name) : CSP!SETElement {
+	var se = new CSP!SETElement;
+	var sei = new CSP!TypedItem;
+	sei.name = name;
+	se.item = sei;
+	return se;
+}
+
+operation newCSPSetItemFromTypedItem(item) : CSP!SETElement {
+	var se = new CSP!SETElement;
+	se.item = item;
+	return se;
+}
+
+operation newCSPDatatypeItem(name) : CSP!DatatypeItem {
+	var d = new CSP!DatatypeItem;
+	d.name = name;
+	return d;
+}
+
+
+////////
+// returns the first unit found that is connected to the connector
+////////
+operation safetrack!Connector findFirstTrack(plan) : safetrack!Track {
+
+	for(t in self.track1s) {
+		if (t.pointReverse.isDefined()) t = t.pointReverse.normalTrack;
+		if (t.crossing2.isDefined()) t=t.crossing2.track1;
+		if (plan.tracks.includes(t)) return t;
+	}
+	for(t in self.track2s) {
+		if (t.pointReverse.isDefined()) t = t.pointReverse.normalTrack;
+		if (t.crossing2.isDefined()) t=t.crossing2.track1;
+		if (plan.tracks.includes(t)) return t;
+	}
+	return null;
+}
+
+operation safetrack!Connector findFirstDiffTrack(plan,track) : safetrack!Track {
+	if (track.pointReverse.isDefined()) track = track.pointReverse.normalTrack;
+	if (track.crossing2.isDefined()) track=track.crossing2.track1;
+	for(t in self.track1s) {
+		if (t.pointReverse.isDefined()) t = t.pointReverse.normalTrack;
+		if (t.crossing2.isDefined()) t=t.crossing2.track1;
+		if (t==track) continue;
+		if (plan.tracks.includes(t)) return t;
+	}
+	for(t in self.track2s) {
+		if (t==track) continue;
+		if (t.pointReverse.isDefined()) t = t.pointReverse.normalTrack;
+		if (t.crossing2.isDefined()) t=t.crossing2.track1;
+		if (plan.tracks.includes(t)) return t;
+	}
+	return null;
+}
+
+operation safetrack!Connector findFirstDiffTrack2(plan,track1,track2) : safetrack!Track {
+	if (track1.pointReverse.isDefined()) track1 = track1.pointReverse.normalTrack;
+	if (track1.crossing2.isDefined()) track1=track1.crossing2.track1;
+	if (track2.pointReverse.isDefined()) track2 = track2.pointReverse.normalTrack;
+	if (track2.crossing2.isDefined()) track2=track2.crossing2.track1;
+	for(t in self.track1s) {
+		if (t.pointReverse.isDefined()) t = t.pointReverse.normalTrack;
+		if (t.crossing2.isDefined()) t=t.crossing2.track1;
+		if (t==track1) continue;
+		if (t==track2) continue;
+		if (plan.tracks.includes(t)) return t;
+	}
+	for(t in self.track2s) {
+		if (t.pointReverse.isDefined()) t = t.pointReverse.normalTrack;
+		if (t.crossing2.isDefined()) t=t.crossing2.track1;
+		if (t==track1) continue;
+		if (t==track2) continue;
+		if (plan.tracks.includes(t)) return t;
+	}
+	return null;
+}
+
+operation safetrack!Connector includesEntrance(plan) : Boolean {
+
+	for(e in self.entrances) {
+		if (plan.entrances.includes(e)) return true;
+	}
+	return false;
+}
+
+operation safetrack!Connector includesExit(plan) : Boolean {
+
+	for(e in self.exits) {
+		if (plan.exits.includes(e)) return true;
+	}
+	return false;
+}
+
+operation safetrack!Track includesSignal(plan) : Boolean {
+
+	for(e in self.signals) {
+		if (plan.signals.includes(e)) return true;
+	}
+	return false;
+}
+
+operation safetrack!Track getName() : String {
+		var tname = self.name;
+		if (self.pointReverse.isDefined())
+			tname = self.pointReverse.normalTrack.name;
+		if (self.crossing2.isDefined()) 
+			tname = self.crossing2.track1.name;
+		return tname;
+}

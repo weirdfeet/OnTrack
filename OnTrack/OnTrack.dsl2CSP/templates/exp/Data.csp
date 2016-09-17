@@ -1,0 +1,165 @@
+[%
+var cspScript1 : CSP!CSPScript;
+cspScript1 := CSP!CSPScript.all().at(0);
+%]
+
+-- generating datatypes
+[%
+for (dt in cspScript1.dataType)
+{
+	if( dt.isDefined() ) --  and not(dt.name.isNativeCSPType()))
+	{
+		out.println( dt.write(0) );
+		--out.println();
+	}
+}
+%]
+-- end generating datatypes
+
+--generating sets
+[%
+for (st in cspScript1.set)
+{
+  if (st.name == "") continue;
+  out.println( st.write() );
+}
+%]
+-- end generating sets
+
+-- generating functions
+[%
+for (fn in cspScript1.process)
+{
+	out.println( fn.write() );
+}
+%]
+-- end generating function
+releaseTable(_,_) = {}
+
+
+
+
+
+[%
+
+@cached
+operation Integer indent() : String {
+	var indentation : String := '';
+	var i: Integer := 0;
+	while(i < self) {
+		indentation := indentation + '';
+		i := i + 1;
+	}
+	return indentation;
+}
+
+operation DatatypeItemList write(i : Integer) : String
+{
+	var indt : String := i.indent();
+	var toReturn : String := '';
+
+	if(self.size > 0)
+	{
+		var ppli : DatatypeItem := self.firstItem;
+		toReturn := indt;
+		var sep : String := '';
+
+		while(ppli.isDefined())
+		{
+			toReturn := toReturn + sep + ppli.name;
+			ppli := ppli.preceeds;
+			sep := ' | ';
+			--ppli.name.println('<><><><<><><><><><>');
+		}
+
+	}
+	return toReturn;
+}
+
+operation Datatype write(i : Integer) : String
+{
+	var indt : String := i.indent();
+	var nm : String := '';
+
+	if(self.typeName.isDefined() and self.items.size() > 0)
+	{
+		nm := indt + 'datatype ' + self.typeName + ' = ';
+		var first = true;
+	  for(t in self.items) {
+			if (not first) nm := nm + " | ";
+			else first = false;
+		  nm := nm + t.name;
+		}
+	}
+
+	return nm;
+}
+
+operation OrderedSet write() : String {
+	var ret := "(";
+  var first  = true;
+	for(i in self) {
+    if (not first) { ret := ret + ", "; first := false;}
+		else {first := false;}
+    ret := ret + i.write();
+	}
+  return ret + ")";
+}
+
+operation TypedItem write() : String {
+  return self.name;
+}
+
+operation SET write() : String
+{
+	var toReturn : String;
+	if(not(self.name = ''))	toReturn:= self.name+' = ';
+
+	toReturn := toReturn + '{ ';
+	var sep : String := '';
+
+	for(el in self.item)
+	{
+		if(el.item.isDefined()) -- mutually exclusive: either is a typeditem or event
+		{
+			toReturn := toReturn + sep + el.item.write() ;
+		}
+		else
+		{
+			toReturn := toReturn + sep + el.event.writeEvent(true);
+		}
+		sep := ', ';
+	}
+
+	toReturn := toReturn + ' }';
+
+	return toReturn;
+}
+
+operation ProcessParameterList write() : String {
+	var ret := "(";
+  var sep := "";
+	for(p in self.item) {
+		ret := ret + sep + p.write();
+	  sep := ", ";
+	}
+	return ret + ")";
+}
+
+operation ProcessID write() : String {
+	var ret := self.name;
+	if (self.parameterList.isDefined()) {
+		ret := ret + self.parameterList.write();
+	}
+  return ret;
+}
+
+operation ProcessAssignment write() : String
+{
+	var ret := "p=e";
+	ret := self.processID.write() + " = " + self.processExpression.write();
+	return ret;
+}
+
+
+%]

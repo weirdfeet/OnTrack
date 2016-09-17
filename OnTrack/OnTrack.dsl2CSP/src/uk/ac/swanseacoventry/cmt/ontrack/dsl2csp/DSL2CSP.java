@@ -8,6 +8,7 @@ import java.io.InputStreamReader;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashSet;
 import java.util.List;
 
 import org.apache.velocity.VelocityContext;
@@ -21,6 +22,7 @@ import org.eclipse.epsilon.emc.emf.EmfModel;
 
 import uk.ac.swanseacoventry.cmt.ontrack.SubTrackPlan;
 import uk.ac.swanseacoventry.cmt.ontrack.Track;
+import uk.ac.swanseacoventry.cmt.ontrack.TrackPlan;
 import uk.ac.swanseacoventry.cmt.ontrack.dsl2m.TrackSchemeEGL;
 import uk.ac.swanseacoventry.cmt.ontrack.dsl2m.TrackSchemeETL;
 import uk.ac.swanseacoventry.cmt.ontrack.dsl2m.TrackSchemeEpsilon;
@@ -40,8 +42,8 @@ public class DSL2CSP {
 	private final String eglOutputFolder;
 	
 	// Epsilon Directories
-	private static final String ETL_SOURCE_DIR = "platform:/plugin/OnTrack.dsl2CSP/etl/";
-	private static final String TEMPLATES_DIR = "platform:/plugin/OnTrack.dsl2CSP/templates/";
+	private String ETL_SOURCE_DIR = "platform:/plugin/OnTrack.dsl2CSP/etl/";
+	private String TEMPLATES_DIR = "platform:/plugin/OnTrack.dsl2CSP/templates/";
 	private static final String META_MODELS_DIR = "platform:/plugin/OnTrack.dsl2CSP/model/"; // All model files are assumed to be in this folder
 
 	//private String EGL_OUTPUT_DIR = "platform:/plugin/SafeTrack.diagram/output/egl/";
@@ -95,8 +97,37 @@ public class DSL2CSP {
 	 * @param model the input model from the graphical editor
 	 */
 	SubTrackPlan subplan;
-	public DSL2CSP(String model, SubTrackPlan sub) {
+	TrackPlan trackplan;
+	boolean experimental;
+	boolean overlap;
+	String SafetyAssertions;
+	public DSL2CSP(String model, TrackPlan tp, SubTrackPlan sub, boolean ovl, boolean exp) {
 		subplan = sub;
+		experimental = exp;
+		overlap = ovl;
+		trackplan = tp;
+		
+		if (exp) {
+			ETL_SOURCE_DIR += "exp/";
+			TEMPLATES_DIR += "exp/";
+		}
+		
+		if (experimental){
+			SafetyAssertions = "";
+			HashSet<Track> ts = new HashSet<Track>();
+			ts.addAll(subplan==null ? trackplan.getTracks() : subplan.getCriticals());
+			for(Track t : ts){
+				if (t.getPointReverse()!=null) continue;
+				if (t.getCrossing2()!=null) continue;
+				SafetyAssertions += "assert NoCollision(" + t.getName() + ") [T= System \\ diff(Events,NoCollisionAlpha(" + t.getName() + "))\n";
+			}
+			for(Track t : ts){
+				if (t.getPointNormal()==null) continue;
+				SafetyAssertions += "assert NoDerailment(" + t.getPointNormal().getName() + ") [T= System \\ diff(Events,NoDerailmentAlpha(" + t.getPointNormal().getName() + "))\n";
+				SafetyAssertions += "assert NoRunThru(" + t.getPointNormal().getName() + ") [T= System \\ diff(Events,NoRunThruAlpha(" + t.getPointNormal().getName() + "))\n";
+			}
+		}
+
 		
 		// create input model
 		SAFETRACK_MODEL = model;
@@ -157,6 +188,10 @@ public class DSL2CSP {
 		context.put("date", date.toString());
 		context.put("model", SAFETRACK_MODEL);
 		context.put("version", VERSION);
+		if (experimental){
+			context.put("overlap", overlap ? "true" : "false");
+			context.put("safetychecks", SafetyAssertions);
+		}
 		
 		try {
 
