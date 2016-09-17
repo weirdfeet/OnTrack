@@ -3,6 +3,7 @@
 package uk.ac.swanseacoventry.cmt.ontrack.provider;
 
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
@@ -26,6 +27,7 @@ import org.eclipse.emf.edit.provider.ViewerNotification;
 import uk.ac.swanseacoventry.cmt.ontrack.OntrackFactory;
 import uk.ac.swanseacoventry.cmt.ontrack.OntrackPackage;
 import uk.ac.swanseacoventry.cmt.ontrack.SubTrackPlan;
+import uk.ac.swanseacoventry.cmt.ontrack.Track;
 
 /**
  * This is the item provider adapter for a {@link uk.ac.swanseacoventry.cmt.ontrack.SubTrackPlan} object.
@@ -276,11 +278,19 @@ public class SubTrackPlanItemProvider
 	 * This returns the label text for the adapted class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	@Override
 	public String getText(Object object) {
-		return getString("_UI_SubTrackPlan_type");
+		if (!(object instanceof SubTrackPlan))
+			return getString("_UI_SubTrackPlan_type");
+		else {
+			ArrayList<String> cs = new ArrayList<String>();
+			for(Track t : ((SubTrackPlan)object).getCriticals())
+				cs.add(t.getName());
+			return getString("_UI_SubTrackPlan_type") + " " + String.join(" ", cs);
+		}
+			
 	}
 	
 

@@ -55,8 +55,8 @@ public class CSPBTableViewer extends ViewPart {
 	private Map<SubTrackPlan,String> modelPaths = new HashMap<SubTrackPlan,String>();
 	private String fullModelPath = "";
 
-	// private final String PATH_TO_PROB = "/Applications/ProB/prob"; // on mac, temporary, to be placed in eclipse preferences
-	private final String PATH_TO_PROB = "C:\\Program Files (x86)\\ProB\\ProBWin.exe"; // on win, temporary, to be placed in eclipse preferences
+	private final String PATH_TO_PROB = "/Applications/ProB/prob"; // on mac, temporary, to be placed in eclipse preferences
+	// private final String PATH_TO_PROB = "C:\\Program Files (x86)\\ProB\\ProBWin.exe"; // on win, temporary, to be placed in eclipse preferences
 
 	
 	public CSPBTableViewer() {

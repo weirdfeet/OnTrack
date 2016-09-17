@@ -381,7 +381,7 @@
     </children>
     <styles xmi:type="notation:FontStyle" xmi:id="_L2MVUXmrEeaG4670VEbJBA" fontName=".SF NS Text"/>
     <element xmi:type="uk.ac.swanseacoventry.cmt.ontrack:Track" href="Swansea.ontrack#//@tracks.3"/>
-    <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_L2MVUnmrEeaG4670VEbJBA" points="[-3, -2, 105, 70]$[-45, -6, 63, 66]$[-105, -72, 3, 0]"/>
+    <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_L2MVUnmrEeaG4670VEbJBA" points="[-3, -1, 105, 62]$[-54, 0, 54, 63]$[-110, -58, -2, 5]"/>
   </edges>
   <edges xmi:type="notation:Connector" xmi:id="_L2R04HmrEeaG4670VEbJBA" type="4001" source="_L2MVUHmrEeaG4670VEbJBA" target="_L2Iq8HmrEeaG4670VEbJBA">
     <children xmi:type="notation:DecorationNode" xmi:id="_L2Sb8HmrEeaG4670VEbJBA" type="6001">
@@ -427,7 +427,7 @@
     </children>
     <styles xmi:type="notation:FontStyle" xmi:id="_NaQJEXmrEeaG4670VEbJBA" fontName=".SF NS Text"/>
     <element xmi:type="uk.ac.swanseacoventry.cmt.ontrack:Track" href="Swansea.ontrack#//@tracks.7"/>
-    <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_NaQJEnmrEeaG4670VEbJBA" points="[3, -1, -78, -37]$[58, -1, -23, -37]$[78, 35, -3, -1]"/>
+    <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_NaQJEnmrEeaG4670VEbJBA" points="[3, 0, -78, -45]$[58, 0, -23, -45]$[78, 45, -3, 0]"/>
     <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_xYJ-AHmvEeaG4670VEbJBA" id="(0.4,0.9)"/>
   </edges>
   <edges xmi:type="notation:Connector" xmi:id="_NaSlUHmrEeaG4670VEbJBA" type="4001" source="_NaQJEHmrEeaG4670VEbJBA" target="_NaMesHmrEeaG4670VEbJBA">
@@ -454,7 +454,7 @@
     </children>
     <styles xmi:type="notation:FontStyle" xmi:id="_N01zUXmrEeaG4670VEbJBA" fontName=".SF NS Text"/>
     <element xmi:type="uk.ac.swanseacoventry.cmt.ontrack:Track" href="Swansea.ontrack#//@tracks.9"/>
-    <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_N01zUnmrEeaG4670VEbJBA" points="[-3, -1, 87, -37]$[-59, -1, 31, -37]$[-87, 35, 3, -1]"/>
+    <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_N01zUnmrEeaG4670VEbJBA" points="[-3, 0, 87, -45]$[-59, 0, 31, -45]$[-87, 45, 3, 0]"/>
   </edges>
   <edges xmi:type="notation:Connector" xmi:id="_N03ogHmrEeaG4670VEbJBA" type="4001" source="_N01zUHmrEeaG4670VEbJBA" target="_N0ywAHmrEeaG4670VEbJBA">
     <children xmi:type="notation:DecorationNode" xmi:id="_N04PkHmrEeaG4670VEbJBA" type="6001">
@@ -542,7 +542,7 @@
     </children>
     <styles xmi:type="notation:FontStyle" xmi:id="_Vm2XEXmrEeaG4670VEbJBA" fontName=".SF NS Text"/>
     <element xmi:type="uk.ac.swanseacoventry.cmt.ontrack:Track" href="Swansea.ontrack#//@tracks.17"/>
-    <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_Vm2XEnmrEeaG4670VEbJBA" points="[-3, 3, 96, -78]$[-50, -1, 49, -82]$[-96, 77, 3, -4]"/>
+    <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_Vm2XEnmrEeaG4670VEbJBA" points="[-3, -1, 114, -73]$[-59, -1, 58, -73]$[-114, 71, 3, -1]"/>
     <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_dYjxIHmxEeaEBY-JM63kxA" id="(0.8,0.6)"/>
   </edges>
   <edges xmi:type="notation:Connector" xmi:id="_Vm4MQHmrEeaG4670VEbJBA" type="4001" source="_Vm2XEHmrEeaG4670VEbJBA" target="_Vmz60HmrEeaG4670VEbJBA">
@@ -571,7 +571,7 @@
     </children>
     <styles xmi:type="notation:FontStyle" xmi:id="_V_v_QXmrEeaG4670VEbJBA" fontName=".SF NS Text"/>
     <element xmi:type="uk.ac.swanseacoventry.cmt.ontrack:Track" href="Swansea.ontrack#//@tracks.19"/>
-    <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_V_v_QnmrEeaG4670VEbJBA" points="[3, -2, -78, 61]$[54, -1, -27, 62]$[82, -58, 1, 5]"/>
+    <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_V_v_QnmrEeaG4670VEbJBA" points="[3, -1, -78, 62]$[54, 0, -27, 63]$[84, -61, 3, 2]"/>
   </edges>
   <edges xmi:type="notation:Connector" xmi:id="_V_2F4HmrEeaG4670VEbJBA" type="4001" source="_V_v_QHmrEeaG4670VEbJBA" target="_V_tjAHmrEeaG4670VEbJBA">
     <children xmi:type="notation:DecorationNode" xmi:id="_V_2F43mrEeaG4670VEbJBA" type="6001">
@@ -597,7 +597,7 @@
     </children>
     <styles xmi:type="notation:FontStyle" xmi:id="_WYE_sXmrEeaG4670VEbJBA" fontName=".SF NS Text"/>
     <element xmi:type="uk.ac.swanseacoventry.cmt.ontrack:Track" href="Swansea.ontrack#//@tracks.21"/>
-    <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_WYE_snmrEeaG4670VEbJBA" points="[-3, -1, 87, 62]$[-63, -1, 27, 62]$[-93, -58, -3, 5]"/>
+    <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_WYE_snmrEeaG4670VEbJBA" points="[-3, -1, 87, 62]$[-63, 0, 27, 63]$[-93, -60, -3, 3]"/>
   </edges>
   <edges xmi:type="notation:Connector" xmi:id="_WYG04HmrEeaG4670VEbJBA" type="4001" source="_WYE_sHmrEeaG4670VEbJBA" target="_WYDKgHmrEeaG4670VEbJBA">
     <children xmi:type="notation:DecorationNode" xmi:id="_WYG043mrEeaG4670VEbJBA" type="6001">

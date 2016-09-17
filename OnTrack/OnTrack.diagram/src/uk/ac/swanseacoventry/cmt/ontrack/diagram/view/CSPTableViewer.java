@@ -1,12 +1,10 @@
 package uk.ac.swanseacoventry.cmt.ontrack.diagram.view;
 
-import static java.nio.file.StandardCopyOption.REPLACE_EXISTING;
 
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.InputStreamReader;
 import java.nio.file.FileSystems;
-import java.nio.file.Files;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
@@ -47,7 +45,6 @@ import uk.ac.swanseacoventry.cmt.ontrack.diagram.custom.Util;
 import uk.ac.swanseacoventry.cmt.ontrack.diagram.edit.commands.custom.TrackPlanSelectSubCommand;
 import uk.ac.swanseacoventry.cmt.ontrack.diagram.view.listeners.PartListener2Impl;
 import uk.ac.swanseacoventry.cmt.ontrack.dsl2csp.DSL2CSP;
-import uk.ac.swanseacoventry.cmt.ontrack.dsl2cspb.DSL2CSPB;
 public class CSPTableViewer extends ViewPart {
 	private Table table;
 	private Listener focusListener;
@@ -56,8 +53,8 @@ public class CSPTableViewer extends ViewPart {
 	private Map<SubTrackPlan,String> modelPaths = new HashMap<SubTrackPlan,String>();
 	private String fullModelPath = "";
 
-	// private final String PATH_TO_FDR3 = "/Applications/FDR3.app/Contents/MacOS/fdr3"; // for mac
-	private final String PATH_TO_FDR3 = "C:\\Program Files\\FDR\\bin\\fdr3.exe"; // for windows
+	private final String PATH_TO_FDR3 = "/Applications/FDR3.app/Contents/MacOS/fdr3"; // for mac
+	// private final String PATH_TO_FDR3 = "C:\\Program Files\\FDR\\bin\\fdr3.exe"; // for windows
 	
 	public CSPTableViewer() {
 		super();

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<uk.ac.swanseacoventry.cmt.ontrack:TrackPlan xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:uk.ac.swanseacoventry.cmt.ontrack="http:///uk/ac/swanseacoventry/cmt/ontrack.ecore" selectedSubTrackPlan="//@subTrackPlans.1">
+<uk.ac.swanseacoventry.cmt.ontrack:TrackPlan xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:uk.ac.swanseacoventry.cmt.ontrack="http:///uk/ac/swanseacoventry/cmt/ontrack.ecore">
   <tracks name="TC1" c1="//@connectors.0" c2="//@connectors.1" signals="//@signals.0 //@signals.5">
     <directedTracks track="//@tracks.0" connector="//@connectors.0"/>
     <directedTracks track="//@tracks.0" connector="//@connectors.1"/>
