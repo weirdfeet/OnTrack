@@ -114,20 +114,25 @@ public class DSL2CSP {
 		
 		if (experimental){
 			SafetyAssertions = "";
-			HashSet<Track> ts = new HashSet<Track>();
-			ts.addAll(subplan==null ? trackplan.getTracks() : subplan.getCriticals());
-			for(Track t : ts){
-				if (t.getPointReverse()!=null) continue;
-				if (t.getCrossing2()!=null) continue;
-				SafetyAssertions += "assert NoCollision(" + t.getName() + ") [T= System \\ diff(Events,NoCollisionAlpha(" + t.getName() + "))\n";
-			}
-			for(Track t : ts){
-				if (t.getPointNormal()==null) continue;
-				SafetyAssertions += "assert NoDerailment(" + t.getPointNormal().getName() + ") [T= System \\ diff(Events,NoDerailmentAlpha(" + t.getPointNormal().getName() + "))\n";
-				SafetyAssertions += "assert NoRunThru(" + t.getPointNormal().getName() + ") [T= System \\ diff(Events,NoRunThruAlpha(" + t.getPointNormal().getName() + "))\n";
+			if (subplan==null) {
+				SafetyAssertions += "assert NoCollision [T= System \\ diff(Events,NoCollisionAlpha)\n";
+				SafetyAssertions += "assert NoDerailment [T= System \\ diff(Events,NoDerailmentAlpha)\n";
+				SafetyAssertions += "assert NoRunThru [T= System \\ diff(Events,NoRunThruAlpha)	\n";			
+			} else {
+				HashSet<Track> ts = new HashSet<Track>();
+				ts.addAll(subplan.getCriticals());
+				for(Track t : ts){
+					if (t.getPointReverse()!=null) continue;
+					if (t.getCrossing2()!=null) continue;
+					SafetyAssertions += "assert NoCollisionTrack(" + t.getName() + ") [T= System \\ diff(Events,NoCollisionTrackAlpha(" + t.getName() + "))\n";
+				}
+				for(Track t : ts){
+					if (t.getPointNormal()==null) continue;
+					SafetyAssertions += "assert NoDerailmentPoint(" + t.getPointNormal().getName() + ") [T= System \\ diff(Events,NoDerailmentPointAlpha(" + t.getPointNormal().getName() + "))\n";
+					SafetyAssertions += "assert NoRunThruPoint(" + t.getPointNormal().getName() + ") [T= System \\ diff(Events,NoRunThruPointAlpha(" + t.getPointNormal().getName() + "))\n";
+				}
 			}
 		}
-
 		
 		// create input model
 		SAFETRACK_MODEL = model;
@@ -147,7 +152,10 @@ public class DSL2CSP {
 		outputPath = outputPath.append(sdf.format(date));
 		ret = new File(outputPath.toOSString()).mkdir();
 
-		outputPath = outputPath.append("Full");
+		if (subplan==null)
+			outputPath = outputPath.append("Full");
+		else
+			outputPath = outputPath.append(getSubFolderName(subplan.getCriticals()));
 		ret = new File(outputPath.toOSString()).mkdir();
 
 		outputFolder = outputPath.toOSString();

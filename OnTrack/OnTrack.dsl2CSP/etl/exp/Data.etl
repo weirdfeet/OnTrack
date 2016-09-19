@@ -51,6 +51,8 @@ pre {
 	var EntryRouteSignal = newCSPSet("EntryRouteSignal");
 	
 	var Terminal = newCSPSet("Terminal");
+	
+	var Critical = newCSPSet("Critical");
 }
 
 //////// Transformation Rules ////////
@@ -100,6 +102,14 @@ to d : CSP!DatatypeItem {
 		TrackConfig.item.add(newCSP3Tuple(newCSPTypedItem(u.name),
 			newCSPTypedItem(t1.name),
 			newCSPTypedItem(t2.name)));
+	}
+	
+	if (plan==trackplan) {
+		Critical.item.add(newCSPSetItem(u.name));
+	}
+	else {
+		if (plan.criticals.includes(u))
+			Critical.item.add(newCSPSetItem(u.name));
 	}
 }
 
