@@ -297,27 +297,27 @@
   </children>
   <children xmi:type="notation:Shape" xmi:id="_6UswUHmxEeaEBY-JM63kxA" type="2005" fontName=".SF NS Text">
     <element xmi:type="uk.ac.swanseacoventry.cmt.ontrack:Terminal" href="Swansea.ontrack#//@terminals.0"/>
-    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_6UswUXmxEeaEBY-JM63kxA" x="232" y="183"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_6UswUXmxEeaEBY-JM63kxA" x="234" y="189"/>
   </children>
   <children xmi:type="notation:Shape" xmi:id="_6ocLsHmxEeaEBY-JM63kxA" type="2005" fontName=".SF NS Text">
     <element xmi:type="uk.ac.swanseacoventry.cmt.ontrack:Terminal" href="Swansea.ontrack#//@terminals.1"/>
-    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_6ocLsXmxEeaEBY-JM63kxA" x="221" y="258"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_6ocLsXmxEeaEBY-JM63kxA" x="234" y="261"/>
   </children>
   <children xmi:type="notation:Shape" xmi:id="_64h2IHmxEeaEBY-JM63kxA" type="2005" fontName=".SF NS Text">
     <element xmi:type="uk.ac.swanseacoventry.cmt.ontrack:Terminal" href="Swansea.ontrack#//@terminals.2"/>
-    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_64h2IXmxEeaEBY-JM63kxA" x="243" y="479"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_64h2IXmxEeaEBY-JM63kxA" x="243" y="486"/>
   </children>
   <children xmi:type="notation:Shape" xmi:id="_7YLmkHmxEeaEBY-JM63kxA" type="2005" fontName=".SF NS Text">
     <element xmi:type="uk.ac.swanseacoventry.cmt.ontrack:Terminal" href="Swansea.ontrack#//@terminals.3"/>
-    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_7YLmkXmxEeaEBY-JM63kxA" x="250" y="558"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_7YLmkXmxEeaEBY-JM63kxA" x="243" y="567"/>
   </children>
   <children xmi:type="notation:Shape" xmi:id="_8mGLMHmxEeaEBY-JM63kxA" type="2003" fontName=".SF NS Text">
     <element xmi:type="uk.ac.swanseacoventry.cmt.ontrack:Entrance" href="Swansea.ontrack#//@entrances.0"/>
-    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_8mGLMXmxEeaEBY-JM63kxA" x="1071" y="225"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_8mGLMXmxEeaEBY-JM63kxA" x="1062" y="252"/>
   </children>
   <children xmi:type="notation:Shape" xmi:id="_90FoUHmxEeaEBY-JM63kxA" type="2004" fontName=".SF NS Text">
     <element xmi:type="uk.ac.swanseacoventry.cmt.ontrack:Exit" href="Swansea.ontrack#//@exits.0"/>
-    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_90FoUXmxEeaEBY-JM63kxA" x="1071" y="450"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_90FoUXmxEeaEBY-JM63kxA" x="1062" y="486"/>
   </children>
   <children xmi:type="notation:Shape" xmi:id="_9Y5lEHpJEeaa7LKZMd4eLA" type="2002" fontName=".SF NS Text">
     <children xmi:type="notation:DecorationNode" xmi:id="_9Y6MIHpJEeaa7LKZMd4eLA" type="5002">

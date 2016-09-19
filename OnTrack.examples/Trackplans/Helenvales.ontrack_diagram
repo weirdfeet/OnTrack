@@ -451,7 +451,7 @@
     </children>
     <styles xmi:type="notation:FontStyle" xmi:id="_vQMnMHzJEea21PGGd5jcAw" fontName=".SF NS Text"/>
     <element xmi:type="uk.ac.swanseacoventry.cmt.ontrack:Track" href="Helenvales.ontrack#//@tracks.3"/>
-    <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_vQMnMXzJEea21PGGd5jcAw" points="[-3, -1, 105, 62]$[-54, 0, 54, 63]$[-105, -63, 3, 0]"/>
+    <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_vQMnMXzJEea21PGGd5jcAw" points="[-4, -2, 104, 62]$[-54, 0, 54, 64]$[-104, -64, 4, 0]"/>
     <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_pwnjoHzKEea21PGGd5jcAw" id="(0.8,0.7)"/>
   </edges>
   <edges xmi:type="notation:Connector" xmi:id="_vQRfsHzJEea21PGGd5jcAw" type="4001" source="_vQMAIHzJEea21PGGd5jcAw" target="_vQI80HzJEea21PGGd5jcAw">
@@ -559,7 +559,7 @@
     </children>
     <styles xmi:type="notation:FontStyle" xmi:id="_AAJ9YXzKEea21PGGd5jcAw" fontName=".SF NS Text"/>
     <element xmi:type="uk.ac.swanseacoventry.cmt.ontrack:Track" href="Helenvales.ontrack#//@tracks.14"/>
-    <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_AAJ9YnzKEea21PGGd5jcAw" points="[3, 0, -105, -63]$[54, 0, -54, -63]$[105, 61, -3, -2]"/>
+    <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_AAJ9YnzKEea21PGGd5jcAw" points="[4, -2, -104, -64]$[55, 0, -53, -62]$[106, 61, -2, -1]"/>
     <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_1aV_0HzKEea21PGGd5jcAw" id="(0.0,0.3)"/>
   </edges>
   <edges xmi:type="notation:Connector" xmi:id="_AALykHzKEea21PGGd5jcAw" type="4001" source="_AAJ9YHzKEea21PGGd5jcAw" target="_AAHhIHzKEea21PGGd5jcAw">
@@ -603,7 +603,7 @@
     </children>
     <styles xmi:type="notation:FontStyle" xmi:id="_CQfBQXzKEea21PGGd5jcAw" fontName=".SF NS Text"/>
     <element xmi:type="uk.ac.swanseacoventry.cmt.ontrack:Track" href="Helenvales.ontrack#//@tracks.18"/>
-    <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_CQfBQnzKEea21PGGd5jcAw" points="[-3, 0, 105, -63]$[-54, 0, 54, -63]$[-105, 61, 3, -2]"/>
+    <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_CQfBQnzKEea21PGGd5jcAw" points="[-4, -2, 104, -64]$[-54, 0, 54, -62]$[-104, 62, 4, 0]"/>
     <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_9Dx2YHzKEea21PGGd5jcAw" id="(0.8,0.6)"/>
   </edges>
   <edges xmi:type="notation:Connector" xmi:id="_CQg2cHzKEea21PGGd5jcAw" type="4001" source="_CQfBQHzKEea21PGGd5jcAw" target="_CQdMEHzKEea21PGGd5jcAw">
@@ -695,7 +695,7 @@
     </children>
     <styles xmi:type="notation:FontStyle" xmi:id="_NMGaQXzKEea21PGGd5jcAw" fontName=".SF NS Text"/>
     <element xmi:type="uk.ac.swanseacoventry.cmt.ontrack:Track" href="Helenvales.ontrack#//@tracks.27"/>
-    <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_NMGaQnzKEea21PGGd5jcAw" points="[3, -1, -101, 62]$[52, 0, -52, 63]$[101, -58, -3, 5]"/>
+    <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_NMGaQnzKEea21PGGd5jcAw" points="[4, -2, -100, 62]$[53, 0, -51, 64]$[107, -58, 3, 6]"/>
     <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_OotFsHzLEea21PGGd5jcAw" id="(0.0,0.6)"/>
   </edges>
   <edges xmi:type="notation:Connector" xmi:id="_NMHoYHzKEea21PGGd5jcAw" type="4001" source="_NMGaQHzKEea21PGGd5jcAw" target="_NMD-AHzKEea21PGGd5jcAw">
