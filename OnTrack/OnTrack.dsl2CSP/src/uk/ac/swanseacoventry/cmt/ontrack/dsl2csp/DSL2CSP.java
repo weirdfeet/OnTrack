@@ -109,7 +109,7 @@ public class DSL2CSP {
 		
 		if (exp) {
 			ETL_SOURCE_DIR += "exp/";
-			TEMPLATES_DIR += "exp/";
+			TEMPLATES_DIR += "exp2/";
 		}
 		
 		if (experimental){

@@ -7,14 +7,14 @@ RedSignalBehave(id) = -- setRoute, cancelRoute, move, hangMove
     else
       RedSignalBehave(id))
   []
-  (not(member(id,EntryRouteSignal)) and overlapped & hangMove?tID.signalAt(id) -> RedSignalBehave(id))
+  (not(member(id,EntryRouteSignal)) and overlapped & hangMove.signalAt(id) -> RedSignalBehave(id))
   []
   ([] rID : RouteID @ signal(rID)!=id & cancelRoute.rID -> RedSignalBehave(id))
 
 GreenSignalBehave(id) = -- setRoute, cancelRoute, move, hangMove
   ([] rID : RouteID @ signal(rID)!=id & setRoute.rID -> GreenSignalBehave(id))
   []
-  (move?tID.signalAt(id) -> RedSignalBehave(id))
+  (move.signalAt(id) -> RedSignalBehave(id))
   []
   ([] rID : RouteID @
     cancelRoute.rID ->
@@ -24,4 +24,4 @@ GreenSignalBehave(id) = -- setRoute, cancelRoute, move, hangMove
       GreenSignalBehave(id))
 
 Signals = [| {|setRoute, cancelRoute|} |] id : SignalID @ RedSignalBehave(id)
-SignalsAlpha = union({|setRoute,cancelRoute|},Union({{hangMove.tID.signalAt(id), move.tID.signalAt(id)} | tID <- TrainID, id : SignalID }))
+SignalsAlpha = union({|setRoute,cancelRoute|},Union({{hangMove.signalAt(id), move.signalAt(id)} | id : SignalID }))

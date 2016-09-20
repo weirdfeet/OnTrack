@@ -1,0 +1,25 @@
+overlapped=$overlap
+
+include "Data.csp"
+include "Util.csp"
+include "RailEvent.csp"
+include "Point.csp"
+include "Signal.csp"
+include "Track.csp"
+include "Train.csp"
+
+PointsAndSignalsAlpha = union(PointsAlpha, SignalsAlpha)
+PointsAndSignals = Points [ PointsAlpha || SignalsAlpha ] Signals
+
+EquipmentAlpha = union(PointsAndSignalsAlpha,TracksAlpha)
+Equipment = PointsAndSignals [ PointsAndSignalsAlpha || TracksAlpha ] Tracks
+
+include "Safety.csp"
+
+TrainsAndCollisionMon = Trains [ TrainsAlpha || CollisionMonAlpha ] CollisionMon
+TrainsAndCollisionMonAlpha = union(TrainsAlpha,CollisionMonAlpha)
+
+SystemAlpha = union(EquipmentAlpha,TrainsAlpha)
+System = Equipment [ EquipmentAlpha || TrainsAndCollisionMonAlpha ] TrainsAndCollisionMon
+
+assert Safe [T= System

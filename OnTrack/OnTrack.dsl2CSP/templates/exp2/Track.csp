@@ -9,7 +9,9 @@ UnlockedTrackRouteBehave(id,rID) =
   ([] rID':RouteID @ rID'!=rID or not(member(id, directionTableDomain(rID))) &
     cancelRoute.rID' -> UnlockedTrackRouteBehave(id,rID))
   []
-  (move?tID.id?t -> UnlockedTrackRouteBehave(id,rID))
+  (move.id?t -> UnlockedTrackRouteBehave(id,rID))
+  []
+  (hangMove.id?t -> UnlockedTrackRouteBehave(id,rID))
 
 -- lock : lock direction to track
 LockedTrackRouteBehave(id,rID,lock) =
@@ -22,9 +24,11 @@ LockedTrackRouteBehave(id,rID,lock) =
   ([]rID' : RouteID @ not(member(id, directionTableDomain(rID'))) or member(lock,directionTable(rID',id)) &
     setRoute.rID' -> LockedTrackRouteBehave(id,rID,lock))
   []
-  (move?tID.id?t -> UnlockedTrackRouteBehave(id,rID))
+  (move.id?t -> UnlockedTrackRouteBehave(id,rID))
+  []
+  (hangMove.id?t -> UnlockedTrackRouteBehave(id,rID))
 
-TrackBehave(id) = [| {| move.tID.id, setRoute, cancelRoute | tID <- TrainID |} |] rID : RouteID @ UnlockedTrackRouteBehave(id,rID)
+TrackBehave(id) = [| {| move.id, hangMove.id, setRoute, cancelRoute |} |] rID : RouteID @ UnlockedTrackRouteBehave(id,rID)
 
 Tracks = [| {| setRoute, cancelRoute|} |] id : TrackID @ TrackBehave(id)
-TracksAlpha = {| setRoute, cancelRoute, move |}
+TracksAlpha = {| setRoute, cancelRoute, move, hangMove |}

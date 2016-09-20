@@ -1,0 +1,21 @@
+OccupiedTracks(Occ) =
+  (card(Occ)<2 & [] t : diff(TrackID,{OFFTRACK}) @ [] m : {move.OFFTRACK.t,hangMove.OFFTRACK.t} @ m -> 
+    if member(t,Occ) then
+      collided.t -> STOP 
+    else 
+      OccupiedTracks(union(Occ,{t})))
+  []
+  ([] t : Occ, t' : diff(Occ,{t}) @ [] m : {move.t.t',hangMove.t.t'} @ m -> collided.t' -> STOP)
+  []
+  ([] t : Occ, t' : diff(TrackID,Occ) @ [] m : {move.t.t',hangMove.t.t'} @ m -> 
+  	if t'==OFFTRACK then 
+  	  OccupiedTracks(diff(Occ,{t}))
+  	else 
+  	  OccupiedTracks(union(diff(Occ,{t}),{t'})))
+
+CollisionMon = OccupiedTracks({})
+CollisionMonAlpha = {| move, hangMove, collided |}
+
+ErrorEvent = union({|ranthru.p,derailed.p | p <- PointID, member(pointAt(p),Critical) |}, { collided.t | t <- Critical})
+
+Safe = ([] e : diff(Events,ErrorEvent) @ e -> Safe)
