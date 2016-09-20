@@ -188,7 +188,7 @@
   </children>
   <children xmi:type="notation:Shape" xmi:id="_T4Lj0HpxEeaXI9xUAf3lBA" type="2003" fontName=".SF NS Text">
     <element xmi:type="uk.ac.swanseacoventry.cmt.ontrack:Entrance" href="Twist.ontrack#//@entrances.0"/>
-    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_T4Lj0XpxEeaXI9xUAf3lBA" x="146" y="214"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_T4Lj0XpxEeaXI9xUAf3lBA" x="135" y="207"/>
   </children>
   <children xmi:type="notation:Shape" xmi:id="_URmJYHpxEeaXI9xUAf3lBA" type="2003" fontName=".SF NS Text">
     <element xmi:type="uk.ac.swanseacoventry.cmt.ontrack:Entrance" href="Twist.ontrack#//@entrances.1"/>

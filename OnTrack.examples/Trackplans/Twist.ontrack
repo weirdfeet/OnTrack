@@ -126,7 +126,7 @@
   <controlTable signal="//@signals.7" route="R7" normals="//@points.0" reverses="//@points.1" clears="//@tracks.10 //@tracks.7 //@tracks.2 //@tracks.5" directions="//@tracks.10/@directedTracks.0 //@tracks.7/@directedTracks.0 //@tracks.2/@directedTracks.1 //@tracks.5/@directedTracks.0"/>
   <controlTable signal="//@signals.7" route="R8" reverses="//@points.1 //@points.0" clears="//@tracks.10 //@tracks.7 //@tracks.3 //@tracks.1" directions="//@tracks.10/@directedTracks.0 //@tracks.7/@directedTracks.0 //@tracks.3/@directedTracks.1 //@tracks.1/@directedTracks.0"/>
   <controlTable signal="//@signals.3" route="R9" clears="//@tracks.4" directions="//@tracks.4/@directedTracks.0"/>
-  <controlTable signal="//@signals.2" route="R1" normals="//@points.0 //@points.1" clears="//@tracks.5 //@tracks.2 //@tracks.6 //@tracks.8" directions="//@tracks.5/@directedTracks.1 //@tracks.2/@directedTracks.0 //@tracks.6/@directedTracks.1 //@tracks.8/@directedTracks.1"/>
+  <controlTable signal="//@signals.2" route="R1" normals="//@points.0 //@points.1" clears="//@tracks.2 //@tracks.6 //@tracks.8" directions="//@tracks.5/@directedTracks.1 //@tracks.2/@directedTracks.0 //@tracks.6/@directedTracks.1 //@tracks.8/@directedTracks.1"/>
   <releaseTable route="R2" point="//@points.0" track="//@tracks.2"/>
   <releaseTable route="R2" point="//@points.1" track="//@tracks.7"/>
   <releaseTable route="R3" point="//@points.1" track="//@tracks.6"/>
