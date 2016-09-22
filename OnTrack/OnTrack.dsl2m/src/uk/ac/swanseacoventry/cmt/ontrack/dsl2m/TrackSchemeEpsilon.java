@@ -141,13 +141,6 @@ public abstract class TrackSchemeEpsilon {
 	public static EmfModel createEmfModel(String model_name, EObject eObject) {
 		//return new InMemoryEmfModel(putInNewResource(eObject));
 		EmfModel emfModel = new InMemoryEmfModel(model_name, eObject.eResource(), eObject.eClass().getEPackage());
-		try {
-			emfModel.load();
-		}
-		catch (EolModelLoadingException e) {
-			System.out.println("Error loading model " + model_name);
-			e.printStackTrace();
-		}
 		return emfModel;
 	}
 }

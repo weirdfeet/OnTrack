@@ -211,8 +211,8 @@ public class CSPTableViewer extends ViewPart {
 		}
 	}
 
-	protected String generateForTrackPlan(TrackPlan tp, SubTrackPlan sub, boolean exp){
-		DSL2CSP tool = new DSL2CSP(tp, sub, tp.isOverlapped(), exp);
+	protected String generateForTrackPlan(TrackPlan tp, boolean exp){
+		DSL2CSP tool = new DSL2CSP(tp, exp);
 		tool.generateCSP("Railway.csp");
 		if (exp) {
 			tool.generateCSP("Data.csp");
@@ -226,8 +226,8 @@ public class CSPTableViewer extends ViewPart {
 			//tool.generateCSP("Railway.csp");
 		}
 		String generatedModelPath = tool.getOutputFolder();
-		if (sub!=null) 
-			modelPaths.put(sub, generatedModelPath);
+		if (tp.getSelectedSubTrackPlan()!=null) 
+			modelPaths.put(tp.getSelectedSubTrackPlan(), generatedModelPath);
 		else
 			fullModelPath = generatedModelPath;
 		return generatedModelPath;
@@ -277,7 +277,7 @@ public class CSPTableViewer extends ViewPart {
 						cc.add(new ICommandProxy(new TrackPlanSelectSubCommand(diagramEditPart, null)));
 						cc.execute();
 						// Util.getEditorPart().doSave(((WorkbenchWindow)Util.getWorkbenchWindow()).getStatusLineManager().getProgressMonitor());
-						generateForTrackPlan(trackplan, null, experimental);
+						generateForTrackPlan(trackplan, experimental);
 					} else if (tp instanceof SubTrackPlan && experimental) {
 						// save the submodel to a file
 						TrackPlan trackplan = (TrackPlan)((View)diagramEditPart.getModel()).getElement();
@@ -285,7 +285,7 @@ public class CSPTableViewer extends ViewPart {
 						cc.add(new ICommandProxy(new TrackPlanSelectSubCommand(diagramEditPart, (SubTrackPlan)tp)));
 						cc.execute();
 						// Util.getEditorPart().doSave(((WorkbenchWindow)Util.getWorkbenchWindow()).getStatusLineManager().getProgressMonitor());
-						generateForTrackPlan(trackplan, (SubTrackPlan)tp, experimental);
+						generateForTrackPlan(trackplan, experimental);
 					}
 				}
 					

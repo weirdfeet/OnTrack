@@ -157,6 +157,7 @@ to p : BMachine!PropElement {
 	
 	var c1 = e.connector;
 	for(t in c1.track1s.includingAll(c1.track2s)){
+		if (not(plan.tracks.includes(t))) continue;
 		var c2;
 		if (t.c1==c1) c2 = t.c2; else c2 = t.c1;
 		var found = false;

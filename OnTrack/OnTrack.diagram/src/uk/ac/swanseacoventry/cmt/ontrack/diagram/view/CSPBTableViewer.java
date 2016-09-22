@@ -214,8 +214,8 @@ public class CSPBTableViewer extends ViewPart {
 		}
 	}
 
-	protected String generateForTrackPlan(String modelPath, boolean overlapped, SubTrackPlan sub){
-		DSL2CSPB tool = new DSL2CSPB(modelPath, overlapped, sub);
+	protected String generateForTrackPlan(TrackPlan tp){
+		DSL2CSPB tool = new DSL2CSPB(tp);
 		tool.generateCSP("CTRL.csp");
 		tool.generateBMachine("Context.mch");
 		tool.generateBMachine("Topology.mch");
@@ -223,8 +223,8 @@ public class CSPBTableViewer extends ViewPart {
 		tool.generateBMachine("ReleaseTable.mch");
 		tool.generateBMachine("Interlocking.mch");
 		String generatedModelPath = tool.getOutputFolder();
-		if (sub!=null) 
-			modelPaths.put(sub, generatedModelPath);
+		if (tp.getSelectedSubTrackPlan()!=null) 
+			modelPaths.put(tp.getSelectedSubTrackPlan(), generatedModelPath);
 		else
 			fullModelPath = generatedModelPath;
 		return generatedModelPath;
@@ -275,8 +275,8 @@ public class CSPBTableViewer extends ViewPart {
 						CompoundCommand cc = new CompoundCommand();
 						cc.add(new ICommandProxy(new TrackPlanSelectSubCommand(diagramEditPart, null)));
 						cc.execute();
-						Util.getEditorPart().doSave(((WorkbenchWindow)Util.getWorkbenchWindow()).getStatusLineManager().getProgressMonitor());
-						generateForTrackPlan(modelPath, trackplan.isOverlapped(), null);
+						//Util.getEditorPart().doSave(((WorkbenchWindow)Util.getWorkbenchWindow()).getStatusLineManager().getProgressMonitor());
+						generateForTrackPlan(trackplan);
 					} else if (tp instanceof SubTrackPlan) {
 						// save the submodel to a file
 						TrackPlan trackplan = (TrackPlan)((View)diagramEditPart.getModel()).getElement();
@@ -284,8 +284,8 @@ public class CSPBTableViewer extends ViewPart {
 						CompoundCommand cc = new CompoundCommand();
 						cc.add(new ICommandProxy(new TrackPlanSelectSubCommand(diagramEditPart, (SubTrackPlan)tp)));
 						cc.execute();
-						Util.getEditorPart().doSave(((WorkbenchWindow)Util.getWorkbenchWindow()).getStatusLineManager().getProgressMonitor());
-						generateForTrackPlan(modelPath, trackplan.isOverlapped(), (SubTrackPlan)tp);
+						//Util.getEditorPart().doSave(((WorkbenchWindow)Util.getWorkbenchWindow()).getStatusLineManager().getProgressMonitor());
+						generateForTrackPlan(trackplan);
 					}
 				}
 					

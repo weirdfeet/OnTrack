@@ -102,10 +102,10 @@ public class DSL2CSP {
 	boolean experimental;
 	boolean overlap;
 	String SafetyAssertions;
-	public DSL2CSP(TrackPlan tp, SubTrackPlan sub, boolean ovl, boolean exp) {
-		subplan = sub;
+	public DSL2CSP(TrackPlan tp, boolean exp) {
+		subplan = tp.getSelectedSubTrackPlan();
 		experimental = exp;
-		overlap = ovl;
+		overlap = tp.isOverlapped();
 		trackplan = tp;
 		
 		if (exp) {
@@ -168,7 +168,7 @@ public class DSL2CSP {
 	}
 	
 	public void generateCSP(String template) {
-		generate(inputModel, csp, template);
+		generate(csp, template);
 	}
 
 	/**
@@ -177,7 +177,7 @@ public class DSL2CSP {
 	 * The Apache Velocity template engine is used to populate some parts of the template before EGL is processed
 	 * @param template the filename of the template file for generation. The file should be placed in TEMPLATES_DIR
 	 */
-	public void generate(EmfModel inputmodel, EmfModel outputmodel, String template) {
+	public void generate(EmfModel outputmodel, String template) {
 		
 		EmfModel[] outputModels = {outputmodel};
 		
@@ -187,8 +187,8 @@ public class DSL2CSP {
 		String eglOutput = eglOutputFolder + File.separator + template.substring(0,dot) + ".egl";
 		
 		// Use ETL to produce output models
-		inputmodel = TrackSchemeEpsilon.createEmfModel(SAFETRACK_MODEL_NAME, trackplan);
-		new TrackSchemeETL(etlSource, inputmodel,outputModels).execute(true);
+		inputModel = TrackSchemeEpsilon.createEmfModel(SAFETRACK_MODEL_NAME, trackplan);
+		new TrackSchemeETL(etlSource, inputModel,outputModels).execute(true);
 		
 		// Initialise Apache Velocity template engine
 		Velocity.init();

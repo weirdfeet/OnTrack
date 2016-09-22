@@ -21,6 +21,7 @@ import org.eclipse.epsilon.emc.emf.EmfModel;
 
 import uk.ac.swanseacoventry.cmt.ontrack.SubTrackPlan;
 import uk.ac.swanseacoventry.cmt.ontrack.Track;
+import uk.ac.swanseacoventry.cmt.ontrack.TrackPlan;
 import uk.ac.swanseacoventry.cmt.ontrack.dsl2m.TrackSchemeEGL;
 import uk.ac.swanseacoventry.cmt.ontrack.dsl2m.TrackSchemeETL;
 import uk.ac.swanseacoventry.cmt.ontrack.dsl2m.TrackSchemeEpsilon;
@@ -101,14 +102,17 @@ public class DSL2CSPB {
 	 */
 	SubTrackPlan subplan;
 	String overlap;
-	public DSL2CSPB(String model, boolean overlapped, SubTrackPlan sub) {
-		subplan = sub;
-		overlap = overlapped ? "true" : "false";
+	TrackPlan trackplan;
+	public DSL2CSPB(TrackPlan tp) {
+		trackplan = tp;
+		subplan = trackplan.getSelectedSubTrackPlan();
+		overlap = trackplan.isOverlapped() ? "true" : "false";
 		// create input model
-		SAFETRACK_MODEL = model;
-		inputModel = TrackSchemeEpsilon.createEmfModel(SAFETRACK_MODEL_NAME, SAFETRACK_MODEL, META_MODELS_DIR + SAFETRACK_META_MODEL, false, false);
+		SAFETRACK_MODEL = trackplan.eResource().getURI().toString();
+		//inputModel = TrackSchemeEpsilon.createEmfModel(SAFETRACK_MODEL_NAME, SAFETRACK_MODEL, META_MODELS_DIR + SAFETRACK_META_MODEL, false, false);
+		//inputModel = TrackSchemeEpsilon.createEmfModel(SAFETRACK_MODEL_NAME, trackplan);
 		
-		IPath projectPath = ResourcesPlugin.getWorkspace().getRoot().getFolder(new Path(inputModel.getModelFileUri().toPlatformString(false))).getProject().getLocation();
+		IPath projectPath = ResourcesPlugin.getWorkspace().getRoot().getFolder(new Path(trackplan.eResource().getURI().toPlatformString(false))).getProject().getLocation();
 		
 		// get date
 		date = new Date();
@@ -121,10 +125,10 @@ public class DSL2CSPB {
 		ret = new File(outputPath.toOSString()).mkdir();
 		outputPath = outputPath.append(sdf.format(date));
 		ret = new File(outputPath.toOSString()).mkdir();
-		if (sub !=null) {
+		if (subplan !=null) {
 			outputPath = outputPath.append("Sub");
 			ret = new File(outputPath.toOSString()).mkdir();
-			outputPath = outputPath.append(getSubFolderName(sub.getCriticals()));
+			outputPath = outputPath.append(getSubFolderName(subplan.getCriticals()));
 			ret = new File(outputPath.toOSString()).mkdir();
 		}
 		else {
@@ -139,11 +143,11 @@ public class DSL2CSPB {
 	}
 	
 	public void generateCSP(String template) {
-		generate(inputModel, csp, template);
+		generate(csp, template);
 	}
 
 	public void generateBMachine(String template) {
-		generate(inputModel, bMachine, template);
+		generate(bMachine, template);
 	}
 
 	/**
@@ -152,7 +156,7 @@ public class DSL2CSPB {
 	 * The Apache Velocity template engine is used to populate some parts of the template before EGL is processed
 	 * @param template the filename of the template file for generation. The file should be placed in TEMPLATES_DIR
 	 */
-	public void generate(EmfModel inputmodel, EmfModel outputmodel, String template) {
+	public void generate(EmfModel outputmodel, String template) {
 		
 		EmfModel[] outputModels = {outputmodel};
 		
@@ -162,7 +166,8 @@ public class DSL2CSPB {
 		String eglOutput = eglOutputFolder + File.separator + template.substring(0,dot) + ".egl";
 		
 		// Use ETL to produce output models
-		new TrackSchemeETL(etlSource, inputmodel,outputModels).execute(true);
+		inputModel = TrackSchemeEpsilon.createEmfModel(SAFETRACK_MODEL_NAME, trackplan);
+		new TrackSchemeETL(etlSource, inputModel,outputModels).execute(true);
 		
 		// Initialise Apache Velocity template engine
 		Velocity.init();
