@@ -211,8 +211,8 @@ public class CSPTableViewer extends ViewPart {
 		}
 	}
 
-	protected String generateForTrackPlan(String modelPath, TrackPlan tp, SubTrackPlan sub, boolean exp){
-		DSL2CSP tool = new DSL2CSP(modelPath, tp, sub, tp.isOverlapped(), exp);
+	protected String generateForTrackPlan(TrackPlan tp, SubTrackPlan sub, boolean exp){
+		DSL2CSP tool = new DSL2CSP(tp, sub, tp.isOverlapped(), exp);
 		tool.generateCSP("Railway.csp");
 		if (exp) {
 			tool.generateCSP("Data.csp");
@@ -273,21 +273,19 @@ public class CSPTableViewer extends ViewPart {
 					Object tp = item.getData();
 					if (tp instanceof TrackPlan){
 						TrackPlan trackplan = (TrackPlan)((View)diagramEditPart.getModel()).getElement();
-						String modelPath = trackplan.eResource().getURI().toString();
 						CompoundCommand cc = new CompoundCommand();
 						cc.add(new ICommandProxy(new TrackPlanSelectSubCommand(diagramEditPart, null)));
 						cc.execute();
-						Util.getEditorPart().doSave(((WorkbenchWindow)Util.getWorkbenchWindow()).getStatusLineManager().getProgressMonitor());
-						generateForTrackPlan(modelPath, trackplan, null, experimental);
+						// Util.getEditorPart().doSave(((WorkbenchWindow)Util.getWorkbenchWindow()).getStatusLineManager().getProgressMonitor());
+						generateForTrackPlan(trackplan, null, experimental);
 					} else if (tp instanceof SubTrackPlan && experimental) {
 						// save the submodel to a file
 						TrackPlan trackplan = (TrackPlan)((View)diagramEditPart.getModel()).getElement();
-						String modelPath = trackplan.eResource().getURI().toString();
 						CompoundCommand cc = new CompoundCommand();
 						cc.add(new ICommandProxy(new TrackPlanSelectSubCommand(diagramEditPart, (SubTrackPlan)tp)));
 						cc.execute();
-						Util.getEditorPart().doSave(((WorkbenchWindow)Util.getWorkbenchWindow()).getStatusLineManager().getProgressMonitor());
-						generateForTrackPlan(modelPath, trackplan, (SubTrackPlan)tp, experimental);
+						// Util.getEditorPart().doSave(((WorkbenchWindow)Util.getWorkbenchWindow()).getStatusLineManager().getProgressMonitor());
+						generateForTrackPlan(trackplan, (SubTrackPlan)tp, experimental);
 					}
 				}
 					

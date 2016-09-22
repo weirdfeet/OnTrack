@@ -337,10 +337,16 @@ to f : CSP!ProcessAssignment {
 	else 
 		c = t1.c1;
 	var t2 = c.findFirstDiffTrack(plan,t1);
-	clearSet.item.add(newCSPSetItem(t1.name));
-	if (trackplan.overlapped) clearSet.item.add(newCSPSetItem(t2.getName()));
 	
-	directionSet.item.add(newCSPSetItem(t1.name + "." + t2.getName()));
+	for(s in t1.signals) {
+		if (s.connector==c) {
+			clearSet.item.add(newCSPSetItem(t1.name));
+			if (trackplan.overlapped) clearSet.item.add(newCSPSetItem(t2.getName()));
+			directionSet.item.add(newCSPSetItem(t1.name + "." + t2.getName()));
+			break;
+		}
+	}
+	
 		
 
 	var nf = newFunc1Arg4SetOut("ctrlTable","RE__" + e.connector.id.toString(),normalSet, reverseSet, clearSet, directionSet);

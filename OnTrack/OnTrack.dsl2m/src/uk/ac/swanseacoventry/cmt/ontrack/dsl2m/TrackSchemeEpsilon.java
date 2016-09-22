@@ -7,9 +7,16 @@ import java.io.File;
 import java.net.URI;
 import java.util.List;
 
+import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.EPackage;
+import org.eclipse.emf.ecore.resource.Resource;
+import org.eclipse.emf.ecore.resource.ResourceSet;
+import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
+import org.eclipse.emf.ecore.xmi.impl.XMIResourceFactoryImpl;
 import org.eclipse.epsilon.common.parse.problem.ParseProblem;
 import org.eclipse.epsilon.common.util.StringProperties;
 import org.eclipse.epsilon.emc.emf.EmfModel;
+import org.eclipse.epsilon.emc.emf.InMemoryEmfModel;
 import org.eclipse.epsilon.eol.IEolExecutableModule;
 import org.eclipse.epsilon.eol.exceptions.EolRuntimeException;
 import org.eclipse.epsilon.eol.exceptions.models.EolModelLoadingException;
@@ -120,5 +127,27 @@ public abstract class TrackSchemeEpsilon {
 		}
 		return emfModel;
 	}
+
+//	public static Resource putInNewResource(EObject eObject) {
+//		ResourceSet rs = new ResourceSetImpl();
+//		EPackage ePackage = eObject.eClass().getEPackage();
+//		rs.getResourceFactoryRegistry().getExtensionToFactoryMap().put( "*", new XMIResourceFactoryImpl());
+//		rs.getPackageRegistry().put(ePackage.getNsURI(), ePackage);
+//		Resource r = rs.createResource(org.eclipse.emf.common.util.URI.createFileURI(""));
+//		r.getContents().add(eObject);
+//		return r;
+//	}
 	
+	public static EmfModel createEmfModel(String model_name, EObject eObject) {
+		//return new InMemoryEmfModel(putInNewResource(eObject));
+		EmfModel emfModel = new InMemoryEmfModel(model_name, eObject.eResource(), eObject.eClass().getEPackage());
+		try {
+			emfModel.load();
+		}
+		catch (EolModelLoadingException e) {
+			System.out.println("Error loading model " + model_name);
+			e.printStackTrace();
+		}
+		return emfModel;
+	}
 }

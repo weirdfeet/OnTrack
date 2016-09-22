@@ -17,9 +17,10 @@ import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.IPath; 
 import org.eclipse.core.runtime.Path;
 import org.eclipse.emf.common.util.EList;
+import org.eclipse.emf.common.util.URI;
 import org.eclipse.epsilon.emc.emf.EmfModel;
 
-
+import uk.ac.swanseacoventry.cmt.ontrack.OntrackPackage;
 import uk.ac.swanseacoventry.cmt.ontrack.SubTrackPlan;
 import uk.ac.swanseacoventry.cmt.ontrack.Track;
 import uk.ac.swanseacoventry.cmt.ontrack.TrackPlan;
@@ -101,7 +102,7 @@ public class DSL2CSP {
 	boolean experimental;
 	boolean overlap;
 	String SafetyAssertions;
-	public DSL2CSP(String model, TrackPlan tp, SubTrackPlan sub, boolean ovl, boolean exp) {
+	public DSL2CSP(TrackPlan tp, SubTrackPlan sub, boolean ovl, boolean exp) {
 		subplan = sub;
 		experimental = exp;
 		overlap = ovl;
@@ -135,10 +136,11 @@ public class DSL2CSP {
 		}
 		
 		// create input model
-		SAFETRACK_MODEL = model;
-		inputModel = TrackSchemeEpsilon.createEmfModel(SAFETRACK_MODEL_NAME, SAFETRACK_MODEL, META_MODELS_DIR + SAFETRACK_META_MODEL, false, false);
+		SAFETRACK_MODEL = trackplan.eResource().getURI().toString();
+		// inputModel = TrackSchemeEpsilon.createEmfModel(SAFETRACK_MODEL_NAME, trackplan);//TrackSchemeEpsilon.createEmfModel(SAFETRACK_MODEL_NAME, SAFETRACK_MODEL, META_MODELS_DIR + SAFETRACK_META_MODEL, false, false);
 		
-		IPath projectPath = ResourcesPlugin.getWorkspace().getRoot().getFolder(new Path(inputModel.getModelFileUri().toPlatformString(false))).getProject().getLocation();
+		//IPath projectPath = ResourcesPlugin.getWorkspace().getRoot().getFolder(new Path(inputModel.getModelFileUri().toPlatformString(false))).getProject().getLocation();
+		IPath projectPath = ResourcesPlugin.getWorkspace().getRoot().getFolder(new Path(trackplan.eResource().getURI().toPlatformString(false))).getProject().getLocation();
 		
 		// get date
 		date = new Date();
@@ -185,6 +187,7 @@ public class DSL2CSP {
 		String eglOutput = eglOutputFolder + File.separator + template.substring(0,dot) + ".egl";
 		
 		// Use ETL to produce output models
+		inputmodel = TrackSchemeEpsilon.createEmfModel(SAFETRACK_MODEL_NAME, trackplan);
 		new TrackSchemeETL(etlSource, inputmodel,outputModels).execute(true);
 		
 		// Initialise Apache Velocity template engine
