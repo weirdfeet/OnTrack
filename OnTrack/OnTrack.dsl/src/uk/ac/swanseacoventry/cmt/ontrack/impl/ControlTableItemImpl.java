@@ -384,13 +384,19 @@ public class ControlTableItemImpl extends MinimalEObjectImpl.Container implement
 		for(Point p : points){
 			String name = p.getName();
 			if (tp==null) continue;
+			boolean found = false;
 			for(ReleaseTableItem rti : tp.getReleaseTable()){
-				if (rti.getRoute().equals(this.getRoute()) && 
-						rti.getPoint()==p && 
-						rti.getTrack()!=null && rti.getTrack().getPoint()!=p)
-					name += "*";
+				if (rti.getRoute().equals(this.getRoute()) && rti.getPoint()==p) {
+					found = true;
+					if (rti.getTrack()!=null) {
+						if (rti.getTrack().getPoint()!=p)
+							name += "*";
+					}
+					else 
+						name += "-";
+				}
 			}
-			rets.add(name);
+			rets.add(name + (found ? "" : "-"));
 		}
 		return String.join(", ", rets);
 	}

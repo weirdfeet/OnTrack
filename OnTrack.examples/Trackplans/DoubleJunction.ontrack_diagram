@@ -1,0 +1,702 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<notation:Diagram xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.2/notation" xmlns:uk.ac.swanseacoventry.cmt.ontrack="http:///uk/ac/swanseacoventry/cmt/ontrack.ecore" xmi:id="_CzOi0IC4Eea8-fWm4Zgerg" type="Ontrack" name="DoubleJunction.ontrack_diagram" measurementUnit="Pixel">
+  <children xmi:type="notation:Node" xmi:id="_FwrLYIC4Eea8-fWm4Zgerg" type="2001">
+    <children xmi:type="notation:DecorationNode" xmi:id="_FwsZgIC4Eea8-fWm4Zgerg" type="5001">
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_FwsZgYC4Eea8-fWm4Zgerg" y="5"/>
+    </children>
+    <styles xmi:type="notation:DescriptionStyle" xmi:id="_FwrLYYC4Eea8-fWm4Zgerg"/>
+    <styles xmi:type="notation:FontStyle" xmi:id="_FwrLYoC4Eea8-fWm4Zgerg" fontName=".SF NS Text"/>
+    <styles xmi:type="notation:LineStyle" xmi:id="_FwrLY4C4Eea8-fWm4Zgerg"/>
+    <element xmi:type="uk.ac.swanseacoventry.cmt.ontrack:Connector" href="DoubleJunction.ontrack#//@connectors.0"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_FwrLZIC4Eea8-fWm4Zgerg" x="189" y="171"/>
+  </children>
+  <children xmi:type="notation:Node" xmi:id="_GPM6cIC4Eea8-fWm4Zgerg" type="2001">
+    <children xmi:type="notation:DecorationNode" xmi:id="_GPNhgIC4Eea8-fWm4Zgerg" type="5001">
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_GPNhgYC4Eea8-fWm4Zgerg" y="5"/>
+    </children>
+    <styles xmi:type="notation:DescriptionStyle" xmi:id="_GPM6cYC4Eea8-fWm4Zgerg"/>
+    <styles xmi:type="notation:FontStyle" xmi:id="_GPM6coC4Eea8-fWm4Zgerg" fontName=".SF NS Text"/>
+    <styles xmi:type="notation:LineStyle" xmi:id="_GPM6c4C4Eea8-fWm4Zgerg"/>
+    <element xmi:type="uk.ac.swanseacoventry.cmt.ontrack:Connector" href="DoubleJunction.ontrack#//@connectors.1"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_GPM6dIC4Eea8-fWm4Zgerg" x="288" y="171"/>
+  </children>
+  <children xmi:type="notation:Node" xmi:id="_GnA9gIC4Eea8-fWm4Zgerg" type="2001">
+    <children xmi:type="notation:DecorationNode" xmi:id="_GnA9hYC4Eea8-fWm4Zgerg" type="5001">
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_GnA9hoC4Eea8-fWm4Zgerg" y="5"/>
+    </children>
+    <styles xmi:type="notation:DescriptionStyle" xmi:id="_GnA9gYC4Eea8-fWm4Zgerg"/>
+    <styles xmi:type="notation:FontStyle" xmi:id="_GnA9goC4Eea8-fWm4Zgerg" fontName=".SF NS Text"/>
+    <styles xmi:type="notation:LineStyle" xmi:id="_GnA9g4C4Eea8-fWm4Zgerg"/>
+    <element xmi:type="uk.ac.swanseacoventry.cmt.ontrack:Connector" href="DoubleJunction.ontrack#//@connectors.2"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_GnA9hIC4Eea8-fWm4Zgerg" x="387" y="171"/>
+  </children>
+  <children xmi:type="notation:Node" xmi:id="_Hg2IgIC4Eea8-fWm4Zgerg" type="2001">
+    <children xmi:type="notation:DecorationNode" xmi:id="_Hg2IhYC4Eea8-fWm4Zgerg" type="5001">
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_Hg2IhoC4Eea8-fWm4Zgerg" y="5"/>
+    </children>
+    <styles xmi:type="notation:DescriptionStyle" xmi:id="_Hg2IgYC4Eea8-fWm4Zgerg"/>
+    <styles xmi:type="notation:FontStyle" xmi:id="_Hg2IgoC4Eea8-fWm4Zgerg" fontName=".SF NS Text"/>
+    <styles xmi:type="notation:LineStyle" xmi:id="_Hg2Ig4C4Eea8-fWm4Zgerg"/>
+    <element xmi:type="uk.ac.swanseacoventry.cmt.ontrack:Connector" href="DoubleJunction.ontrack#//@connectors.3"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_Hg2IhIC4Eea8-fWm4Zgerg" x="459" y="171"/>
+  </children>
+  <children xmi:type="notation:Node" xmi:id="_Hg5L0IC4Eea8-fWm4Zgerg" type="2001">
+    <children xmi:type="notation:DecorationNode" xmi:id="_Hg5y4IC4Eea8-fWm4Zgerg" type="5001">
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_Hg5y4YC4Eea8-fWm4Zgerg" y="-20"/>
+    </children>
+    <styles xmi:type="notation:DescriptionStyle" xmi:id="_Hg5L0YC4Eea8-fWm4Zgerg"/>
+    <styles xmi:type="notation:FontStyle" xmi:id="_Hg5L0oC4Eea8-fWm4Zgerg" fontName=".SF NS Text"/>
+    <styles xmi:type="notation:LineStyle" xmi:id="_Hg5L04C4Eea8-fWm4Zgerg"/>
+    <element xmi:type="uk.ac.swanseacoventry.cmt.ontrack:Connector" href="DoubleJunction.ontrack#//@connectors.4"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_Hg5L1IC4Eea8-fWm4Zgerg" x="567" y="171"/>
+  </children>
+  <children xmi:type="notation:Node" xmi:id="_Hg8PIIC4Eea8-fWm4Zgerg" type="2001">
+    <children xmi:type="notation:DecorationNode" xmi:id="_Hg82NIC4Eea8-fWm4Zgerg" type="5001">
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_Hg82NYC4Eea8-fWm4Zgerg" y="5"/>
+    </children>
+    <styles xmi:type="notation:DescriptionStyle" xmi:id="_Hg82MIC4Eea8-fWm4Zgerg"/>
+    <styles xmi:type="notation:FontStyle" xmi:id="_Hg82MYC4Eea8-fWm4Zgerg" fontName=".SF NS Text"/>
+    <styles xmi:type="notation:LineStyle" xmi:id="_Hg82MoC4Eea8-fWm4Zgerg"/>
+    <element xmi:type="uk.ac.swanseacoventry.cmt.ontrack:Connector" href="DoubleJunction.ontrack#//@connectors.5"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_Hg82M4C4Eea8-fWm4Zgerg" x="567" y="216"/>
+  </children>
+  <children xmi:type="notation:Node" xmi:id="_Jrdl8IC4Eea8-fWm4Zgerg" type="2001">
+    <children xmi:type="notation:DecorationNode" xmi:id="_Jrdl9YC4Eea8-fWm4Zgerg" type="5001">
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_Jrdl9oC4Eea8-fWm4Zgerg" y="5"/>
+    </children>
+    <styles xmi:type="notation:DescriptionStyle" xmi:id="_Jrdl8YC4Eea8-fWm4Zgerg"/>
+    <styles xmi:type="notation:FontStyle" xmi:id="_Jrdl8oC4Eea8-fWm4Zgerg" fontName=".SF NS Text"/>
+    <styles xmi:type="notation:LineStyle" xmi:id="_Jrdl84C4Eea8-fWm4Zgerg"/>
+    <element xmi:type="uk.ac.swanseacoventry.cmt.ontrack:Connector" href="DoubleJunction.ontrack#//@connectors.6"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_Jrdl9IC4Eea8-fWm4Zgerg" x="666" y="171"/>
+  </children>
+  <children xmi:type="notation:Node" xmi:id="_KFNisIC4Eea8-fWm4Zgerg" type="2001">
+    <children xmi:type="notation:DecorationNode" xmi:id="_KFOJwIC4Eea8-fWm4Zgerg" type="5001">
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_KFOJwYC4Eea8-fWm4Zgerg" y="5"/>
+    </children>
+    <styles xmi:type="notation:DescriptionStyle" xmi:id="_KFNisYC4Eea8-fWm4Zgerg"/>
+    <styles xmi:type="notation:FontStyle" xmi:id="_KFNisoC4Eea8-fWm4Zgerg" fontName=".SF NS Text"/>
+    <styles xmi:type="notation:LineStyle" xmi:id="_KFNis4C4Eea8-fWm4Zgerg"/>
+    <element xmi:type="uk.ac.swanseacoventry.cmt.ontrack:Connector" href="DoubleJunction.ontrack#//@connectors.7"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_KFNitIC4Eea8-fWm4Zgerg" x="873" y="171"/>
+  </children>
+  <children xmi:type="notation:Node" xmi:id="_MVTWAIC4Eea8-fWm4Zgerg" type="2001">
+    <children xmi:type="notation:DecorationNode" xmi:id="_MVT9EIC4Eea8-fWm4Zgerg" type="5001">
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_MVT9EYC4Eea8-fWm4Zgerg" y="5"/>
+    </children>
+    <styles xmi:type="notation:DescriptionStyle" xmi:id="_MVTWAYC4Eea8-fWm4Zgerg"/>
+    <styles xmi:type="notation:FontStyle" xmi:id="_MVTWAoC4Eea8-fWm4Zgerg" fontName=".SF NS Text"/>
+    <styles xmi:type="notation:LineStyle" xmi:id="_MVTWA4C4Eea8-fWm4Zgerg"/>
+    <element xmi:type="uk.ac.swanseacoventry.cmt.ontrack:Connector" href="DoubleJunction.ontrack#//@connectors.8"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_MVTWBIC4Eea8-fWm4Zgerg" x="189" y="261"/>
+  </children>
+  <children xmi:type="notation:Node" xmi:id="_NRKhUIC4Eea8-fWm4Zgerg" type="2001">
+    <children xmi:type="notation:DecorationNode" xmi:id="_NRKhVYC4Eea8-fWm4Zgerg" type="5001">
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_NRKhVoC4Eea8-fWm4Zgerg" y="5"/>
+    </children>
+    <styles xmi:type="notation:DescriptionStyle" xmi:id="_NRKhUYC4Eea8-fWm4Zgerg"/>
+    <styles xmi:type="notation:FontStyle" xmi:id="_NRKhUoC4Eea8-fWm4Zgerg" fontName=".SF NS Text"/>
+    <styles xmi:type="notation:LineStyle" xmi:id="_NRKhU4C4Eea8-fWm4Zgerg"/>
+    <element xmi:type="uk.ac.swanseacoventry.cmt.ontrack:Connector" href="DoubleJunction.ontrack#//@connectors.9"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_NRKhVIC4Eea8-fWm4Zgerg" x="387" y="261"/>
+  </children>
+  <children xmi:type="notation:Node" xmi:id="_OKCDAIC4Eea8-fWm4Zgerg" type="2001">
+    <children xmi:type="notation:DecorationNode" xmi:id="_OKCDBYC4Eea8-fWm4Zgerg" type="5001">
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_OKCDBoC4Eea8-fWm4Zgerg" y="5"/>
+    </children>
+    <styles xmi:type="notation:DescriptionStyle" xmi:id="_OKCDAYC4Eea8-fWm4Zgerg"/>
+    <styles xmi:type="notation:FontStyle" xmi:id="_OKCDAoC4Eea8-fWm4Zgerg" fontName=".SF NS Text"/>
+    <styles xmi:type="notation:LineStyle" xmi:id="_OKCDA4C4Eea8-fWm4Zgerg"/>
+    <element xmi:type="uk.ac.swanseacoventry.cmt.ontrack:Connector" href="DoubleJunction.ontrack#//@connectors.10"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_OKCDBIC4Eea8-fWm4Zgerg" x="477" y="261"/>
+  </children>
+  <children xmi:type="notation:Node" xmi:id="_OKEfQIC4Eea8-fWm4Zgerg" type="2001">
+    <children xmi:type="notation:DecorationNode" xmi:id="_OKEfRYC4Eea8-fWm4Zgerg" type="5001">
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_OKEfRoC4Eea8-fWm4Zgerg" y="5"/>
+    </children>
+    <styles xmi:type="notation:DescriptionStyle" xmi:id="_OKEfQYC4Eea8-fWm4Zgerg"/>
+    <styles xmi:type="notation:FontStyle" xmi:id="_OKEfQoC4Eea8-fWm4Zgerg" fontName=".SF NS Text"/>
+    <styles xmi:type="notation:LineStyle" xmi:id="_OKEfQ4C4Eea8-fWm4Zgerg"/>
+    <element xmi:type="uk.ac.swanseacoventry.cmt.ontrack:Connector" href="DoubleJunction.ontrack#//@connectors.11"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_OKEfRIC4Eea8-fWm4Zgerg" x="567" y="261"/>
+  </children>
+  <children xmi:type="notation:Node" xmi:id="_P1Q1wIC4Eea8-fWm4Zgerg" type="2001">
+    <children xmi:type="notation:DecorationNode" xmi:id="_P1Q1xYC4Eea8-fWm4Zgerg" type="5001">
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_P1Q1xoC4Eea8-fWm4Zgerg" y="5"/>
+    </children>
+    <styles xmi:type="notation:DescriptionStyle" xmi:id="_P1Q1wYC4Eea8-fWm4Zgerg"/>
+    <styles xmi:type="notation:FontStyle" xmi:id="_P1Q1woC4Eea8-fWm4Zgerg" fontName=".SF NS Text"/>
+    <styles xmi:type="notation:LineStyle" xmi:id="_P1Q1w4C4Eea8-fWm4Zgerg"/>
+    <element xmi:type="uk.ac.swanseacoventry.cmt.ontrack:Connector" href="DoubleJunction.ontrack#//@connectors.12"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_P1Q1xIC4Eea8-fWm4Zgerg" x="666" y="261"/>
+  </children>
+  <children xmi:type="notation:Node" xmi:id="_RBR88IC4Eea8-fWm4Zgerg" type="2001">
+    <children xmi:type="notation:DecorationNode" xmi:id="_RBSkAIC4Eea8-fWm4Zgerg" type="5001">
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_RBSkAYC4Eea8-fWm4Zgerg" y="5"/>
+    </children>
+    <styles xmi:type="notation:DescriptionStyle" xmi:id="_RBR88YC4Eea8-fWm4Zgerg"/>
+    <styles xmi:type="notation:FontStyle" xmi:id="_RBR88oC4Eea8-fWm4Zgerg" fontName=".SF NS Text"/>
+    <styles xmi:type="notation:LineStyle" xmi:id="_RBR884C4Eea8-fWm4Zgerg"/>
+    <element xmi:type="uk.ac.swanseacoventry.cmt.ontrack:Connector" href="DoubleJunction.ontrack#//@connectors.13"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_RBR89IC4Eea8-fWm4Zgerg" x="756" y="261"/>
+  </children>
+  <children xmi:type="notation:Node" xmi:id="_RXs44IC4Eea8-fWm4Zgerg" type="2001">
+    <children xmi:type="notation:DecorationNode" xmi:id="_RXs45YC4Eea8-fWm4Zgerg" type="5001">
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_RXs45oC4Eea8-fWm4Zgerg" y="5"/>
+    </children>
+    <styles xmi:type="notation:DescriptionStyle" xmi:id="_RXs44YC4Eea8-fWm4Zgerg"/>
+    <styles xmi:type="notation:FontStyle" xmi:id="_RXs44oC4Eea8-fWm4Zgerg" fontName=".SF NS Text"/>
+    <styles xmi:type="notation:LineStyle" xmi:id="_RXs444C4Eea8-fWm4Zgerg"/>
+    <element xmi:type="uk.ac.swanseacoventry.cmt.ontrack:Connector" href="DoubleJunction.ontrack#//@connectors.14"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_RXs45IC4Eea8-fWm4Zgerg" x="819" y="261"/>
+  </children>
+  <children xmi:type="notation:Node" xmi:id="_RXvVIIC4Eea8-fWm4Zgerg" type="2001">
+    <children xmi:type="notation:DecorationNode" xmi:id="_RXvVJYC4Eea8-fWm4Zgerg" type="5001">
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_RXvVJoC4Eea8-fWm4Zgerg" y="5"/>
+    </children>
+    <styles xmi:type="notation:DescriptionStyle" xmi:id="_RXvVIYC4Eea8-fWm4Zgerg"/>
+    <styles xmi:type="notation:FontStyle" xmi:id="_RXvVIoC4Eea8-fWm4Zgerg" fontName=".SF NS Text"/>
+    <styles xmi:type="notation:LineStyle" xmi:id="_RXvVI4C4Eea8-fWm4Zgerg"/>
+    <element xmi:type="uk.ac.swanseacoventry.cmt.ontrack:Connector" href="DoubleJunction.ontrack#//@connectors.15"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_RXvVJIC4Eea8-fWm4Zgerg" x="873" y="261"/>
+  </children>
+  <children xmi:type="notation:Node" xmi:id="_S4DRUIC4Eea8-fWm4Zgerg" type="2001">
+    <children xmi:type="notation:DecorationNode" xmi:id="_S4DRVYC4Eea8-fWm4Zgerg" type="5001">
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_S4DRVoC4Eea8-fWm4Zgerg" y="5"/>
+    </children>
+    <styles xmi:type="notation:DescriptionStyle" xmi:id="_S4DRUYC4Eea8-fWm4Zgerg"/>
+    <styles xmi:type="notation:FontStyle" xmi:id="_S4DRUoC4Eea8-fWm4Zgerg" fontName=".SF NS Text"/>
+    <styles xmi:type="notation:LineStyle" xmi:id="_S4DRU4C4Eea8-fWm4Zgerg"/>
+    <element xmi:type="uk.ac.swanseacoventry.cmt.ontrack:Connector" href="DoubleJunction.ontrack#//@connectors.16"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_S4DRVIC4Eea8-fWm4Zgerg" x="702" y="342"/>
+  </children>
+  <children xmi:type="notation:Node" xmi:id="_TS-SwIC4Eea8-fWm4Zgerg" type="2001">
+    <children xmi:type="notation:DecorationNode" xmi:id="_TS-SxYC4Eea8-fWm4Zgerg" type="5001">
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_TS-SxoC4Eea8-fWm4Zgerg" y="5"/>
+    </children>
+    <styles xmi:type="notation:DescriptionStyle" xmi:id="_TS-SwYC4Eea8-fWm4Zgerg"/>
+    <styles xmi:type="notation:FontStyle" xmi:id="_TS-SwoC4Eea8-fWm4Zgerg" fontName=".SF NS Text"/>
+    <styles xmi:type="notation:LineStyle" xmi:id="_TS-Sw4C4Eea8-fWm4Zgerg"/>
+    <element xmi:type="uk.ac.swanseacoventry.cmt.ontrack:Connector" href="DoubleJunction.ontrack#//@connectors.17"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_TS-SxIC4Eea8-fWm4Zgerg" x="819" y="342"/>
+  </children>
+  <children xmi:type="notation:Node" xmi:id="_UeUEgIC4Eea8-fWm4Zgerg" type="2001">
+    <children xmi:type="notation:DecorationNode" xmi:id="_UeUEhYC4Eea8-fWm4Zgerg" type="5001">
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_UeUEhoC4Eea8-fWm4Zgerg" y="5"/>
+    </children>
+    <styles xmi:type="notation:DescriptionStyle" xmi:id="_UeUEgYC4Eea8-fWm4Zgerg"/>
+    <styles xmi:type="notation:FontStyle" xmi:id="_UeUEgoC4Eea8-fWm4Zgerg" fontName=".SF NS Text"/>
+    <styles xmi:type="notation:LineStyle" xmi:id="_UeUEg4C4Eea8-fWm4Zgerg"/>
+    <element xmi:type="uk.ac.swanseacoventry.cmt.ontrack:Connector" href="DoubleJunction.ontrack#//@connectors.18"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_UeUEhIC4Eea8-fWm4Zgerg" x="684" y="414"/>
+  </children>
+  <children xmi:type="notation:Node" xmi:id="_U2G5cIC4Eea8-fWm4Zgerg" type="2001">
+    <children xmi:type="notation:DecorationNode" xmi:id="_U2HggIC4Eea8-fWm4Zgerg" type="5001">
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_U2HggYC4Eea8-fWm4Zgerg" y="5"/>
+    </children>
+    <styles xmi:type="notation:DescriptionStyle" xmi:id="_U2G5cYC4Eea8-fWm4Zgerg"/>
+    <styles xmi:type="notation:FontStyle" xmi:id="_U2G5coC4Eea8-fWm4Zgerg" fontName=".SF NS Text"/>
+    <styles xmi:type="notation:LineStyle" xmi:id="_U2G5c4C4Eea8-fWm4Zgerg"/>
+    <element xmi:type="uk.ac.swanseacoventry.cmt.ontrack:Connector" href="DoubleJunction.ontrack#//@connectors.19"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_U2G5dIC4Eea8-fWm4Zgerg" x="819" y="414"/>
+  </children>
+  <children xmi:type="notation:Node" xmi:id="_U2JVsIC4Eea8-fWm4Zgerg" type="2001">
+    <children xmi:type="notation:DecorationNode" xmi:id="_U2JVtYC4Eea8-fWm4Zgerg" type="5001">
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_U2JVtoC4Eea8-fWm4Zgerg" y="5"/>
+    </children>
+    <styles xmi:type="notation:DescriptionStyle" xmi:id="_U2JVsYC4Eea8-fWm4Zgerg"/>
+    <styles xmi:type="notation:FontStyle" xmi:id="_U2JVsoC4Eea8-fWm4Zgerg" fontName=".SF NS Text"/>
+    <styles xmi:type="notation:LineStyle" xmi:id="_U2JVs4C4Eea8-fWm4Zgerg"/>
+    <element xmi:type="uk.ac.swanseacoventry.cmt.ontrack:Connector" href="DoubleJunction.ontrack#//@connectors.20"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_U2JVtIC4Eea8-fWm4Zgerg" x="873" y="414"/>
+  </children>
+  <children xmi:type="notation:Shape" xmi:id="_WhFNgIC4Eea8-fWm4Zgerg" type="2003" fontName=".SF NS Text">
+    <element xmi:type="uk.ac.swanseacoventry.cmt.ontrack:Entrance" href="DoubleJunction.ontrack#//@entrances.0"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_WhFNgYC4Eea8-fWm4Zgerg" x="90" y="153"/>
+  </children>
+  <children xmi:type="notation:Shape" xmi:id="_XAGEwIC4Eea8-fWm4Zgerg" type="2004" fontName=".SF NS Text">
+    <element xmi:type="uk.ac.swanseacoventry.cmt.ontrack:Exit" href="DoubleJunction.ontrack#//@exits.0"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_XAGEwYC4Eea8-fWm4Zgerg" x="90" y="243"/>
+  </children>
+  <children xmi:type="notation:Shape" xmi:id="_Xew9wIC4Eea8-fWm4Zgerg" type="2004" fontName=".SF NS Text">
+    <element xmi:type="uk.ac.swanseacoventry.cmt.ontrack:Exit" href="DoubleJunction.ontrack#//@exits.1"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_Xexk0IC4Eea8-fWm4Zgerg" x="936" y="153"/>
+  </children>
+  <children xmi:type="notation:Shape" xmi:id="_YCf88IC4Eea8-fWm4Zgerg" type="2003" fontName=".SF NS Text">
+    <element xmi:type="uk.ac.swanseacoventry.cmt.ontrack:Entrance" href="DoubleJunction.ontrack#//@entrances.1"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_YCf88YC4Eea8-fWm4Zgerg" x="936" y="243"/>
+  </children>
+  <children xmi:type="notation:Shape" xmi:id="_ZBy2wIC4Eea8-fWm4Zgerg" type="2004" fontName=".SF NS Text">
+    <element xmi:type="uk.ac.swanseacoventry.cmt.ontrack:Exit" href="DoubleJunction.ontrack#//@exits.2"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_ZBy2wYC4Eea8-fWm4Zgerg" x="936" y="324"/>
+  </children>
+  <children xmi:type="notation:Shape" xmi:id="_ZZMDEIC4Eea8-fWm4Zgerg" type="2003" fontName=".SF NS Text">
+    <element xmi:type="uk.ac.swanseacoventry.cmt.ontrack:Entrance" href="DoubleJunction.ontrack#//@entrances.2"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_ZZMDEYC4Eea8-fWm4Zgerg" x="936" y="396"/>
+  </children>
+  <children xmi:type="notation:Shape" xmi:id="_aL1A8IC4Eea8-fWm4Zgerg" type="2002" fontName=".SF NS Text">
+    <children xmi:type="notation:DecorationNode" xmi:id="_aL1oAIC4Eea8-fWm4Zgerg" type="5002">
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_aL1oAYC4Eea8-fWm4Zgerg" y="5"/>
+    </children>
+    <element xmi:type="uk.ac.swanseacoventry.cmt.ontrack:Signal" href="DoubleJunction.ontrack#//@signals.0"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_aL1A8YC4Eea8-fWm4Zgerg" x="252" y="117"/>
+  </children>
+  <children xmi:type="notation:Shape" xmi:id="_cIoE0IC4Eea8-fWm4Zgerg" type="2002" fontName=".SF NS Text">
+    <children xmi:type="notation:DecorationNode" xmi:id="_cIoE0oC4Eea8-fWm4Zgerg" type="5002">
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_cIoE04C4Eea8-fWm4Zgerg" y="5"/>
+    </children>
+    <element xmi:type="uk.ac.swanseacoventry.cmt.ontrack:Signal" href="DoubleJunction.ontrack#//@signals.1"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_cIoE0YC4Eea8-fWm4Zgerg" x="405" y="207"/>
+  </children>
+  <children xmi:type="notation:Shape" xmi:id="_df2WcIC4Eea8-fWm4Zgerg" type="2002" fontName=".SF NS Text">
+    <children xmi:type="notation:DecorationNode" xmi:id="_df2WcoC4Eea8-fWm4Zgerg" type="5002">
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_df2Wc4C4Eea8-fWm4Zgerg" y="5"/>
+    </children>
+    <element xmi:type="uk.ac.swanseacoventry.cmt.ontrack:Signal" href="DoubleJunction.ontrack#//@signals.2"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_df2WcYC4Eea8-fWm4Zgerg" x="630" y="117"/>
+  </children>
+  <children xmi:type="notation:Shape" xmi:id="_fWS6sIC4Eea8-fWm4Zgerg" type="2002" fontName=".SF NS Text">
+    <children xmi:type="notation:DecorationNode" xmi:id="_fWS6soC4Eea8-fWm4Zgerg" type="5002">
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_fWS6s4C4Eea8-fWm4Zgerg" y="5"/>
+    </children>
+    <element xmi:type="uk.ac.swanseacoventry.cmt.ontrack:Signal" href="DoubleJunction.ontrack#//@signals.3"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_fWS6sYC4Eea8-fWm4Zgerg" x="837" y="207"/>
+  </children>
+  <children xmi:type="notation:Shape" xmi:id="_gp-wIIC4Eea8-fWm4Zgerg" type="2002" fontName=".SF NS Text">
+    <children xmi:type="notation:DecorationNode" xmi:id="_gp_XMIC4Eea8-fWm4Zgerg" type="5002">
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_gp_XMYC4Eea8-fWm4Zgerg" y="5"/>
+    </children>
+    <element xmi:type="uk.ac.swanseacoventry.cmt.ontrack:Signal" href="DoubleJunction.ontrack#//@signals.4"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_gp-wIYC4Eea8-fWm4Zgerg" x="774" y="207"/>
+  </children>
+  <children xmi:type="notation:Shape" xmi:id="_h41v8IC4Eea8-fWm4Zgerg" type="2002" fontName=".SF NS Text">
+    <children xmi:type="notation:DecorationNode" xmi:id="_h41v8oC4Eea8-fWm4Zgerg" type="5002">
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_h41v84C4Eea8-fWm4Zgerg" y="5"/>
+    </children>
+    <element xmi:type="uk.ac.swanseacoventry.cmt.ontrack:Signal" href="DoubleJunction.ontrack#//@signals.5"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_h41v8YC4Eea8-fWm4Zgerg" x="783" y="288"/>
+  </children>
+  <children xmi:type="notation:Shape" xmi:id="_i1BrYIC4Eea8-fWm4Zgerg" type="2002" fontName=".SF NS Text">
+    <children xmi:type="notation:DecorationNode" xmi:id="_i1BrYoC4Eea8-fWm4Zgerg" type="5002">
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_i1BrY4C4Eea8-fWm4Zgerg" y="5"/>
+    </children>
+    <element xmi:type="uk.ac.swanseacoventry.cmt.ontrack:Signal" href="DoubleJunction.ontrack#//@signals.6"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_i1BrYYC4Eea8-fWm4Zgerg" x="837" y="360"/>
+  </children>
+  <children xmi:type="notation:Shape" xmi:id="_kAWPAIC4Eea8-fWm4Zgerg" type="2002" fontName=".SF NS Text">
+    <children xmi:type="notation:DecorationNode" xmi:id="_kAWPAoC4Eea8-fWm4Zgerg" type="5002">
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_kAWPA4C4Eea8-fWm4Zgerg" y="5"/>
+    </children>
+    <element xmi:type="uk.ac.swanseacoventry.cmt.ontrack:Signal" href="DoubleJunction.ontrack#//@signals.7"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_kAWPAYC4Eea8-fWm4Zgerg" x="774" y="360"/>
+  </children>
+  <children xmi:type="notation:Node" xmi:id="__96QoIC5Eea8-fWm4Zgerg" type="2001">
+    <children xmi:type="notation:DecorationNode" xmi:id="__96QpYC5Eea8-fWm4Zgerg" type="5001">
+      <layoutConstraint xmi:type="notation:Location" xmi:id="__96QpoC5Eea8-fWm4Zgerg" y="5"/>
+    </children>
+    <styles xmi:type="notation:DescriptionStyle" xmi:id="__96QoYC5Eea8-fWm4Zgerg"/>
+    <styles xmi:type="notation:FontStyle" xmi:id="__96QooC5Eea8-fWm4Zgerg" fontName=".SF NS Text"/>
+    <styles xmi:type="notation:LineStyle" xmi:id="__96Qo4C5Eea8-fWm4Zgerg"/>
+    <element xmi:type="uk.ac.swanseacoventry.cmt.ontrack:Connector" href="DoubleJunction.ontrack#//@connectors.21"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="__96QpIC5Eea8-fWm4Zgerg" x="873" y="342"/>
+  </children>
+  <children xmi:type="notation:Node" xmi:id="_MC8IwIC6Eea8-fWm4Zgerg" type="2001">
+    <children xmi:type="notation:DecorationNode" xmi:id="_MC8IxYC6Eea8-fWm4Zgerg" type="5001">
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_MC8IxoC6Eea8-fWm4Zgerg" y="5"/>
+    </children>
+    <styles xmi:type="notation:DescriptionStyle" xmi:id="_MC8IwYC6Eea8-fWm4Zgerg"/>
+    <styles xmi:type="notation:FontStyle" xmi:id="_MC8IwoC6Eea8-fWm4Zgerg" fontName=".SF NS Text"/>
+    <styles xmi:type="notation:LineStyle" xmi:id="_MC8Iw4C6Eea8-fWm4Zgerg"/>
+    <element xmi:type="uk.ac.swanseacoventry.cmt.ontrack:Connector" href="DoubleJunction.ontrack#//@connectors.22"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_MC8IxIC6Eea8-fWm4Zgerg" x="756" y="414"/>
+  </children>
+  <children xmi:type="notation:Shape" xmi:id="_l6adEIC6Eea8-fWm4Zgerg" type="2002" fontName=".SF NS Text">
+    <children xmi:type="notation:DecorationNode" xmi:id="_l6adEoC6Eea8-fWm4Zgerg" type="5002">
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_l6adE4C6Eea8-fWm4Zgerg" y="5"/>
+    </children>
+    <element xmi:type="uk.ac.swanseacoventry.cmt.ontrack:Signal" href="DoubleJunction.ontrack#//@signals.8"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_l6adEYC6Eea8-fWm4Zgerg" x="351" y="117"/>
+  </children>
+  <styles xmi:type="notation:DiagramStyle" xmi:id="_CzOi0YC4Eea8-fWm4Zgerg"/>
+  <element xmi:type="uk.ac.swanseacoventry.cmt.ontrack:TrackPlan" href="DoubleJunction.ontrack#/"/>
+  <edges xmi:type="notation:Connector" xmi:id="_Fw2xkIC4Eea8-fWm4Zgerg" type="4005" source="_FwrLYIC4Eea8-fWm4Zgerg" target="_GPM6cIC4Eea8-fWm4Zgerg">
+    <children xmi:type="notation:DecorationNode" xmi:id="_Fw3YoIC4Eea8-fWm4Zgerg" type="6002">
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_Fw3YoYC4Eea8-fWm4Zgerg" x="-1" y="10"/>
+    </children>
+    <styles xmi:type="notation:FontStyle" xmi:id="_Fw2xkYC4Eea8-fWm4Zgerg" fontName=".SF NS Text"/>
+    <element xmi:type="uk.ac.swanseacoventry.cmt.ontrack:Track" href="DoubleJunction.ontrack#//@tracks.0"/>
+    <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_Fw2xkoC4Eea8-fWm4Zgerg" points="[0, 0, 0, 0]$[0, 0, 0, 0]"/>
+    <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_mBiqsIC4Eea8-fWm4Zgerg" id="(0.2,0.9)"/>
+  </edges>
+  <edges xmi:type="notation:Connector" xmi:id="_GPU2QIC4Eea8-fWm4Zgerg" type="4005" source="_GPM6cIC4Eea8-fWm4Zgerg" target="_GnA9gIC4Eea8-fWm4Zgerg">
+    <children xmi:type="notation:DecorationNode" xmi:id="_GPU2Q4C4Eea8-fWm4Zgerg" type="6002">
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_GPU2RIC4Eea8-fWm4Zgerg" x="-1" y="10"/>
+    </children>
+    <styles xmi:type="notation:FontStyle" xmi:id="_GPU2QYC4Eea8-fWm4Zgerg" fontName=".SF NS Text"/>
+    <element xmi:type="uk.ac.swanseacoventry.cmt.ontrack:Track" href="DoubleJunction.ontrack#//@tracks.1"/>
+    <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_GPU2QoC4Eea8-fWm4Zgerg" points="[0, 0, 0, 0]$[0, 0, 0, 0]"/>
+    <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_m6SQkIC4Eea8-fWm4Zgerg" id="(0.2,0.9)"/>
+  </edges>
+  <edges xmi:type="notation:Connector" xmi:id="_GnHrMIC4Eea8-fWm4Zgerg" type="4005" source="_GnA9gIC4Eea8-fWm4Zgerg" target="_Hg2IgIC4Eea8-fWm4Zgerg">
+    <children xmi:type="notation:DecorationNode" xmi:id="_GnHrM4C4Eea8-fWm4Zgerg" type="6002">
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_GnISQIC4Eea8-fWm4Zgerg" x="-1" y="10"/>
+    </children>
+    <styles xmi:type="notation:FontStyle" xmi:id="_GnHrMYC4Eea8-fWm4Zgerg" fontName=".SF NS Text"/>
+    <element xmi:type="uk.ac.swanseacoventry.cmt.ontrack:Track" href="DoubleJunction.ontrack#//@tracks.2"/>
+    <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_GnHrMoC4Eea8-fWm4Zgerg" points="[0, 0, 0, 0]$[0, 0, 0, 0]"/>
+    <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_n8etYIC4Eea8-fWm4Zgerg" id="(0.0,0.7)"/>
+  </edges>
+  <edges xmi:type="notation:Connector" xmi:id="_Hg_5gIC4Eea8-fWm4Zgerg" type="4005" source="_Hg2IgIC4Eea8-fWm4Zgerg" target="_Hg5L0IC4Eea8-fWm4Zgerg">
+    <children xmi:type="notation:DecorationNode" xmi:id="_Hg_5g4C4Eea8-fWm4Zgerg" type="6002">
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_Hg_5hIC4Eea8-fWm4Zgerg" x="-8" y="10"/>
+    </children>
+    <styles xmi:type="notation:FontStyle" xmi:id="_Hg_5gYC4Eea8-fWm4Zgerg" fontName=".SF NS Text"/>
+    <element xmi:type="uk.ac.swanseacoventry.cmt.ontrack:Track" href="DoubleJunction.ontrack#//@tracks.3"/>
+    <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_Hg_5goC4Eea8-fWm4Zgerg" points="[0, 0, 0, 0]$[0, 0, 0, 0]"/>
+  </edges>
+  <edges xmi:type="notation:Connector" xmi:id="_HhC80IC4Eea8-fWm4Zgerg" type="4005" source="_Hg2IgIC4Eea8-fWm4Zgerg" target="_Hg8PIIC4Eea8-fWm4Zgerg">
+    <children xmi:type="notation:DecorationNode" xmi:id="_HhC804C4Eea8-fWm4Zgerg" type="6002">
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_HhC81IC4Eea8-fWm4Zgerg" y="40"/>
+    </children>
+    <styles xmi:type="notation:FontStyle" xmi:id="_HhC80YC4Eea8-fWm4Zgerg" fontName=".SF NS Text"/>
+    <element xmi:type="uk.ac.swanseacoventry.cmt.ontrack:Track" href="DoubleJunction.ontrack#//@tracks.4"/>
+    <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_HhC80oC4Eea8-fWm4Zgerg" points="[3, 0, -105, -45]$[54, 0, -54, -45]$[105, 46, -3, 1]"/>
+  </edges>
+  <edges xmi:type="notation:Connector" xmi:id="_HhH1UIC4Eea8-fWm4Zgerg" type="4001" source="_HhC80IC4Eea8-fWm4Zgerg" target="_Hg_5gIC4Eea8-fWm4Zgerg">
+    <children xmi:type="notation:DecorationNode" xmi:id="_HhH1U4C4Eea8-fWm4Zgerg" type="6001">
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_HhH1VIC4Eea8-fWm4Zgerg" x="1" y="-8"/>
+    </children>
+    <styles xmi:type="notation:FontStyle" xmi:id="_HhH1UYC4Eea8-fWm4Zgerg" fontName=".SF NS Text"/>
+    <element xmi:type="uk.ac.swanseacoventry.cmt.ontrack:Point" href="DoubleJunction.ontrack#//@points.0"/>
+    <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_HhH1UoC4Eea8-fWm4Zgerg" points="[0, 0, 0, 0]$[0, 0, 0, 0]"/>
+    <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_HhJqgIC4Eea8-fWm4Zgerg" id="(0.4961832061068702,0.4961832061068702)"/>
+    <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_HhJqgYC4Eea8-fWm4Zgerg" id="(0.4961832061068702,0.4961832061068702)"/>
+  </edges>
+  <edges xmi:type="notation:Connector" xmi:id="_JMBQ4IC4Eea8-fWm4Zgerg" type="4005" source="_Hg5L0IC4Eea8-fWm4Zgerg" target="_Jrdl8IC4Eea8-fWm4Zgerg">
+    <children xmi:type="notation:DecorationNode" xmi:id="_JMBQ44C4Eea8-fWm4Zgerg" type="6002">
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_JMBQ5IC4Eea8-fWm4Zgerg" x="-1" y="10"/>
+    </children>
+    <styles xmi:type="notation:FontStyle" xmi:id="_JMBQ4YC4Eea8-fWm4Zgerg" fontName=".SF NS Text"/>
+    <element xmi:type="uk.ac.swanseacoventry.cmt.ontrack:Track" href="DoubleJunction.ontrack#//@tracks.5"/>
+    <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_JMBQ4oC4Eea8-fWm4Zgerg" points="[0, 0, 0, 0]$[0, 0, 0, 0]"/>
+    <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_qXtZsIC4Eea8-fWm4Zgerg" id="(0.6,0.9)"/>
+    <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_sX1eYIC4Eea8-fWm4Zgerg" id="(0.0,0.7)"/>
+  </edges>
+  <edges xmi:type="notation:Connector" xmi:id="_JrjskIC4Eea8-fWm4Zgerg" type="4005" source="_Jrdl8IC4Eea8-fWm4Zgerg" target="_KFNisIC4Eea8-fWm4Zgerg">
+    <children xmi:type="notation:DecorationNode" xmi:id="_Jrjsk4C4Eea8-fWm4Zgerg" type="6002">
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_JrjslIC4Eea8-fWm4Zgerg" x="4" y="10"/>
+    </children>
+    <styles xmi:type="notation:FontStyle" xmi:id="_JrjskYC4Eea8-fWm4Zgerg" fontName=".SF NS Text"/>
+    <element xmi:type="uk.ac.swanseacoventry.cmt.ontrack:Track" href="DoubleJunction.ontrack#//@tracks.6"/>
+    <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_JrjskoC4Eea8-fWm4Zgerg" points="[0, 0, 0, 0]$[0, 0, 0, 0]"/>
+    <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_tgcsQIC4Eea8-fWm4Zgerg" id="(0.2,0.9)"/>
+  </edges>
+  <edges xmi:type="notation:Connector" xmi:id="_MVY1kIC4Eea8-fWm4Zgerg" type="4005" source="_MVTWAIC4Eea8-fWm4Zgerg" target="_NRKhUIC4Eea8-fWm4Zgerg">
+    <children xmi:type="notation:DecorationNode" xmi:id="_MVY1k4C4Eea8-fWm4Zgerg" type="6002">
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_MVY1lIC4Eea8-fWm4Zgerg" x="-5" y="10"/>
+    </children>
+    <styles xmi:type="notation:FontStyle" xmi:id="_MVY1kYC4Eea8-fWm4Zgerg" fontName=".SF NS Text"/>
+    <element xmi:type="uk.ac.swanseacoventry.cmt.ontrack:Track" href="DoubleJunction.ontrack#//@tracks.7"/>
+    <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_MVY1koC4Eea8-fWm4Zgerg" points="[0, 0, 0, 0]$[0, 0, 0, 0]"/>
+    <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_v47mkIC4Eea8-fWm4Zgerg" id="(0.0,0.7)"/>
+  </edges>
+  <edges xmi:type="notation:Connector" xmi:id="_NRQn8IC4Eea8-fWm4Zgerg" type="4005" source="_NRKhUIC4Eea8-fWm4Zgerg" target="_OKCDAIC4Eea8-fWm4Zgerg">
+    <children xmi:type="notation:DecorationNode" xmi:id="_NRQn84C4Eea8-fWm4Zgerg" type="6002">
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_NRQn9IC4Eea8-fWm4Zgerg" x="-5" y="10"/>
+    </children>
+    <styles xmi:type="notation:FontStyle" xmi:id="_NRQn8YC4Eea8-fWm4Zgerg" fontName=".SF NS Text"/>
+    <element xmi:type="uk.ac.swanseacoventry.cmt.ontrack:Track" href="DoubleJunction.ontrack#//@tracks.8"/>
+    <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_NRQn8oC4Eea8-fWm4Zgerg" points="[0, 0, 0, 0]$[0, 0, 0, 0]"/>
+    <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_wx_8kIC4Eea8-fWm4Zgerg" id="(0.0,0.7)"/>
+  </edges>
+  <edges xmi:type="notation:Connector" xmi:id="_OKJ-0IC4Eea8-fWm4Zgerg" type="4005" source="_OKCDAIC4Eea8-fWm4Zgerg" target="_OKEfQIC4Eea8-fWm4Zgerg">
+    <children xmi:type="notation:DecorationNode" xmi:id="_OKJ-04C4Eea8-fWm4Zgerg" type="6002">
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_OKJ-1IC4Eea8-fWm4Zgerg" x="-14" y="10"/>
+    </children>
+    <styles xmi:type="notation:FontStyle" xmi:id="_OKJ-0YC4Eea8-fWm4Zgerg" fontName=".SF NS Text"/>
+    <element xmi:type="uk.ac.swanseacoventry.cmt.ontrack:Track" href="DoubleJunction.ontrack#//@tracks.9"/>
+    <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_OKJ-0oC4Eea8-fWm4Zgerg" points="[0, 0, 0, 0]$[0, 0, 0, 0]"/>
+  </edges>
+  <edges xmi:type="notation:Connector" xmi:id="_OKMbEIC4Eea8-fWm4Zgerg" type="4005" source="_OKCDAIC4Eea8-fWm4Zgerg" target="_UeUEgIC4Eea8-fWm4Zgerg">
+    <children xmi:type="notation:DecorationNode" xmi:id="_OKMbE4C4Eea8-fWm4Zgerg" type="6002">
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_OKMbFIC4Eea8-fWm4Zgerg" y="40"/>
+    </children>
+    <styles xmi:type="notation:FontStyle" xmi:id="_OKMbEYC4Eea8-fWm4Zgerg" fontName=".SF NS Text"/>
+    <element xmi:type="uk.ac.swanseacoventry.cmt.ontrack:Track" href="DoubleJunction.ontrack#//@tracks.10"/>
+    <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_OKMbEoC4Eea8-fWm4Zgerg" points="[3, 0, -204, -153]$[45, 0, -162, -153]$[204, 151, -3, -2]"/>
+    <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_9AddgIC4Eea8-fWm4Zgerg" id="(0.0,0.2)"/>
+  </edges>
+  <edges xmi:type="notation:Connector" xmi:id="_OKO3UIC4Eea8-fWm4Zgerg" type="4001" source="_OKMbEIC4Eea8-fWm4Zgerg" target="_OKJ-0IC4Eea8-fWm4Zgerg">
+    <children xmi:type="notation:DecorationNode" xmi:id="_OKPeYIC4Eea8-fWm4Zgerg" type="6001">
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_OKPeYYC4Eea8-fWm4Zgerg" x="1" y="-8"/>
+    </children>
+    <styles xmi:type="notation:FontStyle" xmi:id="_OKO3UYC4Eea8-fWm4Zgerg" fontName=".SF NS Text"/>
+    <element xmi:type="uk.ac.swanseacoventry.cmt.ontrack:Point" href="DoubleJunction.ontrack#//@points.1"/>
+    <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_OKO3UoC4Eea8-fWm4Zgerg" points="[0, 0, 0, 0]$[0, 0, 0, 0]"/>
+    <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_OKQFcIC4Eea8-fWm4Zgerg" id="(0.4961832061068702,0.4961832061068702)"/>
+    <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_OKQFcYC4Eea8-fWm4Zgerg" id="(0.4961832061068702,0.4961832061068702)"/>
+  </edges>
+  <edges xmi:type="notation:Connector" xmi:id="_P1XjcIC4Eea8-fWm4Zgerg" type="4005" source="_OKEfQIC4Eea8-fWm4Zgerg" target="_P1Q1wIC4Eea8-fWm4Zgerg">
+    <children xmi:type="notation:DecorationNode" xmi:id="_P1Xjc4C4Eea8-fWm4Zgerg" type="6002">
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_P1XjdIC4Eea8-fWm4Zgerg" x="-9" y="10"/>
+    </children>
+    <styles xmi:type="notation:FontStyle" xmi:id="_P1XjcYC4Eea8-fWm4Zgerg" fontName=".SF NS Text"/>
+    <element xmi:type="uk.ac.swanseacoventry.cmt.ontrack:Track" href="DoubleJunction.ontrack#//@tracks.11"/>
+    <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_P1XjcoC4Eea8-fWm4Zgerg" points="[0, 0, 0, 0]$[0, 0, 0, 0]"/>
+    <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_1DtCUIC4Eea8-fWm4Zgerg" id="(0.6,0.9)"/>
+  </edges>
+  <edges xmi:type="notation:Connector" xmi:id="_P1amwIC4Eea8-fWm4Zgerg" type="4005" source="_Hg8PIIC4Eea8-fWm4Zgerg" target="_S4DRUIC4Eea8-fWm4Zgerg">
+    <children xmi:type="notation:DecorationNode" xmi:id="_P1amw4C4Eea8-fWm4Zgerg" type="6002">
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_P1amxIC4Eea8-fWm4Zgerg" y="40"/>
+    </children>
+    <styles xmi:type="notation:FontStyle" xmi:id="_P1amwYC4Eea8-fWm4Zgerg" fontName=".SF NS Text"/>
+    <element xmi:type="uk.ac.swanseacoventry.cmt.ontrack:Track" href="DoubleJunction.ontrack#//@tracks.12"/>
+    <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_P1amwoC4Eea8-fWm4Zgerg" points="[3, 2, -132, -124]$[49, 45, -86, -81]$[132, 125, -3, -1]"/>
+    <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_zHw6EIC4Eea8-fWm4Zgerg" id="(0.6,0.8)"/>
+    <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_5ehAwIC4Eea8-fWm4Zgerg" id="(0.0,0.7)"/>
+  </edges>
+  <edges xmi:type="notation:Connector" xmi:id="_P1e4MIC4Eea8-fWm4Zgerg" type="4002" source="_P1XjcIC4Eea8-fWm4Zgerg" target="_P1amwIC4Eea8-fWm4Zgerg">
+    <styles xmi:type="notation:FontStyle" xmi:id="_P1e4MYC4Eea8-fWm4Zgerg" fontName=".SF NS Text"/>
+    <element xmi:type="uk.ac.swanseacoventry.cmt.ontrack:Crossing" href="DoubleJunction.ontrack#//@crossings.0"/>
+    <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_P1e4MoC4Eea8-fWm4Zgerg" points="[0, 0, 0, 0]$[0, 0, 0, 0]"/>
+    <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_P1gtYIC4Eea8-fWm4Zgerg" id="(0.4961832061068702,0.4961832061068702)"/>
+    <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_P1gtYYC4Eea8-fWm4Zgerg" id="(0.4961832061068702,0.4961832061068702)"/>
+  </edges>
+  <edges xmi:type="notation:Connector" xmi:id="_QdhvoIC4Eea8-fWm4Zgerg" type="4005" source="_P1Q1wIC4Eea8-fWm4Zgerg" target="_RBR88IC4Eea8-fWm4Zgerg">
+    <children xmi:type="notation:DecorationNode" xmi:id="_QdiWsIC4Eea8-fWm4Zgerg" type="6002">
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_QdiWsYC4Eea8-fWm4Zgerg" x="-5" y="10"/>
+    </children>
+    <styles xmi:type="notation:FontStyle" xmi:id="_QdhvoYC4Eea8-fWm4Zgerg" fontName=".SF NS Text"/>
+    <element xmi:type="uk.ac.swanseacoventry.cmt.ontrack:Track" href="DoubleJunction.ontrack#//@tracks.13"/>
+    <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_QdhvooC4Eea8-fWm4Zgerg" points="[0, 0, 0, 0]$[0, 0, 0, 0]"/>
+    <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_12PSgIC4Eea8-fWm4Zgerg" id="(0.8,0.8)"/>
+    <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_20rQsIC4Eea8-fWm4Zgerg" id="(0.0,0.6)"/>
+  </edges>
+  <edges xmi:type="notation:Connector" xmi:id="_RBXcgIC4Eea8-fWm4Zgerg" type="4005" source="_RBR88IC4Eea8-fWm4Zgerg" target="_RXs44IC4Eea8-fWm4Zgerg">
+    <children xmi:type="notation:DecorationNode" xmi:id="_RBXcg4C4Eea8-fWm4Zgerg" type="6002">
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_RBXchIC4Eea8-fWm4Zgerg" x="-1" y="10"/>
+    </children>
+    <styles xmi:type="notation:FontStyle" xmi:id="_RBXcgYC4Eea8-fWm4Zgerg" fontName=".SF NS Text"/>
+    <element xmi:type="uk.ac.swanseacoventry.cmt.ontrack:Track" href="DoubleJunction.ontrack#//@tracks.14"/>
+    <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_RBXcgoC4Eea8-fWm4Zgerg" points="[0, 0, 0, 0]$[0, 0, 0, 0]"/>
+    <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_3q2qwIC4Eea8-fWm4Zgerg" id="(0.0,0.7)"/>
+  </edges>
+  <edges xmi:type="notation:Connector" xmi:id="_RXxxYIC4Eea8-fWm4Zgerg" type="4005" source="_RXs44IC4Eea8-fWm4Zgerg" target="_RXvVIIC4Eea8-fWm4Zgerg">
+    <children xmi:type="notation:DecorationNode" xmi:id="_RXxxY4C4Eea8-fWm4Zgerg" type="6002">
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_RXxxZIC4Eea8-fWm4Zgerg" x="4" y="10"/>
+    </children>
+    <styles xmi:type="notation:FontStyle" xmi:id="_RXxxYYC4Eea8-fWm4Zgerg" fontName=".SF NS Text"/>
+    <element xmi:type="uk.ac.swanseacoventry.cmt.ontrack:Track" href="DoubleJunction.ontrack#//@tracks.15"/>
+    <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_RXxxYoC4Eea8-fWm4Zgerg" points="[0, 0, 0, 0]$[0, 0, 0, 0]"/>
+  </edges>
+  <edges xmi:type="notation:Connector" xmi:id="_S4Iw4IC4Eea8-fWm4Zgerg" type="4005" source="_S4DRUIC4Eea8-fWm4Zgerg" target="_TS-SwIC4Eea8-fWm4Zgerg">
+    <children xmi:type="notation:DecorationNode" xmi:id="_S4Iw44C4Eea8-fWm4Zgerg" type="6002">
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_S4Iw5IC4Eea8-fWm4Zgerg" x="1" y="10"/>
+    </children>
+    <styles xmi:type="notation:FontStyle" xmi:id="_S4Iw4YC4Eea8-fWm4Zgerg" fontName=".SF NS Text"/>
+    <element xmi:type="uk.ac.swanseacoventry.cmt.ontrack:Track" href="DoubleJunction.ontrack#//@tracks.16"/>
+    <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_S4Iw4oC4Eea8-fWm4Zgerg" points="[0, 0, 0, 0]$[0, 0, 0, 0]"/>
+    <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_7h8REIC4Eea8-fWm4Zgerg" id="(0.0,0.7)"/>
+  </edges>
+  <edges xmi:type="notation:Connector" xmi:id="_U2Lx8IC4Eea8-fWm4Zgerg" type="4005" source="_U2G5cIC4Eea8-fWm4Zgerg" target="_U2JVsIC4Eea8-fWm4Zgerg">
+    <children xmi:type="notation:DecorationNode" xmi:id="_U2Lx84C4Eea8-fWm4Zgerg" type="6002">
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_U2Lx9IC4Eea8-fWm4Zgerg" x="4" y="10"/>
+    </children>
+    <styles xmi:type="notation:FontStyle" xmi:id="_U2Lx8YC4Eea8-fWm4Zgerg" fontName=".SF NS Text"/>
+    <element xmi:type="uk.ac.swanseacoventry.cmt.ontrack:Track" href="DoubleJunction.ontrack#//@tracks.17"/>
+    <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_U2Lx8oC4Eea8-fWm4Zgerg" points="[0, 0, 0, 0]$[0, 0, 0, 0]"/>
+  </edges>
+  <edges xmi:type="notation:Connector" xmi:id="_AjJEoIC6Eea8-fWm4Zgerg" type="4005" source="_TS-SwIC4Eea8-fWm4Zgerg" target="__96QoIC5Eea8-fWm4Zgerg">
+    <children xmi:type="notation:DecorationNode" xmi:id="_AjJEo4C6Eea8-fWm4Zgerg" type="6002">
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_AjJEpIC6Eea8-fWm4Zgerg" x="-5" y="10"/>
+    </children>
+    <styles xmi:type="notation:FontStyle" xmi:id="_AjJEoYC6Eea8-fWm4Zgerg" fontName=".SF NS Text"/>
+    <element xmi:type="uk.ac.swanseacoventry.cmt.ontrack:Track" href="DoubleJunction.ontrack#//@tracks.18"/>
+    <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_AjJEooC6Eea8-fWm4Zgerg" points="[12, -1, -192, -13]$[206, 16, 2, 4]"/>
+    <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_AjKSwIC6Eea8-fWm4Zgerg" id="(0.4,0.9)"/>
+    <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_AjKSwYC6Eea8-fWm4Zgerg" id="(0.2,0.9)"/>
+  </edges>
+  <edges xmi:type="notation:Connector" xmi:id="_NZoO4IC6Eea8-fWm4Zgerg" type="4005" source="_UeUEgIC4Eea8-fWm4Zgerg" target="_MC8IwIC6Eea8-fWm4Zgerg">
+    <children xmi:type="notation:DecorationNode" xmi:id="_NZoO44C6Eea8-fWm4Zgerg" type="6002">
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_NZoO5IC6Eea8-fWm4Zgerg" x="4" y="10"/>
+    </children>
+    <styles xmi:type="notation:FontStyle" xmi:id="_NZoO4YC6Eea8-fWm4Zgerg" fontName=".SF NS Text"/>
+    <element xmi:type="uk.ac.swanseacoventry.cmt.ontrack:Track" href="DoubleJunction.ontrack#//@tracks.19"/>
+    <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_NZoO4oC6Eea8-fWm4Zgerg" points="[12, -1, -268, -13]$[283, 20, 3, 8]"/>
+    <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_NZo18IC6Eea8-fWm4Zgerg" id="(0.2,0.9)"/>
+    <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_NZo18YC6Eea8-fWm4Zgerg" id="(0.0,0.8)"/>
+  </edges>
+  <edges xmi:type="notation:Connector" xmi:id="_PGn8MIC6Eea8-fWm4Zgerg" type="4005" source="_MC8IwIC6Eea8-fWm4Zgerg" target="_U2G5cIC4Eea8-fWm4Zgerg">
+    <children xmi:type="notation:DecorationNode" xmi:id="_PGn8M4C6Eea8-fWm4Zgerg" type="6002">
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_PGn8NIC6Eea8-fWm4Zgerg" x="-1" y="10"/>
+    </children>
+    <styles xmi:type="notation:FontStyle" xmi:id="_PGn8MYC6Eea8-fWm4Zgerg" fontName=".SF NS Text"/>
+    <element xmi:type="uk.ac.swanseacoventry.cmt.ontrack:Track" href="DoubleJunction.ontrack#//@tracks.20"/>
+    <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_PGn8MoC6Eea8-fWm4Zgerg" points="[12, -1, -232, -9]$[247, 20, 3, 12]"/>
+    <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_PGojQIC6Eea8-fWm4Zgerg" id="(0.8,0.9)"/>
+    <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_PGpKUIC6Eea8-fWm4Zgerg" id="(0.0,0.7)"/>
+  </edges>
+  <edges xmi:type="notation:Connector" xmi:id="_WjNpkIC6Eea8-fWm4Zgerg" type="4006" source="_WhFNgIC4Eea8-fWm4Zgerg" target="_FwrLYIC4Eea8-fWm4Zgerg">
+    <styles xmi:type="notation:FontStyle" xmi:id="_WjNpkYC6Eea8-fWm4Zgerg" fontName=".SF NS Text"/>
+    <element xsi:nil="true"/>
+    <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_WjNpkoC6Eea8-fWm4Zgerg" points="[8, 1, -312, -51]$[320, 56, 0, 4]"/>
+    <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_WjOQoIC6Eea8-fWm4Zgerg" id="(0.95,0.575)"/>
+    <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_WjOQoYC6Eea8-fWm4Zgerg" id="(0.2,0.9)"/>
+  </edges>
+  <edges xmi:type="notation:Connector" xmi:id="_X40xoIC6Eea8-fWm4Zgerg" type="4007" source="_XAGEwIC4Eea8-fWm4Zgerg" target="_MVTWAIC4Eea8-fWm4Zgerg">
+    <styles xmi:type="notation:FontStyle" xmi:id="_X40xoYC6Eea8-fWm4Zgerg" fontName=".SF NS Text"/>
+    <element xsi:nil="true"/>
+    <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_X40xooC6Eea8-fWm4Zgerg" points="[28, 2, -312, -22]$[341, 28, 1, 4]"/>
+    <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_X41YsIC6Eea8-fWm4Zgerg" id="(0.825,0.525)"/>
+    <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_X41YsYC6Eea8-fWm4Zgerg" id="(0.2,0.9)"/>
+  </edges>
+  <edges xmi:type="notation:Connector" xmi:id="_aXSYIIC6Eea8-fWm4Zgerg" type="4006" source="_YCf88IC4Eea8-fWm4Zgerg" target="_RXvVIIC4Eea8-fWm4Zgerg">
+    <styles xmi:type="notation:FontStyle" xmi:id="_aXSYIYC6Eea8-fWm4Zgerg" fontName=".SF NS Text"/>
+    <element xsi:nil="true"/>
+    <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_aXSYIoC6Eea8-fWm4Zgerg" points="[-80, 8, 452, -44]$[-531, 68, 1, 16]"/>
+    <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_aXS_MIC6Eea8-fWm4Zgerg" id="(0.8,0.6)"/>
+  </edges>
+  <edges xmi:type="notation:Connector" xmi:id="_b2EDQIC6Eea8-fWm4Zgerg" type="4007" source="_Xew9wIC4Eea8-fWm4Zgerg" target="_KFNisIC4Eea8-fWm4Zgerg">
+    <styles xmi:type="notation:FontStyle" xmi:id="_b2EDQYC6Eea8-fWm4Zgerg" fontName=".SF NS Text"/>
+    <element xsi:nil="true"/>
+    <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_b2EDQoC6Eea8-fWm4Zgerg" points="[-28, 0, 460, 0]$[-476, -2, 12, -2]"/>
+    <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_b2EqUIC6Eea8-fWm4Zgerg" id="(0.175,0.8)"/>
+  </edges>
+  <edges xmi:type="notation:Connector" xmi:id="_g7qEEIC6Eea8-fWm4Zgerg" type="4006" source="_ZZMDEIC4Eea8-fWm4Zgerg" target="_U2JVsIC4Eea8-fWm4Zgerg">
+    <styles xmi:type="notation:FontStyle" xmi:id="_g7qEEYC6Eea8-fWm4Zgerg" fontName=".SF NS Text"/>
+    <element xsi:nil="true"/>
+    <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_g7qEEoC6Eea8-fWm4Zgerg" points="[-80, 4, 456, -24]$[-535, 32, 1, 4]"/>
+    <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_g7qrIIC6Eea8-fWm4Zgerg" id="(0.6,0.9)"/>
+  </edges>
+  <edges xmi:type="notation:Connector" xmi:id="_honQsIC6Eea8-fWm4Zgerg" type="4007" source="_ZBy2wIC4Eea8-fWm4Zgerg" target="__96QoIC5Eea8-fWm4Zgerg">
+    <styles xmi:type="notation:FontStyle" xmi:id="_honQsYC6Eea8-fWm4Zgerg" fontName=".SF NS Text"/>
+    <element xsi:nil="true"/>
+    <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_honQsoC6Eea8-fWm4Zgerg" points="[-80, 3, 452, -17]$[-531, 32, 1, 12]"/>
+    <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_hon3wIC6Eea8-fWm4Zgerg" id="(0.8,0.7)"/>
+  </edges>
+  <edges xmi:type="notation:Edge" xmi:id="_nhK_gIC6Eea8-fWm4Zgerg" type="4003" source="_aL1A8IC4Eea8-fWm4Zgerg" target="_Fw2xkIC4Eea8-fWm4Zgerg">
+    <styles xmi:type="notation:RoutingStyle" xmi:id="_nhK_gYC6Eea8-fWm4Zgerg"/>
+    <styles xmi:type="notation:FontStyle" xmi:id="_nhLmkIC6Eea8-fWm4Zgerg" fontName=".SF NS Text"/>
+    <element xsi:nil="true"/>
+    <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_nhLmkYC6Eea8-fWm4Zgerg" points="[0, 44, 276, -144]$[-76, 188, 200, 0]"/>
+    <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_nhMNoIC6Eea8-fWm4Zgerg" id="(0.7419354838709677,0.37777777777777777)"/>
+  </edges>
+  <edges xmi:type="notation:Edge" xmi:id="_n-d_gIC6Eea8-fWm4Zgerg" type="4003" source="_l6adEIC6Eea8-fWm4Zgerg" target="_GPU2QIC4Eea8-fWm4Zgerg">
+    <styles xmi:type="notation:RoutingStyle" xmi:id="_n-d_gYC6Eea8-fWm4Zgerg"/>
+    <styles xmi:type="notation:FontStyle" xmi:id="_n-d_goC6Eea8-fWm4Zgerg" fontName=".SF NS Text"/>
+    <element xsi:nil="true"/>
+    <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_n-d_g4C6Eea8-fWm4Zgerg" points="[0, 44, 276, -144]$[-76, 188, 200, 0]"/>
+    <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_n-emkIC6Eea8-fWm4Zgerg" id="(0.18181818181818182,0.45454545454545453)"/>
+    <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_n-emkYC6Eea8-fWm4Zgerg" id="(0.717741935483871,0.3111111111111111)"/>
+  </edges>
+  <edges xmi:type="notation:Edge" xmi:id="_om6fkIC6Eea8-fWm4Zgerg" type="4003" source="_cIoE0IC4Eea8-fWm4Zgerg" target="_NRQn8IC4Eea8-fWm4Zgerg">
+    <styles xmi:type="notation:RoutingStyle" xmi:id="_om6fkYC6Eea8-fWm4Zgerg"/>
+    <styles xmi:type="notation:FontStyle" xmi:id="_om6fkoC6Eea8-fWm4Zgerg" fontName=".SF NS Text"/>
+    <element xsi:nil="true"/>
+    <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_om6fk4C6Eea8-fWm4Zgerg" points="[0, 44, 96, -144]$[-96, 188, 0, 0]"/>
+    <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_om7GoIC6Eea8-fWm4Zgerg" id="(0.5,0.13636363636363635)"/>
+    <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_om7GoYC6Eea8-fWm4Zgerg" id="(0.2956521739130435,0.3333333333333333)"/>
+  </edges>
+  <edges xmi:type="notation:Connector" xmi:id="_pgiPMIC6Eea8-fWm4Zgerg" type="4004" source="_aL1A8IC4Eea8-fWm4Zgerg" target="_GPM6cIC4Eea8-fWm4Zgerg">
+    <styles xmi:type="notation:FontStyle" xmi:id="_pgiPMYC6Eea8-fWm4Zgerg" fontName=".SF NS Text"/>
+    <element xsi:nil="true"/>
+    <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_pgiPMoC6Eea8-fWm4Zgerg" points="[0, 44, -108, -164]$[108, 212, 0, 4]"/>
+    <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_pgjdUIC6Eea8-fWm4Zgerg" id="(0.4,0.9)"/>
+  </edges>
+  <edges xmi:type="notation:Connector" xmi:id="_qCqE0IC6Eea8-fWm4Zgerg" type="4004" source="_l6adEIC6Eea8-fWm4Zgerg" target="_GnA9gIC4Eea8-fWm4Zgerg">
+    <styles xmi:type="notation:FontStyle" xmi:id="_qCqE0YC6Eea8-fWm4Zgerg" fontName=".SF NS Text"/>
+    <element xsi:nil="true"/>
+    <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_qCqE0oC6Eea8-fWm4Zgerg" points="[0, 44, -104, -164]$[106, 212, 2, 4]"/>
+    <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_qCqr4IC6Eea8-fWm4Zgerg" id="(0.8181818181818182,0.6818181818181818)"/>
+    <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_qCqr4YC6Eea8-fWm4Zgerg" id="(0.2,0.9)"/>
+  </edges>
+  <edges xmi:type="notation:Connector" xmi:id="_qtRvIIC6Eea8-fWm4Zgerg" type="4004" source="_cIoE0IC4Eea8-fWm4Zgerg" target="_NRKhUIC4Eea8-fWm4Zgerg">
+    <styles xmi:type="notation:FontStyle" xmi:id="_qtRvIYC6Eea8-fWm4Zgerg" fontName=".SF NS Text"/>
+    <element xsi:nil="true"/>
+    <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_qtRvIoC6Eea8-fWm4Zgerg" points="[0, 44, 104, -164]$[-101, 212, 3, 4]"/>
+    <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_qtSWMIC6Eea8-fWm4Zgerg" id="(0.6,0.9)"/>
+  </edges>
+  <edges xmi:type="notation:Edge" xmi:id="_ubBMMIC6Eea8-fWm4Zgerg" type="4003" source="_df2WcIC4Eea8-fWm4Zgerg" target="_JMBQ4IC4Eea8-fWm4Zgerg">
+    <styles xmi:type="notation:RoutingStyle" xmi:id="_ubBMMYC6Eea8-fWm4Zgerg"/>
+    <styles xmi:type="notation:FontStyle" xmi:id="_ubBMMoC6Eea8-fWm4Zgerg" fontName=".SF NS Text"/>
+    <element xsi:nil="true"/>
+    <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_ubBMM4C6Eea8-fWm4Zgerg" points="[0, 44, 19, -144]$[-19, 188, 0, 0]"/>
+    <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_ubBzQIC6Eea8-fWm4Zgerg" id="(0.7272727272727273,0.8181818181818182)"/>
+    <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_ubBzQYC6Eea8-fWm4Zgerg" id="(0.717741935483871,0.3333333333333333)"/>
+  </edges>
+  <edges xmi:type="notation:Edge" xmi:id="_u4bg8IC6Eea8-fWm4Zgerg" type="4003" source="_gp-wIIC4Eea8-fWm4Zgerg" target="_RBXcgIC4Eea8-fWm4Zgerg">
+    <styles xmi:type="notation:RoutingStyle" xmi:id="_u4bg8YC6Eea8-fWm4Zgerg"/>
+    <styles xmi:type="notation:FontStyle" xmi:id="_u4bg8oC6Eea8-fWm4Zgerg" fontName=".SF NS Text"/>
+    <element xsi:nil="true"/>
+    <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_u4bg84C6Eea8-fWm4Zgerg" points="[0, 44, 60, -144]$[-60, 188, 0, 0]"/>
+    <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_u4cvEIC6Eea8-fWm4Zgerg" id="(0.3977272727272727,0.3111111111111111)"/>
+  </edges>
+  <edges xmi:type="notation:Edge" xmi:id="_vWHigIC6Eea8-fWm4Zgerg" type="4003" source="_fWS6sIC4Eea8-fWm4Zgerg" target="_RXxxYIC4Eea8-fWm4Zgerg">
+    <styles xmi:type="notation:RoutingStyle" xmi:id="_vWHigYC6Eea8-fWm4Zgerg"/>
+    <styles xmi:type="notation:FontStyle" xmi:id="_vWHigoC6Eea8-fWm4Zgerg" fontName=".SF NS Text"/>
+    <element xsi:nil="true"/>
+    <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_vWHig4C6Eea8-fWm4Zgerg" points="[0, 44, 60, -144]$[29, 188, 89, 0]"/>
+    <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_vWIJkIC6Eea8-fWm4Zgerg" id="(0.13636363636363635,0.7727272727272727)"/>
+    <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_vWIJkYC6Eea8-fWm4Zgerg" id="(0.46835443037974683,0.3111111111111111)"/>
+  </edges>
+  <edges xmi:type="notation:Edge" xmi:id="_yOA8sIC6Eea8-fWm4Zgerg" type="4003" source="_h41v8IC4Eea8-fWm4Zgerg" target="_S4Iw4IC4Eea8-fWm4Zgerg">
+    <styles xmi:type="notation:RoutingStyle" xmi:id="_yOA8sYC6Eea8-fWm4Zgerg"/>
+    <styles xmi:type="notation:FontStyle" xmi:id="_yOA8soC6Eea8-fWm4Zgerg" fontName=".SF NS Text"/>
+    <element xsi:nil="true"/>
+    <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_yOA8s4C6Eea8-fWm4Zgerg" points="[0, 44, 348, -144]$[-106, 188, 242, 0]"/>
+    <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_yOBjwIC6Eea8-fWm4Zgerg" id="(0.7605633802816901,0.3111111111111111)"/>
+  </edges>
+  <edges xmi:type="notation:Edge" xmi:id="_yn3AEIC6Eea8-fWm4Zgerg" type="4003" source="_kAWPAIC4Eea8-fWm4Zgerg" target="_PGn8MIC6Eea8-fWm4Zgerg">
+    <styles xmi:type="notation:RoutingStyle" xmi:id="_yn3AEYC6Eea8-fWm4Zgerg"/>
+    <styles xmi:type="notation:FontStyle" xmi:id="_yn3AEoC6Eea8-fWm4Zgerg" fontName=".SF NS Text"/>
+    <element xsi:nil="true"/>
+    <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_yn3AE4C6Eea8-fWm4Zgerg" points="[0, 44, 60, -144]$[49, 188, 109, 0]"/>
+    <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_yn3nIIC6Eea8-fWm4Zgerg" id="(0.5454545454545454,0.8181818181818182)"/>
+    <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_yn3nIYC6Eea8-fWm4Zgerg" id="(0.4090909090909091,0.3111111111111111)"/>
+  </edges>
+  <edges xmi:type="notation:Edge" xmi:id="_zFk20IC6Eea8-fWm4Zgerg" type="4003" source="_i1BrYIC4Eea8-fWm4Zgerg" target="_U2Lx8IC4Eea8-fWm4Zgerg">
+    <styles xmi:type="notation:RoutingStyle" xmi:id="_zFk20YC6Eea8-fWm4Zgerg"/>
+    <styles xmi:type="notation:FontStyle" xmi:id="_zFk20oC6Eea8-fWm4Zgerg" fontName=".SF NS Text"/>
+    <element xsi:nil="true"/>
+    <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_zFk204C6Eea8-fWm4Zgerg" points="[0, 44, 96, -144]$[1, 188, 97, 0]"/>
+    <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_zFld4IC6Eea8-fWm4Zgerg" id="(0.45569620253164556,0.3111111111111111)"/>
+  </edges>
+  <edges xmi:type="notation:Connector" xmi:id="_5VCpwIC6Eea8-fWm4Zgerg" type="4004" source="_df2WcIC4Eea8-fWm4Zgerg" target="_Jrdl8IC4Eea8-fWm4Zgerg">
+    <styles xmi:type="notation:FontStyle" xmi:id="_5VCpwYC6Eea8-fWm4Zgerg" fontName=".SF NS Text"/>
+    <element xsi:nil="true"/>
+    <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_5VCpwoC6Eea8-fWm4Zgerg" points="[0, 44, -104, -164]$[105, 212, 1, 4]"/>
+    <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_5VD34IC6Eea8-fWm4Zgerg" id="(0.2,0.9)"/>
+  </edges>
+  <edges xmi:type="notation:Connector" xmi:id="_9JADkIC6Eea8-fWm4Zgerg" type="4004" source="_gp-wIIC4Eea8-fWm4Zgerg" target="_RBR88IC4Eea8-fWm4Zgerg">
+    <styles xmi:type="notation:FontStyle" xmi:id="_9JADkYC6Eea8-fWm4Zgerg" fontName=".SF NS Text"/>
+    <element xsi:nil="true"/>
+    <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_9JADkoC6Eea8-fWm4Zgerg" points="[0, 44, 112, -164]$[-109, 212, 3, 4]"/>
+    <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_9JBRsIC6Eea8-fWm4Zgerg" id="(0.2,0.9)"/>
+  </edges>
+  <edges xmi:type="notation:Connector" xmi:id="_-buPsIC6Eea8-fWm4Zgerg" type="4004" source="_fWS6sIC4Eea8-fWm4Zgerg" target="_RXs44IC4Eea8-fWm4Zgerg">
+    <styles xmi:type="notation:FontStyle" xmi:id="_-buPsYC6Eea8-fWm4Zgerg" fontName=".SF NS Text"/>
+    <element xsi:nil="true"/>
+    <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_-buPsoC6Eea8-fWm4Zgerg" points="[0, 44, 112, -164]$[-110, 212, 2, 4]"/>
+    <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_-bvd0IC6Eea8-fWm4Zgerg" id="(0.7272727272727273,0.8636363636363636)"/>
+    <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_-bvd0YC6Eea8-fWm4Zgerg" id="(0.2,0.9)"/>
+  </edges>
+  <edges xmi:type="notation:Connector" xmi:id="__eXYcIC6Eea8-fWm4Zgerg" type="4004" source="_h41v8IC4Eea8-fWm4Zgerg" target="_TS-SwIC4Eea8-fWm4Zgerg">
+    <styles xmi:type="notation:FontStyle" xmi:id="__eXYcYC6Eea8-fWm4Zgerg" fontName=".SF NS Text"/>
+    <element xsi:nil="true"/>
+    <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="__eXYcoC6Eea8-fWm4Zgerg" points="[0, 44, -108, -164]$[108, 212, 0, 4]"/>
+    <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="__eX_gIC6Eea8-fWm4Zgerg" id="(0.4,0.9)"/>
+  </edges>
+  <edges xmi:type="notation:Connector" xmi:id="_ARHEAIC7Eea8-fWm4Zgerg" type="4004" source="_kAWPAIC4Eea8-fWm4Zgerg" target="_MC8IwIC6Eea8-fWm4Zgerg">
+    <styles xmi:type="notation:FontStyle" xmi:id="_ARHEAYC7Eea8-fWm4Zgerg" fontName=".SF NS Text"/>
+    <element xsi:nil="true"/>
+    <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_ARHEAoC7Eea8-fWm4Zgerg" points="[0, 44, 100, -164]$[-96, 209, 4, 1]"/>
+    <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_ARISIIC7Eea8-fWm4Zgerg" id="(0.8,0.9)"/>
+  </edges>
+  <edges xmi:type="notation:Connector" xmi:id="_BztfMIC7Eea8-fWm4Zgerg" type="4004" source="_i1BrYIC4Eea8-fWm4Zgerg" target="_U2G5cIC4Eea8-fWm4Zgerg">
+    <styles xmi:type="notation:FontStyle" xmi:id="_BztfMYC7Eea8-fWm4Zgerg" fontName=".SF NS Text"/>
+    <element xsi:nil="true"/>
+    <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_BztfMoC7Eea8-fWm4Zgerg" points="[0, 44, 108, -164]$[-105, 212, 3, 4]"/>
+    <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_BzuGQIC7Eea8-fWm4Zgerg" id="(0.5,0.7727272727272727)"/>
+    <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_BzuGQYC7Eea8-fWm4Zgerg" id="(0.4,0.9)"/>
+  </edges>
+</notation:Diagram>
