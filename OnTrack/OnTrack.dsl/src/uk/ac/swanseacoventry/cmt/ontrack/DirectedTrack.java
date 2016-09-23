@@ -44,4 +44,5 @@ public interface DirectedTrack extends EObject {
 	
 	public Signal getSignal();
 	public Connector getOppositeConnector();
+	public DirectedTrack getOppositeDirectedTrack();
 }

@@ -23,12 +23,14 @@ import org.eclipse.swt.widgets.TableColumn;
 import org.eclipse.swt.widgets.TableItem;
 import org.eclipse.swt.widgets.Text;
 import org.eclipse.ui.IEditorPart;
+import org.eclipse.ui.ISharedImages;
 import org.eclipse.ui.IWorkbench;
 import org.eclipse.ui.IWorkbenchPage;
 import org.eclipse.ui.IWorkbenchPartReference;
 import org.eclipse.ui.IWorkbenchWindow;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.part.ViewPart;
+import org.eclipse.ui.plugin.AbstractUIPlugin;
 
 import uk.ac.swanseacoventry.cmt.ontrack.DirectedTrack;
 import uk.ac.swanseacoventry.cmt.ontrack.TopoRoute;
@@ -216,12 +218,8 @@ public class TopoRouteViewer extends ViewPart {
 	 
 	void createToolBar(){
 		 IToolBarManager mgr = getViewSite().getActionBars().getToolBarManager();
-		 mgr.add(new Action("Load"){
+		 mgr.add(new Action("Refresh", AbstractUIPlugin.imageDescriptorFromPlugin("org.eclipse.ui.ide", "icons/full/elcl16/refresh_nav.png")){
 			 public void run(){
-//				 TableItem tit = new TableItem(table,SWT.NONE);
-//				 tit.setText(new String[]{"S1","S2","AB,AC,AD,AE"});
-				 //autoGenerateTopoRoutes();
-				
 				DiagramEditPart diagramEditPart = Util.getDiagramEP();
 				if (diagramEditPart==null) return;
 
@@ -230,11 +228,8 @@ public class TopoRouteViewer extends ViewPart {
 			 }
 		 });
 
-		 mgr.add(new Action("Gen"){
+		 mgr.add(new Action("Generate", AbstractUIPlugin.imageDescriptorFromPlugin("org.eclipse.ui.browser", "icons/clcl16/nav_go.gif")){
 			 public void run(){
-//				 TableItem tit = new TableItem(table,SWT.NONE);
-//				 tit.setText(new String[]{"S1","S2","AB,AC,AD,AE"});
-				 //autoGenerateTopoRoutes();
 				IWorkbench wb = PlatformUI.getWorkbench();
 				IWorkbenchWindow win = wb.getActiveWorkbenchWindow();
 				IWorkbenchPage page = win.getActivePage();
@@ -258,7 +253,7 @@ public class TopoRouteViewer extends ViewPart {
 			 }
 		 });
 		 
-		 mgr.add(new Action("Del"){
+		 mgr.add(new Action("Delele", AbstractUIPlugin.imageDescriptorFromPlugin("org.eclipse.ui", "icons/full/obj16/delete_obj.png")){
 			 public void run(){
 				DiagramEditPart diagramEditPart = Util.getDiagramEP();
 				if (diagramEditPart==null) return;
@@ -275,7 +270,7 @@ public class TopoRouteViewer extends ViewPart {
 			 }
 		 });
 		 
-		 mgr.add(new Action("Clear"){
+		 mgr.add(new Action("Clear", AbstractUIPlugin.imageDescriptorFromPlugin("org.eclipse.ui", "icons/full/elcl16/trash.png")){
 			 public void run(){
 				DiagramEditPart diagramEditPart = Util.getDiagramEP();
 				if (diagramEditPart==null) return;
@@ -289,193 +284,7 @@ public class TopoRouteViewer extends ViewPart {
 				refreshTopoRouteTable(trackplan);
 			 }
 		 });
-
-//		 mgr.add(new Action("Highlight",IAction.AS_CHECK_BOX){
-//			 
-//			 public void run(){
-//				IWorkbench wb = PlatformUI.getWorkbench();
-//				IWorkbenchWindow win = wb.getActiveWorkbenchWindow();
-//				IWorkbenchPage page = win.getActivePage();
-//				   
-//				if (page == null) return;
-//				
-//				IEditorPart editor = page.getActiveEditor();
-//				if (editor == null) return;
-//				
-//				if (! (editor instanceof DiagramDocumentEditor)) return;
-//				
-//				DiagramDocumentEditor diagramEditor = (DiagramDocumentEditor) editor;
-//				DiagramEditPart diagramEditPart = diagramEditor.getDiagramEditPart();
-//				
-//				((TrackPlanEditPart)diagramEditPart).isTopoRouteHighlighted = this.isChecked();
-//				((TrackPlanEditPart)diagramEditPart).refresh();
-//			 }
-//			 
-//		 });
 	}
-	
-//	void autoGenerateTopoRoutes(){
-//		IWorkbench wb = PlatformUI.getWorkbench();
-//		IWorkbenchWindow win = wb.getActiveWorkbenchWindow();
-//		IWorkbenchPage page = win.getActivePage();
-//		   
-//		if (page == null) return;
-//
-//		IEditorPart editor = page.getActiveEditor();
-//		if (editor == null) return;
-//
-//		if (! (editor instanceof DiagramDocumentEditor)) return;
-//
-//		DiagramDocumentEditor diagramEditor = (DiagramDocumentEditor) editor;
-//		DiagramEditPart diagramEditPart = diagramEditor.getDiagramEditPart();
-//		TrackPlan trackplan = (TrackPlan)((View)diagramEditPart.getModel()).getElement();
-//		
-//		table.removeAll();
-//		
-//		Stack<TopoRoute2> trs = collectTopoRouteFrom(trackplan);
-//		
-//		for(TopoRoute2 r : trs){
-//			TopoRoute tr = OntrackFactory.eINSTANCE.createTopoRoute();
-//			tr.setStartSignal(r.start);
-//			tr.setEndSignal(r.signal_end);
-//			for (DirectedTrack dt : r.topo){
-//				tr.getTracks().add(dt.track);
-//				tr.getConnectors().add(dt.connector);
-//			}
-//			trackplan.getTopoRoutes().add(tr);
-//			
-//			TableItem tit = new TableItem(table,SWT.NONE);
-//			tit.setText(new String[] { 
-//					r.start.getName(), 
-//					r.signal_end!=null ? r.signal_end.getName() : r.track_end.getName(),
-//					r.getTrackSequence() } );
-//		}
-//		
-//		return;
-//	}
-	
-//	public class DirectedTrack {
-//		public Track track;
-//		public Connector connector;
-//		public DirectedTrack(Track t, Connector d){
-//			track = t;
-//			connector = d;
-//		}
-//		
-//		boolean isTerminal(TrackPlan tp){
-//			for(Terminal t : tp.getTerminals()){
-//				if (t.getConnector()==connector)
-//					return true;
-//			}
-//			return false;
-//		}
-//
-//		boolean isExit(TrackPlan tp){
-//			for(Exit e : tp.getExits()){
-//				if (e.getConnector()==connector)
-//					return true;
-//			}
-//			return false;
-//		}
-//
-//		Signal hasSignal(TrackPlan tp){
-//			for(Signal s : tp.getSignals()){
-//				if (s.getConnector()==connector && s.getTrack()==track)
-//					return s;
-//			}
-//			return null;
-//		}
-//		
-//		ArrayList<DirectedTrack> next(TrackPlan tp){
-//			ArrayList<DirectedTrack> ret = new ArrayList<DirectedTrack>();
-//			
-//			for(Track t : tp.getTracks()){
-//				if (!t.getName().equals(track.getName()) && t.getC1()==connector) {
-//					ret.add(new DirectedTrack(t,t.getC2()));
-//				}
-//				else if (!t.getName().equals(track.getName()) && t.getC2()==connector) {
-//					ret.add(new DirectedTrack(t,t.getC1()));
-//				}
-//			}			
-//			return ret;
-//		}
-//	}
-	
-//	public class TopoRoute2 {
-//		public Signal start;
-//		public Signal signal_end;
-//		public Track  track_end;
-//		public ArrayList<DirectedTrack> topo = new ArrayList<DirectedTrack>();
-//		
-//		String getTrackSequence(){
-//			String ret = "";
-//			boolean first = true;
-//			for(DirectedTrack dt : topo){
-//				if (!first) ret += ", "; else first = false;
-//				ret += dt.track.getName();
-//			}
-//			return ret;
-//		}
-//	}
-	
-//	Stack<TopoRoute2> collectTopoRouteFrom(TrackPlan tp){
-//		Stack<TopoRoute2> TR = new Stack<TopoRoute2>(); // Topo routes
-//		Stack<TopoRoute2> PTR = new Stack<TopoRoute2>(); // Partial topo routes
-//		
-//		// initialise PTR
-//		for(Signal s : tp.getSignals()){
-//			Track t = s.getTrack();
-//			Connector d = s.getConnector();
-//			TopoRoute2 r = new TopoRoute2();
-//			r.topo.add(new DirectedTrack(t,d));
-//			r.start = s;
-//			PTR.push(r);
-//		}
-//		
-//		// complete TR
-//		while(!PTR.isEmpty()) {
-//			TopoRoute2 r = PTR.pop();
-//			
-//			DirectedTrack dt = r.topo.get(r.topo.size() - 1);
-//			Signal se = dt.hasSignal(tp);
-//			if (dt.isTerminal(tp) || 
-//					dt.isExit(tp) || 
-//					(se!=null && r.topo.size()>1)) {
-//				r.track_end = dt.track;
-//				if (se!=null) r.signal_end = se; 
-//				TR.push(r);
-//				continue;
-//			}
-//				
-//			ArrayList<DirectedTrack> nexts = dt.next(tp);
-//			boolean first = true;
-//			for(DirectedTrack n : nexts){
-//				boolean occurred = false;
-//				for(DirectedTrack t : r.topo){
-//					if (n==t){
-//						occurred = true;
-//						break;
-//					}
-//				}
-//				if (!occurred){
-//					if (first) {
-//						r.topo.add(n);
-//						PTR.push(r);
-//						first = false;
-//					} else {
-//						TopoRoute2 newr = new TopoRoute2();
-//						newr.start = r.start;
-//						newr.topo.addAll(r.topo);
-//						newr.topo.set(newr.topo.size()-1, n);
-//						PTR.push(newr);
-//					}
-//				}
-//			}
-//			
-//		}
-//		
-//		return TR;
-//	}
 	
 	void registerActivatedListener(){
 		IWorkbench wb = PlatformUI.getWorkbench();

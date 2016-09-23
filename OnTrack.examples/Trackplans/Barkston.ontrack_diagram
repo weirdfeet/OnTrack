@@ -698,8 +698,8 @@
     <styles xmi:type="notation:RoutingStyle" xmi:id="_kIHEAX8wEeadpIJkibzdxw"/>
     <styles xmi:type="notation:FontStyle" xmi:id="_kIHEAn8wEeadpIJkibzdxw" fontName=".SF NS Text"/>
     <element xsi:nil="true"/>
-    <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_kIHEA38wEeadpIJkibzdxw" points="[0, 11, -31, -36]$[0, 47, -31, 0]$[0, 47, -31, 0]"/>
-    <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_kIHrEH8wEeadpIJkibzdxw" id="(0.6521739130434783,0.0)"/>
+    <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_kIHEA38wEeadpIJkibzdxw" points="[1, 12, -4, -37]$[1, 49, -4, 0]"/>
+    <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_kIHrEH8wEeadpIJkibzdxw" id="(0.34210526315789475,0.28888888888888886)"/>
   </edges>
   <edges xmi:type="notation:Connector" xmi:id="_k9oWwH8wEeadpIJkibzdxw" type="4004" source="_UOpGYH8vEeadpIJkibzdxw" target="_8v2WIH8tEeadpIJkibzdxw">
     <styles xmi:type="notation:FontStyle" xmi:id="_k9oWwX8wEeadpIJkibzdxw" fontName=".SF NS Text"/>

@@ -28,6 +28,7 @@ import org.eclipse.ui.IWorkbenchWindow;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.dialogs.ElementListSelectionDialog;
 import org.eclipse.ui.part.ViewPart;
+import org.eclipse.ui.plugin.AbstractUIPlugin;
 
 import uk.ac.swanseacoventry.cmt.ontrack.ControlTableItem;
 import uk.ac.swanseacoventry.cmt.ontrack.Point;
@@ -189,7 +190,7 @@ public class ReleaseTableViewer extends ViewPart {
 
 	void createToolBar(){
 		 IToolBarManager mgr = getViewSite().getActionBars().getToolBarManager();
-		 mgr.add(new Action("Load"){
+		 mgr.add(new Action("Refresh", AbstractUIPlugin.imageDescriptorFromPlugin("org.eclipse.ui.ide", "icons/full/elcl16/refresh_nav.png")){
 			 public void run(){
 					DiagramEditPart diagramEditPart = Util.getDiagramEP();
 					if (diagramEditPart==null) return;
@@ -198,7 +199,7 @@ public class ReleaseTableViewer extends ViewPart {
 					refreshReleaseTableFrom(trackplan);
 			 }
 		 });
-		 mgr.add(new Action("Init"){
+		 mgr.add(new Action("Initialise", AbstractUIPlugin.imageDescriptorFromPlugin("org.eclipse.ui.cheatsheets", "icons/elcl16/start_cheatsheet.gif")){
 			 public void run(){
 					DiagramEditPart diagramEditPart = Util.getDiagramEP();
 					if (diagramEditPart==null) return;
@@ -213,7 +214,7 @@ public class ReleaseTableViewer extends ViewPart {
 				 
 			 }
 		 });
-		 mgr.add(new Action("Auto"){
+		 mgr.add(new Action("Auto-fill", AbstractUIPlugin.imageDescriptorFromPlugin("org.eclipse.ui.browser", "icons/clcl16/nav_go.gif")){
 			 public void run(){
 				 DiagramEditPart diagramEditPart = Util.getDiagramEP();
 					if (diagramEditPart==null) return;
@@ -227,7 +228,7 @@ public class ReleaseTableViewer extends ViewPart {
 					refreshReleaseTableFrom(trackplan);
 			 }
 		 });
-		 mgr.add(new Action("Del"){
+		 mgr.add(new Action("Delele", AbstractUIPlugin.imageDescriptorFromPlugin("org.eclipse.ui", "icons/full/obj16/delete_obj.png")){
 			 public void run(){
 				DiagramEditPart diagramEditPart = Util.getDiagramEP();
 				if (diagramEditPart==null) return;
@@ -244,7 +245,7 @@ public class ReleaseTableViewer extends ViewPart {
 			 }
 		 });
 		 
-		 mgr.add(new Action("Clear"){
+		 mgr.add(new Action("Clear", AbstractUIPlugin.imageDescriptorFromPlugin("org.eclipse.ui", "icons/full/elcl16/trash.png")){
 			 public void run(){
 				DiagramEditPart diagramEditPart = Util.getDiagramEP();
 				if (diagramEditPart==null) return;

@@ -190,10 +190,10 @@ to se : CSP!SETElement, ti:CSP!TypedItem{
 	delete se;
 	delete ti;
 
-	RouteID.items.add(newCSPDatatypeItem("RE__" + e.connector.id.toString()));
-	EntryRoute.item.add(newCSPSetItem("RE__" + e.connector.id.toString()));
-	SignalID.items.add(newCSPDatatypeItem("SE__" + e.connector.id.toString()));
-	EntryRouteSignal.item.add(newCSPSetItem("SE__" + e.connector.id.toString()));
+	if (trackplan.entrances.includes(e)) RouteID.items.add(newCSPDatatypeItem("RE__" + e.connector.id.toString()));
+	if (trackplan.entrances.includes(e)) EntryRoute.item.add(newCSPSetItem("RE__" + e.connector.id.toString()));
+	if (trackplan.entrances.includes(e)) SignalID.items.add(newCSPDatatypeItem("SE__" + e.connector.id.toString()));
+	if (trackplan.entrances.includes(e)) EntryRouteSignal.item.add(newCSPSetItem("SE__" + e.connector.id.toString()));
 	EntryTrack.item.add(newCSPSetItem(e.connector.findFirstTrack(plan).name));	
 }
 
@@ -241,7 +241,7 @@ rule transformEntrySignalAt
 transform e : safetrack!Entrance
 to f : CSP!ProcessAssignment{
 
-	guard: plan.entrances.includes(e)
+	guard: trackplan.entrances.includes(e) and plan.entrances.includes(e)
 	
 	delete f;
 
@@ -268,7 +268,7 @@ rule transformEntryRouteSignal
 transform e : safetrack!Entrance
 to f : CSP!ProcessAssignment{
 
-	guard: plan.entrances.includes(e)
+	guard: trackplan.entrances.includes(e) and plan.entrances.includes(e)
 	
 	delete f;
 
@@ -322,7 +322,7 @@ transform e : safetrack!Entrance
 to f : CSP!ProcessAssignment {
 
 	// only transform if route is in control table
-	guard : plan.entrances.includes(e)
+	guard : trackplan.entrances.includes(e) and plan.entrances.includes(e)
 
 	delete f;
 	var normalSet = new CSP!SET; normalSet.name = "";

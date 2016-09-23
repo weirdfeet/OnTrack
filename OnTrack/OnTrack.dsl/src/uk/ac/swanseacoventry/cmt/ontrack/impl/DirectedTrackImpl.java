@@ -304,4 +304,12 @@ public class DirectedTrackImpl extends MinimalEObjectImpl.Container implements D
 		return getTrack().getC1();
 	}
 
+	@Override
+	public DirectedTrack getOppositeDirectedTrack() {
+		// TODO Auto-generated method stub
+		if (getTrack().getDirectedTracks().get(0)==this)
+			return getTrack().getDirectedTracks().get(1);
+		return getTrack().getDirectedTracks().get(0);
+	}
+
 } //DirectedTrackImpl

@@ -34,6 +34,7 @@ import org.eclipse.ui.IWorkbenchWindow;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.internal.WorkbenchWindow;
 import org.eclipse.ui.part.ViewPart;
+import org.eclipse.ui.plugin.AbstractUIPlugin;
 
 import uk.ac.swanseacoventry.cmt.ontrack.ControlTableItem;
 import uk.ac.swanseacoventry.cmt.ontrack.Point;
@@ -264,7 +265,7 @@ public class CSPTableViewer extends ViewPart {
 	boolean experimental = true;
 	void createToolBar(){
 		 IToolBarManager mgr = getViewSite().getActionBars().getToolBarManager();
-		 mgr.add(new Action("Generate"){
+		 mgr.add(new Action("Generate", AbstractUIPlugin.imageDescriptorFromPlugin("org.eclipse.ui.cheatsheets", "icons/elcl16/start_cheatsheet.gif")){
 			 public void run(){
 				DiagramEditPart diagramEditPart = Util.getDiagramEP();
 				if (diagramEditPart==null) return;
@@ -291,7 +292,7 @@ public class CSPTableViewer extends ViewPart {
 					
 			 }
 		 });
-		 mgr.add(new Action("FDR3"){
+		 mgr.add(new Action("Run FDR3", AbstractUIPlugin.imageDescriptorFromPlugin("org.eclipse.ui.externaltools", "icons/full/etool16/external_tools.gif")){
 			 public void run(){
 				DiagramEditPart diagramEditPart = Util.getDiagramEP();
 				if (diagramEditPart==null) return;
