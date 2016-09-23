@@ -1,10 +1,9 @@
 package uk.ac.swanseacoventry.cmt.ontrack;
 
-import org.eclipse.emf.ecore.EObject;
-
 import java.util.List;
 
 import org.eclipse.emf.common.util.EList;
+import org.eclipse.emf.ecore.EObject;
 
 /**
  * @model 

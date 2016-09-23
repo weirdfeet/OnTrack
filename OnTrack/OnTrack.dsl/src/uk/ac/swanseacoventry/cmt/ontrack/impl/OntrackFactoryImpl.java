@@ -5,12 +5,28 @@ package uk.ac.swanseacoventry.cmt.ontrack.impl;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
-
 import org.eclipse.emf.ecore.impl.EFactoryImpl;
-
 import org.eclipse.emf.ecore.plugin.EcorePlugin;
 
-import uk.ac.swanseacoventry.cmt.ontrack.*;
+import uk.ac.swanseacoventry.cmt.ontrack.Connector;
+import uk.ac.swanseacoventry.cmt.ontrack.ControlTableItem;
+import uk.ac.swanseacoventry.cmt.ontrack.Crossing;
+import uk.ac.swanseacoventry.cmt.ontrack.DirectedTrack;
+import uk.ac.swanseacoventry.cmt.ontrack.Entrance;
+import uk.ac.swanseacoventry.cmt.ontrack.Exit;
+import uk.ac.swanseacoventry.cmt.ontrack.NewCrossing;
+import uk.ac.swanseacoventry.cmt.ontrack.NewPoint;
+import uk.ac.swanseacoventry.cmt.ontrack.NewTrack;
+import uk.ac.swanseacoventry.cmt.ontrack.OntrackFactory;
+import uk.ac.swanseacoventry.cmt.ontrack.OntrackPackage;
+import uk.ac.swanseacoventry.cmt.ontrack.Point;
+import uk.ac.swanseacoventry.cmt.ontrack.ReleaseTableItem;
+import uk.ac.swanseacoventry.cmt.ontrack.Signal;
+import uk.ac.swanseacoventry.cmt.ontrack.SubTrackPlan;
+import uk.ac.swanseacoventry.cmt.ontrack.Terminal;
+import uk.ac.swanseacoventry.cmt.ontrack.TopoRoute;
+import uk.ac.swanseacoventry.cmt.ontrack.Track;
+import uk.ac.swanseacoventry.cmt.ontrack.TrackPlan;
 
 /**
  * <!-- begin-user-doc -->

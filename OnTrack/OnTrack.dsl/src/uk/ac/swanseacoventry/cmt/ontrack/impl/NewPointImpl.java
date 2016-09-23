@@ -3,7 +3,6 @@
 package uk.ac.swanseacoventry.cmt.ontrack.impl;
 
 import org.eclipse.emf.ecore.EClass;
-
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
 import uk.ac.swanseacoventry.cmt.ontrack.NewPoint;

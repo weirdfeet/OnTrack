@@ -1,7 +1,5 @@
 package uk.ac.swanseacoventry.cmt.ontrack.diagram.util;
 
-import uk.ac.swanseacoventry.cmt.ontrack.Track;
-
 import java.util.ArrayList;
 import java.util.HashSet;
 
@@ -9,6 +7,7 @@ import uk.ac.swanseacoventry.cmt.ontrack.Connector;
 import uk.ac.swanseacoventry.cmt.ontrack.Crossing;
 import uk.ac.swanseacoventry.cmt.ontrack.Point;
 import uk.ac.swanseacoventry.cmt.ontrack.Signal;
+import uk.ac.swanseacoventry.cmt.ontrack.Track;
 
 public class ErrorDetectionHelper {
 	

@@ -4,7 +4,20 @@ import java.util.HashSet;
 
 import org.eclipse.emf.common.util.EList;
 
-import uk.ac.swanseacoventry.cmt.ontrack.*;
+import uk.ac.swanseacoventry.cmt.ontrack.ControlTableItem;
+import uk.ac.swanseacoventry.cmt.ontrack.Crossing;
+import uk.ac.swanseacoventry.cmt.ontrack.DirectedTrack;
+import uk.ac.swanseacoventry.cmt.ontrack.Entrance;
+import uk.ac.swanseacoventry.cmt.ontrack.Exit;
+import uk.ac.swanseacoventry.cmt.ontrack.OntrackFactory;
+import uk.ac.swanseacoventry.cmt.ontrack.Point;
+import uk.ac.swanseacoventry.cmt.ontrack.ReleaseTableItem;
+import uk.ac.swanseacoventry.cmt.ontrack.Signal;
+import uk.ac.swanseacoventry.cmt.ontrack.SubTrackPlan;
+import uk.ac.swanseacoventry.cmt.ontrack.Terminal;
+import uk.ac.swanseacoventry.cmt.ontrack.TopoRoute;
+import uk.ac.swanseacoventry.cmt.ontrack.Track;
+import uk.ac.swanseacoventry.cmt.ontrack.TrackPlan;
 
 public class TrackPlanCovering  {
 	
