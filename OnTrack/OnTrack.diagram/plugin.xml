@@ -540,7 +540,7 @@
    <extension point="org.eclipse.ui.navigator.navigatorContent" id="navigator-content">
       <?gmfgen generated="true"?>
       <navigatorContent
-            id="OnTrack.diagram.resourceContent" 
+            id="OnTrack.dsl.diagram.resourceContent" 
             name="%navigatorContentName" 
             priority="normal" 
             contentProvider="uk.ac.swanseacoventry.cmt.ontrack.diagram.navigator.OntrackNavigatorContentProvider" 
@@ -576,7 +576,7 @@
          </commonSorter>
       </navigatorContent>
       <navigatorContent
-            id="OnTrack.diagram.domainResourceContent" 
+            id="OnTrack.dsl.diagram.domainResourceContent" 
             name="%domainNavigatorContentName" 
             priority="normal" 
             contentProvider="uk.ac.swanseacoventry.cmt.ontrack.diagram.navigator.OntrackDomainNavigatorContentProvider" 
@@ -710,6 +710,163 @@
             name="CSP"
             class="uk.ac.swanseacoventry.cmt.ontrack.diagram.view.CSPTableViewer"/>   
    </extension>
+<extension point="org.eclipse.gmf.runtime.common.ui.services.markerNavigationProviders" id="markers-navigation">
+      <?gmfgen generated="true"?>
+      <MarkerNavigationProvider class="uk.ac.swanseacoventry.cmt.ontrack.diagram.providers.OntrackMarkerNavigationProvider">
+         <MarkerType name="OnTrack.dsl.diagram.diagnostic"/>
+         <Priority name="Lowest"/>
+      </MarkerNavigationProvider>
+   </extension>
+
+<extension id="diagnostic" name="Ontrack Plugin problems" point="org.eclipse.core.resources.markers">
+      <?gmfgen generated="true"?>
+      <super type="org.eclipse.core.resources.problemmarker"/>
+      <super type="org.eclipse.gmf.runtime.common.ui.services.marker"/>
+      <persistent value="true"/>
+   </extension><extension id="validationDecoratorProvider" name="ValidationDecorations" point="org.eclipse.gmf.runtime.diagram.ui.decoratorProviders">
+      <?gmfgen generated="true"?>
+      <decoratorProvider class="uk.ac.swanseacoventry.cmt.ontrack.diagram.providers.OntrackValidationDecoratorProvider">
+         <Priority name="Lowest"/>
+         <object class="org.eclipse.gmf.runtime.diagram.ui.editparts.IPrimaryEditPart(org.eclipse.gmf.runtime.diagram.ui)" id="PRIMARY_VIEW"/>
+         <context decoratorTargets="PRIMARY_VIEW"/>
+      </decoratorProvider>
+   </extension>
+
+<extension point="org.eclipse.emf.validation.constraintProviders">
+      <?gmfgen generated="true"?>
+            <category id="OntrackAuditContainer" mandatory="false" name="OntrackAuditContainer">
+         <![CDATA[]]>
+      </category>
+      <constraintProvider cache="true">
+         <package namespaceUri="http://www.eclipse.org/gmf/runtime/1.0.2/notation"/>
+               <constraints categories="OntrackAuditContainer">
+                  <constraint id="ErrorPointDetectorRule"
+            lang="Java" class="uk.ac.swanseacoventry.cmt.ontrack.diagram.providers.OntrackValidationProvider$Adapter1"
+            name="ErrorPointDetectorRule"
+            mode="Batch"
+            severity="ERROR" statusCode="200">
+            
+            <description><![CDATA[]]></description>
+            <message><![CDATA[Point is configured wrongly]]></message>
+            <target class="notation.Edge"/>
+         </constraint>
+                  <constraint id="ErrorCrossingDetectorRule"
+            lang="Java" class="uk.ac.swanseacoventry.cmt.ontrack.diagram.providers.OntrackValidationProvider$Adapter2"
+            name="ErrorCrossingDetectorRule"
+            mode="Batch"
+            severity="ERROR" statusCode="200">
+            
+            <description><![CDATA[]]></description>
+            <message><![CDATA[Crossing is configured wrongly]]></message>
+            <target class="notation.Edge"/>
+         </constraint>
+                  <constraint id="ErrorEntrancePlacementDetectorRule"
+            lang="Java" class="uk.ac.swanseacoventry.cmt.ontrack.diagram.providers.OntrackValidationProvider$Adapter3"
+            name="ErrorEntrancePlacementDetectorRule"
+            mode="Batch"
+            severity="ERROR" statusCode="200">
+            
+            <description><![CDATA[]]></description>
+            <message><![CDATA[Entrance is placed to a middle connector]]></message>
+            <target class="notation.Edge"/>
+         </constraint>
+                  <constraint id="ErrorExitPlacementDetectorRule"
+            lang="Java" class="uk.ac.swanseacoventry.cmt.ontrack.diagram.providers.OntrackValidationProvider$Adapter4"
+            name="ErrorExitPlacementDetectorRule"
+            mode="Batch"
+            severity="ERROR" statusCode="200">
+            
+            <description><![CDATA[]]></description>
+            <message><![CDATA[Exit is placed to a middle connector]]></message>
+            <target class="notation.Edge"/>
+         </constraint>
+                  <constraint id="ErrorTerminalPlacementDetectorRule"
+            lang="Java" class="uk.ac.swanseacoventry.cmt.ontrack.diagram.providers.OntrackValidationProvider$Adapter5"
+            name="ErrorTerminalPlacementDetectorRule"
+            mode="Batch"
+            severity="ERROR" statusCode="200">
+            
+            <description><![CDATA[]]></description>
+            <message><![CDATA[Terminal is placed to a middle connector or entrance or exit]]></message>
+            <target class="notation.Edge"/>
+         </constraint>
+                  <constraint id="ErrorTrackDetectorRule"
+            lang="Java" class="uk.ac.swanseacoventry.cmt.ontrack.diagram.providers.OntrackValidationProvider$Adapter6"
+            name="ErrorTrackDetectorRule"
+            mode="Batch"
+            severity="ERROR" statusCode="200">
+            
+            <description><![CDATA[]]></description>
+            <message><![CDATA[Too many tracks are linked together]]></message>
+            <target class="notation.Edge"/>
+         </constraint>
+                  <constraint id="ErrorSignalDirectionDetectorRule"
+            lang="Java" class="uk.ac.swanseacoventry.cmt.ontrack.diagram.providers.OntrackValidationProvider$Adapter7"
+            name="ErrorSignalDirectionDetectorRule"
+            mode="Batch"
+            severity="ERROR" statusCode="200">
+            
+            <description><![CDATA[]]></description>
+            <message><![CDATA[Signal is linked to wrong connector]]></message>
+            <target class="notation.Edge"/>
+         </constraint>
+                  </constraints>
+      </constraintProvider>
+   </extension>
+
+<extension point="org.eclipse.emf.validation.constraintBindings">
+      <?gmfgen generated="true"?>
+      <clientContext default="false" id="OnTrack.dsl.diagramCtx_4001">
+         <selector class="uk.ac.swanseacoventry.cmt.ontrack.diagram.providers.OntrackValidationProvider$Ctx_4001"/>
+      </clientContext>
+      <binding context="OnTrack.dsl.diagramCtx_4001">
+                  <constraint ref="OnTrack.dsl.diagram.ErrorPointDetectorRule"/>
+               </binding>
+
+      <clientContext default="false" id="OnTrack.dsl.diagramCtx_4002">
+         <selector class="uk.ac.swanseacoventry.cmt.ontrack.diagram.providers.OntrackValidationProvider$Ctx_4002"/>
+      </clientContext>
+      <binding context="OnTrack.dsl.diagramCtx_4002">
+                  <constraint ref="OnTrack.dsl.diagram.ErrorCrossingDetectorRule"/>
+               </binding>
+
+      <clientContext default="false" id="OnTrack.dsl.diagramCtx_4006">
+         <selector class="uk.ac.swanseacoventry.cmt.ontrack.diagram.providers.OntrackValidationProvider$Ctx_4006"/>
+      </clientContext>
+      <binding context="OnTrack.dsl.diagramCtx_4006">
+                  <constraint ref="OnTrack.dsl.diagram.ErrorEntrancePlacementDetectorRule"/>
+               </binding>
+
+      <clientContext default="false" id="OnTrack.dsl.diagramCtx_4007">
+         <selector class="uk.ac.swanseacoventry.cmt.ontrack.diagram.providers.OntrackValidationProvider$Ctx_4007"/>
+      </clientContext>
+      <binding context="OnTrack.dsl.diagramCtx_4007">
+                  <constraint ref="OnTrack.dsl.diagram.ErrorExitPlacementDetectorRule"/>
+               </binding>
+
+      <clientContext default="false" id="OnTrack.dsl.diagramCtx_4008">
+         <selector class="uk.ac.swanseacoventry.cmt.ontrack.diagram.providers.OntrackValidationProvider$Ctx_4008"/>
+      </clientContext>
+      <binding context="OnTrack.dsl.diagramCtx_4008">
+                  <constraint ref="OnTrack.dsl.diagram.ErrorTerminalPlacementDetectorRule"/>
+               </binding>
+
+      <clientContext default="false" id="OnTrack.dsl.diagramCtx_4005">
+         <selector class="uk.ac.swanseacoventry.cmt.ontrack.diagram.providers.OntrackValidationProvider$Ctx_4005"/>
+      </clientContext>
+      <binding context="OnTrack.dsl.diagramCtx_4005">
+                  <constraint ref="OnTrack.dsl.diagram.ErrorTrackDetectorRule"/>
+               </binding>
+
+      <clientContext default="false" id="OnTrack.dsl.diagramCtx_4004">
+         <selector class="uk.ac.swanseacoventry.cmt.ontrack.diagram.providers.OntrackValidationProvider$Ctx_4004"/>
+      </clientContext>
+      <binding context="OnTrack.dsl.diagramCtx_4004">
+                  <constraint ref="OnTrack.dsl.diagram.ErrorSignalDirectionDetectorRule"/>
+               </binding>
+
+   </extension>
+
 
    <!-- optionally, specify keybindings -->
 </plugin>

@@ -256,4 +256,85 @@
     <palette
         href="ontrack.gmftool#//@palette"/>
   </diagram>
+  <audits
+      id="OntrackAuditContainer"
+      name="OntrackAuditContainer">
+    <audits
+        name="ErrorPointDetectorRule"
+        id="ErrorPointDetectorRule"
+        message="Point is configured wrongly">
+      <rule
+          body="ErrorPointDetectorConstraint"
+          language="java"/>
+      <target
+          xsi:type="gmfmap:DiagramElementTarget"
+          element="//@links.0"/>
+    </audits>
+    <audits
+        name="ErrorCrossingDetectorRule"
+        id="ErrorCrossingDetectorRule"
+        message="Crossing is configured wrongly">
+      <rule
+          body="ErrorCrossingDetectorConstraint"
+          language="java"/>
+      <target
+          xsi:type="gmfmap:DiagramElementTarget"
+          element="//@links.1"/>
+    </audits>
+    <audits
+        name="ErrorEntrancePlacementDetectorRule"
+        id="ErrorEntrancePlacementDetectorRule"
+        message="Entrance is placed to a middle connector">
+      <rule
+          body="ErrorEntrancePlacementDetectorConstraint"
+          language="java"/>
+      <target
+          xsi:type="gmfmap:DiagramElementTarget"
+          element="//@links.5"/>
+    </audits>
+    <audits
+        name="ErrorExitPlacementDetectorRule"
+        id="ErrorExitPlacementDetectorRule"
+        message="Exit is placed to a middle connector">
+      <rule
+          body="ErrorExitPlacementDetectorConstraint"
+          language="java"/>
+      <target
+          xsi:type="gmfmap:DiagramElementTarget"
+          element="//@links.6"/>
+    </audits>
+    <audits
+        name="ErrorTerminalPlacementDetectorRule"
+        id="ErrorTerminalPlacementDetectorRule"
+        message="Terminal is placed to a middle connector or entrance or exit">
+      <rule
+          body="ErrorTerminalPlacementDetectorConstraint"
+          language="java"/>
+      <target
+          xsi:type="gmfmap:DiagramElementTarget"
+          element="//@links.7"/>
+    </audits>
+    <audits
+        name="ErrorTrackDetectorRule"
+        id="ErrorTrackDetectorRule"
+        message="Too many tracks are linked together">
+      <rule
+          body="ErrorTrackDetectorConstraint"
+          language="java"/>
+      <target
+          xsi:type="gmfmap:DiagramElementTarget"
+          element="//@links.4"/>
+    </audits>
+    <audits
+        name="ErrorSignalDirectionDetectorRule"
+        id="ErrorSignalDirectionDetectorRule"
+        message="Signal is linked to wrong connector">
+      <rule
+          body="ErrorSignalDirectionDetectorConstraint"
+          language="java"/>
+      <target
+          xsi:type="gmfmap:DiagramElementTarget"
+          element="//@links.3"/>
+    </audits>
+  </audits>
 </gmfmap:Mapping>

@@ -16,6 +16,8 @@ import org.eclipse.ui.IMemento;
 import org.eclipse.ui.navigator.ICommonContentExtensionSite;
 import org.eclipse.ui.navigator.ICommonLabelProvider;
 
+import uk.ac.swanseacoventry.cmt.ontrack.Crossing;
+import uk.ac.swanseacoventry.cmt.ontrack.TrackPlan;
 import uk.ac.swanseacoventry.cmt.ontrack.diagram.edit.parts.ConnectorEditPart;
 import uk.ac.swanseacoventry.cmt.ontrack.diagram.edit.parts.ConnectorIdEditPart;
 import uk.ac.swanseacoventry.cmt.ontrack.diagram.edit.parts.CrossingEditPart;
@@ -238,7 +240,13 @@ public class OntrackNavigatorLabelProvider extends LabelProvider
 	* @generated
 	*/
 	private String getTrackPlan_1000Text(View view) {
-		return ""; //$NON-NLS-1$
+		TrackPlan domainModelElement = (TrackPlan) view.getElement();
+		if (domainModelElement != null) {
+			return String.valueOf(domainModelElement.isOverlapped());
+		} else {
+			OntrackDiagramEditorPlugin.getInstance().logError("No domain element for view with visualID = " + 1000); //$NON-NLS-1$
+			return ""; //$NON-NLS-1$
+		}
 	}
 
 	/**
@@ -335,7 +343,13 @@ public class OntrackNavigatorLabelProvider extends LabelProvider
 	* @generated
 	*/
 	private String getCrossing_4002Text(View view) {
-		return ""; //$NON-NLS-1$
+		Crossing domainModelElement = (Crossing) view.getElement();
+		if (domainModelElement != null) {
+			return domainModelElement.getName();
+		} else {
+			OntrackDiagramEditorPlugin.getInstance().logError("No domain element for view with visualID = " + 4002); //$NON-NLS-1$
+			return ""; //$NON-NLS-1$
+		}
 	}
 
 	/**

@@ -26,6 +26,7 @@ import org.eclipse.gef.handles.MoveHandle;
 import org.eclipse.gef.requests.CreateRequest;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.AbstractBorderedShapeEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IBorderItemEditPart;
+import org.eclipse.gmf.runtime.diagram.ui.editpolicies.BorderItemSelectionEditPolicy;
 import org.eclipse.gmf.runtime.diagram.ui.editpolicies.EditPolicyRoles;
 import org.eclipse.gmf.runtime.diagram.ui.editpolicies.NonResizableLabelEditPolicy;
 import org.eclipse.gmf.runtime.diagram.ui.figures.BorderItemLocator;
@@ -275,9 +276,8 @@ public class SignalEditPart extends AbstractBorderedShapeEditPart {
 		 * @generated 
 		 */
 		public SignalFigure() {
-			//this.setURI("platform:/plugin/images/signal.svg");
 			this.setURI("platform:/plugin/OnTrack.dsl.edit/images/signal2.svg");
-			this.setPreferredSize(new Dimension(getMapMode().DPtoLP(11), getMapMode().DPtoLP(22)));
+			this.setPreferredSize(new Dimension(getMapMode().DPtoLP(11), getMapMode().DPtoLP(21)));
 		}
 
 	}

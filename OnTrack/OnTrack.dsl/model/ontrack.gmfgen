@@ -3,14 +3,122 @@
     xmi:version="2.0"
     xmlns:xmi="http://www.omg.org/XMI"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xmlns:gmfgen="http://www.eclipse.org/gmf/2009/GenModel">
+    xmlns:gmfgen="http://www.eclipse.org/gmf/2009/GenModel"
+    pluginDirectory="/OnTrack.diagram/src">
+  <audits>
+    <categories
+        id="OntrackAuditContainer"
+        name="OntrackAuditContainer"
+        path="//@audits/@categories.0"
+        audits="//@audits/@rules.0 //@audits/@rules.1 //@audits/@rules.2 //@audits/@rules.3 //@audits/@rules.4 //@audits/@rules.5 //@audits/@rules.6"/>
+    <rules
+        name="ErrorPointDetectorRule"
+        id="ErrorPointDetectorRule"
+        rule="//@expressionProviders/@providers.0/@expressions.0"
+        message="Point is configured wrongly"
+        category="//@audits/@categories.0">
+      <target
+          xsi:type="gmfgen:GenDiagramElementTarget"
+          contextSelector="//@audits/@clientContexts.0"
+          element="//@diagram/@links.0"/>
+    </rules>
+    <rules
+        name="ErrorCrossingDetectorRule"
+        id="ErrorCrossingDetectorRule"
+        rule="//@expressionProviders/@providers.0/@expressions.1"
+        message="Crossing is configured wrongly"
+        category="//@audits/@categories.0">
+      <target
+          xsi:type="gmfgen:GenDiagramElementTarget"
+          contextSelector="//@audits/@clientContexts.1"
+          element="//@diagram/@links.1"/>
+    </rules>
+    <rules
+        name="ErrorEntrancePlacementDetectorRule"
+        id="ErrorEntrancePlacementDetectorRule"
+        rule="//@expressionProviders/@providers.0/@expressions.2"
+        message="Entrance is placed to a middle connector"
+        category="//@audits/@categories.0">
+      <target
+          xsi:type="gmfgen:GenDiagramElementTarget"
+          contextSelector="//@audits/@clientContexts.2"
+          element="//@diagram/@links.5"/>
+    </rules>
+    <rules
+        name="ErrorExitPlacementDetectorRule"
+        id="ErrorExitPlacementDetectorRule"
+        rule="//@expressionProviders/@providers.0/@expressions.3"
+        message="Exit is placed to a middle connector"
+        category="//@audits/@categories.0">
+      <target
+          xsi:type="gmfgen:GenDiagramElementTarget"
+          contextSelector="//@audits/@clientContexts.3"
+          element="//@diagram/@links.6"/>
+    </rules>
+    <rules
+        name="ErrorTerminalPlacementDetectorRule"
+        id="ErrorTerminalPlacementDetectorRule"
+        rule="//@expressionProviders/@providers.0/@expressions.4"
+        message="Terminal is placed to a middle connector or entrance or exit"
+        category="//@audits/@categories.0">
+      <target
+          xsi:type="gmfgen:GenDiagramElementTarget"
+          contextSelector="//@audits/@clientContexts.4"
+          element="//@diagram/@links.7"/>
+    </rules>
+    <rules
+        name="ErrorTrackDetectorRule"
+        id="ErrorTrackDetectorRule"
+        rule="//@expressionProviders/@providers.0/@expressions.5"
+        message="Too many tracks are linked together"
+        category="//@audits/@categories.0">
+      <target
+          xsi:type="gmfgen:GenDiagramElementTarget"
+          contextSelector="//@audits/@clientContexts.5"
+          element="//@diagram/@links.4"/>
+    </rules>
+    <rules
+        name="ErrorSignalDirectionDetectorRule"
+        id="ErrorSignalDirectionDetectorRule"
+        rule="//@expressionProviders/@providers.0/@expressions.6"
+        message="Signal is linked to wrong connector"
+        category="//@audits/@categories.0">
+      <target
+          xsi:type="gmfgen:GenDiagramElementTarget"
+          contextSelector="//@audits/@clientContexts.6"
+          element="//@diagram/@links.3"/>
+    </rules>
+    <clientContexts
+        id="Ctx_4001"
+        ruleTargets="//@audits/@rules.0/@target"/>
+    <clientContexts
+        id="Ctx_4002"
+        ruleTargets="//@audits/@rules.1/@target"/>
+    <clientContexts
+        id="Ctx_4006"
+        ruleTargets="//@audits/@rules.2/@target"/>
+    <clientContexts
+        id="Ctx_4007"
+        ruleTargets="//@audits/@rules.3/@target"/>
+    <clientContexts
+        id="Ctx_4008"
+        ruleTargets="//@audits/@rules.4/@target"/>
+    <clientContexts
+        id="Ctx_4005"
+        ruleTargets="//@audits/@rules.5/@target"/>
+    <clientContexts
+        id="Ctx_4004"
+        ruleTargets="//@audits/@rules.6/@target"/>
+  </audits>
   <diagram
       visualID="1000"
       editPartClassName="TrackPlanEditPart"
       itemSemanticEditPolicyClassName="TrackPlanItemSemanticEditPolicy"
       canonicalEditPolicyClassName="TrackPlanCanonicalEditPolicy"
       iconProviderPriority="Low"
-      validationProviderPriority="Low">
+      validationProviderPriority="Low"
+      validationEnabled="true"
+      validationDecorators="true">
     <diagramRunTimeClass
         href="../../../plugin/org.eclipse.gmf.runtime.notation/model/notation.genmodel#//notation/Diagram"/>
     <elementType
@@ -327,9 +435,9 @@
             xsi:type="gmfgen:FeatureLabelModelFacet"
             parser="//@labelParsers/@implementations.0">
           <metaFeatures
-              href="ontrack.genmodel#//ontrack/Point/name"/>
+              href="ontrack.genmodel#//ontrack/Unit/name"/>
           <editableMetaFeatures
-              href="ontrack.genmodel#//ontrack/Point/name"/>
+              href="ontrack.genmodel#//ontrack/Unit/name"/>
         </modelFacet>
       </labels>
     </links>
@@ -451,9 +559,9 @@
             xsi:type="gmfgen:FeatureLabelModelFacet"
             parser="//@labelParsers/@implementations.0">
           <metaFeatures
-              href="ontrack.genmodel#//ontrack/Track/name"/>
+              href="ontrack.genmodel#//ontrack/Unit/name"/>
           <editableMetaFeatures
-              href="ontrack.genmodel#//ontrack/Track/name"/>
+              href="ontrack.genmodel#//ontrack/Unit/name"/>
         </modelFacet>
       </labels>
     </links>
@@ -885,6 +993,32 @@
   </propertySheet>
   <domainGenModel
       href="ontrack.genmodel#/"/>
+  <expressionProviders>
+    <providers
+        xsi:type="gmfgen:GenJavaExpressionProvider">
+      <expressions
+          xsi:type="gmfgen:GenConstraint"
+          body="ErrorPointDetectorConstraint"/>
+      <expressions
+          xsi:type="gmfgen:GenConstraint"
+          body="ErrorCrossingDetectorConstraint"/>
+      <expressions
+          xsi:type="gmfgen:GenConstraint"
+          body="ErrorEntrancePlacementDetectorConstraint"/>
+      <expressions
+          xsi:type="gmfgen:GenConstraint"
+          body="ErrorExitPlacementDetectorConstraint"/>
+      <expressions
+          xsi:type="gmfgen:GenConstraint"
+          body="ErrorTerminalPlacementDetectorConstraint"/>
+      <expressions
+          xsi:type="gmfgen:GenConstraint"
+          body="ErrorTrackDetectorConstraint"/>
+      <expressions
+          xsi:type="gmfgen:GenConstraint"
+          body="ErrorSignalDirectionDetectorConstraint"/>
+    </providers>
+  </expressionProviders>
   <labelParsers
       extensibleViaService="true">
     <implementations
