@@ -397,7 +397,7 @@
     </children>
     <styles xmi:type="notation:FontStyle" xmi:id="_MVY1kYC4Eea8-fWm4Zgerg" fontName=".SF NS Text"/>
     <element xmi:type="uk.ac.swanseacoventry.cmt.ontrack:Track" href="DoubleJunction.ontrack#//@tracks.7"/>
-    <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_MVY1koC4Eea8-fWm4Zgerg" points="[0, 0, 0, 0]$[0, 0, 0, 0]"/>
+    <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_MVY1koC4Eea8-fWm4Zgerg" points="[3, 1, -195, 1]$[195, 2, -3, 2]"/>
     <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_v47mkIC4Eea8-fWm4Zgerg" id="(0.0,0.7)"/>
   </edges>
   <edges xmi:type="notation:Connector" xmi:id="_NRQn8IC4Eea8-fWm4Zgerg" type="4005" source="_NRKhUIC4Eea8-fWm4Zgerg" target="_OKCDAIC4Eea8-fWm4Zgerg">
@@ -451,14 +451,14 @@
     </children>
     <styles xmi:type="notation:FontStyle" xmi:id="_P1amwYC4Eea8-fWm4Zgerg" fontName=".SF NS Text"/>
     <element xmi:type="uk.ac.swanseacoventry.cmt.ontrack:Track" href="DoubleJunction.ontrack#//@tracks.12"/>
-    <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_P1amwoC4Eea8-fWm4Zgerg" points="[3, 2, -132, -124]$[49, 45, -86, -81]$[132, 125, -3, -1]"/>
+    <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_P1amwoC4Eea8-fWm4Zgerg" points="[3, 2, -132, -124]$[49, 45, -86, -81]$[132, 126, -3, 0]"/>
     <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_zHw6EIC4Eea8-fWm4Zgerg" id="(0.6,0.8)"/>
     <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_5ehAwIC4Eea8-fWm4Zgerg" id="(0.0,0.7)"/>
   </edges>
   <edges xmi:type="notation:Connector" xmi:id="_P1e4MIC4Eea8-fWm4Zgerg" type="4002" source="_P1XjcIC4Eea8-fWm4Zgerg" target="_P1amwIC4Eea8-fWm4Zgerg">
     <styles xmi:type="notation:FontStyle" xmi:id="_P1e4MYC4Eea8-fWm4Zgerg" fontName=".SF NS Text"/>
     <element xmi:type="uk.ac.swanseacoventry.cmt.ontrack:Crossing" href="DoubleJunction.ontrack#//@crossings.0"/>
-    <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_P1e4MoC4Eea8-fWm4Zgerg" points="[0, 0, 0, 0]$[0, 0, 0, 0]"/>
+    <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_P1e4MoC4Eea8-fWm4Zgerg" points="[0, 0, -18, -17]$[0, 0, -18, -17]"/>
     <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_P1gtYIC4Eea8-fWm4Zgerg" id="(0.4961832061068702,0.4961832061068702)"/>
     <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_P1gtYYC4Eea8-fWm4Zgerg" id="(0.4961832061068702,0.4961832061068702)"/>
   </edges>
