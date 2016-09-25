@@ -114,6 +114,9 @@
    <extension point="org.eclipse.core.runtime.preferences" id="prefs">
       <?gmfgen generated="true"?>
       <initializer class="uk.ac.swanseacoventry.cmt.ontrack.diagram.preferences.DiagramPreferenceInitializer"/>
+      <initializer
+            class="uk.ac.swanseacoventry.cmt.ontrack.diagram.preferences.custom.PreferenceInitializer">
+      </initializer>
    </extension>
 
    <extension point="org.eclipse.ui.preferencePages" id="prefpages">
@@ -146,6 +149,12 @@
             name="%prefpage.OnTrack.dsl.diagram.rulersAndGrid"
             category="OnTrack.dsl.diagram.general"
             class="uk.ac.swanseacoventry.cmt.ontrack.diagram.preferences.DiagramRulersAndGridPreferencePage">
+      </page>
+      <page
+            category="OnTrack.dsl.diagram.general"
+            class="uk.ac.swanseacoventry.cmt.ontrack.diagram.preferences.custom.MCPaths"
+            id="uk.ac.swanseacoventry.cmt.ontrack.diagram.preferences.custom.MCPaths"
+            name="Model Checkers">
       </page>
    </extension>
 

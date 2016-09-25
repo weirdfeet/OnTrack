@@ -11,6 +11,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.eclipse.core.runtime.preferences.ConfigurationScope;
 import org.eclipse.gef.commands.CompoundCommand;
 import org.eclipse.gmf.runtime.diagram.ui.commands.ICommandProxy;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.DiagramEditPart;
@@ -18,6 +19,7 @@ import org.eclipse.gmf.runtime.diagram.ui.resources.editor.parts.DiagramDocument
 import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.jface.action.Action;
 import org.eclipse.jface.action.IToolBarManager;
+import org.eclipse.jface.preference.IPreferenceStore;
 import org.eclipse.jface.viewers.LabelProvider;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.DisposeEvent;
@@ -36,6 +38,7 @@ import org.eclipse.ui.IWorkbenchWindow;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.part.ViewPart;
 import org.eclipse.ui.plugin.AbstractUIPlugin;
+import org.osgi.service.prefs.Preferences;
 
 import uk.ac.swanseacoventry.cmt.ontrack.ControlTableItem;
 import uk.ac.swanseacoventry.cmt.ontrack.Point;
@@ -45,6 +48,8 @@ import uk.ac.swanseacoventry.cmt.ontrack.Track;
 import uk.ac.swanseacoventry.cmt.ontrack.TrackPlan;
 import uk.ac.swanseacoventry.cmt.ontrack.diagram.custom.Util;
 import uk.ac.swanseacoventry.cmt.ontrack.diagram.edit.commands.custom.TrackPlanSelectSubCommand;
+import uk.ac.swanseacoventry.cmt.ontrack.diagram.part.OntrackDiagramEditorPlugin;
+import uk.ac.swanseacoventry.cmt.ontrack.diagram.preferences.custom.PreferenceConstants;
 import uk.ac.swanseacoventry.cmt.ontrack.diagram.view.listeners.PartListener2Impl;
 import uk.ac.swanseacoventry.cmt.ontrack.dsl2cspb.DSL2CSPB;
 public class CSPBTableViewer extends ViewPart {
@@ -54,10 +59,6 @@ public class CSPBTableViewer extends ViewPart {
 	
 	private Map<SubTrackPlan,String> modelPaths = new HashMap<SubTrackPlan,String>();
 	private String fullModelPath = "";
-
-	private final String PATH_TO_PROB = "/Applications/ProB/prob"; // on mac, temporary, to be placed in eclipse preferences
-	// private final String PATH_TO_PROB = "C:\\Program Files (x86)\\ProB\\ProBWin.exe"; // on win, temporary, to be placed in eclipse preferences
-
 	
 	public CSPBTableViewer() {
 		super();
@@ -230,6 +231,11 @@ public class CSPBTableViewer extends ViewPart {
 		return generatedModelPath;
 	}
 	
+	protected String getProB(){
+		IPreferenceStore store = OntrackDiagramEditorPlugin.getInstance().getPreferenceStore();
+		return store.getString(PreferenceConstants.PROB_PATH);
+	}
+
 	protected void callProB(String path){
 		try{
 			// copy csp file to have the sanme name with the interlocking
@@ -237,7 +243,7 @@ public class CSPBTableViewer extends ViewPart {
 			java.nio.file.Path intl = FileSystems.getDefault().getPath(path + "/Interlocking.csp");
 			Files.copy(ctrl, intl, REPLACE_EXISTING);
 			String line;
-			String[] cmd = {PATH_TO_PROB,"Interlocking.mch" + ""};
+			String[] cmd = {getProB(),"Interlocking.mch" + ""};
 			ProcessBuilder pb = new ProcessBuilder(cmd);
 			pb.directory(new File(path));								
 			Process p = pb.start();
@@ -262,6 +268,15 @@ public class CSPBTableViewer extends ViewPart {
 	
 	void createToolBar(){
 		 IToolBarManager mgr = getViewSite().getActionBars().getToolBarManager();
+		 mgr.add(new Action("Refresh", AbstractUIPlugin.imageDescriptorFromPlugin("org.eclipse.ui.ide", "icons/full/elcl16/refresh_nav.png")){
+			 public void run(){
+					DiagramEditPart diagramEditPart = Util.getDiagramEP();
+					if (diagramEditPart==null) return;
+
+					TrackPlan trackplan = (TrackPlan)((View)diagramEditPart.getModel()).getElement();
+					refreshCSPBTableFrom(trackplan);
+			 }
+		 });
 		 mgr.add(new Action("Generate", AbstractUIPlugin.imageDescriptorFromPlugin("org.eclipse.ui.cheatsheets", "icons/elcl16/start_cheatsheet.gif")){
 			 public void run(){
 				DiagramEditPart diagramEditPart = Util.getDiagramEP();
@@ -291,7 +306,7 @@ public class CSPBTableViewer extends ViewPart {
 					
 			 }
 		 });
-		 mgr.add(new Action("Run ProB", AbstractUIPlugin.imageDescriptorFromPlugin("org.eclipse.ui.externaltools", "icons/full/etool16/external_tools.gif")){
+		 mgr.add(new Action("ProB"){
 			 public void run(){
 				DiagramEditPart diagramEditPart = Util.getDiagramEP();
 				if (diagramEditPart==null) return;
