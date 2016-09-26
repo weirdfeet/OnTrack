@@ -89,10 +89,11 @@ public class ReleaseTableViewer extends ViewPart {
 						TrackPlan trackplan = (TrackPlan)((View)diagramEditPart.getModel()).getElement();
 						
 						//ArrayList<Signal> inputs = new ArrayList<Signal>();
-						Track[] inputs = new Track[trackplan.getTracks().size()];
+						Track[] inputs = new Track[trackplan.getTracks().size() - trackplan.getPoints().size() - trackplan.getCrossings().size()];
 						int i = 0;
 						for(Track t : trackplan.getTracks())
-							inputs[i++] = t;
+							if (t.getPointReverse()==null && t.getCrossing2()==null)
+								inputs[i++] = t;
 						
 						ElementListSelectionDialog  dialog = new ElementListSelectionDialog(table.getShell(), new SafeTrackLabelProvider()); 
 						dialog.setTitle("Select a track");

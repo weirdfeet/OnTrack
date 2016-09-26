@@ -496,7 +496,7 @@
   </edges>
   <edges xmi:type="notation:Connector" xmi:id="_5W0k0H8tEeadpIJkibzdxw" type="4001" source="_5WyvoH8tEeadpIJkibzdxw" target="_5WwTYH8tEeadpIJkibzdxw">
     <children xmi:type="notation:DecorationNode" xmi:id="_5W1L4H8tEeadpIJkibzdxw" type="6001">
-      <layoutConstraint xmi:type="notation:Location" xmi:id="_5W1L4X8tEeadpIJkibzdxw" x="26" y="-35"/>
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_5W1L4X8tEeadpIJkibzdxw" x="8" y="-35"/>
     </children>
     <styles xmi:type="notation:FontStyle" xmi:id="_5W0k0X8tEeadpIJkibzdxw" fontName=".SF NS Text"/>
     <element xmi:type="uk.ac.swanseacoventry.cmt.ontrack:Point" href="Barkston.ontrack#//@points.3"/>
@@ -524,7 +524,7 @@
   </edges>
   <edges xmi:type="notation:Connector" xmi:id="_55ChEH8tEeadpIJkibzdxw" type="4001" source="_55BS8H8tEeadpIJkibzdxw" target="_54-PoH8tEeadpIJkibzdxw">
     <children xmi:type="notation:DecorationNode" xmi:id="_55DIIH8tEeadpIJkibzdxw" type="6001">
-      <layoutConstraint xmi:type="notation:Location" xmi:id="_55DIIX8tEeadpIJkibzdxw" x="-15" y="-35"/>
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_55DIIX8tEeadpIJkibzdxw" x="-6" y="-35"/>
     </children>
     <styles xmi:type="notation:FontStyle" xmi:id="_55ChEX8tEeadpIJkibzdxw" fontName=".SF NS Text"/>
     <element xmi:type="uk.ac.swanseacoventry.cmt.ontrack:Point" href="Barkston.ontrack#//@points.4"/>

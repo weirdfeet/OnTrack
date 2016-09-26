@@ -278,7 +278,8 @@ public class ControlTableViewer extends ViewPart {
 		
 		ArrayList<Track> inputs = new ArrayList<Track>();
 		for(Track t : trackplan.getTracks())
-			inputs.add(t);
+			if (t.getPointReverse()==null && t.getCrossing2()==null)
+				inputs.add(t);
 		
 		FeatureEditorDialog dialog = new FeatureEditorDialog(table.getShell(), new SafeTrackLabelProvider(), 
 				cti, OntrackPackage.Literals.CONTROL_TABLE_ITEM__CLEARS,"Select direction locks", inputs);

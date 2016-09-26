@@ -149,6 +149,8 @@ public class TrackImpl extends UnitImpl implements Track {
 	 */
 	public String getName() {
 		
+		if (super.getName()!=null) return super.getName();
+		
 		if (getPointReverse()!=null && getPointReverse().getNormalTrack()!=null) {
 			return getPointReverse().getNormalTrack().getName();
 		}
@@ -775,5 +777,20 @@ public class TrackImpl extends UnitImpl implements Track {
 			return opposite ? c1 : c2;
 		}
 	}
+	
+	@Override
+	public void setName(String newName){
+		if (this.getPoint()!=null) {
+			((UnitImpl)this.getPoint().getNormalTrack()).setName(newName);
+			((UnitImpl)this.getPoint().getReverseTrack()).setName(newName);
+		} 
+		else if (this.getCrossing()!=null) {
+			((UnitImpl)this.getCrossing().getTrack1()).setName(newName);
+			((UnitImpl)this.getCrossing().getTrack2()).setName(newName);
+		}
+		else
+			super.setName(newName);
+	}
+	
 
 } //TrackImpl
