@@ -58,6 +58,20 @@ operation newCSPTypedItem(n) : CSP!TypedItem {
 
 }
 
+operation newFunc0Arg1Out(fn,fd) : CSP!ProcessAssignment {
+	var f = new CSP!ProcessAssignment;
+
+	var lhs = new CSP!ProcessID;
+	lhs.name = fn;
+
+	var rhs = new CSP!ProcessID;
+	rhs.name = fd;
+
+	f.processID = lhs;
+	f.processExpression = rhs;
+	return f;	
+}
+
 operation newFunc1Arg1Out(fn,fa,fd) : CSP!ProcessAssignment {
 	var f = new CSP!ProcessAssignment;
 

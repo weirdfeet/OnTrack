@@ -181,6 +181,32 @@ to f : CSP!ProcessAssignment {
 	functions.add(nf);
 }
 
+rule transformCommonNext
+transform p : safetrack!Point
+to f : CSP!ProcessAssignment {
+
+	guard :
+	plan.points.includes(p)
+	
+	delete f;
+
+	var normalTrack = p.normalTrack;
+	var reverseTrack = p.reverseTrack;
+	var c1 = normalTrack.c1;
+	var c2 = normalTrack.c2;
+	var c3 = reverseTrack.c1;
+	var c4 = reverseTrack.c2;
+	var t;
+
+	if (c1 == c3 or c2==c3){
+		t = c3.findFirstDiffTrack2(plan,normalTrack,reverseTrack); if (not t.isDefined()) t = offTrack;
+	} else {
+		t = c4.findFirstDiffTrack2(plan,normalTrack,reverseTrack); if (not t.isDefined()) t = offTrack;
+	}
+
+	var nf = newFunc1Arg1Out("commonNext",p.name,t.name);
+	functions.add(nf);
+}
 rule transformEntryTrack
 transform e : safetrack!Entrance
 to se : CSP!SETElement, ti:CSP!TypedItem{

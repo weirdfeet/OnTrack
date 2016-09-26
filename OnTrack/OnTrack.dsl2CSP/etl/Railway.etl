@@ -1,8 +1,15 @@
 import "Ontrack.etl";
 
 pre {
-	var trackplan = safetrack!TrackPlan.all().last();
-	var plan = trackplan;
+	var trackplan = safetrack!TrackPlan.all().first();
+	var subplan = null;
+	if (trackplan.selectedSubTrackPlan.isDefined())
+		subplan = trackplan.selectedSubTrackPlan;
+	trackplan.println();
+	subplan.println();
+	var plan;
+	if (subplan.isDefined()) plan = subplan;
+	else plan = trackplan;
 
 	// Main CSP script
 	new CSP!CSPScript;
@@ -54,6 +61,8 @@ pre {
 	var RouteID = newCSPDatatype("RouteID");
 	
 	var EntryRoute = newCSPSet("EntryRoute");
+	
+	var focusTransformed = false;
 }
 
 //////// Transformation Rules ////////
@@ -321,34 +330,109 @@ to f : CSP!ProcessAssignment {
 	for(i in plan.releaseTable){
 		if (i.point==p){
 			if (i.track.pointNormal.isDefined()){
-				rls.item.add(newCSP3Tuple(newCSPTypedItem(i.route),newCSPTypedItem(i.track.name),newCSPTypedItem(i.track.c1.findFirstDiffTrack2(plan,i.track,i.track.pointNormal.reverseTrack).name)));
-				rls.item.add(newCSP3Tuple(newCSPTypedItem(i.route),newCSPTypedItem(i.track.name),newCSPTypedItem(i.track.c2.findFirstDiffTrack2(plan,i.track,i.track.pointNormal.reverseTrack).name)));
-				rls.item.add(newCSP3Tuple(newCSPTypedItem(i.route),newCSPTypedItem(i.track.name),newCSPTypedItem(i.track.pointNormal.reverseTrack.c1.findFirstDiffTrack2(plan,i.track,i.track.pointNormal.reverseTrack).name)));
-				rls.item.add(newCSP3Tuple(newCSPTypedItem(i.route),newCSPTypedItem(i.track.name),newCSPTypedItem(i.track.pointNormal.reverseTrack.c2.findFirstDiffTrack2(plan,i.track,i.track.pointNormal.reverseTrack).name)));
+			    var t1 = i.track.c1.findFirstDiffTrack2(plan,i.track,i.track.pointNormal.reverseTrack); if (not(t1.isDefined())) t1 = offTrack;
+			    var t2 = i.track.c2.findFirstDiffTrack2(plan,i.track,i.track.pointNormal.reverseTrack); if (not(t2.isDefined())) t2 = offTrack;
+			    var t3 = i.track.pointNormal.reverseTrack.c1.findFirstDiffTrack2(plan,i.track,i.track.pointNormal.reverseTrack); if (not(t3.isDefined())) t3 = offTrack;
+			    var t4 = i.track.pointNormal.reverseTrack.c2.findFirstDiffTrack2(plan,i.track,i.track.pointNormal.reverseTrack); if (not(t4.isDefined())) t4 = offTrack;
+				rls.item.add(newCSP3Tuple(newCSPTypedItem(i.route),newCSPTypedItem(i.track.name),newCSPTypedItem(t1.name)));
+				rls.item.add(newCSP3Tuple(newCSPTypedItem(i.route),newCSPTypedItem(i.track.name),newCSPTypedItem(t2.name)));
+				rls.item.add(newCSP3Tuple(newCSPTypedItem(i.route),newCSPTypedItem(i.track.name),newCSPTypedItem(t3.name)));
+				rls.item.add(newCSP3Tuple(newCSPTypedItem(i.route),newCSPTypedItem(i.track.name),newCSPTypedItem(t4.name)));
 			} else if (i.track.pointReverse.isDefined()){
-				rls.item.add(newCSP3Tuple(newCSPTypedItem(i.route),newCSPTypedItem(i.track.pointReverse.normalTrack.name),newCSPTypedItem(i.track.c1.findFirstDiffTrack2(plan,i.track,i.track.pointReverse.normalTrack).name)));
-				rls.item.add(newCSP3Tuple(newCSPTypedItem(i.route),newCSPTypedItem(i.track.pointReverse.normalTrack.name),newCSPTypedItem(i.track.c2.findFirstDiffTrack2(plan,i.track,i.track.pointReverse.normalTrack).name)));
-				rls.item.add(newCSP3Tuple(newCSPTypedItem(i.route),newCSPTypedItem(i.track.pointReverse.normalTrack.name),newCSPTypedItem(i.track.pointReverse.normalTrack.c1.findFirstDiffTrack2(plan,i.track,i.track.pointReverse.normalTrack).name)));
-				rls.item.add(newCSP3Tuple(newCSPTypedItem(i.route),newCSPTypedItem(i.track.pointReverse.normalTrack.name),newCSPTypedItem(i.track.pointReverse.normalTrack.c2.findFirstDiffTrack2(plan,i.track,i.track.pointReverse.normalTrack).name)));
+			    var t1 = i.track.c1.findFirstDiffTrack2(plan,i.track,i.track.pointReverse.normalTrack); if (not(t1.isDefined())) t1 = offTrack;
+			    var t2 = i.track.c2.findFirstDiffTrack2(plan,i.track,i.track.pointReverse.normalTrack); if (not(t2.isDefined())) t2 = offTrack;
+			    var t3 = i.track.pointReverse.normalTrack.c1.findFirstDiffTrack2(plan,i.track,i.track.pointReverse.normalTrack); if (not(t3.isDefined())) t3 = offTrack;
+			    var t4 = i.track.pointReverse.normalTrack.c2.findFirstDiffTrack2(plan,i.track,i.track.pointReverse.normalTrack); if (not(t4.isDefined())) t4 = offTrack;
+				rls.item.add(newCSP3Tuple(newCSPTypedItem(i.route),newCSPTypedItem(i.track.pointReverse.normalTrack.name),newCSPTypedItem(t1.name)));
+				rls.item.add(newCSP3Tuple(newCSPTypedItem(i.route),newCSPTypedItem(i.track.pointReverse.normalTrack.name),newCSPTypedItem(t2.name)));
+				rls.item.add(newCSP3Tuple(newCSPTypedItem(i.route),newCSPTypedItem(i.track.pointReverse.normalTrack.name),newCSPTypedItem(t3.name)));
+				rls.item.add(newCSP3Tuple(newCSPTypedItem(i.route),newCSPTypedItem(i.track.pointReverse.normalTrack.name),newCSPTypedItem(t4.name)));
 			} else if (i.track.crossing1.isDefined()){
-				rls.item.add(newCSP3Tuple(newCSPTypedItem(i.route),newCSPTypedItem(i.track.name),newCSPTypedItem(i.track.c1.findFirstDiffTrack2(plan,i.track,i.track.crossing1.track2).name)));
-				rls.item.add(newCSP3Tuple(newCSPTypedItem(i.route),newCSPTypedItem(i.track.name),newCSPTypedItem(i.track.c2.findFirstDiffTrack2(plan,i.track,i.track.crossing1.track2).name)));
-				rls.item.add(newCSP3Tuple(newCSPTypedItem(i.route),newCSPTypedItem(i.track.name),newCSPTypedItem(i.track.crossing1.track2.c1.findFirstDiffTrack2(plan,i.track,i.track.crossing1.track2).name)));
-				rls.item.add(newCSP3Tuple(newCSPTypedItem(i.route),newCSPTypedItem(i.track.name),newCSPTypedItem(i.track.crossing1.track2.c2.findFirstDiffTrack2(plan,i.track,i.track.crossing1.track2).name)));
+			    var t1 = i.track.c1.findFirstDiffTrack2(plan,i.track,i.track.crossing1.track2); if (not(t1.isDefined())) t1 = offTrack;
+			    var t2 = i.track.c2.findFirstDiffTrack2(plan,i.track,i.track.crossing1.track2); if (not(t2.isDefined())) t2 = offTrack;
+			    var t3 = i.track.crossing1.track2.c1.findFirstDiffTrack2(plan,i.track,i.track.crossing1.track2); if (not(t3.isDefined())) t3 = offTrack;
+			    var t4 = i.track.crossing1.track2.c2.findFirstDiffTrack2(plan,i.track,i.track.crossing1.track2); if (not(t4.isDefined())) t4 = offTrack;
+				rls.item.add(newCSP3Tuple(newCSPTypedItem(i.route),newCSPTypedItem(i.track.name),newCSPTypedItem(t1.name)));
+				rls.item.add(newCSP3Tuple(newCSPTypedItem(i.route),newCSPTypedItem(i.track.name),newCSPTypedItem(t2.name)));
+				rls.item.add(newCSP3Tuple(newCSPTypedItem(i.route),newCSPTypedItem(i.track.name),newCSPTypedItem(t3.name)));
+				rls.item.add(newCSP3Tuple(newCSPTypedItem(i.route),newCSPTypedItem(i.track.name),newCSPTypedItem(t4.name)));
 			} else if (i.track.crossing2.isDefined()){
-				rls.item.add(newCSP3Tuple(newCSPTypedItem(i.route),newCSPTypedItem(i.track.crossing2.track1.name),newCSPTypedItem(i.track.c1.findFirstDiffTrack2(plan,i.track,i.track.crossing2.track1).name)));
-				rls.item.add(newCSP3Tuple(newCSPTypedItem(i.route),newCSPTypedItem(i.track.crossing2.track1.name),newCSPTypedItem(i.track.c2.findFirstDiffTrack2(plan,i.track,i.track.crossing2.track1).name)));
-				rls.item.add(newCSP3Tuple(newCSPTypedItem(i.route),newCSPTypedItem(i.track.crossing2.track1.name),newCSPTypedItem(i.track.crossing2.track1.c1.findFirstDiffTrack2(plan,i.track,i.track.crossing2.track1).name)));
-				rls.item.add(newCSP3Tuple(newCSPTypedItem(i.route),newCSPTypedItem(i.track.crossing2.track1.name),newCSPTypedItem(i.track.crossing2.track1.c2.findFirstDiffTrack2(plan,i.track,i.track.crossing2.track1).name)));
+			    var t1 = i.track.c1.findFirstDiffTrack2(plan,i.track,i.track.crossing2.track1); if (not(t1.isDefined())) t1 = offTrack;
+			    var t2 = i.track.c2.findFirstDiffTrack2(plan,i.track,i.track.crossing2.track1); if (not(t2.isDefined())) t2 = offTrack;
+			    var t3 = i.track.crossing2.track1.c1.findFirstDiffTrack2(plan,i.track,i.track.crossing2.track1); if (not(t3.isDefined())) t3 = offTrack;
+			    var t4 = i.track.crossing2.track1.c2.findFirstDiffTrack2(plan,i.track,i.track.crossing2.track1); if (not(t4.isDefined())) t4 = offTrack;
+				rls.item.add(newCSP3Tuple(newCSPTypedItem(i.route),newCSPTypedItem(i.track.crossing2.track1.name),newCSPTypedItem(t1.name)));
+				rls.item.add(newCSP3Tuple(newCSPTypedItem(i.route),newCSPTypedItem(i.track.crossing2.track1.name),newCSPTypedItem(t2.name)));
+				rls.item.add(newCSP3Tuple(newCSPTypedItem(i.route),newCSPTypedItem(i.track.crossing2.track1.name),newCSPTypedItem(t3.name)));
+				rls.item.add(newCSP3Tuple(newCSPTypedItem(i.route),newCSPTypedItem(i.track.crossing2.track1.name),newCSPTypedItem(t4.name)));
 			} else {
-				rls.item.add(newCSP3Tuple(newCSPTypedItem(i.route),newCSPTypedItem(i.track.name),newCSPTypedItem(i.track.c1.findFirstDiffTrack(plan,i.track).name)));
-				rls.item.add(newCSP3Tuple(newCSPTypedItem(i.route),newCSPTypedItem(i.track.name),newCSPTypedItem(i.track.c2.findFirstDiffTrack(plan,i.track).name)));
+			    var t1 = i.track.c1.findFirstDiffTrack(plan,i.track); if (not(t1.isDefined())) t1 = offTrack;
+			    var t2 = i.track.c2.findFirstDiffTrack(plan,i.track); if (not(t2.isDefined())) t2 = offTrack;
+				rls.item.add(newCSP3Tuple(newCSPTypedItem(i.route),newCSPTypedItem(i.track.name),newCSPTypedItem(t1.name)));
+				rls.item.add(newCSP3Tuple(newCSPTypedItem(i.route),newCSPTypedItem(i.track.name),newCSPTypedItem(t2.name)));
 			}
 		}
 	}
 
 	delete f;
 	var nf = newFunc1Arg1SetOut("releaseTable", p.name, rls);
+	functions.add(nf);
+
+}
+
+rule transformTopoRoute
+transform r : safetrack!TopoRoute
+to f : CSP!ProcessAssignment {
+
+	guard :
+	plan.topoRoutes.includes(r) and r.startSignal.isDefined() and plan.signals.includes(r.startSignal)
+
+	delete f;
+
+	for(rn in r.names){
+		var ts = new CSP!SET;
+		ts.name = "";
+
+		var first = true;
+		for(t in r.directedTracks) {
+			if (first) 
+				first = false;
+			else
+				ts.item.add(newCSPSetItem(t.track.name));
+		}
+		
+		var nf = newFunc1Arg1SetOut("top", rn, ts);
+		functions.add(nf);
+	}
+}
+
+rule transformEntryTopoRoute
+transform e : safetrack!Entrance
+to f : CSP!ProcessAssignment {
+
+	// only transform if route is in control table
+	guard : plan.entrances.includes(e)
+
+	delete f;
+	var ts = new CSP!SET; ts.name = "";
+	ts.item.add(newCSPSetItem(e.connector.findFirstTrack(plan).name));
+
+	var nf = newFunc1Arg1SetOut("top","RC" + e.connector.id.toString(),ts);
+	functions.add(nf);
+}
+
+rule transformFocusTrack
+transform t : safetrack!Track
+to f : CSP!ProcessAssignment {
+
+	guard :
+	not(focusTransformed) and not(plan==trackplan) and plan.criticals.includes(t)
+
+	focusTransformed = true;
+
+	delete f;
+
+	var nf = newFunc0Arg1Out("focustrack", t.name);
 	functions.add(nf);
 
 }

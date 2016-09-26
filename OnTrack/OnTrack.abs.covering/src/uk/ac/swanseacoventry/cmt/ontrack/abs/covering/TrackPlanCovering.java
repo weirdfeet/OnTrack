@@ -243,6 +243,11 @@ public class TrackPlanCovering  {
 				// exits
 				for(DirectedTrack nex : dt.getNexts()){
 					if (entryReachables.contains(nex) && !coneTracks.contains(nex.getTrack())){
+						HashSet<Exit> es = new HashSet<Exit>();
+						es.addAll(dt.getConnector().getExits());
+						es.retainAll(subpl.getExits());
+						if (!es.isEmpty()) continue; // if there is alread an exit attached, no need to add more
+
 						Exit e = OntrackFactory.eINSTANCE.createExit();
 						e.setConnector(dt.getConnector());
 						subpl.getExits().add(e);
@@ -275,7 +280,8 @@ public class TrackPlanCovering  {
 		for(TopoRoute tr : trackplan.getTopoRoutes()){
 			if (subpl.getSignals().contains(tr.getStartSignal())){
 				TopoRoute trp = OntrackFactory.eINSTANCE.createTopoRoute();
-				trp.setStartSignal(tr.getStartSignal());;
+				trp.getNames().addAll(tr.getNames());
+				trp.setStartSignal(tr.getStartSignal());
 				for(DirectedTrack dt : tr.getDirectedTracks()){
 					if (coneTracks.contains(dt.getTrack()))
 						trp.getDirectedTracks().add(dt);
