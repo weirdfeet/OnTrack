@@ -336,5 +336,38 @@
           xsi:type="gmfmap:DiagramElementTarget"
           element="//@links.3"/>
     </audits>
+    <audits
+        name="SignalDuplicatedNameDetectorRule"
+        id="SignalDuplicatedNameDetectorRule"
+        message="Signal name is not provided or dupblicated">
+      <rule
+          body="SignalDuplicatedNameDetectorConstraint"
+          language="java"/>
+      <target
+          xsi:type="gmfmap:DiagramElementTarget"
+          element="//@nodes.1/@ownedChild"/>
+    </audits>
+    <audits
+        name="TrackDuplicatedNameDetectorRule"
+        id="TrackDuplicatedNameDetectorRule"
+        message="Track name is not provided or dupblicated">
+      <rule
+          body="TrackDuplicatedNameDetectorConstraint"
+          language="java"/>
+      <target
+          xsi:type="gmfmap:DiagramElementTarget"
+          element="//@links.4"/>
+    </audits>
+    <audits
+        name="PointDuplicatedNameDetectorRule"
+        id="PointDuplicatedNameDetectorRule"
+        message="Point name is not provided or dupblicated">
+      <rule
+          body="PointDuplicatedNameDetectorConstraint"
+          language="java"/>
+      <target
+          xsi:type="gmfmap:DiagramElementTarget"
+          element="//@links.0"/>
+    </audits>
   </audits>
 </gmfmap:Mapping>

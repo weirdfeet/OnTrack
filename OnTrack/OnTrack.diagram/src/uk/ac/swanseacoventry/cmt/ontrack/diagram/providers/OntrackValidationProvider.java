@@ -14,9 +14,11 @@ import org.eclipse.emf.validation.service.IBatchValidator;
 import org.eclipse.emf.validation.service.ITraversalStrategy;
 import org.eclipse.gmf.runtime.emf.core.util.EMFCoreUtil;
 import org.eclipse.gmf.runtime.notation.Edge;
+import org.eclipse.gmf.runtime.notation.Node;
 import org.eclipse.gmf.runtime.notation.View;
 
 import uk.ac.swanseacoventry.cmt.ontrack.Connector;
+import uk.ac.swanseacoventry.cmt.ontrack.Point;
 import uk.ac.swanseacoventry.cmt.ontrack.Signal;
 import uk.ac.swanseacoventry.cmt.ontrack.Track;
 import uk.ac.swanseacoventry.cmt.ontrack.diagram.edit.parts.CrossingEditPart;
@@ -24,6 +26,7 @@ import uk.ac.swanseacoventry.cmt.ontrack.diagram.edit.parts.EntranceConnectorEdi
 import uk.ac.swanseacoventry.cmt.ontrack.diagram.edit.parts.ExitConnectorEditPart;
 import uk.ac.swanseacoventry.cmt.ontrack.diagram.edit.parts.PointEditPart;
 import uk.ac.swanseacoventry.cmt.ontrack.diagram.edit.parts.SignalConnectorEditPart;
+import uk.ac.swanseacoventry.cmt.ontrack.diagram.edit.parts.SignalEditPart;
 import uk.ac.swanseacoventry.cmt.ontrack.diagram.edit.parts.TerminalConnectorEditPart;
 import uk.ac.swanseacoventry.cmt.ontrack.diagram.edit.parts.TrackEditPart;
 import uk.ac.swanseacoventry.cmt.ontrack.diagram.edit.parts.TrackPlanEditPart;
@@ -224,6 +227,25 @@ public class OntrackValidationProvider {
 	/**
 	* @generated
 	*/
+	public static class Ctx_2002 implements IClientSelector {
+
+		/**
+		* @generated
+		*/
+		public boolean selects(Object object) {
+			if (isInDefaultEditorContext(object) && object instanceof View) {
+				final int id = OntrackVisualIDRegistry.getVisualID((View) object);
+				boolean result = false;
+				result = result || id == SignalEditPart.VISUAL_ID;
+				return result;
+			}
+			return false;
+		}
+	}
+
+	/**
+	* @generated
+	*/
 	public static ITraversalStrategy getNotationTraversalStrategy(IBatchValidator validator) {
 		return new CtxSwitchStrategy(validator);
 	}
@@ -270,7 +292,8 @@ public class OntrackValidationProvider {
 			this.defaultStrategy = validator.getDefaultTraversalStrategy();
 			this.contextSwitchingIdentifiers = new int[] { PointEditPart.VISUAL_ID, CrossingEditPart.VISUAL_ID,
 					EntranceConnectorEditPart.VISUAL_ID, ExitConnectorEditPart.VISUAL_ID,
-					TerminalConnectorEditPart.VISUAL_ID, TrackEditPart.VISUAL_ID, SignalConnectorEditPart.VISUAL_ID };
+					TerminalConnectorEditPart.VISUAL_ID, TrackEditPart.VISUAL_ID, SignalConnectorEditPart.VISUAL_ID,
+					SignalEditPart.VISUAL_ID };
 			Arrays.sort(this.contextSwitchingIdentifiers);
 		}
 
@@ -429,13 +452,16 @@ public class OntrackValidationProvider {
 	public static class Adapter6 extends AbstractModelConstraint {
 
 		/**
-		* @generated
+		* @generated NOT
 		*/
 		public IStatus validate(IValidationContext ctx) {
 			Edge context = (Edge) ctx.getTarget();
 			Connector c1 = (Connector) context.getTarget().getElement();
 			Connector c2 = (Connector) context.getSource().getElement();
-			return ErrorDetectionHelper.errorTrackDetected((Track)context.getElement()) && ErrorDetectionHelper.errorTrackDetected(c1) && ErrorDetectionHelper.errorTrackDetected(c2) ? ctx.createSuccessStatus()
+			Track t = (Track) context.getElement();
+			return ErrorDetectionHelper.errorTrackDetected(c1) && 
+					ErrorDetectionHelper.errorTrackDetected(c2) &&
+					ErrorDetectionHelper.errorTrackDetected(t)? ctx.createSuccessStatus()
 					: ctx.createFailureStatus(context);
 		}
 	}
@@ -452,8 +478,56 @@ public class OntrackValidationProvider {
 			Edge context = (Edge) ctx.getTarget();
 			Connector c = (Connector) context.getTarget().getElement();
 			Signal s = (Signal) context.getSource().getElement();
-			return ErrorDetectionHelper.errorSignalDirectionDetected(s,c) ? ctx.createSuccessStatus()
+			return ErrorDetectionHelper.errorSignalDirectionDetected(s, c) ? ctx.createSuccessStatus()
 					: ctx.createFailureStatus(context);
+		}
+	}
+
+	/**
+	* @generated
+	*/
+	public static class Adapter8 extends AbstractModelConstraint {
+
+		/**
+		* @generated
+		*/
+		public IStatus validate(IValidationContext ctx) {
+			Node context = (Node) ctx.getTarget();
+			Signal p = (Signal) context.getElement();
+			return ErrorDetectionHelper.errorDuplicatedNameDetected(p) ? ctx.createSuccessStatus()
+					: ctx.createFailureStatus(context);		
+		}
+	}
+
+	/**
+	* @generated
+	*/
+	public static class Adapter9 extends AbstractModelConstraint {
+
+		/**
+		* @generated
+		*/
+		public IStatus validate(IValidationContext ctx) {
+			Edge context = (Edge) ctx.getTarget();
+			Track p = (Track) context.getElement();
+			return ErrorDetectionHelper.errorDuplicatedNameDetected(p) ? ctx.createSuccessStatus()
+					: ctx.createFailureStatus(context);		
+		}
+	}
+
+	/**
+	* @generated
+	*/
+	public static class Adapter10 extends AbstractModelConstraint {
+
+		/**
+		* @generated
+		*/
+		public IStatus validate(IValidationContext ctx) {
+			Edge context = (Edge) ctx.getTarget();
+			Point p = (Point) context.getElement();
+			return ErrorDetectionHelper.errorDuplicatedNameDetected(p) ? ctx.createSuccessStatus()
+					: ctx.createFailureStatus(context);		
 		}
 	}
 

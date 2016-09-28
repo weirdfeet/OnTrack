@@ -8,6 +8,7 @@ import uk.ac.swanseacoventry.cmt.ontrack.Crossing;
 import uk.ac.swanseacoventry.cmt.ontrack.Point;
 import uk.ac.swanseacoventry.cmt.ontrack.Signal;
 import uk.ac.swanseacoventry.cmt.ontrack.Track;
+import uk.ac.swanseacoventry.cmt.ontrack.TrackPlan;
 
 public class ErrorDetectionHelper {
 	
@@ -114,4 +115,38 @@ public class ErrorDetectionHelper {
 		return t.getC1()!=t.getC2(); 
 	}
 
+	public static boolean errorDuplicatedNameDetected(Signal s) {
+		if (s.getName()==null || s.getName().trim().equals("")) return false;
+		TrackPlan tp = (TrackPlan) s.eContainer();
+		HashSet<String> ss = new HashSet<String>();
+		for(Signal s1 : tp.getSignals()){
+			if (s1!=s && s1.getName()!=null)
+				ss.add(s1.getName());
+		}
+		return !ss.contains(s.getName());
+	}
+
+	public static boolean errorDuplicatedNameDetected(Track t) {
+		if (t.getName()==null || t.getName().trim().equals("")) return false;
+		TrackPlan tp = (TrackPlan) t.eContainer();
+		HashSet<String> ns = new HashSet<String>();
+		for(Track t1 : tp.getTracks()){
+			if (t1!=t && t1.getName()!=null && 
+					(t1.getPoint()==null || t1.getPoint()!=t.getPoint()) &&
+					(t1.getCrossing()==null || t1.getCrossing()!=t.getCrossing()))
+				ns.add(t1.getName());
+		}
+		return !ns.contains(t.getName());
+	}
+
+	public static boolean errorDuplicatedNameDetected(Point p) {
+		if (p.getName()==null || p.getName().trim().equals("")) return false;
+		TrackPlan tp = (TrackPlan) p.eContainer();
+		HashSet<String> ns = new HashSet<String>();
+		for(Point p1 : tp.getPoints()){
+			if (p1!=p && p1.getName()!=null)
+				ns.add(p1.getName());
+		}
+		return !ns.contains(p.getName());
+	}
 }

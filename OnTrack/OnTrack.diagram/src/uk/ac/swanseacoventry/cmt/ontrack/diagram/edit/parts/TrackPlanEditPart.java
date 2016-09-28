@@ -4,9 +4,11 @@ import org.eclipse.gmf.runtime.diagram.ui.editparts.DiagramEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editpolicies.EditPolicyRoles;
 import org.eclipse.gmf.runtime.notation.View;
 
+import org.eclipse.gmf.tooling.runtime.edit.policies.reparent.CreationEditPolicyWithCustomReparent;
 import uk.ac.swanseacoventry.cmt.ontrack.diagram.edit.policies.TrackPlanCanonicalEditPolicy;
 import uk.ac.swanseacoventry.cmt.ontrack.diagram.edit.policies.TrackPlanItemSemanticEditPolicy;
 import uk.ac.swanseacoventry.cmt.ontrack.diagram.edit.policies.custom.TrackPlanCustomCreationEditPolicy;
+import uk.ac.swanseacoventry.cmt.ontrack.diagram.part.OntrackVisualIDRegistry;
 
 /**
  * @generated

@@ -781,15 +781,19 @@ public class TrackImpl extends UnitImpl implements Track {
 	@Override
 	public void setName(String newName){
 		if (this.getPoint()!=null) {
-			((UnitImpl)this.getPoint().getNormalTrack()).setName(newName);
-			((UnitImpl)this.getPoint().getReverseTrack()).setName(newName);
+			((TrackImpl)this.getPoint().getNormalTrack()).setUnitName(newName);
+			((TrackImpl)this.getPoint().getReverseTrack()).setUnitName(newName);
 		} 
 		else if (this.getCrossing()!=null) {
-			((UnitImpl)this.getCrossing().getTrack1()).setName(newName);
-			((UnitImpl)this.getCrossing().getTrack2()).setName(newName);
+			((TrackImpl)this.getCrossing().getTrack1()).setUnitName(newName);
+			((TrackImpl)this.getCrossing().getTrack2()).setUnitName(newName);
 		}
 		else
 			super.setName(newName);
+	}
+	
+	public void setUnitName(String newName){
+		super.setName(newName);
 	}
 	
 

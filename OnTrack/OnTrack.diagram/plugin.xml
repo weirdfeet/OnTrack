@@ -114,9 +114,6 @@
    <extension point="org.eclipse.core.runtime.preferences" id="prefs">
       <?gmfgen generated="true"?>
       <initializer class="uk.ac.swanseacoventry.cmt.ontrack.diagram.preferences.DiagramPreferenceInitializer"/>
-      <initializer
-            class="uk.ac.swanseacoventry.cmt.ontrack.diagram.preferences.custom.PreferenceInitializer">
-      </initializer>
    </extension>
 
    <extension point="org.eclipse.ui.preferencePages" id="prefpages">
@@ -153,8 +150,8 @@
       <page
             category="OnTrack.dsl.diagram.general"
             class="uk.ac.swanseacoventry.cmt.ontrack.diagram.preferences.custom.MCPaths"
-            id="uk.ac.swanseacoventry.cmt.ontrack.diagram.preferences.custom.MCPaths"
-            name="Model Checkers">
+            id="OnTrack.diagram.preference.MCPaths"
+            name="Model checkers">
       </page>
    </extension>
 
@@ -819,6 +816,36 @@
             <message><![CDATA[Signal is linked to wrong connector]]></message>
             <target class="notation.Edge"/>
          </constraint>
+                  <constraint id="SignalDuplicatedNameDetectorRule"
+            lang="Java" class="uk.ac.swanseacoventry.cmt.ontrack.diagram.providers.OntrackValidationProvider$Adapter8"
+            name="SignalDuplicatedNameDetectorRule"
+            mode="Batch"
+            severity="ERROR" statusCode="200">
+            
+            <description><![CDATA[]]></description>
+            <message><![CDATA[Signal name is not provided or dupblicated]]></message>
+            <target class="notation.Node"/>
+         </constraint>
+                  <constraint id="TrackDuplicatedNameDetectorRule"
+            lang="Java" class="uk.ac.swanseacoventry.cmt.ontrack.diagram.providers.OntrackValidationProvider$Adapter9"
+            name="TrackDuplicatedNameDetectorRule"
+            mode="Batch"
+            severity="ERROR" statusCode="200">
+            
+            <description><![CDATA[]]></description>
+            <message><![CDATA[Track name is not provided or dupblicated]]></message>
+            <target class="notation.Edge"/>
+         </constraint>
+                  <constraint id="PointDuplicatedNameDetectorRule"
+            lang="Java" class="uk.ac.swanseacoventry.cmt.ontrack.diagram.providers.OntrackValidationProvider$Adapter10"
+            name="PointDuplicatedNameDetectorRule"
+            mode="Batch"
+            severity="ERROR" statusCode="200">
+            
+            <description><![CDATA[]]></description>
+            <message><![CDATA[Point name is not provided or dupblicated]]></message>
+            <target class="notation.Edge"/>
+         </constraint>
                   </constraints>
       </constraintProvider>
    </extension>
@@ -830,6 +857,7 @@
       </clientContext>
       <binding context="OnTrack.dsl.diagramCtx_4001">
                   <constraint ref="OnTrack.dsl.diagram.ErrorPointDetectorRule"/>
+                  <constraint ref="OnTrack.dsl.diagram.PointDuplicatedNameDetectorRule"/>
                </binding>
 
       <clientContext default="false" id="OnTrack.dsl.diagramCtx_4002">
@@ -865,6 +893,7 @@
       </clientContext>
       <binding context="OnTrack.dsl.diagramCtx_4005">
                   <constraint ref="OnTrack.dsl.diagram.ErrorTrackDetectorRule"/>
+                  <constraint ref="OnTrack.dsl.diagram.TrackDuplicatedNameDetectorRule"/>
                </binding>
 
       <clientContext default="false" id="OnTrack.dsl.diagramCtx_4004">
@@ -872,6 +901,13 @@
       </clientContext>
       <binding context="OnTrack.dsl.diagramCtx_4004">
                   <constraint ref="OnTrack.dsl.diagram.ErrorSignalDirectionDetectorRule"/>
+               </binding>
+
+      <clientContext default="false" id="OnTrack.dsl.diagramCtx_2002">
+         <selector class="uk.ac.swanseacoventry.cmt.ontrack.diagram.providers.OntrackValidationProvider$Ctx_2002"/>
+      </clientContext>
+      <binding context="OnTrack.dsl.diagramCtx_2002">
+                  <constraint ref="OnTrack.dsl.diagram.SignalDuplicatedNameDetectorRule"/>
                </binding>
 
    </extension>

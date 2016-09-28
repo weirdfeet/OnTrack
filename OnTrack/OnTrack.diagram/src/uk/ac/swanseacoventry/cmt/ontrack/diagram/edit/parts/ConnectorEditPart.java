@@ -29,6 +29,7 @@ import org.eclipse.gmf.runtime.diagram.ui.editparts.AbstractBorderedShapeEditPar
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IBorderItemEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editpolicies.BorderItemSelectionEditPolicy;
 import org.eclipse.gmf.runtime.diagram.ui.editpolicies.EditPolicyRoles;
+import org.eclipse.gmf.runtime.diagram.ui.editpolicies.NonResizableLabelEditPolicy;
 import org.eclipse.gmf.runtime.diagram.ui.figures.BorderItemLocator;
 import org.eclipse.gmf.runtime.gef.ui.figures.DefaultSizeNodeFigure;
 import org.eclipse.gmf.runtime.gef.ui.figures.NodeFigure;
@@ -78,7 +79,7 @@ public class ConnectorEditPart extends AbstractBorderedShapeEditPart {
 	}
 
 	/**
-	* @generated
+	* @generated NOT
 	*/
 	protected LayoutEditPolicy createLayoutEditPolicy() {
 		org.eclipse.gmf.runtime.diagram.ui.editpolicies.LayoutEditPolicy lep = new org.eclipse.gmf.runtime.diagram.ui.editpolicies.LayoutEditPolicy() {
@@ -87,7 +88,7 @@ public class ConnectorEditPart extends AbstractBorderedShapeEditPart {
 				View childView = (View) child.getModel();
 				switch (OntrackVisualIDRegistry.getVisualID(childView)) {
 				case ConnectorIdEditPart.VISUAL_ID:
-					return new BorderItemSelectionEditPolicy() {
+					return new NonResizableLabelEditPolicy() {
 
 						protected List createSelectionHandles() {
 							MoveHandle mh = new MoveHandle((GraphicalEditPart) getHost());
