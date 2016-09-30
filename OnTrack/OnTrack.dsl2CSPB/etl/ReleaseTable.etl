@@ -27,7 +27,7 @@ to pe : BMachine!PropElement {
     guard : plan.releaseTable.includes(r)
 
 	releaseTable.hasPropElements.add(pe);
-	newBDomainElement(r.track.getName(), pe);
+	newBDomainElement(r.unoccupiedTrack.getName(), pe);
 	newBRangeElement(r.route, pe);
 	newBRangeElement(r.point.name, pe);
 }

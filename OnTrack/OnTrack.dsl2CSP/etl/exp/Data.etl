@@ -403,7 +403,7 @@ to f : CSP!ProcessAssignment {
 		}
 		var ut = i.unoccupiedTrack;
 		var ot = i.occupiedTrack; if (not(ot.isDefined())) ot = offTrack;
-		rls.item.add(newCSPSetItem(ut.name + "." + ot.name));
+		rls.item.add(newCSPSetItem(ut.getName() + "." + ot.getName()));
 	}
 
 	delete f;
