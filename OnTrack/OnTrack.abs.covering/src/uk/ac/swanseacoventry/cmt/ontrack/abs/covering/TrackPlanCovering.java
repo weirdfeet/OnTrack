@@ -177,7 +177,7 @@ public class TrackPlanCovering  {
 				for(ReleaseTableItem rti : trackplan.getReleaseTable()){
 					if (rti.getRoute().equals(octi.name) && 
 							(octi.normals.contains(rti.getPoint()) || octi.reverses.contains(rti.getPoint())))
-						coneReleasingTracks.add(rti.getTrack());
+						coneReleasingTracks.add(rti.getUnoccupiedTrack());
 				}
 		}
 		
@@ -299,7 +299,8 @@ public class TrackPlanCovering  {
 				ReleaseTableItem rtip = OntrackFactory.eINSTANCE.createReleaseTableItem();
 				rtip.setRoute(rti.getRoute());
 				rtip.setPoint(rti.getPoint());
-				rtip.setTrack(rti.getTrack());
+				rtip.setUnoccupiedTrack(rti.getUnoccupiedTrack());
+				if (coneTracks.contains(rti.getOccupiedTrack())) rtip.setOccupiedTrack(rti.getOccupiedTrack());
 				subpl.getReleaseTable().add(rtip);
 			}
 		}

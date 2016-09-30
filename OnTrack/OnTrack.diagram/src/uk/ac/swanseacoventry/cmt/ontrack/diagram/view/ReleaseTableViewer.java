@@ -69,8 +69,12 @@ public class ReleaseTableViewer extends ViewPart {
 		toCol.setWidth(120);
 
 		TableColumn seqCol = new TableColumn(table, SWT.LEFT, 2);
-		seqCol.setText("Track");
+		seqCol.setText("Unoccupied Track");
 		seqCol.setWidth(120);
+
+		TableColumn oCol = new TableColumn(table, SWT.LEFT, 3);
+		oCol.setText("Occupied Track");
+		oCol.setWidth(120);
 
 		table.setHeaderVisible(true);
 		table.setLinesVisible(true);
@@ -83,26 +87,10 @@ public class ReleaseTableViewer extends ViewPart {
 			    TableItem item = table.getItem(pt);
 			    if(item != null) {
 			    	if (item.getBounds(2).contains(pt)) {
-				    	DiagramEditPart diagramEditPart = Util.getDiagramEP();
-						if (diagramEditPart==null) return;
-	
-						TrackPlan trackplan = (TrackPlan)((View)diagramEditPart.getModel()).getElement();
-						
-						//ArrayList<Signal> inputs = new ArrayList<Signal>();
-						Track[] inputs = new Track[trackplan.getTracks().size() - trackplan.getPoints().size() - trackplan.getCrossings().size()];
-						int i = 0;
-						for(Track t : trackplan.getTracks())
-							if (t.getPointReverse()==null && t.getCrossing2()==null)
-								inputs[i++] = t;
-						
-						ElementListSelectionDialog  dialog = new ElementListSelectionDialog(table.getShell(), new SafeTrackLabelProvider()); 
-						dialog.setTitle("Select a track");
-						dialog.setElements(inputs);
-						dialog.open();
-						CompoundCommand cc = new CompoundCommand();
-						cc.add(new ICommandProxy(new ReleaseTableUpdateItemCommand((IGraphicalEditPart)diagramEditPart,(ReleaseTableItem)item.getData(),(Track)dialog.getFirstResult())));
-						cc.execute();
-						refreshReleaseTableFrom(trackplan);
+				    	editUnoccupiedTrack((ReleaseTableItem)item.getData());
+				    }
+			    	else if (item.getBounds(3).contains(pt)) {
+				    	editOccupiedTrack((ReleaseTableItem)item.getData());
 				    }
 			    	else {
 						highLight((ReleaseTableItem)item.getData());
@@ -138,13 +126,72 @@ public class ReleaseTableViewer extends ViewPart {
 			
 		});
 	}
+	
+	void editUnoccupiedTrack(ReleaseTableItem rti) {
+    	DiagramEditPart diagramEditPart = Util.getDiagramEP();
+		if (diagramEditPart==null) return;
+
+		TrackPlan trackplan = (TrackPlan)((View)diagramEditPart.getModel()).getElement();
+		
+		//ArrayList<Signal> inputs = new ArrayList<Signal>();
+		Track[] inputs = new Track[trackplan.getTracks().size() - trackplan.getPoints().size() - trackplan.getCrossings().size()];
+		int i = 0;
+		for(Track t : trackplan.getTracks())
+			if (t.getPointReverse()==null && t.getCrossing2()==null)
+				inputs[i++] = t;
+		
+		ElementListSelectionDialog  dialog = new ElementListSelectionDialog(table.getShell(), new SafeTrackLabelProvider()); 
+		dialog.setTitle("Select a track");
+		dialog.setElements(inputs);
+		dialog.open();
+		CompoundCommand cc = new CompoundCommand();
+		cc.add(new ICommandProxy(new ReleaseTableUpdateItemCommand((IGraphicalEditPart)diagramEditPart,rti,(Track)dialog.getFirstResult(), null)));
+		cc.execute();
+		refreshReleaseTableFrom(trackplan);
+		
+	}
+
+	void editOccupiedTrack(ReleaseTableItem rti) {
+    	DiagramEditPart diagramEditPart = Util.getDiagramEP();
+		if (diagramEditPart==null) return;
+
+		TrackPlan trackplan = (TrackPlan)((View)diagramEditPart.getModel()).getElement();
+		
+		//ArrayList<Signal> inputs = new ArrayList<Signal>();
+		Track[] inputs = new Track[trackplan.getTracks().size() - trackplan.getPoints().size() - trackplan.getCrossings().size()];
+		int i = 0;
+		for(Track t : trackplan.getTracks())
+			if (t.getPointReverse()==null && t.getCrossing2()==null)
+				inputs[i++] = t;
+		
+		ElementListSelectionDialog  dialog = new ElementListSelectionDialog(table.getShell(), new SafeTrackLabelProvider()); 
+		dialog.setTitle("Select a track");
+		dialog.setElements(inputs);
+		dialog.open();
+		CompoundCommand cc = new CompoundCommand();
+		cc.add(new ICommandProxy(new ReleaseTableUpdateItemCommand((IGraphicalEditPart)diagramEditPart,rti,null, (Track)dialog.getFirstResult())));
+		cc.execute();
+		refreshReleaseTableFrom(trackplan);
+		
+	}
 
 	void highLight(ReleaseTableItem i) {
 		if (highLighted!=null) unhighLight();
 		highLighted = i;
 		java.util.List<Track> tracks = new ArrayList<Track>();
 		
-		Track t = highLighted.getTrack();
+		Track t = highLighted.getUnoccupiedTrack();
+		if (t==null) return; 
+		tracks.add(t);
+		if (t.getPoint()!=null) {
+			tracks.add(t.getPoint().getNormalTrack());
+			tracks.add(t.getPoint().getReverseTrack());
+		}
+		if (t.getCrossing()!=null) {
+			tracks.add(t.getCrossing().getTrack1());
+			tracks.add(t.getCrossing().getTrack2());
+		}
+		t = highLighted.getOccupiedTrack();
 		if (t==null) return; 
 		tracks.add(t);
 		if (t.getPoint()!=null) {
@@ -161,7 +208,19 @@ public class ReleaseTableViewer extends ViewPart {
 	void unhighLight(){
 		if (highLighted == null) return;
 		java.util.List<Track> tracks = new ArrayList<Track>();
-		Track t = highLighted.getTrack(); 
+		Track t = highLighted.getUnoccupiedTrack();
+		if (t==null) return; 
+		tracks.add(t);
+		if (t.getPoint()!=null) {
+			tracks.add(t.getPoint().getNormalTrack());
+			tracks.add(t.getPoint().getReverseTrack());
+		}
+		if (t.getCrossing()!=null) {
+			tracks.add(t.getCrossing().getTrack1());
+			tracks.add(t.getCrossing().getTrack2());
+		}
+		t = highLighted.getOccupiedTrack();
+		if (t==null) return; 
 		tracks.add(t);
 		if (t.getPoint()!=null) {
 			tracks.add(t.getPoint().getNormalTrack());
@@ -270,7 +329,8 @@ public class ReleaseTableViewer extends ViewPart {
 			tit.setText(new String[]{
 					rti.getRoute(),
 					rti.getPoint().getName(),
-					rti.getTrack()!=null ? rti.getTrack().getName():""}
+					rti.getUnoccupiedTrack()!=null ? rti.getUnoccupiedTrack().getName():"", 
+					rti.getOccupiedTrack()!=null ? rti.getOccupiedTrack().getName():""}
 					);
 			tit.setData(rti);
 		}

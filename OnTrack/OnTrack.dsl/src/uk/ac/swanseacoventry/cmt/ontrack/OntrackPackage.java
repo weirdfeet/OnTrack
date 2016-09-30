@@ -609,13 +609,22 @@ public interface OntrackPackage extends EPackage {
 	int RELEASE_TABLE_ITEM__POINT = 1;
 
 	/**
-	 * The feature id for the '<em><b>Track</b></em>' reference.
+	 * The feature id for the '<em><b>Unoccupied Track</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int RELEASE_TABLE_ITEM__TRACK = 2;
+	int RELEASE_TABLE_ITEM__UNOCCUPIED_TRACK = 2;
+
+	/**
+	 * The feature id for the '<em><b>Occupied Track</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int RELEASE_TABLE_ITEM__OCCUPIED_TRACK = 3;
 
 	/**
 	 * The number of structural features of the '<em>Release Table Item</em>' class.
@@ -624,7 +633,7 @@ public interface OntrackPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int RELEASE_TABLE_ITEM_FEATURE_COUNT = 3;
+	int RELEASE_TABLE_ITEM_FEATURE_COUNT = 4;
 
 	/**
 	 * The number of operations of the '<em>Release Table Item</em>' class.
@@ -1582,15 +1591,26 @@ public interface OntrackPackage extends EPackage {
 	EReference getReleaseTableItem_Point();
 
 	/**
-	 * Returns the meta object for the reference '{@link uk.ac.swanseacoventry.cmt.ontrack.ReleaseTableItem#getTrack <em>Track</em>}'.
+	 * Returns the meta object for the reference '{@link uk.ac.swanseacoventry.cmt.ontrack.ReleaseTableItem#getUnoccupiedTrack <em>Unoccupied Track</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference '<em>Track</em>'.
-	 * @see uk.ac.swanseacoventry.cmt.ontrack.ReleaseTableItem#getTrack()
+	 * @return the meta object for the reference '<em>Unoccupied Track</em>'.
+	 * @see uk.ac.swanseacoventry.cmt.ontrack.ReleaseTableItem#getUnoccupiedTrack()
 	 * @see #getReleaseTableItem()
 	 * @generated
 	 */
-	EReference getReleaseTableItem_Track();
+	EReference getReleaseTableItem_UnoccupiedTrack();
+
+	/**
+	 * Returns the meta object for the reference '{@link uk.ac.swanseacoventry.cmt.ontrack.ReleaseTableItem#getOccupiedTrack <em>Occupied Track</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Occupied Track</em>'.
+	 * @see uk.ac.swanseacoventry.cmt.ontrack.ReleaseTableItem#getOccupiedTrack()
+	 * @see #getReleaseTableItem()
+	 * @generated
+	 */
+	EReference getReleaseTableItem_OccupiedTrack();
 
 	/**
 	 * Returns the meta object for class '{@link uk.ac.swanseacoventry.cmt.ontrack.Signal <em>Signal</em>}'.
@@ -2486,12 +2506,20 @@ public interface OntrackPackage extends EPackage {
 		EReference RELEASE_TABLE_ITEM__POINT = eINSTANCE.getReleaseTableItem_Point();
 
 		/**
-		 * The meta object literal for the '<em><b>Track</b></em>' reference feature.
+		 * The meta object literal for the '<em><b>Unoccupied Track</b></em>' reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference RELEASE_TABLE_ITEM__TRACK = eINSTANCE.getReleaseTableItem_Track();
+		EReference RELEASE_TABLE_ITEM__UNOCCUPIED_TRACK = eINSTANCE.getReleaseTableItem_UnoccupiedTrack();
+
+		/**
+		 * The meta object literal for the '<em><b>Occupied Track</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference RELEASE_TABLE_ITEM__OCCUPIED_TRACK = eINSTANCE.getReleaseTableItem_OccupiedTrack();
 
 		/**
 		 * The meta object literal for the '{@link uk.ac.swanseacoventry.cmt.ontrack.impl.SignalImpl <em>Signal</em>}' class.

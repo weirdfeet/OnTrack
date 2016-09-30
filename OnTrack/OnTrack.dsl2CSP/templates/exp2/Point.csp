@@ -9,18 +9,18 @@ UnlockedPointRouteBehave(id,rID) =  -- switch, releasePoint, setRoute, cancelRou
     else
       UnlockedPointRouteBehave(id,rID))
   []
-  ([] rls : releaseTable(rID,id) @ move.rls?t -> UnlockedPointRouteBehave(id,rID))
+  ([] rls : releaseTable(rID,id) @ move.rls -> UnlockedPointRouteBehave(id,rID))
   []
-  ([] rls : releaseTable(rID,id) @ hangMove.rls?t -> UnlockedPointRouteBehave(id,rID))
+  ([] rls : releaseTable(rID,id) @ hangMove.rls -> UnlockedPointRouteBehave(id,rID))
 
 LockedPointRouteBehave(id,rID) =  -- switch, releasePoint, setRoute, cancelRoute
   (setRoute.rID -> LockedPointRouteBehave(id,rID))
   []
   (cancelRoute.rID -> UnlockedPointRouteBehave(id,rID))
   []
-  ([] rls : releaseTable(rID,id) @ move.rls?t -> UnlockedPointRouteBehave(id,rID))
+  ([] rls : releaseTable(rID,id) @ move.rls -> UnlockedPointRouteBehave(id,rID))
   []
-  ([] rls : releaseTable(rID,id) @ hangMove.rls?t -> UnlockedPointRouteBehave(id,rID))
+  ([] rls : releaseTable(rID,id) @ hangMove.rls -> UnlockedPointRouteBehave(id,rID))
 
 PointRouteBehaveAlph(id) = Union({UnlockedPointRouteBehaveAlph(id,rID) | rID : RouteID})
 PointRouteBehave(id) = || rID : RouteID @ [ UnlockedPointRouteBehaveAlph(id,rID) ] UnlockedPointRouteBehave(id,rID)

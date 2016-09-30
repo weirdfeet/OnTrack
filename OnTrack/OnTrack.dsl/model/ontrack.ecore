@@ -59,7 +59,8 @@
   <eClassifiers xsi:type="ecore:EClass" name="ReleaseTableItem">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="route" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="point" eType="#//Point"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="track" eType="#//Track"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="unoccupiedTrack" eType="#//Track"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="occupiedTrack" eType="#//Track"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Signal">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>

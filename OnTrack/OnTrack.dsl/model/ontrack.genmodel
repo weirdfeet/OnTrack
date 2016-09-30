@@ -47,7 +47,8 @@
     <genClasses ecoreClass="ontrack.ecore#//ReleaseTableItem">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ontrack.ecore#//ReleaseTableItem/route"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference ontrack.ecore#//ReleaseTableItem/point"/>
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference ontrack.ecore#//ReleaseTableItem/track"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference ontrack.ecore#//ReleaseTableItem/unoccupiedTrack"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference ontrack.ecore#//ReleaseTableItem/occupiedTrack"/>
     </genClasses>
     <genClasses ecoreClass="ontrack.ecore#//Signal">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ontrack.ecore#//Signal/name"/>

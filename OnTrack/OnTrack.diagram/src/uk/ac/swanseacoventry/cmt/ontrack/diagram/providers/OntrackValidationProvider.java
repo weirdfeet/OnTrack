@@ -459,10 +459,9 @@ public class OntrackValidationProvider {
 			Connector c1 = (Connector) context.getTarget().getElement();
 			Connector c2 = (Connector) context.getSource().getElement();
 			Track t = (Track) context.getElement();
-			return ErrorDetectionHelper.errorTrackDetected(c1) && 
-					ErrorDetectionHelper.errorTrackDetected(c2) &&
-					ErrorDetectionHelper.errorTrackDetected(t)? ctx.createSuccessStatus()
-					: ctx.createFailureStatus(context);
+			return ErrorDetectionHelper.errorTrackDetected(c1) && ErrorDetectionHelper.errorTrackDetected(c2)
+					&& ErrorDetectionHelper.errorTrackDetected(t) ? ctx.createSuccessStatus()
+							: ctx.createFailureStatus(context);
 		}
 	}
 
@@ -472,14 +471,14 @@ public class OntrackValidationProvider {
 	public static class Adapter7 extends AbstractModelConstraint {
 
 		/**
-		* @generated
+		* @generated NOT
 		*/
 		public IStatus validate(IValidationContext ctx) {
 			Edge context = (Edge) ctx.getTarget();
 			Connector c = (Connector) context.getTarget().getElement();
 			Signal s = (Signal) context.getSource().getElement();
-			return ErrorDetectionHelper.errorSignalDirectionDetected(s, c) ? ctx.createSuccessStatus()
-					: ctx.createFailureStatus(context);
+			return ErrorDetectionHelper.errorSignalDirectionDetected(s, c) ?ctx.createSuccessStatus()
+							: ctx.createFailureStatus(context);
 		}
 	}
 
@@ -489,13 +488,13 @@ public class OntrackValidationProvider {
 	public static class Adapter8 extends AbstractModelConstraint {
 
 		/**
-		* @generated
+		* @generated NOT
 		*/
 		public IStatus validate(IValidationContext ctx) {
 			Node context = (Node) ctx.getTarget();
-			Signal p = (Signal) context.getElement();
-			return ErrorDetectionHelper.errorDuplicatedNameDetected(p) ? ctx.createSuccessStatus()
-					: ctx.createFailureStatus(context);		
+			Signal s = (Signal) context.getElement();
+			return ErrorDetectionHelper.errorDuplicatedNameDetected(s) ?ctx.createSuccessStatus()
+							: ctx.createFailureStatus(context);
 		}
 	}
 
@@ -505,18 +504,18 @@ public class OntrackValidationProvider {
 	public static class Adapter9 extends AbstractModelConstraint {
 
 		/**
-		* @generated
+		* @generated NOT
 		*/
 		public IStatus validate(IValidationContext ctx) {
 			Edge context = (Edge) ctx.getTarget();
-			Track p = (Track) context.getElement();
-			return ErrorDetectionHelper.errorDuplicatedNameDetected(p) ? ctx.createSuccessStatus()
-					: ctx.createFailureStatus(context);		
+			Track t = (Track) context.getElement();
+			return ErrorDetectionHelper.errorDuplicatedNameDetected(t) ?ctx.createSuccessStatus()
+							: ctx.createFailureStatus(context);
 		}
 	}
 
 	/**
-	* @generated
+	* @generated NOT
 	*/
 	public static class Adapter10 extends AbstractModelConstraint {
 
@@ -526,8 +525,8 @@ public class OntrackValidationProvider {
 		public IStatus validate(IValidationContext ctx) {
 			Edge context = (Edge) ctx.getTarget();
 			Point p = (Point) context.getElement();
-			return ErrorDetectionHelper.errorDuplicatedNameDetected(p) ? ctx.createSuccessStatus()
-					: ctx.createFailureStatus(context);		
+			return ErrorDetectionHelper.errorDuplicatedNameDetected(p) ?ctx.createSuccessStatus()
+							: ctx.createFailureStatus(context);
 		}
 	}
 

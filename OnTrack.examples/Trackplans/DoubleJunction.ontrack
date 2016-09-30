@@ -165,10 +165,10 @@
   <controlTable signal="//@signals.5" route="R17" clears="//@tracks.18"/>
   <controlTable signal="//@signals.6" route="R19" clears="//@tracks.20 //@tracks.19"/>
   <controlTable signal="//@signals.0" route="R1" clears="//@tracks.1 //@tracks.2"/>
-  <releaseTable route="R3B" point="//@points.0" track="//@tracks.4"/>
-  <releaseTable route="R3B" point="//@points.1" track="//@tracks.11"/>
-  <releaseTable route="R3A" point="//@points.0" track="//@tracks.3"/>
-  <releaseTable route="R4" point="//@points.1" track="//@tracks.9"/>
-  <releaseTable route="R4" point="//@points.0" track="//@tracks.11"/>
-  <releaseTable route="R16" point="//@points.1" track="//@tracks.10"/>
+  <releaseTable route="R3B" point="//@points.0" unoccupiedTrack="//@tracks.4" occupiedTrack="//@tracks.12"/>
+  <releaseTable route="R3B" point="//@points.1" unoccupiedTrack="//@tracks.11" occupiedTrack="//@tracks.16"/>
+  <releaseTable route="R3A" point="//@points.0" unoccupiedTrack="//@tracks.3" occupiedTrack="//@tracks.5"/>
+  <releaseTable route="R4" point="//@points.1" unoccupiedTrack="//@tracks.9" occupiedTrack="//@tracks.8"/>
+  <releaseTable route="R4" point="//@points.0" unoccupiedTrack="//@tracks.11" occupiedTrack="//@tracks.9"/>
+  <releaseTable route="R16" point="//@points.1" unoccupiedTrack="//@tracks.10" occupiedTrack="//@tracks.8"/>
 </uk.ac.swanseacoventry.cmt.ontrack:TrackPlan>

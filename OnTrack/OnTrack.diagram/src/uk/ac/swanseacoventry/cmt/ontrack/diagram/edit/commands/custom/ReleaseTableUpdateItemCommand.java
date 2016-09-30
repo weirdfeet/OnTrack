@@ -15,20 +15,24 @@ public class ReleaseTableUpdateItemCommand extends AbstractTransactionalCommand 
 	//private DiagramEditPart trackplanEP;
 	//private TrackPlan trackplan;
 	private ReleaseTableItem udItem;
-	private Track udTrack;
+	private Track occupiedTrack;
+	private Track unoccupiedTrack;
 	
-	public ReleaseTableUpdateItemCommand(IGraphicalEditPart ep, ReleaseTableItem cti, Track t) {
+	public ReleaseTableUpdateItemCommand(IGraphicalEditPart ep, ReleaseTableItem cti, Track ut, Track ot) {
 		super(ep.getEditingDomain(),"initialise-control-table",null);
 		//trackplanEP = (DiagramEditPart)ep;
 		//trackplan = (TrackPlan)((View)trackplanEP.getModel()).getElement();
 		udItem = cti;
-		udTrack = t;
+		unoccupiedTrack = ut;
+		occupiedTrack = ot;
 	}
 	
 	protected CommandResult doExecuteWithResult(IProgressMonitor monitor, IAdaptable info) throws ExecutionException {
 		
-		if (udTrack!=null)
-			udItem.setTrack(udTrack);
+		if (unoccupiedTrack!=null)
+			udItem.setUnoccupiedTrack(unoccupiedTrack);
+		if (occupiedTrack!=null)
+			udItem.setOccupiedTrack(occupiedTrack);
 		return CommandResult.newOKCommandResult();
 		
 	}

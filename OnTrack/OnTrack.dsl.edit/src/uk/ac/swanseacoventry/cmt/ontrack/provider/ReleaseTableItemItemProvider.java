@@ -60,7 +60,8 @@ public class ReleaseTableItemItemProvider
 
 			addRoutePropertyDescriptor(object);
 			addPointPropertyDescriptor(object);
-			addTrackPropertyDescriptor(object);
+			addUnoccupiedTrackPropertyDescriptor(object);
+			addOccupiedTrackPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -110,19 +111,41 @@ public class ReleaseTableItemItemProvider
 	}
 
 	/**
-	 * This adds a property descriptor for the Track feature.
+	 * This adds a property descriptor for the Unoccupied Track feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected void addTrackPropertyDescriptor(Object object) {
+	protected void addUnoccupiedTrackPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
 			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
-				 getString("_UI_ReleaseTableItem_track_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_ReleaseTableItem_track_feature", "_UI_ReleaseTableItem_type"),
-				 OntrackPackage.Literals.RELEASE_TABLE_ITEM__TRACK,
+				 getString("_UI_ReleaseTableItem_unoccupiedTrack_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_ReleaseTableItem_unoccupiedTrack_feature", "_UI_ReleaseTableItem_type"),
+				 OntrackPackage.Literals.RELEASE_TABLE_ITEM__UNOCCUPIED_TRACK,
+				 true,
+				 false,
+				 true,
+				 null,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Occupied Track feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addOccupiedTrackPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_ReleaseTableItem_occupiedTrack_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_ReleaseTableItem_occupiedTrack_feature", "_UI_ReleaseTableItem_type"),
+				 OntrackPackage.Literals.RELEASE_TABLE_ITEM__OCCUPIED_TRACK,
 				 true,
 				 false,
 				 true,

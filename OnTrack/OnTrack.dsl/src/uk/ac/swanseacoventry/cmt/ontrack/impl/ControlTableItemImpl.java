@@ -385,8 +385,8 @@ public class ControlTableItemImpl extends MinimalEObjectImpl.Container implement
 			for(ReleaseTableItem rti : tp.getReleaseTable()){
 				if (rti.getRoute().equals(this.getRoute()) && rti.getPoint()==p) {
 					found = true;
-					if (rti.getTrack()!=null) {
-						if (rti.getTrack().getPoint()!=p)
+					if (rti.getUnoccupiedTrack()!=null && rti.getOccupiedTrack()!=null) {
+						if (rti.getUnoccupiedTrack().getPoint()!=p)
 							name += "*";
 					}
 					else 

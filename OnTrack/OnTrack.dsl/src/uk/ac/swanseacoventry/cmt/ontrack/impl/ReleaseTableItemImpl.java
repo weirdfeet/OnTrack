@@ -23,7 +23,8 @@ import uk.ac.swanseacoventry.cmt.ontrack.Track;
  * <ul>
  *   <li>{@link uk.ac.swanseacoventry.cmt.ontrack.impl.ReleaseTableItemImpl#getRoute <em>Route</em>}</li>
  *   <li>{@link uk.ac.swanseacoventry.cmt.ontrack.impl.ReleaseTableItemImpl#getPoint <em>Point</em>}</li>
- *   <li>{@link uk.ac.swanseacoventry.cmt.ontrack.impl.ReleaseTableItemImpl#getTrack <em>Track</em>}</li>
+ *   <li>{@link uk.ac.swanseacoventry.cmt.ontrack.impl.ReleaseTableItemImpl#getUnoccupiedTrack <em>Unoccupied Track</em>}</li>
+ *   <li>{@link uk.ac.swanseacoventry.cmt.ontrack.impl.ReleaseTableItemImpl#getOccupiedTrack <em>Occupied Track</em>}</li>
  * </ul>
  *
  * @generated
@@ -60,14 +61,24 @@ public class ReleaseTableItemImpl extends MinimalEObjectImpl.Container implement
 	protected Point point;
 
 	/**
-	 * The cached value of the '{@link #getTrack() <em>Track</em>}' reference.
+	 * The cached value of the '{@link #getUnoccupiedTrack() <em>Unoccupied Track</em>}' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getTrack()
+	 * @see #getUnoccupiedTrack()
 	 * @generated
 	 * @ordered
 	 */
-	protected Track track;
+	protected Track unoccupiedTrack;
+
+	/**
+	 * The cached value of the '{@link #getOccupiedTrack() <em>Occupied Track</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getOccupiedTrack()
+	 * @generated
+	 * @ordered
+	 */
+	protected Track occupiedTrack;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -152,16 +163,16 @@ public class ReleaseTableItemImpl extends MinimalEObjectImpl.Container implement
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Track getTrack() {
-		if (track != null && track.eIsProxy()) {
-			InternalEObject oldTrack = (InternalEObject)track;
-			track = (Track)eResolveProxy(oldTrack);
-			if (track != oldTrack) {
+	public Track getUnoccupiedTrack() {
+		if (unoccupiedTrack != null && unoccupiedTrack.eIsProxy()) {
+			InternalEObject oldUnoccupiedTrack = (InternalEObject)unoccupiedTrack;
+			unoccupiedTrack = (Track)eResolveProxy(oldUnoccupiedTrack);
+			if (unoccupiedTrack != oldUnoccupiedTrack) {
 				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, OntrackPackage.RELEASE_TABLE_ITEM__TRACK, oldTrack, track));
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, OntrackPackage.RELEASE_TABLE_ITEM__UNOCCUPIED_TRACK, oldUnoccupiedTrack, unoccupiedTrack));
 			}
 		}
-		return track;
+		return unoccupiedTrack;
 	}
 
 	/**
@@ -169,8 +180,8 @@ public class ReleaseTableItemImpl extends MinimalEObjectImpl.Container implement
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Track basicGetTrack() {
-		return track;
+	public Track basicGetUnoccupiedTrack() {
+		return unoccupiedTrack;
 	}
 
 	/**
@@ -178,11 +189,49 @@ public class ReleaseTableItemImpl extends MinimalEObjectImpl.Container implement
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setTrack(Track newTrack) {
-		Track oldTrack = track;
-		track = newTrack;
+	public void setUnoccupiedTrack(Track newUnoccupiedTrack) {
+		Track oldUnoccupiedTrack = unoccupiedTrack;
+		unoccupiedTrack = newUnoccupiedTrack;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, OntrackPackage.RELEASE_TABLE_ITEM__TRACK, oldTrack, track));
+			eNotify(new ENotificationImpl(this, Notification.SET, OntrackPackage.RELEASE_TABLE_ITEM__UNOCCUPIED_TRACK, oldUnoccupiedTrack, unoccupiedTrack));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Track getOccupiedTrack() {
+		if (occupiedTrack != null && occupiedTrack.eIsProxy()) {
+			InternalEObject oldOccupiedTrack = (InternalEObject)occupiedTrack;
+			occupiedTrack = (Track)eResolveProxy(oldOccupiedTrack);
+			if (occupiedTrack != oldOccupiedTrack) {
+				if (eNotificationRequired())
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, OntrackPackage.RELEASE_TABLE_ITEM__OCCUPIED_TRACK, oldOccupiedTrack, occupiedTrack));
+			}
+		}
+		return occupiedTrack;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Track basicGetOccupiedTrack() {
+		return occupiedTrack;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setOccupiedTrack(Track newOccupiedTrack) {
+		Track oldOccupiedTrack = occupiedTrack;
+		occupiedTrack = newOccupiedTrack;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, OntrackPackage.RELEASE_TABLE_ITEM__OCCUPIED_TRACK, oldOccupiedTrack, occupiedTrack));
 	}
 
 	/**
@@ -198,9 +247,12 @@ public class ReleaseTableItemImpl extends MinimalEObjectImpl.Container implement
 			case OntrackPackage.RELEASE_TABLE_ITEM__POINT:
 				if (resolve) return getPoint();
 				return basicGetPoint();
-			case OntrackPackage.RELEASE_TABLE_ITEM__TRACK:
-				if (resolve) return getTrack();
-				return basicGetTrack();
+			case OntrackPackage.RELEASE_TABLE_ITEM__UNOCCUPIED_TRACK:
+				if (resolve) return getUnoccupiedTrack();
+				return basicGetUnoccupiedTrack();
+			case OntrackPackage.RELEASE_TABLE_ITEM__OCCUPIED_TRACK:
+				if (resolve) return getOccupiedTrack();
+				return basicGetOccupiedTrack();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -219,8 +271,11 @@ public class ReleaseTableItemImpl extends MinimalEObjectImpl.Container implement
 			case OntrackPackage.RELEASE_TABLE_ITEM__POINT:
 				setPoint((Point)newValue);
 				return;
-			case OntrackPackage.RELEASE_TABLE_ITEM__TRACK:
-				setTrack((Track)newValue);
+			case OntrackPackage.RELEASE_TABLE_ITEM__UNOCCUPIED_TRACK:
+				setUnoccupiedTrack((Track)newValue);
+				return;
+			case OntrackPackage.RELEASE_TABLE_ITEM__OCCUPIED_TRACK:
+				setOccupiedTrack((Track)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -240,8 +295,11 @@ public class ReleaseTableItemImpl extends MinimalEObjectImpl.Container implement
 			case OntrackPackage.RELEASE_TABLE_ITEM__POINT:
 				setPoint((Point)null);
 				return;
-			case OntrackPackage.RELEASE_TABLE_ITEM__TRACK:
-				setTrack((Track)null);
+			case OntrackPackage.RELEASE_TABLE_ITEM__UNOCCUPIED_TRACK:
+				setUnoccupiedTrack((Track)null);
+				return;
+			case OntrackPackage.RELEASE_TABLE_ITEM__OCCUPIED_TRACK:
+				setOccupiedTrack((Track)null);
 				return;
 		}
 		super.eUnset(featureID);
@@ -259,8 +317,10 @@ public class ReleaseTableItemImpl extends MinimalEObjectImpl.Container implement
 				return ROUTE_EDEFAULT == null ? route != null : !ROUTE_EDEFAULT.equals(route);
 			case OntrackPackage.RELEASE_TABLE_ITEM__POINT:
 				return point != null;
-			case OntrackPackage.RELEASE_TABLE_ITEM__TRACK:
-				return track != null;
+			case OntrackPackage.RELEASE_TABLE_ITEM__UNOCCUPIED_TRACK:
+				return unoccupiedTrack != null;
+			case OntrackPackage.RELEASE_TABLE_ITEM__OCCUPIED_TRACK:
+				return occupiedTrack != null;
 		}
 		return super.eIsSet(featureID);
 	}

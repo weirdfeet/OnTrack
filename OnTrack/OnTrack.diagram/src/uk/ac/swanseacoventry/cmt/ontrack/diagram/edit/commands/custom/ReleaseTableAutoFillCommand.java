@@ -39,8 +39,12 @@ public class ReleaseTableAutoFillCommand extends AbstractTransactionalCommand {
 			if (topoRoutes.containsKey(rti.getRoute())){
 				for(DirectedTrack dt : topoRoutes.get(rti.getRoute()).getDirectedTracks()){
 					if (dt.getTrack()==rti.getPoint().getNormalTrack() ||
-							dt.getTrack()==rti.getPoint().getReverseTrack())
-						rti.setTrack(dt.getTrack());
+							dt.getTrack()==rti.getPoint().getReverseTrack()) {
+						rti.setUnoccupiedTrack(dt.getTrack());
+						int i = topoRoutes.get(rti.getRoute()).getDirectedTracks().indexOf(dt);
+						if (i < topoRoutes.get(rti.getRoute()).getDirectedTracks().size() - 1) 
+							rti.setOccupiedTrack(topoRoutes.get(rti.getRoute()).getDirectedTracks().get(i+1).getTrack());
+					}
 				}
 			}
 		}

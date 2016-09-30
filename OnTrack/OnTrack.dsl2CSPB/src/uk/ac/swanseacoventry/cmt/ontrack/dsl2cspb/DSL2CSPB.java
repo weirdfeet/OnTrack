@@ -2,9 +2,9 @@ package uk.ac.swanseacoventry.cmt.ontrack.dsl2cspb;
 
 import java.io.BufferedWriter;
 import java.io.File;
-import java.io.FileWriter;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.io.StringWriter;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -137,7 +137,7 @@ public class DSL2CSPB {
 		outputFolder = outputPath.toOSString();
 		outputPath = outputPath.append("egl");
 		eglOutputFolder = outputPath.toOSString();
-		ret = new File(eglOutputFolder).mkdir();
+		// ret = new File(eglOutputFolder).mkdir();
 		
 	}
 	
@@ -166,7 +166,7 @@ public class DSL2CSPB {
 		
 		// Use ETL to produce output models
 		inputModel = TrackSchemeEpsilon.createEmfModel(SAFETRACK_MODEL_NAME, trackplan);
-		new TrackSchemeETL(etlSource, inputModel,outputModels).execute(true);
+		new TrackSchemeETL(etlSource, inputModel,outputModels).execute(TrackSchemeEpsilon.URI_SOURCE);
 		
 		// Initialise Apache Velocity template engine
 		Velocity.init();
@@ -181,7 +181,7 @@ public class DSL2CSPB {
 		try {
 
 			// Prepare output EGL file
-			BufferedWriter writer = new BufferedWriter(new FileWriter(eglOutput));
+			BufferedWriter writer = new BufferedWriter(new StringWriter());
 
 			// Get the template
 			// Template velocityTemplate = Velocity.getTemplate(TEMPLATES_DIR + template);
@@ -194,6 +194,7 @@ public class DSL2CSPB {
 
 			// Finish writing to file
 			writer.flush();
+			eglOutput = writer.toString();
 			writer.close();
 		}
 		catch (Exception e) {
@@ -206,7 +207,7 @@ public class DSL2CSPB {
 		String outputFile = outputFolder + File.separator + template;
 
 		// process EGL
-		new TrackSchemeEGL(outputFile, eglOutput, outputModels).execute(false);
+		new TrackSchemeEGL(outputFile, eglOutput, outputModels).execute(TrackSchemeEpsilon.STRING_SOURCE);
 	}
 	
 	public void clearInputModel(){

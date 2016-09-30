@@ -40,15 +40,30 @@ public interface ReleaseTableItem extends EObject {
 	/**
 	 * @model 
 	 */
-	public Track getTrack();
+	public Track getUnoccupiedTrack();
 
 	/**
-	 * Sets the value of the '{@link uk.ac.swanseacoventry.cmt.ontrack.ReleaseTableItem#getTrack <em>Track</em>}' reference.
+	 * Sets the value of the '{@link uk.ac.swanseacoventry.cmt.ontrack.ReleaseTableItem#getUnoccupiedTrack <em>Unoccupied Track</em>}' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Track</em>' reference.
-	 * @see #getTrack()
+	 * @param value the new value of the '<em>Unoccupied Track</em>' reference.
+	 * @see #getUnoccupiedTrack()
 	 * @generated
 	 */
-	void setTrack(Track value);
+	void setUnoccupiedTrack(Track value);
+
+	/**
+	 * @model 
+	 */
+	public Track getOccupiedTrack();
+
+	/**
+	 * Sets the value of the '{@link uk.ac.swanseacoventry.cmt.ontrack.ReleaseTableItem#getOccupiedTrack <em>Occupied Track</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Occupied Track</em>' reference.
+	 * @see #getOccupiedTrack()
+	 * @generated
+	 */
+	void setOccupiedTrack(Track value);
 }

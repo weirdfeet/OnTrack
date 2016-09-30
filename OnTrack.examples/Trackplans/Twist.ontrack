@@ -126,33 +126,39 @@
   <controlTable signal="//@signals.7" route="R7" normals="//@points.0" reverses="//@points.1" clears="//@tracks.10 //@tracks.7 //@tracks.2 //@tracks.5" directions="//@tracks.10/@directedTracks.0 //@tracks.7/@directedTracks.0 //@tracks.2/@directedTracks.1 //@tracks.5/@directedTracks.0"/>
   <controlTable signal="//@signals.7" route="R8" reverses="//@points.1 //@points.0" clears="//@tracks.10 //@tracks.7 //@tracks.3 //@tracks.1" directions="//@tracks.10/@directedTracks.0 //@tracks.7/@directedTracks.0 //@tracks.3/@directedTracks.1 //@tracks.1/@directedTracks.0"/>
   <controlTable signal="//@signals.3" route="R9" clears="//@tracks.4" directions="//@tracks.4/@directedTracks.0"/>
-  <controlTable signal="//@signals.2" route="R1" normals="//@points.0 //@points.1" clears="//@tracks.2 //@tracks.6 //@tracks.8" directions="//@tracks.5/@directedTracks.1 //@tracks.2/@directedTracks.0 //@tracks.6/@directedTracks.1 //@tracks.8/@directedTracks.1"/>
-  <releaseTable route="R2" point="//@points.0" track="//@tracks.2"/>
-  <releaseTable route="R2" point="//@points.1" track="//@tracks.7"/>
-  <releaseTable route="R3" point="//@points.1" track="//@tracks.6"/>
-  <releaseTable route="R3" point="//@points.0" track="//@tracks.2"/>
-  <releaseTable route="R4" point="//@points.1" track="//@tracks.6"/>
-  <releaseTable route="R4" point="//@points.0" track="//@tracks.3"/>
-  <releaseTable route="R5" point="//@points.1" track="//@tracks.6"/>
-  <releaseTable route="R5" point="//@points.0" track="//@tracks.3"/>
-  <releaseTable route="R6" point="//@points.0" track="//@tracks.3"/>
-  <releaseTable route="R6" point="//@points.1" track="//@tracks.7"/>
-  <releaseTable route="R7" point="//@points.0" track="//@tracks.2"/>
-  <releaseTable route="R7" point="//@points.1" track="//@tracks.7"/>
-  <releaseTable route="R8" point="//@points.1" track="//@tracks.7"/>
-  <releaseTable route="R8" point="//@points.0" track="//@tracks.3"/>
-  <releaseTable route="R1" point="//@points.0" track="//@tracks.2"/>
-  <releaseTable route="R1" point="//@points.1" track="//@tracks.6"/>
+  <controlTable signal="//@signals.2" route="R1" normals="//@points.0 //@points.1" clears="//@tracks.2 //@tracks.6 //@tracks.8 //@tracks.5" directions="//@tracks.5/@directedTracks.1 //@tracks.2/@directedTracks.0 //@tracks.6/@directedTracks.1 //@tracks.8/@directedTracks.1"/>
+  <releaseTable route="R2" point="//@points.0" unoccupiedTrack="//@tracks.2" occupiedTrack="//@tracks.7"/>
+  <releaseTable route="R2" point="//@points.1" unoccupiedTrack="//@tracks.7" occupiedTrack="//@tracks.10"/>
+  <releaseTable route="R3" point="//@points.1" unoccupiedTrack="//@tracks.6" occupiedTrack="//@tracks.2"/>
+  <releaseTable route="R3" point="//@points.0" unoccupiedTrack="//@tracks.2" occupiedTrack="//@tracks.5"/>
+  <releaseTable route="R4" point="//@points.1" unoccupiedTrack="//@tracks.6" occupiedTrack="//@tracks.3"/>
+  <releaseTable route="R4" point="//@points.0" unoccupiedTrack="//@tracks.3" occupiedTrack="//@tracks.1"/>
+  <releaseTable route="R5" point="//@points.1" unoccupiedTrack="//@tracks.6" occupiedTrack="//@tracks.8"/>
+  <releaseTable route="R5" point="//@points.0" unoccupiedTrack="//@tracks.3" occupiedTrack="//@tracks.6"/>
+  <releaseTable route="R6" point="//@points.0" unoccupiedTrack="//@tracks.3" occupiedTrack="//@tracks.7"/>
+  <releaseTable route="R6" point="//@points.1" unoccupiedTrack="//@tracks.7" occupiedTrack="//@tracks.10"/>
+  <releaseTable route="R7" point="//@points.0" unoccupiedTrack="//@tracks.2" occupiedTrack="//@tracks.5"/>
+  <releaseTable route="R7" point="//@points.1" unoccupiedTrack="//@tracks.7" occupiedTrack="//@tracks.2"/>
+  <releaseTable route="R8" point="//@points.1" unoccupiedTrack="//@tracks.7" occupiedTrack="//@tracks.3"/>
+  <releaseTable route="R8" point="//@points.0" unoccupiedTrack="//@tracks.3" occupiedTrack="//@tracks.1"/>
+  <releaseTable route="R1" point="//@points.0" unoccupiedTrack="//@tracks.2" occupiedTrack="//@tracks.6"/>
+  <releaseTable route="R1" point="//@points.1" unoccupiedTrack="//@tracks.6" occupiedTrack="//@tracks.8"/>
   <subTrackPlans criticals="//@tracks.0" tracks="//@tracks.1 //@tracks.0" connectors="//@connectors.1 //@connectors.2 //@connectors.0" signals="//@signals.0 //@signals.1">
     <entrances connector="//@connectors.2"/>
     <entrances connector="//@connectors.0"/>
     <exits connector="//@connectors.2"/>
     <exits connector="//@connectors.0"/>
-    <topoRoutes directedTracks="//@tracks.1/@directedTracks.0 //@tracks.0/@directedTracks.0" startSignal="//@signals.1"/>
-    <topoRoutes directedTracks="//@tracks.0/@directedTracks.1 //@tracks.1/@directedTracks.1" startSignal="//@signals.0"/>
-    <topoRoutes directedTracks="//@tracks.0/@directedTracks.1 //@tracks.1/@directedTracks.1" startSignal="//@signals.0"/>
+    <topoRoutes directedTracks="//@tracks.1/@directedTracks.0 //@tracks.0/@directedTracks.0" startSignal="//@signals.1">
+      <names>R11</names>
+    </topoRoutes>
+    <topoRoutes directedTracks="//@tracks.0/@directedTracks.1 //@tracks.1/@directedTracks.1" startSignal="//@signals.0">
+      <names>R5</names>
+    </topoRoutes>
+    <topoRoutes directedTracks="//@tracks.0/@directedTracks.1 //@tracks.1/@directedTracks.1" startSignal="//@signals.0">
+      <names>R6</names>
+    </topoRoutes>
   </subTrackPlans>
-  <subTrackPlans criticals="//@tracks.1" tracks="//@tracks.9 //@tracks.1 //@tracks.8 //@tracks.6 //@tracks.10 //@tracks.3 //@tracks.2 //@tracks.0 //@tracks.11 //@tracks.7" connectors="//@connectors.8 //@connectors.9 //@connectors.1 //@connectors.2 //@connectors.7 //@connectors.3 //@connectors.10 //@connectors.11 //@connectors.6 //@connectors.0 //@connectors.12" points="//@points.1 //@points.0" signals="//@signals.1 //@signals.5 //@signals.7 //@signals.0 //@signals.4 //@signals.6">
+  <subTrackPlans criticals="//@tracks.1" tracks="//@tracks.7 //@tracks.11 //@tracks.8 //@tracks.2 //@tracks.9 //@tracks.3 //@tracks.1 //@tracks.10 //@tracks.0 //@tracks.6" connectors="//@connectors.3 //@connectors.10 //@connectors.11 //@connectors.12 //@connectors.7 //@connectors.8 //@connectors.6 //@connectors.9 //@connectors.2 //@connectors.1 //@connectors.0" points="//@points.1 //@points.0" signals="//@signals.6 //@signals.0 //@signals.4 //@signals.5 //@signals.7 //@signals.1">
     <entrances connector="//@connectors.6"/>
     <entrances connector="//@connectors.0"/>
     <entrances connector="//@connectors.9"/>
@@ -161,37 +167,55 @@
     <exits connector="//@connectors.0"/>
     <exits connector="//@connectors.9"/>
     <exits connector="//@connectors.12"/>
-    <topoRoutes directedTracks="//@tracks.11/@directedTracks.0 //@tracks.10/@directedTracks.0 //@tracks.7/@directedTracks.0 //@tracks.3/@directedTracks.1 //@tracks.1/@directedTracks.0" startSignal="//@signals.7" endSignal="//@signals.1"/>
-    <topoRoutes directedTracks="//@tracks.11/@directedTracks.0 //@tracks.10/@directedTracks.0 //@tracks.7/@directedTracks.0 //@tracks.2/@directedTracks.1" startSignal="//@signals.7"/>
-    <topoRoutes directedTracks="//@tracks.10/@directedTracks.1 //@tracks.11/@directedTracks.1" startSignal="//@signals.6"/>
-    <topoRoutes directedTracks="//@tracks.9/@directedTracks.0 //@tracks.8/@directedTracks.0 //@tracks.6/@directedTracks.0 //@tracks.3/@directedTracks.1 //@tracks.1/@directedTracks.0" startSignal="//@signals.5" endSignal="//@signals.1"/>
-    <topoRoutes directedTracks="//@tracks.9/@directedTracks.0 //@tracks.8/@directedTracks.0 //@tracks.6/@directedTracks.0 //@tracks.2/@directedTracks.1" startSignal="//@signals.5"/>
-    <topoRoutes directedTracks="//@tracks.8/@directedTracks.1 //@tracks.9/@directedTracks.1" startSignal="//@signals.4"/>
-    <topoRoutes directedTracks="//@tracks.1/@directedTracks.0 //@tracks.0/@directedTracks.0" startSignal="//@signals.1"/>
-    <topoRoutes directedTracks="//@tracks.0/@directedTracks.1 //@tracks.1/@directedTracks.1 //@tracks.3/@directedTracks.0 //@tracks.6/@directedTracks.1 //@tracks.8/@directedTracks.1" startSignal="//@signals.0" endSignal="//@signals.4"/>
-    <topoRoutes directedTracks="//@tracks.0/@directedTracks.1 //@tracks.1/@directedTracks.1 //@tracks.3/@directedTracks.0 //@tracks.7/@directedTracks.1 //@tracks.10/@directedTracks.1" startSignal="//@signals.0" endSignal="//@signals.6"/>
-    <controlTable signal="//@signals.5" route="R3" normals="//@points.1 //@points.0" clears="//@tracks.8 //@tracks.6 //@tracks.2" directions="//@tracks.6/@directedTracks.0 //@tracks.8/@directedTracks.0"/>
-    <controlTable route="R1" normals="//@points.1 //@points.0" clears="//@tracks.8 //@tracks.6 //@tracks.2" directions="//@tracks.6/@directedTracks.1 //@tracks.8/@directedTracks.1"/>
-    <controlTable signal="//@signals.7" route="R8" reverses="//@points.1 //@points.0" clears="//@tracks.1 //@tracks.10 //@tracks.3 //@tracks.7" directions="//@tracks.1/@directedTracks.0 //@tracks.10/@directedTracks.0 //@tracks.3/@directedTracks.1 //@tracks.7/@directedTracks.0"/>
-    <controlTable signal="//@signals.5" route="R4" normals="//@points.1" reverses="//@points.0" clears="//@tracks.8 //@tracks.1 //@tracks.6 //@tracks.3" directions="//@tracks.6/@directedTracks.0 //@tracks.1/@directedTracks.0 //@tracks.3/@directedTracks.1 //@tracks.8/@directedTracks.0"/>
-    <controlTable signal="//@signals.0" route="R5" normals="//@points.1" reverses="//@points.0" clears="//@tracks.1 //@tracks.8 //@tracks.6 //@tracks.3" directions="//@tracks.3/@directedTracks.0 //@tracks.6/@directedTracks.1 //@tracks.1/@directedTracks.1 //@tracks.8/@directedTracks.1"/>
-    <controlTable signal="//@signals.0" route="R6" reverses="//@points.1 //@points.0" clears="//@tracks.1 //@tracks.3 //@tracks.10 //@tracks.7" directions="//@tracks.10/@directedTracks.1 //@tracks.3/@directedTracks.0 //@tracks.1/@directedTracks.1 //@tracks.7/@directedTracks.1"/>
-    <controlTable signal="//@signals.7" route="R7" normals="//@points.0" reverses="//@points.1" clears="//@tracks.10 //@tracks.2 //@tracks.7" directions="//@tracks.10/@directedTracks.0 //@tracks.7/@directedTracks.0"/>
-    <controlTable route="R2" normals="//@points.0" reverses="//@points.1" clears="//@tracks.10 //@tracks.2 //@tracks.7" directions="//@tracks.10/@directedTracks.1 //@tracks.7/@directedTracks.1"/>
-    <releaseTable route="R3" point="//@points.1" track="//@tracks.6"/>
-    <releaseTable route="R3" point="//@points.0" track="//@tracks.2"/>
-    <releaseTable route="R4" point="//@points.1" track="//@tracks.6"/>
-    <releaseTable route="R4" point="//@points.0" track="//@tracks.3"/>
-    <releaseTable route="R5" point="//@points.1" track="//@tracks.6"/>
-    <releaseTable route="R5" point="//@points.0" track="//@tracks.3"/>
-    <releaseTable route="R6" point="//@points.0" track="//@tracks.3"/>
-    <releaseTable route="R6" point="//@points.1" track="//@tracks.7"/>
-    <releaseTable route="R7" point="//@points.0" track="//@tracks.2"/>
-    <releaseTable route="R7" point="//@points.1" track="//@tracks.7"/>
-    <releaseTable route="R8" point="//@points.1" track="//@tracks.7"/>
-    <releaseTable route="R8" point="//@points.0" track="//@tracks.3"/>
+    <topoRoutes directedTracks="//@tracks.11/@directedTracks.0 //@tracks.10/@directedTracks.0 //@tracks.7/@directedTracks.0 //@tracks.3/@directedTracks.1 //@tracks.1/@directedTracks.0" startSignal="//@signals.7" endSignal="//@signals.1">
+      <names>R8</names>
+    </topoRoutes>
+    <topoRoutes directedTracks="//@tracks.11/@directedTracks.0 //@tracks.10/@directedTracks.0 //@tracks.7/@directedTracks.0 //@tracks.2/@directedTracks.1" startSignal="//@signals.7">
+      <names>R7</names>
+    </topoRoutes>
+    <topoRoutes directedTracks="//@tracks.10/@directedTracks.1 //@tracks.11/@directedTracks.1" startSignal="//@signals.6">
+      <names>R12</names>
+    </topoRoutes>
+    <topoRoutes directedTracks="//@tracks.9/@directedTracks.0 //@tracks.8/@directedTracks.0 //@tracks.6/@directedTracks.0 //@tracks.3/@directedTracks.1 //@tracks.1/@directedTracks.0" startSignal="//@signals.5" endSignal="//@signals.1">
+      <names>R4</names>
+    </topoRoutes>
+    <topoRoutes directedTracks="//@tracks.9/@directedTracks.0 //@tracks.8/@directedTracks.0 //@tracks.6/@directedTracks.0 //@tracks.2/@directedTracks.1" startSignal="//@signals.5">
+      <names>R3</names>
+    </topoRoutes>
+    <topoRoutes directedTracks="//@tracks.8/@directedTracks.1 //@tracks.9/@directedTracks.1" startSignal="//@signals.4">
+      <names>R10</names>
+    </topoRoutes>
+    <topoRoutes directedTracks="//@tracks.1/@directedTracks.0 //@tracks.0/@directedTracks.0" startSignal="//@signals.1">
+      <names>R11</names>
+    </topoRoutes>
+    <topoRoutes directedTracks="//@tracks.0/@directedTracks.1 //@tracks.1/@directedTracks.1 //@tracks.3/@directedTracks.0 //@tracks.6/@directedTracks.1 //@tracks.8/@directedTracks.1" startSignal="//@signals.0" endSignal="//@signals.4">
+      <names>R5</names>
+    </topoRoutes>
+    <topoRoutes directedTracks="//@tracks.0/@directedTracks.1 //@tracks.1/@directedTracks.1 //@tracks.3/@directedTracks.0 //@tracks.7/@directedTracks.1 //@tracks.10/@directedTracks.1" startSignal="//@signals.0" endSignal="//@signals.6">
+      <names>R6</names>
+    </topoRoutes>
+    <controlTable route="R1" normals="//@points.0 //@points.1" clears="//@tracks.8 //@tracks.2 //@tracks.6" directions="//@tracks.6/@directedTracks.1 //@tracks.8/@directedTracks.1"/>
+    <controlTable signal="//@signals.0" route="R5" normals="//@points.1" reverses="//@points.0" clears="//@tracks.8 //@tracks.3 //@tracks.1 //@tracks.6" directions="//@tracks.1/@directedTracks.1 //@tracks.3/@directedTracks.0 //@tracks.6/@directedTracks.1 //@tracks.8/@directedTracks.1"/>
+    <controlTable signal="//@signals.0" route="R6" reverses="//@points.0 //@points.1" clears="//@tracks.7 //@tracks.3 //@tracks.1 //@tracks.10" directions="//@tracks.1/@directedTracks.1 //@tracks.3/@directedTracks.0 //@tracks.10/@directedTracks.1 //@tracks.7/@directedTracks.1"/>
+    <controlTable signal="//@signals.5" route="R3" normals="//@points.1 //@points.0" clears="//@tracks.8 //@tracks.2 //@tracks.6" directions="//@tracks.6/@directedTracks.0 //@tracks.8/@directedTracks.0"/>
+    <controlTable route="R2" normals="//@points.0" reverses="//@points.1" clears="//@tracks.7 //@tracks.2 //@tracks.10" directions="//@tracks.10/@directedTracks.1 //@tracks.7/@directedTracks.1"/>
+    <controlTable signal="//@signals.5" route="R4" normals="//@points.1" reverses="//@points.0" clears="//@tracks.8 //@tracks.3 //@tracks.1 //@tracks.6" directions="//@tracks.6/@directedTracks.0 //@tracks.3/@directedTracks.1 //@tracks.1/@directedTracks.0 //@tracks.8/@directedTracks.0"/>
+    <controlTable signal="//@signals.7" route="R8" reverses="//@points.1 //@points.0" clears="//@tracks.7 //@tracks.3 //@tracks.10 //@tracks.1" directions="//@tracks.7/@directedTracks.0 //@tracks.3/@directedTracks.1 //@tracks.1/@directedTracks.0 //@tracks.10/@directedTracks.0"/>
+    <controlTable signal="//@signals.7" route="R7" normals="//@points.0" reverses="//@points.1" clears="//@tracks.7 //@tracks.2 //@tracks.10" directions="//@tracks.7/@directedTracks.0 //@tracks.10/@directedTracks.0"/>
+    <releaseTable route="R3" point="//@points.1" unoccupiedTrack="//@tracks.6" occupiedTrack="//@tracks.2"/>
+    <releaseTable route="R3" point="//@points.0" unoccupiedTrack="//@tracks.2"/>
+    <releaseTable route="R4" point="//@points.1" unoccupiedTrack="//@tracks.6" occupiedTrack="//@tracks.3"/>
+    <releaseTable route="R4" point="//@points.0" unoccupiedTrack="//@tracks.3" occupiedTrack="//@tracks.1"/>
+    <releaseTable route="R5" point="//@points.1" unoccupiedTrack="//@tracks.6" occupiedTrack="//@tracks.8"/>
+    <releaseTable route="R5" point="//@points.0" unoccupiedTrack="//@tracks.3" occupiedTrack="//@tracks.6"/>
+    <releaseTable route="R6" point="//@points.0" unoccupiedTrack="//@tracks.3" occupiedTrack="//@tracks.7"/>
+    <releaseTable route="R6" point="//@points.1" unoccupiedTrack="//@tracks.7" occupiedTrack="//@tracks.10"/>
+    <releaseTable route="R7" point="//@points.0" unoccupiedTrack="//@tracks.2"/>
+    <releaseTable route="R7" point="//@points.1" unoccupiedTrack="//@tracks.7" occupiedTrack="//@tracks.2"/>
+    <releaseTable route="R8" point="//@points.1" unoccupiedTrack="//@tracks.7" occupiedTrack="//@tracks.3"/>
+    <releaseTable route="R8" point="//@points.0" unoccupiedTrack="//@tracks.3" occupiedTrack="//@tracks.1"/>
   </subTrackPlans>
-  <subTrackPlans criticals="//@tracks.2" tracks="//@tracks.4 //@tracks.9 //@tracks.8 //@tracks.1 //@tracks.6 //@tracks.3 //@tracks.2 //@tracks.10 //@tracks.0 //@tracks.11 //@tracks.7 //@tracks.5" connectors="//@connectors.4 //@connectors.5 //@connectors.8 //@connectors.9 //@connectors.7 //@connectors.1 //@connectors.2 //@connectors.3 //@connectors.6 //@connectors.10 //@connectors.11 //@connectors.0 //@connectors.12" points="//@points.1 //@points.0" signals="//@signals.7 //@signals.6 //@signals.1 //@signals.2 //@signals.5 //@signals.0 //@signals.3 //@signals.4">
+  <subTrackPlans criticals="//@tracks.2" tracks="//@tracks.7 //@tracks.11 //@tracks.8 //@tracks.2 //@tracks.9 //@tracks.3 //@tracks.1 //@tracks.10 //@tracks.0 //@tracks.4 //@tracks.5 //@tracks.6" connectors="//@connectors.3 //@connectors.10 //@connectors.11 //@connectors.12 //@connectors.7 //@connectors.8 //@connectors.6 //@connectors.9 //@connectors.2 //@connectors.1 //@connectors.0 //@connectors.4 //@connectors.5" points="//@points.0 //@points.1" signals="//@signals.5 //@signals.1 //@signals.2 //@signals.0 //@signals.7 //@signals.3 //@signals.6 //@signals.4">
     <entrances connector="//@connectors.0"/>
     <entrances connector="//@connectors.4"/>
     <entrances connector="//@connectors.9"/>
@@ -200,53 +224,83 @@
     <exits connector="//@connectors.4"/>
     <exits connector="//@connectors.9"/>
     <exits connector="//@connectors.12"/>
-    <topoRoutes directedTracks="//@tracks.11/@directedTracks.0 //@tracks.10/@directedTracks.0 //@tracks.7/@directedTracks.0 //@tracks.3/@directedTracks.1 //@tracks.1/@directedTracks.0" startSignal="//@signals.7" endSignal="//@signals.1"/>
-    <topoRoutes directedTracks="//@tracks.11/@directedTracks.0 //@tracks.10/@directedTracks.0 //@tracks.7/@directedTracks.0 //@tracks.2/@directedTracks.1 //@tracks.5/@directedTracks.0" startSignal="//@signals.7" endSignal="//@signals.3"/>
-    <topoRoutes directedTracks="//@tracks.10/@directedTracks.1 //@tracks.11/@directedTracks.1" startSignal="//@signals.6"/>
-    <topoRoutes directedTracks="//@tracks.9/@directedTracks.0 //@tracks.8/@directedTracks.0 //@tracks.6/@directedTracks.0 //@tracks.3/@directedTracks.1 //@tracks.1/@directedTracks.0" startSignal="//@signals.5" endSignal="//@signals.1"/>
-    <topoRoutes directedTracks="//@tracks.9/@directedTracks.0 //@tracks.8/@directedTracks.0 //@tracks.6/@directedTracks.0 //@tracks.2/@directedTracks.1 //@tracks.5/@directedTracks.0" startSignal="//@signals.5" endSignal="//@signals.3"/>
-    <topoRoutes directedTracks="//@tracks.8/@directedTracks.1 //@tracks.9/@directedTracks.1" startSignal="//@signals.4"/>
-    <topoRoutes directedTracks="//@tracks.5/@directedTracks.0 //@tracks.4/@directedTracks.0" startSignal="//@signals.3"/>
-    <topoRoutes directedTracks="//@tracks.4/@directedTracks.1 //@tracks.5/@directedTracks.1 //@tracks.2/@directedTracks.0 //@tracks.6/@directedTracks.1 //@tracks.8/@directedTracks.1" startSignal="//@signals.2" endSignal="//@signals.4"/>
-    <topoRoutes directedTracks="//@tracks.4/@directedTracks.1 //@tracks.5/@directedTracks.1 //@tracks.2/@directedTracks.0 //@tracks.7/@directedTracks.1 //@tracks.10/@directedTracks.1" startSignal="//@signals.2" endSignal="//@signals.6"/>
-    <topoRoutes directedTracks="//@tracks.1/@directedTracks.0 //@tracks.0/@directedTracks.0" startSignal="//@signals.1"/>
-    <topoRoutes directedTracks="//@tracks.0/@directedTracks.1 //@tracks.1/@directedTracks.1 //@tracks.3/@directedTracks.0 //@tracks.6/@directedTracks.1 //@tracks.8/@directedTracks.1" startSignal="//@signals.0" endSignal="//@signals.4"/>
-    <topoRoutes directedTracks="//@tracks.0/@directedTracks.1 //@tracks.1/@directedTracks.1 //@tracks.3/@directedTracks.0 //@tracks.7/@directedTracks.1 //@tracks.10/@directedTracks.1" startSignal="//@signals.0" endSignal="//@signals.6"/>
-    <controlTable signal="//@signals.7" route="R8" reverses="//@points.1 //@points.0" clears="//@tracks.1 //@tracks.10 //@tracks.3 //@tracks.7" directions="//@tracks.1/@directedTracks.0 //@tracks.10/@directedTracks.0 //@tracks.3/@directedTracks.1 //@tracks.7/@directedTracks.0"/>
-    <controlTable signal="//@signals.2" route="R2" normals="//@points.0" reverses="//@points.1" clears="//@tracks.10 //@tracks.2 //@tracks.5 //@tracks.7" directions="//@tracks.10/@directedTracks.1 //@tracks.2/@directedTracks.0 //@tracks.5/@directedTracks.1 //@tracks.7/@directedTracks.1"/>
-    <controlTable signal="//@signals.5" route="R3" normals="//@points.1 //@points.0" clears="//@tracks.8 //@tracks.6 //@tracks.2 //@tracks.5" directions="//@tracks.6/@directedTracks.0 //@tracks.5/@directedTracks.0 //@tracks.8/@directedTracks.0 //@tracks.2/@directedTracks.1"/>
-    <controlTable signal="//@signals.0" route="R5" normals="//@points.1" reverses="//@points.0" clears="//@tracks.1 //@tracks.8 //@tracks.6 //@tracks.3" directions="//@tracks.3/@directedTracks.0 //@tracks.6/@directedTracks.1 //@tracks.1/@directedTracks.1 //@tracks.8/@directedTracks.1"/>
-    <controlTable signal="//@signals.0" route="R6" reverses="//@points.1 //@points.0" clears="//@tracks.1 //@tracks.3 //@tracks.10 //@tracks.7" directions="//@tracks.10/@directedTracks.1 //@tracks.3/@directedTracks.0 //@tracks.1/@directedTracks.1 //@tracks.7/@directedTracks.1"/>
-    <controlTable signal="//@signals.7" route="R7" normals="//@points.0" reverses="//@points.1" clears="//@tracks.10 //@tracks.2 //@tracks.7 //@tracks.5" directions="//@tracks.10/@directedTracks.0 //@tracks.5/@directedTracks.0 //@tracks.7/@directedTracks.0 //@tracks.2/@directedTracks.1"/>
-    <controlTable signal="//@signals.5" route="R4" normals="//@points.1" reverses="//@points.0" clears="//@tracks.8 //@tracks.1 //@tracks.6 //@tracks.3" directions="//@tracks.6/@directedTracks.0 //@tracks.1/@directedTracks.0 //@tracks.3/@directedTracks.1 //@tracks.8/@directedTracks.0"/>
-    <controlTable signal="//@signals.2" route="R1" normals="//@points.1 //@points.0" clears="//@tracks.8 //@tracks.6 //@tracks.2" directions="//@tracks.2/@directedTracks.0 //@tracks.6/@directedTracks.1 //@tracks.5/@directedTracks.1 //@tracks.8/@directedTracks.1"/>
-    <releaseTable route="R2" point="//@points.0" track="//@tracks.2"/>
-    <releaseTable route="R2" point="//@points.1" track="//@tracks.7"/>
-    <releaseTable route="R3" point="//@points.1" track="//@tracks.6"/>
-    <releaseTable route="R3" point="//@points.0" track="//@tracks.2"/>
-    <releaseTable route="R4" point="//@points.1" track="//@tracks.6"/>
-    <releaseTable route="R4" point="//@points.0" track="//@tracks.3"/>
-    <releaseTable route="R5" point="//@points.1" track="//@tracks.6"/>
-    <releaseTable route="R5" point="//@points.0" track="//@tracks.3"/>
-    <releaseTable route="R6" point="//@points.0" track="//@tracks.3"/>
-    <releaseTable route="R6" point="//@points.1" track="//@tracks.7"/>
-    <releaseTable route="R7" point="//@points.0" track="//@tracks.2"/>
-    <releaseTable route="R7" point="//@points.1" track="//@tracks.7"/>
-    <releaseTable route="R8" point="//@points.1" track="//@tracks.7"/>
-    <releaseTable route="R8" point="//@points.0" track="//@tracks.3"/>
-    <releaseTable route="R1" point="//@points.0" track="//@tracks.2"/>
-    <releaseTable route="R1" point="//@points.1" track="//@tracks.6"/>
+    <topoRoutes directedTracks="//@tracks.11/@directedTracks.0 //@tracks.10/@directedTracks.0 //@tracks.7/@directedTracks.0 //@tracks.3/@directedTracks.1 //@tracks.1/@directedTracks.0" startSignal="//@signals.7" endSignal="//@signals.1">
+      <names>R8</names>
+    </topoRoutes>
+    <topoRoutes directedTracks="//@tracks.11/@directedTracks.0 //@tracks.10/@directedTracks.0 //@tracks.7/@directedTracks.0 //@tracks.2/@directedTracks.1 //@tracks.5/@directedTracks.0" startSignal="//@signals.7" endSignal="//@signals.3">
+      <names>R7</names>
+    </topoRoutes>
+    <topoRoutes directedTracks="//@tracks.10/@directedTracks.1 //@tracks.11/@directedTracks.1" startSignal="//@signals.6">
+      <names>R12</names>
+    </topoRoutes>
+    <topoRoutes directedTracks="//@tracks.9/@directedTracks.0 //@tracks.8/@directedTracks.0 //@tracks.6/@directedTracks.0 //@tracks.3/@directedTracks.1 //@tracks.1/@directedTracks.0" startSignal="//@signals.5" endSignal="//@signals.1">
+      <names>R4</names>
+    </topoRoutes>
+    <topoRoutes directedTracks="//@tracks.9/@directedTracks.0 //@tracks.8/@directedTracks.0 //@tracks.6/@directedTracks.0 //@tracks.2/@directedTracks.1 //@tracks.5/@directedTracks.0" startSignal="//@signals.5" endSignal="//@signals.3">
+      <names>R3</names>
+    </topoRoutes>
+    <topoRoutes directedTracks="//@tracks.8/@directedTracks.1 //@tracks.9/@directedTracks.1" startSignal="//@signals.4">
+      <names>R10</names>
+    </topoRoutes>
+    <topoRoutes directedTracks="//@tracks.5/@directedTracks.0 //@tracks.4/@directedTracks.0" startSignal="//@signals.3">
+      <names>R9</names>
+    </topoRoutes>
+    <topoRoutes directedTracks="//@tracks.4/@directedTracks.1 //@tracks.5/@directedTracks.1 //@tracks.2/@directedTracks.0 //@tracks.6/@directedTracks.1 //@tracks.8/@directedTracks.1" startSignal="//@signals.2" endSignal="//@signals.4">
+      <names>R1</names>
+    </topoRoutes>
+    <topoRoutes directedTracks="//@tracks.4/@directedTracks.1 //@tracks.5/@directedTracks.1 //@tracks.2/@directedTracks.0 //@tracks.7/@directedTracks.1 //@tracks.10/@directedTracks.1" startSignal="//@signals.2" endSignal="//@signals.6">
+      <names>R2</names>
+    </topoRoutes>
+    <topoRoutes directedTracks="//@tracks.1/@directedTracks.0 //@tracks.0/@directedTracks.0" startSignal="//@signals.1">
+      <names>R11</names>
+    </topoRoutes>
+    <topoRoutes directedTracks="//@tracks.0/@directedTracks.1 //@tracks.1/@directedTracks.1 //@tracks.3/@directedTracks.0 //@tracks.6/@directedTracks.1 //@tracks.8/@directedTracks.1" startSignal="//@signals.0" endSignal="//@signals.4">
+      <names>R5</names>
+    </topoRoutes>
+    <topoRoutes directedTracks="//@tracks.0/@directedTracks.1 //@tracks.1/@directedTracks.1 //@tracks.3/@directedTracks.0 //@tracks.7/@directedTracks.1 //@tracks.10/@directedTracks.1" startSignal="//@signals.0" endSignal="//@signals.6">
+      <names>R6</names>
+    </topoRoutes>
+    <controlTable signal="//@signals.5" route="R4" normals="//@points.1" reverses="//@points.0" clears="//@tracks.8 //@tracks.3 //@tracks.1 //@tracks.6" directions="//@tracks.6/@directedTracks.0 //@tracks.3/@directedTracks.1 //@tracks.1/@directedTracks.0 //@tracks.8/@directedTracks.0"/>
+    <controlTable signal="//@signals.2" route="R1" normals="//@points.0 //@points.1" clears="//@tracks.8 //@tracks.2 //@tracks.5 //@tracks.6" directions="//@tracks.5/@directedTracks.1 //@tracks.2/@directedTracks.0 //@tracks.6/@directedTracks.1 //@tracks.8/@directedTracks.1"/>
+    <controlTable signal="//@signals.0" route="R5" normals="//@points.1" reverses="//@points.0" clears="//@tracks.8 //@tracks.3 //@tracks.1 //@tracks.6" directions="//@tracks.1/@directedTracks.1 //@tracks.3/@directedTracks.0 //@tracks.6/@directedTracks.1 //@tracks.8/@directedTracks.1"/>
+    <controlTable signal="//@signals.7" route="R7" normals="//@points.0" reverses="//@points.1" clears="//@tracks.7 //@tracks.2 //@tracks.10 //@tracks.5" directions="//@tracks.2/@directedTracks.1 //@tracks.7/@directedTracks.0 //@tracks.10/@directedTracks.0 //@tracks.5/@directedTracks.0"/>
+    <controlTable signal="//@signals.7" route="R8" reverses="//@points.1 //@points.0" clears="//@tracks.7 //@tracks.3 //@tracks.10 //@tracks.1" directions="//@tracks.7/@directedTracks.0 //@tracks.3/@directedTracks.1 //@tracks.1/@directedTracks.0 //@tracks.10/@directedTracks.0"/>
+    <controlTable signal="//@signals.2" route="R2" normals="//@points.0" reverses="//@points.1" clears="//@tracks.7 //@tracks.2 //@tracks.10 //@tracks.5" directions="//@tracks.10/@directedTracks.1 //@tracks.5/@directedTracks.1 //@tracks.2/@directedTracks.0 //@tracks.7/@directedTracks.1"/>
+    <controlTable signal="//@signals.5" route="R3" normals="//@points.1 //@points.0" clears="//@tracks.8 //@tracks.2 //@tracks.5 //@tracks.6" directions="//@tracks.2/@directedTracks.1 //@tracks.6/@directedTracks.0 //@tracks.8/@directedTracks.0 //@tracks.5/@directedTracks.0"/>
+    <controlTable signal="//@signals.0" route="R6" reverses="//@points.0 //@points.1" clears="//@tracks.7 //@tracks.3 //@tracks.1 //@tracks.10" directions="//@tracks.1/@directedTracks.1 //@tracks.3/@directedTracks.0 //@tracks.10/@directedTracks.1 //@tracks.7/@directedTracks.1"/>
+    <releaseTable route="R2" point="//@points.0" unoccupiedTrack="//@tracks.2" occupiedTrack="//@tracks.7"/>
+    <releaseTable route="R2" point="//@points.1" unoccupiedTrack="//@tracks.7" occupiedTrack="//@tracks.10"/>
+    <releaseTable route="R3" point="//@points.1" unoccupiedTrack="//@tracks.6" occupiedTrack="//@tracks.2"/>
+    <releaseTable route="R3" point="//@points.0" unoccupiedTrack="//@tracks.2" occupiedTrack="//@tracks.5"/>
+    <releaseTable route="R4" point="//@points.1" unoccupiedTrack="//@tracks.6" occupiedTrack="//@tracks.3"/>
+    <releaseTable route="R4" point="//@points.0" unoccupiedTrack="//@tracks.3" occupiedTrack="//@tracks.1"/>
+    <releaseTable route="R5" point="//@points.1" unoccupiedTrack="//@tracks.6" occupiedTrack="//@tracks.8"/>
+    <releaseTable route="R5" point="//@points.0" unoccupiedTrack="//@tracks.3" occupiedTrack="//@tracks.6"/>
+    <releaseTable route="R6" point="//@points.0" unoccupiedTrack="//@tracks.3" occupiedTrack="//@tracks.7"/>
+    <releaseTable route="R6" point="//@points.1" unoccupiedTrack="//@tracks.7" occupiedTrack="//@tracks.10"/>
+    <releaseTable route="R7" point="//@points.0" unoccupiedTrack="//@tracks.2" occupiedTrack="//@tracks.5"/>
+    <releaseTable route="R7" point="//@points.1" unoccupiedTrack="//@tracks.7" occupiedTrack="//@tracks.2"/>
+    <releaseTable route="R8" point="//@points.1" unoccupiedTrack="//@tracks.7" occupiedTrack="//@tracks.3"/>
+    <releaseTable route="R8" point="//@points.0" unoccupiedTrack="//@tracks.3" occupiedTrack="//@tracks.1"/>
+    <releaseTable route="R1" point="//@points.0" unoccupiedTrack="//@tracks.2" occupiedTrack="//@tracks.6"/>
+    <releaseTable route="R1" point="//@points.1" unoccupiedTrack="//@tracks.6" occupiedTrack="//@tracks.8"/>
   </subTrackPlans>
-  <subTrackPlans criticals="//@tracks.4" tracks="//@tracks.4 //@tracks.5" connectors="//@connectors.4 //@connectors.5 //@connectors.6" signals="//@signals.3 //@signals.2">
+  <subTrackPlans criticals="//@tracks.4" tracks="//@tracks.4 //@tracks.5" connectors="//@connectors.4 //@connectors.5 //@connectors.6" signals="//@signals.2 //@signals.3">
     <entrances connector="//@connectors.6"/>
     <entrances connector="//@connectors.4"/>
     <exits connector="//@connectors.6"/>
     <exits connector="//@connectors.4"/>
-    <topoRoutes directedTracks="//@tracks.5/@directedTracks.0 //@tracks.4/@directedTracks.0" startSignal="//@signals.3"/>
-    <topoRoutes directedTracks="//@tracks.4/@directedTracks.1 //@tracks.5/@directedTracks.1" startSignal="//@signals.2"/>
-    <topoRoutes directedTracks="//@tracks.4/@directedTracks.1 //@tracks.5/@directedTracks.1" startSignal="//@signals.2"/>
+    <topoRoutes directedTracks="//@tracks.5/@directedTracks.0 //@tracks.4/@directedTracks.0" startSignal="//@signals.3">
+      <names>R9</names>
+    </topoRoutes>
+    <topoRoutes directedTracks="//@tracks.4/@directedTracks.1 //@tracks.5/@directedTracks.1" startSignal="//@signals.2">
+      <names>R1</names>
+    </topoRoutes>
+    <topoRoutes directedTracks="//@tracks.4/@directedTracks.1 //@tracks.5/@directedTracks.1" startSignal="//@signals.2">
+      <names>R2</names>
+    </topoRoutes>
   </subTrackPlans>
-  <subTrackPlans criticals="//@tracks.5" tracks="//@tracks.4 //@tracks.9 //@tracks.8 //@tracks.6 //@tracks.10 //@tracks.2 //@tracks.3 //@tracks.11 //@tracks.7 //@tracks.5" connectors="//@connectors.4 //@connectors.5 //@connectors.8 //@connectors.9 //@connectors.7 //@connectors.3 //@connectors.10 //@connectors.11 //@connectors.6 //@connectors.2 //@connectors.12" points="//@points.1 //@points.0" signals="//@signals.3 //@signals.2 //@signals.4 //@signals.6 //@signals.5 //@signals.7">
+  <subTrackPlans criticals="//@tracks.5" tracks="//@tracks.7 //@tracks.11 //@tracks.8 //@tracks.2 //@tracks.9 //@tracks.3 //@tracks.10 //@tracks.4 //@tracks.5 //@tracks.6" connectors="//@connectors.3 //@connectors.10 //@connectors.11 //@connectors.12 //@connectors.7 //@connectors.8 //@connectors.6 //@connectors.9 //@connectors.2 //@connectors.4 //@connectors.5" points="//@points.0 //@points.1" signals="//@signals.7 //@signals.2 //@signals.3 //@signals.5 //@signals.4 //@signals.6">
     <entrances connector="//@connectors.2"/>
     <entrances connector="//@connectors.4"/>
     <entrances connector="//@connectors.9"/>
@@ -255,37 +309,55 @@
     <exits connector="//@connectors.4"/>
     <exits connector="//@connectors.9"/>
     <exits connector="//@connectors.12"/>
-    <topoRoutes directedTracks="//@tracks.11/@directedTracks.0 //@tracks.10/@directedTracks.0 //@tracks.7/@directedTracks.0 //@tracks.3/@directedTracks.1" startSignal="//@signals.7"/>
-    <topoRoutes directedTracks="//@tracks.11/@directedTracks.0 //@tracks.10/@directedTracks.0 //@tracks.7/@directedTracks.0 //@tracks.2/@directedTracks.1 //@tracks.5/@directedTracks.0" startSignal="//@signals.7" endSignal="//@signals.3"/>
-    <topoRoutes directedTracks="//@tracks.10/@directedTracks.1 //@tracks.11/@directedTracks.1" startSignal="//@signals.6"/>
-    <topoRoutes directedTracks="//@tracks.9/@directedTracks.0 //@tracks.8/@directedTracks.0 //@tracks.6/@directedTracks.0 //@tracks.3/@directedTracks.1" startSignal="//@signals.5"/>
-    <topoRoutes directedTracks="//@tracks.9/@directedTracks.0 //@tracks.8/@directedTracks.0 //@tracks.6/@directedTracks.0 //@tracks.2/@directedTracks.1 //@tracks.5/@directedTracks.0" startSignal="//@signals.5" endSignal="//@signals.3"/>
-    <topoRoutes directedTracks="//@tracks.8/@directedTracks.1 //@tracks.9/@directedTracks.1" startSignal="//@signals.4"/>
-    <topoRoutes directedTracks="//@tracks.5/@directedTracks.0 //@tracks.4/@directedTracks.0" startSignal="//@signals.3"/>
-    <topoRoutes directedTracks="//@tracks.4/@directedTracks.1 //@tracks.5/@directedTracks.1 //@tracks.2/@directedTracks.0 //@tracks.6/@directedTracks.1 //@tracks.8/@directedTracks.1" startSignal="//@signals.2" endSignal="//@signals.4"/>
-    <topoRoutes directedTracks="//@tracks.4/@directedTracks.1 //@tracks.5/@directedTracks.1 //@tracks.2/@directedTracks.0 //@tracks.7/@directedTracks.1 //@tracks.10/@directedTracks.1" startSignal="//@signals.2" endSignal="//@signals.6"/>
-    <controlTable signal="//@signals.2" route="R1" normals="//@points.1 //@points.0" clears="//@tracks.8 //@tracks.6 //@tracks.2" directions="//@tracks.2/@directedTracks.0 //@tracks.6/@directedTracks.1 //@tracks.5/@directedTracks.1 //@tracks.8/@directedTracks.1"/>
-    <controlTable route="R5" normals="//@points.1" reverses="//@points.0" clears="//@tracks.8 //@tracks.6 //@tracks.3" directions="//@tracks.6/@directedTracks.1 //@tracks.8/@directedTracks.1"/>
-    <controlTable signal="//@signals.5" route="R3" normals="//@points.1 //@points.0" clears="//@tracks.8 //@tracks.6 //@tracks.2 //@tracks.5" directions="//@tracks.6/@directedTracks.0 //@tracks.5/@directedTracks.0 //@tracks.8/@directedTracks.0 //@tracks.2/@directedTracks.1"/>
-    <controlTable signal="//@signals.7" route="R8" reverses="//@points.1 //@points.0" clears="//@tracks.10 //@tracks.3 //@tracks.7" directions="//@tracks.10/@directedTracks.0 //@tracks.7/@directedTracks.0"/>
-    <controlTable signal="//@signals.5" route="R4" normals="//@points.1" reverses="//@points.0" clears="//@tracks.8 //@tracks.6 //@tracks.3" directions="//@tracks.6/@directedTracks.0 //@tracks.8/@directedTracks.0"/>
-    <controlTable signal="//@signals.7" route="R7" normals="//@points.0" reverses="//@points.1" clears="//@tracks.10 //@tracks.2 //@tracks.7 //@tracks.5" directions="//@tracks.10/@directedTracks.0 //@tracks.5/@directedTracks.0 //@tracks.7/@directedTracks.0 //@tracks.2/@directedTracks.1"/>
-    <controlTable signal="//@signals.2" route="R2" normals="//@points.0" reverses="//@points.1" clears="//@tracks.10 //@tracks.2 //@tracks.5 //@tracks.7" directions="//@tracks.10/@directedTracks.1 //@tracks.2/@directedTracks.0 //@tracks.5/@directedTracks.1 //@tracks.7/@directedTracks.1"/>
-    <controlTable route="R6" reverses="//@points.1 //@points.0" clears="//@tracks.3 //@tracks.10 //@tracks.7" directions="//@tracks.10/@directedTracks.1 //@tracks.7/@directedTracks.1"/>
-    <releaseTable route="R2" point="//@points.0" track="//@tracks.2"/>
-    <releaseTable route="R2" point="//@points.1" track="//@tracks.7"/>
-    <releaseTable route="R3" point="//@points.1" track="//@tracks.6"/>
-    <releaseTable route="R3" point="//@points.0" track="//@tracks.2"/>
-    <releaseTable route="R4" point="//@points.1" track="//@tracks.6"/>
-    <releaseTable route="R4" point="//@points.0" track="//@tracks.3"/>
-    <releaseTable route="R7" point="//@points.0" track="//@tracks.2"/>
-    <releaseTable route="R7" point="//@points.1" track="//@tracks.7"/>
-    <releaseTable route="R8" point="//@points.1" track="//@tracks.7"/>
-    <releaseTable route="R8" point="//@points.0" track="//@tracks.3"/>
-    <releaseTable route="R1" point="//@points.0" track="//@tracks.2"/>
-    <releaseTable route="R1" point="//@points.1" track="//@tracks.6"/>
+    <topoRoutes directedTracks="//@tracks.11/@directedTracks.0 //@tracks.10/@directedTracks.0 //@tracks.7/@directedTracks.0 //@tracks.3/@directedTracks.1" startSignal="//@signals.7">
+      <names>R8</names>
+    </topoRoutes>
+    <topoRoutes directedTracks="//@tracks.11/@directedTracks.0 //@tracks.10/@directedTracks.0 //@tracks.7/@directedTracks.0 //@tracks.2/@directedTracks.1 //@tracks.5/@directedTracks.0" startSignal="//@signals.7" endSignal="//@signals.3">
+      <names>R7</names>
+    </topoRoutes>
+    <topoRoutes directedTracks="//@tracks.10/@directedTracks.1 //@tracks.11/@directedTracks.1" startSignal="//@signals.6">
+      <names>R12</names>
+    </topoRoutes>
+    <topoRoutes directedTracks="//@tracks.9/@directedTracks.0 //@tracks.8/@directedTracks.0 //@tracks.6/@directedTracks.0 //@tracks.3/@directedTracks.1" startSignal="//@signals.5">
+      <names>R4</names>
+    </topoRoutes>
+    <topoRoutes directedTracks="//@tracks.9/@directedTracks.0 //@tracks.8/@directedTracks.0 //@tracks.6/@directedTracks.0 //@tracks.2/@directedTracks.1 //@tracks.5/@directedTracks.0" startSignal="//@signals.5" endSignal="//@signals.3">
+      <names>R3</names>
+    </topoRoutes>
+    <topoRoutes directedTracks="//@tracks.8/@directedTracks.1 //@tracks.9/@directedTracks.1" startSignal="//@signals.4">
+      <names>R10</names>
+    </topoRoutes>
+    <topoRoutes directedTracks="//@tracks.5/@directedTracks.0 //@tracks.4/@directedTracks.0" startSignal="//@signals.3">
+      <names>R9</names>
+    </topoRoutes>
+    <topoRoutes directedTracks="//@tracks.4/@directedTracks.1 //@tracks.5/@directedTracks.1 //@tracks.2/@directedTracks.0 //@tracks.6/@directedTracks.1 //@tracks.8/@directedTracks.1" startSignal="//@signals.2" endSignal="//@signals.4">
+      <names>R1</names>
+    </topoRoutes>
+    <topoRoutes directedTracks="//@tracks.4/@directedTracks.1 //@tracks.5/@directedTracks.1 //@tracks.2/@directedTracks.0 //@tracks.7/@directedTracks.1 //@tracks.10/@directedTracks.1" startSignal="//@signals.2" endSignal="//@signals.6">
+      <names>R2</names>
+    </topoRoutes>
+    <controlTable signal="//@signals.7" route="R8" reverses="//@points.1 //@points.0" clears="//@tracks.7 //@tracks.3 //@tracks.10" directions="//@tracks.7/@directedTracks.0 //@tracks.10/@directedTracks.0"/>
+    <controlTable signal="//@signals.2" route="R2" normals="//@points.0" reverses="//@points.1" clears="//@tracks.7 //@tracks.2 //@tracks.10 //@tracks.5" directions="//@tracks.10/@directedTracks.1 //@tracks.5/@directedTracks.1 //@tracks.2/@directedTracks.0 //@tracks.7/@directedTracks.1"/>
+    <controlTable signal="//@signals.5" route="R4" normals="//@points.1" reverses="//@points.0" clears="//@tracks.8 //@tracks.3 //@tracks.6" directions="//@tracks.6/@directedTracks.0 //@tracks.8/@directedTracks.0"/>
+    <controlTable route="R6" reverses="//@points.0 //@points.1" clears="//@tracks.7 //@tracks.3 //@tracks.10" directions="//@tracks.10/@directedTracks.1 //@tracks.7/@directedTracks.1"/>
+    <controlTable signal="//@signals.2" route="R1" normals="//@points.0 //@points.1" clears="//@tracks.8 //@tracks.2 //@tracks.5 //@tracks.6" directions="//@tracks.5/@directedTracks.1 //@tracks.2/@directedTracks.0 //@tracks.6/@directedTracks.1 //@tracks.8/@directedTracks.1"/>
+    <controlTable signal="//@signals.7" route="R7" normals="//@points.0" reverses="//@points.1" clears="//@tracks.7 //@tracks.2 //@tracks.10 //@tracks.5" directions="//@tracks.2/@directedTracks.1 //@tracks.7/@directedTracks.0 //@tracks.10/@directedTracks.0 //@tracks.5/@directedTracks.0"/>
+    <controlTable signal="//@signals.5" route="R3" normals="//@points.1 //@points.0" clears="//@tracks.8 //@tracks.2 //@tracks.5 //@tracks.6" directions="//@tracks.2/@directedTracks.1 //@tracks.6/@directedTracks.0 //@tracks.8/@directedTracks.0 //@tracks.5/@directedTracks.0"/>
+    <controlTable route="R5" normals="//@points.1" reverses="//@points.0" clears="//@tracks.8 //@tracks.3 //@tracks.6" directions="//@tracks.6/@directedTracks.1 //@tracks.8/@directedTracks.1"/>
+    <releaseTable route="R2" point="//@points.0" unoccupiedTrack="//@tracks.2" occupiedTrack="//@tracks.7"/>
+    <releaseTable route="R2" point="//@points.1" unoccupiedTrack="//@tracks.7" occupiedTrack="//@tracks.10"/>
+    <releaseTable route="R3" point="//@points.1" unoccupiedTrack="//@tracks.6" occupiedTrack="//@tracks.2"/>
+    <releaseTable route="R3" point="//@points.0" unoccupiedTrack="//@tracks.2" occupiedTrack="//@tracks.5"/>
+    <releaseTable route="R4" point="//@points.1" unoccupiedTrack="//@tracks.6" occupiedTrack="//@tracks.3"/>
+    <releaseTable route="R4" point="//@points.0" unoccupiedTrack="//@tracks.3"/>
+    <releaseTable route="R7" point="//@points.0" unoccupiedTrack="//@tracks.2" occupiedTrack="//@tracks.5"/>
+    <releaseTable route="R7" point="//@points.1" unoccupiedTrack="//@tracks.7" occupiedTrack="//@tracks.2"/>
+    <releaseTable route="R8" point="//@points.1" unoccupiedTrack="//@tracks.7" occupiedTrack="//@tracks.3"/>
+    <releaseTable route="R8" point="//@points.0" unoccupiedTrack="//@tracks.3"/>
+    <releaseTable route="R1" point="//@points.0" unoccupiedTrack="//@tracks.2" occupiedTrack="//@tracks.6"/>
+    <releaseTable route="R1" point="//@points.1" unoccupiedTrack="//@tracks.6" occupiedTrack="//@tracks.8"/>
   </subTrackPlans>
-  <subTrackPlans criticals="//@tracks.6" tracks="//@tracks.4 //@tracks.9 //@tracks.8 //@tracks.1 //@tracks.6 //@tracks.3 //@tracks.2 //@tracks.10 //@tracks.0 //@tracks.11 //@tracks.7 //@tracks.5" connectors="//@connectors.4 //@connectors.5 //@connectors.8 //@connectors.9 //@connectors.7 //@connectors.1 //@connectors.2 //@connectors.3 //@connectors.6 //@connectors.10 //@connectors.11 //@connectors.0 //@connectors.12" points="//@points.1 //@points.0" signals="//@signals.2 //@signals.6 //@signals.0 //@signals.5 //@signals.4 //@signals.7 //@signals.3 //@signals.1">
+  <subTrackPlans criticals="//@tracks.6" tracks="//@tracks.7 //@tracks.11 //@tracks.8 //@tracks.2 //@tracks.9 //@tracks.3 //@tracks.1 //@tracks.10 //@tracks.0 //@tracks.4 //@tracks.5 //@tracks.6" connectors="//@connectors.3 //@connectors.10 //@connectors.11 //@connectors.12 //@connectors.7 //@connectors.8 //@connectors.6 //@connectors.9 //@connectors.2 //@connectors.1 //@connectors.0 //@connectors.4 //@connectors.5" points="//@points.1 //@points.0" signals="//@signals.2 //@signals.4 //@signals.5 //@signals.0 //@signals.7 //@signals.6 //@signals.1 //@signals.3">
     <entrances connector="//@connectors.0"/>
     <entrances connector="//@connectors.4"/>
     <entrances connector="//@connectors.9"/>
@@ -294,44 +366,68 @@
     <exits connector="//@connectors.4"/>
     <exits connector="//@connectors.9"/>
     <exits connector="//@connectors.12"/>
-    <topoRoutes directedTracks="//@tracks.11/@directedTracks.0 //@tracks.10/@directedTracks.0 //@tracks.7/@directedTracks.0 //@tracks.3/@directedTracks.1 //@tracks.1/@directedTracks.0" startSignal="//@signals.7" endSignal="//@signals.1"/>
-    <topoRoutes directedTracks="//@tracks.11/@directedTracks.0 //@tracks.10/@directedTracks.0 //@tracks.7/@directedTracks.0 //@tracks.2/@directedTracks.1 //@tracks.5/@directedTracks.0" startSignal="//@signals.7" endSignal="//@signals.3"/>
-    <topoRoutes directedTracks="//@tracks.10/@directedTracks.1 //@tracks.11/@directedTracks.1" startSignal="//@signals.6"/>
-    <topoRoutes directedTracks="//@tracks.9/@directedTracks.0 //@tracks.8/@directedTracks.0 //@tracks.6/@directedTracks.0 //@tracks.3/@directedTracks.1 //@tracks.1/@directedTracks.0" startSignal="//@signals.5" endSignal="//@signals.1"/>
-    <topoRoutes directedTracks="//@tracks.9/@directedTracks.0 //@tracks.8/@directedTracks.0 //@tracks.6/@directedTracks.0 //@tracks.2/@directedTracks.1 //@tracks.5/@directedTracks.0" startSignal="//@signals.5" endSignal="//@signals.3"/>
-    <topoRoutes directedTracks="//@tracks.8/@directedTracks.1 //@tracks.9/@directedTracks.1" startSignal="//@signals.4"/>
-    <topoRoutes directedTracks="//@tracks.5/@directedTracks.0 //@tracks.4/@directedTracks.0" startSignal="//@signals.3"/>
-    <topoRoutes directedTracks="//@tracks.4/@directedTracks.1 //@tracks.5/@directedTracks.1 //@tracks.2/@directedTracks.0 //@tracks.6/@directedTracks.1 //@tracks.8/@directedTracks.1" startSignal="//@signals.2" endSignal="//@signals.4"/>
-    <topoRoutes directedTracks="//@tracks.4/@directedTracks.1 //@tracks.5/@directedTracks.1 //@tracks.2/@directedTracks.0 //@tracks.7/@directedTracks.1 //@tracks.10/@directedTracks.1" startSignal="//@signals.2" endSignal="//@signals.6"/>
-    <topoRoutes directedTracks="//@tracks.1/@directedTracks.0 //@tracks.0/@directedTracks.0" startSignal="//@signals.1"/>
-    <topoRoutes directedTracks="//@tracks.0/@directedTracks.1 //@tracks.1/@directedTracks.1 //@tracks.3/@directedTracks.0 //@tracks.6/@directedTracks.1 //@tracks.8/@directedTracks.1" startSignal="//@signals.0" endSignal="//@signals.4"/>
-    <topoRoutes directedTracks="//@tracks.0/@directedTracks.1 //@tracks.1/@directedTracks.1 //@tracks.3/@directedTracks.0 //@tracks.7/@directedTracks.1 //@tracks.10/@directedTracks.1" startSignal="//@signals.0" endSignal="//@signals.6"/>
-    <controlTable signal="//@signals.2" route="R2" normals="//@points.0" reverses="//@points.1" clears="//@tracks.10 //@tracks.2 //@tracks.5 //@tracks.7" directions="//@tracks.10/@directedTracks.1 //@tracks.2/@directedTracks.0 //@tracks.5/@directedTracks.1 //@tracks.7/@directedTracks.1"/>
-    <controlTable signal="//@signals.0" route="R6" reverses="//@points.1 //@points.0" clears="//@tracks.1 //@tracks.3 //@tracks.10 //@tracks.7" directions="//@tracks.10/@directedTracks.1 //@tracks.3/@directedTracks.0 //@tracks.1/@directedTracks.1 //@tracks.7/@directedTracks.1"/>
-    <controlTable signal="//@signals.5" route="R3" normals="//@points.1 //@points.0" clears="//@tracks.8 //@tracks.6 //@tracks.2 //@tracks.5" directions="//@tracks.6/@directedTracks.0 //@tracks.5/@directedTracks.0 //@tracks.8/@directedTracks.0 //@tracks.2/@directedTracks.1"/>
-    <controlTable signal="//@signals.7" route="R7" normals="//@points.0" reverses="//@points.1" clears="//@tracks.10 //@tracks.2 //@tracks.7 //@tracks.5" directions="//@tracks.10/@directedTracks.0 //@tracks.5/@directedTracks.0 //@tracks.7/@directedTracks.0 //@tracks.2/@directedTracks.1"/>
-    <controlTable signal="//@signals.0" route="R5" normals="//@points.1" reverses="//@points.0" clears="//@tracks.1 //@tracks.8 //@tracks.6 //@tracks.3" directions="//@tracks.3/@directedTracks.0 //@tracks.6/@directedTracks.1 //@tracks.1/@directedTracks.1 //@tracks.8/@directedTracks.1"/>
-    <controlTable signal="//@signals.5" route="R4" normals="//@points.1" reverses="//@points.0" clears="//@tracks.8 //@tracks.1 //@tracks.6 //@tracks.3" directions="//@tracks.6/@directedTracks.0 //@tracks.1/@directedTracks.0 //@tracks.3/@directedTracks.1 //@tracks.8/@directedTracks.0"/>
-    <controlTable signal="//@signals.2" route="R1" normals="//@points.1 //@points.0" clears="//@tracks.8 //@tracks.6 //@tracks.2" directions="//@tracks.2/@directedTracks.0 //@tracks.6/@directedTracks.1 //@tracks.5/@directedTracks.1 //@tracks.8/@directedTracks.1"/>
-    <controlTable signal="//@signals.7" route="R8" reverses="//@points.1 //@points.0" clears="//@tracks.1 //@tracks.10 //@tracks.3 //@tracks.7" directions="//@tracks.1/@directedTracks.0 //@tracks.10/@directedTracks.0 //@tracks.3/@directedTracks.1 //@tracks.7/@directedTracks.0"/>
-    <releaseTable route="R2" point="//@points.0" track="//@tracks.2"/>
-    <releaseTable route="R2" point="//@points.1" track="//@tracks.7"/>
-    <releaseTable route="R3" point="//@points.1" track="//@tracks.6"/>
-    <releaseTable route="R3" point="//@points.0" track="//@tracks.2"/>
-    <releaseTable route="R4" point="//@points.1" track="//@tracks.6"/>
-    <releaseTable route="R4" point="//@points.0" track="//@tracks.3"/>
-    <releaseTable route="R5" point="//@points.1" track="//@tracks.6"/>
-    <releaseTable route="R5" point="//@points.0" track="//@tracks.3"/>
-    <releaseTable route="R6" point="//@points.0" track="//@tracks.3"/>
-    <releaseTable route="R6" point="//@points.1" track="//@tracks.7"/>
-    <releaseTable route="R7" point="//@points.0" track="//@tracks.2"/>
-    <releaseTable route="R7" point="//@points.1" track="//@tracks.7"/>
-    <releaseTable route="R8" point="//@points.1" track="//@tracks.7"/>
-    <releaseTable route="R8" point="//@points.0" track="//@tracks.3"/>
-    <releaseTable route="R1" point="//@points.0" track="//@tracks.2"/>
-    <releaseTable route="R1" point="//@points.1" track="//@tracks.6"/>
+    <topoRoutes directedTracks="//@tracks.11/@directedTracks.0 //@tracks.10/@directedTracks.0 //@tracks.7/@directedTracks.0 //@tracks.3/@directedTracks.1 //@tracks.1/@directedTracks.0" startSignal="//@signals.7" endSignal="//@signals.1">
+      <names>R8</names>
+    </topoRoutes>
+    <topoRoutes directedTracks="//@tracks.11/@directedTracks.0 //@tracks.10/@directedTracks.0 //@tracks.7/@directedTracks.0 //@tracks.2/@directedTracks.1 //@tracks.5/@directedTracks.0" startSignal="//@signals.7" endSignal="//@signals.3">
+      <names>R7</names>
+    </topoRoutes>
+    <topoRoutes directedTracks="//@tracks.10/@directedTracks.1 //@tracks.11/@directedTracks.1" startSignal="//@signals.6">
+      <names>R12</names>
+    </topoRoutes>
+    <topoRoutes directedTracks="//@tracks.9/@directedTracks.0 //@tracks.8/@directedTracks.0 //@tracks.6/@directedTracks.0 //@tracks.3/@directedTracks.1 //@tracks.1/@directedTracks.0" startSignal="//@signals.5" endSignal="//@signals.1">
+      <names>R4</names>
+    </topoRoutes>
+    <topoRoutes directedTracks="//@tracks.9/@directedTracks.0 //@tracks.8/@directedTracks.0 //@tracks.6/@directedTracks.0 //@tracks.2/@directedTracks.1 //@tracks.5/@directedTracks.0" startSignal="//@signals.5" endSignal="//@signals.3">
+      <names>R3</names>
+    </topoRoutes>
+    <topoRoutes directedTracks="//@tracks.8/@directedTracks.1 //@tracks.9/@directedTracks.1" startSignal="//@signals.4">
+      <names>R10</names>
+    </topoRoutes>
+    <topoRoutes directedTracks="//@tracks.5/@directedTracks.0 //@tracks.4/@directedTracks.0" startSignal="//@signals.3">
+      <names>R9</names>
+    </topoRoutes>
+    <topoRoutes directedTracks="//@tracks.4/@directedTracks.1 //@tracks.5/@directedTracks.1 //@tracks.2/@directedTracks.0 //@tracks.6/@directedTracks.1 //@tracks.8/@directedTracks.1" startSignal="//@signals.2" endSignal="//@signals.4">
+      <names>R1</names>
+    </topoRoutes>
+    <topoRoutes directedTracks="//@tracks.4/@directedTracks.1 //@tracks.5/@directedTracks.1 //@tracks.2/@directedTracks.0 //@tracks.7/@directedTracks.1 //@tracks.10/@directedTracks.1" startSignal="//@signals.2" endSignal="//@signals.6">
+      <names>R2</names>
+    </topoRoutes>
+    <topoRoutes directedTracks="//@tracks.1/@directedTracks.0 //@tracks.0/@directedTracks.0" startSignal="//@signals.1">
+      <names>R11</names>
+    </topoRoutes>
+    <topoRoutes directedTracks="//@tracks.0/@directedTracks.1 //@tracks.1/@directedTracks.1 //@tracks.3/@directedTracks.0 //@tracks.6/@directedTracks.1 //@tracks.8/@directedTracks.1" startSignal="//@signals.0" endSignal="//@signals.4">
+      <names>R5</names>
+    </topoRoutes>
+    <topoRoutes directedTracks="//@tracks.0/@directedTracks.1 //@tracks.1/@directedTracks.1 //@tracks.3/@directedTracks.0 //@tracks.7/@directedTracks.1 //@tracks.10/@directedTracks.1" startSignal="//@signals.0" endSignal="//@signals.6">
+      <names>R6</names>
+    </topoRoutes>
+    <controlTable signal="//@signals.2" route="R1" normals="//@points.0 //@points.1" clears="//@tracks.8 //@tracks.2 //@tracks.5 //@tracks.6" directions="//@tracks.5/@directedTracks.1 //@tracks.2/@directedTracks.0 //@tracks.6/@directedTracks.1 //@tracks.8/@directedTracks.1"/>
+    <controlTable signal="//@signals.5" route="R4" normals="//@points.1" reverses="//@points.0" clears="//@tracks.8 //@tracks.3 //@tracks.1 //@tracks.6" directions="//@tracks.6/@directedTracks.0 //@tracks.3/@directedTracks.1 //@tracks.1/@directedTracks.0 //@tracks.8/@directedTracks.0"/>
+    <controlTable signal="//@signals.0" route="R5" normals="//@points.1" reverses="//@points.0" clears="//@tracks.8 //@tracks.3 //@tracks.1 //@tracks.6" directions="//@tracks.1/@directedTracks.1 //@tracks.3/@directedTracks.0 //@tracks.6/@directedTracks.1 //@tracks.8/@directedTracks.1"/>
+    <controlTable signal="//@signals.0" route="R6" reverses="//@points.0 //@points.1" clears="//@tracks.7 //@tracks.3 //@tracks.1 //@tracks.10" directions="//@tracks.1/@directedTracks.1 //@tracks.3/@directedTracks.0 //@tracks.10/@directedTracks.1 //@tracks.7/@directedTracks.1"/>
+    <controlTable signal="//@signals.7" route="R7" normals="//@points.0" reverses="//@points.1" clears="//@tracks.7 //@tracks.2 //@tracks.10 //@tracks.5" directions="//@tracks.2/@directedTracks.1 //@tracks.7/@directedTracks.0 //@tracks.10/@directedTracks.0 //@tracks.5/@directedTracks.0"/>
+    <controlTable signal="//@signals.2" route="R2" normals="//@points.0" reverses="//@points.1" clears="//@tracks.7 //@tracks.2 //@tracks.10 //@tracks.5" directions="//@tracks.10/@directedTracks.1 //@tracks.5/@directedTracks.1 //@tracks.2/@directedTracks.0 //@tracks.7/@directedTracks.1"/>
+    <controlTable signal="//@signals.7" route="R8" reverses="//@points.1 //@points.0" clears="//@tracks.7 //@tracks.3 //@tracks.10 //@tracks.1" directions="//@tracks.7/@directedTracks.0 //@tracks.3/@directedTracks.1 //@tracks.1/@directedTracks.0 //@tracks.10/@directedTracks.0"/>
+    <controlTable signal="//@signals.5" route="R3" normals="//@points.1 //@points.0" clears="//@tracks.8 //@tracks.2 //@tracks.5 //@tracks.6" directions="//@tracks.2/@directedTracks.1 //@tracks.6/@directedTracks.0 //@tracks.8/@directedTracks.0 //@tracks.5/@directedTracks.0"/>
+    <releaseTable route="R2" point="//@points.0" unoccupiedTrack="//@tracks.2" occupiedTrack="//@tracks.7"/>
+    <releaseTable route="R2" point="//@points.1" unoccupiedTrack="//@tracks.7" occupiedTrack="//@tracks.10"/>
+    <releaseTable route="R3" point="//@points.1" unoccupiedTrack="//@tracks.6" occupiedTrack="//@tracks.2"/>
+    <releaseTable route="R3" point="//@points.0" unoccupiedTrack="//@tracks.2" occupiedTrack="//@tracks.5"/>
+    <releaseTable route="R4" point="//@points.1" unoccupiedTrack="//@tracks.6" occupiedTrack="//@tracks.3"/>
+    <releaseTable route="R4" point="//@points.0" unoccupiedTrack="//@tracks.3" occupiedTrack="//@tracks.1"/>
+    <releaseTable route="R5" point="//@points.1" unoccupiedTrack="//@tracks.6" occupiedTrack="//@tracks.8"/>
+    <releaseTable route="R5" point="//@points.0" unoccupiedTrack="//@tracks.3" occupiedTrack="//@tracks.6"/>
+    <releaseTable route="R6" point="//@points.0" unoccupiedTrack="//@tracks.3" occupiedTrack="//@tracks.7"/>
+    <releaseTable route="R6" point="//@points.1" unoccupiedTrack="//@tracks.7" occupiedTrack="//@tracks.10"/>
+    <releaseTable route="R7" point="//@points.0" unoccupiedTrack="//@tracks.2" occupiedTrack="//@tracks.5"/>
+    <releaseTable route="R7" point="//@points.1" unoccupiedTrack="//@tracks.7" occupiedTrack="//@tracks.2"/>
+    <releaseTable route="R8" point="//@points.1" unoccupiedTrack="//@tracks.7" occupiedTrack="//@tracks.3"/>
+    <releaseTable route="R8" point="//@points.0" unoccupiedTrack="//@tracks.3" occupiedTrack="//@tracks.1"/>
+    <releaseTable route="R1" point="//@points.0" unoccupiedTrack="//@tracks.2" occupiedTrack="//@tracks.6"/>
+    <releaseTable route="R1" point="//@points.1" unoccupiedTrack="//@tracks.6" occupiedTrack="//@tracks.8"/>
   </subTrackPlans>
-  <subTrackPlans criticals="//@tracks.8" tracks="//@tracks.4 //@tracks.9 //@tracks.1 //@tracks.8 //@tracks.6 //@tracks.3 //@tracks.2 //@tracks.0 //@tracks.7 //@tracks.5" connectors="//@connectors.4 //@connectors.5 //@connectors.8 //@connectors.9 //@connectors.1 //@connectors.2 //@connectors.7 //@connectors.3 //@connectors.6 //@connectors.0 //@connectors.10" points="//@points.1 //@points.0" signals="//@signals.2 //@signals.5 //@signals.0 //@signals.4 //@signals.1 //@signals.3">
+  <subTrackPlans criticals="//@tracks.8" tracks="//@tracks.7 //@tracks.8 //@tracks.2 //@tracks.9 //@tracks.3 //@tracks.1 //@tracks.0 //@tracks.4 //@tracks.5 //@tracks.6" connectors="//@connectors.3 //@connectors.10 //@connectors.7 //@connectors.8 //@connectors.6 //@connectors.9 //@connectors.2 //@connectors.1 //@connectors.0 //@connectors.4 //@connectors.5" points="//@points.0 //@points.1" signals="//@signals.0 //@signals.5 //@signals.2 //@signals.4 //@signals.3 //@signals.1">
     <entrances connector="//@connectors.10"/>
     <entrances connector="//@connectors.0"/>
     <entrances connector="//@connectors.4"/>
@@ -340,46 +436,70 @@
     <exits connector="//@connectors.0"/>
     <exits connector="//@connectors.4"/>
     <exits connector="//@connectors.9"/>
-    <topoRoutes directedTracks="//@tracks.9/@directedTracks.0 //@tracks.8/@directedTracks.0 //@tracks.6/@directedTracks.0 //@tracks.3/@directedTracks.1 //@tracks.1/@directedTracks.0" startSignal="//@signals.5" endSignal="//@signals.1"/>
-    <topoRoutes directedTracks="//@tracks.9/@directedTracks.0 //@tracks.8/@directedTracks.0 //@tracks.6/@directedTracks.0 //@tracks.2/@directedTracks.1 //@tracks.5/@directedTracks.0" startSignal="//@signals.5" endSignal="//@signals.3"/>
-    <topoRoutes directedTracks="//@tracks.8/@directedTracks.1 //@tracks.9/@directedTracks.1" startSignal="//@signals.4"/>
-    <topoRoutes directedTracks="//@tracks.5/@directedTracks.0 //@tracks.4/@directedTracks.0" startSignal="//@signals.3"/>
-    <topoRoutes directedTracks="//@tracks.4/@directedTracks.1 //@tracks.5/@directedTracks.1 //@tracks.2/@directedTracks.0 //@tracks.6/@directedTracks.1 //@tracks.8/@directedTracks.1" startSignal="//@signals.2" endSignal="//@signals.4"/>
-    <topoRoutes directedTracks="//@tracks.4/@directedTracks.1 //@tracks.5/@directedTracks.1 //@tracks.2/@directedTracks.0 //@tracks.7/@directedTracks.1" startSignal="//@signals.2"/>
-    <topoRoutes directedTracks="//@tracks.1/@directedTracks.0 //@tracks.0/@directedTracks.0" startSignal="//@signals.1"/>
-    <topoRoutes directedTracks="//@tracks.0/@directedTracks.1 //@tracks.1/@directedTracks.1 //@tracks.3/@directedTracks.0 //@tracks.6/@directedTracks.1 //@tracks.8/@directedTracks.1" startSignal="//@signals.0" endSignal="//@signals.4"/>
-    <topoRoutes directedTracks="//@tracks.0/@directedTracks.1 //@tracks.1/@directedTracks.1 //@tracks.3/@directedTracks.0 //@tracks.7/@directedTracks.1" startSignal="//@signals.0"/>
-    <controlTable signal="//@signals.2" route="R2" normals="//@points.0" reverses="//@points.1" clears="//@tracks.2 //@tracks.5 //@tracks.7" directions="//@tracks.2/@directedTracks.0 //@tracks.5/@directedTracks.1"/>
-    <controlTable signal="//@signals.5" route="R4" normals="//@points.1" reverses="//@points.0" clears="//@tracks.8 //@tracks.1 //@tracks.6 //@tracks.3" directions="//@tracks.6/@directedTracks.0 //@tracks.1/@directedTracks.0 //@tracks.3/@directedTracks.1 //@tracks.8/@directedTracks.0"/>
-    <controlTable signal="//@signals.5" route="R3" normals="//@points.1 //@points.0" clears="//@tracks.8 //@tracks.6 //@tracks.2 //@tracks.5" directions="//@tracks.6/@directedTracks.0 //@tracks.5/@directedTracks.0 //@tracks.8/@directedTracks.0 //@tracks.2/@directedTracks.1"/>
-    <controlTable signal="//@signals.0" route="R5" normals="//@points.1" reverses="//@points.0" clears="//@tracks.1 //@tracks.8 //@tracks.6 //@tracks.3" directions="//@tracks.3/@directedTracks.0 //@tracks.6/@directedTracks.1 //@tracks.1/@directedTracks.1 //@tracks.8/@directedTracks.1"/>
-    <controlTable signal="//@signals.0" route="R6" reverses="//@points.1 //@points.0" clears="//@tracks.1 //@tracks.3 //@tracks.7" directions="//@tracks.3/@directedTracks.0 //@tracks.1/@directedTracks.1"/>
-    <controlTable signal="//@signals.2" route="R1" normals="//@points.1 //@points.0" clears="//@tracks.8 //@tracks.6 //@tracks.2" directions="//@tracks.2/@directedTracks.0 //@tracks.6/@directedTracks.1 //@tracks.5/@directedTracks.1 //@tracks.8/@directedTracks.1"/>
-    <controlTable route="R7" normals="//@points.0" reverses="//@points.1" clears="//@tracks.2 //@tracks.7 //@tracks.5" directions="//@tracks.5/@directedTracks.0 //@tracks.2/@directedTracks.1"/>
-    <controlTable route="R8" reverses="//@points.1 //@points.0" clears="//@tracks.1 //@tracks.3 //@tracks.7" directions="//@tracks.1/@directedTracks.0 //@tracks.3/@directedTracks.1"/>
-    <releaseTable route="R2" point="//@points.0" track="//@tracks.2"/>
-    <releaseTable route="R2" point="//@points.1" track="//@tracks.7"/>
-    <releaseTable route="R3" point="//@points.1" track="//@tracks.6"/>
-    <releaseTable route="R3" point="//@points.0" track="//@tracks.2"/>
-    <releaseTable route="R4" point="//@points.1" track="//@tracks.6"/>
-    <releaseTable route="R4" point="//@points.0" track="//@tracks.3"/>
-    <releaseTable route="R5" point="//@points.1" track="//@tracks.6"/>
-    <releaseTable route="R5" point="//@points.0" track="//@tracks.3"/>
-    <releaseTable route="R6" point="//@points.0" track="//@tracks.3"/>
-    <releaseTable route="R6" point="//@points.1" track="//@tracks.7"/>
-    <releaseTable route="R1" point="//@points.0" track="//@tracks.2"/>
-    <releaseTable route="R1" point="//@points.1" track="//@tracks.6"/>
+    <topoRoutes directedTracks="//@tracks.9/@directedTracks.0 //@tracks.8/@directedTracks.0 //@tracks.6/@directedTracks.0 //@tracks.3/@directedTracks.1 //@tracks.1/@directedTracks.0" startSignal="//@signals.5" endSignal="//@signals.1">
+      <names>R4</names>
+    </topoRoutes>
+    <topoRoutes directedTracks="//@tracks.9/@directedTracks.0 //@tracks.8/@directedTracks.0 //@tracks.6/@directedTracks.0 //@tracks.2/@directedTracks.1 //@tracks.5/@directedTracks.0" startSignal="//@signals.5" endSignal="//@signals.3">
+      <names>R3</names>
+    </topoRoutes>
+    <topoRoutes directedTracks="//@tracks.8/@directedTracks.1 //@tracks.9/@directedTracks.1" startSignal="//@signals.4">
+      <names>R10</names>
+    </topoRoutes>
+    <topoRoutes directedTracks="//@tracks.5/@directedTracks.0 //@tracks.4/@directedTracks.0" startSignal="//@signals.3">
+      <names>R9</names>
+    </topoRoutes>
+    <topoRoutes directedTracks="//@tracks.4/@directedTracks.1 //@tracks.5/@directedTracks.1 //@tracks.2/@directedTracks.0 //@tracks.6/@directedTracks.1 //@tracks.8/@directedTracks.1" startSignal="//@signals.2" endSignal="//@signals.4">
+      <names>R1</names>
+    </topoRoutes>
+    <topoRoutes directedTracks="//@tracks.4/@directedTracks.1 //@tracks.5/@directedTracks.1 //@tracks.2/@directedTracks.0 //@tracks.7/@directedTracks.1" startSignal="//@signals.2">
+      <names>R2</names>
+    </topoRoutes>
+    <topoRoutes directedTracks="//@tracks.1/@directedTracks.0 //@tracks.0/@directedTracks.0" startSignal="//@signals.1">
+      <names>R11</names>
+    </topoRoutes>
+    <topoRoutes directedTracks="//@tracks.0/@directedTracks.1 //@tracks.1/@directedTracks.1 //@tracks.3/@directedTracks.0 //@tracks.6/@directedTracks.1 //@tracks.8/@directedTracks.1" startSignal="//@signals.0" endSignal="//@signals.4">
+      <names>R5</names>
+    </topoRoutes>
+    <topoRoutes directedTracks="//@tracks.0/@directedTracks.1 //@tracks.1/@directedTracks.1 //@tracks.3/@directedTracks.0 //@tracks.7/@directedTracks.1" startSignal="//@signals.0">
+      <names>R6</names>
+    </topoRoutes>
+    <controlTable signal="//@signals.0" route="R5" normals="//@points.1" reverses="//@points.0" clears="//@tracks.8 //@tracks.3 //@tracks.1 //@tracks.6" directions="//@tracks.1/@directedTracks.1 //@tracks.3/@directedTracks.0 //@tracks.6/@directedTracks.1 //@tracks.8/@directedTracks.1"/>
+    <controlTable route="R8" reverses="//@points.1 //@points.0" clears="//@tracks.7 //@tracks.3 //@tracks.1" directions="//@tracks.3/@directedTracks.1 //@tracks.1/@directedTracks.0"/>
+    <controlTable signal="//@signals.5" route="R4" normals="//@points.1" reverses="//@points.0" clears="//@tracks.8 //@tracks.3 //@tracks.1 //@tracks.6" directions="//@tracks.6/@directedTracks.0 //@tracks.3/@directedTracks.1 //@tracks.1/@directedTracks.0 //@tracks.8/@directedTracks.0"/>
+    <controlTable signal="//@signals.2" route="R1" normals="//@points.0 //@points.1" clears="//@tracks.8 //@tracks.2 //@tracks.5 //@tracks.6" directions="//@tracks.5/@directedTracks.1 //@tracks.2/@directedTracks.0 //@tracks.6/@directedTracks.1 //@tracks.8/@directedTracks.1"/>
+    <controlTable signal="//@signals.0" route="R6" reverses="//@points.0 //@points.1" clears="//@tracks.7 //@tracks.3 //@tracks.1" directions="//@tracks.1/@directedTracks.1 //@tracks.3/@directedTracks.0"/>
+    <controlTable signal="//@signals.2" route="R2" normals="//@points.0" reverses="//@points.1" clears="//@tracks.7 //@tracks.2 //@tracks.5" directions="//@tracks.5/@directedTracks.1 //@tracks.2/@directedTracks.0"/>
+    <controlTable route="R7" normals="//@points.0" reverses="//@points.1" clears="//@tracks.7 //@tracks.2 //@tracks.5" directions="//@tracks.2/@directedTracks.1 //@tracks.5/@directedTracks.0"/>
+    <controlTable signal="//@signals.5" route="R3" normals="//@points.1 //@points.0" clears="//@tracks.8 //@tracks.2 //@tracks.5 //@tracks.6" directions="//@tracks.2/@directedTracks.1 //@tracks.6/@directedTracks.0 //@tracks.8/@directedTracks.0 //@tracks.5/@directedTracks.0"/>
+    <releaseTable route="R2" point="//@points.0" unoccupiedTrack="//@tracks.2" occupiedTrack="//@tracks.7"/>
+    <releaseTable route="R2" point="//@points.1" unoccupiedTrack="//@tracks.7"/>
+    <releaseTable route="R3" point="//@points.1" unoccupiedTrack="//@tracks.6" occupiedTrack="//@tracks.2"/>
+    <releaseTable route="R3" point="//@points.0" unoccupiedTrack="//@tracks.2" occupiedTrack="//@tracks.5"/>
+    <releaseTable route="R4" point="//@points.1" unoccupiedTrack="//@tracks.6" occupiedTrack="//@tracks.3"/>
+    <releaseTable route="R4" point="//@points.0" unoccupiedTrack="//@tracks.3" occupiedTrack="//@tracks.1"/>
+    <releaseTable route="R5" point="//@points.1" unoccupiedTrack="//@tracks.6" occupiedTrack="//@tracks.8"/>
+    <releaseTable route="R5" point="//@points.0" unoccupiedTrack="//@tracks.3" occupiedTrack="//@tracks.6"/>
+    <releaseTable route="R6" point="//@points.0" unoccupiedTrack="//@tracks.3" occupiedTrack="//@tracks.7"/>
+    <releaseTable route="R6" point="//@points.1" unoccupiedTrack="//@tracks.7"/>
+    <releaseTable route="R1" point="//@points.0" unoccupiedTrack="//@tracks.2" occupiedTrack="//@tracks.6"/>
+    <releaseTable route="R1" point="//@points.1" unoccupiedTrack="//@tracks.6" occupiedTrack="//@tracks.8"/>
   </subTrackPlans>
-  <subTrackPlans criticals="//@tracks.9" tracks="//@tracks.9 //@tracks.8" connectors="//@connectors.8 //@connectors.9 //@connectors.7" signals="//@signals.5 //@signals.4">
+  <subTrackPlans criticals="//@tracks.9" tracks="//@tracks.8 //@tracks.9" connectors="//@connectors.7 //@connectors.8 //@connectors.9" signals="//@signals.4 //@signals.5">
     <entrances connector="//@connectors.7"/>
     <entrances connector="//@connectors.9"/>
     <exits connector="//@connectors.7"/>
     <exits connector="//@connectors.9"/>
-    <topoRoutes directedTracks="//@tracks.9/@directedTracks.0 //@tracks.8/@directedTracks.0" startSignal="//@signals.5"/>
-    <topoRoutes directedTracks="//@tracks.9/@directedTracks.0 //@tracks.8/@directedTracks.0" startSignal="//@signals.5"/>
-    <topoRoutes directedTracks="//@tracks.8/@directedTracks.1 //@tracks.9/@directedTracks.1" startSignal="//@signals.4"/>
+    <topoRoutes directedTracks="//@tracks.9/@directedTracks.0 //@tracks.8/@directedTracks.0" startSignal="//@signals.5">
+      <names>R4</names>
+    </topoRoutes>
+    <topoRoutes directedTracks="//@tracks.9/@directedTracks.0 //@tracks.8/@directedTracks.0" startSignal="//@signals.5">
+      <names>R3</names>
+    </topoRoutes>
+    <topoRoutes directedTracks="//@tracks.8/@directedTracks.1 //@tracks.9/@directedTracks.1" startSignal="//@signals.4">
+      <names>R10</names>
+    </topoRoutes>
   </subTrackPlans>
-  <subTrackPlans criticals="//@tracks.10" tracks="//@tracks.4 //@tracks.1 //@tracks.6 //@tracks.10 //@tracks.3 //@tracks.2 //@tracks.0 //@tracks.11 //@tracks.5 //@tracks.7" connectors="//@connectors.4 //@connectors.5 //@connectors.1 //@connectors.2 //@connectors.3 //@connectors.7 //@connectors.10 //@connectors.11 //@connectors.6 //@connectors.0 //@connectors.12" points="//@points.1 //@points.0" signals="//@signals.2 //@signals.1 //@signals.0 //@signals.7 //@signals.3 //@signals.6">
+  <subTrackPlans criticals="//@tracks.10" tracks="//@tracks.7 //@tracks.11 //@tracks.2 //@tracks.3 //@tracks.1 //@tracks.10 //@tracks.0 //@tracks.4 //@tracks.5 //@tracks.6" connectors="//@connectors.3 //@connectors.10 //@connectors.11 //@connectors.12 //@connectors.6 //@connectors.2 //@connectors.1 //@connectors.0 //@connectors.4 //@connectors.5 //@connectors.7" points="//@points.0 //@points.1" signals="//@signals.0 //@signals.3 //@signals.2 //@signals.6 //@signals.1 //@signals.7">
     <entrances connector="//@connectors.7"/>
     <entrances connector="//@connectors.0"/>
     <entrances connector="//@connectors.4"/>
@@ -388,43 +508,67 @@
     <exits connector="//@connectors.0"/>
     <exits connector="//@connectors.4"/>
     <exits connector="//@connectors.12"/>
-    <topoRoutes directedTracks="//@tracks.11/@directedTracks.0 //@tracks.10/@directedTracks.0 //@tracks.7/@directedTracks.0 //@tracks.3/@directedTracks.1 //@tracks.1/@directedTracks.0" startSignal="//@signals.7" endSignal="//@signals.1"/>
-    <topoRoutes directedTracks="//@tracks.11/@directedTracks.0 //@tracks.10/@directedTracks.0 //@tracks.7/@directedTracks.0 //@tracks.2/@directedTracks.1 //@tracks.5/@directedTracks.0" startSignal="//@signals.7" endSignal="//@signals.3"/>
-    <topoRoutes directedTracks="//@tracks.10/@directedTracks.1 //@tracks.11/@directedTracks.1" startSignal="//@signals.6"/>
-    <topoRoutes directedTracks="//@tracks.5/@directedTracks.0 //@tracks.4/@directedTracks.0" startSignal="//@signals.3"/>
-    <topoRoutes directedTracks="//@tracks.4/@directedTracks.1 //@tracks.5/@directedTracks.1 //@tracks.2/@directedTracks.0 //@tracks.6/@directedTracks.1" startSignal="//@signals.2"/>
-    <topoRoutes directedTracks="//@tracks.4/@directedTracks.1 //@tracks.5/@directedTracks.1 //@tracks.2/@directedTracks.0 //@tracks.7/@directedTracks.1 //@tracks.10/@directedTracks.1" startSignal="//@signals.2" endSignal="//@signals.6"/>
-    <topoRoutes directedTracks="//@tracks.1/@directedTracks.0 //@tracks.0/@directedTracks.0" startSignal="//@signals.1"/>
-    <topoRoutes directedTracks="//@tracks.0/@directedTracks.1 //@tracks.1/@directedTracks.1 //@tracks.3/@directedTracks.0 //@tracks.6/@directedTracks.1" startSignal="//@signals.0"/>
-    <topoRoutes directedTracks="//@tracks.0/@directedTracks.1 //@tracks.1/@directedTracks.1 //@tracks.3/@directedTracks.0 //@tracks.7/@directedTracks.1 //@tracks.10/@directedTracks.1" startSignal="//@signals.0" endSignal="//@signals.6"/>
-    <controlTable signal="//@signals.2" route="R2" normals="//@points.0" reverses="//@points.1" clears="//@tracks.10 //@tracks.2 //@tracks.5 //@tracks.7" directions="//@tracks.10/@directedTracks.1 //@tracks.2/@directedTracks.0 //@tracks.5/@directedTracks.1 //@tracks.7/@directedTracks.1"/>
-    <controlTable signal="//@signals.0" route="R6" reverses="//@points.1 //@points.0" clears="//@tracks.1 //@tracks.3 //@tracks.10 //@tracks.7" directions="//@tracks.10/@directedTracks.1 //@tracks.3/@directedTracks.0 //@tracks.1/@directedTracks.1 //@tracks.7/@directedTracks.1"/>
-    <controlTable signal="//@signals.7" route="R8" reverses="//@points.1 //@points.0" clears="//@tracks.1 //@tracks.10 //@tracks.3 //@tracks.7" directions="//@tracks.1/@directedTracks.0 //@tracks.10/@directedTracks.0 //@tracks.3/@directedTracks.1 //@tracks.7/@directedTracks.0"/>
-    <controlTable route="R3" normals="//@points.1 //@points.0" clears="//@tracks.6 //@tracks.2 //@tracks.5" directions="//@tracks.5/@directedTracks.0 //@tracks.2/@directedTracks.1"/>
-    <controlTable signal="//@signals.2" route="R1" normals="//@points.1 //@points.0" clears="//@tracks.6 //@tracks.2" directions="//@tracks.2/@directedTracks.0 //@tracks.5/@directedTracks.1"/>
-    <controlTable route="R4" normals="//@points.1" reverses="//@points.0" clears="//@tracks.1 //@tracks.6 //@tracks.3" directions="//@tracks.1/@directedTracks.0 //@tracks.3/@directedTracks.1"/>
-    <controlTable signal="//@signals.0" route="R5" normals="//@points.1" reverses="//@points.0" clears="//@tracks.1 //@tracks.6 //@tracks.3" directions="//@tracks.3/@directedTracks.0 //@tracks.1/@directedTracks.1"/>
-    <controlTable signal="//@signals.7" route="R7" normals="//@points.0" reverses="//@points.1" clears="//@tracks.10 //@tracks.2 //@tracks.7 //@tracks.5" directions="//@tracks.10/@directedTracks.0 //@tracks.5/@directedTracks.0 //@tracks.7/@directedTracks.0 //@tracks.2/@directedTracks.1"/>
-    <releaseTable route="R2" point="//@points.0" track="//@tracks.2"/>
-    <releaseTable route="R2" point="//@points.1" track="//@tracks.7"/>
-    <releaseTable route="R5" point="//@points.1" track="//@tracks.6"/>
-    <releaseTable route="R5" point="//@points.0" track="//@tracks.3"/>
-    <releaseTable route="R6" point="//@points.0" track="//@tracks.3"/>
-    <releaseTable route="R6" point="//@points.1" track="//@tracks.7"/>
-    <releaseTable route="R7" point="//@points.0" track="//@tracks.2"/>
-    <releaseTable route="R7" point="//@points.1" track="//@tracks.7"/>
-    <releaseTable route="R8" point="//@points.1" track="//@tracks.7"/>
-    <releaseTable route="R8" point="//@points.0" track="//@tracks.3"/>
-    <releaseTable route="R1" point="//@points.0" track="//@tracks.2"/>
-    <releaseTable route="R1" point="//@points.1" track="//@tracks.6"/>
+    <topoRoutes directedTracks="//@tracks.11/@directedTracks.0 //@tracks.10/@directedTracks.0 //@tracks.7/@directedTracks.0 //@tracks.3/@directedTracks.1 //@tracks.1/@directedTracks.0" startSignal="//@signals.7" endSignal="//@signals.1">
+      <names>R8</names>
+    </topoRoutes>
+    <topoRoutes directedTracks="//@tracks.11/@directedTracks.0 //@tracks.10/@directedTracks.0 //@tracks.7/@directedTracks.0 //@tracks.2/@directedTracks.1 //@tracks.5/@directedTracks.0" startSignal="//@signals.7" endSignal="//@signals.3">
+      <names>R7</names>
+    </topoRoutes>
+    <topoRoutes directedTracks="//@tracks.10/@directedTracks.1 //@tracks.11/@directedTracks.1" startSignal="//@signals.6">
+      <names>R12</names>
+    </topoRoutes>
+    <topoRoutes directedTracks="//@tracks.5/@directedTracks.0 //@tracks.4/@directedTracks.0" startSignal="//@signals.3">
+      <names>R9</names>
+    </topoRoutes>
+    <topoRoutes directedTracks="//@tracks.4/@directedTracks.1 //@tracks.5/@directedTracks.1 //@tracks.2/@directedTracks.0 //@tracks.6/@directedTracks.1" startSignal="//@signals.2">
+      <names>R1</names>
+    </topoRoutes>
+    <topoRoutes directedTracks="//@tracks.4/@directedTracks.1 //@tracks.5/@directedTracks.1 //@tracks.2/@directedTracks.0 //@tracks.7/@directedTracks.1 //@tracks.10/@directedTracks.1" startSignal="//@signals.2" endSignal="//@signals.6">
+      <names>R2</names>
+    </topoRoutes>
+    <topoRoutes directedTracks="//@tracks.1/@directedTracks.0 //@tracks.0/@directedTracks.0" startSignal="//@signals.1">
+      <names>R11</names>
+    </topoRoutes>
+    <topoRoutes directedTracks="//@tracks.0/@directedTracks.1 //@tracks.1/@directedTracks.1 //@tracks.3/@directedTracks.0 //@tracks.6/@directedTracks.1" startSignal="//@signals.0">
+      <names>R5</names>
+    </topoRoutes>
+    <topoRoutes directedTracks="//@tracks.0/@directedTracks.1 //@tracks.1/@directedTracks.1 //@tracks.3/@directedTracks.0 //@tracks.7/@directedTracks.1 //@tracks.10/@directedTracks.1" startSignal="//@signals.0" endSignal="//@signals.6">
+      <names>R6</names>
+    </topoRoutes>
+    <controlTable signal="//@signals.0" route="R5" normals="//@points.1" reverses="//@points.0" clears="//@tracks.3 //@tracks.1 //@tracks.6" directions="//@tracks.1/@directedTracks.1 //@tracks.3/@directedTracks.0"/>
+    <controlTable route="R3" normals="//@points.1 //@points.0" clears="//@tracks.2 //@tracks.5 //@tracks.6" directions="//@tracks.2/@directedTracks.1 //@tracks.5/@directedTracks.0"/>
+    <controlTable signal="//@signals.2" route="R2" normals="//@points.0" reverses="//@points.1" clears="//@tracks.7 //@tracks.2 //@tracks.10 //@tracks.5" directions="//@tracks.10/@directedTracks.1 //@tracks.5/@directedTracks.1 //@tracks.2/@directedTracks.0 //@tracks.7/@directedTracks.1"/>
+    <controlTable signal="//@signals.0" route="R6" reverses="//@points.0 //@points.1" clears="//@tracks.7 //@tracks.3 //@tracks.1 //@tracks.10" directions="//@tracks.1/@directedTracks.1 //@tracks.3/@directedTracks.0 //@tracks.10/@directedTracks.1 //@tracks.7/@directedTracks.1"/>
+    <controlTable signal="//@signals.2" route="R1" normals="//@points.0 //@points.1" clears="//@tracks.2 //@tracks.5 //@tracks.6" directions="//@tracks.5/@directedTracks.1 //@tracks.2/@directedTracks.0"/>
+    <controlTable route="R4" normals="//@points.1" reverses="//@points.0" clears="//@tracks.3 //@tracks.1 //@tracks.6" directions="//@tracks.3/@directedTracks.1 //@tracks.1/@directedTracks.0"/>
+    <controlTable signal="//@signals.7" route="R7" normals="//@points.0" reverses="//@points.1" clears="//@tracks.7 //@tracks.2 //@tracks.10 //@tracks.5" directions="//@tracks.2/@directedTracks.1 //@tracks.7/@directedTracks.0 //@tracks.10/@directedTracks.0 //@tracks.5/@directedTracks.0"/>
+    <controlTable signal="//@signals.7" route="R8" reverses="//@points.1 //@points.0" clears="//@tracks.7 //@tracks.3 //@tracks.10 //@tracks.1" directions="//@tracks.7/@directedTracks.0 //@tracks.3/@directedTracks.1 //@tracks.1/@directedTracks.0 //@tracks.10/@directedTracks.0"/>
+    <releaseTable route="R2" point="//@points.0" unoccupiedTrack="//@tracks.2" occupiedTrack="//@tracks.7"/>
+    <releaseTable route="R2" point="//@points.1" unoccupiedTrack="//@tracks.7" occupiedTrack="//@tracks.10"/>
+    <releaseTable route="R5" point="//@points.1" unoccupiedTrack="//@tracks.6"/>
+    <releaseTable route="R5" point="//@points.0" unoccupiedTrack="//@tracks.3" occupiedTrack="//@tracks.6"/>
+    <releaseTable route="R6" point="//@points.0" unoccupiedTrack="//@tracks.3" occupiedTrack="//@tracks.7"/>
+    <releaseTable route="R6" point="//@points.1" unoccupiedTrack="//@tracks.7" occupiedTrack="//@tracks.10"/>
+    <releaseTable route="R7" point="//@points.0" unoccupiedTrack="//@tracks.2" occupiedTrack="//@tracks.5"/>
+    <releaseTable route="R7" point="//@points.1" unoccupiedTrack="//@tracks.7" occupiedTrack="//@tracks.2"/>
+    <releaseTable route="R8" point="//@points.1" unoccupiedTrack="//@tracks.7" occupiedTrack="//@tracks.3"/>
+    <releaseTable route="R8" point="//@points.0" unoccupiedTrack="//@tracks.3" occupiedTrack="//@tracks.1"/>
+    <releaseTable route="R1" point="//@points.0" unoccupiedTrack="//@tracks.2" occupiedTrack="//@tracks.6"/>
+    <releaseTable route="R1" point="//@points.1" unoccupiedTrack="//@tracks.6"/>
   </subTrackPlans>
-  <subTrackPlans criticals="//@tracks.11" tracks="//@tracks.10 //@tracks.11" connectors="//@connectors.10 //@connectors.11 //@connectors.12" signals="//@signals.6 //@signals.7">
+  <subTrackPlans criticals="//@tracks.11" tracks="//@tracks.11 //@tracks.10" connectors="//@connectors.11 //@connectors.12 //@connectors.10" signals="//@signals.7 //@signals.6">
     <entrances connector="//@connectors.10"/>
     <entrances connector="//@connectors.12"/>
     <exits connector="//@connectors.10"/>
     <exits connector="//@connectors.12"/>
-    <topoRoutes directedTracks="//@tracks.11/@directedTracks.0 //@tracks.10/@directedTracks.0" startSignal="//@signals.7"/>
-    <topoRoutes directedTracks="//@tracks.11/@directedTracks.0 //@tracks.10/@directedTracks.0" startSignal="//@signals.7"/>
-    <topoRoutes directedTracks="//@tracks.10/@directedTracks.1 //@tracks.11/@directedTracks.1" startSignal="//@signals.6"/>
+    <topoRoutes directedTracks="//@tracks.11/@directedTracks.0 //@tracks.10/@directedTracks.0" startSignal="//@signals.7">
+      <names>R8</names>
+    </topoRoutes>
+    <topoRoutes directedTracks="//@tracks.11/@directedTracks.0 //@tracks.10/@directedTracks.0" startSignal="//@signals.7">
+      <names>R7</names>
+    </topoRoutes>
+    <topoRoutes directedTracks="//@tracks.10/@directedTracks.1 //@tracks.11/@directedTracks.1" startSignal="//@signals.6">
+      <names>R12</names>
+    </topoRoutes>
   </subTrackPlans>
 </uk.ac.swanseacoventry.cmt.ontrack:TrackPlan>

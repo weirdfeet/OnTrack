@@ -534,8 +534,17 @@ public class OntrackPackageImpl extends EPackageImpl implements OntrackPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getReleaseTableItem_Track() {
+	public EReference getReleaseTableItem_UnoccupiedTrack() {
 		return (EReference)releaseTableItemEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getReleaseTableItem_OccupiedTrack() {
+		return (EReference)releaseTableItemEClass.getEStructuralFeatures().get(3);
 	}
 
 	/**
@@ -1087,7 +1096,8 @@ public class OntrackPackageImpl extends EPackageImpl implements OntrackPackage {
 		releaseTableItemEClass = createEClass(RELEASE_TABLE_ITEM);
 		createEAttribute(releaseTableItemEClass, RELEASE_TABLE_ITEM__ROUTE);
 		createEReference(releaseTableItemEClass, RELEASE_TABLE_ITEM__POINT);
-		createEReference(releaseTableItemEClass, RELEASE_TABLE_ITEM__TRACK);
+		createEReference(releaseTableItemEClass, RELEASE_TABLE_ITEM__UNOCCUPIED_TRACK);
+		createEReference(releaseTableItemEClass, RELEASE_TABLE_ITEM__OCCUPIED_TRACK);
 
 		signalEClass = createEClass(SIGNAL);
 		createEAttribute(signalEClass, SIGNAL__NAME);
@@ -1227,7 +1237,8 @@ public class OntrackPackageImpl extends EPackageImpl implements OntrackPackage {
 		initEClass(releaseTableItemEClass, ReleaseTableItem.class, "ReleaseTableItem", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getReleaseTableItem_Route(), ecorePackage.getEString(), "route", null, 0, 1, ReleaseTableItem.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getReleaseTableItem_Point(), this.getPoint(), null, "point", null, 0, 1, ReleaseTableItem.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getReleaseTableItem_Track(), this.getTrack(), null, "track", null, 0, 1, ReleaseTableItem.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getReleaseTableItem_UnoccupiedTrack(), this.getTrack(), null, "unoccupiedTrack", null, 0, 1, ReleaseTableItem.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getReleaseTableItem_OccupiedTrack(), this.getTrack(), null, "occupiedTrack", null, 0, 1, ReleaseTableItem.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(signalEClass, Signal.class, "Signal", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getSignal_Name(), ecorePackage.getEString(), "name", null, 0, 1, Signal.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

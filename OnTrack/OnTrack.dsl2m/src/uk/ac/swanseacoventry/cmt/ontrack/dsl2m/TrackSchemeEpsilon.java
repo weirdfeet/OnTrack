@@ -20,6 +20,10 @@ import org.eclipse.epsilon.eol.models.IRelativePathResolver;
 
 public abstract class TrackSchemeEpsilon {
 	
+	public static final String URI_SOURCE = "source is a uri to a file";
+	public static final String FILE_SOURCE = "source is a path to a file";
+	public static final String STRING_SOURCE = "souce is a string";
+	
 	protected IEolExecutableModule module;
 	
 	protected Object result;
@@ -34,14 +38,18 @@ public abstract class TrackSchemeEpsilon {
 	
 	public void preProcess() {};
 	
-	public Object execute(boolean sourceIsURI) {
+	public Object execute(String sourceType) {
 		
 		module = createModule();
 		try {
-			if (sourceIsURI)
+			if (sourceType.equals(URI_SOURCE))
 				module.parse(URI.create(getSource()));
-			else
+			else if (sourceType.equals(FILE_SOURCE))
 				module.parse(new File(getSource()));
+			else if (sourceType.equals(STRING_SOURCE))
+				module.parse(getSource());
+			else
+				throw new Exception("Unknow source type.");
 		} catch (Exception e) {
 			System.out.println("Error loading source file");
 			e.printStackTrace();

@@ -2,6 +2,11 @@
 // This program provides operations that can be used by ETL files that import it
 ////////
 
+operation Collection intersection(c : Collection) : Collection {
+	var A = self;
+	var B = c;
+	return A.excludingAll(A.excludingAll(B));
+}
 
 ////////
 // creates a new CSP!SET and adds it to the main CSP!CSPScript
