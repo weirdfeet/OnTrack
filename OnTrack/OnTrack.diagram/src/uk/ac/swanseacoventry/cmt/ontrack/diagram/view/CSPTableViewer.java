@@ -220,7 +220,7 @@ public class CSPTableViewer extends ViewPart {
 	}
 
 	protected String generateForTrackPlan(TrackPlan tp, boolean exp){
-		// exp = false;
+		// exp = false; // uncomment to use Xu's modelling
 		DSL2CSP tool = new DSL2CSP(tp, exp);
 		tool.generateCSP("Railway.csp");
 		if (exp) {
