@@ -220,7 +220,7 @@ public class CSPTableViewer extends ViewPart {
 	}
 
 	protected String generateForTrackPlan(TrackPlan tp, boolean exp){
-		exp = false;
+		// exp = false;
 		DSL2CSP tool = new DSL2CSP(tp, exp);
 		tool.generateCSP("Railway.csp");
 		if (exp) {
@@ -405,15 +405,12 @@ public class CSPTableViewer extends ViewPart {
 	}
 	
 	void registerActivatedListener(){
-		IWorkbench wb = PlatformUI.getWorkbench();
-		IWorkbenchWindow win = wb.getActiveWorkbenchWindow();
-		IWorkbenchPage page = win.getActivePage();
-		page.addPartListener(new PartListener2Impl(){
+		Util.getActivePage().addPartListener(new PartListener2Impl(){
 
 			@Override
 			public void partActivated(IWorkbenchPartReference partRef) {
 				// TODO Auto-generated method stub
-				partRef.getPage();
+				IWorkbenchPage page = partRef.getPage();
 				   
 				if (page == null) return;
 				

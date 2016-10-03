@@ -38,6 +38,7 @@ import uk.ac.swanseacoventry.cmt.ontrack.TrackPlan;
 import uk.ac.swanseacoventry.cmt.ontrack.diagram.custom.Util;
 import uk.ac.swanseacoventry.cmt.ontrack.diagram.edit.commands.custom.TrackPlanCoveringClearCommand;
 import uk.ac.swanseacoventry.cmt.ontrack.diagram.edit.commands.custom.TrackPlanCoveringComputeCommand;
+import uk.ac.swanseacoventry.cmt.ontrack.diagram.view.listeners.PartListener2Impl;
 
 public class CoveringViewer extends ViewPart {
 	private Table table;
@@ -230,15 +231,12 @@ public class CoveringViewer extends ViewPart {
 		}
 	}
 	void registerActivatedListener(){
-		IWorkbench wb = PlatformUI.getWorkbench();
-		IWorkbenchWindow win = wb.getActiveWorkbenchWindow();
-		IWorkbenchPage page = win.getActivePage();
-		page.addPartListener(new IPartListener2(){
+		Util.getActivePage().addPartListener(new PartListener2Impl(){
 
 			@Override
 			public void partActivated(IWorkbenchPartReference partRef) {
 				// TODO Auto-generated method stub
-				partRef.getPage();
+				IWorkbenchPage page = partRef.getPage();
 				   
 				if (page == null) return;
 				
@@ -256,48 +254,6 @@ public class CoveringViewer extends ViewPart {
 				refresSubPlansFrom(trackplan);
 			}
 
-			@Override
-			public void partBroughtToTop(IWorkbenchPartReference partRef) {
-				// TODO Auto-generated method stub
-				
-			}
-
-			@Override
-			public void partClosed(IWorkbenchPartReference partRef) {
-				// TODO Auto-generated method stub
-				
-			}
-
-			@Override
-			public void partDeactivated(IWorkbenchPartReference partRef) {
-				// TODO Auto-generated method stub
-				
-			}
-
-			@Override
-			public void partOpened(IWorkbenchPartReference partRef) {
-				// TODO Auto-generated method stub
-				
-			}
-
-			@Override
-			public void partHidden(IWorkbenchPartReference partRef) {
-				// TODO Auto-generated method stub
-				
-			}
-
-			@Override
-			public void partVisible(IWorkbenchPartReference partRef) {
-				// TODO Auto-generated method stub
-				
-			}
-
-			@Override
-			public void partInputChanged(IWorkbenchPartReference partRef) {
-				// TODO Auto-generated method stub
-				
-			}
-			
 		});
 	}
 

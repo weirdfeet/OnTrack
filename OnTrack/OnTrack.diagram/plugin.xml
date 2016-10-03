@@ -120,7 +120,7 @@
       <?gmfgen generated="false"?>
       <page
             id="OnTrack.dsl.diagram.general"
-            name="%prefpage.OnTrack.dsl.diagram.general"
+            name="OnTrack"
             class="uk.ac.swanseacoventry.cmt.ontrack.diagram.preferences.DiagramGeneralPreferencePage">
       </page>
       <page
@@ -911,6 +911,19 @@
                </binding>
 
    </extension>
+<extension
+      id="uk.ac.swanseacoventry.cmt.ontrack"
+      name="OnTrack"
+      point="org.eclipse.core.runtime.products">
+   <product
+         application="OnTrack.diagram.product"
+         name="OnTrack">
+      <property
+            name="appName"
+            value="OnTrack">
+      </property>
+   </product>
+</extension>
 
 
    <!-- optionally, specify keybindings -->

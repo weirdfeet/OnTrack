@@ -20,6 +20,8 @@ import org.eclipse.swt.SWT;
 import org.eclipse.swt.custom.TableEditor;
 import org.eclipse.swt.events.DisposeEvent;
 import org.eclipse.swt.events.DisposeListener;
+import org.eclipse.swt.events.ModifyEvent;
+import org.eclipse.swt.events.ModifyListener;
 //import org.eclipse.swt.graphics.Point;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Control;
@@ -126,17 +128,22 @@ public class ControlTableViewer extends ViewPart {
 				    if(item != null) {
 				    	if (item.getBounds(NAMECOL).contains(pt)){
 				        	changeName(item);
-				        } else if (item.getBounds(SIGNALCOL).contains(pt)){
-				        	changeSignal((ControlTableItem)item.getData());
-				        } else if (item.getBounds(NORMALSCOL).contains(pt)){
-				        	selectNormals((ControlTableItem)item.getData());
-				        } else if (item.getBounds(REVERSESCOL).contains(pt)) {
-				        	selectReverses((ControlTableItem)item.getData());
-				        } else if (item.getBounds(CLEARSCOL).contains(pt)) {
-				        	selectClears((ControlTableItem)item.getData());
-				        }  else if (item.getBounds(DIRECTIONSCOL).contains(pt)) {
-				        	selectDirections((ControlTableItem)item.getData());
-				        }
+				        } else {
+				        	Control oldEditor = editor.getEditor();
+							if (oldEditor != null) oldEditor.dispose();
+							
+				        	if (item.getBounds(SIGNALCOL).contains(pt)){
+					        	changeSignal((ControlTableItem)item.getData());
+					        } else if (item.getBounds(NORMALSCOL).contains(pt)){
+					        	selectNormals((ControlTableItem)item.getData());
+					        } else if (item.getBounds(REVERSESCOL).contains(pt)) {
+					        	selectReverses((ControlTableItem)item.getData());
+					        } else if (item.getBounds(CLEARSCOL).contains(pt)) {
+					        	selectClears((ControlTableItem)item.getData());
+					        }  else if (item.getBounds(DIRECTIONSCOL).contains(pt)) {
+					        	selectDirections((ControlTableItem)item.getData());
+					        }
+				    	}
 				    }
 				}
 				else {
@@ -333,24 +340,26 @@ public class ControlTableViewer extends ViewPart {
 	}
 
 	void changeName(TableItem item){
-		ControlTableItem cti = (ControlTableItem)item.getData();
+		final ControlTableItem cti = (ControlTableItem)item.getData();
 		
 		Control oldEditor = editor.getEditor();
 		if (oldEditor != null) oldEditor.dispose();
 
-		DiagramEditPart diagramEditPart = Util.getDiagramEP();
+		final DiagramEditPart diagramEditPart = Util.getDiagramEP();
 		if (diagramEditPart==null) return;
 		TrackPlan trackplan = (TrackPlan)((View)diagramEditPart.getModel()).getElement();
 
 		// The control that will be the editor must be a child of the Table
 		Text newEditor = new Text(table, SWT.NONE);
 		newEditor.setText(item.getText(0));
-		newEditor.addModifyListener(me -> {
-			Text text = (Text)editor.getEditor();
-			editor.getItem().setText(0, text.getText());
-			CompoundCommand cc = new CompoundCommand();
-			cc.add(new ICommandProxy(new ControlTableUpdateItemCommand((IGraphicalEditPart)diagramEditPart,cti,text.getText(),null,null,null,null,null)));
-			cc.execute();
+		newEditor.addModifyListener(new ModifyListener() {
+			public void modifyText(ModifyEvent me){
+				Text text = (Text)editor.getEditor();
+				editor.getItem().setText(0, text.getText());
+				CompoundCommand cc = new CompoundCommand();
+				cc.add(new ICommandProxy(new ControlTableUpdateItemCommand((IGraphicalEditPart)diagramEditPart,cti,text.getText(),null,null,null,null,null)));
+				cc.execute();
+			}
 		});
 		newEditor.selectAll();
 		newEditor.setFocus();
@@ -479,15 +488,12 @@ public class ControlTableViewer extends ViewPart {
 		}
 	}
 	void registerActivatedListener(){
-		IWorkbench wb = PlatformUI.getWorkbench();
-		IWorkbenchWindow win = wb.getActiveWorkbenchWindow();
-		IWorkbenchPage page = win.getActivePage();
-		page.addPartListener(new PartListener2Impl(){
+		Util.getActivePage().addPartListener(new PartListener2Impl(){
 
 			@Override
 			public void partActivated(IWorkbenchPartReference partRef) {
 				// TODO Auto-generated method stub
-				partRef.getPage();
+				IWorkbenchPage page = partRef.getPage();
 				   
 				if (page == null) return;
 				

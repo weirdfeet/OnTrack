@@ -56,11 +56,11 @@ public abstract class TrackSchemeEpsilon {
 		}
 		
 		if (module.getParseProblems().size() > 0) {
-			System.err.println("Parse errors occured...");
+			System.out.println("Parse errors occured...");
 			for (ParseProblem problem : module.getParseProblems()) {
-				System.err.println(problem.toString());
+				System.out.println(problem.toString());
 			}
-			System.exit(-1);
+			// System.exit(-1);
 		}
 		
 		try {

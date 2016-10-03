@@ -181,7 +181,7 @@ public class DSL2CSPB {
 		try {
 
 			// Prepare output EGL file
-			BufferedWriter writer = new BufferedWriter(new StringWriter());
+			StringWriter writer = new StringWriter();
 
 			// Get the template
 			// Template velocityTemplate = Velocity.getTemplate(TEMPLATES_DIR + template);

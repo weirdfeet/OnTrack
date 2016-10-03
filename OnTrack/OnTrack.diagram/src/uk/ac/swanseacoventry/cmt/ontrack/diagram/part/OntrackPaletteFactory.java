@@ -58,9 +58,9 @@ public class OntrackPaletteFactory {
 				Messages.Connector1CreationTool_desc, Collections.singletonList(OntrackElementTypes.Connector_2001));
 		entry.setId("createConnector1CreationTool"); //$NON-NLS-1$
 		entry.setSmallIcon(
-				OntrackDiagramEditorPlugin.findImageDescriptor("/OnTrack.dsl.edit/icons/full/obj16/connector.gif")); //$NON-NLS-1$
+				OntrackDiagramEditorPlugin.findImageDescriptor("/OnTrack.dsl.edit/icons/full/obj16/Connector.gif")); //$NON-NLS-1$
 		entry.setLargeIcon(
-				OntrackDiagramEditorPlugin.findImageDescriptor("/OnTrack.dsl.edit/icons/full/obj32/connector.gif")); //$NON-NLS-1$
+				OntrackDiagramEditorPlugin.findImageDescriptor("/OnTrack.dsl.edit/icons/full/obj32/Connector.gif")); //$NON-NLS-1$
 		return entry;
 	}
 
@@ -72,9 +72,9 @@ public class OntrackPaletteFactory {
 				Messages.Track2CreationTool_desc, Collections.singletonList(OntrackElementTypes.Track_4005));
 		entry.setId("createTrack2CreationTool"); //$NON-NLS-1$
 		entry.setSmallIcon(
-				OntrackDiagramEditorPlugin.findImageDescriptor("/OnTrack.dsl.edit/icons/full/obj16/track.gif")); //$NON-NLS-1$
+				OntrackDiagramEditorPlugin.findImageDescriptor("/OnTrack.dsl.edit/icons/full/obj16/Track.gif")); //$NON-NLS-1$
 		entry.setLargeIcon(
-				OntrackDiagramEditorPlugin.findImageDescriptor("/OnTrack.dsl.edit/icons/full/obj32/track.gif")); //$NON-NLS-1$
+				OntrackDiagramEditorPlugin.findImageDescriptor("/OnTrack.dsl.edit/icons/full/obj32/Track.gif")); //$NON-NLS-1$
 		return entry;
 	}
 
@@ -86,9 +86,9 @@ public class OntrackPaletteFactory {
 				Messages.NewTrack3CreationTool_desc, Collections.singletonList(OntrackElementTypes.NewTrack_2006));
 		entry.setId("createNewTrack3CreationTool"); //$NON-NLS-1$
 		entry.setSmallIcon(
-				OntrackDiagramEditorPlugin.findImageDescriptor("/OnTrack.dsl.edit/icons/full/obj16/track.gif")); //$NON-NLS-1$
+				OntrackDiagramEditorPlugin.findImageDescriptor("/OnTrack.dsl.edit/icons/full/obj16/Track.gif")); //$NON-NLS-1$
 		entry.setLargeIcon(
-				OntrackDiagramEditorPlugin.findImageDescriptor("/OnTrack.dsl.edit/icons/full/obj32/track.gif")); //$NON-NLS-1$
+				OntrackDiagramEditorPlugin.findImageDescriptor("/OnTrack.dsl.edit/icons/full/obj32/Track.gif")); //$NON-NLS-1$
 		return entry;
 	}
 
@@ -100,9 +100,9 @@ public class OntrackPaletteFactory {
 				Messages.Point4CreationTool_desc, Collections.singletonList(OntrackElementTypes.Point_4001));
 		entry.setId("createPoint4CreationTool"); //$NON-NLS-1$
 		entry.setSmallIcon(
-				OntrackDiagramEditorPlugin.findImageDescriptor("/OnTrack.dsl.edit/icons/full/obj16/point.gif")); //$NON-NLS-1$
+				OntrackDiagramEditorPlugin.findImageDescriptor("/OnTrack.dsl.edit/icons/full/obj16/Point.gif")); //$NON-NLS-1$
 		entry.setLargeIcon(
-				OntrackDiagramEditorPlugin.findImageDescriptor("/OnTrack.dsl.edit/icons/full/obj32/point.gif")); //$NON-NLS-1$
+				OntrackDiagramEditorPlugin.findImageDescriptor("/OnTrack.dsl.edit/icons/full/obj32/Point.gif")); //$NON-NLS-1$
 		return entry;
 	}
 
@@ -114,9 +114,9 @@ public class OntrackPaletteFactory {
 				Messages.NewPoint5CreationTool_desc, Collections.singletonList(OntrackElementTypes.NewPoint_2007));
 		entry.setId("createNewPoint5CreationTool"); //$NON-NLS-1$
 		entry.setSmallIcon(
-				OntrackDiagramEditorPlugin.findImageDescriptor("/OnTrack.dsl.edit/icons/full/obj16/point.gif")); //$NON-NLS-1$
+				OntrackDiagramEditorPlugin.findImageDescriptor("/OnTrack.dsl.edit/icons/full/obj16/Point.gif")); //$NON-NLS-1$
 		entry.setLargeIcon(
-				OntrackDiagramEditorPlugin.findImageDescriptor("/OnTrack.dsl.edit/icons/full/obj32/point.gif")); //$NON-NLS-1$
+				OntrackDiagramEditorPlugin.findImageDescriptor("/OnTrack.dsl.edit/icons/full/obj32/Point.gif")); //$NON-NLS-1$
 		return entry;
 	}
 
@@ -128,9 +128,9 @@ public class OntrackPaletteFactory {
 				Messages.Crossing6CreationTool_desc, Collections.singletonList(OntrackElementTypes.Crossing_4002));
 		entry.setId("createCrossing6CreationTool"); //$NON-NLS-1$
 		entry.setSmallIcon(
-				OntrackDiagramEditorPlugin.findImageDescriptor("/OnTrack.dsl.edit/icons/full/obj16/crossing.gif")); //$NON-NLS-1$
+				OntrackDiagramEditorPlugin.findImageDescriptor("/OnTrack.dsl.edit/icons/full/obj16/Crossing.gif")); //$NON-NLS-1$
 		entry.setLargeIcon(
-				OntrackDiagramEditorPlugin.findImageDescriptor("/OnTrack.dsl.edit/icons/full/obj32/crossing.gif")); //$NON-NLS-1$
+				OntrackDiagramEditorPlugin.findImageDescriptor("/OnTrack.dsl.edit/icons/full/obj32/Crossing.gif")); //$NON-NLS-1$
 		return entry;
 	}
 
@@ -143,9 +143,9 @@ public class OntrackPaletteFactory {
 				Collections.singletonList(OntrackElementTypes.NewCrossing_2008));
 		entry.setId("createNewCrossing7CreationTool"); //$NON-NLS-1$
 		entry.setSmallIcon(
-				OntrackDiagramEditorPlugin.findImageDescriptor("/OnTrack.dsl.edit/icons/full/obj16/crossing.gif")); //$NON-NLS-1$
+				OntrackDiagramEditorPlugin.findImageDescriptor("/OnTrack.dsl.edit/icons/full/obj16/Crossing.gif")); //$NON-NLS-1$
 		entry.setLargeIcon(
-				OntrackDiagramEditorPlugin.findImageDescriptor("/OnTrack.dsl.edit/icons/full/obj32/crossing.gif")); //$NON-NLS-1$
+				OntrackDiagramEditorPlugin.findImageDescriptor("/OnTrack.dsl.edit/icons/full/obj32/Crossing.gif")); //$NON-NLS-1$
 		return entry;
 	}
 
@@ -157,9 +157,9 @@ public class OntrackPaletteFactory {
 				Messages.Signal8CreationTool_desc, Collections.singletonList(OntrackElementTypes.Signal_2002));
 		entry.setId("createSignal8CreationTool"); //$NON-NLS-1$
 		entry.setSmallIcon(
-				OntrackDiagramEditorPlugin.findImageDescriptor("/OnTrack.dsl.edit/icons/full/obj16/signal.gif")); //$NON-NLS-1$
+				OntrackDiagramEditorPlugin.findImageDescriptor("/OnTrack.dsl.edit/icons/full/obj16/Signal.gif")); //$NON-NLS-1$
 		entry.setLargeIcon(
-				OntrackDiagramEditorPlugin.findImageDescriptor("/OnTrack.dsl.edit/icons/full/obj32/signal.gif")); //$NON-NLS-1$
+				OntrackDiagramEditorPlugin.findImageDescriptor("/OnTrack.dsl.edit/icons/full/obj32/Signal.gif")); //$NON-NLS-1$
 		return entry;
 	}
 
@@ -201,9 +201,9 @@ public class OntrackPaletteFactory {
 				Messages.Entrance11CreationTool_desc, Collections.singletonList(OntrackElementTypes.Entrance_2003));
 		entry.setId("createEntrance11CreationTool"); //$NON-NLS-1$
 		entry.setSmallIcon(
-				OntrackDiagramEditorPlugin.findImageDescriptor("/OnTrack.dsl.edit/icons/full/obj16/entrance.gif")); //$NON-NLS-1$
+				OntrackDiagramEditorPlugin.findImageDescriptor("/OnTrack.dsl.edit/icons/full/obj16/Entrance.gif")); //$NON-NLS-1$
 		entry.setLargeIcon(
-				OntrackDiagramEditorPlugin.findImageDescriptor("/OnTrack.dsl.edit/icons/full/obj32/entrance.gif")); //$NON-NLS-1$
+				OntrackDiagramEditorPlugin.findImageDescriptor("/OnTrack.dsl.edit/icons/full/obj32/Entrance.gif")); //$NON-NLS-1$
 		return entry;
 	}
 
@@ -216,9 +216,9 @@ public class OntrackPaletteFactory {
 				Collections.singletonList(OntrackElementTypes.EntranceConnector_4006));
 		entry.setId("createEntranceplacement12CreationTool"); //$NON-NLS-1$
 		entry.setSmallIcon(
-				OntrackDiagramEditorPlugin.findImageDescriptor("/OnTrack.dsl.edit/icons/full/obj16/entrance.gif")); //$NON-NLS-1$
+				OntrackDiagramEditorPlugin.findImageDescriptor("/OnTrack.dsl.edit/icons/full/obj16/Entrance.gif")); //$NON-NLS-1$
 		entry.setLargeIcon(
-				OntrackDiagramEditorPlugin.findImageDescriptor("/OnTrack.dsl.edit/icons/full/obj32/entrance.gif")); //$NON-NLS-1$
+				OntrackDiagramEditorPlugin.findImageDescriptor("/OnTrack.dsl.edit/icons/full/obj32/Entrance.gif")); //$NON-NLS-1$
 		return entry;
 	}
 
@@ -230,9 +230,9 @@ public class OntrackPaletteFactory {
 				Messages.Exit13CreationTool_desc, Collections.singletonList(OntrackElementTypes.Exit_2004));
 		entry.setId("createExit13CreationTool"); //$NON-NLS-1$
 		entry.setSmallIcon(
-				OntrackDiagramEditorPlugin.findImageDescriptor("/OnTrack.dsl.edit/icons/full/obj16/exit.gif")); //$NON-NLS-1$
+				OntrackDiagramEditorPlugin.findImageDescriptor("/OnTrack.dsl.edit/icons/full/obj16/Exit.gif")); //$NON-NLS-1$
 		entry.setLargeIcon(
-				OntrackDiagramEditorPlugin.findImageDescriptor("/OnTrack.dsl.edit/icons/full/obj32/exit.gif")); //$NON-NLS-1$
+				OntrackDiagramEditorPlugin.findImageDescriptor("/OnTrack.dsl.edit/icons/full/obj32/Exit.gif")); //$NON-NLS-1$
 		return entry;
 	}
 
@@ -245,9 +245,9 @@ public class OntrackPaletteFactory {
 				Collections.singletonList(OntrackElementTypes.ExitConnector_4007));
 		entry.setId("createExitplacement14CreationTool"); //$NON-NLS-1$
 		entry.setSmallIcon(
-				OntrackDiagramEditorPlugin.findImageDescriptor("/OnTrack.dsl.edit/icons/full/obj16/exit.gif")); //$NON-NLS-1$
+				OntrackDiagramEditorPlugin.findImageDescriptor("/OnTrack.dsl.edit/icons/full/obj16/Exit.gif")); //$NON-NLS-1$
 		entry.setLargeIcon(
-				OntrackDiagramEditorPlugin.findImageDescriptor("/OnTrack.dsl.edit/icons/full/obj32/exit.gif")); //$NON-NLS-1$
+				OntrackDiagramEditorPlugin.findImageDescriptor("/OnTrack.dsl.edit/icons/full/obj32/Exit.gif")); //$NON-NLS-1$
 		return entry;
 	}
 
@@ -259,9 +259,9 @@ public class OntrackPaletteFactory {
 				Messages.Terminal15CreationTool_desc, Collections.singletonList(OntrackElementTypes.Terminal_2005));
 		entry.setId("createTerminal15CreationTool"); //$NON-NLS-1$
 		entry.setSmallIcon(
-				OntrackDiagramEditorPlugin.findImageDescriptor("/OnTrack.dsl.edit/icons/full/obj16/terminal.gif")); //$NON-NLS-1$
+				OntrackDiagramEditorPlugin.findImageDescriptor("/OnTrack.dsl.edit/icons/full/obj16/Terminal.gif")); //$NON-NLS-1$
 		entry.setLargeIcon(
-				OntrackDiagramEditorPlugin.findImageDescriptor("/OnTrack.dsl.edit/icons/full/obj32/terminal.gif")); //$NON-NLS-1$
+				OntrackDiagramEditorPlugin.findImageDescriptor("/OnTrack.dsl.edit/icons/full/obj32/Terminal.gif")); //$NON-NLS-1$
 		return entry;
 	}
 
@@ -274,9 +274,9 @@ public class OntrackPaletteFactory {
 				Collections.singletonList(OntrackElementTypes.TerminalConnector_4008));
 		entry.setId("createTerminalplacement16CreationTool"); //$NON-NLS-1$
 		entry.setSmallIcon(
-				OntrackDiagramEditorPlugin.findImageDescriptor("/OnTrack.dsl.edit/icons/full/obj16/terminal.gif")); //$NON-NLS-1$
+				OntrackDiagramEditorPlugin.findImageDescriptor("/OnTrack.dsl.edit/icons/full/obj16/Terminal.gif")); //$NON-NLS-1$
 		entry.setLargeIcon(
-				OntrackDiagramEditorPlugin.findImageDescriptor("/OnTrack.dsl.edit/icons/full/obj32/terminal.gif")); //$NON-NLS-1$
+				OntrackDiagramEditorPlugin.findImageDescriptor("/OnTrack.dsl.edit/icons/full/obj32/Terminal.gif")); //$NON-NLS-1$
 		return entry;
 	}
 

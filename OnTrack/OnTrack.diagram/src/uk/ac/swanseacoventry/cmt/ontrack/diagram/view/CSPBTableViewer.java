@@ -27,6 +27,7 @@ import org.eclipse.swt.events.DisposeListener;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Event;
 import org.eclipse.swt.widgets.Listener;
+import org.eclipse.swt.widgets.MessageBox;
 import org.eclipse.swt.widgets.Table;
 import org.eclipse.swt.widgets.TableColumn;
 import org.eclipse.swt.widgets.TableItem;
@@ -262,7 +263,9 @@ public class CSPBTableViewer extends ViewPart {
 			p.waitFor();
 		}
 		catch(Exception e){
-			System.out.println(e.toString());
+			MessageBox msg = new MessageBox(table.getShell());
+			msg.setMessage("Cannot find ProB installation. Please (re)configure path to ProB.");
+			msg.open();
 		}
 	}
 	
@@ -389,15 +392,12 @@ public class CSPBTableViewer extends ViewPart {
 	}
 	
 	void registerActivatedListener(){
-		IWorkbench wb = PlatformUI.getWorkbench();
-		IWorkbenchWindow win = wb.getActiveWorkbenchWindow();
-		IWorkbenchPage page = win.getActivePage();
-		page.addPartListener(new PartListener2Impl(){
+		Util.getActivePage().addPartListener(new PartListener2Impl(){
 
 			@Override
 			public void partActivated(IWorkbenchPartReference partRef) {
 				// TODO Auto-generated method stub
-				partRef.getPage();
+				IWorkbenchPage page = partRef.getPage();
 				   
 				if (page == null) return;
 				

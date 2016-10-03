@@ -328,17 +328,14 @@ to f : CSP!ProcessAssignment {
 	}
 	for(t in cti.directions) {
 	    var t1 = t.track;
-		if (t1.pointReverse.isDefined())
-			t1 = t1.pointReverse.normalTrack;
-		else if (t1.crossing2.isDefined())
-			t1 = t1.crossing2.track1;
+	    var n1 = t1.getName();
 		var t2 = t.connector.findFirstDiffTrack(plan,t.track); 
-		if (not t2.isDefined()) t2 = offTrack;
-		else if (t2.pointReverse.isDefined())
-			t2 = t2.pointReverse.normalTrack;
-		else if (t2.crossing2.isDefined())
-			t2 = t2.crossing2.track1;
-		directionSet.item.add(newCSPSetItem(t1.name + "." + t2.name));
+		var n2;
+		if (not t2.isDefined()) n2 = offTrack.name; else n2 = t2.getName();
+		var n3;
+		var t3 = t.oppositeConnector().findFirstDiffTrack(plan,t.track); 
+		if (not t3.isDefined()) n3 = offTrack.name; else n3 = t3.getName();
+		directionSet.item.add(newCSPSetItem(n1 + "." + n3 + "." + n2));
 	}
 
 	var nf = newFunc1Arg4SetOut("ctrlTable",cti.route,normalSet, reverseSet, clearSet, directionSet);
@@ -359,18 +356,21 @@ to f : CSP!ProcessAssignment {
 	var directionSet = new CSP!SET; directionSet.name = "";
 	
 	var t1 = e.connector.findFirstTrack(plan);
+	var n1; if (t1.isDefined()) n1 = t1.getName(); else n1 = offTrack.name;
 	var c;
 	if (e.connector==t1.c1)
 		c = t1.c2;
 	else 
 		c = t1.c1;
 	var t2 = c.findFirstDiffTrack(plan,t1);
+	var n2; if (t1.isDefined()) n2 = t2.getName(); else n2 = offTrack.name;
+	var n3 = offTrack.name;
 	
 	for(s in t1.signals) {
 		if (s.connector==c) {
 			clearSet.item.add(newCSPSetItem(t1.name));
 			if (trackplan.overlapped) clearSet.item.add(newCSPSetItem(t2.getName()));
-			directionSet.item.add(newCSPSetItem(t1.name + "." + t2.getName()));
+			directionSet.item.add(newCSPSetItem(n1 + "." + n3 + "." + n2));
 			break;
 		}
 	}

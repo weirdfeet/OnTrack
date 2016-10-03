@@ -26,8 +26,12 @@ public class Util {
 		return win;
 	}
 	
+	public static IWorkbenchPage getActivePage(){
+		return getWorkbenchWindow().getActivePage();
+	}
+	
 	public static IEditorPart getEditorPart() {
-		IWorkbenchPage page = getWorkbenchWindow().getActivePage();
+		IWorkbenchPage page = getActivePage();
 
 		if (page == null)
 			return null;

@@ -2,8 +2,8 @@ next(cp,pp) = { np | np <- TrackID, member((cp,np,pp),TrackConfig) or
                                     member((cp,pp,np),TrackConfig) or
                                     (cp==OFFTRACK and pp==OFFTRACK and member(np,EntryTrack))   }
 
-directionTableDomain(rID) = let (ns,rs,cs,ds) = ctrlTable(rID) within { t1 | t1 <- TrackID, t2 <-TrackID, member(t1.t2,ds) }
-directionTable(rID,id) = let (ns,rs,cs,ds) = ctrlTable(rID) within { t1 | t1 <- TrackID, member(id.t1,ds) }
+directionTableDomain(rID) = let (ns,rs,cs,ds) = ctrlTable(rID) within { t1 | t1 <- TrackID, t2 <-TrackID, t3 <-TrackID, member(t1.t2.t3,ds) }
+directionTable(rID,id) = let (ns,rs,cs,ds) = ctrlTable(rID) within { t1.t2 | t1 <- TrackID, t2 <-TrackID, member(id.t1.t2,ds) }
 normalTable(rID) = let (ns,rs,cs,ds) = ctrlTable(rID) within ns
 reverseTable(rID) = let (ns,rs,cs,ds) = ctrlTable(rID) within rs
 clearTable(rID) = let (ns,rs,cs,ds) = ctrlTable(rID) within cs
