@@ -36,6 +36,7 @@ pre {
 		functions.add(newFunc1Arg1Out("pointAt","P__0","OFFTRACK"));
 		functions.add(newFunc1Arg1Out("normalNext","P__0","OFFTRACK"));
 		functions.add(newFunc1Arg1Out("reverseNext","P__0","OFFTRACK"));
+		functions.add(newFunc1Arg1Out("commonNext","P__0","OFFTRACK"));
 	}
 	
 	var SignalID = newCSPDatatype("SignalID");
