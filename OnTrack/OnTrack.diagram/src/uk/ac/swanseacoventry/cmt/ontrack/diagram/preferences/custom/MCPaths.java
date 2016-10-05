@@ -40,6 +40,8 @@ public class MCPaths
 				"&FDR3:", getFieldEditorParent()));
 		addField(new FileFieldEditor(PreferenceConstants.PROB_PATH, 
 				"&ProB:", getFieldEditorParent()));
+		addField(new FileFieldEditor(PreferenceConstants.CATS_PATH, 
+				"&CATS:", getFieldEditorParent()));
 //		addField(
 //			new BooleanFieldEditor(
 //				PreferenceConstants.P_BOOLEAN,

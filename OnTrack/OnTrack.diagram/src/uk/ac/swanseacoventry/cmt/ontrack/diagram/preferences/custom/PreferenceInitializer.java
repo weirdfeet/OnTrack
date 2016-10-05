@@ -14,6 +14,8 @@ public class PreferenceInitializer extends AbstractPreferenceInitializer {
 	private final String PATH_TO_FDR3_WIN = "C:\\Program Files\\FDR\\bin\\fdr3.exe"; // for windows
 	private final String PATH_TO_PROB_MAC = "/Applications/ProB/prob"; // on mac, temporary, to be placed in eclipse preferences
 	private final String PATH_TO_PROB_WIN = "C:\\Program Files (x86)\\ProB\\ProBWin.exe"; // on win, temporary, to be placed in eclipse preferences
+	private final String PATH_TO_CATS_MAC = ""; 
+	private final String PATH_TO_CATS_WIN = ""; 
 
 	/*
 	 * (non-Javadoc)
@@ -26,10 +28,12 @@ public class PreferenceInitializer extends AbstractPreferenceInitializer {
 		if (os.startsWith("windows")){
 			store.setDefault(PreferenceConstants.FDR3_PATH, PATH_TO_FDR3_WIN);
 			store.setDefault(PreferenceConstants.PROB_PATH, PATH_TO_PROB_WIN);
+			store.setDefault(PreferenceConstants.PROB_PATH, PATH_TO_CATS_WIN);
 		}
 		else {
 			store.setDefault(PreferenceConstants.FDR3_PATH, PATH_TO_FDR3_MAC);
 			store.setDefault(PreferenceConstants.PROB_PATH, PATH_TO_PROB_MAC);
+			store.setDefault(PreferenceConstants.PROB_PATH, PATH_TO_CATS_MAC);
 		}
 			
 //		store.setDefault(PreferenceConstants.P_BOOLEAN, true);

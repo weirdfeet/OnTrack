@@ -716,7 +716,14 @@
             name="CSP"
             class="uk.ac.swanseacoventry.cmt.ontrack.diagram.view.CSPTableViewer"/>   
    </extension>
-<extension point="org.eclipse.gmf.runtime.common.ui.services.markerNavigationProviders" id="markers-navigation">
+   
+   <extension point="org.eclipse.ui.views">
+      <view id="uk.ac.swanseacoventry.cmt.ontrack.diagram.view.CATSTableViewer"
+            name="CSP"
+            class="uk.ac.swanseacoventry.cmt.ontrack.diagram.view.CATSTableViewer"/>   
+   </extension>
+
+  <extension point="org.eclipse.gmf.runtime.common.ui.services.markerNavigationProviders" id="markers-navigation">
       <?gmfgen generated="true"?>
       <MarkerNavigationProvider class="uk.ac.swanseacoventry.cmt.ontrack.diagram.providers.OntrackMarkerNavigationProvider">
          <MarkerType name="OnTrack.dsl.diagram.diagnostic"/>

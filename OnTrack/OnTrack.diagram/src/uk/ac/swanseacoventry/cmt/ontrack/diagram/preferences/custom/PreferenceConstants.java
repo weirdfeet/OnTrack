@@ -7,6 +7,7 @@ public class PreferenceConstants {
 
 	public static final String FDR3_PATH = "FDR3path";
 	public static final String PROB_PATH = "ProBpath";
+	public static final String CATS_PATH = "CATSpath";
 
 //	public static final String P_BOOLEAN = "booleanPreference";
 //
