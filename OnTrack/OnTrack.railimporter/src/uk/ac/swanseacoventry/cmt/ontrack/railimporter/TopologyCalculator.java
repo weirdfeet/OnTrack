@@ -82,7 +82,7 @@ public class TopologyCalculator {
 		TrackPlan barkston = OntrackFactory.eINSTANCE.createTrackPlan();
 		
 		//ArrayList<Track> tracks = new ArrayList<Track>();
-
+		int conNum = 0;
 		for(Route r : rp.getRoutes()){
 		  if(Arrays.asList(routes4Barkston).contains(r.getName())){
 			ArrayList<Point> nPoints = r.getNormalPoints();
@@ -114,7 +114,7 @@ public class TopologyCalculator {
 			tp.getNames().add(r.getName());
 			tp.setStartSignal(s);
 			
-			int conNum = 0;
+			
 			Connector c1 = OntrackFactory.eINSTANCE.createConnector();
 			c1.setId(conNum);
 			barkston.getConnectors().add(c1);
