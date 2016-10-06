@@ -718,9 +718,9 @@
    </extension>
    
    <extension point="org.eclipse.ui.views">
-      <view id="uk.ac.swanseacoventry.cmt.ontrack.diagram.view.CATSTableViewer"
-            name="CSP"
-            class="uk.ac.swanseacoventry.cmt.ontrack.diagram.view.CATSTableViewer"/>   
+      <view id="uk.ac.swanseacoventry.cmt.ontrack.diagram.view.CASLTableViewer"
+            name="CASL"
+            class="uk.ac.swanseacoventry.cmt.ontrack.diagram.view.CASLTableViewer"/>   
    </extension>
 
   <extension point="org.eclipse.gmf.runtime.common.ui.services.markerNavigationProviders" id="markers-navigation">
