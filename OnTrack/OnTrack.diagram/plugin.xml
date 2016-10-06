@@ -931,6 +931,23 @@
       </property>
    </product>
 </extension>
+<extension
+      point="org.eclipse.ui.importWizards">
+   <category
+         id="ontrack.dsl.diagram.importWizards.sampleCategory"
+         name="Rail Importer">
+   </category>
+   <wizard
+         category="ontrack.dsl.diagram.importWizards.sampleCategory"
+         class="uk.ac.swansea.coventry.cmd.ontrack.diagram.importWizards.RailImporterWizard"
+         icon="icons/sample.gif"
+         id="ontrack.dsl.diagram.importWizards.RailImporterWizard"
+         name="Import from Brave&apos;s data">
+      <description>
+         Import an OnTrack model from Brave&apos;s data
+      </description>
+   </wizard>
+</extension>
 
 
    <!-- optionally, specify keybindings -->
