@@ -33,7 +33,7 @@ public class RailImporterWizard extends Wizard implements IImportWizard {
 	public void init(IWorkbench workbench, IStructuredSelection selection) {
 		setWindowTitle("OnTrack Model Import Wizard"); //NON-NLS-1
 		setNeedsProgressMonitor(true);
-		mainPage = new RailImporterWizardPage("Import from Brave's data",selection); //NON-NLS-1
+		mainPage = new RailImporterWizardPage("Existing Brave model",selection); //NON-NLS-1
 	}
 	
 	/* (non-Javadoc)

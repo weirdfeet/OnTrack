@@ -5,6 +5,8 @@ import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
+import java.util.HashSet;
 
 import org.eclipse.emf.common.util.BasicEList;
 import org.eclipse.emf.common.util.EList;
@@ -43,7 +45,145 @@ public class TopologyCalculator {
 		return true;
 	}
 	
+	HashMap<TrackCircuit,Track> createdTracks = new HashMap<TrackCircuit,Track>();
+	HashMap<Node,Connector> createdConnectors = new HashMap<Node,Connector>();
+	HashMap<Signal,uk.ac.swanseacoventry.cmt.ontrack.Signal> createdSignals = new HashMap<Signal,uk.ac.swanseacoventry.cmt.ontrack.Signal>();
+	HashMap<Point,uk.ac.swanseacoventry.cmt.ontrack.Point> createdPoints = new HashMap<Point,uk.ac.swanseacoventry.cmt.ontrack.Point>();
+	HashMap<Connector, HashSet<Track>> normalPointTracks = new HashMap<Connector, HashSet<Track>>();
+	HashMap<Connector, HashSet<Track>> reversePointTracks = new HashMap<Connector, HashSet<Track>>();
+	//HashMap<Point, HashSet<ControlTableItem>> normalPointRoutes = new HashMap<Point, HashSet<ControlTableItem>>();
+	//HashMap<Point, HashSet<ControlTableItem>> reversePointRoutes = new HashMap<Point, HashSet<ControlTableItem>>();
 
+	int conNum = 1;
+	TrackPlan barkston = OntrackFactory.eINSTANCE.createTrackPlan();
+	
+	uk.ac.swanseacoventry.cmt.ontrack.Signal getOnTrackSignal(Signal n){
+		uk.ac.swanseacoventry.cmt.ontrack.Signal s = createdSignals.get(n);
+		if (s==null) {
+			s = OntrackFactory.eINSTANCE.createSignal();
+			s.setName(n.getName());
+			barkston.getSignals().add(s);
+			createdSignals.put(n, s);
+		}
+		
+		Connector c = getOnTrackConnector(n);
+		s.setConnector(c);
+		c.getSignals().add(s);
+		
+		return s;
+	}
+	
+	uk.ac.swanseacoventry.cmt.ontrack.Connector getOnTrackConnector(Node n){
+		Connector c = createdConnectors.get(n);
+		if (c==null) {
+			c = OntrackFactory.eINSTANCE.createConnector();
+			c.setId(conNum++);
+			barkston.getConnectors().add(c);
+			createdConnectors.put(n, c);
+		}
+		return c;
+	}
+
+	uk.ac.swanseacoventry.cmt.ontrack.Point getOnTrackPoint(Point n){
+		uk.ac.swanseacoventry.cmt.ontrack.Point p = createdPoints.get(n);
+		if (p==null) {
+			p = OntrackFactory.eINSTANCE.createPoint();
+			p.setName(n.getName());
+			barkston.getPoints().add(p);
+			createdPoints.put(n, p);
+
+			String pointTrackName = "TC" + n.getName();
+			
+			Connector c1 = OntrackFactory.eINSTANCE.createConnector();
+			c1.setId(conNum++);
+			barkston.getConnectors().add(c1);
+			Connector c2 = OntrackFactory.eINSTANCE.createConnector();
+			c2.setId(conNum++);
+			barkston.getConnectors().add(c2);
+			Connector c3 = OntrackFactory.eINSTANCE.createConnector();
+			c3.setId(conNum++);
+			barkston.getConnectors().add(c3);
+			
+			Track nt = OntrackFactory.eINSTANCE.createTrack();
+			nt.setName(pointTrackName);
+			barkston.getTracks().add(nt);
+
+			Track rt = OntrackFactory.eINSTANCE.createTrack();
+			rt.setName(pointTrackName);
+			barkston.getTracks().add(rt);
+			
+			p.setNormalTrack(nt);
+			p.setReverseTrack(rt);
+			nt.setPointNormal(p);
+			nt.setC1(c1);
+			nt.setC2(c2);
+			rt.setPointReverse(p);
+			rt.setC1(c1);
+			rt.setC2(c3);
+			c1.getTrack1s().add(nt);
+			c1.getTrack1s().add(rt);
+			c2.getTrack2s().add(nt);
+			c3.getTrack2s().add(rt);
+		}
+		
+		
+		return p;
+	}
+
+	uk.ac.swanseacoventry.cmt.ontrack.Track getOnTrackTrack(TrackCircuit tc){
+		uk.ac.swanseacoventry.cmt.ontrack.Track t = createdTracks.get(tc);
+		if (t==null) {
+			t = OntrackFactory.eINSTANCE.createTrack();
+			t.setName(tc.getName());
+			barkston.getTracks().add(t);
+			createdTracks.put(tc, t);
+			
+			Connector c1 = getOnTrackConnector(tc.startNode);
+			Connector c2 = getOnTrackConnector(tc.endNode);
+			
+			t.setC1(c1);
+			t.setC2(c2);
+			c1.getTrack1s().add(t);
+			c2.getTrack2s().add(t);
+			
+		}
+		return t;
+	}
+	
+	public void rememberNormalPointInCtrlTable(Node n, Track t, ControlTableItem ct){
+		Connector c = getOnTrackConnector(n);
+		HashSet<Track> ts = normalPointTracks.get(c);
+		if (ts==null) {
+			ts = new HashSet<Track>();
+			normalPointTracks.put(c, ts);
+		}
+		ts.add(t);
+		
+//		HashSet<ControlTableItem> cts = normalPointRoutes.get(n);
+//		if (cts==null) {
+//			cts = new HashSet<ControlTableItem>();
+//			normalPointRoutes.put((Point)n, cts);
+//		}
+//		cts.add(ct);
+	}
+	
+	public void rememberReversePointInCtrlTable(Node n, Track t, ControlTableItem ct){
+		Connector c = getOnTrackConnector(n);
+		HashSet<Track> ts = reversePointTracks.get(c);
+		if (ts==null) {
+			ts = new HashSet<Track>();
+			reversePointTracks.put(c, ts);
+		}
+		ts.add(t);
+		
+//		HashSet<ControlTableItem> cts = reversePointRoutes.get(n);
+//		if (cts==null) {
+//			cts = new HashSet<ControlTableItem>();
+//			reversePointRoutes.put((Point)n, cts);
+//		}
+//		cts.add(ct);
+	}
+	
 	public File importBraveData(String inputFolder, String outputFile){
 		try{
 			String nodesFilename = inputFolder + File.separator + "Nodes.csv";
@@ -79,95 +219,183 @@ public class TopologyCalculator {
 
 		
 		
-		TrackPlan barkston = OntrackFactory.eINSTANCE.createTrackPlan();
+		// TrackPlan barkston = OntrackFactory.eINSTANCE.createTrackPlan();
 		
 		//ArrayList<Track> tracks = new ArrayList<Track>();
 
+		// int conNum = 1;
 		for(Route r : rp.getRoutes()){
-		  if(Arrays.asList(routes4Barkston).contains(r.getName())){
+		if(Arrays.asList(routes4Barkston).contains(r.getName())){
 			ArrayList<Point> nPoints = r.getNormalPoints();
 			ArrayList<Point> rPoints = r.getReversePoints();
+
 			ControlTableItem ct = OntrackFactory.eINSTANCE.createControlTableItem();
 			ct.setRoute(r.getName());
-			uk.ac.swanseacoventry.cmt.ontrack.Signal s = OntrackFactory.eINSTANCE.createSignal();
-			s.setName(r.getSignal().getName());
-			ct.setSignal(s);
-			barkston.getSignals().add(s);
+		    barkston.getControlTable().add(ct);
+
 			for(Point pn : nPoints){
-				uk.ac.swanseacoventry.cmt.ontrack.Point p = OntrackFactory.eINSTANCE.createPoint();
-				p.setName(pn.getName());
+				uk.ac.swanseacoventry.cmt.ontrack.Point p = getOnTrackPoint(pn);
 				ct.getNormals().add(p);
-				barkston.getPoints().add(p);
-			    barkston.getControlTable().add(ct);
+				ct.getClears().add(p.getNormalTrack());
 			}
 			
 			for(Point pn : rPoints){
-				uk.ac.swanseacoventry.cmt.ontrack.Point p = OntrackFactory.eINSTANCE.createPoint();
-				p.setName(pn.getName());
+				uk.ac.swanseacoventry.cmt.ontrack.Point p = getOnTrackPoint(pn);
 				ct.getReverses().add(p);
-				barkston.getPoints().add(p);
-			    barkston.getControlTable().add(ct);
+				ct.getClears().add(p.getReverseTrack());
 			}
 			
 			
-			TopoRoute tp = OntrackFactory.eINSTANCE.createTopoRoute();
-			tp.getNames().add(r.getName());
-			tp.setStartSignal(s);
+//			TopoRoute tp = OntrackFactory.eINSTANCE.createTopoRoute();
+//			tp.getNames().add(r.getName());
+//			tp.setStartSignal(s);
 			
-			int conNum = 0;
-			Connector c1 = OntrackFactory.eINSTANCE.createConnector();
-			c1.setId(conNum);
-			barkston.getConnectors().add(c1);
+//			Connector c1 = OntrackFactory.eINSTANCE.createConnector();
+//			c1.setId(conNum);
+//			barkston.getConnectors().add(c1);
+
 			for(TrackCircuit tc: r.getTrackCircuits()){
-				
-				Track t = OntrackFactory.eINSTANCE.createTrack();
-				t.setName(tc.getName());;
-				t.setC1(c1);
-				
-				conNum++;	
-				
-				Connector c2 = OntrackFactory.eINSTANCE.createConnector();
-				c2.setId(conNum);
-				t.setC2(c2);
-				barkston.getConnectors().add(c2);
-				
-				
-				DirectedTrack dt = OntrackFactory.eINSTANCE.createDirectedTrack();
-				dt.setTrack(t);
-				dt.setConnector(c1);
-				t.getDirectedTracks().add(dt);
-				DirectedTrack dt2 = OntrackFactory.eINSTANCE.createDirectedTrack();
-				dt2.setTrack(t);
-				dt2.setConnector(c2);
-				t.getDirectedTracks().add(dt2);
-				
-				tp.getDirectedTracks().add(dt);
-				
-				c1 = c2;
-				//hack to get signal track
-				if(conNum==1){
-					s.setTrack(t);
-					s.setConnector(c2);
-				}
-			    			
+				tc.computeEndNodes();
+				Track t = getOnTrackTrack(tc);
 				ct.getClears().add(t);
-				barkston.getTracks().add(t);
 				
-			}
-			
-			
-			Track last =  tp.getDirectedTracks().get(tp.getDirectedTracks().size()-1).getTrack();
-			for(Track find: barkston.getTracks()){
-				if(find.getC1() == last.getC2())
-				{
-					tp.setEndSignal(find.getSignals().get(0));
+				if (nPoints.contains(tc.startNode)) {
+					rememberNormalPointInCtrlTable(tc.startNode, t, ct);
+				}
+
+				if (nPoints.contains(tc.endNode)) {
+					rememberNormalPointInCtrlTable(tc.endNode, t, ct);
+				}
+
+				if (rPoints.contains(tc.startNode)) {
+					rememberReversePointInCtrlTable(tc.startNode, t, ct);
+				}
+
+				if (rPoints.contains(tc.endNode)) {
+					rememberReversePointInCtrlTable(tc.endNode, t, ct);
 				}
 			}
-			barkston.getTopoRoutes().add(tp);
 			
-		
-		 }
+//			Track last =  tp.getDirectedTracks().get(tp.getDirectedTracks().size()-1).getTrack();
+//			for(Track find: barkston.getTracks()){
+//				if(find.getC1() == last.getC2())
+//				{
+//					tp.setEndSignal(find.getSignals().get(0));
+//				}
+//			}
+//			barkston.getTopoRoutes().add(tp);
+
+			ct.setSignal(getOnTrackSignal(r.getSignal()));
+			for(Track t : ct.getClears() ){
+				if (t.getC1()==ct.getSignal().getConnector()
+						|| t.getC2()==ct.getSignal().getConnector()) {
+					ct.getSignal().setTrack(t);
+					break;
+				}
+			}
 		}
+		}
+		
+		int entryCount = 0;
+		for(uk.ac.swanseacoventry.cmt.ontrack.Signal s : barkston.getSignals()){
+			Connector c = s.getConnector();
+			Track t = s.getTrack();
+			boolean found = false;
+			for(Track t1 : c.getTracks()) {
+				if (t1!=t) {
+					s.setTrack(t1);
+					t1.getSignals().add(s);
+					found = true;
+					break;
+				}
+			}
+			if (!found) {
+				Track entry = OntrackFactory.eINSTANCE.createTrack();
+				entry.setName("ENTRY_" + (entryCount++));
+				barkston.getTracks().add(entry);
+				Connector ec = OntrackFactory.eINSTANCE.createConnector();
+				ec.setId(conNum++);
+				barkston.getConnectors().add(ec);
+				
+				s.setTrack(entry);
+				
+				entry.setC1(ec);
+				entry.setC2(c);
+				entry.getSignals().add(s);
+				
+				ec.getTrack1s().add(entry);
+				c.getTrack2s().add(entry);
+			}
+		
+		}
+		
+		for(Point pn : createdPoints.keySet()){
+			uk.ac.swanseacoventry.cmt.ontrack.Point p = createdPoints.get(pn);
+			Connector c = createdConnectors.get(pn);
+			// if (c==null) break;
+			HashSet<Track> nts = normalPointTracks.get(c);
+			HashSet<Track> rts = reversePointTracks.get(c);
+			// if (nts==null || rts==null) break;
+			HashSet<Track> commonTracks = new HashSet<Track>();
+			commonTracks.addAll(nts);
+			commonTracks.retainAll(rts);
+			nts.removeAll(commonTracks);
+			rts.removeAll(commonTracks);
+			//if (commonTracks.size()>0 && nts.size()>0 && rts.size()>0) 
+			{
+				Track ct = (Track)commonTracks.toArray()[0];
+				Track nt = (Track)nts.toArray()[0];
+				Track rt = (Track)rts.toArray()[0];
+				
+				Connector c1 = p.getNormalTrack().getC1();
+				Connector c2 = p.getNormalTrack().getC2();
+				Connector c3 = p.getReverseTrack().getC2();
+				
+				if (ct.getC1()==c) {
+					ct.setC1(c1);
+					c1.getTrack1s().add(ct);
+				}
+				else {
+					ct.setC2(c1);
+					c1.getTrack2s().add(ct);
+				}
+
+				if (nt.getC1()==c) {
+					nt.setC1(c2);
+					c2.getTrack1s().add(nt);
+				}
+				else {
+					nt.setC2(c2);
+					c2.getTrack2s().add(nt);
+				}
+
+				if (rt.getC1()==c) {
+					rt.setC1(c3);
+					c3.getTrack1s().add(rt);
+				}
+				else {
+					rt.setC2(c3);
+					c3.getTrack2s().add(rt);
+				}
+				
+				barkston.getConnectors().remove(c);
+			}
+			
+		}
+		
+		for(Track t : barkston.getTracks()){
+			DirectedTrack dt1 = OntrackFactory.eINSTANCE.createDirectedTrack();
+			dt1.setTrack(t);
+			dt1.setConnector(t.getC1());
+			DirectedTrack dt2 = OntrackFactory.eINSTANCE.createDirectedTrack();
+			dt2.setTrack(t);
+			dt2.setConnector(t.getC2());
+			t.getDirectedTracks().add(dt1);
+			t.getDirectedTracks().add(dt2);
+		}
+		
+		
+		
 		
 		
 		

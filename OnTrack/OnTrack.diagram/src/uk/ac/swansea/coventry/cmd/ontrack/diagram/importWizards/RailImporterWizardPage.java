@@ -32,7 +32,7 @@ public class RailImporterWizardPage extends WizardNewFileCreationPage {
 	public RailImporterWizardPage(String pageName, IStructuredSelection selection) {
 		super(pageName, selection);
 		setTitle(pageName); //NON-NLS-1
-		setDescription("Import Brave's data into the workspace"); //NON-NLS-1
+		setDescription("Existing Brave model"); //NON-NLS-1
 		tc = new TopologyCalculator();
 	}
 
