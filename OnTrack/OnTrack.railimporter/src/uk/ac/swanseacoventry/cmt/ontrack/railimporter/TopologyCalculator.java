@@ -218,16 +218,6 @@ public class TopologyCalculator {
 		Resource myModel = resourceSet.createResource(URI.createFileURI( outputFile + ".xmi"));
 
 		
-		
-		// TrackPlan barkston = OntrackFactory.eINSTANCE.createTrackPlan();
-		
-		//ArrayList<Track> tracks = new ArrayList<Track>();
-<<<<<<< HEAD
-
-		// int conNum = 1;
-=======
-		int conNum = 0;
->>>>>>> db8551c7fa1a6cacf7374bd76f1423305f2c369c
 		for(Route r : rp.getRoutes()){
 		if(Arrays.asList(routes4Barkston).contains(r.getName())){
 			ArrayList<Point> nPoints = r.getNormalPoints();
@@ -254,17 +244,8 @@ public class TopologyCalculator {
 //			tp.getNames().add(r.getName());
 //			tp.setStartSignal(s);
 			
-<<<<<<< HEAD
-//			Connector c1 = OntrackFactory.eINSTANCE.createConnector();
-//			c1.setId(conNum);
-//			barkston.getConnectors().add(c1);
-
-=======
+	
 			
-			Connector c1 = OntrackFactory.eINSTANCE.createConnector();
-			c1.setId(conNum);
-			barkston.getConnectors().add(c1);
->>>>>>> db8551c7fa1a6cacf7374bd76f1423305f2c369c
 			for(TrackCircuit tc: r.getTrackCircuits()){
 				tc.computeEndNodes();
 				Track t = getOnTrackTrack(tc);
