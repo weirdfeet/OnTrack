@@ -311,3 +311,18 @@ operation safetrack!DirectedTrack oppositeConnector() : safetrack!Connector {
 	else 
 		return t.c1;
 }
+
+operation newFunc0Arg1Out(fn,fd) : CSP!ProcessAssignment {
+	var f = new CSP!ProcessAssignment;
+
+	var lhs = new CSP!ProcessID;
+	lhs.name = fn;
+
+	var rhs = new CSP!ProcessID;
+	rhs.name = fd;
+
+	f.processID = lhs;
+	f.processExpression = rhs;
+	return f;	
+}
+

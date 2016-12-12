@@ -1,5 +1,3 @@
-overlapped=$overlap
-
 include "Data.csp"
 include "Util.csp"
 include "RailEvent.csp"

@@ -1,5 +1,3 @@
-overlapped=$overlap
-
 include "Data.csp"
 include "Util.csp"
 include "RailEvent.csp"
@@ -20,3 +18,41 @@ System = Equipment [ EquipmentAlpha || TrainsAlpha ] Trains
 include "Safety.csp"
 
 $safetychecks
+
+[%
+var cspScript1 : CSP!CSPScript;
+cspScript1 := CSP!CSPScript.all().at(0);
+%]
+
+-- generating datatypes
+[%
+for (dt in cspScript1.dataType)
+{
+	if( dt.isDefined() ) --  and not(dt.name.isNativeCSPType()))
+	{
+		out.println( dt.write(0) );
+		--out.println();
+	}
+}
+%]
+-- end generating datatypes
+
+--generating sets
+[%
+for (st in cspScript1.set)
+{
+  if (st.name == "") continue;
+  out.println( st.write() );
+}
+%]
+-- end generating sets
+
+-- generating functions
+[%
+for (fn in cspScript1.process)
+{
+	out.println( fn.write() );
+}
+%]
+-- end generating function
+releaseTable(_,_) = {}

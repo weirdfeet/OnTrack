@@ -30,7 +30,8 @@ import uk.ac.swanseacoventry.cmt.ontrack.TrackPlan;
 public class TopologyCalculator {
 	RailParser rp = new RailParser();
 	
-	String[] routes4Barkston = {"R3936","R3935", "R3934", "R3939", "R3938", "R3937"}; 
+	//String[] routes4Barkston = {"R3936","R3935", "R3934", "R3939", "R3938", "R3937"};
+	String[] routes4Barkston = {"R3936","R3935", "R3934", "R3939", "R3938", "R3937"};
 	
 	public boolean isInputFolderValid(String inputFolder) {
 		File f = new File(inputFolder);
@@ -405,6 +406,8 @@ public class TopologyCalculator {
 		File newf = new File(outputFile);
 		f.renameTo(newf);
 		return newf;
+		
+		//test
 	}
 		
 		
