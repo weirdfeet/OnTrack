@@ -16,6 +16,15 @@ pre {
 	CSP!CSPScript.all().first().set.clear();
 	CSP!CSPScript.all().first().dataType.clear();
 
+    var functions = CSP!CSPScript.all().first().process;
+    
+	if (trackplan.overlapped) {
+		functions.add(newFunc0Arg1Out("overlapped","true"));
+	}
+	else {
+		functions.add(newFunc0Arg1Out("overlapped","false"));
+	}
+
 	// Datatype POS = all units + nullTrack
 	var pos = newCSPDatatype("POS");
 	// DatatypItemList for POS

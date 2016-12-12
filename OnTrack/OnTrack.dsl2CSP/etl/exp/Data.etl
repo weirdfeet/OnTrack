@@ -23,6 +23,14 @@ pre {
 	var sets = CSP!CSPScript.all().first().set;
 	var datatypes = CSP!CSPScript.all().first().dataType;
 
+	if (trackplan.overlapped) {
+		functions.add(newFunc0Arg1Out("overlapped","true"));
+	}
+	else {
+		functions.add(newFunc0Arg1Out("overlapped","false"));
+	}
+
+
 	var TrackID = newCSPDatatype("TrackID");
 
 	var offTrack = new CSP!DatatypeItem;

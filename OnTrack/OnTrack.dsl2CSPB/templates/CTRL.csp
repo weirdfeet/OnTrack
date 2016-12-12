@@ -18,9 +18,6 @@
  Comments: This model describes the train behaviour of an open system with trains exiting and remaining on the exit track.
 -}
 
--- define if driving takes overlaps into account
-overlap = $overlapped
-
 [%
 var cspScript1 : CSP!CSPScript;
 cspScript1 := CSP!CSPScript.all().at(0);
@@ -121,6 +118,16 @@ CTRL_WITH_TRAINS = RW_CTRL ||| ALL_TRAINS
 -- is needed in order to run through ProB
 MAIN = CTRL_WITH_TRAINS ||| ERROR
 
+-- generating functions
+[%
+for (fn in cspScript1.process)
+{
+	out.println( fn.write() );
+}
+%]
+-- end generating function
+
+
 [%
 
 @cached
@@ -201,5 +208,32 @@ operation SET write(i : Integer) : String
 	}
 	return toReturn;
 }
+
+operation ProcessParameterList write() : String {
+	var ret := "(";
+  var sep := "";
+	for(p in self.item) {
+		ret := ret + sep + p.write();
+	  sep := ", ";
+	}
+	return ret + ")";
+}
+
+operation ProcessID write() : String {
+	var ret := self.name;
+	if (self.parameterList.isDefined()) {
+		ret := ret + self.parameterList.write();
+	}
+  return ret;
+}
+
+operation ProcessAssignment write() : String
+{
+	var ret := "p=e";
+	ret := self.processID.write() + " = " + self.processExpression.write();
+	return ret;
+}
+
+
 
 %]

@@ -10,8 +10,8 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-import org.apache.velocity.VelocityContext;
-import org.apache.velocity.app.Velocity;
+//import org.apache.velocity.VelocityContext;
+//import org.apache.velocity.app.Velocity;
 import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.IPath;
 import org.eclipse.core.runtime.Path;
@@ -166,7 +166,7 @@ public class DSL2CSP {
 		ret = new File(outputPath.toOSString()).mkdir();
 
 		outputFolder = outputPath.toOSString();
-		outputPath = outputPath.append("egl");
+		// outputPath = outputPath.append("egl");
 		eglOutputFolder = outputPath.toOSString();
 		// ret = new File(eglOutputFolder).mkdir();
 		
@@ -189,58 +189,58 @@ public class DSL2CSP {
 		// Identify template's ETL source and EGL output filenames
 		int dot = template.lastIndexOf(".");
 		String etlSource = ETL_SOURCE_DIR + template.substring(0,dot) + ".etl";
-		String eglOutput = eglOutputFolder + File.separator + template.substring(0,dot) + ".egl";
+		String eglOutput = eglOutputFolder + File.separator + template.substring(0,dot) + ".csp";
 		
 		// Use ETL to produce output models
 		inputModel = TrackSchemeEpsilon.createEmfModel(SAFETRACK_MODEL_NAME, trackplan);
 		new TrackSchemeETL(etlSource, inputModel,outputModels).execute(TrackSchemeEpsilon.URI_SOURCE);
 		
 		// Initialise Apache Velocity template engine
-		Velocity.init();
+		//Velocity.init();
 		// Velocity.setProperty(RuntimeConstants, value);
 		
 		// Setup variables for template
-		VelocityContext context = new VelocityContext();
-		context.put("date", date.toString());
-		context.put("model", SAFETRACK_MODEL);
-		context.put("version", VERSION);
-		if (experimental){
-			context.put("overlap", overlap ? "true" : "false");
+		//VelocityContext context = new VelocityContext();
+		//context.put("date", date.toString());
+		//context.put("model", SAFETRACK_MODEL);
+		//context.put("version", VERSION);
+		//if (experimental){
+			//context.put("overlap", overlap ? "true" : "false");
 			// context.put("safetychecks", SafetyAssertions);
-		}
-		else {
-			context.put("safetychecks", SafetyAssertions);
-		}
+		//}
+		//else {
+		//	context.put("safetychecks", SafetyAssertions);
+		//}
 		
-		try {
+	//	try {
 
 			// Prepare output EGL file
-			StringWriter writer = new StringWriter();
+		//	StringWriter writer = new StringWriter();
 
 			// Get the template
 			// Template velocityTemplate = Velocity.getTemplate(TEMPLATES_DIR + template);
-			InputStream input = new java.net.URI(TEMPLATES_DIR + template).toURL().openStream();
+		//	InputStream input = new java.net.URI(TEMPLATES_DIR + template).toURL().openStream();
 //			InputStreamReader reader = new InputStreamReader(input);
 
 			// Process template
 			//velocityTemplate.merge(context, writer);
-			Velocity.evaluate(context, writer, TEMPLATES_DIR + template, input);
+			//Velocity.evaluate(context, writer, TEMPLATES_DIR + template, input);
 
 			// Finish writing to file
-			writer.flush();
-			eglOutput = writer.toString();
-			writer.close();
-		}
-		catch (Exception e) {
-			System.out.println("Error writing ELG output");
-			e.printStackTrace();
-		}
+		//	writer.flush();
+		//	eglOutput = writer.toString();
+		//	writer.close();
+	//	}
+		//catch (Exception e) {
+			//System.out.println("Error writing ELG output");
+			//e.printStackTrace();
+	//	}
 		
 		// configure output filename
 		String outputFile = outputFolder + File.separator + template;
-
+		//File f = new File(TEMPLATES_DIR + template);
 		// process EGL
-		new TrackSchemeEGL(outputFile, eglOutput, outputModels).execute(TrackSchemeEpsilon.STRING_SOURCE);
+		new TrackSchemeEGL(outputFile, TEMPLATES_DIR + template , outputModels).execute(TrackSchemeEpsilon.URI_SOURCE);
 	}
 	
 	public void clearInputModel(){

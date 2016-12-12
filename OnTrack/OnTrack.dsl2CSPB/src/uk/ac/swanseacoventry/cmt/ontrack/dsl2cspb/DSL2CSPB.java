@@ -10,8 +10,8 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-import org.apache.velocity.VelocityContext;
-import org.apache.velocity.app.Velocity;
+//import org.apache.velocity.VelocityContext;
+//import org.apache.velocity.app.Velocity;
 import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.IPath;
 import org.eclipse.core.runtime.Path;
@@ -169,45 +169,45 @@ public class DSL2CSPB {
 		new TrackSchemeETL(etlSource, inputModel,outputModels).execute(TrackSchemeEpsilon.URI_SOURCE);
 		
 		// Initialise Apache Velocity template engine
-		Velocity.init();
+		//Velocity.init();
 		// Velocity.setProperty(RuntimeConstants, value);
 		
 		// Setup variables for template
-		VelocityContext context = new VelocityContext();
-		context.put("date", date.toString());
-		context.put("model", SAFETRACK_MODEL);
-		context.put("version", VERSION);
-		context.put("overlapped", overlap);
-		try {
+		//VelocityContext context = new VelocityContext();
+		//context.put("date", date.toString());
+		//context.put("model", SAFETRACK_MODEL);
+		//context.put("version", VERSION);
+		//context.put("overlapped", overlap);
+		//try {
 
 			// Prepare output EGL file
-			StringWriter writer = new StringWriter();
+			//StringWriter writer = new StringWriter();
 
 			// Get the template
 			// Template velocityTemplate = Velocity.getTemplate(TEMPLATES_DIR + template);
-			InputStream input = new java.net.URI(TEMPLATES_DIR + template).toURL().openStream();
-			InputStreamReader reader = new InputStreamReader(input);
+			//InputStream input = new java.net.URI(TEMPLATES_DIR + template).toURL().openStream();
+			//InputStreamReader reader = new InputStreamReader(input);
 
 			// Process template
 			//velocityTemplate.merge(context, writer);
-			Velocity.evaluate(context, writer, TEMPLATES_DIR + template, input);
+			//Velocity.evaluate(context, writer, TEMPLATES_DIR + template, input);
 
 			// Finish writing to file
-			writer.flush();
-			eglOutput = writer.toString();
-			writer.close();
-		}
-		catch (Exception e) {
+			//writer.flush();
+			//eglOutput = writer.toString();
+			//writer.close();
+		//}
+		//catch (Exception e) {
 
-			System.out.println("Error writing to " + eglOutput);
-			e.printStackTrace();
-		}
+			//System.out.println("Error writing to " + eglOutput);
+			//e.printStackTrace();
+		//}
 		
 		// configure output filename
 		String outputFile = outputFolder + File.separator + template;
 
 		// process EGL
-		new TrackSchemeEGL(outputFile, eglOutput, outputModels).execute(TrackSchemeEpsilon.STRING_SOURCE);
+		new TrackSchemeEGL(outputFile, TEMPLATES_DIR + template, outputModels).execute(TrackSchemeEpsilon.URI_SOURCE);
 	}
 	
 	public void clearInputModel(){
