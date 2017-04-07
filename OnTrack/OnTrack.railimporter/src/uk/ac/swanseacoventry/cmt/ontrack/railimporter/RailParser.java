@@ -7,7 +7,8 @@ import java.io.IOException;
 import java.util.Scanner;
 
 
-import java.util.ArrayList; 
+import java.util.ArrayList;
+import java.util.HashMap; 
  
 /// nice command line flags
 /// change delimeter, also ask first line?
@@ -21,10 +22,10 @@ import java.util.ArrayList;
 public class RailParser
 {
 	private final String DELIMITER = ",";
-	private ArrayList<Node> nodes = new ArrayList<Node>();
-	private ArrayList<Path> paths = new ArrayList<Path>();
-	private ArrayList<TrackCircuit> tracks = new ArrayList<TrackCircuit>();
-	private ArrayList<Route> routes = new ArrayList<Route>();
+	private HashMap<String,Node> nodes = new HashMap<String,Node>();
+	private HashMap<String,Path> paths = new HashMap<String,Path>();
+	private HashMap<String,TrackCircuit> tracks = new HashMap<String,TrackCircuit>();
+	private HashMap<String,Route> routes = new HashMap<String,Route>();
 	private ArrayList<Node> missingNodes = new ArrayList<Node>();
 	private ArrayList<TrackCircuit> missingTracks = new ArrayList<TrackCircuit>();
 	
@@ -35,35 +36,35 @@ public class RailParser
 	}
 
 	
-	public ArrayList<Node> getNodes() {
+	public HashMap<String,Node> getNodes() {
 		return nodes;
 	}
 
-	public void setNodes(ArrayList<Node> nodes) {
+	public void setNodes(HashMap<String,Node> nodes) {
 		this.nodes = nodes;
 	}
 
-	public ArrayList<Path> getPaths() {
+	public HashMap<String,Path> getPaths() {
 		return paths;
 	}
 
-	public void setPaths(ArrayList<Path> paths) {
+	public void setPaths(HashMap<String,Path> paths) {
 		this.paths = paths;
 	}
 
-	public ArrayList<TrackCircuit> getTracks() {
+	public HashMap<String,TrackCircuit> getTracks() {
 		return tracks;
 	}
 
-	public void setTracks(ArrayList<TrackCircuit> tracks) {
+	public void setTracks(HashMap<String,TrackCircuit> tracks) {
 		this.tracks = tracks;
 	}
 
-	public ArrayList<Route> getRoutes() {
+	public HashMap<String,Route> getRoutes() {
 		return routes;
 	}
 
-	public void setRoutes(ArrayList<Route> routes) {
+	public void setRoutes(HashMap<String,Route> routes) {
 		this.routes = routes;
 	}
 
@@ -99,7 +100,7 @@ public class RailParser
 			n.setId(parts[3].trim());
 			n.setDescription(parts[4].trim());
 		    Node created = n.createNode();
-			nodes.add(created);
+			nodes.put(created.getName(), created);
 			System.out.println("Adding: " + created.toString());
         }
          
@@ -118,13 +119,13 @@ public class RailParser
 			line = scanner.nextLine();
 			String [] parts = line.split(DELIMITER, -1);
             
-			int nodePosition = lookupNode(parts[0].trim());
-			if (nodePosition != -1){
-				Node n = nodes.get(nodePosition);
+			Node n = nodes.get(parts[0].trim());
+			
+			if (n != null){
 				Point.PointBuilder p = new Point.PointBuilder(n);
 				p.setSwitchTime(Integer.parseInt(parts[2].trim()));
 				Point created = p.createPoint();
-				nodes.set(nodePosition,created);
+				nodes.put(created.getName(),created);
 				System.out.println("Adding: " + created.toString());
 					
 			}
@@ -146,13 +147,12 @@ public class RailParser
 			if(!line.isEmpty() && !line.startsWith("CLEAR")){
 				String [] parts = line.split(DELIMITER, -1);
             
-				int nodePosition = lookupNode(parts[0].trim());
-				if (nodePosition != -1){
-					Node n = nodes.get(nodePosition);
+				Node n = nodes.get(parts[0].trim());
+				if (n != null){
 					Signal.SignalBuilder s = new Signal.SignalBuilder(n);
 					s.setSwitchTime(Integer.parseInt(parts[2].trim()));
 					Signal created = s.createSignal();
-					nodes.set(nodePosition,created);
+					nodes.put(created.getName(),created);
 					System.out.println("Adding: " + created.toString());
 				}	
 			}
@@ -175,16 +175,16 @@ public class RailParser
 			String [] parts = line.split(DELIMITER, -1);
             
 			Path.PathBuilder p = new Path.PathBuilder(parts[0].trim());
-			int startNodePosition = lookupNode(parts[1].trim());
-			int endNodePosition = lookupNode(parts[2].trim());
-			p.setStartNode(nodes.get(startNodePosition));
-			p.setEndNode(nodes.get(endNodePosition));
+			Node startNode = nodes.get(parts[1].trim());
+			Node endNode = nodes.get(parts[2].trim());
+			p.setStartNode(startNode);
+			p.setEndNode(endNode);
 			p.setLength(Double.valueOf(parts[3].trim()));
 			p.setSpeedLimitUp(Double.valueOf(parts[4].trim()));
 			p.setSpeedLimitDown(Double.valueOf(parts[5].trim()));
 			p.setGradient(Double.valueOf(parts[6].trim()));
 		    Path created = p.createPath();
-			paths.add(created);
+			paths.put(created.getName(), created);
 			System.out.println("Adding: " + created.toString());
         }
          
@@ -209,7 +209,7 @@ public class RailParser
 			t.setPaths(extractPaths(parts[1].trim()));
 			TrackCircuit created = t.createTrackCircuit();
 			
-			tracks.add(created);
+			tracks.put(created.getName(), created);
 			System.out.println("Adding: " + created.toString());
         }
         //Do not forget to close the scanner 
@@ -233,7 +233,7 @@ public class RailParser
 			//r.setOverlaps();
 				
 			if(r!= null){		
-				routes.add(r);
+				routes.put(r.getName(), r);
 				System.out.println("Adding: " + r.toString());
 			}
 			
@@ -247,18 +247,17 @@ public class RailParser
 		
 		String[] parts = line.split(DELIMITER, -1);
 		
-		int signalPosition = lookupNode(parts[2].trim());
+	//	int signalPosition = lookupNode(parts[2].trim());
 		
-		Signal sig = (Signal) nodes.get(signalPosition);
+		Signal sig = (Signal) nodes.get(parts[2].trim());
 		
 		Route.RouteBuilder r = new Route.RouteBuilder(parts[0].trim(), sig);
 
 		for(int i=3; i < parts.length - 9; i++ ){
 			String s = parts[i].trim();
 			if(s.contains("NORMAL")){
-				int pointPosition  = lookupNode(s.split(" ")[0].trim());
-				if(pointPosition != -1){
-					Point p =  (Point) nodes.get(pointPosition);
+				Point p = (Point) nodes.get(s.split(" ")[0].trim());
+				if(p != null){
 					r.addNormalPoint(p);
 				}
 				else{
@@ -266,9 +265,8 @@ public class RailParser
 				}
 			}
 			else if(s.contains("REVERSE")){
-				int pointPosition  = lookupNode(s.split(" ")[0].trim());
-				if(pointPosition != -1){
-					Point p =  (Point) nodes.get(pointPosition);
+				Point p = (Point) nodes.get(s.split(" ")[0].trim());
+				if(p != null){
 					r.addReversePoint(p);
 				}	
 				else{
@@ -277,9 +275,8 @@ public class RailParser
 			}
 			//No overlaps so ok to assume all just in route
 			else if(s.contains("TC")){
-				int tcPosition  = lookupTrackCircuit(s);
-				if(tcPosition != -1){
-					TrackCircuit tc =  tracks.get(tcPosition);
+				TrackCircuit tc = tracks.get(s);
+				if(tc != null){
 					r.addTrackCircuit(tc);
 				}	
 				else{
@@ -303,7 +300,7 @@ public class RailParser
 		for(String s : pathParts){
 			if(!s.isEmpty()){
 				boolean found = false;
-				for(Path p : paths){
+				for(Path p : paths.values()){
 					if(p.getName().equals(s.trim())){
 						result.add(p);
 						found = true;
@@ -320,51 +317,51 @@ public class RailParser
 	}
 	
 
-	public int lookupTrackCircuit(String tcName){
-		for(int i = 0; i< tracks.size(); i++){
-			TrackCircuit tc = tracks.get(i);
-			if(tc.getName().equals(tcName)){
-				return i;
-			}
-		}
-		System.out.println("Track Circuit " + tcName + " not found");
-		Scanner input = new Scanner(System.in);
-		String response = input.nextLine();
-		
-		TrackCircuit missing = new TrackCircuit.TrackCircuitBuilder(tcName).createTrackCircuit();
-
-		missingTracks.add(missing);
-
-		return -1;
-	
-	}
-	
-	public int lookupNode(String nodeName){
-		for(int i = 0; i< nodes.size(); i++){
-			Node n = nodes.get(i);
-			if(n.getName().equals(nodeName)){
-				return i;
-			}
-		}
-		System.out.println("Node " + nodeName + " not found");
-		
-		Node missing = new Node.NodeBuilder(nodeName).createNode();
-		
-		missingNodes.add(missing);
-		
-		/*Scanner input = new Scanner(System.in);
-		String response = input.nextLine();
-		if(response.equals("y")){
-			Node.NodeBuilder n = new Node.NodeBuilder(nodeName);
-			Node created = n.createNode();
-			nodes.add(created);
-			System.out.println("Adding: " + created.toString());
-			return nodes.size() - 1;
-		}
-		else{ */
-			return -1;
-		//}
-	}
+//	public int lookupTrackCircuit(String tcName){
+//		for(int i = 0; i< tracks.size(); i++){
+//			TrackCircuit tc = tracks.get(i);
+//			if(tc.getName().equals(tcName)){
+//				return i;
+//			}
+//		}
+//		System.out.println("Track Circuit " + tcName + " not found");
+//		Scanner input = new Scanner(System.in);
+//		String response = input.nextLine();
+//		
+//		TrackCircuit missing = new TrackCircuit.TrackCircuitBuilder(tcName).createTrackCircuit();
+//
+//		missingTracks.add(missing);
+//
+//		return -1;
+//	
+//	}
+//	
+//	public int lookupNode(String nodeName){
+//		for(int i = 0; i< nodes.size(); i++){
+//			Node n = nodes.get(i);
+//			if(n.getName().equals(nodeName)){
+//				return i;
+//			}
+//		}
+//		System.out.println("Node " + nodeName + " not found");
+//		
+//		Node missing = new Node.NodeBuilder(nodeName).createNode();
+//		
+//		missingNodes.add(missing);
+//		
+//		/*Scanner input = new Scanner(System.in);
+//		String response = input.nextLine();
+//		if(response.equals("y")){
+//			Node.NodeBuilder n = new Node.NodeBuilder(nodeName);
+//			Node created = n.createNode();
+//			nodes.add(created);
+//			System.out.println("Adding: " + created.toString());
+//			return nodes.size() - 1;
+//		}
+//		else{ */
+//			return -1;
+//		//}
+//	}
 	
 	
 	

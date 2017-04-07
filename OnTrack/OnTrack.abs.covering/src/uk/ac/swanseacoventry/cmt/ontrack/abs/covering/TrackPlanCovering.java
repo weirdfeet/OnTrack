@@ -119,9 +119,11 @@ public class TrackPlanCovering  {
 		
 		// collect DirectedTracks can reach to any criticals maximal up to a signal
 		computeReachables(cone, true);
+		// add both directions to cone, i.e. reverse directions.
 		cone = reverseDirectedTrackSet(cone);
 		
 		// compute the intersection
+		// Rechable tracks from entries (entryReachables).
 		cone.retainAll(entryReachables);
 
 		// collect points, crossings, tracks in the region
@@ -246,7 +248,7 @@ public class TrackPlanCovering  {
 						HashSet<Exit> es = new HashSet<Exit>();
 						es.addAll(dt.getConnector().getExits());
 						es.retainAll(subpl.getExits());
-						if (!es.isEmpty()) continue; // if there is alread an exit attached, no need to add more
+						if (!es.isEmpty()) continue; // if there is already an exit attached, no need to add more
 
 						Exit e = OntrackFactory.eINSTANCE.createExit();
 						e.setConnector(dt.getConnector());

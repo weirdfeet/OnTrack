@@ -8,7 +8,7 @@ public class TrackCircuit {
 
 	private String name;
 	private ArrayList<Path> paths;
-	public Node startNode = null;
+	public Node startNode = null; /// WAT? Phil fix
 	public Node endNode = null;
 	private boolean computed = false;
 	
