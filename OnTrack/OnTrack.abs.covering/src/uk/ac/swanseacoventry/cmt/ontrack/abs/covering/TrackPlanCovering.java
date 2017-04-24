@@ -106,6 +106,12 @@ public class TrackPlanCovering  {
 		
 		HashSet<DirectedTrack> cone = new HashSet<DirectedTrack>();
 		for(Track t : criticals){
+			if (t.getName().equals("TC402"))
+			{
+				String t1 = t.getName();
+				t1 = t1 + "-TC402";
+			}
+			
 			cone.addAll(t.getDirectedTracks());
 			if (t.getPoint()!=null){
 				cone.addAll(t.getPoint().getNormalTrack().getDirectedTracks());
@@ -209,6 +215,11 @@ public class TrackPlanCovering  {
 		// routes
 		HashSet<String> coneRoutes = new HashSet<String>();
 		for(OwnControlTableItem octi : subControlTable){
+			if (octi.signal!=null && octi.signal.getName().equals("N9925"))
+			{
+				String tem = "N9925";
+				tem = tem + "-debug";
+			}
 			if (coneSignals.contains(octi.signal) &&
 					(!octi.normals.isEmpty() ||
 					 !octi.reverses.isEmpty() ||
@@ -216,9 +227,9 @@ public class TrackPlanCovering  {
 					 !octi.directions.isEmpty())) {
 				subpl.getSignals().add(octi.signal);
 				coneRoutes.add(octi.name);
-			}
-			if (!octi.normals.isEmpty() ||
-					 !octi.reverses.isEmpty()){
+//			}
+//			if (!octi.normals.isEmpty() ||
+//					 !octi.reverses.isEmpty()){
 				ControlTableItem cti = OntrackFactory.eINSTANCE.createControlTableItem();
 				cti.setSignal(octi.signal);
 				cti.setRoute(octi.name);

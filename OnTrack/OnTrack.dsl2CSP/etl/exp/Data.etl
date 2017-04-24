@@ -372,13 +372,13 @@ to f : CSP!ProcessAssignment {
 	else 
 		c = t1.c1;
 	var t2 = c.findFirstDiffTrack(plan,t1);
-	var n2; if (t1.isDefined()) n2 = t2.getName(); else n2 = offTrack.name;
+	var n2; if (t2.isDefined()) n2 = t2.name; else n2 = offTrack.name;
 	var n3 = offTrack.name;
 	
 	for(s in t1.signals) {
 		if (s.connector==c) {
 			clearSet.item.add(newCSPSetItem(t1.name));
-			if (trackplan.overlapped) clearSet.item.add(newCSPSetItem(t2.getName()));
+			if (trackplan.overlapped) clearSet.item.add(newCSPSetItem(n2));
 			directionSet.item.add(newCSPSetItem(n1 + "." + n3 + "." + n2));
 			break;
 		}
@@ -412,7 +412,7 @@ to f : CSP!ProcessAssignment {
 		}
 		var ut = i.unoccupiedTrack;
 		var ot = i.occupiedTrack; if (not(ot.isDefined())) ot = offTrack;
-		rls.item.add(newCSPSetItem(ut.name() + "." + ot.name()));
+		rls.item.add(newCSPSetItem(ut.name + "." + ot.name));
 	}
 
 	delete f;

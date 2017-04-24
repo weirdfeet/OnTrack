@@ -25,6 +25,7 @@ import org.eclipse.ui.PlatformUI;
 
 import uk.ac.swanseacoventry.cmt.ontrack.Track;
 import uk.ac.swanseacoventry.cmt.ontrack.diagram.edit.policies.TrackItemSemanticEditPolicy;
+import uk.ac.swanseacoventry.cmt.ontrack.diagram.edit.policies.custom.TrackBendpointEditPolicy;
 import uk.ac.swanseacoventry.cmt.ontrack.diagram.edit.policies.custom.TrackConnectionEditPolicy;
 import uk.ac.swanseacoventry.cmt.ontrack.diagram.part.OntrackDiagramEditor;
 
@@ -52,8 +53,27 @@ public class TrackEditPart extends ConnectionNodeEditPart implements ITreeBranch
 		super.createDefaultEditPolicies();
 		installEditPolicy(EditPolicyRoles.SEMANTIC_ROLE, new TrackItemSemanticEditPolicy());
 		installEditPolicy(EditPolicy.CONNECTION_ROLE, new TrackConnectionEditPolicy());
+
+		// whenever the old policy was just installed, add our own
+		installEditPolicy(EditPolicy.CONNECTION_BENDPOINTS_ROLE, new TrackBendpointEditPolicy());
 	}
 
+	// NGA: the two following methods override the EditPolicy installation for Bendpoints Role
+	//      they forces the use of our BendPoint Edit Policy
+	@Override
+	protected void refreshRouterChange() {
+		super.refreshRouterChange();
+		// whenever the old policy was just installed, add our own
+		installEditPolicy(EditPolicy.CONNECTION_BENDPOINTS_ROLE, new TrackBendpointEditPolicy());
+	}
+
+	@Override
+	protected void refreshRoutingStyles() {
+		super.refreshRoutingStyles();
+		// whenever the old policy was just installed, add our own
+		installEditPolicy(EditPolicy.CONNECTION_BENDPOINTS_ROLE, new TrackBendpointEditPolicy());
+	}
+	
 	/**
 	* @generated
 	*/
@@ -186,60 +206,63 @@ public class TrackEditPart extends ConnectionNodeEditPart implements ITreeBranch
 
 		/**
 		 * @generated NOT
+		 * NGA: the following two methods have been used to prevent adding bendpoints into a track
+		 * we now implement bendpoint edit policy to prevent this; when a bendpoint is added, it is
+		 * converted into a connector; this enable quick drawing a track plan 
 		 */
-		@SuppressWarnings("rawtypes")
-		public PointList getPoints() {
-			View view = (View) getModel();
-			Track track = (Track) view.getElement();
-			uk.ac.swanseacoventry.cmt.ontrack.Point p = track != null ? track.getPoint() : null;
-			uk.ac.swanseacoventry.cmt.ontrack.Crossing crossing = track != null ? track.getCrossing() : null;
-			Point midPoint = null;
-
-			if (p != null || crossing != null) {
-				Track straightTrack;
-				if (p != null)
-					straightTrack = p.getNormalTrack();
-				else
-					straightTrack = crossing.getTrack1();
-
-				IEditorPart editorPart = getEditorPart();
-
-				if (editorPart instanceof OntrackDiagramEditor) {
-					List editParts = ((OntrackDiagramEditor) editorPart).getDiagramGraphicalViewer()
-							.findEditPartsForElement(EMFCoreUtil.getProxyID(straightTrack), TrackEditPart.class);
-					if (editParts.size() >= 1) {
-						TrackEditPart straightTrackEP = (TrackEditPart) editParts.get(0);
-						TrackFigure trackFig = (TrackFigure) straightTrackEP.getFigure();
-						Point s = trackFig.getStart();
-						Point e = trackFig.getEnd();
-						midPoint = new Point((s.x + e.x) / 2, (s.y + e.y) / 2);
-					}
-				}
-
-			}
-
-			PointList pts = super.getPoints();
-			if (pts.size() >= 2) {
-				Point start = super.getStart();
-				Point end = super.getEnd();
-				PointList newPts = new PointList();
-				newPts.addPoint(start);
-				if (midPoint != null)
-					newPts.addPoint(midPoint);
-				newPts.addPoint(end);
-				pts = newPts;
-			}
-			return pts;
-		}
-
-		@Override
-		public void paint(Graphics graphics) {
-			getPoints();
-			View view = (View) getModel();
-			Track track = (Track) view.getElement();
-			fFigureTrackNameFigure.setVisible(track.getPointReverse() == null && track.getCrossing2() == null);
-			super.paint(graphics);
-		}
+//		@SuppressWarnings("rawtypes")
+//		public PointList getPoints() {
+//			View view = (View) getModel();
+//			Track track = (Track) view.getElement();
+//			uk.ac.swanseacoventry.cmt.ontrack.Point p = track != null ? track.getPoint() : null;
+//			uk.ac.swanseacoventry.cmt.ontrack.Crossing crossing = track != null ? track.getCrossing() : null;
+//			Point midPoint = null;
+//
+//			if (p != null || crossing != null) {
+//				Track straightTrack;
+//				if (p != null)
+//					straightTrack = p.getNormalTrack();
+//				else
+//					straightTrack = crossing.getTrack1();
+//
+//				IEditorPart editorPart = getEditorPart();
+//
+//				if (editorPart instanceof OntrackDiagramEditor) {
+//					List editParts = ((OntrackDiagramEditor) editorPart).getDiagramGraphicalViewer()
+//							.findEditPartsForElement(EMFCoreUtil.getProxyID(straightTrack), TrackEditPart.class);
+//					if (editParts.size() >= 1) {
+//						TrackEditPart straightTrackEP = (TrackEditPart) editParts.get(0);
+//						TrackFigure trackFig = (TrackFigure) straightTrackEP.getFigure();
+//						Point s = trackFig.getStart();
+//						Point e = trackFig.getEnd();
+//						midPoint = new Point((s.x + e.x) / 2, (s.y + e.y) / 2);
+//					}
+//				}
+//
+//			}
+//
+//			PointList pts = super.getPoints();
+//			if (pts.size() >= 2) {
+//				Point start = super.getStart();
+//				Point end = super.getEnd();
+//				PointList newPts = new PointList();
+//				newPts.addPoint(start);
+//				if (midPoint != null)
+//					newPts.addPoint(midPoint);
+//				newPts.addPoint(end);
+//				pts = newPts;
+//			}
+//			return pts;
+//		}
+//
+//		@Override
+//		public void paint(Graphics graphics) {
+//			getPoints();
+//			View view = (View) getModel();
+//			Track track = (Track) view.getElement();
+//			fFigureTrackNameFigure.setVisible(track.getPointReverse() == null && track.getCrossing2() == null);
+//			super.paint(graphics);
+//		}
 
 	}
 

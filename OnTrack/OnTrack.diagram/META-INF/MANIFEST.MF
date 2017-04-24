@@ -3,7 +3,7 @@ Bundle-ManifestVersion: 2
 Bundle-Name: %pluginName
 Bundle-SymbolicName: OnTrack.dsl.diagram; singleton:=true
 Bundle-Version: 1.0.0.qualifier
-Bundle-ClassPath: .
+Bundle-ClassPath: ., lib/zt-zip-1.11.jar, lib/slf4j-api-1.7.25.jar, lib/jsch-0.1.54.jar
 Bundle-Activator: uk.ac.swanseacoventry.cmt.ontrack.diagram.part.OntrackDiagramEditorPlugin
 Bundle-Vendor: %providerName
 Bundle-Localization: plugin

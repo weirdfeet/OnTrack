@@ -4,15 +4,12 @@ package uk.ac.swanseacoventry.cmt.ontrack.diagram.view;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.net.URL;
-import java.nio.file.FileSystems;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
-import org.eclipse.core.runtime.preferences.ConfigurationScope;
-import org.eclipse.emf.common.util.URI;
 import org.eclipse.gef.commands.CompoundCommand;
 import org.eclipse.gmf.runtime.diagram.ui.commands.ICommandProxy;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.DiagramEditPart;
@@ -21,12 +18,12 @@ import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.jface.action.Action;
 import org.eclipse.jface.action.IToolBarManager;
 import org.eclipse.jface.preference.IPreferenceStore;
-import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.jface.viewers.LabelProvider;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.DisposeEvent;
 import org.eclipse.swt.events.DisposeListener;
 import org.eclipse.swt.widgets.Composite;
+import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Event;
 import org.eclipse.swt.widgets.Listener;
 import org.eclipse.swt.widgets.MessageBox;
@@ -34,15 +31,10 @@ import org.eclipse.swt.widgets.Table;
 import org.eclipse.swt.widgets.TableColumn;
 import org.eclipse.swt.widgets.TableItem;
 import org.eclipse.ui.IEditorPart;
-import org.eclipse.ui.IWorkbench;
 import org.eclipse.ui.IWorkbenchPage;
 import org.eclipse.ui.IWorkbenchPartReference;
-import org.eclipse.ui.IWorkbenchWindow;
-import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.part.ViewPart;
 import org.eclipse.ui.plugin.AbstractUIPlugin;
-import org.osgi.service.prefs.Preferences;
-
 import uk.ac.swanseacoventry.cmt.ontrack.ControlTableItem;
 import uk.ac.swanseacoventry.cmt.ontrack.Point;
 import uk.ac.swanseacoventry.cmt.ontrack.Signal;
@@ -53,8 +45,12 @@ import uk.ac.swanseacoventry.cmt.ontrack.diagram.custom.Util;
 import uk.ac.swanseacoventry.cmt.ontrack.diagram.edit.commands.custom.TrackPlanSelectSubCommand;
 import uk.ac.swanseacoventry.cmt.ontrack.diagram.part.OntrackDiagramEditorPlugin;
 import uk.ac.swanseacoventry.cmt.ontrack.diagram.preferences.custom.PreferenceConstants;
+import uk.ac.swanseacoventry.cmt.ontrack.diagram.util.RemoteFDR3Helper;
 import uk.ac.swanseacoventry.cmt.ontrack.diagram.view.listeners.PartListener2Impl;
 import uk.ac.swanseacoventry.cmt.ontrack.dsl2csp.DSL2CSP;
+import com.jcraft.jsch.*;
+
+
 public class CSPTableViewer extends ViewPart {
 	private Table table;
 	private Listener focusListener;
@@ -73,7 +69,7 @@ public class CSPTableViewer extends ViewPart {
     }
 
 	public void createPartControl(Composite parent) {
-		table = new Table(parent, SWT.VIRTUAL | SWT.BORDER | SWT.FULL_SELECTION);
+		table = new Table(parent, SWT.VIRTUAL | SWT.BORDER | SWT.FULL_SELECTION | SWT.MULTI);
 
 		int i = 0;
 		TableColumn column;
@@ -160,31 +156,6 @@ public class CSPTableViewer extends ViewPart {
 		
 	}
 	
-//	private String saveSubModelToFile(String basePath, SubTrackPlan sub) {
-//		IPath projectPath = ResourcesPlugin.getWorkspace().getRoot().getFolder(new Path(URI.createURI(basePath).toPlatformString(false))).getProject().getLocation();
-//		
-//		// create output folders
-//		IPath outputPath = projectPath.append("output");
-//		boolean ret = new File(outputPath.toOSString()).mkdir();
-//		outputPath = outputPath.append("covering");
-//		ret = new File(outputPath.toOSString()).mkdir();
-//		outputPath.append("sub.model");
-//		
-//		Resource.Factory.Registry reg = Resource.Factory.Registry.INSTANCE;
-//		Map<String, Object> m = reg.getExtensionToFactoryMap();
-//		m.put("daform", new XMIResourceFactoryImpl());
-//		
-//		ResourceSet resSet = new ResourceSetImpl();
-//		Resource resource = resSet.createResource(URI.createFileURI(outputPath.toOSString()));
-//		resource.getContents().add(sub);
-//		try {
-//			resource.save(Collections.EMPTY_MAP);
-//		}
-//		catch(Exception e) {
-//			return "";
-//		}
-//		return outputPath.toOSString();
-//	}
 	void highLight(SubTrackPlan i) {
 		if (highLighted!=null) unhighLight();
 		highLighted = i;
@@ -322,7 +293,7 @@ public class CSPTableViewer extends ViewPart {
 					
 			 }
 		 });
-		 mgr.add(new Action("FDR3"){
+		 mgr.add(new Action("LMC"){
 			 public void run(){
 				DiagramEditPart diagramEditPart = Util.getDiagramEP();
 				if (diagramEditPart==null) return;
@@ -342,7 +313,44 @@ public class CSPTableViewer extends ViewPart {
 					
 			 }
 		 });
-//		 mgr.add(new Action("Init"){
+
+		 // running FDR3 at a remote server via ssh
+		 // there are 2 steps: 1. upload models, 2. run refines on each model
+		 mgr.add(new Action("RMC"){
+			 public void run(){
+				System.out.println("Remote model checking");
+				DiagramEditPart diagramEditPart = Util.getDiagramEP();
+				if (diagramEditPart==null) return;
+				
+				RemoteFDR3Helper remote = new RemoteFDR3Helper();
+				remote.display = Display.getDefault();
+
+				for(TableItem item : table.getSelection()){
+					remote.tableItems.add(item);
+					Object tp = item.getData();
+					if (tp instanceof TrackPlan){
+						if (!fullModelPath.equals("")){
+							// callFDR3(fullModelPath);
+							System.out.println("Model check: " + fullModelPath);
+							remote.modelFolders.add(fullModelPath);
+						}
+					} else if (tp instanceof SubTrackPlan) {
+						if (modelPaths.containsKey(tp)){
+							// callFDR3(modelPaths.get(tp));
+							System.out.println("Model check: " + modelPaths.get(tp));
+							remote.modelFolders.add(modelPaths.get(tp));
+						}
+					}
+				}
+				
+				Thread t = new Thread(remote);
+				t.start();
+					
+			 }
+		 });
+
+		 
+		 //		 mgr.add(new Action("Init"){
 //			 public void run(){
 //					DiagramEditPart diagramEditPart = getDiagramEP();
 //					if (diagramEditPart==null) return;
