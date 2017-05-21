@@ -2,6 +2,7 @@ package uk.ac.swanseacoventry.cmt.ontrack.diagram.edit.parts;
 
 import org.eclipse.draw2d.ColorConstants;
 import org.eclipse.draw2d.Connection;
+import org.eclipse.gef.EditPolicy;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.ConnectionNodeEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.ITreeBranchEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editpolicies.EditPolicyRoles;
@@ -9,6 +10,7 @@ import org.eclipse.gmf.runtime.draw2d.ui.figures.PolylineConnectionEx;
 import org.eclipse.gmf.runtime.notation.View;
 
 import uk.ac.swanseacoventry.cmt.ontrack.diagram.edit.policies.SignalTrackItemSemanticEditPolicy;
+import uk.ac.swanseacoventry.cmt.ontrack.diagram.edit.policies.custom.NoBendpointEditPolicy;
 
 /**
  * @generated
@@ -33,6 +35,24 @@ public class SignalTrackEditPart extends ConnectionNodeEditPart implements ITree
 	protected void createDefaultEditPolicies() {
 		super.createDefaultEditPolicies();
 		installEditPolicy(EditPolicyRoles.SEMANTIC_ROLE, new SignalTrackItemSemanticEditPolicy());
+		// whenever the old policy was just installed, add our own
+		installEditPolicy(EditPolicy.CONNECTION_BENDPOINTS_ROLE, new NoBendpointEditPolicy());
+	}
+
+	// NGA: the two following methods override the EditPolicy installation for Bendpoints Role
+	//      they forces the use of our BendPoint Edit Policy
+	@Override
+	protected void refreshRouterChange() {
+		super.refreshRouterChange();
+		// whenever the old policy was just installed, add our own
+		installEditPolicy(EditPolicy.CONNECTION_BENDPOINTS_ROLE, new NoBendpointEditPolicy());
+	}
+
+	@Override
+	protected void refreshRoutingStyles() {
+		super.refreshRoutingStyles();
+		// whenever the old policy was just installed, add our own
+		installEditPolicy(EditPolicy.CONNECTION_BENDPOINTS_ROLE, new NoBendpointEditPolicy());
 	}
 
 	/**

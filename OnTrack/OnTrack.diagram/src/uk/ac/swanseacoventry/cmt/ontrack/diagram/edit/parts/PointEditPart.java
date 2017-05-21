@@ -1,11 +1,8 @@
 package uk.ac.swanseacoventry.cmt.ontrack.diagram.edit.parts;
 
-import java.util.List;
-
 import org.eclipse.draw2d.Connection;
 import org.eclipse.draw2d.Graphics;
 import org.eclipse.draw2d.geometry.Point;
-import org.eclipse.draw2d.geometry.PointList;
 import org.eclipse.gef.EditPart;
 import org.eclipse.gef.EditPolicy;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.ConnectionNodeEditPart;
@@ -13,7 +10,6 @@ import org.eclipse.gmf.runtime.diagram.ui.editparts.ITreeBranchEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editpolicies.EditPolicyRoles;
 import org.eclipse.gmf.runtime.draw2d.ui.figures.PolylineConnectionEx;
 import org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel;
-import org.eclipse.gmf.runtime.emf.core.util.EMFCoreUtil;
 import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.ui.IEditorPart;
 import org.eclipse.ui.IWorkbench;
@@ -21,11 +17,9 @@ import org.eclipse.ui.IWorkbenchPage;
 import org.eclipse.ui.IWorkbenchWindow;
 import org.eclipse.ui.PlatformUI;
 
-import uk.ac.swanseacoventry.cmt.ontrack.Track;
-import uk.ac.swanseacoventry.cmt.ontrack.diagram.edit.parts.TrackEditPart.TrackFigure;
 import uk.ac.swanseacoventry.cmt.ontrack.diagram.edit.policies.PointItemSemanticEditPolicy;
 import uk.ac.swanseacoventry.cmt.ontrack.diagram.edit.policies.custom.PointConnectionEditPolicy;
-import uk.ac.swanseacoventry.cmt.ontrack.diagram.part.OntrackDiagramEditor;
+import uk.ac.swanseacoventry.cmt.ontrack.diagram.edit.policies.custom.NoBendpointEditPolicy;
 
 /**
  * @generated
@@ -51,6 +45,24 @@ public class PointEditPart extends ConnectionNodeEditPart implements ITreeBranch
 		super.createDefaultEditPolicies();
 		installEditPolicy(EditPolicyRoles.SEMANTIC_ROLE, new PointItemSemanticEditPolicy());
 		installEditPolicy(EditPolicy.CONNECTION_ROLE, new PointConnectionEditPolicy());
+		// whenever the old policy was just installed, add our own
+		installEditPolicy(EditPolicy.CONNECTION_BENDPOINTS_ROLE, new NoBendpointEditPolicy());
+	}
+
+	// NGA: the two following methods override the EditPolicy installation for Bendpoints Role
+	//      they forces the use of our BendPoint Edit Policy
+	@Override
+	protected void refreshRouterChange() {
+		super.refreshRouterChange();
+		// whenever the old policy was just installed, add our own
+		installEditPolicy(EditPolicy.CONNECTION_BENDPOINTS_ROLE, new NoBendpointEditPolicy());
+	}
+
+	@Override
+	protected void refreshRoutingStyles() {
+		super.refreshRoutingStyles();
+		// whenever the old policy was just installed, add our own
+		installEditPolicy(EditPolicy.CONNECTION_BENDPOINTS_ROLE, new NoBendpointEditPolicy());
 	}
 
 	/**
@@ -166,52 +178,52 @@ public class PointEditPart extends ConnectionNodeEditPart implements ITreeBranch
 			return editor;
 		}
 
-		/**
-		 * @generated NOT
-		 */
-		@SuppressWarnings("rawtypes")
-		public PointList getPoints() {
-			View view = (View) getModel();
-			if (!(view.getElement() instanceof uk.ac.swanseacoventry.cmt.ontrack.Point))
-				return super.getPoints();
-			uk.ac.swanseacoventry.cmt.ontrack.Point p = (uk.ac.swanseacoventry.cmt.ontrack.Point) view.getElement();
-			Track straightTrack;
-			straightTrack = p.getNormalTrack();
-			Point midPoint = null;
-			PointList pts = super.getPoints();
-
-			if (p != null && straightTrack != null && pts.size() >= 2) {
-				IEditorPart editorPart = getEditorPart();
-
-				if (editorPart instanceof OntrackDiagramEditor) {
-					List editParts = ((OntrackDiagramEditor) editorPart).getDiagramGraphicalViewer()
-							.findEditPartsForElement(EMFCoreUtil.getProxyID(straightTrack), TrackEditPart.class);
-					if (editParts.size() >= 1) {
-						TrackEditPart straightTrackEP = (TrackEditPart) editParts.get(0);
-						TrackFigure trackFig = (TrackFigure) straightTrackEP.getFigure();
-						Point s = trackFig.getStart();
-						Point e = trackFig.getEnd();
-						midPoint = new Point((s.x + e.x) / 2, (s.y + e.y) / 2);
-					}
-				}
-
-				if (midPoint != null) {
-					PointList newPts = new PointList();
-					newPts.addPoint(midPoint);
-					newPts.addPoint(midPoint);
-					return newPts;
-				}
-			}
-
-			return pts;
-
-		}
-
-		@Override
-		public void paint(Graphics graphics) {
-			getPoints();
-			super.paint(graphics);
-		}
+//		/**
+//		 * @generated NOT
+//		 */
+//		@SuppressWarnings("rawtypes")
+//		public PointList getPoints() {
+//			View view = (View) getModel();
+//			if (!(view.getElement() instanceof uk.ac.swanseacoventry.cmt.ontrack.Point))
+//				return super.getPoints();
+//			uk.ac.swanseacoventry.cmt.ontrack.Point p = (uk.ac.swanseacoventry.cmt.ontrack.Point) view.getElement();
+//			Track straightTrack;
+//			straightTrack = p.getNormalTrack();
+//			Point midPoint = null;
+//			PointList pts = super.getPoints();
+//
+//			if (p != null && straightTrack != null && pts.size() >= 2) {
+//				IEditorPart editorPart = getEditorPart();
+//
+//				if (editorPart instanceof OntrackDiagramEditor) {
+//					List editParts = ((OntrackDiagramEditor) editorPart).getDiagramGraphicalViewer()
+//							.findEditPartsForElement(EMFCoreUtil.getProxyID(straightTrack), TrackEditPart.class);
+//					if (editParts.size() >= 1) {
+//						TrackEditPart straightTrackEP = (TrackEditPart) editParts.get(0);
+//						TrackFigure trackFig = (TrackFigure) straightTrackEP.getFigure();
+//						Point s = trackFig.getStart();
+//						Point e = trackFig.getEnd();
+//						midPoint = new Point((s.x + e.x) / 2, (s.y + e.y) / 2);
+//					}
+//				}
+//
+//				if (midPoint != null) {
+//					PointList newPts = new PointList();
+//					newPts.addPoint(midPoint);
+//					newPts.addPoint(midPoint);
+//					return newPts;
+//				}
+//			}
+//
+//			return pts;
+//
+//		}
+//
+//		@Override
+//		public void paint(Graphics graphics) {
+//			getPoints();
+//			super.paint(graphics);
+//		}
 
 	}
 
