@@ -1,20 +1,18 @@
 package uk.ac.swanseacoventry.cmt.ontrack.diagram.util;
 
 import java.io.File;
-import java.io.InputStream;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 
+import org.eclipse.swt.widgets.Display;
+import org.eclipse.swt.widgets.TableItem;
+import org.zeroturnaround.zip.ZipUtil;
+
 import com.jcraft.jsch.Channel;
-import com.jcraft.jsch.ChannelExec;
 import com.jcraft.jsch.ChannelSftp;
 import com.jcraft.jsch.JSch;
 import com.jcraft.jsch.Session;
-
-import org.eclipse.swt.widgets.Display;
-import org.eclipse.swt.widgets.TableItem;
-import org.zeroturnaround.zip.*;
 
 public class RemoteFDR3Helper implements Runnable {
 

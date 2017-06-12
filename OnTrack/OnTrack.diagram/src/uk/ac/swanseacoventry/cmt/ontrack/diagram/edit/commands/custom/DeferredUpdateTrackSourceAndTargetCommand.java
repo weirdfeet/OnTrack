@@ -1,7 +1,5 @@
 package uk.ac.swanseacoventry.cmt.ontrack.diagram.edit.commands.custom;
 
-import java.util.Collections;
-
 import org.eclipse.core.commands.ExecutionException;
 import org.eclipse.core.runtime.IAdaptable;
 import org.eclipse.core.runtime.IProgressMonitor;
@@ -10,13 +8,11 @@ import org.eclipse.gef.EditPart;
 import org.eclipse.gef.EditPartViewer;
 import org.eclipse.gmf.runtime.common.core.command.CommandResult;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.GraphicalEditPart;
-import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
 import org.eclipse.gmf.runtime.emf.commands.core.command.AbstractTransactionalCommand;
 import org.eclipse.gmf.runtime.notation.View;
 
 import uk.ac.swanseacoventry.cmt.ontrack.Connector;
 import uk.ac.swanseacoventry.cmt.ontrack.Track;
-import uk.ac.swanseacoventry.cmt.ontrack.diagram.edit.parts.ConnectorEditPart;
 import uk.ac.swanseacoventry.cmt.ontrack.diagram.edit.parts.TrackEditPart;
 
 public class DeferredUpdateTrackSourceAndTargetCommand extends AbstractTransactionalCommand {

@@ -176,7 +176,7 @@ public class TrackEditPart extends ConnectionNodeEditPart implements ITreeBranch
 		@Override
 		public void anchorMoved(ConnectionAnchor anchor) {
 			// TODO Auto-generated method stub
-			System.out.println(anchor.toString());
+			// System.out.println(anchor.toString());
 			this.getPoints();
 			super.anchorMoved(anchor);
 		}

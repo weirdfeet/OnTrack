@@ -1,8 +1,6 @@
 package uk.ac.swansea.coventry.cmd.ontrack.diagram.importWizards;
 
 import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.InputStream;
 
 import org.eclipse.core.resources.IFile;
