@@ -939,7 +939,7 @@
    </category>
    <wizard
          category="ontrack.dsl.diagram.importWizards.sampleCategory"
-         class="uk.ac.swanseacoventry.cmd.ontrack.diagram.importWizards.RailImporterWizard"
+         class="uk.ac.swanseacoventry.cmt.ontrack.diagram.importWizards.RailImporterWizard"
          icon="icons/sample.gif"
          id="ontrack.dsl.diagram.importWizards.RailImporterWizard"
          name="Existing Brave model">

@@ -1,4 +1,4 @@
-package uk.ac.swanseacoventry.cmd.ontrack.diagram.importWizards;
+package uk.ac.swanseacoventry.cmt.ontrack.diagram.importWizards;
 
 import java.io.File;
 import java.io.InputStream;
