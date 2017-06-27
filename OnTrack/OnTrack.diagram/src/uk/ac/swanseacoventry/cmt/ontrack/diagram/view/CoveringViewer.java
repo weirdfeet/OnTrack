@@ -1,6 +1,9 @@
 package uk.ac.swanseacoventry.cmt.ontrack.diagram.view;
 
 import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Hashtable;
+import java.util.Set;
 
 import org.eclipse.gef.commands.CompoundCommand;
 import org.eclipse.gmf.runtime.diagram.ui.commands.ICommandProxy;
@@ -20,12 +23,8 @@ import org.eclipse.swt.widgets.Table;
 import org.eclipse.swt.widgets.TableColumn;
 import org.eclipse.swt.widgets.TableItem;
 import org.eclipse.ui.IEditorPart;
-import org.eclipse.ui.IPartListener2;
-import org.eclipse.ui.IWorkbench;
 import org.eclipse.ui.IWorkbenchPage;
 import org.eclipse.ui.IWorkbenchPartReference;
-import org.eclipse.ui.IWorkbenchWindow;
-import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.part.ViewPart;
 import org.eclipse.ui.plugin.AbstractUIPlugin;
 
@@ -183,6 +182,17 @@ public class CoveringViewer extends ViewPart {
 				 
 			 }
 		 });
+		 mgr.add(new Action("Subsume Relation", AbstractUIPlugin.imageDescriptorFromPlugin("org.eclipse.ui.browser", "icons/clcl16/nav_go.gif")){
+			 public void run(){
+					DiagramEditPart diagramEditPart = Util.getDiagramEP();
+					if (diagramEditPart==null) return;
+
+					TrackPlan trackplan = (TrackPlan)((View)diagramEditPart.getModel()).getElement();
+
+					computeSubsumptionRelation(trackplan);
+				 
+			 }
+		 });
 		 mgr.add(new Action("Clear", AbstractUIPlugin.imageDescriptorFromPlugin("org.eclipse.ui", "icons/full/elcl16/trash.png")){
 			 public void run(){
 				DiagramEditPart diagramEditPart = Util.getDiagramEP();
@@ -230,6 +240,51 @@ public class CoveringViewer extends ViewPart {
 			tit.setData(stp);
 		}
 	}
+	
+	void computeSubsumptionRelation(TrackPlan trackplan){
+		Hashtable<SubTrackPlan, Boolean> subs = new Hashtable<SubTrackPlan, Boolean>();
+		
+		for(SubTrackPlan stp : trackplan.getSubTrackPlans()){
+			subs.put(stp, false);
+		}
+		for(SubTrackPlan stp : trackplan.getSubTrackPlans()){
+			boolean check = false;
+			for(SubTrackPlan stp2 : trackplan.getSubTrackPlans()){
+				if (stp == stp2) 
+					continue;
+				check = checkSubPlanSubsumption(stp, stp2);
+				if (check){
+					subs.put(stp, check);
+					break;
+				}
+			}
+		}
+		Hashtable<SubTrackPlan, Boolean> reps = new Hashtable<SubTrackPlan, Boolean>();
+		for(SubTrackPlan stp : trackplan.getSubTrackPlans()){
+			if (!subs.get(stp) && !equalsAnySubTrackPlan(stp, reps.keySet())) 
+				reps.put(stp, false);
+		}
+		for(SubTrackPlan stp : reps.keySet()){
+			System.out.println(stp.getName());
+		}
+	}
+	
+	boolean equalsAnySubTrackPlan(SubTrackPlan stp, Set<SubTrackPlan> stps){
+		for(SubTrackPlan stp2 : stps){
+			HashSet<Track> trs1 =  new HashSet<Track>(stp.getTracks());
+			HashSet<Track> trs2 =  new HashSet<Track>(stp2.getTracks());
+			if (trs1.equals(trs2))
+				return true;
+		}
+		return false;
+	}
+	
+	boolean checkSubPlanSubsumption(SubTrackPlan stp, SubTrackPlan stp2){
+		HashSet<Track> trs1 =  new HashSet<Track>(stp.getTracks());
+		HashSet<Track> trs2 =  new HashSet<Track>(stp2.getTracks());
+		return (trs2.containsAll(trs1)) && (!trs1.containsAll(trs2));
+	}
+	
 	void registerActivatedListener(){
 		Util.getActivePage().addPartListener(new PartListener2Impl(){
 

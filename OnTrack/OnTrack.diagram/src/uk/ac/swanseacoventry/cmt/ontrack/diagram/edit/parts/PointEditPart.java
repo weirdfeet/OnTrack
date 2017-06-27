@@ -18,8 +18,8 @@ import org.eclipse.ui.IWorkbenchWindow;
 import org.eclipse.ui.PlatformUI;
 
 import uk.ac.swanseacoventry.cmt.ontrack.diagram.edit.policies.PointItemSemanticEditPolicy;
-import uk.ac.swanseacoventry.cmt.ontrack.diagram.edit.policies.custom.PointConnectionEditPolicy;
 import uk.ac.swanseacoventry.cmt.ontrack.diagram.edit.policies.custom.NoBendpointEditPolicy;
+import uk.ac.swanseacoventry.cmt.ontrack.diagram.edit.policies.custom.PointConnectionEditPolicy;
 
 /**
  * @generated

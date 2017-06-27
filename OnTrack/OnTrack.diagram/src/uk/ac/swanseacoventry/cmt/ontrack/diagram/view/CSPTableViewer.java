@@ -4,7 +4,6 @@ package uk.ac.swanseacoventry.cmt.ontrack.diagram.view;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.IOException;
-import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -35,6 +34,7 @@ import org.eclipse.ui.IWorkbenchPage;
 import org.eclipse.ui.IWorkbenchPartReference;
 import org.eclipse.ui.part.ViewPart;
 import org.eclipse.ui.plugin.AbstractUIPlugin;
+
 import uk.ac.swanseacoventry.cmt.ontrack.ControlTableItem;
 import uk.ac.swanseacoventry.cmt.ontrack.Point;
 import uk.ac.swanseacoventry.cmt.ontrack.Signal;
@@ -48,7 +48,6 @@ import uk.ac.swanseacoventry.cmt.ontrack.diagram.preferences.custom.PreferenceCo
 import uk.ac.swanseacoventry.cmt.ontrack.diagram.util.RemoteFDR3Helper;
 import uk.ac.swanseacoventry.cmt.ontrack.diagram.view.listeners.PartListener2Impl;
 import uk.ac.swanseacoventry.cmt.ontrack.dsl2csp.DSL2CSP;
-import com.jcraft.jsch.*;
 
 
 public class CSPTableViewer extends ViewPart {
