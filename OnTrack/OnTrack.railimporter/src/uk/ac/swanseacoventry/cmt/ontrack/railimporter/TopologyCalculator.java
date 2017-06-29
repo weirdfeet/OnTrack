@@ -25,13 +25,6 @@ import uk.ac.swanseacoventry.cmt.ontrack.TrackPlan;
 
 public class TopologyCalculator {
 	RailParser rp = new RailParser();
-	
-	//String[] routes4Barkston = {"R3936","R3935", "R3934", "R3939", "R3938", "R3937"};
-	String[] routes4Barkston = {"R3936","R3935", "R3934", "R3939", "R3938", "R3937"};
-	//String[] entrySignals = {"N10425", "N10254", "N10253", "N10459", "N19435", "N9517", "N10035", "N10002"};
-	//String[] exitSignals = {"N10424", "N10255", "N19409", "N9552", "N10034", "N10033"};
-	// String[] entrySignals = {"N5860"};
-	// String[] exitSignals = {"N5857"};
 	ArrayList<String> entrySignals = new ArrayList<String>();
 	ArrayList<String> exitSignals = new ArrayList<String>();
 	
