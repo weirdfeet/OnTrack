@@ -2,12 +2,14 @@ package uk.ac.swanseacoventry.cmt.ontrack.railimporter;
 
 
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayDeque;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.Scanner;
 
 import org.eclipse.emf.common.util.BasicEList;
 import org.eclipse.emf.common.util.EList;
@@ -35,8 +37,10 @@ public class TopologyCalculator {
 	String[] routes4Barkston = {"R3936","R3935", "R3934", "R3939", "R3938", "R3937"};
 	//String[] entrySignals = {"N10425", "N10254", "N10253", "N10459", "N19435", "N9517", "N10035", "N10002"};
 	//String[] exitSignals = {"N10424", "N10255", "N19409", "N9552", "N10034", "N10033"};
-	String[] entrySignals = {"N5860"};
-	String[] exitSignals = {"N5857"};
+	// String[] entrySignals = {"N5860"};
+	// String[] exitSignals = {"N5857"};
+	ArrayList<String> entrySignals = new ArrayList<String>();
+	ArrayList<String> exitSignals = new ArrayList<String>();
 	
 	public boolean isInputFolderValid(String inputFolder) {
 		File f = new File(inputFolder);
@@ -415,7 +419,38 @@ public class TopologyCalculator {
 //		//test
 //	}
 //		
-//		
+//	
+	
+	void parseBoundary(String filename) throws IOException{
+		
+		entrySignals.clear();
+		exitSignals.clear();
+		
+		File f = new File(filename);
+		Scanner scanner = new Scanner(f);
+
+
+		// read the list of entry signal node names
+		String line = scanner.nextLine();
+		String data = line.split("#", -1)[0];
+		String[] parts = data.split(",");
+		for(String p : parts)
+			entrySignals.add(p.trim());
+		
+		// read the list of exit signal node names
+		line = scanner.nextLine();
+		data = line.split("#", -1)[0];
+		parts = data.split(",");
+		for(String p : parts)
+			exitSignals.add(p.trim());
+		
+		// output result for debuging
+		System.out.println("Entry signals to import: " + String.join(", ", entrySignals));
+		System.out.println("Exit signals to import: " + String.join(", ", exitSignals));
+		
+        //Do not forget to close the scanner 
+        scanner.close();
+	}
 		
 	
 	public File importBraveData(String inputFolder, String outputFile){
@@ -437,6 +472,9 @@ public class TopologyCalculator {
 		
 			String routesFilename = inputFolder + File.separator + "Routes.csv";
 			rp.parseRoutes(routesFilename);
+			
+			String boundaryFilename = inputFolder + File.separator + "Boundary.csv";
+			parseBoundary(boundaryFilename);
 		}
 		catch (Exception e) {
 			System.out.println(e.getMessage());
