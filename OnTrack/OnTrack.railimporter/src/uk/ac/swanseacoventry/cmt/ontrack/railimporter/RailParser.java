@@ -2,13 +2,10 @@ package uk.ac.swanseacoventry.cmt.ontrack.railimporter;
 
 
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.util.Scanner;
-
-
 import java.util.ArrayList;
-import java.util.HashMap; 
+import java.util.HashMap;
+import java.util.Scanner; 
  
 /// nice command line flags
 /// change delimeter, also ask first line?

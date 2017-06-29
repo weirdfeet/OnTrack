@@ -2,7 +2,6 @@ package uk.ac.swanseacoventry.cmt.ontrack.railimporter;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Map;
 
 public class TrackCircuit {
 
