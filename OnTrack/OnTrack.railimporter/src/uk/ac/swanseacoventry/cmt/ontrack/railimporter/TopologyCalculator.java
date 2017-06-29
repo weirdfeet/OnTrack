@@ -613,8 +613,49 @@ public class TopologyCalculator {
 			
 		}
 		
-		for(Node n : visited){
-			System.out.println(n.getName());
+//		for(Node n : visited){
+//			System.out.println(n.getName());
+//		}
+		
+		// collect all paths to import; it must start and end with a visited node
+		HashMap<String,Path> importedPaths = new HashMap<String,Path>();
+		for(String pname : rp.getPaths().keySet()){
+			Path p = rp.getPaths().get(pname);
+			if (!visited.contains(p.getStartNode())) continue;
+			if (!visited.contains(p.getEndNode())) continue;
+			importedPaths.put(pname, p);
+		}
+		
+		// collect all track circuits to import; it must contains at least a path in importedPaths
+		HashMap<String,TrackCircuit> importedTrackCircuits = new HashMap<String,TrackCircuit>();
+		for(String tname : rp.getTracks().keySet()){
+			TrackCircuit t = rp.getTracks().get(tname);
+			
+			for(Path p : t.getPaths())
+				if (importedPaths.containsValue(p)) {
+					importedTrackCircuits.put(tname, t);
+					break;
+				};
+		}
+		
+		for(String t : importedTrackCircuits.keySet()){
+			System.out.println("Imported Track: " + t);
+		}
+
+		// collect all routes to import; it must have both its signal in visited and at least a track in importedTrackCircuits
+		HashMap<String,Route> importedRoutes = new HashMap<String,Route>();
+		for(String rname : rp.getRoutes().keySet()){
+			Route r = rp.getRoutes().get(rname);
+			if (!visited.contains(r.getSignal())) continue;
+			for(TrackCircuit t : r.getTrackCircuits())
+				if (importedTrackCircuits.containsValue(t)){
+					importedRoutes.put(rname, r);
+					break;
+				}
+		}
+		
+		for(String t : importedRoutes.keySet()){
+			System.out.println("Imported Route: " + t);
 		}
 		
 		return null;
