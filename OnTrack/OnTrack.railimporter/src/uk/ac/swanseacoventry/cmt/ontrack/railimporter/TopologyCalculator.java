@@ -65,7 +65,7 @@ public class TopologyCalculator {
 	//HashMap<Point, HashSet<ControlTableItem>> reversePointRoutes = new HashMap<Point, HashSet<ControlTableItem>>();
 
 	int conNum = 1;
-	TrackPlan barkston = OntrackFactory.eINSTANCE.createTrackPlan();
+	TrackPlan barkston = OntrackFactory.eINSTANCE.createTrackPlan(); // barkston was named due to historic reason, should rename to trackplan
 	
 	uk.ac.swanseacoventry.cmt.ontrack.Signal getOnTrackSignal(Signal n){
 		uk.ac.swanseacoventry.cmt.ontrack.Signal s = createdSignals.get(n);
@@ -642,34 +642,24 @@ public class TopologyCalculator {
 			System.out.println("Imported Track: " + t);
 		}
 
-		// collect all routes to import; it must have both its signal in visited and at least a track in importedTrackCircuits
+		// collect all routes to import; it must have its signal in visited
 		HashMap<String,Route> importedRoutes = new HashMap<String,Route>();
 		for(String rname : rp.getRoutes().keySet()){
 			Route r = rp.getRoutes().get(rname);
 			if (!visited.contains(r.getSignal())) continue;
-			for(TrackCircuit t : r.getTrackCircuits())
-				if (importedTrackCircuits.containsValue(t)){
-					importedRoutes.put(rname, r);
-					break;
-				}
+			importedRoutes.put(rname, r);
 		}
 		
-		for(String t : importedRoutes.keySet()){
-			System.out.println("Imported Route: " + t);
-		}
 		
-		return null;
-		
-		//old shnizzle
-		/*
-		for(Route r : rp.getRoutes()){
-		if(Arrays.asList(routes4Barkston).contains(r.getName())){
+		// generate control table for the imported track plan
+		for(String rn : importedRoutes.keySet()){
+			System.out.println("Imported Route: " + rn);
+			Route r = importedRoutes.get(rn);
 			ArrayList<Point> nPoints = r.getNormalPoints();
 			ArrayList<Point> rPoints = r.getReversePoints();
 
 			ControlTableItem ct = OntrackFactory.eINSTANCE.createControlTableItem();
 			ct.setRoute(r.getName());
-		    barkston.getControlTable().add(ct);
 
 			for(Point pn : nPoints){
 				uk.ac.swanseacoventry.cmt.ontrack.Point p = getOnTrackPoint(pn);
@@ -682,13 +672,6 @@ public class TopologyCalculator {
 				ct.getReverses().add(p);
 				ct.getClears().add(p.getReverseTrack());
 			}
-			
-			
-//			TopoRoute tp = OntrackFactory.eINSTANCE.createTopoRoute();
-//			tp.getNames().add(r.getName());
-//			tp.setStartSignal(s);
-			
-	
 			
 			for(TrackCircuit tc: r.getTrackCircuits()){
 				tc.computeEndNodes();
@@ -722,9 +705,11 @@ public class TopologyCalculator {
 					break;
 				}
 			}
-		}
+			
+		    barkston.getControlTable().add(ct);
 		}
 		
+		// add entry track
 		int entryCount = 0;
 		for(uk.ac.swanseacoventry.cmt.ontrack.Signal s : barkston.getSignals()){
 			Connector c = s.getConnector();
@@ -758,19 +743,28 @@ public class TopologyCalculator {
 		
 		}
 		
+		
 		for(Point pn : createdPoints.keySet()){
 			uk.ac.swanseacoventry.cmt.ontrack.Point p = createdPoints.get(pn);
 			Connector c = createdConnectors.get(pn);
 			// if (c==null) break;
 			HashSet<Track> nts = normalPointTracks.get(c);
 			HashSet<Track> rts = reversePointTracks.get(c);
+			if (nts==null) {
+				nts = new HashSet<Track>();
+				normalPointTracks.put(c, nts);
+			}
+			if (rts==null) {
+				rts = new HashSet<Track>();
+				reversePointTracks.put(c, rts);
+			}
 			// if (nts==null || rts==null) break;
 			HashSet<Track> commonTracks = new HashSet<Track>();
 			commonTracks.addAll(nts);
 			commonTracks.retainAll(rts);
 			nts.removeAll(commonTracks);
 			rts.removeAll(commonTracks);
-			//if (commonTracks.size()>0 && nts.size()>0 && rts.size()>0) 
+			if (commonTracks.size()>0 && nts.size()>0 && rts.size()>0) 
 			{
 				Track ct = (Track)commonTracks.toArray()[0];
 				Track nt = (Track)nts.toArray()[0];
@@ -823,11 +817,6 @@ public class TopologyCalculator {
 			t.getDirectedTracks().add(dt2);
 		}
 		
-		
-		
-		
-		
-		
 		EList<EObject> ModelObjects = new BasicEList<EObject>(); 
 		ModelObjects.add(barkston);
 		myModel.getContents().addAll(ModelObjects);
@@ -843,9 +832,6 @@ public class TopologyCalculator {
 		f.renameTo(newf);
 		return newf;
 		
-		//test
-		 
-		 */
 	}
 	
 }
