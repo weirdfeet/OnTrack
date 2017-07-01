@@ -507,22 +507,19 @@ public class TopologyCalculator {
 			ec.getTrack1s().add(entry);
 			c.getTrack2s().add(entry);		
 			
-			Entrance ent = OntrackFactory.eINSTANCE.createEntrance();
-			ent.setConnector(ec);
-			ec.getEntrances().add(ent);
-			barkston.getEntrances().add(ent);
-		}
-						
-		for(String entrySignal : exitSignals){
-			Signal braves = (Signal)rp.getNodes().get(entrySignal);
-			Connector c = getOnTrackConnector(braves);
-			
-			Exit ex = OntrackFactory.eINSTANCE.createExit();
-			ex.setConnector(c);
-			c.getExits().add(ex);
-			barkston.getExits().add(ex);
 		}
 		
+		for(ControlTableItem cti : barkston.getControlTable()){
+			Track t = cti.getSignal().getTrack();
+			Connector c = t.getC1() == cti.getSignal().getConnector() ? t.getC2() : t.getC1();
+			if (c.getTracks().size() <= 1 && c.getEntrances().size() <= 0){
+				Entrance ent = OntrackFactory.eINSTANCE.createEntrance();
+				ent.setConnector(c);
+				c.getEntrances().add(ent);
+				barkston.getEntrances().add(ent);
+			}
+		}
+								
 		for(Track t : barkston.getTracks()){
 			DirectedTrack dt1 = OntrackFactory.eINSTANCE.createDirectedTrack();
 			dt1.setTrack(t);
@@ -542,7 +539,15 @@ public class TopologyCalculator {
 			}
 		}
 		barkston.getConnectors().removeAll(emptyConnectors);
-		
+
+		for(Connector c : barkston.getConnectors()){
+			if (c.getTracks().size()>1) continue;
+			Exit ex = OntrackFactory.eINSTANCE.createExit();
+			ex.setConnector(c);
+			c.getExits().add(ex);
+			barkston.getExits().add(ex);
+		}
+
 		// finally, generate release table, not that brave data have no such thing
 		for(ControlTableItem cti : barkston.getControlTable()){
 			for(uk.ac.swanseacoventry.cmt.ontrack.Point p : cti.getNormals()){

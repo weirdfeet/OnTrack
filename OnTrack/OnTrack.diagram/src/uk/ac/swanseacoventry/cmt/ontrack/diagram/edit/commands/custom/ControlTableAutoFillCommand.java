@@ -2,6 +2,7 @@ package uk.ac.swanseacoventry.cmt.ontrack.diagram.edit.commands.custom;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.HashSet;
 
 import org.eclipse.core.commands.ExecutionException;
 import org.eclipse.core.runtime.IAdaptable;
@@ -12,10 +13,13 @@ import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
 import org.eclipse.gmf.runtime.emf.commands.core.command.AbstractTransactionalCommand;
 import org.eclipse.gmf.runtime.notation.View;
 
+import uk.ac.swanseacoventry.cmt.ontrack.Connector;
 import uk.ac.swanseacoventry.cmt.ontrack.ControlTableItem;
 import uk.ac.swanseacoventry.cmt.ontrack.DirectedTrack;
 import uk.ac.swanseacoventry.cmt.ontrack.Point;
+import uk.ac.swanseacoventry.cmt.ontrack.Signal;
 import uk.ac.swanseacoventry.cmt.ontrack.TopoRoute;
+import uk.ac.swanseacoventry.cmt.ontrack.Track;
 import uk.ac.swanseacoventry.cmt.ontrack.TrackPlan;
 
 public class ControlTableAutoFillCommand extends AbstractTransactionalCommand {
@@ -55,6 +59,29 @@ public class ControlTableAutoFillCommand extends AbstractTransactionalCommand {
 					if (p!=null) cti.getNormals().add(p);
 					Point rp = t.getTrack().getPointReverse();
 					if (rp!=null) cti.getReverses().add(rp);
+				}
+			} else {
+				// try to generate direction locks if possible from clears
+				cti.getDirections().clear();
+				Signal s = cti.getSignal();
+				Connector c = s.getConnector();
+				HashSet<Track> visited = new HashSet<Track>();
+				while (c!=null){
+					Connector nc = null;
+					for(Track t : cti.getClears()){
+						if (visited.contains(t)) continue;
+						if (t.getC1()==c) {
+							nc = t.getC2();
+						} else if (t.getC2()==c) {
+							nc = t.getC1();
+						}
+						if (nc!=null) {
+							cti.getDirections().add(t.getDirectedTrackByConnector(nc, false));
+							visited.add(t);
+							break;
+						}
+					}
+					c = nc;
 				}
 			}
 		}
