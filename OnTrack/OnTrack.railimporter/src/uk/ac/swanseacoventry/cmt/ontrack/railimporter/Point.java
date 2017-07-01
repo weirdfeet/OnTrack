@@ -2,15 +2,46 @@ package uk.ac.swanseacoventry.cmt.ontrack.railimporter;
 
 public class Point extends Node
 {
-	private int switchTime;
-		
-	private Point(String name, double location, double paths, String id, String description, int switchTime){
-		super(name, location, paths, id, description);
+	public void setSwitchTime(int switchTime) {
 		this.switchTime = switchTime;
 	}
+
+	public void setEnterPath(String enterPath) {
+		this.enterPath = enterPath;
+	}
+
+	public void setExitPath(String exitPath) {
+		this.exitPath = exitPath;
+	}
+
+	public void setBranchPath(String branchPath) {
+		this.branchPath = branchPath;
+	}
+
+	private int switchTime;
+	private String enterPath;
+	private String exitPath;
+	private String branchPath;
 	
-    public int getSwitchTime() {
+		
+	public Point(String name){
+		super(name);
+	}
+	
+	public int getSwitchTime() {
 		return switchTime;
+	}
+	
+	public String getEnterPath() {
+		return enterPath;
+	}
+
+	public String getExitPath() {
+		return exitPath;
+	}
+
+	public String getBranchPath() {
+		return branchPath;
 	}
 
 	@Override
@@ -20,43 +51,17 @@ public class Point extends Node
 	
 	public StringBuilder toStringAux(){
 		StringBuilder result = super.toStringAux();
-		result.append(" SwitchTime: ");
+		result.append(", Enter path: ");
+		result.append(enterPath);
+		result.append(", Exit path: ");
+		result.append(exitPath);
+		result.append(", Branch path: ");
+		result.append(branchPath);
+		result.append(", Swith time: ");
 		result.append(switchTime);
 		return result;
-		//TODO: is there a official way?
 	}
 	
-	public static class PointBuilder extends Node.NodeBuilder
-    {
-		private int switchTime;
-		
-        public PointBuilder(String name) 
-        {
-			super(name);
-		}
-		
-        public PointBuilder(Node n) 
-        {
-        	super(n);
-		}
-        
-        public PointBuilder(Point p) 
-        {
-        	super(p);
-        	this.switchTime = p.getSwitchTime();
-		}
-        
-		public PointBuilder setSwitchTime(int switchTime)
-		{
-			this.switchTime = switchTime;
-			return this;
-		}
-
-		public Point createPoint()
-		{
-			return new Point(getName(), getLocation(), getPaths(), getId(), getDescription(), switchTime);
-		}
-   }
 	
 	
 }

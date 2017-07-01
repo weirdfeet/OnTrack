@@ -21,6 +21,8 @@ import org.eclipse.emf.ecore.xmi.impl.XMIResourceFactoryImpl;
 import uk.ac.swanseacoventry.cmt.ontrack.Connector;
 import uk.ac.swanseacoventry.cmt.ontrack.ControlTableItem;
 import uk.ac.swanseacoventry.cmt.ontrack.DirectedTrack;
+import uk.ac.swanseacoventry.cmt.ontrack.Entrance;
+import uk.ac.swanseacoventry.cmt.ontrack.Exit;
 import uk.ac.swanseacoventry.cmt.ontrack.OntrackFactory;
 import uk.ac.swanseacoventry.cmt.ontrack.Track;
 import uk.ac.swanseacoventry.cmt.ontrack.TrackPlan;
@@ -212,11 +214,11 @@ public class TopologyCalculator {
 			String nodesFilename = inputFolder + File.separator + "Nodes.csv";
 			rp.parseNodes(nodesFilename);
 	
-			String pointsFilename = inputFolder + File.separator + "Points.csv";
-			rp.parsePoints(pointsFilename);
-	
-			String signalsFilename = inputFolder + File.separator + "Signals.csv";
-			rp.parseSignals(signalsFilename);
+//			String pointsFilename = inputFolder + File.separator + "Points.csv";
+//			rp.parsePoints(pointsFilename);
+//	
+//			String signalsFilename = inputFolder + File.separator + "Signals.csv";
+//			rp.parseSignals(signalsFilename);
 		
 			String pathsFilename = inputFolder + File.separator + "Paths.csv";
 			rp.parsePaths(pathsFilename);
@@ -238,7 +240,7 @@ public class TopologyCalculator {
 		ResourceSet resourceSet = new ResourceSetImpl(); 
 
 		resourceSet.getResourceFactoryRegistry().getExtensionToFactoryMap().put("xmi", new  XMIResourceFactoryImpl());		
-		Resource myModel = resourceSet.createResource(URI.createFileURI( outputFile + ".xmi"));
+		Resource myModel = resourceSet.createResource(URI.createFileURI( outputFile )); // + ".xmi"));
 		
 		class PathNode {
 			Path path;
@@ -249,123 +251,94 @@ public class TopologyCalculator {
 			}
 		}
 		
-		ArrayDeque<PathNode> queue = new ArrayDeque<PathNode>();
+		ArrayDeque<Node> queue = new ArrayDeque<Node>();
 
-		
+		HashSet<Node> visited = new HashSet<Node>();
+		HashSet<String> boundarySignals = new HashSet<String>();
+		boundarySignals.addAll(entrySignals);
+		boundarySignals.addAll(exitSignals);
+
+		// calculate paths not to be used in the searching for nodes in the region,
+		// they are before then entry signals and after the exit signals
+		HashSet<String> ignorePaths = new HashSet<String>();
 		for(String s : entrySignals){
-			System.out.println(s);
-			Node nextNode = null;
-			Path nextPath = null;
-			for(Route r : rp.getRoutes().values()){
-				if(r.getSignal().getName().equals(s)){
-						TrackCircuit tc = r.getTrackCircuits().get(0);
-					for(Path p : tc.getPaths()){
-						if(p.getStartNode().getName().equals(s)){
-							nextNode = p.getEndNode();
-							nextPath = p;
-							System.out.println(p.getEndNode());
-							break;
-						}
-						else if(p.getEndNode().getName().equals(s)){
-							nextNode = p.getStartNode();
-							nextPath = p;
-							System.out.println(p.getStartNode());
-							break;
-						}
-					}
-				}
-				
-			}
-			if (nextPath!=null) 
-				queue.add(new PathNode(nextPath, rp.getNodes().get(s)));
+			Node n = rp.getNodes().get(s);
+			Signal sig = (Signal)n;
+			String beforePath = sig.getDirPath();
+			ignorePaths.add(beforePath);
 		}
 		
 		for(String s : exitSignals){
+			Node n = rp.getNodes().get(s);
+			Signal sig = (Signal)n;
+			String beforePath = sig.getDirPath();
+			for(String p : n.getPaths())
+				if (!p.equals(beforePath))
+					ignorePaths.add(p);
+		}
+		
+		// define the starting points from the entry Signal
+		for(String s : entrySignals){
 			System.out.println(s);
-			Node nextNode = null;
-			Path nextPath = null;
-			for(Route r : rp.getRoutes().values()){
-				if(r.getSignal().getName().equals(s)){
-						TrackCircuit tc = r.getTrackCircuits().get(0);
-					for(Path p : tc.getPaths()){
-						if(p.getStartNode().getName().equals(s)){
-							nextNode = p.getEndNode();
-							nextPath = p;
-							System.out.println(p.getEndNode());
-							break;
-						}
-						else if(p.getEndNode().getName().equals(s)){
-							nextNode = p.getStartNode();
-							nextPath = p;
-							System.out.println(p.getStartNode());
-							break;
-						}
-					}
-				}
-				
-			}
-			if (nextPath!=null) {
-				for(Path p : rp.getPaths().values())
-				{
-					if(p.getStartNode().getName().equals(s)){
-						if (p != nextPath) {
-							queue.add(new PathNode(p, rp.getNodes().get(s)));
-							break;
-						}
-					}
-					else if(p.getEndNode().getName().equals(s)){
-						if (p != nextPath) {
-							queue.add(new PathNode(p, rp.getNodes().get(s)));
-							break;
-						}
-					}
+			Node nextNode = null; // this is the node of the currently considered signal
+			Path nextPath = null; // this will be the path to look for next node
+			nextNode = rp.getNodes().get(s);
+			Signal sig = (Signal)nextNode;
+			String ignorePath = sig.getDirPath(); // this path will not be considered to look for next nodes as it goes out of the region
+			for(String p : nextNode.getPaths()){
+				if (!p.equals(ignorePath)) {
+					nextPath = rp.getPaths().get(p);
+					queue.add(new PathNode(nextPath, nextNode));
 				}
 			}
-		}
-
-		
-		HashSet<Node> visited = new HashSet<Node>();
-		HashSet<String> boundarySignals = new HashSet<String>();
-		
-		for(String s : entrySignals) {
-			boundarySignals.add(s);
-		}
-
-		for(String s : exitSignals) { 
-			boundarySignals.add(s);
+			visited.add(nextNode);
 		}
 		
-		for(PathNode n : queue){
-			visited.add(n.node);
+		// conversely, we determine the starting points to search for nodes from the exit signal
+		for(String s : exitSignals){
+			Node nextNode = null; // this is the node of the currently considered signal
+			Path nextPath = null; // this will be the path to look for next node
+			nextNode = rp.getNodes().get(s);
+			Signal sig = (Signal)nextNode;
+			String onlyPath = sig.getDirPath(); // this path is the only one we consider as it goes into the region
+			for(String p : nextNode.getPaths()){
+				if (p.equals(onlyPath)) {
+					nextPath = rp.getPaths().get(p);
+					queue.add(new PathNode(nextPath, nextNode));
+				}
+			}
+			visited.add(nextNode);
 		}
 
 		while(!queue.isEmpty()){
 			PathNode pn = queue.pop();
+			if (pn.node.getName().equals("N10031"))
+				System.out.println("Popping:" + pn);
+			visited.add(pn.node);
 			Node nextNode = pn.path.getEndNode() == pn.node ? pn.path.getStartNode() : pn.path.getEndNode();
-			System.out.println("Popping:" + pn);
 			if (!visited.contains(nextNode) && !boundarySignals.contains(nextNode.getName())){
-				for(Path p : rp.getPaths().values())
+				System.out.println("adding:" + nextNode);
+				boolean added = false;
+				for(String pname : nextNode.getPaths())
 				{
-					if(p.getStartNode()==nextNode){
-						if (p != pn.path) {
-							queue.add(new PathNode(p, nextNode));
-							visited.add(nextNode);
-							System.out.println("adding:" + nextNode);
-							break;
-						}
-					}
-					else if(p.getEndNode()==nextNode){
-						if (p != pn.path) {
-							queue.add(new PathNode(p, nextNode));
-							visited.add(nextNode);
-							System.out.println("adding:" + nextNode);
-							break;
-						}
+					Path p = rp.getPaths().get(pname);
+					System.out.println("consider path: " + p.getName());
+					Node nextnextNode = p.getStartNode() == nextNode ? p.getEndNode() : p.getStartNode();
+					if (!visited.contains(nextnextNode)) {
+						added = true;
+						queue.add(new PathNode(p, nextNode));
 					}
 				}
+				if (!added)
+					visited.add(nextNode);
 			}
 			
 		}
+		
+		// generate all connectors from node
+//		for(Node n : visited){
+//			getOnTrackConnector(n);
+//		}
 		
 		// collect all paths to import; it must start and end with a visited node
 		HashMap<String,Path> importedPaths = new HashMap<String,Path>();
@@ -377,19 +350,75 @@ public class TopologyCalculator {
 		}
 		
 		// collect all track circuits to import; it must contains at least a path in importedPaths
-		HashMap<String,TrackCircuit> importedTrackCircuits = new HashMap<String,TrackCircuit>();
 		for(String tname : rp.getTracks().keySet()){
 			TrackCircuit t = rp.getTracks().get(tname);
 			
 			for(Path p : t.getPaths())
 				if (importedPaths.containsValue(p)) {
-					importedTrackCircuits.put(tname, t);
+					getOnTrackTrack(t);
 					break;
 				};
 		}
 		
-		for(String t : importedTrackCircuits.keySet()){
-			System.out.println("Imported Track: " + t);
+		for(TrackCircuit t : createdTracks.keySet()){
+			System.out.println("Imported Track: " + t.getName());
+		}
+		
+		
+		// expand all point nodes into points and their two corresponding tracks
+		// node that we need to connect their connectors later
+		for(Node n : visited){
+			System.out.print(n.getName() + ",");
+			
+			if (n instanceof Point){
+				Point bravep = (Point)n;			
+				uk.ac.swanseacoventry.cmt.ontrack.Point  p = getOnTrackPoint(bravep);
+				
+				// replace the connector of surrounding tracks of this point with the connectors of the point
+				Connector c = getOnTrackConnector(bravep);
+				ArrayList<Track> tracks = new ArrayList<Track>();
+				tracks.addAll(c.getTracks());
+				for(Track t : tracks){
+					if (t.getName().equals(bravep.getEnterPath())){
+						if (t.getC1()==c){
+							t.setC1(p.getNormalTrack().getC1());
+						}
+						else {
+							t.setC2(p.getNormalTrack().getC1());
+						}
+					} else	if (t.getName().equals(bravep.getExitPath())){
+						if (t.getC1()==c){
+							t.setC1(p.getNormalTrack().getC2());
+						}
+						else {
+							t.setC2(p.getNormalTrack().getC2());
+						}
+					} else	if (t.getName().equals(bravep.getBranchPath())){
+						if (t.getC1()==c){
+							t.setC1(p.getReverseTrack().getC2());
+						}
+						else {
+							t.setC2(p.getReverseTrack().getC2());
+						}
+					}
+				}
+			} else if (n instanceof Signal) {
+				Signal braves = (Signal)n;			
+				uk.ac.swanseacoventry.cmt.ontrack.Signal s = getOnTrackSignal(braves);
+				if (importedPaths.keySet().contains(braves.getDirPath())){
+					Track t = createdTracks.get(importedPaths.get(braves.getDirPath()).getTracks().get(0));
+					if (t!=null) s.setTrack(t);
+					t.getSignals().add(s);
+				}
+			}
+			
+			if (n instanceof Terminal){
+				Connector c = getOnTrackConnector(n);
+				uk.ac.swanseacoventry.cmt.ontrack.Terminal ter = OntrackFactory.eINSTANCE.createTerminal();
+				ter.setConnector(c);
+				c.setTerminal(ter);
+				barkston.getTerminals().add(ter);
+			}
 		}
 
 		// collect all routes to import; it must have its signal in visited
@@ -407,7 +436,7 @@ public class TopologyCalculator {
 			Route r = importedRoutes.get(rn);
 			ArrayList<Point> nPoints = r.getNormalPoints();
 			ArrayList<Point> rPoints = r.getReversePoints();
-
+			
 			ControlTableItem ct = OntrackFactory.eINSTANCE.createControlTableItem();
 			ct.setRoute(r.getName());
 
@@ -423,137 +452,53 @@ public class TopologyCalculator {
 				ct.getClears().add(p.getReverseTrack());
 			}
 			
-			for(TrackCircuit tc: r.getTrackCircuits()){
-				tc.computeEndNodes();
-				Track t = getOnTrackTrack(tc);
-				ct.getClears().add(t);
-				
-				if (nPoints.contains(tc.startNode)) {
-					rememberNormalPointInCtrlTable(tc.startNode, t, ct);
-				}
-
-				if (nPoints.contains(tc.endNode)) {
-					rememberNormalPointInCtrlTable(tc.endNode, t, ct);
-				}
-
-				if (rPoints.contains(tc.startNode)) {
-					rememberReversePointInCtrlTable(tc.startNode, t, ct);
-				}
-
-				if (rPoints.contains(tc.endNode)) {
-					rememberReversePointInCtrlTable(tc.endNode, t, ct);
-				}
+			for(TrackCircuit t : r.getTrackCircuits()){
+				Track tr = createdTracks.get(t);
+				if (tr!=null) ct.getClears().add(tr);
 			}
 			
-
-
 			ct.setSignal(getOnTrackSignal(r.getSignal()));
-			for(Track t : ct.getClears() ){
-				if (t.getC1()==ct.getSignal().getConnector()
-						|| t.getC2()==ct.getSignal().getConnector()) {
-					ct.getSignal().setTrack(t);
-					break;
-				}
-			}
-			
 		    barkston.getControlTable().add(ct);
 		}
 		
 		// add entry track
 		int entryCount = 0;
-		for(uk.ac.swanseacoventry.cmt.ontrack.Signal s : barkston.getSignals()){
-			Connector c = s.getConnector();
-			Track t = s.getTrack();
-			boolean found = false;
-			for(Track t1 : c.getTracks()) {
-				if (t1!=t) {
-					s.setTrack(t1);
-					t1.getSignals().add(s);
-					found = true;
-					break;
-				}
-			}
-			if (!found) {
-				Track entry = OntrackFactory.eINSTANCE.createTrack();
-				entry.setName("ENTRY_" + (entryCount++));
-				barkston.getTracks().add(entry);
-				Connector ec = OntrackFactory.eINSTANCE.createConnector();
-				ec.setId(conNum++);
-				barkston.getConnectors().add(ec);
-				
-				s.setTrack(entry);
-				
-				entry.setC1(ec);
-				entry.setC2(c);
-				entry.getSignals().add(s);
-				
-				ec.getTrack1s().add(entry);
-				c.getTrack2s().add(entry);
-			}
-		
-		}
-		
-		
-		for(Point pn : createdPoints.keySet()){
-			uk.ac.swanseacoventry.cmt.ontrack.Point p = createdPoints.get(pn);
-			Connector c = createdConnectors.get(pn);
-			// if (c==null) break;
-			HashSet<Track> nts = normalPointTracks.get(c);
-			HashSet<Track> rts = reversePointTracks.get(c);
-			if (nts==null) {
-				nts = new HashSet<Track>();
-				normalPointTracks.put(c, nts);
-			}
-			if (rts==null) {
-				rts = new HashSet<Track>();
-				reversePointTracks.put(c, rts);
-			}
-			// if (nts==null || rts==null) break;
-			HashSet<Track> commonTracks = new HashSet<Track>();
-			commonTracks.addAll(nts);
-			commonTracks.retainAll(rts);
-			nts.removeAll(commonTracks);
-			rts.removeAll(commonTracks);
-			if (commonTracks.size()>0 && nts.size()>0 && rts.size()>0) 
-			{
-				Track ct = (Track)commonTracks.toArray()[0];
-				Track nt = (Track)nts.toArray()[0];
-				Track rt = (Track)rts.toArray()[0];
-				
-				Connector c1 = p.getNormalTrack().getC1();
-				Connector c2 = p.getNormalTrack().getC2();
-				Connector c3 = p.getReverseTrack().getC2();
-				
-				if (ct.getC1()==c) {
-					ct.setC1(c1);
-					c1.getTrack1s().add(ct);
-				}
-				else {
-					ct.setC2(c1);
-					c1.getTrack2s().add(ct);
-				}
-
-				if (nt.getC1()==c) {
-					nt.setC1(c2);
-					c2.getTrack1s().add(nt);
-				}
-				else {
-					nt.setC2(c2);
-					c2.getTrack2s().add(nt);
-				}
-
-				if (rt.getC1()==c) {
-					rt.setC1(c3);
-					c3.getTrack1s().add(rt);
-				}
-				else {
-					rt.setC2(c3);
-					c3.getTrack2s().add(rt);
-				}
-				
-				barkston.getConnectors().remove(c);
-			}
+		for(String entrySignal : entrySignals){
+			Signal braves = (Signal)rp.getNodes().get(entrySignal);
+			uk.ac.swanseacoventry.cmt.ontrack.Signal s = createdSignals.get(braves);
 			
+			Track entry = OntrackFactory.eINSTANCE.createTrack();
+			entry.setName("ENTRY_" + (entryCount++));
+			barkston.getTracks().add(entry);
+			Connector ec = OntrackFactory.eINSTANCE.createConnector();
+			ec.setId(conNum++);
+			barkston.getConnectors().add(ec);
+			
+			Connector c = getOnTrackConnector(braves);
+			
+			s.setTrack(entry);
+			
+			entry.setC1(ec);
+			entry.setC2(c);
+			entry.getSignals().add(s);
+			
+			ec.getTrack1s().add(entry);
+			c.getTrack2s().add(entry);		
+			
+			Entrance ent = OntrackFactory.eINSTANCE.createEntrance();
+			ent.setConnector(ec);
+			ec.getEntrances().add(ent);
+			barkston.getEntrances().add(ent);
+		}
+						
+		for(String entrySignal : exitSignals){
+			Signal braves = (Signal)rp.getNodes().get(entrySignal);
+			Connector c = getOnTrackConnector(braves);
+			
+			Exit ex = OntrackFactory.eINSTANCE.createExit();
+			ex.setConnector(c);
+			c.getExits().add(ex);
+			barkston.getExits().add(ex);
 		}
 		
 		for(Track t : barkston.getTracks()){
@@ -577,10 +522,10 @@ public class TopologyCalculator {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		File f = new File(outputFile + ".xmi");
-		File newf = new File(outputFile);
-		f.renameTo(newf);
-		return newf;
+		File f = new File(outputFile);
+//		File newf = new File(outputFile);
+//		f.renameTo(newf);
+		return f; // newf;
 		
 	}
 	

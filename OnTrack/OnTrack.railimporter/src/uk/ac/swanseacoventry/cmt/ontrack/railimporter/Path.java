@@ -1,7 +1,33 @@
 package uk.ac.swanseacoventry.cmt.ontrack.railimporter;
 
+import java.util.ArrayList;
+
 public class Path
 {
+	public void setStartNode(Node startNode) {
+		this.startNode = startNode;
+	}
+
+	public void setEndNode(Node endNode) {
+		this.endNode = endNode;
+	}
+
+	public void setLength(double length) {
+		this.length = length;
+	}
+
+	public void setSpeedLimitUp(double speedLimitUp) {
+		this.speedLimitUp = speedLimitUp;
+	}
+
+	public void setSpeedLimitDown(double speedLimitDown) {
+		this.speedLimitDown = speedLimitDown;
+	}
+
+	public void setGradient(double gradient) {
+		this.gradient = gradient;
+	}
+
 	private String name;
 	private Node startNode;
 	private Node endNode;
@@ -9,14 +35,14 @@ public class Path
 	private double speedLimitUp;
 	private double speedLimitDown;
 	private double gradient;
+	private ArrayList<TrackCircuit> tracks = new ArrayList<TrackCircuit>();
+	public ArrayList<TrackCircuit> getTracks() {
+		return tracks;
+	}	
 	
-	private Path(String name, Node startNode, Node endNode, double length, double speedLimitUp, double speedLimitDown, double gradient){
+	
+	public Path(String name){
 		this.name = name;
-		this.startNode = startNode;
-		this.endNode = endNode;
-		this.length = length;
-		this.speedLimitUp = speedLimitDown;
-		this.gradient = gradient;
 	}
 	
 	public String getName() {
@@ -65,64 +91,6 @@ public class Path
 		result.append(" Gradient: ");
 		result.append(gradient); 
 		return result.toString();
-	}
-	
-    public static class PathBuilder
-    {
-      	private String name;
-		private Node startNode;
-		private Node endNode;
-		private double length;
-		private double speedLimitUp;
-		private double speedLimitDown;
-		private double gradient;
-
-        public PathBuilder(String name) 
-        {
-			this.name = name;
-		}
-		
-		public PathBuilder setStartNode(Node startNode)
-		{
-			this.startNode = startNode;
-			return this;
-		}
-		
-		public PathBuilder setEndNode(Node endNode)
-		{
-			this.endNode = endNode;
-			return this;
-		}
-	
-		public PathBuilder setLength(double length)
-		{
-			this.length = length;
-			return this;
-		}
-
-		public PathBuilder setSpeedLimitUp(double speedLimitUp)
-		{
-			this.speedLimitUp = speedLimitUp;
-			return this;
-		}
-		
-		public PathBuilder setSpeedLimitDown(double speedLimitDown	)
-		{
-			this.speedLimitDown = speedLimitDown;
-			return this;
-		}
-
-		public PathBuilder setGradient(double gradient)
-		{
-			this.gradient = gradient;
-			return this;
-		}
-
-		public Path createPath()
-		{
-         return new Path(name, startNode, endNode, length, speedLimitUp, speedLimitDown, gradient);
-		}
-   }
-	
+	}	
 	
 }

@@ -1,19 +1,40 @@
 package uk.ac.swanseacoventry.cmt.ontrack.railimporter;
 
+import java.util.ArrayList;
+
 public class Node
 {
+	public ArrayList<String> getPaths() {
+		return paths;
+	}
+
+
+	public String getLocationX() {
+		return locationX;
+	}
+
+
+	public void setLocationX(String location) {
+		this.locationX = location;
+	}
+
+
+	public String getLocationY() {
+		return locationY;
+	}
+
+
+	public void setLocationY(String location) {
+		this.locationY = location;
+	}
+ 
 	private String name;
-	private double location;
-	private double paths;
-	private String id;
-	private String description;
+	private String locationX;
+	private String locationY;
+	private ArrayList<String> paths = new  ArrayList<String>();
 	
-	protected Node(String name, double location, double paths, String id, String description){
+	public Node(String name){
 		this.name = name;
-		this.location = location;
-		this.paths = paths;
-		this.id = id;
-		this.description = description;
 	}
 
 	
@@ -21,22 +42,6 @@ public class Node
 		return name;
 	}
 	
-	public double getLocation() {
-		return location;
-	}
-
-	public double getPaths() {
-		return paths;
-	}
-
-	public String getId() {
-		return id;
-	}
-
-	public String getDescription() {
-		return description;
-	}
-
 	@Override
 	public String toString(){
 		return toStringAux().toString();
@@ -44,93 +49,12 @@ public class Node
 	
 	public StringBuilder toStringAux(){
 		StringBuilder result = new StringBuilder();
-		result.append("Node Name: ");
+		result.append("Node: ");
 		result.append(name);
-		result.append(" Node Type: ");
-		result.append(this.getClass().getName());
-		result.append(" Location: ");
-		result.append(location);
-		result.append(" Paths: ");
-		result.append(paths);
-		result.append(" ID: ");
-		result.append(id);
-		result.append(" Description: ");
-		result.append(description);
+		result.append(", Location: ");
+		result.append(locationX + ":" + locationY);
 		return result;
 	}
-	
-    public static class NodeBuilder
-    {
-      	private String name;
-		private double location;
-		private double paths;
-		private String id;
-		private String description;
-
-        public NodeBuilder(String name) 
-        {
-			this.name = name;
-			// TODO: initialize?
-		}
-        
-        protected NodeBuilder(Node n) 
-        {
-        	this.name = n.getName();
-        	this.location = n.getLocation();
-    		this.paths = n.getPaths();
-    		this.id = n.getId();
-    		this.description = n.getDescription();
-    	}
-		
-		public NodeBuilder setLocation(double location)
-		{
-			this.location = location;
-			return this;
-		}
-		
-		public NodeBuilder setPaths(double paths)
-		{
-			this.paths = paths;
-			return this;
-		}
-	
-		public NodeBuilder setId(String id)
-		{
-			this.id = id;
-			return this;
-		}
-
-		public NodeBuilder setDescription(String description)
-		{
-			this.description = description;
-			return this;
-		}
-		
-		public String getName(){
-			return name;
-		}
-		
-		public double getLocation() {
-			return location;
-		}
-
-		public double getPaths() {
-			return paths;
-		}
-
-		public String getId() {
-			return id;
-		}
-
-		public String getDescription() {
-			return description;
-		}
-
-		public Node createNode()
-		{
-         return new Node(name, location, paths, id, description);
-		}
-    }
 	
 	
 }

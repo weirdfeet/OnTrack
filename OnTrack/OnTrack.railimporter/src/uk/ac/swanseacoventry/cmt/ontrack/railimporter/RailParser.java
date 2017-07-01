@@ -80,6 +80,39 @@ public class RailParser
 	public void setMissingTracks(ArrayList<TrackCircuit> missingTracks) {
 		this.missingTracks = missingTracks;
 	}
+	
+	class IntPair{
+		int first = -1;
+		int second = -1;
+	}
+	
+	private IntPair splitMatched(String[] input, int start, String prefixMatched){
+		IntPair ret = new IntPair();
+		boolean found = false;
+		for(int i = start; i < input.length; i++){
+			String p = input[i];
+			if (!found) {
+				if (p.matches(prefixMatched)){
+					ret.first = i;
+					ret.second = i;
+					found = true;
+				}
+				else {
+					continue;
+				}
+			}
+			else {
+				if (p.matches(prefixMatched)){
+					ret.second = i;
+				}
+				else {
+					break;
+				}
+			}
+		}
+		
+		return ret.first >=0 ? ret : null;
+	}
 
 	public void  parseNodes(String filename) throws IOException{
 		File f = new File(filename);
@@ -90,75 +123,115 @@ public class RailParser
         {
 			line = scanner.nextLine();
 			String [] parts = line.split(DELIMITER,-1);
+            String name = parts[0].trim();
+            String pX = parts[1].trim();
+            String pY = parts[2].trim();
             
-			Node.NodeBuilder n = new Node.NodeBuilder(parts[0].trim());
-			n.setLocation(Double.valueOf(parts[1].trim()));
-			n.setPaths(Double.valueOf(parts[2].trim()));
-			n.setId(parts[3].trim());
-			n.setDescription(parts[4].trim());
-		    Node created = n.createNode();
-			nodes.put(created.getName(), created);
-			System.out.println("Adding: " + created.toString());
+            IntPair paths = splitMatched(parts, 3, "^P[0-9]*$");
+            IntPair type = splitMatched(parts, 3, "^Signal.*$");
+            if (type==null) type = splitMatched(parts, 3, "^Points:.*$");
+            if (type==null) type = splitMatched(parts, 3, "^Diamond:.*$");
+            if (type==null) type = splitMatched(parts, 3, "^Buffer.*$"); // this is a terminal node
+            
+            Node n = new Node(name);
+            if (type!=null){
+            	if (parts[type.first].startsWith("Signal")){
+            		n = new Signal(name);
+            		Signal s = (Signal) n;
+            		s.setDirPath(parts[type.first+1].trim());
+            	} else if (parts[type.first].startsWith("Points:")){
+            		n = new Point(name);
+            		Point p = (Point) n;
+            		String pconfig = parts[type.first].split(":")[1];
+            		String[] pmainbranch = pconfig.split("/");
+            		String[] pmain = pmainbranch[0].split("-");
+            		String   pbranch = pmainbranch[1].substring(1, pmainbranch[1].length()-1);
+            		p.setEnterPath(pmain[0].trim());
+            		p.setExitPath(pmain[1].trim());
+            		p.setBranchPath(pbranch.trim());
+            	} else if (parts[type.first].startsWith("Diamond:")){
+            		n = new Diamond(name);
+            		Diamond p = (Diamond) n;
+            		String pconfig = parts[type.first].split(":")[1];
+            		String[] pmainbranch = pconfig.split("/");
+            		String[] pmain = pmainbranch[0].split("-");
+            		String[] pbranch = pmainbranch[1].substring(1, pmainbranch[1].length()-1).split("-");
+            		p.setMainEnter(pmain[0].trim());
+            		p.setMainExit(pmain[1].trim());
+            		p.setBranchEnter(pbranch[0].trim());
+            		p.setBranchExit(pbranch[1].trim());
+            	} else if (parts[type.first].startsWith("Edge")){
+            		n = new Terminal(name);
+            	}
+            }
+            
+        	n.setLocationX(pX);
+        	n.setLocationY(pY);
+        	if (paths!=null)
+        		for(int i = paths.first; i<=paths.second; i++)
+        			n.getPaths().add(parts[i]);
+        	
+			nodes.put(n.getName(), n);
+			System.out.println("Adding: " + n.toString());
         }
          
-        //Do not forget to close the scanner 
         scanner.close();
 	}
 	
 		
-	public void parsePoints(String filename) throws IOException{
-		File f = new File(filename);
-		Scanner scanner = new Scanner(f);
-		
-		String line = scanner.nextLine();
-		while (scanner.hasNextLine())
-        {
-			line = scanner.nextLine();
-			String [] parts = line.split(DELIMITER, -1);
-            
-			Node n = nodes.get(parts[0].trim());
-			
-			if (n != null){
-				Point.PointBuilder p = new Point.PointBuilder(n);
-				p.setSwitchTime(Integer.parseInt(parts[2].trim()));
-				Point created = p.createPoint();
-				nodes.put(created.getName(),created);
-				System.out.println("Adding: " + created.toString());
-					
-			}
-        }
-         
-        //Do not forget to close the scanner 
-        scanner.close();
-	}
+//	public void parsePoints(String filename) throws IOException{
+//		File f = new File(filename);
+//		Scanner scanner = new Scanner(f);
+//		
+//		String line = scanner.nextLine();
+//		while (scanner.hasNextLine())
+//        {
+//			line = scanner.nextLine();
+//			String [] parts = line.split(DELIMITER, -1);
+//            
+//			Node n = nodes.get(parts[0].trim());
+//			
+//			if (n != null){
+//				Point.PointBuilder p = new Point.PointBuilder(n);
+//				p.setSwitchTime(Integer.parseInt(parts[2].trim()));
+//				Point created = p.createPoint();
+//				nodes.put(created.getName(),created);
+//				System.out.println("Adding: " + created.toString());
+//					
+//			}
+//        }
+//         
+//        //Do not forget to close the scanner 
+//        scanner.close();
+//	}
 
-	public void parseSignals(String filename) throws IOException{
-		File f = new File(filename);
-		Scanner scanner = new Scanner(f);
-		
-		String line = scanner.nextLine();
-		while (scanner.hasNextLine())
-        {
-			line = scanner.nextLine();
-		    // deal with extra non needed info.
-			if(!line.isEmpty() && !line.startsWith("CLEAR")){
-				String [] parts = line.split(DELIMITER, -1);
-            
-				Node n = nodes.get(parts[0].trim());
-				if (n != null){
-					Signal.SignalBuilder s = new Signal.SignalBuilder(n);
-					s.setSwitchTime(Integer.parseInt(parts[2].trim()));
-					Signal created = s.createSignal();
-					nodes.put(created.getName(),created);
-					System.out.println("Adding: " + created.toString());
-				}	
-			}
-        }
-         
-        //Do not forget to close the scanner 
-        scanner.close();
-		
-	}
+//	public void parseSignals(String filename) throws IOException{
+//		File f = new File(filename);
+//		Scanner scanner = new Scanner(f);
+//		
+//		String line = scanner.nextLine();
+//		while (scanner.hasNextLine())
+//        {
+//			line = scanner.nextLine();
+//		    // deal with extra non needed info.
+//			if(!line.isEmpty() && !line.startsWith("CLEAR")){
+//				String [] parts = line.split(DELIMITER, -1);
+//            
+//				Node n = nodes.get(parts[0].trim());
+//				if (n != null){
+//					Signal.SignalBuilder s = new Signal.SignalBuilder(n);
+//					s.setSwitchTime(Integer.parseInt(parts[2].trim()));
+//					Signal created = s.createSignal();
+//					nodes.put(created.getName(),created);
+//					System.out.println("Adding: " + created.toString());
+//				}	
+//			}
+//        }
+//         
+//        //Do not forget to close the scanner 
+//        scanner.close();
+//		
+//	}
 	
 	public void parsePaths(String filename) throws IOException{
 		File f = new File(filename);
@@ -171,7 +244,7 @@ public class RailParser
 			line = scanner.nextLine();
 			String [] parts = line.split(DELIMITER, -1);
             
-			Path.PathBuilder p = new Path.PathBuilder(parts[0].trim());
+			Path p = new Path(parts[0].trim());
 			Node startNode = nodes.get(parts[1].trim());
 			Node endNode = nodes.get(parts[2].trim());
 			p.setStartNode(startNode);
@@ -180,9 +253,8 @@ public class RailParser
 			p.setSpeedLimitUp(Double.valueOf(parts[4].trim()));
 			p.setSpeedLimitDown(Double.valueOf(parts[5].trim()));
 			p.setGradient(Double.valueOf(parts[6].trim()));
-		    Path created = p.createPath();
-			paths.put(created.getName(), created);
-			System.out.println("Adding: " + created.toString());
+			paths.put(p.getName(), p);
+			System.out.println("Adding: " + p.toString());
         }
          
         //Do not forget to close the scanner 
@@ -202,12 +274,17 @@ public class RailParser
 			String[] parts = line.split(DELIMITER,-1);
 			
 			 
-			TrackCircuit.TrackCircuitBuilder t = new TrackCircuit.TrackCircuitBuilder(parts[0].trim());
-			t.setPaths(extractPaths(parts[1].trim()));
-			TrackCircuit created = t.createTrackCircuit();
+			TrackCircuit t = new TrackCircuit(parts[0].trim());
+			t.getPaths().addAll(extractPaths(parts[1].trim()));
 			
-			tracks.put(created.getName(), created);
-			System.out.println("Adding: " + created.toString());
+			for(Path p : t.getPaths()){
+				p.getTracks().add(t);
+			}
+			
+			t.computeEndNodes();
+
+			tracks.put(t.getName(), t);
+			System.out.println("Adding: " + t.toString());
         }
         //Do not forget to close the scanner 
         scanner.close();
