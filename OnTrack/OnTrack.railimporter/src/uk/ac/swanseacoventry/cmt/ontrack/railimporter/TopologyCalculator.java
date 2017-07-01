@@ -281,18 +281,15 @@ public class TopologyCalculator {
 			}
 		}
 		
-		// generate all connectors from node
-//		for(Node n : visited){
-//			getOnTrackConnector(n);
-//		}
-		
 		// collect all paths to import; it must start and end with a visited node
 		HashMap<String,Path> importedPaths = new HashMap<String,Path>();
-		for(String pname : rp.getPaths().keySet()){
-			Path p = rp.getPaths().get(pname);
-			if (!visited.contains(p.getStartNode())) continue;
-			if (!visited.contains(p.getEndNode())) continue;
-			importedPaths.put(pname, p);
+		for(Node n : visited){
+			for (String pname : n.getPaths()) {
+				Path p = rp.getPaths().get(pname);
+				if (!visited.contains(p.getStartNode())) continue;
+				if (!visited.contains(p.getEndNode())) continue;
+				importedPaths.put(pname, p);
+			}
 		}
 		
 		// collect all track circuits to import; it must contains at least a path in importedPaths
