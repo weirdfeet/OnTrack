@@ -280,6 +280,8 @@ public class TopologyCalculator {
 				}
 			}
 		}
+
+		System.out.println("Num of Nodes imported: " + visited.size());
 		
 		// collect all paths to import; it must start and end with a visited node
 		HashMap<String,Path> importedPaths = new HashMap<String,Path>();
@@ -293,19 +295,14 @@ public class TopologyCalculator {
 		}
 		
 		// collect all track circuits to import; it must contains at least a path in importedPaths
-		for(String tname : rp.getTracks().keySet()){
-			TrackCircuit t = rp.getTracks().get(tname);
-			
-			for(Path p : t.getPaths())
-				if (importedPaths.containsValue(p)) {
-					getOnTrackTrack(t);
-					break;
-				};
+		for(String p : importedPaths.keySet()){
+			Path path = importedPaths.get(p);
+			for(TrackCircuit t : path.getTracks()){
+				getOnTrackTrack(t);
+			}
 		}
 		
-		for(TrackCircuit t : createdTracks.keySet()){
-			System.out.println("Imported Track: " + t.getName());
-		}
+		System.out.println("Num of Imported Tracks: " + createdTracks.size());
 		
 		
 		// expand all point nodes into points and their two corresponding tracks
