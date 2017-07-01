@@ -9,6 +9,7 @@ import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Path;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.jface.preference.DirectoryFieldEditor;
+import org.eclipse.jface.preference.FileFieldEditor;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.ModifyEvent;
@@ -23,9 +24,9 @@ import uk.ac.swanseacoventry.cmt.ontrack.railimporter.TopologyCalculator;
 
 public class RailImporterWizardPage extends WizardNewFileCreationPage {
 	
-	protected DirectoryFieldEditor editor;
+	protected FileFieldEditor editor;
 	protected TopologyCalculator tc;
-	protected String BraveInputFolder = "";
+	protected String BraveBoundaryFile = "";
 
 	public RailImporterWizardPage(String pageName, IStructuredSelection selection) {
 		super(pageName, selection);
@@ -50,12 +51,16 @@ public class RailImporterWizardPage extends WizardNewFileCreationPage {
 		fileSelectionLayout.marginHeight = 0;
 		fileSelectionArea.setLayout(fileSelectionLayout);
 		
-		editor = new DirectoryFieldEditor("folderSelect","Select Brave's Data Folder: ",fileSelectionArea); //NON-NLS-1 //NON-NLS-2
+		editor = new FileFieldEditor("fileSelect","Select Brave's Boundary File: ",fileSelectionArea); //NON-NLS-1 //NON-NLS-2
 		editor.getTextControl(fileSelectionArea).addModifyListener(new ModifyListener(){
 			public void modifyText(ModifyEvent e) {
-				BraveInputFolder = RailImporterWizardPage.this.editor.getStringValue();
-				IPath path = new Path(BraveInputFolder);
-				setFileName(path.lastSegment() + ".ontrack");
+				BraveBoundaryFile = RailImporterWizardPage.this.editor.getStringValue();
+				IPath path = new Path(BraveBoundaryFile);
+				int lastDot = path.lastSegment().lastIndexOf(".");
+				String name = path.lastSegment();
+				if (lastDot>=0)
+					name = name.substring(0, lastDot);
+				setFileName(name + ".ontrack");
 			}
 		});
 //		String[] extensions = new String[] { "*.*" }; //NON-NLS-1
@@ -92,7 +97,7 @@ public class RailImporterWizardPage extends WizardNewFileCreationPage {
 	 * @see org.eclipse.ui.dialogs.WizardNewFileCreationPage#validateLinkedResource()
 	 */
 	protected IStatus validateLinkedResource() {
-		if (!tc.isInputFolderValid(BraveInputFolder)) 
+		if (!tc.isInputFolderValid(BraveBoundaryFile)) 
 			return new Status(IStatus.ERROR, "OnTrack.dsl.diagram", IStatus.ERROR, "Input folder does not contain Brave's data", null);
 		if (isTargetExist())
 			return new Status(IStatus.ERROR, "OnTrack.dsl.diagram", IStatus.ERROR, "Output file exists", null);
@@ -106,6 +111,6 @@ public class RailImporterWizardPage extends WizardNewFileCreationPage {
 	}
 	
 	public File doImport(IFile ifile){
-		return tc.importBraveData(BraveInputFolder, ifile.getLocation().toOSString());
+		return tc.importBraveData(BraveBoundaryFile, ifile.getLocation().toOSString());
 	}
 }

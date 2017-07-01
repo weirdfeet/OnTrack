@@ -36,7 +36,15 @@ public class TopologyCalculator {
 	ArrayList<String> entrySignals = new ArrayList<String>();
 	ArrayList<String> exitSignals = new ArrayList<String>();
 	
+	private String getInputFolder(String inputFile){
+		int lastSep = inputFile.lastIndexOf(File.separator);
+		if (lastSep >= 0)
+			inputFile = inputFile.substring(0, lastSep);
+		return inputFile;
+	}
+	
 	public boolean isInputFolderValid(String inputFolder) {
+		inputFolder = getInputFolder(inputFolder);
 		File f = new File(inputFolder);
 		if (!f.isDirectory()) return false;
 		
@@ -264,7 +272,8 @@ public class TopologyCalculator {
 		}
 	}
 	
-	public File importBraveData(String inputFolder, String outputFile){
+	public File importBraveData(String inputFile, String outputFile){
+		String inputFolder = getInputFolder(inputFile);
 		try{
 			String nodesFilename = inputFolder + File.separator + "Nodes.csv";
 			rp.parseNodes(nodesFilename);
@@ -284,7 +293,7 @@ public class TopologyCalculator {
 			String routesFilename = inputFolder + File.separator + "Routes.csv";
 			rp.parseRoutes(routesFilename);
 			
-			String boundaryFilename = inputFolder + File.separator + "Boundary.csv";
+			String boundaryFilename = inputFile;
 			parseBoundary(boundaryFilename);
 		}
 		catch (Exception e) {
