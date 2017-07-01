@@ -62,6 +62,8 @@ public class ControlTableAutoFillCommand extends AbstractTransactionalCommand {
 				}
 			} else {
 				// try to generate direction locks if possible from clears
+				if (cti.getRoute().equals("R3938"))
+					System.out.println("Break here");
 				cti.getDirections().clear();
 				Signal s = cti.getSignal();
 				Connector c = s.getConnector();

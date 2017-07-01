@@ -217,17 +217,20 @@ public class CSPTableViewer extends ViewPart {
 		return store.getString(PreferenceConstants.FDR3_PATH);
 	}
 	
-	protected void callFDR3(String path){
+	protected String callFDR3(String path){
+		String ret = "";
+		String states = "";
+		long start = System.currentTimeMillis();
 		try{
 			// copy csp file to have the sanme name with the interlocking
 			// java.nio.file.Path csp = FileSystems.getDefault().getPath(path + "/Railway.csp");
 			String os = System.getProperty("os.name").toLowerCase();
 			String line;
 			String fdr3path = getFDR3();
-			if (fdr3path.endsWith(".app")) fdr3path += "/Contents/MacOS/fdr3";
+			if (fdr3path.endsWith(".app")) fdr3path += "/Contents/MacOS/refines";
 			String[] cmd = {fdr3path,"Railway.csp"};
 			ProcessBuilder pb = new ProcessBuilder(cmd);
-			pb.directory(new File(path));								
+			pb.directory(new File(path));			
 			Process p = pb.start();
 			BufferedReader bri = new BufferedReader
 			(new InputStreamReader(p.getInputStream()));
@@ -235,6 +238,13 @@ public class CSPTableViewer extends ViewPart {
 			(new InputStreamReader(p.getErrorStream()));
 			while ((line = bri.readLine()) != null) {
 				System.out.println(line);
+				if (line.trim().equals("Result: Passed"))
+					ret = "Passed";
+				else if (line.trim().equals("Result: Failed"))
+					ret = "Failed";
+				else if (line.trim().startsWith("Visited States:")) {
+					states = line.trim().split(": ")[1];
+				}
 			}
 			bri.close();
 			while ((line = bre.readLine()) != null) {
@@ -245,12 +255,20 @@ public class CSPTableViewer extends ViewPart {
 		}
 		catch(IOException e){
 			MessageBox msg = new MessageBox(table.getShell());
-			msg.setMessage("Cannot find FDR3 installation. Please (re)configure path to FDR3.");
+			msg.setMessage("Cannot find FDR installation. Please (re)configure path to FDR.");
 			msg.open();
+			ret = "No FDR";
 		}
 		catch(Exception e){
 			System.out.println(e.toString());
+			ret = "Error";
 		}
+		long end = System.currentTimeMillis();
+		if (ret.isEmpty()) ret = "?";
+		if (states.isEmpty()) states = "?";
+		ret = states + "," + Long.toString((end-start)/1000) + "," + ret;
+		System.out.println(ret);
+		return ret;
 	}
 	
 	boolean experimental = true;
@@ -301,11 +319,17 @@ public class CSPTableViewer extends ViewPart {
 					Object tp = item.getData();
 					if (tp instanceof TrackPlan){
 						if (!fullModelPath.equals("")){
-							callFDR3(fullModelPath);
+							String[] rs = callFDR3(fullModelPath).split(",");
+							item.setText(6, rs[0]);
+							item.setText(7, rs[1]);
+							item.setText(8, rs[2]);
 						}
 					} else if (tp instanceof SubTrackPlan) {
 						if (modelPaths.containsKey(tp)){
-							callFDR3(modelPaths.get(tp));
+							String[] rs = callFDR3(modelPaths.get(tp)).split(",");
+							item.setText(6, rs[0]);
+							item.setText(7, rs[1]);
+							item.setText(8, rs[2]);
 						}
 					}
 				}

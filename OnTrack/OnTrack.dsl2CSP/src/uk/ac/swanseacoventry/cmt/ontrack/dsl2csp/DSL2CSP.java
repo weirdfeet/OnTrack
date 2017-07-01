@@ -83,10 +83,14 @@ public class DSL2CSP {
 	
 	String getSubFolderName(EList<Track> criticals){
 		List<String> cs = new ArrayList<String>();
+		int i = 0;
 		for(Track t : criticals){
 			cs.add(t.getName());
+			i++;
+			if (i>=3)
+				break;
 		}
-		return String.join("_", cs);
+		return String.join("_", cs) + (criticals.size() > 3 ? "_AND_MORE" : "");
 	}
 	
 	/**
