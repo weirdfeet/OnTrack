@@ -242,25 +242,16 @@ public class TopologyCalculator {
 		resourceSet.getResourceFactoryRegistry().getExtensionToFactoryMap().put("xmi", new  XMIResourceFactoryImpl());		
 		Resource myModel = resourceSet.createResource(URI.createFileURI( outputFile )); // + ".xmi"));
 		
-		class PathNode {
-			Path path;
-			Node node;
-			PathNode(Path p, Node n){
-				path = p;
-				node = n;
-			}
-		}
-		
 		ArrayDeque<Node> queue = new ArrayDeque<Node>();
 
-		HashSet<Node> visited = new HashSet<Node>();
-		HashSet<String> boundarySignals = new HashSet<String>();
+		HashSet<Node> visited = new HashSet<Node>(); // nodes in the region
+		HashSet<String> boundarySignals = new HashSet<String>(); // node surrounding the region
 		boundarySignals.addAll(entrySignals);
 		boundarySignals.addAll(exitSignals);
 
 		// calculate paths not to be used in the searching for nodes in the region,
 		// they are before then entry signals and after the exit signals
-		HashSet<String> ignorePaths = new HashSet<String>();
+		HashSet<String> ignorePaths = new HashSet<String>(); // forbidden paths when BFS
 		for(String s : entrySignals){
 			Node n = rp.getNodes().get(s);
 			Signal sig = (Signal)n;
@@ -277,62 +268,17 @@ public class TopologyCalculator {
 					ignorePaths.add(p);
 		}
 		
-		// define the starting points from the entry Signal
-		for(String s : entrySignals){
-			System.out.println(s);
-			Node nextNode = null; // this is the node of the currently considered signal
-			Path nextPath = null; // this will be the path to look for next node
-			nextNode = rp.getNodes().get(s);
-			Signal sig = (Signal)nextNode;
-			String ignorePath = sig.getDirPath(); // this path will not be considered to look for next nodes as it goes out of the region
-			for(String p : nextNode.getPaths()){
-				if (!p.equals(ignorePath)) {
-					nextPath = rp.getPaths().get(p);
-					queue.add(new PathNode(nextPath, nextNode));
-				}
-			}
-			visited.add(nextNode);
-		}
-		
-		// conversely, we determine the starting points to search for nodes from the exit signal
-		for(String s : exitSignals){
-			Node nextNode = null; // this is the node of the currently considered signal
-			Path nextPath = null; // this will be the path to look for next node
-			nextNode = rp.getNodes().get(s);
-			Signal sig = (Signal)nextNode;
-			String onlyPath = sig.getDirPath(); // this path is the only one we consider as it goes into the region
-			for(String p : nextNode.getPaths()){
-				if (p.equals(onlyPath)) {
-					nextPath = rp.getPaths().get(p);
-					queue.add(new PathNode(nextPath, nextNode));
-				}
-			}
-			visited.add(nextNode);
-		}
-
 		while(!queue.isEmpty()){
-			PathNode pn = queue.pop();
-			if (pn.node.getName().equals("N10031"))
-				System.out.println("Popping:" + pn);
-			visited.add(pn.node);
-			Node nextNode = pn.path.getEndNode() == pn.node ? pn.path.getStartNode() : pn.path.getEndNode();
-			if (!visited.contains(nextNode) && !boundarySignals.contains(nextNode.getName())){
-				System.out.println("adding:" + nextNode);
-				boolean added = false;
-				for(String pname : nextNode.getPaths())
-				{
-					Path p = rp.getPaths().get(pname);
-					System.out.println("consider path: " + p.getName());
-					Node nextnextNode = p.getStartNode() == nextNode ? p.getEndNode() : p.getStartNode();
-					if (!visited.contains(nextnextNode)) {
-						added = true;
-						queue.add(new PathNode(p, nextNode));
-					}
+			Node n = queue.pop();
+			visited.add(n);
+			for(String p : n.getPaths()){
+				if (ignorePaths.contains(p)) break;
+				Path path = rp.getPaths().get(p);
+				Node nextNode = path.getStartNode() == n ? path.getEndNode() : path.getStartNode();
+				if (!visited.contains(nextNode)) {
+					queue.add(nextNode);
 				}
-				if (!added)
-					visited.add(nextNode);
 			}
-			
 		}
 		
 		// generate all connectors from node
