@@ -6,6 +6,7 @@ import org.eclipse.emf.common.notify.Adapter;
 import org.eclipse.emf.common.notify.Notifier;
 import org.eclipse.emf.common.notify.impl.AdapterFactoryImpl;
 import org.eclipse.emf.ecore.EObject;
+import uk.ac.swanseacoventry.cmt.ontrack.*;
 import uk.ac.swanseacoventry.cmt.ontrack.Connector;
 import uk.ac.swanseacoventry.cmt.ontrack.ControlTableItem;
 import uk.ac.swanseacoventry.cmt.ontrack.Crossing;
@@ -153,6 +154,14 @@ public class OntrackAdapterFactory extends AdapterFactoryImpl {
 			@Override
 			public Adapter caseUnit(Unit object) {
 				return createUnitAdapter();
+			}
+			@Override
+			public Adapter caseSimulation(Simulation object) {
+				return createSimulationAdapter();
+			}
+			@Override
+			public Adapter caseSimulationAction(SimulationAction object) {
+				return createSimulationActionAdapter();
 			}
 			@Override
 			public Adapter defaultCase(EObject object) {
@@ -423,6 +432,34 @@ public class OntrackAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createUnitAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link uk.ac.swanseacoventry.cmt.ontrack.Simulation <em>Simulation</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see uk.ac.swanseacoventry.cmt.ontrack.Simulation
+	 * @generated
+	 */
+	public Adapter createSimulationAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link uk.ac.swanseacoventry.cmt.ontrack.SimulationAction <em>Simulation Action</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see uk.ac.swanseacoventry.cmt.ontrack.SimulationAction
+	 * @generated
+	 */
+	public Adapter createSimulationActionAdapter() {
 		return null;
 	}
 

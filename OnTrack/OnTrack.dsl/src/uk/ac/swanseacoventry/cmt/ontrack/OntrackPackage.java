@@ -1209,13 +1209,22 @@ public interface OntrackPackage extends EPackage {
 	int TRACK_PLAN__OVERLAPPED = 16;
 
 	/**
+	 * The feature id for the '<em><b>Simulations</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TRACK_PLAN__SIMULATIONS = 17;
+
+	/**
 	 * The number of structural features of the '<em>Track Plan</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int TRACK_PLAN_FEATURE_COUNT = 17;
+	int TRACK_PLAN_FEATURE_COUNT = 18;
 
 	/**
 	 * The number of operations of the '<em>Track Plan</em>' class.
@@ -1225,6 +1234,108 @@ public interface OntrackPackage extends EPackage {
 	 * @ordered
 	 */
 	int TRACK_PLAN_OPERATION_COUNT = 0;
+
+
+	/**
+	 * The meta object id for the '{@link uk.ac.swanseacoventry.cmt.ontrack.impl.SimulationImpl <em>Simulation</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see uk.ac.swanseacoventry.cmt.ontrack.impl.SimulationImpl
+	 * @see uk.ac.swanseacoventry.cmt.ontrack.impl.OntrackPackageImpl#getSimulation()
+	 * @generated
+	 */
+	int SIMULATION = 18;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SIMULATION__NAME = 0;
+
+	/**
+	 * The feature id for the '<em><b>Steps</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SIMULATION__STEPS = 1;
+
+	/**
+	 * The feature id for the '<em><b>Sub Track Plan</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SIMULATION__SUB_TRACK_PLAN = 2;
+
+	/**
+	 * The number of structural features of the '<em>Simulation</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SIMULATION_FEATURE_COUNT = 3;
+
+	/**
+	 * The number of operations of the '<em>Simulation</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SIMULATION_OPERATION_COUNT = 0;
+
+	/**
+	 * The meta object id for the '{@link uk.ac.swanseacoventry.cmt.ontrack.impl.SimulationActionImpl <em>Simulation Action</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see uk.ac.swanseacoventry.cmt.ontrack.impl.SimulationActionImpl
+	 * @see uk.ac.swanseacoventry.cmt.ontrack.impl.OntrackPackageImpl#getSimulationAction()
+	 * @generated
+	 */
+	int SIMULATION_ACTION = 19;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SIMULATION_ACTION__NAME = 0;
+
+	/**
+	 * The feature id for the '<em><b>Parameters</b></em>' attribute list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SIMULATION_ACTION__PARAMETERS = 1;
+
+	/**
+	 * The number of structural features of the '<em>Simulation Action</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SIMULATION_ACTION_FEATURE_COUNT = 2;
+
+	/**
+	 * The number of operations of the '<em>Simulation Action</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SIMULATION_ACTION_OPERATION_COUNT = 0;
 
 
 	/**
@@ -2168,6 +2279,17 @@ public interface OntrackPackage extends EPackage {
 	EAttribute getTrackPlan_Overlapped();
 
 	/**
+	 * Returns the meta object for the containment reference list '{@link uk.ac.swanseacoventry.cmt.ontrack.TrackPlan#getSimulations <em>Simulations</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>Simulations</em>'.
+	 * @see uk.ac.swanseacoventry.cmt.ontrack.TrackPlan#getSimulations()
+	 * @see #getTrackPlan()
+	 * @generated
+	 */
+	EReference getTrackPlan_Simulations();
+
+	/**
 	 * Returns the meta object for class '{@link uk.ac.swanseacoventry.cmt.ontrack.Unit <em>Unit</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2187,6 +2309,81 @@ public interface OntrackPackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getUnit_Name();
+
+	/**
+	 * Returns the meta object for class '{@link uk.ac.swanseacoventry.cmt.ontrack.Simulation <em>Simulation</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Simulation</em>'.
+	 * @see uk.ac.swanseacoventry.cmt.ontrack.Simulation
+	 * @generated
+	 */
+	EClass getSimulation();
+
+	/**
+	 * Returns the meta object for the attribute '{@link uk.ac.swanseacoventry.cmt.ontrack.Simulation#getName <em>Name</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Name</em>'.
+	 * @see uk.ac.swanseacoventry.cmt.ontrack.Simulation#getName()
+	 * @see #getSimulation()
+	 * @generated
+	 */
+	EAttribute getSimulation_Name();
+
+	/**
+	 * Returns the meta object for the containment reference list '{@link uk.ac.swanseacoventry.cmt.ontrack.Simulation#getSteps <em>Steps</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>Steps</em>'.
+	 * @see uk.ac.swanseacoventry.cmt.ontrack.Simulation#getSteps()
+	 * @see #getSimulation()
+	 * @generated
+	 */
+	EReference getSimulation_Steps();
+
+	/**
+	 * Returns the meta object for the reference '{@link uk.ac.swanseacoventry.cmt.ontrack.Simulation#getSubTrackPlan <em>Sub Track Plan</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Sub Track Plan</em>'.
+	 * @see uk.ac.swanseacoventry.cmt.ontrack.Simulation#getSubTrackPlan()
+	 * @see #getSimulation()
+	 * @generated
+	 */
+	EReference getSimulation_SubTrackPlan();
+
+	/**
+	 * Returns the meta object for class '{@link uk.ac.swanseacoventry.cmt.ontrack.SimulationAction <em>Simulation Action</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Simulation Action</em>'.
+	 * @see uk.ac.swanseacoventry.cmt.ontrack.SimulationAction
+	 * @generated
+	 */
+	EClass getSimulationAction();
+
+	/**
+	 * Returns the meta object for the attribute '{@link uk.ac.swanseacoventry.cmt.ontrack.SimulationAction#getName <em>Name</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Name</em>'.
+	 * @see uk.ac.swanseacoventry.cmt.ontrack.SimulationAction#getName()
+	 * @see #getSimulationAction()
+	 * @generated
+	 */
+	EAttribute getSimulationAction_Name();
+
+	/**
+	 * Returns the meta object for the attribute list '{@link uk.ac.swanseacoventry.cmt.ontrack.SimulationAction#getParameters <em>Parameters</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute list '<em>Parameters</em>'.
+	 * @see uk.ac.swanseacoventry.cmt.ontrack.SimulationAction#getParameters()
+	 * @see #getSimulationAction()
+	 * @generated
+	 */
+	EAttribute getSimulationAction_Parameters();
 
 	/**
 	 * Returns the factory that creates the instances of the model.
@@ -2942,6 +3139,14 @@ public interface OntrackPackage extends EPackage {
 		EAttribute TRACK_PLAN__OVERLAPPED = eINSTANCE.getTrackPlan_Overlapped();
 
 		/**
+		 * The meta object literal for the '<em><b>Simulations</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference TRACK_PLAN__SIMULATIONS = eINSTANCE.getTrackPlan_Simulations();
+
+		/**
 		 * The meta object literal for the '{@link uk.ac.swanseacoventry.cmt.ontrack.impl.UnitImpl <em>Unit</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -2958,6 +3163,66 @@ public interface OntrackPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute UNIT__NAME = eINSTANCE.getUnit_Name();
+
+		/**
+		 * The meta object literal for the '{@link uk.ac.swanseacoventry.cmt.ontrack.impl.SimulationImpl <em>Simulation</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see uk.ac.swanseacoventry.cmt.ontrack.impl.SimulationImpl
+		 * @see uk.ac.swanseacoventry.cmt.ontrack.impl.OntrackPackageImpl#getSimulation()
+		 * @generated
+		 */
+		EClass SIMULATION = eINSTANCE.getSimulation();
+
+		/**
+		 * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute SIMULATION__NAME = eINSTANCE.getSimulation_Name();
+
+		/**
+		 * The meta object literal for the '<em><b>Steps</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference SIMULATION__STEPS = eINSTANCE.getSimulation_Steps();
+
+		/**
+		 * The meta object literal for the '<em><b>Sub Track Plan</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference SIMULATION__SUB_TRACK_PLAN = eINSTANCE.getSimulation_SubTrackPlan();
+
+		/**
+		 * The meta object literal for the '{@link uk.ac.swanseacoventry.cmt.ontrack.impl.SimulationActionImpl <em>Simulation Action</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see uk.ac.swanseacoventry.cmt.ontrack.impl.SimulationActionImpl
+		 * @see uk.ac.swanseacoventry.cmt.ontrack.impl.OntrackPackageImpl#getSimulationAction()
+		 * @generated
+		 */
+		EClass SIMULATION_ACTION = eINSTANCE.getSimulationAction();
+
+		/**
+		 * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute SIMULATION_ACTION__NAME = eINSTANCE.getSimulationAction_Name();
+
+		/**
+		 * The meta object literal for the '<em><b>Parameters</b></em>' attribute list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute SIMULATION_ACTION__PARAMETERS = eINSTANCE.getSimulationAction_Parameters();
 
 	}
 

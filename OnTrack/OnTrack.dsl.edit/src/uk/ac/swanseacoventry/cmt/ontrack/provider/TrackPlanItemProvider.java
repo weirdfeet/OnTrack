@@ -137,6 +137,7 @@ public class TrackPlanItemProvider
 			childrenFeatures.add(OntrackPackage.Literals.TRACK_PLAN__NEW_POINT);
 			childrenFeatures.add(OntrackPackage.Literals.TRACK_PLAN__NEW_CROSSING);
 			childrenFeatures.add(OntrackPackage.Literals.TRACK_PLAN__SUB_TRACK_PLANS);
+			childrenFeatures.add(OntrackPackage.Literals.TRACK_PLAN__SIMULATIONS);
 		}
 		return childrenFeatures;
 	}
@@ -208,6 +209,7 @@ public class TrackPlanItemProvider
 			case OntrackPackage.TRACK_PLAN__NEW_POINT:
 			case OntrackPackage.TRACK_PLAN__NEW_CROSSING:
 			case OntrackPackage.TRACK_PLAN__SUB_TRACK_PLANS:
+			case OntrackPackage.TRACK_PLAN__SIMULATIONS:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
 				return;
 		}
@@ -299,6 +301,11 @@ public class TrackPlanItemProvider
 			(createChildParameter
 				(OntrackPackage.Literals.TRACK_PLAN__SUB_TRACK_PLANS,
 				 OntrackFactory.eINSTANCE.createSubTrackPlan()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(OntrackPackage.Literals.TRACK_PLAN__SIMULATIONS,
+				 OntrackFactory.eINSTANCE.createSimulation()));
 	}
 
 	/**

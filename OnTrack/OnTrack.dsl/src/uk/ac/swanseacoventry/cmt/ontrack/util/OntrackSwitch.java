@@ -5,6 +5,7 @@ package uk.ac.swanseacoventry.cmt.ontrack.util;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.util.Switch;
+import uk.ac.swanseacoventry.cmt.ontrack.*;
 import uk.ac.swanseacoventry.cmt.ontrack.Connector;
 import uk.ac.swanseacoventry.cmt.ontrack.ControlTableItem;
 import uk.ac.swanseacoventry.cmt.ontrack.Crossing;
@@ -190,6 +191,18 @@ public class OntrackSwitch<T> extends Switch<T> {
 			case OntrackPackage.UNIT: {
 				Unit unit = (Unit)theEObject;
 				T result = caseUnit(unit);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case OntrackPackage.SIMULATION: {
+				Simulation simulation = (Simulation)theEObject;
+				T result = caseSimulation(simulation);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case OntrackPackage.SIMULATION_ACTION: {
+				SimulationAction simulationAction = (SimulationAction)theEObject;
+				T result = caseSimulationAction(simulationAction);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -464,6 +477,36 @@ public class OntrackSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseUnit(Unit object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Simulation</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Simulation</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseSimulation(Simulation object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Simulation Action</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Simulation Action</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseSimulationAction(SimulationAction object) {
 		return null;
 	}
 

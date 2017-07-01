@@ -143,4 +143,10 @@ public interface TrackPlan extends EObject {
 	 * @generated
 	 */
 	void setSelectedSubTrackPlan(SubTrackPlan value);
+	
+	/**
+	 * @model containment="true"
+	 */
+	EList<Simulation> getSimulations();
+	
 }

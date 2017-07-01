@@ -26,6 +26,7 @@ import uk.ac.swanseacoventry.cmt.ontrack.OntrackPackage;
 import uk.ac.swanseacoventry.cmt.ontrack.Point;
 import uk.ac.swanseacoventry.cmt.ontrack.ReleaseTableItem;
 import uk.ac.swanseacoventry.cmt.ontrack.Signal;
+import uk.ac.swanseacoventry.cmt.ontrack.Simulation;
 import uk.ac.swanseacoventry.cmt.ontrack.SubTrackPlan;
 import uk.ac.swanseacoventry.cmt.ontrack.Terminal;
 import uk.ac.swanseacoventry.cmt.ontrack.TopoRoute;
@@ -57,6 +58,7 @@ import uk.ac.swanseacoventry.cmt.ontrack.TrackPlan;
  *   <li>{@link uk.ac.swanseacoventry.cmt.ontrack.impl.TrackPlanImpl#getSubTrackPlans <em>Sub Track Plans</em>}</li>
  *   <li>{@link uk.ac.swanseacoventry.cmt.ontrack.impl.TrackPlanImpl#getSelectedSubTrackPlan <em>Selected Sub Track Plan</em>}</li>
  *   <li>{@link uk.ac.swanseacoventry.cmt.ontrack.impl.TrackPlanImpl#isOverlapped <em>Overlapped</em>}</li>
+ *   <li>{@link uk.ac.swanseacoventry.cmt.ontrack.impl.TrackPlanImpl#getSimulations <em>Simulations</em>}</li>
  * </ul>
  *
  * @generated
@@ -241,6 +243,16 @@ public class TrackPlanImpl extends MinimalEObjectImpl.Container implements Track
 	 * @ordered
 	 */
 	protected boolean overlapped = OVERLAPPED_EDEFAULT;
+
+	/**
+	 * The cached value of the '{@link #getSimulations() <em>Simulations</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getSimulations()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<Simulation> simulations;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -598,6 +610,18 @@ public class TrackPlanImpl extends MinimalEObjectImpl.Container implements Track
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EList<Simulation> getSimulations() {
+		if (simulations == null) {
+			simulations = new EObjectContainmentEList<Simulation>(Simulation.class, this, OntrackPackage.TRACK_PLAN__SIMULATIONS);
+		}
+		return simulations;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
@@ -631,6 +655,8 @@ public class TrackPlanImpl extends MinimalEObjectImpl.Container implements Track
 				return basicSetNewCrossing(null, msgs);
 			case OntrackPackage.TRACK_PLAN__SUB_TRACK_PLANS:
 				return ((InternalEList<?>)getSubTrackPlans()).basicRemove(otherEnd, msgs);
+			case OntrackPackage.TRACK_PLAN__SIMULATIONS:
+				return ((InternalEList<?>)getSimulations()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -678,6 +704,8 @@ public class TrackPlanImpl extends MinimalEObjectImpl.Container implements Track
 				return basicGetSelectedSubTrackPlan();
 			case OntrackPackage.TRACK_PLAN__OVERLAPPED:
 				return isOverlapped();
+			case OntrackPackage.TRACK_PLAN__SIMULATIONS:
+				return getSimulations();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -754,6 +782,10 @@ public class TrackPlanImpl extends MinimalEObjectImpl.Container implements Track
 			case OntrackPackage.TRACK_PLAN__OVERLAPPED:
 				setOverlapped((Boolean)newValue);
 				return;
+			case OntrackPackage.TRACK_PLAN__SIMULATIONS:
+				getSimulations().clear();
+				getSimulations().addAll((Collection<? extends Simulation>)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -817,6 +849,9 @@ public class TrackPlanImpl extends MinimalEObjectImpl.Container implements Track
 			case OntrackPackage.TRACK_PLAN__OVERLAPPED:
 				setOverlapped(OVERLAPPED_EDEFAULT);
 				return;
+			case OntrackPackage.TRACK_PLAN__SIMULATIONS:
+				getSimulations().clear();
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -863,6 +898,8 @@ public class TrackPlanImpl extends MinimalEObjectImpl.Container implements Track
 				return selectedSubTrackPlan != null;
 			case OntrackPackage.TRACK_PLAN__OVERLAPPED:
 				return overlapped != OVERLAPPED_EDEFAULT;
+			case OntrackPackage.TRACK_PLAN__SIMULATIONS:
+				return simulations != null && !simulations.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}

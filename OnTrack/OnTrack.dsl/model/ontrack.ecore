@@ -158,8 +158,21 @@
         eType="#//SubTrackPlan" containment="true" resolveProxies="false"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="selectedSubTrackPlan" eType="#//SubTrackPlan"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="overlapped" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="simulations" upperBound="-1"
+        eType="#//Simulation" containment="true" resolveProxies="false"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Unit" abstract="true">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Simulation">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="steps" upperBound="-1"
+        eType="#//SimulationAction" containment="true" resolveProxies="false"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="subTrackPlan" eType="#//SubTrackPlan"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="SimulationAction">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="parameters" upperBound="-1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
 </ecore:EPackage>

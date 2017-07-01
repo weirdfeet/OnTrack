@@ -106,9 +106,19 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ontrack.ecore#//TrackPlan/subTrackPlans"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference ontrack.ecore#//TrackPlan/selectedSubTrackPlan"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ontrack.ecore#//TrackPlan/overlapped"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ontrack.ecore#//TrackPlan/simulations"/>
     </genClasses>
     <genClasses image="false" ecoreClass="ontrack.ecore#//Unit">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ontrack.ecore#//Unit/name"/>
+    </genClasses>
+    <genClasses ecoreClass="ontrack.ecore#//Simulation">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ontrack.ecore#//Simulation/name"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ontrack.ecore#//Simulation/steps"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference ontrack.ecore#//Simulation/subTrackPlan"/>
+    </genClasses>
+    <genClasses ecoreClass="ontrack.ecore#//SimulationAction">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ontrack.ecore#//SimulationAction/name"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EAttribute ontrack.ecore#//SimulationAction/parameters"/>
     </genClasses>
   </genPackages>
 </genmodel:GenModel>

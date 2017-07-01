@@ -64,7 +64,7 @@ public class NewTrackItemProvider
 	 */
 	@Override
 	public Object getImage(Object object) {
-		return overlayImage(object, getResourceLocator().getImage("full/obj16/Track"));
+		return overlayImage(object, getResourceLocator().getImage("full/obj16/NewTrack"));
 	}
 
 	/**

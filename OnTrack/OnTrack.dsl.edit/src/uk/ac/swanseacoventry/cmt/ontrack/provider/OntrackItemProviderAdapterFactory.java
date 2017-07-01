@@ -462,6 +462,52 @@ public class OntrackItemProviderAdapterFactory extends OntrackAdapterFactory imp
 	}
 
 	/**
+	 * This keeps track of the one adapter used for all {@link uk.ac.swanseacoventry.cmt.ontrack.Simulation} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected SimulationItemProvider simulationItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link uk.ac.swanseacoventry.cmt.ontrack.Simulation}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createSimulationAdapter() {
+		if (simulationItemProvider == null) {
+			simulationItemProvider = new SimulationItemProvider(this);
+		}
+
+		return simulationItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link uk.ac.swanseacoventry.cmt.ontrack.SimulationAction} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected SimulationActionItemProvider simulationActionItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link uk.ac.swanseacoventry.cmt.ontrack.SimulationAction}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createSimulationActionAdapter() {
+		if (simulationActionItemProvider == null) {
+			simulationActionItemProvider = new SimulationActionItemProvider(this);
+		}
+
+		return simulationActionItemProvider;
+	}
+
+	/**
 	 * This returns the root adapter factory that contains this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -577,6 +623,8 @@ public class OntrackItemProviderAdapterFactory extends OntrackAdapterFactory imp
 		if (topoRouteItemProvider != null) topoRouteItemProvider.dispose();
 		if (trackItemProvider != null) trackItemProvider.dispose();
 		if (trackPlanItemProvider != null) trackPlanItemProvider.dispose();
+		if (simulationItemProvider != null) simulationItemProvider.dispose();
+		if (simulationActionItemProvider != null) simulationActionItemProvider.dispose();
 	}
 
 }

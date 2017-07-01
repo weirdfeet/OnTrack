@@ -7,6 +7,7 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.impl.EFactoryImpl;
 import org.eclipse.emf.ecore.plugin.EcorePlugin;
+import uk.ac.swanseacoventry.cmt.ontrack.*;
 import uk.ac.swanseacoventry.cmt.ontrack.Connector;
 import uk.ac.swanseacoventry.cmt.ontrack.ControlTableItem;
 import uk.ac.swanseacoventry.cmt.ontrack.Crossing;
@@ -88,6 +89,8 @@ public class OntrackFactoryImpl extends EFactoryImpl implements OntrackFactory {
 			case OntrackPackage.TOPO_ROUTE: return createTopoRoute();
 			case OntrackPackage.TRACK: return createTrack();
 			case OntrackPackage.TRACK_PLAN: return createTrackPlan();
+			case OntrackPackage.SIMULATION: return createSimulation();
+			case OntrackPackage.SIMULATION_ACTION: return createSimulationAction();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -261,6 +264,26 @@ public class OntrackFactoryImpl extends EFactoryImpl implements OntrackFactory {
 	public TrackPlan createTrackPlan() {
 		TrackPlanImpl trackPlan = new TrackPlanImpl();
 		return trackPlan;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Simulation createSimulation() {
+		SimulationImpl simulation = new SimulationImpl();
+		return simulation;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public SimulationAction createSimulationAction() {
+		SimulationActionImpl simulationAction = new SimulationActionImpl();
+		return simulationAction;
 	}
 
 	/**

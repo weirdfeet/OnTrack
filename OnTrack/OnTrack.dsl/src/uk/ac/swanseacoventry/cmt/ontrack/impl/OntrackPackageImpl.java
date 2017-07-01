@@ -22,6 +22,8 @@ import uk.ac.swanseacoventry.cmt.ontrack.OntrackPackage;
 import uk.ac.swanseacoventry.cmt.ontrack.Point;
 import uk.ac.swanseacoventry.cmt.ontrack.ReleaseTableItem;
 import uk.ac.swanseacoventry.cmt.ontrack.Signal;
+import uk.ac.swanseacoventry.cmt.ontrack.Simulation;
+import uk.ac.swanseacoventry.cmt.ontrack.SimulationAction;
 import uk.ac.swanseacoventry.cmt.ontrack.SubTrackPlan;
 import uk.ac.swanseacoventry.cmt.ontrack.Terminal;
 import uk.ac.swanseacoventry.cmt.ontrack.TopoRoute;
@@ -161,6 +163,20 @@ public class OntrackPackageImpl extends EPackageImpl implements OntrackPackage {
 	 * @generated
 	 */
 	private EClass unitEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass simulationEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass simulationActionEClass = null;
 
 	/**
 	 * Creates an instance of the model <b>Package</b>, registered with
@@ -1011,6 +1027,15 @@ public class OntrackPackageImpl extends EPackageImpl implements OntrackPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EReference getTrackPlan_Simulations() {
+		return (EReference)trackPlanEClass.getEStructuralFeatures().get(17);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getUnit() {
 		return unitEClass;
 	}
@@ -1022,6 +1047,69 @@ public class OntrackPackageImpl extends EPackageImpl implements OntrackPackage {
 	 */
 	public EAttribute getUnit_Name() {
 		return (EAttribute)unitEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getSimulation() {
+		return simulationEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getSimulation_Name() {
+		return (EAttribute)simulationEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getSimulation_Steps() {
+		return (EReference)simulationEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getSimulation_SubTrackPlan() {
+		return (EReference)simulationEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getSimulationAction() {
+		return simulationActionEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getSimulationAction_Name() {
+		return (EAttribute)simulationActionEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getSimulationAction_Parameters() {
+		return (EAttribute)simulationActionEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -1155,9 +1243,19 @@ public class OntrackPackageImpl extends EPackageImpl implements OntrackPackage {
 		createEReference(trackPlanEClass, TRACK_PLAN__SUB_TRACK_PLANS);
 		createEReference(trackPlanEClass, TRACK_PLAN__SELECTED_SUB_TRACK_PLAN);
 		createEAttribute(trackPlanEClass, TRACK_PLAN__OVERLAPPED);
+		createEReference(trackPlanEClass, TRACK_PLAN__SIMULATIONS);
 
 		unitEClass = createEClass(UNIT);
 		createEAttribute(unitEClass, UNIT__NAME);
+
+		simulationEClass = createEClass(SIMULATION);
+		createEAttribute(simulationEClass, SIMULATION__NAME);
+		createEReference(simulationEClass, SIMULATION__STEPS);
+		createEReference(simulationEClass, SIMULATION__SUB_TRACK_PLAN);
+
+		simulationActionEClass = createEClass(SIMULATION_ACTION);
+		createEAttribute(simulationActionEClass, SIMULATION_ACTION__NAME);
+		createEAttribute(simulationActionEClass, SIMULATION_ACTION__PARAMETERS);
 	}
 
 	/**
@@ -1296,9 +1394,19 @@ public class OntrackPackageImpl extends EPackageImpl implements OntrackPackage {
 		initEReference(getTrackPlan_SubTrackPlans(), this.getSubTrackPlan(), null, "subTrackPlans", null, 0, -1, TrackPlan.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getTrackPlan_SelectedSubTrackPlan(), this.getSubTrackPlan(), null, "selectedSubTrackPlan", null, 0, 1, TrackPlan.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getTrackPlan_Overlapped(), ecorePackage.getEBoolean(), "overlapped", null, 0, 1, TrackPlan.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getTrackPlan_Simulations(), this.getSimulation(), null, "simulations", null, 0, -1, TrackPlan.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(unitEClass, Unit.class, "Unit", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getUnit_Name(), ecorePackage.getEString(), "name", null, 0, 1, Unit.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(simulationEClass, Simulation.class, "Simulation", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getSimulation_Name(), ecorePackage.getEString(), "name", null, 0, 1, Simulation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getSimulation_Steps(), this.getSimulationAction(), null, "steps", null, 0, -1, Simulation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getSimulation_SubTrackPlan(), this.getSubTrackPlan(), null, "subTrackPlan", null, 0, 1, Simulation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(simulationActionEClass, SimulationAction.class, "SimulationAction", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getSimulationAction_Name(), ecorePackage.getEString(), "name", null, 0, 1, SimulationAction.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getSimulationAction_Parameters(), ecorePackage.getEString(), "parameters", null, 0, -1, SimulationAction.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		// Create resource
 		createResource(eNS_URI);

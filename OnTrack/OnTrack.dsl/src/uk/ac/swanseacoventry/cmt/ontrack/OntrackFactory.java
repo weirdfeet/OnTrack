@@ -175,6 +175,24 @@ public interface OntrackFactory extends EFactory {
 	TrackPlan createTrackPlan();
 
 	/**
+	 * Returns a new object of class '<em>Simulation</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Simulation</em>'.
+	 * @generated
+	 */
+	Simulation createSimulation();
+
+	/**
+	 * Returns a new object of class '<em>Simulation Action</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Simulation Action</em>'.
+	 * @generated
+	 */
+	SimulationAction createSimulationAction();
+
+	/**
 	 * Returns the package supported by this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
