@@ -1,6 +1,9 @@
 package uk.ac.swanseacoventry.cmt.ontrack.abs.covering;
 
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.Hashtable;
+import java.util.Set;
 
 import org.eclipse.emf.common.util.EList;
 
@@ -91,6 +94,42 @@ public class TrackPlanCovering  {
 			criticals.add(t);
 			covering(criticals);
 		}
+		
+	}
+
+	public void collapseSubTrackPlans(){
+		boolean collapsed = true;
+		while(collapsed){
+			collapsed = false;
+			for(SubTrackPlan stp : trackplan.getSubTrackPlans()){
+				for(SubTrackPlan stp2 : trackplan.getSubTrackPlans()){
+					if (stp!=stp2 && checkSubPlanIsSubsumed(stp, stp2)){ // stp <= stp2
+						stp2.getCriticals().addAll(stp.getCriticals());
+						removeSubTrackPlan(stp);
+						collapsed = true;
+						break;
+					}
+				}
+				if (collapsed)
+					break;
+			}
+		}
+	}
+	
+	private void removeSubTrackPlan(SubTrackPlan stp){
+		for(Entrance e : stp.getEntrances()){
+			e.getConnector().getEntrances().remove(e);
+		}
+		for(Exit e : stp.getExits()){
+			e.getConnector().getExits().remove(e);
+		}
+		trackplan.getSubTrackPlans().remove(stp);	
+	}
+
+	private boolean checkSubPlanIsSubsumed(SubTrackPlan stp, SubTrackPlan stp2){
+		HashSet<Track> trs1 =  new HashSet<Track>(stp.getTracks());
+		HashSet<Track> trs2 =  new HashSet<Track>(stp2.getTracks());
+		return (trs2.containsAll(trs1));
 	}
 	
 //	class DirectedTrack{ // similar to Directed track but defined here to have free use
