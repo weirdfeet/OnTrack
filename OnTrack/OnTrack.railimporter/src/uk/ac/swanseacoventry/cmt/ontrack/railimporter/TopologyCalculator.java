@@ -48,7 +48,7 @@ public class TopologyCalculator {
 		File f = new File(inputFolder);
 		if (!f.isDirectory()) return false;
 		
-		String[] requiredFiles = {"Nodes.csv","Points.csv","Signals.csv","Paths.csv","TrackCircuits.csv","Routes.csv", "Boundary.csv"};
+		String[] requiredFiles = {"Nodes.csv","Points.csv","Signals.csv","Paths.csv","TrackCircuits.csv","Routes.csv"};
 		for(String rqfile : requiredFiles){
 			f = new File(inputFolder + File.separator + rqfile);
 			if (!f.exists() || !f.isFile()) return false;
