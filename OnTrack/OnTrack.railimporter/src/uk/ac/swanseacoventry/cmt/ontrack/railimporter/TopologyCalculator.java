@@ -20,10 +20,12 @@ import org.eclipse.emf.ecore.xmi.impl.XMIResourceFactoryImpl;
 
 import uk.ac.swanseacoventry.cmt.ontrack.Connector;
 import uk.ac.swanseacoventry.cmt.ontrack.ControlTableItem;
+import uk.ac.swanseacoventry.cmt.ontrack.Crossing;
 import uk.ac.swanseacoventry.cmt.ontrack.DirectedTrack;
 import uk.ac.swanseacoventry.cmt.ontrack.Entrance;
 import uk.ac.swanseacoventry.cmt.ontrack.Exit;
 import uk.ac.swanseacoventry.cmt.ontrack.OntrackFactory;
+import uk.ac.swanseacoventry.cmt.ontrack.ReleaseTableItem;
 import uk.ac.swanseacoventry.cmt.ontrack.Track;
 import uk.ac.swanseacoventry.cmt.ontrack.TrackPlan;
 
@@ -51,6 +53,7 @@ public class TopologyCalculator {
 	HashMap<Node,Connector> createdConnectors = new HashMap<Node,Connector>();
 	HashMap<Signal,uk.ac.swanseacoventry.cmt.ontrack.Signal> createdSignals = new HashMap<Signal,uk.ac.swanseacoventry.cmt.ontrack.Signal>();
 	HashMap<Point,uk.ac.swanseacoventry.cmt.ontrack.Point> createdPoints = new HashMap<Point,uk.ac.swanseacoventry.cmt.ontrack.Point>();
+	HashMap<Diamond,Crossing> createdCrossings = new HashMap<Diamond,Crossing>();
 	HashMap<Connector, HashSet<Track>> normalPointTracks = new HashMap<Connector, HashSet<Track>>();
 	HashMap<Connector, HashSet<Track>> reversePointTracks = new HashMap<Connector, HashSet<Track>>();
 	//HashMap<Point, HashSet<ControlTableItem>> normalPointRoutes = new HashMap<Point, HashSet<ControlTableItem>>();
@@ -130,6 +133,53 @@ public class TopologyCalculator {
 		return p;
 	}
 
+	Crossing getOnTrackCrossing(Diamond n){
+		Crossing p = createdCrossings.get(n);
+		if (p==null) {
+			p = OntrackFactory.eINSTANCE.createCrossing();
+			p.setName(n.getName());
+			barkston.getCrossings().add(p);
+			createdCrossings.put(n, p);
+
+			String pointTrackName = "TC" + n.getName();
+			
+			Connector c1 = OntrackFactory.eINSTANCE.createConnector();
+			c1.setId(conNum++);
+			barkston.getConnectors().add(c1);
+			Connector c2 = OntrackFactory.eINSTANCE.createConnector();
+			c2.setId(conNum++);
+			barkston.getConnectors().add(c2);
+			Connector c3 = OntrackFactory.eINSTANCE.createConnector();
+			c3.setId(conNum++);
+			barkston.getConnectors().add(c3);
+			Connector c4 = OntrackFactory.eINSTANCE.createConnector();
+			c4.setId(conNum++);
+			barkston.getConnectors().add(c4);
+			
+			Track mt = OntrackFactory.eINSTANCE.createTrack(); // main track
+			mt.setName(pointTrackName);
+			barkston.getTracks().add(mt);
+
+			Track bt = OntrackFactory.eINSTANCE.createTrack(); // branch track
+			bt.setName(pointTrackName);
+			barkston.getTracks().add(bt);
+			
+			p.setTrack1(mt);
+			p.setTrack2(bt);
+			mt.setCrossing1(p);
+			mt.setC1(c1);
+			mt.setC2(c2);
+			bt.setCrossing2(p);
+			bt.setC1(c3);
+			bt.setC2(c4);
+			c1.getTrack1s().add(mt);
+			c2.getTrack2s().add(mt);
+			c3.getTrack1s().add(bt);
+			c4.getTrack2s().add(bt);
+		}
+		return p;
+	}
+
 	uk.ac.swanseacoventry.cmt.ontrack.Track getOnTrackTrack(TrackCircuit tc){
 		uk.ac.swanseacoventry.cmt.ontrack.Track t = createdTracks.get(tc);
 		if (t==null) {
@@ -157,13 +207,6 @@ public class TopologyCalculator {
 			normalPointTracks.put(c, ts);
 		}
 		ts.add(t);
-		
-//		HashSet<ControlTableItem> cts = normalPointRoutes.get(n);
-//		if (cts==null) {
-//			cts = new HashSet<ControlTableItem>();
-//			normalPointRoutes.put((Point)n, cts);
-//		}
-//		cts.add(ct);
 	}
 	
 	public void rememberReversePointInCtrlTable(Node n, Track t, ControlTableItem ct){
@@ -208,7 +251,7 @@ public class TopologyCalculator {
         scanner.close();
 	}
 		
-	private void correctPointConnector(Track t, Connector oldCon, Connector newCon){
+	private void replaceTrackConnector(Track t, Connector oldCon, Connector newCon){
 		if (t.getC1()==oldCon){
 			t.setC1(newCon);
 			newCon.getTrack1s().add(t);
@@ -337,11 +380,36 @@ public class TopologyCalculator {
 					String tname = t.getName();
 					TrackCircuit tc = rp.getTracks().get(tname);
 					if (tc.getPaths().contains(enterPath)){
-						correctPointConnector(t, c, p.getNormalTrack().getC1());
+						replaceTrackConnector(t, c, p.getNormalTrack().getC1());
 					} else	if (tc.getPaths().contains(exitPath)){
-						correctPointConnector(t, c, p.getNormalTrack().getC2());
+						replaceTrackConnector(t, c, p.getNormalTrack().getC2());
 					} else	if (tc.getPaths().contains(branchPath)){
-						correctPointConnector(t, c, p.getReverseTrack().getC2());
+						replaceTrackConnector(t, c, p.getReverseTrack().getC2());
+					}
+				}
+			} else if (n instanceof Diamond){
+				Diamond bravep = (Diamond)n;			
+				Crossing  p = getOnTrackCrossing(bravep);
+				Path mainEnter = rp.getPaths().get(bravep.getMainEnter());
+				Path mainExit = rp.getPaths().get(bravep.getMainExit());
+				Path branchEnter = rp.getPaths().get(bravep.getBranchEnter());
+				Path branchExit = rp.getPaths().get(bravep.getBranchExit());
+				
+				// replace the connector of surrounding tracks of this point with the connectors of the point
+				Connector c = getOnTrackConnector(bravep);
+				ArrayList<Track> tracks = new ArrayList<Track>();
+				tracks.addAll(c.getTracks());
+				for(Track t : tracks){
+					String tname = t.getName();
+					TrackCircuit tc = rp.getTracks().get(tname);
+					if (tc.getPaths().contains(mainEnter)){
+						replaceTrackConnector(t, c, p.getTrack1().getC1());
+					} else	if (tc.getPaths().contains(mainExit)){
+						replaceTrackConnector(t, c, p.getTrack1().getC2());
+					} else	if (tc.getPaths().contains(branchEnter)){
+						replaceTrackConnector(t, c, p.getTrack2().getC1());
+					} else	if (tc.getPaths().contains(branchExit)){
+						replaceTrackConnector(t, c, p.getTrack2().getC2());
 					}
 				}
 			} else if (n instanceof Signal) {
@@ -465,6 +533,48 @@ public class TopologyCalculator {
 			}
 		}
 		barkston.getConnectors().removeAll(emptyConnectors);
+		
+		// finally, generate release table, not that brave data have no such thing
+		for(ControlTableItem cti : barkston.getControlTable()){
+			for(uk.ac.swanseacoventry.cmt.ontrack.Point p : cti.getNormals()){
+				HashSet<Track> occTracks = new HashSet<Track>();
+				Connector c1 = p.getNormalTrack().getC1();
+				Connector c2 = p.getNormalTrack().getC2();
+				for(Track t : c1.getTracks())
+					if (t!=p.getNormalTrack() && t!=p.getReverseTrack())
+						occTracks.add(t);
+				for(Track t : c2.getTrack2s())
+					if (t!=p.getNormalTrack() && t!=p.getReverseTrack())
+						occTracks.add(t);
+				for(Track t : occTracks){
+					ReleaseTableItem rti = OntrackFactory.eINSTANCE.createReleaseTableItem();
+					rti.setRoute(cti.getRoute());
+					rti.setPoint(p);
+					rti.setUnoccupiedTrack(p.getNormalTrack());
+					rti.setOccupiedTrack(t);
+					barkston.getReleaseTable().add(rti);
+				}
+			}
+			for(uk.ac.swanseacoventry.cmt.ontrack.Point p : cti.getReverses()){
+				HashSet<Track> occTracks = new HashSet<Track>();
+				Connector c1 = p.getReverseTrack().getC1();
+				Connector c2 = p.getReverseTrack().getC2();
+				for(Track t : c1.getTracks())
+					if (t!=p.getNormalTrack() && t!=p.getReverseTrack())
+						occTracks.add(t);
+				for(Track t : c2.getTrack2s())
+					if (t!=p.getNormalTrack() && t!=p.getReverseTrack())
+						occTracks.add(t);
+				for(Track t : occTracks){
+					ReleaseTableItem rti = OntrackFactory.eINSTANCE.createReleaseTableItem();
+					rti.setRoute(cti.getRoute());
+					rti.setPoint(p);
+					rti.setUnoccupiedTrack(p.getReverseTrack());
+					rti.setOccupiedTrack(t);
+					barkston.getReleaseTable().add(rti);
+				}
+			}		
+		}
 		
 		EList<EObject> ModelObjects = new BasicEList<EObject>(); 
 		ModelObjects.add(barkston);
