@@ -208,6 +208,18 @@ public class TopologyCalculator {
         scanner.close();
 	}
 		
+	private void correctPointConnector(Track t, Connector oldCon, Connector newCon){
+		if (t.getC1()==oldCon){
+			t.setC1(newCon);
+			newCon.getTrack1s().add(t);
+			oldCon.getTrack1s().remove(t);
+		}
+		else {
+			t.setC2(newCon);
+			newCon.getTrack2s().add(t);
+			oldCon.getTrack2s().remove(t);
+		}
+	}
 	
 	public File importBraveData(String inputFolder, String outputFile){
 		try{
@@ -257,6 +269,7 @@ public class TopologyCalculator {
 			Signal sig = (Signal)n;
 			String beforePath = sig.getDirPath();
 			ignorePaths.add(beforePath);
+			queue.add(n);
 		}
 		
 		for(String s : exitSignals){
@@ -266,6 +279,7 @@ public class TopologyCalculator {
 			for(String p : n.getPaths())
 				if (!p.equals(beforePath))
 					ignorePaths.add(p);
+			queue.add(n);
 		}
 		
 		while(!queue.isEmpty()){
@@ -305,50 +319,41 @@ public class TopologyCalculator {
 		System.out.println("Num of Imported Tracks: " + createdTracks.size());
 		
 		
-		// expand all point nodes into points and their two corresponding tracks
+		// expand all point point nodes to points and add their two corresponding tracks
 		// node that we need to connect their connectors later
 		for(Node n : visited){
-			System.out.print(n.getName() + ",");
-			
 			if (n instanceof Point){
 				Point bravep = (Point)n;			
 				uk.ac.swanseacoventry.cmt.ontrack.Point  p = getOnTrackPoint(bravep);
+				Path enterPath = rp.getPaths().get(bravep.getEnterPath());
+				Path exitPath = rp.getPaths().get(bravep.getExitPath());
+				Path branchPath = rp.getPaths().get(bravep.getBranchPath());
 				
 				// replace the connector of surrounding tracks of this point with the connectors of the point
 				Connector c = getOnTrackConnector(bravep);
 				ArrayList<Track> tracks = new ArrayList<Track>();
 				tracks.addAll(c.getTracks());
 				for(Track t : tracks){
-					if (t.getName().equals(bravep.getEnterPath())){
-						if (t.getC1()==c){
-							t.setC1(p.getNormalTrack().getC1());
-						}
-						else {
-							t.setC2(p.getNormalTrack().getC1());
-						}
-					} else	if (t.getName().equals(bravep.getExitPath())){
-						if (t.getC1()==c){
-							t.setC1(p.getNormalTrack().getC2());
-						}
-						else {
-							t.setC2(p.getNormalTrack().getC2());
-						}
-					} else	if (t.getName().equals(bravep.getBranchPath())){
-						if (t.getC1()==c){
-							t.setC1(p.getReverseTrack().getC2());
-						}
-						else {
-							t.setC2(p.getReverseTrack().getC2());
-						}
+					String tname = t.getName();
+					TrackCircuit tc = rp.getTracks().get(tname);
+					if (tc.getPaths().contains(enterPath)){
+						correctPointConnector(t, c, p.getNormalTrack().getC1());
+					} else	if (tc.getPaths().contains(exitPath)){
+						correctPointConnector(t, c, p.getNormalTrack().getC2());
+					} else	if (tc.getPaths().contains(branchPath)){
+						correctPointConnector(t, c, p.getReverseTrack().getC2());
 					}
 				}
 			} else if (n instanceof Signal) {
-				Signal braves = (Signal)n;			
-				uk.ac.swanseacoventry.cmt.ontrack.Signal s = getOnTrackSignal(braves);
-				if (importedPaths.keySet().contains(braves.getDirPath())){
-					Track t = createdTracks.get(importedPaths.get(braves.getDirPath()).getTracks().get(0));
-					if (t!=null) s.setTrack(t);
-					t.getSignals().add(s);
+				if (!exitSignals.contains(n.getName())){ // exit signals are not added in
+					Signal braves = (Signal)n;	
+					uk.ac.swanseacoventry.cmt.ontrack.Signal s = getOnTrackSignal(braves);
+					Path beforePath = rp.getPaths().get(braves.getDirPath());
+					Track t = createdTracks.get(beforePath.getTracks().get(0));
+					if (t!=null) {
+						s.setTrack(t);
+						t.getSignals().add(s);
+					}
 				}
 			}
 			
@@ -365,14 +370,14 @@ public class TopologyCalculator {
 		HashMap<String,Route> importedRoutes = new HashMap<String,Route>();
 		for(String rname : rp.getRoutes().keySet()){
 			Route r = rp.getRoutes().get(rname);
-			if (!visited.contains(r.getSignal())) continue;
+			Signal s = r.getSignal();
+			if (!visited.contains(s) || exitSignals.contains(s.getName())) continue;
 			importedRoutes.put(rname, r);
 		}
-		
+		System.out.println("Number of Imported Routes: " + importedRoutes.size());		
 		
 		// generate control table for the imported track plan
 		for(String rn : importedRoutes.keySet()){
-			System.out.println("Imported Route: " + rn);
 			Route r = importedRoutes.get(rn);
 			ArrayList<Point> nPoints = r.getNormalPoints();
 			ArrayList<Point> rPoints = r.getReversePoints();
@@ -451,6 +456,15 @@ public class TopologyCalculator {
 			t.getDirectedTracks().add(dt1);
 			t.getDirectedTracks().add(dt2);
 		}
+		
+		// remove connectors that has no attached tracks
+		HashSet<Connector> emptyConnectors = new HashSet<Connector>();
+		for(Connector c : barkston.getConnectors()){
+			if (c.getTracks().isEmpty()){
+				emptyConnectors.add(c);
+			}
+		}
+		barkston.getConnectors().removeAll(emptyConnectors);
 		
 		EList<EObject> ModelObjects = new BasicEList<EObject>(); 
 		ModelObjects.add(barkston);
