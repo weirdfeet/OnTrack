@@ -266,7 +266,7 @@ public class CSPTableViewer extends ViewPart {
 		long end = System.currentTimeMillis();
 		if (ret.isEmpty()) ret = "?";
 		if (states.isEmpty()) states = "?";
-		ret = states + "," + Long.toString((end-start)/1000) + "," + ret;
+		ret = states + "," + Double.toString((end-start)/1000.0) + "," + ret;
 		System.out.println(ret);
 		return ret;
 	}

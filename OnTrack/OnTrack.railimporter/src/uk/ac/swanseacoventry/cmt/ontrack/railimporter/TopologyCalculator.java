@@ -550,44 +550,36 @@ public class TopologyCalculator {
 
 		// finally, generate release table, not that brave data have no such thing
 		for(ControlTableItem cti : barkston.getControlTable()){
-			for(uk.ac.swanseacoventry.cmt.ontrack.Point p : cti.getNormals()){
-				HashSet<Track> occTracks = new HashSet<Track>();
-				Connector c1 = p.getNormalTrack().getC1();
-				Connector c2 = p.getNormalTrack().getC2();
-				for(Track t : c1.getTracks())
-					if (t!=p.getNormalTrack() && t!=p.getReverseTrack())
-						occTracks.add(t);
-				for(Track t : c2.getTrack2s())
-					if (t!=p.getNormalTrack() && t!=p.getReverseTrack())
-						occTracks.add(t);
-				for(Track t : occTracks){
-					ReleaseTableItem rti = OntrackFactory.eINSTANCE.createReleaseTableItem();
-					rti.setRoute(cti.getRoute());
-					rti.setPoint(p);
-					rti.setUnoccupiedTrack(p.getNormalTrack());
-					rti.setOccupiedTrack(t);
-					barkston.getReleaseTable().add(rti);
+			HashSet<Track> vtracks = new HashSet<Track>();
+			Connector c = cti.getSignal().getConnector();
+			while(c!=null){
+				Connector nc = null;
+				for(Track t : cti.getClears()){
+					if (vtracks.contains(t)) continue;
+					if (t.getC1()==c)
+						nc = t.getC2();
+					else if (t.getC2()==c)
+						nc = t.getC1();
+					if (nc!=null) {
+						vtracks.add(t);
+						// cti.getDirections().add(t.getDirectedTrackByConnector(nc, false));
+						if (t.getPoint()!=null){
+							for(Track pt : nc.getTracks()){
+								if (t.getPoint().getNormalTrack()!=pt && t.getPoint().getReverseTrack()!=pt){
+									ReleaseTableItem rti = OntrackFactory.eINSTANCE.createReleaseTableItem();
+									rti.setRoute(cti.getRoute());
+									rti.setPoint(t.getPoint());
+									rti.setUnoccupiedTrack(t);
+									rti.setOccupiedTrack(pt);
+									barkston.getReleaseTable().add(rti);	
+								}
+							}
+						}
+						break;
+					}
 				}
+				c = nc;
 			}
-			for(uk.ac.swanseacoventry.cmt.ontrack.Point p : cti.getReverses()){
-				HashSet<Track> occTracks = new HashSet<Track>();
-				Connector c1 = p.getReverseTrack().getC1();
-				Connector c2 = p.getReverseTrack().getC2();
-				for(Track t : c1.getTracks())
-					if (t!=p.getNormalTrack() && t!=p.getReverseTrack())
-						occTracks.add(t);
-				for(Track t : c2.getTrack2s())
-					if (t!=p.getNormalTrack() && t!=p.getReverseTrack())
-						occTracks.add(t);
-				for(Track t : occTracks){
-					ReleaseTableItem rti = OntrackFactory.eINSTANCE.createReleaseTableItem();
-					rti.setRoute(cti.getRoute());
-					rti.setPoint(p);
-					rti.setUnoccupiedTrack(p.getReverseTrack());
-					rti.setOccupiedTrack(t);
-					barkston.getReleaseTable().add(rti);
-				}
-			}		
 		}
 		
 		EList<EObject> ModelObjects = new BasicEList<EObject>(); 

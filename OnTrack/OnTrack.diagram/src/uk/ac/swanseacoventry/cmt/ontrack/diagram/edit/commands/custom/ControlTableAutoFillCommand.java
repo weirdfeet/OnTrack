@@ -89,24 +89,24 @@ public class ControlTableAutoFillCommand extends AbstractTransactionalCommand {
 		}
 		
 		// try to remove redundant directions
-		HashMap<DirectedTrack,Boolean> dti = new HashMap<DirectedTrack,Boolean>();
-		for(ControlTableItem cti : trackplan.getControlTable()){
-			for(DirectedTrack dt : cti.getDirections()) {
-				dti.put(dt, false);
-			}
-		}			
-		for(DirectedTrack dt : dti.keySet()){
-			if (dti.containsKey(dt.getOppositeDirectedTrack()) || dt.getConnector().getEntrances().size()>0)
-				dti.put(dt, true);
-		}			
-		for(ControlTableItem cti : trackplan.getControlTable()){
-			ArrayList<DirectedTrack> dts = new ArrayList<DirectedTrack>();
-			for(DirectedTrack dt : cti.getDirections()) {
-				if (dti.get(dt).booleanValue()) dts.add(dt);
-			}
-			cti.getDirections().clear();
-			cti.getDirections().addAll(dts);
-		}			
+//		HashMap<DirectedTrack,Boolean> dti = new HashMap<DirectedTrack,Boolean>();
+//		for(ControlTableItem cti : trackplan.getControlTable()){
+//			for(DirectedTrack dt : cti.getDirections()) {
+//				dti.put(dt, false);
+//			}
+//		}			
+//		for(DirectedTrack dt : dti.keySet()){
+//			if (dti.containsKey(dt.getOppositeDirectedTrack()) || dt.getConnector().getEntrances().size()>0)
+//				dti.put(dt, true);
+//		}			
+//		for(ControlTableItem cti : trackplan.getControlTable()){
+//			ArrayList<DirectedTrack> dts = new ArrayList<DirectedTrack>();
+//			for(DirectedTrack dt : cti.getDirections()) {
+//				if (dti.get(dt).booleanValue()) dts.add(dt);
+//			}
+//			cti.getDirections().clear();
+//			cti.getDirections().addAll(dts);
+//		}			
 				
 		return CommandResult.newOKCommandResult();
 		
