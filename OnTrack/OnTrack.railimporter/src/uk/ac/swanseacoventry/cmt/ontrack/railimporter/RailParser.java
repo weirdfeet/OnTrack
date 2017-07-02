@@ -160,7 +160,7 @@ public class RailParser
             		p.setMainExit(pmain[1].trim());
             		p.setBranchEnter(pbranch[0].trim());
             		p.setBranchExit(pbranch[1].trim());
-            	} else if (parts[type.first].startsWith("Edge")){
+            	} else if (parts[type.first].startsWith("Buffer")){
             		n = new Terminal(name);
             	}
             }

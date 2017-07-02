@@ -4,6 +4,7 @@ package uk.ac.swanseacoventry.cmt.ontrack.impl;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.HashSet;
 import java.util.List;
 
 import org.eclipse.emf.common.notify.Notification;
@@ -14,8 +15,10 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 import org.eclipse.emf.ecore.util.EObjectResolvingEList;
 
+import uk.ac.swanseacoventry.cmt.ontrack.Connector;
 import uk.ac.swanseacoventry.cmt.ontrack.ControlTableItem;
 import uk.ac.swanseacoventry.cmt.ontrack.DirectedTrack;
+import uk.ac.swanseacoventry.cmt.ontrack.OntrackFactory;
 import uk.ac.swanseacoventry.cmt.ontrack.OntrackPackage;
 import uk.ac.swanseacoventry.cmt.ontrack.Point;
 import uk.ac.swanseacoventry.cmt.ontrack.ReleaseTableItem;
@@ -415,5 +418,30 @@ public class ControlTableItemImpl extends MinimalEObjectImpl.Container implement
 		}
 		// TODO Auto-generated method stub
 		return String.join("; ", rets);
+	}
+
+	@Override
+	public ArrayList<DirectedTrack> guessDirections() {
+		ArrayList<DirectedTrack> ret = new ArrayList<DirectedTrack>();
+		HashSet<Track> visited = new HashSet<Track>();
+		Connector c = getSignal().getConnector();
+		while(c!=null){
+			Connector nc = null;
+			for(Track t : getClears()){
+				if (visited.contains(t)) continue;
+				if (t.getC1()==c)
+					nc = t.getC2();
+				else if (t.getC2()==c)
+					nc = t.getC1();
+				if (nc!=null) {
+					visited.add(t);
+					ret.add(t.getDirectedTrackByConnector(nc, false));
+					break;
+				}
+			}
+			c = nc;
+		}
+		
+		return ret;
 	}
 } //ControlTableItemImpl

@@ -542,43 +542,38 @@ public class TopologyCalculator {
 
 		for(Connector c : barkston.getConnectors()){
 			if (c.getTracks().size()>1) continue;
-			Exit ex = OntrackFactory.eINSTANCE.createExit();
-			ex.setConnector(c);
-			c.getExits().add(ex);
-			barkston.getExits().add(ex);
 		}
 
-		// finally, generate release table, not that brave data have no such thing
+		// finally, generate release table, brave data have no such thing
+		// generate exits
 		for(ControlTableItem cti : barkston.getControlTable()){
-			HashSet<Track> vtracks = new HashSet<Track>();
-			Connector c = cti.getSignal().getConnector();
-			while(c!=null){
-				Connector nc = null;
-				for(Track t : cti.getClears()){
-					if (vtracks.contains(t)) continue;
-					if (t.getC1()==c)
-						nc = t.getC2();
-					else if (t.getC2()==c)
-						nc = t.getC1();
-					if (nc!=null) {
-						vtracks.add(t);
-						// cti.getDirections().add(t.getDirectedTrackByConnector(nc, false));
-						if (t.getPoint()!=null){
-							for(Track pt : nc.getTracks()){
-								if (t.getPoint().getNormalTrack()!=pt && t.getPoint().getReverseTrack()!=pt){
-									ReleaseTableItem rti = OntrackFactory.eINSTANCE.createReleaseTableItem();
-									rti.setRoute(cti.getRoute());
-									rti.setPoint(t.getPoint());
-									rti.setUnoccupiedTrack(t);
-									rti.setOccupiedTrack(pt);
-									barkston.getReleaseTable().add(rti);	
-								}
-							}
+			ArrayList<DirectedTrack> directions = cti.guessDirections();
+			for(DirectedTrack dt : directions){
+				Track t = dt.getTrack();
+				Connector nc = dt.getConnector();
+				if (t.getPoint()!=null){
+					for(Track pt : nc.getTracks()){
+						if (t.getPoint().getNormalTrack()!=pt && t.getPoint().getReverseTrack()!=pt){
+							ReleaseTableItem rti = OntrackFactory.eINSTANCE.createReleaseTableItem();
+							rti.setRoute(cti.getRoute());
+							rti.setPoint(t.getPoint());
+							rti.setUnoccupiedTrack(t);
+							rti.setOccupiedTrack(pt);
+							barkston.getReleaseTable().add(rti);	
 						}
-						break;
 					}
 				}
-				c = nc;
+			}
+			// generate exit
+			if (directions.size()<=0) continue;
+			DirectedTrack last = directions.get(directions.size()-1);
+			Connector c =  last.getConnector();
+			if (c.getExits().size() > 0) continue;
+			if (c.getTracks().size() <= 1) {
+				Exit ex = OntrackFactory.eINSTANCE.createExit();
+				ex.setConnector(c);
+				c.getExits().add(ex);
+				barkston.getExits().add(ex);
 			}
 		}
 		

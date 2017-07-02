@@ -1,5 +1,7 @@
 package uk.ac.swanseacoventry.cmt.ontrack;
 
+import java.util.ArrayList;
+
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 
@@ -62,4 +64,5 @@ public interface ControlTableItem extends EObject {
 	public String getReversesSequence(TrackPlan tp);
 	public String getClearsSequence();
 	public String getDirectionsSequence();
+	public ArrayList<DirectedTrack> guessDirections();
 }
