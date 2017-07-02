@@ -43,6 +43,7 @@ import uk.ac.swanseacoventry.cmt.ontrack.Track;
 import uk.ac.swanseacoventry.cmt.ontrack.TrackPlan;
 import uk.ac.swanseacoventry.cmt.ontrack.diagram.custom.Util;
 import uk.ac.swanseacoventry.cmt.ontrack.diagram.edit.commands.custom.TrackPlanSelectSubCommand;
+import uk.ac.swanseacoventry.cmt.ontrack.diagram.edit.commands.custom.VerificationResultUpdateCommand;
 import uk.ac.swanseacoventry.cmt.ontrack.diagram.part.OntrackDiagramEditorPlugin;
 import uk.ac.swanseacoventry.cmt.ontrack.diagram.preferences.custom.PreferenceConstants;
 import uk.ac.swanseacoventry.cmt.ontrack.diagram.util.RemoteFDR3Helper;
@@ -314,22 +315,25 @@ public class CSPTableViewer extends ViewPart {
 			 public void run(){
 				DiagramEditPart diagramEditPart = Util.getDiagramEP();
 				if (diagramEditPart==null) return;
+				TrackPlan trackplan = (TrackPlan)((View)diagramEditPart.getModel()).getElement();
 				
 				for(TableItem item : table.getSelection()){
 					Object tp = item.getData();
 					if (tp instanceof TrackPlan){
 						if (!fullModelPath.equals("")){
 							String[] rs = callFDR3(fullModelPath).split(",");
-							item.setText(6, rs[0]);
-							item.setText(7, rs[1]);
-							item.setText(8, rs[2]);
+							CompoundCommand cc = new CompoundCommand();
+							cc.add(new ICommandProxy(new VerificationResultUpdateCommand(diagramEditPart, null, rs[0], rs[1], rs[2])));
+							cc.execute();
+							refreshCSPTableFrom(trackplan);
 						}
 					} else if (tp instanceof SubTrackPlan) {
 						if (modelPaths.containsKey(tp)){
 							String[] rs = callFDR3(modelPaths.get(tp)).split(",");
-							item.setText(6, rs[0]);
-							item.setText(7, rs[1]);
-							item.setText(8, rs[2]);
+							CompoundCommand cc = new CompoundCommand();
+							cc.add(new ICommandProxy(new VerificationResultUpdateCommand(diagramEditPart, (SubTrackPlan)tp, rs[0], rs[1], rs[2])));
+							cc.execute();
+							refreshCSPTableFrom(trackplan);
 						}
 					}
 				}
@@ -481,6 +485,9 @@ public class CSPTableViewer extends ViewPart {
 				Integer.toString(trackplan.getCrossings().size()),
 				Integer.toString(trackplan.getSignals().size()),
 				Integer.toString(routes) + (hroutes > 0 ? "(" + Integer.toString(hroutes) + ")" : ""),
+				trackplan.getVerificationTime(),
+				trackplan.getVerificationStates(),
+				trackplan.getVerificationResult()
 				}
 		);
 		tit.setData(trackplan);
@@ -501,6 +508,9 @@ public class CSPTableViewer extends ViewPart {
 					Integer.toString(stp.getCrossings().size()),
 					Integer.toString(stp.getSignals().size()),
 					Integer.toString(routes) + (hroutes > 0 ? "(" + Integer.toString(hroutes) + ")" : ""),
+					stp.getVerificationTime(),
+					stp.getVerificationStates(),
+					stp.getVerificationResult()
 					}
 			);
 			tit.setData(stp);
