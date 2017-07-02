@@ -721,6 +721,33 @@ public class OntrackPackageImpl extends EPackageImpl implements OntrackPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EAttribute getSubTrackPlan_VerificationTime() {
+		return (EAttribute)subTrackPlanEClass.getEStructuralFeatures().get(12);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getSubTrackPlan_VerificationStates() {
+		return (EAttribute)subTrackPlanEClass.getEStructuralFeatures().get(13);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getSubTrackPlan_VerificationResult() {
+		return (EAttribute)subTrackPlanEClass.getEStructuralFeatures().get(14);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getTerminal() {
 		return terminalEClass;
 	}
@@ -1036,6 +1063,33 @@ public class OntrackPackageImpl extends EPackageImpl implements OntrackPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EAttribute getTrackPlan_VerificationTime() {
+		return (EAttribute)trackPlanEClass.getEStructuralFeatures().get(18);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getTrackPlan_VerificationStates() {
+		return (EAttribute)trackPlanEClass.getEStructuralFeatures().get(19);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getTrackPlan_VerificationResult() {
+		return (EAttribute)trackPlanEClass.getEStructuralFeatures().get(20);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getUnit() {
 		return unitEClass;
 	}
@@ -1205,6 +1259,9 @@ public class OntrackPackageImpl extends EPackageImpl implements OntrackPackage {
 		createEReference(subTrackPlanEClass, SUB_TRACK_PLAN__TOPO_ROUTES);
 		createEReference(subTrackPlanEClass, SUB_TRACK_PLAN__CONTROL_TABLE);
 		createEReference(subTrackPlanEClass, SUB_TRACK_PLAN__RELEASE_TABLE);
+		createEAttribute(subTrackPlanEClass, SUB_TRACK_PLAN__VERIFICATION_TIME);
+		createEAttribute(subTrackPlanEClass, SUB_TRACK_PLAN__VERIFICATION_STATES);
+		createEAttribute(subTrackPlanEClass, SUB_TRACK_PLAN__VERIFICATION_RESULT);
 
 		terminalEClass = createEClass(TERMINAL);
 		createEReference(terminalEClass, TERMINAL__CONNECTOR);
@@ -1244,6 +1301,9 @@ public class OntrackPackageImpl extends EPackageImpl implements OntrackPackage {
 		createEReference(trackPlanEClass, TRACK_PLAN__SELECTED_SUB_TRACK_PLAN);
 		createEAttribute(trackPlanEClass, TRACK_PLAN__OVERLAPPED);
 		createEReference(trackPlanEClass, TRACK_PLAN__SIMULATIONS);
+		createEAttribute(trackPlanEClass, TRACK_PLAN__VERIFICATION_TIME);
+		createEAttribute(trackPlanEClass, TRACK_PLAN__VERIFICATION_STATES);
+		createEAttribute(trackPlanEClass, TRACK_PLAN__VERIFICATION_RESULT);
 
 		unitEClass = createEClass(UNIT);
 		createEAttribute(unitEClass, UNIT__NAME);
@@ -1356,6 +1416,9 @@ public class OntrackPackageImpl extends EPackageImpl implements OntrackPackage {
 		initEReference(getSubTrackPlan_TopoRoutes(), this.getTopoRoute(), null, "topoRoutes", null, 0, -1, SubTrackPlan.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getSubTrackPlan_ControlTable(), this.getControlTableItem(), null, "controlTable", null, 0, -1, SubTrackPlan.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getSubTrackPlan_ReleaseTable(), this.getReleaseTableItem(), null, "releaseTable", null, 0, -1, SubTrackPlan.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getSubTrackPlan_VerificationTime(), ecorePackage.getEString(), "verificationTime", null, 0, 1, SubTrackPlan.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getSubTrackPlan_VerificationStates(), ecorePackage.getEString(), "verificationStates", null, 0, 1, SubTrackPlan.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getSubTrackPlan_VerificationResult(), ecorePackage.getEString(), "verificationResult", null, 0, 1, SubTrackPlan.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(terminalEClass, Terminal.class, "Terminal", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getTerminal_Connector(), this.getConnector(), this.getConnector_Terminal(), "connector", null, 0, 1, Terminal.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -1395,6 +1458,9 @@ public class OntrackPackageImpl extends EPackageImpl implements OntrackPackage {
 		initEReference(getTrackPlan_SelectedSubTrackPlan(), this.getSubTrackPlan(), null, "selectedSubTrackPlan", null, 0, 1, TrackPlan.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getTrackPlan_Overlapped(), ecorePackage.getEBoolean(), "overlapped", null, 0, 1, TrackPlan.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getTrackPlan_Simulations(), this.getSimulation(), null, "simulations", null, 0, -1, TrackPlan.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getTrackPlan_VerificationTime(), ecorePackage.getEString(), "verificationTime", null, 0, 1, TrackPlan.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getTrackPlan_VerificationStates(), ecorePackage.getEString(), "verificationStates", null, 0, 1, TrackPlan.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getTrackPlan_VerificationResult(), ecorePackage.getEString(), "verificationResult", null, 0, 1, TrackPlan.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(unitEClass, Unit.class, "Unit", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getUnit_Name(), ecorePackage.getEString(), "name", null, 0, 1, Unit.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

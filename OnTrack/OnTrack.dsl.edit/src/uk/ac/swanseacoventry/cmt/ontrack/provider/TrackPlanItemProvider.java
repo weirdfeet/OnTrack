@@ -62,6 +62,9 @@ public class TrackPlanItemProvider
 
 			addSelectedSubTrackPlanPropertyDescriptor(object);
 			addOverlappedPropertyDescriptor(object);
+			addVerificationTimePropertyDescriptor(object);
+			addVerificationStatesPropertyDescriptor(object);
+			addVerificationResultPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -106,6 +109,72 @@ public class TrackPlanItemProvider
 				 false,
 				 false,
 				 ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Verification Time feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addVerificationTimePropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_TrackPlan_verificationTime_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_TrackPlan_verificationTime_feature", "_UI_TrackPlan_type"),
+				 OntrackPackage.Literals.TRACK_PLAN__VERIFICATION_TIME,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Verification States feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addVerificationStatesPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_TrackPlan_verificationStates_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_TrackPlan_verificationStates_feature", "_UI_TrackPlan_type"),
+				 OntrackPackage.Literals.TRACK_PLAN__VERIFICATION_STATES,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Verification Result feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addVerificationResultPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_TrackPlan_verificationResult_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_TrackPlan_verificationResult_feature", "_UI_TrackPlan_type"),
+				 OntrackPackage.Literals.TRACK_PLAN__VERIFICATION_RESULT,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
 				 null,
 				 null));
 	}
@@ -192,6 +261,9 @@ public class TrackPlanItemProvider
 
 		switch (notification.getFeatureID(TrackPlan.class)) {
 			case OntrackPackage.TRACK_PLAN__OVERLAPPED:
+			case OntrackPackage.TRACK_PLAN__VERIFICATION_TIME:
+			case OntrackPackage.TRACK_PLAN__VERIFICATION_STATES:
+			case OntrackPackage.TRACK_PLAN__VERIFICATION_RESULT:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
 			case OntrackPackage.TRACK_PLAN__TRACKS:

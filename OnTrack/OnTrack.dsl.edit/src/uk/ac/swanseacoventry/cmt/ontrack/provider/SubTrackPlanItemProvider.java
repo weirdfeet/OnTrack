@@ -18,6 +18,7 @@ import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.IItemPropertySource;
 import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
+import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ItemProviderAdapter;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 
@@ -68,6 +69,9 @@ public class SubTrackPlanItemProvider
 			addCrossingsPropertyDescriptor(object);
 			addSignalsPropertyDescriptor(object);
 			addTerminalsPropertyDescriptor(object);
+			addVerificationTimePropertyDescriptor(object);
+			addVerificationStatesPropertyDescriptor(object);
+			addVerificationResultPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -227,6 +231,72 @@ public class SubTrackPlanItemProvider
 	}
 
 	/**
+	 * This adds a property descriptor for the Verification Time feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addVerificationTimePropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_SubTrackPlan_verificationTime_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_SubTrackPlan_verificationTime_feature", "_UI_SubTrackPlan_type"),
+				 OntrackPackage.Literals.SUB_TRACK_PLAN__VERIFICATION_TIME,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Verification States feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addVerificationStatesPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_SubTrackPlan_verificationStates_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_SubTrackPlan_verificationStates_feature", "_UI_SubTrackPlan_type"),
+				 OntrackPackage.Literals.SUB_TRACK_PLAN__VERIFICATION_STATES,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Verification Result feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addVerificationResultPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_SubTrackPlan_verificationResult_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_SubTrackPlan_verificationResult_feature", "_UI_SubTrackPlan_type"),
+				 OntrackPackage.Literals.SUB_TRACK_PLAN__VERIFICATION_RESULT,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
 	 * This specifies how to implement {@link #getChildren} and is used to deduce an appropriate feature for an
 	 * {@link org.eclipse.emf.edit.command.AddCommand}, {@link org.eclipse.emf.edit.command.RemoveCommand} or
 	 * {@link org.eclipse.emf.edit.command.MoveCommand} in {@link #createCommand}.
@@ -303,6 +373,11 @@ public class SubTrackPlanItemProvider
 		updateChildren(notification);
 
 		switch (notification.getFeatureID(SubTrackPlan.class)) {
+			case OntrackPackage.SUB_TRACK_PLAN__VERIFICATION_TIME:
+			case OntrackPackage.SUB_TRACK_PLAN__VERIFICATION_STATES:
+			case OntrackPackage.SUB_TRACK_PLAN__VERIFICATION_RESULT:
+				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
+				return;
 			case OntrackPackage.SUB_TRACK_PLAN__ENTRANCES:
 			case OntrackPackage.SUB_TRACK_PLAN__EXITS:
 			case OntrackPackage.SUB_TRACK_PLAN__TOPO_ROUTES:

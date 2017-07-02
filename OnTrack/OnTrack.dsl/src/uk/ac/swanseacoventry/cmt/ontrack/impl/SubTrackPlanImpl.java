@@ -5,10 +5,12 @@ package uk.ac.swanseacoventry.cmt.ontrack.impl;
 import java.util.ArrayList;
 import java.util.Collection;
 
+import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
+import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.EObjectResolvingEList;
@@ -48,6 +50,9 @@ import uk.ac.swanseacoventry.cmt.ontrack.Track;
  *   <li>{@link uk.ac.swanseacoventry.cmt.ontrack.impl.SubTrackPlanImpl#getTopoRoutes <em>Topo Routes</em>}</li>
  *   <li>{@link uk.ac.swanseacoventry.cmt.ontrack.impl.SubTrackPlanImpl#getControlTable <em>Control Table</em>}</li>
  *   <li>{@link uk.ac.swanseacoventry.cmt.ontrack.impl.SubTrackPlanImpl#getReleaseTable <em>Release Table</em>}</li>
+ *   <li>{@link uk.ac.swanseacoventry.cmt.ontrack.impl.SubTrackPlanImpl#getVerificationTime <em>Verification Time</em>}</li>
+ *   <li>{@link uk.ac.swanseacoventry.cmt.ontrack.impl.SubTrackPlanImpl#getVerificationStates <em>Verification States</em>}</li>
+ *   <li>{@link uk.ac.swanseacoventry.cmt.ontrack.impl.SubTrackPlanImpl#getVerificationResult <em>Verification Result</em>}</li>
  * </ul>
  *
  * @generated
@@ -172,6 +177,66 @@ public class SubTrackPlanImpl extends MinimalEObjectImpl.Container implements Su
 	 * @ordered
 	 */
 	protected EList<ReleaseTableItem> releaseTable;
+
+	/**
+	 * The default value of the '{@link #getVerificationTime() <em>Verification Time</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getVerificationTime()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String VERIFICATION_TIME_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getVerificationTime() <em>Verification Time</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getVerificationTime()
+	 * @generated
+	 * @ordered
+	 */
+	protected String verificationTime = VERIFICATION_TIME_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getVerificationStates() <em>Verification States</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getVerificationStates()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String VERIFICATION_STATES_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getVerificationStates() <em>Verification States</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getVerificationStates()
+	 * @generated
+	 * @ordered
+	 */
+	protected String verificationStates = VERIFICATION_STATES_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getVerificationResult() <em>Verification Result</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getVerificationResult()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String VERIFICATION_RESULT_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getVerificationResult() <em>Verification Result</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getVerificationResult()
+	 * @generated
+	 * @ordered
+	 */
+	protected String verificationResult = VERIFICATION_RESULT_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -329,6 +394,69 @@ public class SubTrackPlanImpl extends MinimalEObjectImpl.Container implements Su
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public String getVerificationTime() {
+		return verificationTime;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setVerificationTime(String newVerificationTime) {
+		String oldVerificationTime = verificationTime;
+		verificationTime = newVerificationTime;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, OntrackPackage.SUB_TRACK_PLAN__VERIFICATION_TIME, oldVerificationTime, verificationTime));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String getVerificationStates() {
+		return verificationStates;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setVerificationStates(String newVerificationStates) {
+		String oldVerificationStates = verificationStates;
+		verificationStates = newVerificationStates;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, OntrackPackage.SUB_TRACK_PLAN__VERIFICATION_STATES, oldVerificationStates, verificationStates));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String getVerificationResult() {
+		return verificationResult;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setVerificationResult(String newVerificationResult) {
+		String oldVerificationResult = verificationResult;
+		verificationResult = newVerificationResult;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, OntrackPackage.SUB_TRACK_PLAN__VERIFICATION_RESULT, oldVerificationResult, verificationResult));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EList<Track> getCriticals() {
 		if (criticals == null) {
 			criticals = new EObjectResolvingEList<Track>(Track.class, this, OntrackPackage.SUB_TRACK_PLAN__CRITICALS);
@@ -390,6 +518,12 @@ public class SubTrackPlanImpl extends MinimalEObjectImpl.Container implements Su
 				return getControlTable();
 			case OntrackPackage.SUB_TRACK_PLAN__RELEASE_TABLE:
 				return getReleaseTable();
+			case OntrackPackage.SUB_TRACK_PLAN__VERIFICATION_TIME:
+				return getVerificationTime();
+			case OntrackPackage.SUB_TRACK_PLAN__VERIFICATION_STATES:
+				return getVerificationStates();
+			case OntrackPackage.SUB_TRACK_PLAN__VERIFICATION_RESULT:
+				return getVerificationResult();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -451,6 +585,15 @@ public class SubTrackPlanImpl extends MinimalEObjectImpl.Container implements Su
 				getReleaseTable().clear();
 				getReleaseTable().addAll((Collection<? extends ReleaseTableItem>)newValue);
 				return;
+			case OntrackPackage.SUB_TRACK_PLAN__VERIFICATION_TIME:
+				setVerificationTime((String)newValue);
+				return;
+			case OntrackPackage.SUB_TRACK_PLAN__VERIFICATION_STATES:
+				setVerificationStates((String)newValue);
+				return;
+			case OntrackPackage.SUB_TRACK_PLAN__VERIFICATION_RESULT:
+				setVerificationResult((String)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -499,6 +642,15 @@ public class SubTrackPlanImpl extends MinimalEObjectImpl.Container implements Su
 			case OntrackPackage.SUB_TRACK_PLAN__RELEASE_TABLE:
 				getReleaseTable().clear();
 				return;
+			case OntrackPackage.SUB_TRACK_PLAN__VERIFICATION_TIME:
+				setVerificationTime(VERIFICATION_TIME_EDEFAULT);
+				return;
+			case OntrackPackage.SUB_TRACK_PLAN__VERIFICATION_STATES:
+				setVerificationStates(VERIFICATION_STATES_EDEFAULT);
+				return;
+			case OntrackPackage.SUB_TRACK_PLAN__VERIFICATION_RESULT:
+				setVerificationResult(VERIFICATION_RESULT_EDEFAULT);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -535,10 +687,36 @@ public class SubTrackPlanImpl extends MinimalEObjectImpl.Container implements Su
 				return controlTable != null && !controlTable.isEmpty();
 			case OntrackPackage.SUB_TRACK_PLAN__RELEASE_TABLE:
 				return releaseTable != null && !releaseTable.isEmpty();
+			case OntrackPackage.SUB_TRACK_PLAN__VERIFICATION_TIME:
+				return VERIFICATION_TIME_EDEFAULT == null ? verificationTime != null : !VERIFICATION_TIME_EDEFAULT.equals(verificationTime);
+			case OntrackPackage.SUB_TRACK_PLAN__VERIFICATION_STATES:
+				return VERIFICATION_STATES_EDEFAULT == null ? verificationStates != null : !VERIFICATION_STATES_EDEFAULT.equals(verificationStates);
+			case OntrackPackage.SUB_TRACK_PLAN__VERIFICATION_RESULT:
+				return VERIFICATION_RESULT_EDEFAULT == null ? verificationResult != null : !VERIFICATION_RESULT_EDEFAULT.equals(verificationResult);
 		}
 		return super.eIsSet(featureID);
 	}
 	
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public String toString() {
+		if (eIsProxy()) return super.toString();
+
+		StringBuffer result = new StringBuffer(super.toString());
+		result.append(" (verificationTime: ");
+		result.append(verificationTime);
+		result.append(", verificationStates: ");
+		result.append(verificationStates);
+		result.append(", verificationResult: ");
+		result.append(verificationResult);
+		result.append(')');
+		return result.toString();
+	}
+
 	public String getName(){
 		ArrayList<String> ss = new ArrayList<String>();
 		for(Track t : getCriticals()){

@@ -818,13 +818,40 @@ public interface OntrackPackage extends EPackage {
 	int SUB_TRACK_PLAN__RELEASE_TABLE = 11;
 
 	/**
+	 * The feature id for the '<em><b>Verification Time</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SUB_TRACK_PLAN__VERIFICATION_TIME = 12;
+
+	/**
+	 * The feature id for the '<em><b>Verification States</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SUB_TRACK_PLAN__VERIFICATION_STATES = 13;
+
+	/**
+	 * The feature id for the '<em><b>Verification Result</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SUB_TRACK_PLAN__VERIFICATION_RESULT = 14;
+
+	/**
 	 * The number of structural features of the '<em>Sub Track Plan</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int SUB_TRACK_PLAN_FEATURE_COUNT = 12;
+	int SUB_TRACK_PLAN_FEATURE_COUNT = 15;
 
 	/**
 	 * The number of operations of the '<em>Sub Track Plan</em>' class.
@@ -1218,13 +1245,40 @@ public interface OntrackPackage extends EPackage {
 	int TRACK_PLAN__SIMULATIONS = 17;
 
 	/**
+	 * The feature id for the '<em><b>Verification Time</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TRACK_PLAN__VERIFICATION_TIME = 18;
+
+	/**
+	 * The feature id for the '<em><b>Verification States</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TRACK_PLAN__VERIFICATION_STATES = 19;
+
+	/**
+	 * The feature id for the '<em><b>Verification Result</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TRACK_PLAN__VERIFICATION_RESULT = 20;
+
+	/**
 	 * The number of structural features of the '<em>Track Plan</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int TRACK_PLAN_FEATURE_COUNT = 18;
+	int TRACK_PLAN_FEATURE_COUNT = 21;
 
 	/**
 	 * The number of operations of the '<em>Track Plan</em>' class.
@@ -1909,6 +1963,39 @@ public interface OntrackPackage extends EPackage {
 	EReference getSubTrackPlan_ReleaseTable();
 
 	/**
+	 * Returns the meta object for the attribute '{@link uk.ac.swanseacoventry.cmt.ontrack.SubTrackPlan#getVerificationTime <em>Verification Time</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Verification Time</em>'.
+	 * @see uk.ac.swanseacoventry.cmt.ontrack.SubTrackPlan#getVerificationTime()
+	 * @see #getSubTrackPlan()
+	 * @generated
+	 */
+	EAttribute getSubTrackPlan_VerificationTime();
+
+	/**
+	 * Returns the meta object for the attribute '{@link uk.ac.swanseacoventry.cmt.ontrack.SubTrackPlan#getVerificationStates <em>Verification States</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Verification States</em>'.
+	 * @see uk.ac.swanseacoventry.cmt.ontrack.SubTrackPlan#getVerificationStates()
+	 * @see #getSubTrackPlan()
+	 * @generated
+	 */
+	EAttribute getSubTrackPlan_VerificationStates();
+
+	/**
+	 * Returns the meta object for the attribute '{@link uk.ac.swanseacoventry.cmt.ontrack.SubTrackPlan#getVerificationResult <em>Verification Result</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Verification Result</em>'.
+	 * @see uk.ac.swanseacoventry.cmt.ontrack.SubTrackPlan#getVerificationResult()
+	 * @see #getSubTrackPlan()
+	 * @generated
+	 */
+	EAttribute getSubTrackPlan_VerificationResult();
+
+	/**
 	 * Returns the meta object for class '{@link uk.ac.swanseacoventry.cmt.ontrack.Terminal <em>Terminal</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2288,6 +2375,39 @@ public interface OntrackPackage extends EPackage {
 	 * @generated
 	 */
 	EReference getTrackPlan_Simulations();
+
+	/**
+	 * Returns the meta object for the attribute '{@link uk.ac.swanseacoventry.cmt.ontrack.TrackPlan#getVerificationTime <em>Verification Time</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Verification Time</em>'.
+	 * @see uk.ac.swanseacoventry.cmt.ontrack.TrackPlan#getVerificationTime()
+	 * @see #getTrackPlan()
+	 * @generated
+	 */
+	EAttribute getTrackPlan_VerificationTime();
+
+	/**
+	 * Returns the meta object for the attribute '{@link uk.ac.swanseacoventry.cmt.ontrack.TrackPlan#getVerificationStates <em>Verification States</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Verification States</em>'.
+	 * @see uk.ac.swanseacoventry.cmt.ontrack.TrackPlan#getVerificationStates()
+	 * @see #getTrackPlan()
+	 * @generated
+	 */
+	EAttribute getTrackPlan_VerificationStates();
+
+	/**
+	 * Returns the meta object for the attribute '{@link uk.ac.swanseacoventry.cmt.ontrack.TrackPlan#getVerificationResult <em>Verification Result</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Verification Result</em>'.
+	 * @see uk.ac.swanseacoventry.cmt.ontrack.TrackPlan#getVerificationResult()
+	 * @see #getTrackPlan()
+	 * @generated
+	 */
+	EAttribute getTrackPlan_VerificationResult();
 
 	/**
 	 * Returns the meta object for class '{@link uk.ac.swanseacoventry.cmt.ontrack.Unit <em>Unit</em>}'.
@@ -2859,6 +2979,30 @@ public interface OntrackPackage extends EPackage {
 		EReference SUB_TRACK_PLAN__RELEASE_TABLE = eINSTANCE.getSubTrackPlan_ReleaseTable();
 
 		/**
+		 * The meta object literal for the '<em><b>Verification Time</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute SUB_TRACK_PLAN__VERIFICATION_TIME = eINSTANCE.getSubTrackPlan_VerificationTime();
+
+		/**
+		 * The meta object literal for the '<em><b>Verification States</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute SUB_TRACK_PLAN__VERIFICATION_STATES = eINSTANCE.getSubTrackPlan_VerificationStates();
+
+		/**
+		 * The meta object literal for the '<em><b>Verification Result</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute SUB_TRACK_PLAN__VERIFICATION_RESULT = eINSTANCE.getSubTrackPlan_VerificationResult();
+
+		/**
 		 * The meta object literal for the '{@link uk.ac.swanseacoventry.cmt.ontrack.impl.TerminalImpl <em>Terminal</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -3145,6 +3289,30 @@ public interface OntrackPackage extends EPackage {
 		 * @generated
 		 */
 		EReference TRACK_PLAN__SIMULATIONS = eINSTANCE.getTrackPlan_Simulations();
+
+		/**
+		 * The meta object literal for the '<em><b>Verification Time</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute TRACK_PLAN__VERIFICATION_TIME = eINSTANCE.getTrackPlan_VerificationTime();
+
+		/**
+		 * The meta object literal for the '<em><b>Verification States</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute TRACK_PLAN__VERIFICATION_STATES = eINSTANCE.getTrackPlan_VerificationStates();
+
+		/**
+		 * The meta object literal for the '<em><b>Verification Result</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute TRACK_PLAN__VERIFICATION_RESULT = eINSTANCE.getTrackPlan_VerificationResult();
 
 		/**
 		 * The meta object literal for the '{@link uk.ac.swanseacoventry.cmt.ontrack.impl.UnitImpl <em>Unit</em>}' class.

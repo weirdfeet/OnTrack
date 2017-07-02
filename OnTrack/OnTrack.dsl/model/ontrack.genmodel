@@ -68,6 +68,9 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ontrack.ecore#//SubTrackPlan/topoRoutes"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ontrack.ecore#//SubTrackPlan/controlTable"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ontrack.ecore#//SubTrackPlan/releaseTable"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ontrack.ecore#//SubTrackPlan/verificationTime"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ontrack.ecore#//SubTrackPlan/verificationStates"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ontrack.ecore#//SubTrackPlan/verificationResult"/>
     </genClasses>
     <genClasses ecoreClass="ontrack.ecore#//Terminal">
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference ontrack.ecore#//Terminal/connector"/>
@@ -107,6 +110,9 @@
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference ontrack.ecore#//TrackPlan/selectedSubTrackPlan"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ontrack.ecore#//TrackPlan/overlapped"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ontrack.ecore#//TrackPlan/simulations"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ontrack.ecore#//TrackPlan/verificationTime"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ontrack.ecore#//TrackPlan/verificationStates"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ontrack.ecore#//TrackPlan/verificationResult"/>
     </genClasses>
     <genClasses image="false" ecoreClass="ontrack.ecore#//Unit">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ontrack.ecore#//Unit/name"/>

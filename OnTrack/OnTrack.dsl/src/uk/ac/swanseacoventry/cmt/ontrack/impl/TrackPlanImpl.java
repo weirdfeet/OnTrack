@@ -59,6 +59,9 @@ import uk.ac.swanseacoventry.cmt.ontrack.TrackPlan;
  *   <li>{@link uk.ac.swanseacoventry.cmt.ontrack.impl.TrackPlanImpl#getSelectedSubTrackPlan <em>Selected Sub Track Plan</em>}</li>
  *   <li>{@link uk.ac.swanseacoventry.cmt.ontrack.impl.TrackPlanImpl#isOverlapped <em>Overlapped</em>}</li>
  *   <li>{@link uk.ac.swanseacoventry.cmt.ontrack.impl.TrackPlanImpl#getSimulations <em>Simulations</em>}</li>
+ *   <li>{@link uk.ac.swanseacoventry.cmt.ontrack.impl.TrackPlanImpl#getVerificationTime <em>Verification Time</em>}</li>
+ *   <li>{@link uk.ac.swanseacoventry.cmt.ontrack.impl.TrackPlanImpl#getVerificationStates <em>Verification States</em>}</li>
+ *   <li>{@link uk.ac.swanseacoventry.cmt.ontrack.impl.TrackPlanImpl#getVerificationResult <em>Verification Result</em>}</li>
  * </ul>
  *
  * @generated
@@ -253,6 +256,66 @@ public class TrackPlanImpl extends MinimalEObjectImpl.Container implements Track
 	 * @ordered
 	 */
 	protected EList<Simulation> simulations;
+
+	/**
+	 * The default value of the '{@link #getVerificationTime() <em>Verification Time</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getVerificationTime()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String VERIFICATION_TIME_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getVerificationTime() <em>Verification Time</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getVerificationTime()
+	 * @generated
+	 * @ordered
+	 */
+	protected String verificationTime = VERIFICATION_TIME_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getVerificationStates() <em>Verification States</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getVerificationStates()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String VERIFICATION_STATES_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getVerificationStates() <em>Verification States</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getVerificationStates()
+	 * @generated
+	 * @ordered
+	 */
+	protected String verificationStates = VERIFICATION_STATES_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getVerificationResult() <em>Verification Result</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getVerificationResult()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String VERIFICATION_RESULT_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getVerificationResult() <em>Verification Result</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getVerificationResult()
+	 * @generated
+	 * @ordered
+	 */
+	protected String verificationResult = VERIFICATION_RESULT_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -622,6 +685,69 @@ public class TrackPlanImpl extends MinimalEObjectImpl.Container implements Track
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public String getVerificationTime() {
+		return verificationTime;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setVerificationTime(String newVerificationTime) {
+		String oldVerificationTime = verificationTime;
+		verificationTime = newVerificationTime;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, OntrackPackage.TRACK_PLAN__VERIFICATION_TIME, oldVerificationTime, verificationTime));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String getVerificationStates() {
+		return verificationStates;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setVerificationStates(String newVerificationStates) {
+		String oldVerificationStates = verificationStates;
+		verificationStates = newVerificationStates;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, OntrackPackage.TRACK_PLAN__VERIFICATION_STATES, oldVerificationStates, verificationStates));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String getVerificationResult() {
+		return verificationResult;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setVerificationResult(String newVerificationResult) {
+		String oldVerificationResult = verificationResult;
+		verificationResult = newVerificationResult;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, OntrackPackage.TRACK_PLAN__VERIFICATION_RESULT, oldVerificationResult, verificationResult));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
@@ -706,6 +832,12 @@ public class TrackPlanImpl extends MinimalEObjectImpl.Container implements Track
 				return isOverlapped();
 			case OntrackPackage.TRACK_PLAN__SIMULATIONS:
 				return getSimulations();
+			case OntrackPackage.TRACK_PLAN__VERIFICATION_TIME:
+				return getVerificationTime();
+			case OntrackPackage.TRACK_PLAN__VERIFICATION_STATES:
+				return getVerificationStates();
+			case OntrackPackage.TRACK_PLAN__VERIFICATION_RESULT:
+				return getVerificationResult();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -786,6 +918,15 @@ public class TrackPlanImpl extends MinimalEObjectImpl.Container implements Track
 				getSimulations().clear();
 				getSimulations().addAll((Collection<? extends Simulation>)newValue);
 				return;
+			case OntrackPackage.TRACK_PLAN__VERIFICATION_TIME:
+				setVerificationTime((String)newValue);
+				return;
+			case OntrackPackage.TRACK_PLAN__VERIFICATION_STATES:
+				setVerificationStates((String)newValue);
+				return;
+			case OntrackPackage.TRACK_PLAN__VERIFICATION_RESULT:
+				setVerificationResult((String)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -852,6 +993,15 @@ public class TrackPlanImpl extends MinimalEObjectImpl.Container implements Track
 			case OntrackPackage.TRACK_PLAN__SIMULATIONS:
 				getSimulations().clear();
 				return;
+			case OntrackPackage.TRACK_PLAN__VERIFICATION_TIME:
+				setVerificationTime(VERIFICATION_TIME_EDEFAULT);
+				return;
+			case OntrackPackage.TRACK_PLAN__VERIFICATION_STATES:
+				setVerificationStates(VERIFICATION_STATES_EDEFAULT);
+				return;
+			case OntrackPackage.TRACK_PLAN__VERIFICATION_RESULT:
+				setVerificationResult(VERIFICATION_RESULT_EDEFAULT);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -900,6 +1050,12 @@ public class TrackPlanImpl extends MinimalEObjectImpl.Container implements Track
 				return overlapped != OVERLAPPED_EDEFAULT;
 			case OntrackPackage.TRACK_PLAN__SIMULATIONS:
 				return simulations != null && !simulations.isEmpty();
+			case OntrackPackage.TRACK_PLAN__VERIFICATION_TIME:
+				return VERIFICATION_TIME_EDEFAULT == null ? verificationTime != null : !VERIFICATION_TIME_EDEFAULT.equals(verificationTime);
+			case OntrackPackage.TRACK_PLAN__VERIFICATION_STATES:
+				return VERIFICATION_STATES_EDEFAULT == null ? verificationStates != null : !VERIFICATION_STATES_EDEFAULT.equals(verificationStates);
+			case OntrackPackage.TRACK_PLAN__VERIFICATION_RESULT:
+				return VERIFICATION_RESULT_EDEFAULT == null ? verificationResult != null : !VERIFICATION_RESULT_EDEFAULT.equals(verificationResult);
 		}
 		return super.eIsSet(featureID);
 	}
@@ -916,6 +1072,12 @@ public class TrackPlanImpl extends MinimalEObjectImpl.Container implements Track
 		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (overlapped: ");
 		result.append(overlapped);
+		result.append(", verificationTime: ");
+		result.append(verificationTime);
+		result.append(", verificationStates: ");
+		result.append(verificationStates);
+		result.append(", verificationResult: ");
+		result.append(verificationResult);
 		result.append(')');
 		return result.toString();
 	}

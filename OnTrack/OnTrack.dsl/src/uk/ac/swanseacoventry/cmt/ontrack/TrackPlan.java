@@ -148,5 +148,50 @@ public interface TrackPlan extends EObject {
 	 * @model containment="true"
 	 */
 	EList<Simulation> getSimulations();
-	
+
+	/**
+	 * @model 
+	 */
+	String getVerificationTime();
+
+	/**
+	 * Sets the value of the '{@link uk.ac.swanseacoventry.cmt.ontrack.TrackPlan#getVerificationTime <em>Verification Time</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Verification Time</em>' attribute.
+	 * @see #getVerificationTime()
+	 * @generated
+	 */
+	void setVerificationTime(String value);
+
+	/**
+	 * @model 
+	 */
+	String getVerificationStates();
+
+	/**
+	 * Sets the value of the '{@link uk.ac.swanseacoventry.cmt.ontrack.TrackPlan#getVerificationStates <em>Verification States</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Verification States</em>' attribute.
+	 * @see #getVerificationStates()
+	 * @generated
+	 */
+	void setVerificationStates(String value);
+
+	/**
+	 * @model 
+	 */
+	String getVerificationResult();
+
+	/**
+	 * Sets the value of the '{@link uk.ac.swanseacoventry.cmt.ontrack.TrackPlan#getVerificationResult <em>Verification Result</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Verification Result</em>' attribute.
+	 * @see #getVerificationResult()
+	 * @generated
+	 */
+	void setVerificationResult(String value);
+
 }
