@@ -8,8 +8,10 @@ import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
+import java.text.SimpleDateFormat;
 
 import org.eclipse.gef.commands.CompoundCommand;
+import org.eclipse.gmf.runtime.common.core.util.Trace;
 import org.eclipse.gmf.runtime.diagram.ui.commands.ICommandProxy;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.DiagramEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.resources.editor.parts.DiagramDocumentEditor;
@@ -42,6 +44,7 @@ import uk.ac.swanseacoventry.cmt.ontrack.SubTrackPlan;
 import uk.ac.swanseacoventry.cmt.ontrack.Track;
 import uk.ac.swanseacoventry.cmt.ontrack.TrackPlan;
 import uk.ac.swanseacoventry.cmt.ontrack.diagram.custom.Util;
+import uk.ac.swanseacoventry.cmt.ontrack.diagram.edit.commands.custom.SimulationAddCommand;
 import uk.ac.swanseacoventry.cmt.ontrack.diagram.edit.commands.custom.TrackPlanSelectSubCommand;
 import uk.ac.swanseacoventry.cmt.ontrack.diagram.edit.commands.custom.VerificationResultUpdateCommand;
 import uk.ac.swanseacoventry.cmt.ontrack.diagram.part.OntrackDiagramEditorPlugin;
@@ -58,7 +61,6 @@ public class CSPTableViewer extends ViewPart {
 	
 	private Map<SubTrackPlan,String> modelPaths = new HashMap<SubTrackPlan,String>();
 	private String fullModelPath = "";
-
 	
 	public CSPTableViewer() {
 		super();
@@ -231,12 +233,15 @@ public class CSPTableViewer extends ViewPart {
 			if (fdr3path.endsWith(".app")) fdr3path += "/Contents/MacOS/refines";
 			String[] cmd = {fdr3path,"Railway.csp"};
 			ProcessBuilder pb = new ProcessBuilder(cmd);
-			pb.directory(new File(path));			
+			File workingDir = new File(path);
+			pb.directory(workingDir);			
 			Process p = pb.start();
 			BufferedReader bri = new BufferedReader
 			(new InputStreamReader(p.getInputStream()));
 			BufferedReader bre = new BufferedReader
 			(new InputStreamReader(p.getErrorStream()));
+			boolean collectTrace = false;
+			String trace = "";
 			while ((line = bri.readLine()) != null) {
 				System.out.println(line);
 				if (line.trim().equals("Result: Passed"))
@@ -245,7 +250,10 @@ public class CSPTableViewer extends ViewPart {
 					ret = "Failed";
 				else if (line.trim().startsWith("Visited States:")) {
 					states = line.trim().split(": ")[1];
-				}
+				} else if (ret.equals("Failed") && line.trim().startsWith("Implementation Debug:"))
+					collectTrace = true;
+				else if (collectTrace) 
+					trace += line.trim();
 			}
 			bri.close();
 			while ((line = bre.readLine()) != null) {
@@ -253,6 +261,17 @@ public class CSPTableViewer extends ViewPart {
 			}
 			bre.close();
 			p.waitFor();
+			if (!trace.isEmpty()) {
+				ArrayList<String[]> ce  = Util.extractFDRCounterExample(trace);
+				DiagramEditPart diagramEditPart = Util.getDiagramEP();
+				if (diagramEditPart!=null) {
+						SimpleDateFormat dateformat = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
+						String name = workingDir.getName() + " @ " + dateformat.format(new java.util.Date());
+						CompoundCommand cc = new CompoundCommand();
+						cc.add(new ICommandProxy(new SimulationAddCommand(diagramEditPart, name, ce)));
+						cc.execute();
+					}
+			}
 		}
 		catch(IOException e){
 			MessageBox msg = new MessageBox(table.getShell());
@@ -271,7 +290,7 @@ public class CSPTableViewer extends ViewPart {
 		System.out.println(ret);
 		return ret;
 	}
-	
+		
 	boolean experimental = true;
 	void createToolBar(){
 		 IToolBarManager mgr = getViewSite().getActionBars().getToolBarManager();

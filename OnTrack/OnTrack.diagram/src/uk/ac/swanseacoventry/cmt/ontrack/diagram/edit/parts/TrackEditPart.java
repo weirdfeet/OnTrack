@@ -275,4 +275,11 @@ public class TrackEditPart extends ConnectionNodeEditPart implements ITreeBranch
 
 	}
 
+	public void highLightWithColor(Color color) {
+		if (fColor == null)
+			fColor = getFigure().getForegroundColor();
+		getFigure().setForegroundColor(color);
+		getFigure().invalidate();
+	}
+
 }

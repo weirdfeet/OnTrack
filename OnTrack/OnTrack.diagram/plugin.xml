@@ -723,6 +723,25 @@
             class="uk.ac.swanseacoventry.cmt.ontrack.diagram.view.CASLTableViewer"/>   
    </extension>
 
+   <extension point="org.eclipse.ui.views">
+      <view id="uk.ac.swanseacoventry.cmt.ontrack.diagram.view.SimulationViewer"
+            name="Simulation"
+            class="uk.ac.swanseacoventry.cmt.ontrack.diagram.view.SimulationViewer"/>   
+   </extension>
+   
+   <extension point="org.eclipse.ui.views">
+      <view id="uk.ac.swanseacoventry.cmt.ontrack.diagram.view.TopoAbstractViewer"
+            name="Topo Abstraction"
+            class="uk.ac.swanseacoventry.cmt.ontrack.diagram.view.TopoAbstractViewer"/>   
+   </extension>
+   
+
+   <extension point="org.eclipse.ui.views">
+      <view id="uk.ac.swanseacoventry.cmt.ontrack.diagram.view.CASLTableViewer"
+            name="CASL"
+            class="uk.ac.swanseacoventry.cmt.ontrack.diagram.view.CASLTableViewer"/>   
+   </extension>
+
   <extension point="org.eclipse.gmf.runtime.common.ui.services.markerNavigationProviders" id="markers-navigation">
       <?gmfgen generated="true"?>
       <MarkerNavigationProvider class="uk.ac.swanseacoventry.cmt.ontrack.diagram.providers.OntrackMarkerNavigationProvider">

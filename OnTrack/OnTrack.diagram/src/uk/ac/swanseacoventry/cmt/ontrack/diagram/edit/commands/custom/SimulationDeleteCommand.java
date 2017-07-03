@@ -1,5 +1,7 @@
 package uk.ac.swanseacoventry.cmt.ontrack.diagram.edit.commands.custom;
 
+import java.util.ArrayList;
+
 import org.eclipse.core.commands.ExecutionException;
 import org.eclipse.core.runtime.IAdaptable;
 import org.eclipse.core.runtime.IProgressMonitor;
@@ -9,36 +11,31 @@ import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
 import org.eclipse.gmf.runtime.emf.commands.core.command.AbstractTransactionalCommand;
 import org.eclipse.gmf.runtime.notation.View;
 
-import uk.ac.swanseacoventry.cmt.ontrack.Entrance;
-import uk.ac.swanseacoventry.cmt.ontrack.Exit;
-import uk.ac.swanseacoventry.cmt.ontrack.SubTrackPlan;
+import uk.ac.swanseacoventry.cmt.ontrack.ControlTableItem;
+import uk.ac.swanseacoventry.cmt.ontrack.OntrackFactory;
+import uk.ac.swanseacoventry.cmt.ontrack.Simulation;
+import uk.ac.swanseacoventry.cmt.ontrack.SimulationAction;
 import uk.ac.swanseacoventry.cmt.ontrack.TrackPlan;
 
-public class TrackPlanCoveringClearCommand extends AbstractTransactionalCommand {
+public class SimulationDeleteCommand extends AbstractTransactionalCommand {
 	
 	private DiagramEditPart trackplanEP;
 	private TrackPlan trackplan;
+	private Simulation sim;
 	
-	public TrackPlanCoveringClearCommand(IGraphicalEditPart ep) {
-		super(ep.getEditingDomain(),"compute-covering",null);
+	public SimulationDeleteCommand(IGraphicalEditPart ep, Simulation sim) {
+		super(ep.getEditingDomain(),"add-simulation",null);
 		trackplanEP = (DiagramEditPart)ep;
 		trackplan = (TrackPlan)((View)trackplanEP.getModel()).getElement();
+		this.sim = sim;
 	}
 	
 	protected CommandResult doExecuteWithResult(IProgressMonitor monitor, IAdaptable info) throws ExecutionException {
-		trackplan.setSelectedSubTrackPlan(null);
-		for(SubTrackPlan stp : trackplan.getSubTrackPlans()){
-			for(Entrance e : stp.getEntrances()){
-				e.getConnector().getEntrances().remove(e);
-			}
-			for(Exit e : stp.getExits()){
-				e.getConnector().getExits().remove(e);
-			}
-		}
-		trackplan.getSubTrackPlans().clear();
+		
+		trackplan.getSimulations().remove(sim);
+
 		return CommandResult.newOKCommandResult();
 		
 	}
-	
 	
 }

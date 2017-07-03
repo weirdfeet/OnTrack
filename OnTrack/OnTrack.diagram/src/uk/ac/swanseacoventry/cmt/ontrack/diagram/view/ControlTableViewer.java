@@ -50,6 +50,7 @@ import uk.ac.swanseacoventry.cmt.ontrack.diagram.edit.commands.custom.ControlTab
 import uk.ac.swanseacoventry.cmt.ontrack.diagram.edit.commands.custom.ControlTableAutoFillCommand;
 import uk.ac.swanseacoventry.cmt.ontrack.diagram.edit.commands.custom.ControlTableClearCommand;
 import uk.ac.swanseacoventry.cmt.ontrack.diagram.edit.commands.custom.ControlTableDelItemCommand;
+import uk.ac.swanseacoventry.cmt.ontrack.diagram.edit.commands.custom.ControlTableDirectionClearCommand;
 import uk.ac.swanseacoventry.cmt.ontrack.diagram.edit.commands.custom.ControlTableInitCommand;
 import uk.ac.swanseacoventry.cmt.ontrack.diagram.edit.commands.custom.ControlTableUpdateItemCommand;
 import uk.ac.swanseacoventry.cmt.ontrack.diagram.view.listeners.PartListener2Impl;
@@ -442,6 +443,20 @@ public class ControlTableViewer extends ViewPart {
 			 }
 		 });
 
+		 mgr.add(new Action("Clear Dir-locks"){
+			 public void run(){
+				DiagramEditPart diagramEditPart = Util.getDiagramEP();
+				if (diagramEditPart==null) return;
+				
+				CompoundCommand cc = new CompoundCommand();
+				cc.add(new ICommandProxy(new ControlTableDirectionClearCommand(diagramEditPart)));
+				cc.execute();
+				
+				TrackPlan trackplan = (TrackPlan)((View)diagramEditPart.getModel()).getElement();
+
+				refreshControlTableFrom(trackplan);
+			 }
+		 });
 		 
 		 mgr.add(new Action("Editing",IAction.AS_CHECK_BOX){
 			 {

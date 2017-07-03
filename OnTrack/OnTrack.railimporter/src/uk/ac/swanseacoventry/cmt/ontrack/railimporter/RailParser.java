@@ -131,7 +131,7 @@ public class RailParser
             IntPair type = splitMatched(parts, 3, "^Signal.*$");
             if (type==null) type = splitMatched(parts, 3, "^Points:.*$");
             if (type==null) type = splitMatched(parts, 3, "^Diamond:.*$");
-            if (type==null) type = splitMatched(parts, 3, "^Buffer.*$"); // this is a terminal node
+            if (type==null) type = splitMatched(parts, 3, "^Buffer$"); // this is a terminal node
             
             Node n = new Node(name);
             if (type!=null){

@@ -1,5 +1,7 @@
 package uk.ac.swanseacoventry.cmt.ontrack.diagram.custom;
 
+import java.util.ArrayList;
+import java.util.Hashtable;
 import java.util.List;
 
 import org.eclipse.emf.ecore.EObject;
@@ -7,6 +9,7 @@ import org.eclipse.gef.EditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.DiagramEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.resources.editor.parts.DiagramDocumentEditor;
 import org.eclipse.gmf.runtime.emf.core.util.EMFCoreUtil;
+import org.eclipse.swt.graphics.Color;
 import org.eclipse.ui.IEditorPart;
 import org.eclipse.ui.IWorkbench;
 import org.eclipse.ui.IWorkbenchPage;
@@ -82,6 +85,30 @@ public class Util {
 			}
 		}
 
+	}
+
+	public static void multiHighLightTracks(Hashtable<Track, Color> highLighted) {
+		for(Track t : highLighted.keySet()){
+			TrackEditPart tep = (TrackEditPart)Util.findEditPartBySemantics(t, TrackEditPart.class);
+			if (tep!=null) tep.highLightWithColor(highLighted.get(t)); 
+		}
+	}
+
+	public static ArrayList<String[]> extractFDRCounterExample(String text) {
+		ArrayList<String[]> ret = new ArrayList<String[]>();
+		int open = text.indexOf("<");
+		int close = text.lastIndexOf(">");
+		int error = text.lastIndexOf("Error Event: ");
+		String errorEvent = text.substring(error + "Error Event: ".length());
+		String events = text.substring(open + 1, close) + "," + errorEvent;
+		String[] trace = events.split(",");
+		for(int i = 0; i < trace.length; i++) {
+			String s = trace[i].trim();
+			String[] act = s.split("\\.");
+			ret.add(act);
+		}
+		
+		return ret;
 	}
 
 }

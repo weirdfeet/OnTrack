@@ -318,6 +318,7 @@ public class TopologyCalculator {
 		HashSet<String> ignorePaths = new HashSet<String>(); // forbidden paths when BFS
 		for(String s : entrySignals){
 			Node n = rp.getNodes().get(s);
+			if (!(n instanceof Signal)) System.out.println("Node " + n.getName() + " is not an entry signal! Import will fail!");
 			Signal sig = (Signal)n;
 			String beforePath = sig.getDirPath();
 			ignorePaths.add(beforePath);
@@ -326,6 +327,7 @@ public class TopologyCalculator {
 		
 		for(String s : exitSignals){
 			Node n = rp.getNodes().get(s);
+			if (!(n instanceof Signal)) System.out.println("Node " + n.getName() + " is not an entry signal! Import will fail!");
 			Signal sig = (Signal)n;
 			String beforePath = sig.getDirPath();
 			for(String p : n.getPaths())
@@ -432,9 +434,7 @@ public class TopologyCalculator {
 						t.getSignals().add(s);
 					}
 				}
-			}
-			
-			if (n instanceof Terminal){
+			} else if (n instanceof Terminal){
 				Connector c = getOnTrackConnector(n);
 				uk.ac.swanseacoventry.cmt.ontrack.Terminal ter = OntrackFactory.eINSTANCE.createTerminal();
 				ter.setConnector(c);
