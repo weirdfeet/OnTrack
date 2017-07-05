@@ -148,36 +148,32 @@ public class TopologyCalculator {
 			p.setName(n.getName());
 			barkston.getCrossings().add(p);
 			createdCrossings.put(n, p);
+			
+			Path mainEnterPath = rp.getPaths().get(n.getMainEnter());
+			Path mainExitPath = rp.getPaths().get(n.getMainExit());
+			Path branchEnterPath = rp.getPaths().get(n.getBranchEnter());
+			Path branchExitPath = rp.getPaths().get(n.getBranchExit());
+			TrackCircuit tc = mainEnterPath.getTracks().get(0);
 
-			String pointTrackName = "TC" + n.getName();
+			String crossingTrackName = tc.getName();
 			
-			Connector c1 = OntrackFactory.eINSTANCE.createConnector();
-			c1.setId(conNum++);
-			barkston.getConnectors().add(c1);
-			Connector c2 = OntrackFactory.eINSTANCE.createConnector();
-			c2.setId(conNum++);
-			barkston.getConnectors().add(c2);
-			Connector c3 = OntrackFactory.eINSTANCE.createConnector();
-			c3.setId(conNum++);
-			barkston.getConnectors().add(c3);
-			Connector c4 = OntrackFactory.eINSTANCE.createConnector();
-			c4.setId(conNum++);
-			barkston.getConnectors().add(c4);
-			
-			Track mt = OntrackFactory.eINSTANCE.createTrack(); // main track
-			mt.setName(pointTrackName);
-			barkston.getTracks().add(mt);
+			Connector c1 = getOnTrackConnector(getEndNodeOfDiamond(n, tc, mainEnterPath));
+			Connector c2 = getOnTrackConnector(getEndNodeOfDiamond(n, tc, mainExitPath));
+			Connector c3 = getOnTrackConnector(getEndNodeOfDiamond(n, tc, branchEnterPath));
+			Connector c4 = getOnTrackConnector(getEndNodeOfDiamond(n, tc, branchExitPath));
+
+			Track mt = getOnTrackTrack(tc); // main track
 
 			Track bt = OntrackFactory.eINSTANCE.createTrack(); // branch track
-			bt.setName(pointTrackName);
+			bt.setName(crossingTrackName);
 			barkston.getTracks().add(bt);
 			
 			p.setTrack1(mt);
 			p.setTrack2(bt);
 			mt.setCrossing1(p);
+			bt.setCrossing2(p);
 			mt.setC1(c1);
 			mt.setC2(c2);
-			bt.setCrossing2(p);
 			bt.setC1(c3);
 			bt.setC2(c4);
 			c1.getTrack1s().add(mt);
@@ -186,6 +182,22 @@ public class TopologyCalculator {
 			c4.getTrack2s().add(bt);
 		}
 		return p;
+	}
+
+	private Node getEndNodeOfDiamond(Node n, TrackCircuit tc, Path path) {
+		while(path!=null && tc.getPaths().contains(path)){
+			Node next = path.getStartNode() == n ? path.getEndNode() : path.getStartNode();
+			if (next.getPaths().size()==2) {
+				Path path0 = rp.getPaths().get(next.getPaths().get(0));
+				Path path1 = rp.getPaths().get(next.getPaths().get(1));
+				path = path0 == path ? path1 : path0;
+				n = next;
+			}
+			else {
+				path = null;
+			}
+		}
+		return n;
 	}
 
 	uk.ac.swanseacoventry.cmt.ontrack.Track getOnTrackTrack(TrackCircuit tc){
@@ -318,33 +330,54 @@ public class TopologyCalculator {
 		HashSet<String> ignorePaths = new HashSet<String>(); // forbidden paths when BFS
 		for(String s : entrySignals){
 			Node n = rp.getNodes().get(s);
-			if (!(n instanceof Signal)) System.out.println("Node " + n.getName() + " is not an entry signal! Import will fail!");
-			Signal sig = (Signal)n;
-			String beforePath = sig.getDirPath();
-			ignorePaths.add(beforePath);
-			queue.add(n);
+			if (n==null) {
+				String spair = s.substring(1, s.length()-1);
+				String[] pair = spair.split(":");
+				n = rp.getNodes().get(pair[0]);
+				ignorePaths.add(pair[1]);
+				queue.add(n);
+			}
+			else {
+				if (!(n instanceof Signal)) System.out.println("Node " + n.getName() + " is not an entry signal! Import will fail!");
+				Signal sig = (Signal)n;
+				String beforePath = sig.getDirPath();
+				ignorePaths.add(beforePath);
+				queue.add(n);
+			}
 		}
 		
 		for(String s : exitSignals){
 			Node n = rp.getNodes().get(s);
-			if (!(n instanceof Signal)) System.out.println("Node " + n.getName() + " is not an entry signal! Import will fail!");
-			Signal sig = (Signal)n;
-			String beforePath = sig.getDirPath();
-			for(String p : n.getPaths())
-				if (!p.equals(beforePath))
-					ignorePaths.add(p);
-			queue.add(n);
+			if (n==null) {
+				String spair = s.substring(1, s.length()-1);
+				String[] pair = spair.split(":");
+				n = rp.getNodes().get(pair[0]);
+				for(String p : n.getPaths())
+					if (!p.equals(pair[1]))
+						ignorePaths.add(p);
+				queue.add(n);
+			}
+			else {
+				if (!(n instanceof Signal)) System.out.println("Node " + n.getName() + " is not an exit signal! Import will fail!");
+				Signal sig = (Signal)n;
+				String beforePath = sig.getDirPath();
+				for(String p : n.getPaths())
+					if (!p.equals(beforePath))
+						ignorePaths.add(p);
+				queue.add(n);
+			}
 		}
 		
 		while(!queue.isEmpty()){
 			Node n = queue.pop();
 			visited.add(n);
 			for(String p : n.getPaths()){
-				if (ignorePaths.contains(p)) break;
-				Path path = rp.getPaths().get(p);
-				Node nextNode = path.getStartNode() == n ? path.getEndNode() : path.getStartNode();
-				if (!visited.contains(nextNode)) {
-					queue.add(nextNode);
+				if (!ignorePaths.contains(p)) {
+					Path path = rp.getPaths().get(p);
+					Node nextNode = path.getStartNode() == n ? path.getEndNode() : path.getStartNode();
+					if (!visited.contains(nextNode)) {
+						queue.add(nextNode);
+					}
 				}
 			}
 		}
@@ -370,6 +403,12 @@ public class TopologyCalculator {
 			}
 		}
 		
+		for(TrackCircuit tc : createdTracks.keySet()){
+			double length = 0;
+			for(Path p : tc.getPaths()) length += p.getLength();
+			System.out.println(tc.getName() + " : " + length + " m.");
+		}
+		
 		System.out.println("Num of Imported Tracks: " + createdTracks.size());
 		
 		
@@ -377,7 +416,7 @@ public class TopologyCalculator {
 		// node that we need to connect their connectors later
 		for(Node n : visited){
 			if (n instanceof Point){
-				Point bravep = (Point)n;			
+				Point bravep = (Point)n;	
 				uk.ac.swanseacoventry.cmt.ontrack.Point  p = getOnTrackPoint(bravep);
 				Path enterPath = rp.getPaths().get(bravep.getEnterPath());
 				Path exitPath = rp.getPaths().get(bravep.getExitPath());
@@ -463,15 +502,19 @@ public class TopologyCalculator {
 			ct.setRoute(r.getName());
 
 			for(Point pn : nPoints){
-				uk.ac.swanseacoventry.cmt.ontrack.Point p = getOnTrackPoint(pn);
-				ct.getNormals().add(p);
-				ct.getClears().add(p.getNormalTrack());
+				if (visited.contains(pn)){
+					uk.ac.swanseacoventry.cmt.ontrack.Point p = getOnTrackPoint(pn);
+					ct.getNormals().add(p);
+					ct.getClears().add(p.getNormalTrack());
+				}
 			}
 			
 			for(Point pn : rPoints){
-				uk.ac.swanseacoventry.cmt.ontrack.Point p = getOnTrackPoint(pn);
-				ct.getReverses().add(p);
-				ct.getClears().add(p.getReverseTrack());
+				if (visited.contains(pn)) {
+					uk.ac.swanseacoventry.cmt.ontrack.Point p = getOnTrackPoint(pn);
+					ct.getReverses().add(p);
+					ct.getClears().add(p.getReverseTrack());
+				}
 			}
 			
 			for(TrackCircuit t : r.getTrackCircuits()){

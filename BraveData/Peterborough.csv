@@ -1,0 +1,16 @@
+N10228,N19478,N19435,N10459,N10458,N10425,N10254,N10253
+N19477,N19201,N19198,N19193,N10224,N10154,N10424,N10255
+
+
+old version, need changes due to complex crossing that we have not been able to model
+N10525 and N10524
+
+N10425,N10254,N10253,N10459,N10458,N19435,N9517# Entry Signals
+N10424,N10255,N9551,N10034,N10033,N10035,N10002# Exit Signals,,
+
+
+corrections within the old version:
+- add a missing entry signal N10458
+- correct exit signal N9550 -> N9551
+- correct entry signals into exit signals N10035, N10002
+- delete exit signal 19409 as it is covered by N19435

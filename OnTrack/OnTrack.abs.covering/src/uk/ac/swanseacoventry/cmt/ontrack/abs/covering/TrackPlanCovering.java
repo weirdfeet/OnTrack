@@ -254,11 +254,6 @@ public class TrackPlanCovering  {
 		// routes
 		HashSet<String> coneRoutes = new HashSet<String>();
 		for(OwnControlTableItem octi : subControlTable){
-			if (octi.signal!=null && octi.signal.getName().equals("N9925"))
-			{
-				String tem = "N9925";
-				tem = tem + "-debug";
-			}
 			if (coneSignals.contains(octi.signal) &&
 					(!octi.normals.isEmpty() ||
 					 !octi.reverses.isEmpty() ||
