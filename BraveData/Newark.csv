@@ -1,2 +1,16 @@
+N11309,N11185,N11241
+N8873,N8877,N11177
+
+
+
+this model contains a signal on a crossing track circuit. 
+our modelling has not dealed with this yet
+
+N11309,N11185
+N8873,N8877,N11177
+
+
+- this is the old boundary. Its plan contains four crossings (one of them is N8912) that from a single track circuit.
+- this situation is not modelled in our railway modelling
 N8959,N8903,N8934,N11169# Entry Signals,,,,,,,
 N8952,N11314,N8935,N11177,N11287,N11286,N11285,N11284,N11283,N11282# Exit Signals
