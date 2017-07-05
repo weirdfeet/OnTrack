@@ -1,0 +1,804 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<uk.ac.swanseacoventry.cmt.ontrack:TrackPlan xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:uk.ac.swanseacoventry.cmt.ontrack="http:///uk/ac/swanseacoventry/cmt/ontrack.ecore">
+  <tracks name="TC2777" c1="//@connectors.21" c2="//@connectors.33">
+    <directedTracks track="//@tracks.0" connector="//@connectors.21"/>
+    <directedTracks track="//@tracks.0" connector="//@connectors.33"/>
+  </tracks>
+  <tracks name="TC2846" c1="//@connectors.0" c2="//@connectors.15">
+    <directedTracks track="//@tracks.1" connector="//@connectors.0"/>
+    <directedTracks track="//@tracks.1" connector="//@connectors.15"/>
+  </tracks>
+  <tracks name="TC2788" c1="//@connectors.34" c2="//@connectors.43">
+    <directedTracks track="//@tracks.2" connector="//@connectors.34"/>
+    <directedTracks track="//@tracks.2" connector="//@connectors.43"/>
+  </tracks>
+  <tracks name="TC2795" c1="//@connectors.5" c2="//@connectors.51">
+    <directedTracks track="//@tracks.3" connector="//@connectors.5"/>
+    <directedTracks track="//@tracks.3" connector="//@connectors.51"/>
+  </tracks>
+  <tracks name="TC2802" c1="//@connectors.1" c2="//@connectors.2" signals="//@signals.4 //@signals.6">
+    <directedTracks track="//@tracks.4" connector="//@connectors.1"/>
+    <directedTracks track="//@tracks.4" connector="//@connectors.2"/>
+  </tracks>
+  <tracks name="TC2789" c1="//@connectors.35" c2="//@connectors.32">
+    <directedTracks track="//@tracks.5" connector="//@connectors.35"/>
+    <directedTracks track="//@tracks.5" connector="//@connectors.32"/>
+  </tracks>
+  <tracks name="TC2793" c1="//@connectors.37" c2="//@connectors.50">
+    <directedTracks track="//@tracks.6" connector="//@connectors.37"/>
+    <directedTracks track="//@tracks.6" connector="//@connectors.50"/>
+  </tracks>
+  <tracks name="TC2779" c1="//@connectors.48" c2="//@connectors.7">
+    <directedTracks track="//@tracks.7" connector="//@connectors.48"/>
+    <directedTracks track="//@tracks.7" connector="//@connectors.7"/>
+  </tracks>
+  <tracks name="TC2799" c1="//@connectors.3" c2="//@connectors.4" signals="//@signals.11">
+    <directedTracks track="//@tracks.8" connector="//@connectors.3"/>
+    <directedTracks track="//@tracks.8" connector="//@connectors.4"/>
+  </tracks>
+  <tracks name="TC2798" c1="//@connectors.5" c2="//@connectors.6" signals="//@signals.15">
+    <directedTracks track="//@tracks.9" connector="//@connectors.5"/>
+    <directedTracks track="//@tracks.9" connector="//@connectors.6"/>
+  </tracks>
+  <tracks name="TC2796" c1="//@connectors.1" c2="//@connectors.52">
+    <directedTracks track="//@tracks.10" connector="//@connectors.1"/>
+    <directedTracks track="//@tracks.10" connector="//@connectors.52"/>
+  </tracks>
+  <tracks name="TC2816" c1="//@connectors.30" c2="//@connectors.8">
+    <directedTracks track="//@tracks.11" connector="//@connectors.30"/>
+    <directedTracks track="//@tracks.11" connector="//@connectors.8"/>
+  </tracks>
+  <tracks name="TC2831" c1="//@connectors.45" c2="//@connectors.29">
+    <directedTracks track="//@tracks.12" connector="//@connectors.45"/>
+    <directedTracks track="//@tracks.12" connector="//@connectors.29"/>
+  </tracks>
+  <tracks name="TC2881" c1="//@connectors.23" c2="//@connectors.44">
+    <directedTracks track="//@tracks.13" connector="//@connectors.23"/>
+    <directedTracks track="//@tracks.13" connector="//@connectors.44"/>
+  </tracks>
+  <tracks name="TC2828" c1="//@connectors.9" c2="//@connectors.28">
+    <directedTracks track="//@tracks.14" connector="//@connectors.9"/>
+    <directedTracks track="//@tracks.14" connector="//@connectors.28"/>
+  </tracks>
+  <tracks name="TC2820" c1="//@connectors.27" c2="//@connectors.2">
+    <directedTracks track="//@tracks.15" connector="//@connectors.27"/>
+    <directedTracks track="//@tracks.15" connector="//@connectors.2"/>
+  </tracks>
+  <tracks name="TC2830" c1="//@connectors.31" c2="//@connectors.26">
+    <directedTracks track="//@tracks.16" connector="//@connectors.31"/>
+    <directedTracks track="//@tracks.16" connector="//@connectors.26"/>
+  </tracks>
+  <tracks name="TC2767" c1="//@connectors.10" c2="//@connectors.11" signals="//@signals.3">
+    <directedTracks track="//@tracks.17" connector="//@connectors.10"/>
+    <directedTracks track="//@tracks.17" connector="//@connectors.11"/>
+  </tracks>
+  <tracks name="TC3287" c1="//@connectors.14" c2="//@connectors.12">
+    <directedTracks track="//@tracks.18" connector="//@connectors.14"/>
+    <directedTracks track="//@tracks.18" connector="//@connectors.12"/>
+  </tracks>
+  <tracks name="TC2812" c1="//@connectors.42" c2="//@connectors.16">
+    <directedTracks track="//@tracks.19" connector="//@connectors.42"/>
+    <directedTracks track="//@tracks.19" connector="//@connectors.16"/>
+  </tracks>
+  <tracks name="TC2770" c1="//@connectors.13" c2="//@connectors.14" signals="//@signals.2">
+    <directedTracks track="//@tracks.20" connector="//@connectors.13"/>
+    <directedTracks track="//@tracks.20" connector="//@connectors.14"/>
+  </tracks>
+  <tracks name="TC2806" c1="//@connectors.6" c2="//@connectors.20">
+    <directedTracks track="//@tracks.21" connector="//@connectors.6"/>
+    <directedTracks track="//@tracks.21" connector="//@connectors.20"/>
+  </tracks>
+  <tracks name="TC2823" c1="//@connectors.46" c2="//@connectors.17">
+    <directedTracks track="//@tracks.22" connector="//@connectors.46"/>
+    <directedTracks track="//@tracks.22" connector="//@connectors.17"/>
+  </tracks>
+  <tracks name="TC2778" c1="//@connectors.49" c2="//@connectors.40">
+    <directedTracks track="//@tracks.23" connector="//@connectors.49"/>
+    <directedTracks track="//@tracks.23" connector="//@connectors.40"/>
+  </tracks>
+  <tracks name="TC2813" c1="//@connectors.15" c2="//@connectors.16" signals="//@signals.12">
+    <directedTracks track="//@tracks.24" connector="//@connectors.15"/>
+    <directedTracks track="//@tracks.24" connector="//@connectors.16"/>
+  </tracks>
+  <tracks name="TC2814" c1="//@connectors.17" c2="//@connectors.18" signals="//@signals.5 //@signals.9">
+    <directedTracks track="//@tracks.25" connector="//@connectors.17"/>
+    <directedTracks track="//@tracks.25" connector="//@connectors.18"/>
+  </tracks>
+  <tracks name="TC2826" c1="//@connectors.9" c2="//@connectors.19" signals="//@signals.0">
+    <directedTracks track="//@tracks.26" connector="//@connectors.9"/>
+    <directedTracks track="//@tracks.26" connector="//@connectors.19"/>
+  </tracks>
+  <tracks name="TC2817" c1="//@connectors.8" c2="//@connectors.20" signals="//@signals.13 //@signals.14">
+    <directedTracks track="//@tracks.27" connector="//@connectors.8"/>
+    <directedTracks track="//@tracks.27" connector="//@connectors.20"/>
+  </tracks>
+  <tracks name="TC2794" c1="//@connectors.36" c2="//@connectors.4">
+    <directedTracks track="//@tracks.28" connector="//@connectors.36"/>
+    <directedTracks track="//@tracks.28" connector="//@connectors.4"/>
+  </tracks>
+  <tracks name="TC2772" c1="//@connectors.47" c2="//@connectors.13">
+    <directedTracks track="//@tracks.29" connector="//@connectors.47"/>
+    <directedTracks track="//@tracks.29" connector="//@connectors.13"/>
+  </tracks>
+  <tracks name="TC2774" c1="//@connectors.10" c2="//@connectors.39">
+    <directedTracks track="//@tracks.30" connector="//@connectors.10"/>
+    <directedTracks track="//@tracks.30" connector="//@connectors.39"/>
+  </tracks>
+  <tracks name="TC2815" c1="//@connectors.22" c2="//@connectors.18">
+    <directedTracks track="//@tracks.31" connector="//@connectors.22"/>
+    <directedTracks track="//@tracks.31" connector="//@connectors.18"/>
+  </tracks>
+  <tracks name="TC2840" c1="//@connectors.23" c2="//@connectors.24" signals="//@signals.1">
+    <directedTracks track="//@tracks.32" connector="//@connectors.23"/>
+    <directedTracks track="//@tracks.32" connector="//@connectors.24"/>
+  </tracks>
+  <tracks name="TC2784" c1="//@connectors.25" c2="//@connectors.7" signals="//@signals.8">
+    <directedTracks track="//@tracks.33" connector="//@connectors.25"/>
+    <directedTracks track="//@tracks.33" connector="//@connectors.7"/>
+  </tracks>
+  <tracks name="TC2781" c1="//@connectors.41" c2="//@connectors.38">
+    <directedTracks track="//@tracks.34" connector="//@connectors.41"/>
+    <directedTracks track="//@tracks.34" connector="//@connectors.38"/>
+  </tracks>
+  <tracks name="TCN9653" c1="//@connectors.26" c2="//@connectors.27" pointNormal="//@points.0">
+    <directedTracks track="//@tracks.35" connector="//@connectors.26"/>
+    <directedTracks track="//@tracks.35" connector="//@connectors.27"/>
+  </tracks>
+  <tracks name="TCN9653" c1="//@connectors.26" c2="//@connectors.28" pointReverse="//@points.0">
+    <directedTracks track="//@tracks.36" connector="//@connectors.26"/>
+    <directedTracks track="//@tracks.36" connector="//@connectors.28"/>
+  </tracks>
+  <tracks name="TCN9658" c1="//@connectors.29" c2="//@connectors.30" pointNormal="//@points.1">
+    <directedTracks track="//@tracks.37" connector="//@connectors.29"/>
+    <directedTracks track="//@tracks.37" connector="//@connectors.30"/>
+  </tracks>
+  <tracks name="TCN9658" c1="//@connectors.29" c2="//@connectors.31" pointReverse="//@points.1">
+    <directedTracks track="//@tracks.38" connector="//@connectors.29"/>
+    <directedTracks track="//@tracks.38" connector="//@connectors.31"/>
+  </tracks>
+  <tracks name="TCN9593" c1="//@connectors.32" c2="//@connectors.33" pointNormal="//@points.2">
+    <directedTracks track="//@tracks.39" connector="//@connectors.32"/>
+    <directedTracks track="//@tracks.39" connector="//@connectors.33"/>
+  </tracks>
+  <tracks name="TCN9593" c1="//@connectors.32" c2="//@connectors.34" pointReverse="//@points.2">
+    <directedTracks track="//@tracks.40" connector="//@connectors.32"/>
+    <directedTracks track="//@tracks.40" connector="//@connectors.34"/>
+  </tracks>
+  <tracks name="TCN9606" c1="//@connectors.35" c2="//@connectors.36" pointNormal="//@points.3">
+    <directedTracks track="//@tracks.41" connector="//@connectors.35"/>
+    <directedTracks track="//@tracks.41" connector="//@connectors.36"/>
+  </tracks>
+  <tracks name="TCN9606" c1="//@connectors.35" c2="//@connectors.37" pointReverse="//@points.3">
+    <directedTracks track="//@tracks.42" connector="//@connectors.35"/>
+    <directedTracks track="//@tracks.42" connector="//@connectors.37"/>
+  </tracks>
+  <tracks name="TCN9583" c1="//@connectors.38" c2="//@connectors.39" pointNormal="//@points.4">
+    <directedTracks track="//@tracks.43" connector="//@connectors.38"/>
+    <directedTracks track="//@tracks.43" connector="//@connectors.39"/>
+  </tracks>
+  <tracks name="TCN9583" c1="//@connectors.38" c2="//@connectors.40" pointReverse="//@points.4">
+    <directedTracks track="//@tracks.44" connector="//@connectors.38"/>
+    <directedTracks track="//@tracks.44" connector="//@connectors.40"/>
+  </tracks>
+  <tracks name="TCN9592" c1="//@connectors.41" c2="//@connectors.42" pointNormal="//@points.5">
+    <directedTracks track="//@tracks.45" connector="//@connectors.41"/>
+    <directedTracks track="//@tracks.45" connector="//@connectors.42"/>
+  </tracks>
+  <tracks name="TCN9592" c1="//@connectors.41" c2="//@connectors.43" pointReverse="//@points.5">
+    <directedTracks track="//@tracks.46" connector="//@connectors.41"/>
+    <directedTracks track="//@tracks.46" connector="//@connectors.43"/>
+  </tracks>
+  <tracks name="TCN9660" c1="//@connectors.44" c2="//@connectors.45" pointNormal="//@points.6">
+    <directedTracks track="//@tracks.47" connector="//@connectors.44"/>
+    <directedTracks track="//@tracks.47" connector="//@connectors.45"/>
+  </tracks>
+  <tracks name="TCN9660" c1="//@connectors.44" c2="//@connectors.46" pointReverse="//@points.6">
+    <directedTracks track="//@tracks.48" connector="//@connectors.44"/>
+    <directedTracks track="//@tracks.48" connector="//@connectors.46"/>
+  </tracks>
+  <tracks name="TCN9582" c1="//@connectors.47" c2="//@connectors.48" pointNormal="//@points.7">
+    <directedTracks track="//@tracks.49" connector="//@connectors.47"/>
+    <directedTracks track="//@tracks.49" connector="//@connectors.48"/>
+  </tracks>
+  <tracks name="TCN9582" c1="//@connectors.47" c2="//@connectors.49" pointReverse="//@points.7">
+    <directedTracks track="//@tracks.50" connector="//@connectors.47"/>
+    <directedTracks track="//@tracks.50" connector="//@connectors.49"/>
+  </tracks>
+  <tracks name="TCN9609" c1="//@connectors.50" c2="//@connectors.51" pointNormal="//@points.8">
+    <directedTracks track="//@tracks.51" connector="//@connectors.50"/>
+    <directedTracks track="//@tracks.51" connector="//@connectors.51"/>
+  </tracks>
+  <tracks name="TCN9609" c1="//@connectors.50" c2="//@connectors.52" pointReverse="//@points.8">
+    <directedTracks track="//@tracks.52" connector="//@connectors.50"/>
+    <directedTracks track="//@tracks.52" connector="//@connectors.52"/>
+  </tracks>
+  <tracks name="ENTRY_0" c1="//@connectors.53" c2="//@connectors.0" signals="//@signals.10">
+    <directedTracks track="//@tracks.53" connector="//@connectors.53"/>
+    <directedTracks track="//@tracks.53" connector="//@connectors.0"/>
+  </tracks>
+  <tracks name="ENTRY_1" c1="//@connectors.54" c2="//@connectors.21" signals="//@signals.7">
+    <directedTracks track="//@tracks.54" connector="//@connectors.54"/>
+    <directedTracks track="//@tracks.54" connector="//@connectors.21"/>
+  </tracks>
+  <connectors id="11" track1s="//@tracks.1" track2s="//@tracks.53" signals="//@signals.10"/>
+  <connectors id="12" track1s="//@tracks.4 //@tracks.10" signals="//@signals.6" entrances="//@subTrackPlans.6/@entrances.0" exits="//@subTrackPlans.6/@exits.0"/>
+  <connectors id="13" track2s="//@tracks.4 //@tracks.15" signals="//@signals.4" entrances="//@subTrackPlans.1/@entrances.1 //@subTrackPlans.4/@entrances.0 //@subTrackPlans.5/@entrances.1" exits="//@subTrackPlans.1/@exits.1 //@subTrackPlans.4/@exits.0 //@subTrackPlans.5/@exits.1"/>
+  <connectors id="18" track1s="//@tracks.8" entrances="//@entrances.1 //@subTrackPlans.1/@entrances.6 //@subTrackPlans.4/@entrances.3 //@subTrackPlans.5/@entrances.4" exits="//@exits.3 //@subTrackPlans.1/@exits.6 //@subTrackPlans.4/@exits.5 //@subTrackPlans.5/@exits.6"/>
+  <connectors id="19" track2s="//@tracks.8 //@tracks.28" signals="//@signals.11"/>
+  <connectors id="22" track1s="//@tracks.9 //@tracks.3" entrances="//@subTrackPlans.3/@entrances.1" exits="//@subTrackPlans.3/@exits.1"/>
+  <connectors id="23" track1s="//@tracks.21" track2s="//@tracks.9" signals="//@signals.15"/>
+  <connectors id="25" track2s="//@tracks.33 //@tracks.7" signals="//@signals.8"/>
+  <connectors id="27" track1s="//@tracks.27" track2s="//@tracks.11" signals="//@signals.13" entrances="//@subTrackPlans.1/@entrances.4 //@subTrackPlans.4/@entrances.1 //@subTrackPlans.5/@entrances.3" exits="//@subTrackPlans.1/@exits.4 //@subTrackPlans.4/@exits.2 //@subTrackPlans.5/@exits.4"/>
+  <connectors id="32" track1s="//@tracks.14 //@tracks.26" signals="//@signals.0"/>
+  <connectors id="41" track1s="//@tracks.17 //@tracks.30" signals="//@signals.3"/>
+  <connectors id="42" track2s="//@tracks.17" entrances="//@entrances.6 //@subTrackPlans.0/@entrances.8 //@subTrackPlans.4/@entrances.5 //@subTrackPlans.5/@entrances.5 //@subTrackPlans.7/@entrances.2" exits="//@exits.1 //@subTrackPlans.0/@exits.7 //@subTrackPlans.4/@exits.4 //@subTrackPlans.5/@exits.5 //@subTrackPlans.7/@exits.2"/>
+  <connectors id="44" track2s="//@tracks.18" exits="//@exits.0 //@subTrackPlans.1/@exits.5"/>
+  <connectors id="47" track1s="//@tracks.20" track2s="//@tracks.29" signals="//@signals.2"/>
+  <connectors id="48" track1s="//@tracks.18" track2s="//@tracks.20"/>
+  <connectors id="56" track1s="//@tracks.24" track2s="//@tracks.1" entrances="//@subTrackPlans.1/@entrances.3 //@subTrackPlans.5/@entrances.2" exits="//@subTrackPlans.1/@exits.3 //@subTrackPlans.5/@exits.2"/>
+  <connectors id="57" track2s="//@tracks.24 //@tracks.19" signals="//@signals.12"/>
+  <connectors id="59" track1s="//@tracks.25" track2s="//@tracks.22" signals="//@signals.9"/>
+  <connectors id="60" track2s="//@tracks.25 //@tracks.31" signals="//@signals.5" entrances="//@subTrackPlans.6/@entrances.2" exits="//@subTrackPlans.6/@exits.2"/>
+  <connectors id="65" track2s="//@tracks.26" entrances="//@entrances.3 //@subTrackPlans.6/@entrances.3" exits="//@exits.4 //@subTrackPlans.6/@exits.4"/>
+  <connectors id="66" track2s="//@tracks.27 //@tracks.21" signals="//@signals.14" entrances="//@subTrackPlans.6/@entrances.1" exits="//@subTrackPlans.6/@exits.1"/>
+  <connectors id="68" track1s="//@tracks.0" track2s="//@tracks.54" signals="//@signals.7"/>
+  <connectors id="76" track1s="//@tracks.31" terminal="//@terminals.0"/>
+  <connectors id="78" track1s="//@tracks.32 //@tracks.13" signals="//@signals.1"/>
+  <connectors id="79" track2s="//@tracks.32" entrances="//@entrances.5 //@subTrackPlans.0/@entrances.7 //@subTrackPlans.2/@entrances.1 //@subTrackPlans.3/@entrances.3 //@subTrackPlans.6/@entrances.4" exits="//@exits.2 //@subTrackPlans.0/@exits.8 //@subTrackPlans.2/@exits.1 //@subTrackPlans.3/@exits.3 //@subTrackPlans.6/@exits.3"/>
+  <connectors id="83" track1s="//@tracks.33" entrances="//@entrances.0 //@subTrackPlans.1/@entrances.5"/>
+  <connectors id="84" track1s="//@tracks.35 //@tracks.36" track2s="//@tracks.16"/>
+  <connectors id="85" track1s="//@tracks.15" track2s="//@tracks.35"/>
+  <connectors id="86" track2s="//@tracks.36 //@tracks.14" entrances="//@subTrackPlans.0/@entrances.3" exits="//@subTrackPlans.0/@exits.3"/>
+  <connectors id="87" track1s="//@tracks.37 //@tracks.38" track2s="//@tracks.12"/>
+  <connectors id="88" track1s="//@tracks.11" track2s="//@tracks.37" entrances="//@subTrackPlans.0/@entrances.0" exits="//@subTrackPlans.0/@exits.0"/>
+  <connectors id="89" track1s="//@tracks.16" track2s="//@tracks.38" entrances="//@subTrackPlans.3/@entrances.0" exits="//@subTrackPlans.3/@exits.0"/>
+  <connectors id="90" track1s="//@tracks.39 //@tracks.40" track2s="//@tracks.5"/>
+  <connectors id="91" track2s="//@tracks.39 //@tracks.0" entrances="//@subTrackPlans.1/@entrances.0 //@subTrackPlans.5/@entrances.0" exits="//@subTrackPlans.1/@exits.0 //@subTrackPlans.5/@exits.0"/>
+  <connectors id="92" track1s="//@tracks.2" track2s="//@tracks.40"/>
+  <connectors id="93" track1s="//@tracks.41 //@tracks.42 //@tracks.5"/>
+  <connectors id="94" track1s="//@tracks.28" track2s="//@tracks.41" entrances="//@subTrackPlans.0/@entrances.2" exits="//@subTrackPlans.0/@exits.2"/>
+  <connectors id="95" track1s="//@tracks.6" track2s="//@tracks.42"/>
+  <connectors id="96" track1s="//@tracks.43 //@tracks.44" track2s="//@tracks.34"/>
+  <connectors id="97" track2s="//@tracks.43 //@tracks.30" entrances="//@subTrackPlans.1/@entrances.2" exits="//@subTrackPlans.1/@exits.2"/>
+  <connectors id="98" track2s="//@tracks.44 //@tracks.23" exits="//@subTrackPlans.0/@exits.5 //@subTrackPlans.4/@exits.1 //@subTrackPlans.5/@exits.3 //@subTrackPlans.7/@exits.1"/>
+  <connectors id="99" track1s="//@tracks.45 //@tracks.46 //@tracks.34"/>
+  <connectors id="100" track1s="//@tracks.19" track2s="//@tracks.45" entrances="//@subTrackPlans.0/@entrances.5 //@subTrackPlans.4/@entrances.2" exits="//@subTrackPlans.0/@exits.6 //@subTrackPlans.4/@exits.3"/>
+  <connectors id="101" track2s="//@tracks.46 //@tracks.2" entrances="//@subTrackPlans.7/@entrances.0" exits="//@subTrackPlans.7/@exits.0"/>
+  <connectors id="102" track1s="//@tracks.47 //@tracks.48" track2s="//@tracks.13"/>
+  <connectors id="103" track1s="//@tracks.12" track2s="//@tracks.47" entrances="//@subTrackPlans.2/@entrances.0" exits="//@subTrackPlans.2/@exits.0"/>
+  <connectors id="104" track1s="//@tracks.22" track2s="//@tracks.48" entrances="//@subTrackPlans.0/@entrances.4 //@subTrackPlans.3/@entrances.2" exits="//@subTrackPlans.0/@exits.4 //@subTrackPlans.3/@exits.2"/>
+  <connectors id="105" track1s="//@tracks.49 //@tracks.50 //@tracks.29"/>
+  <connectors id="106" track1s="//@tracks.7" track2s="//@tracks.49"/>
+  <connectors id="107" track1s="//@tracks.23" track2s="//@tracks.50"/>
+  <connectors id="108" track1s="//@tracks.51 //@tracks.52" track2s="//@tracks.6"/>
+  <connectors id="109" track2s="//@tracks.51 //@tracks.3" entrances="//@subTrackPlans.0/@entrances.1" exits="//@subTrackPlans.0/@exits.1"/>
+  <connectors id="110" track2s="//@tracks.52 //@tracks.10"/>
+  <connectors id="111" track1s="//@tracks.53" entrances="//@entrances.2 //@subTrackPlans.7/@entrances.1"/>
+  <connectors id="112" track1s="//@tracks.54" entrances="//@entrances.4 //@subTrackPlans.0/@entrances.6 //@subTrackPlans.4/@entrances.4"/>
+  <points name="N9653" normalTrack="//@tracks.35" reverseTrack="//@tracks.36"/>
+  <points name="N9658" normalTrack="//@tracks.37" reverseTrack="//@tracks.38"/>
+  <points name="N9593" normalTrack="//@tracks.39" reverseTrack="//@tracks.40"/>
+  <points name="N9606" normalTrack="//@tracks.41" reverseTrack="//@tracks.42"/>
+  <points name="N9583" normalTrack="//@tracks.43" reverseTrack="//@tracks.44"/>
+  <points name="N9592" normalTrack="//@tracks.45" reverseTrack="//@tracks.46"/>
+  <points name="N9660" normalTrack="//@tracks.47" reverseTrack="//@tracks.48"/>
+  <points name="N9582" normalTrack="//@tracks.49" reverseTrack="//@tracks.50"/>
+  <points name="N9609" normalTrack="//@tracks.51" reverseTrack="//@tracks.52"/>
+  <signals name="N9652" track="//@tracks.26" connector="//@connectors.9"/>
+  <signals name="N9683" track="//@tracks.32" connector="//@connectors.23"/>
+  <signals name="N9575" track="//@tracks.20" connector="//@connectors.13"/>
+  <signals name="N9574" track="//@tracks.17" connector="//@connectors.10"/>
+  <signals name="N9643" track="//@tracks.4" connector="//@connectors.2"/>
+  <signals name="N9637" track="//@tracks.25" connector="//@connectors.18"/>
+  <signals name="N9617" track="//@tracks.4" connector="//@connectors.1"/>
+  <signals name="N10681" track="//@tracks.54" connector="//@connectors.21"/>
+  <signals name="N9589" track="//@tracks.33" connector="//@connectors.7"/>
+  <signals name="N9646" track="//@tracks.25" connector="//@connectors.17"/>
+  <signals name="N9711" track="//@tracks.53" connector="//@connectors.0"/>
+  <signals name="N9614" track="//@tracks.8" connector="//@connectors.4"/>
+  <signals name="N9632" track="//@tracks.24" connector="//@connectors.16"/>
+  <signals name="N9640" track="//@tracks.27" connector="//@connectors.8"/>
+  <signals name="N9795" track="//@tracks.27" connector="//@connectors.20"/>
+  <signals name="N9624" track="//@tracks.9" connector="//@connectors.6"/>
+  <entrances connector="//@connectors.25"/>
+  <entrances connector="//@connectors.3"/>
+  <entrances connector="//@connectors.53"/>
+  <entrances connector="//@connectors.19"/>
+  <entrances connector="//@connectors.54"/>
+  <entrances connector="//@connectors.24"/>
+  <entrances connector="//@connectors.11"/>
+  <exits connector="//@connectors.12"/>
+  <exits connector="//@connectors.11"/>
+  <exits connector="//@connectors.24"/>
+  <exits connector="//@connectors.3"/>
+  <exits connector="//@connectors.19"/>
+  <terminals connector="//@connectors.22"/>
+  <controlTable signal="//@signals.8" route="R3914" normals="//@points.7" clears="//@tracks.49 //@tracks.7 //@tracks.29 //@tracks.20 //@tracks.18" directions="//@tracks.7/@directedTracks.0 //@tracks.49/@directedTracks.0 //@tracks.29/@directedTracks.1 //@tracks.20/@directedTracks.1 //@tracks.18/@directedTracks.1"/>
+  <controlTable signal="//@signals.6" route="R3918" reverses="//@points.8 //@points.3 //@points.2 //@points.5 //@points.4 //@points.7" clears="//@tracks.52 //@tracks.42 //@tracks.40 //@tracks.46 //@tracks.44 //@tracks.50 //@tracks.10 //@tracks.6 //@tracks.5 //@tracks.2 //@tracks.34 //@tracks.23 //@tracks.29 //@tracks.20 //@tracks.18" directions="//@tracks.10/@directedTracks.1 //@tracks.52/@directedTracks.0 //@tracks.6/@directedTracks.0 //@tracks.42/@directedTracks.0 //@tracks.5/@directedTracks.1 //@tracks.40/@directedTracks.1 //@tracks.2/@directedTracks.1 //@tracks.46/@directedTracks.0 //@tracks.34/@directedTracks.1 //@tracks.44/@directedTracks.1 //@tracks.23/@directedTracks.0 //@tracks.50/@directedTracks.0 //@tracks.29/@directedTracks.1 //@tracks.20/@directedTracks.1 //@tracks.18/@directedTracks.1"/>
+  <controlTable signal="//@signals.6" route="R3917" normals="//@points.4" reverses="//@points.8 //@points.3 //@points.2 //@points.5" clears="//@tracks.43 //@tracks.52 //@tracks.42 //@tracks.40 //@tracks.46 //@tracks.10 //@tracks.6 //@tracks.5 //@tracks.2 //@tracks.34 //@tracks.30 //@tracks.17" directions="//@tracks.10/@directedTracks.1 //@tracks.52/@directedTracks.0 //@tracks.6/@directedTracks.0 //@tracks.42/@directedTracks.0 //@tracks.5/@directedTracks.1 //@tracks.40/@directedTracks.1 //@tracks.2/@directedTracks.1 //@tracks.46/@directedTracks.0 //@tracks.34/@directedTracks.1 //@tracks.43/@directedTracks.1 //@tracks.30/@directedTracks.0 //@tracks.17/@directedTracks.1"/>
+  <controlTable signal="//@signals.11" route="R3916" normals="//@points.3" reverses="//@points.2 //@points.5 //@points.4 //@points.7" clears="//@tracks.41 //@tracks.40 //@tracks.46 //@tracks.44 //@tracks.50 //@tracks.28 //@tracks.5 //@tracks.2 //@tracks.34 //@tracks.23 //@tracks.29 //@tracks.20 //@tracks.18" directions="//@tracks.28/@directedTracks.0 //@tracks.41/@directedTracks.0 //@tracks.5/@directedTracks.1 //@tracks.40/@directedTracks.1 //@tracks.2/@directedTracks.1 //@tracks.46/@directedTracks.0 //@tracks.34/@directedTracks.1 //@tracks.44/@directedTracks.1 //@tracks.23/@directedTracks.0 //@tracks.50/@directedTracks.0 //@tracks.29/@directedTracks.1 //@tracks.20/@directedTracks.1 //@tracks.18/@directedTracks.1"/>
+  <controlTable signal="//@signals.11" route="R3915" normals="//@points.3 //@points.4" reverses="//@points.2 //@points.5" clears="//@tracks.41 //@tracks.43 //@tracks.40 //@tracks.46 //@tracks.28 //@tracks.5 //@tracks.2 //@tracks.34 //@tracks.30 //@tracks.17" directions="//@tracks.28/@directedTracks.0 //@tracks.41/@directedTracks.0 //@tracks.5/@directedTracks.1 //@tracks.40/@directedTracks.1 //@tracks.2/@directedTracks.1 //@tracks.46/@directedTracks.0 //@tracks.34/@directedTracks.1 //@tracks.43/@directedTracks.1 //@tracks.30/@directedTracks.0 //@tracks.17/@directedTracks.1"/>
+  <controlTable signal="//@signals.6" route="R3697" clears="//@tracks.4" directions="//@tracks.4/@directedTracks.1"/>
+  <controlTable signal="//@signals.4" route="R3696" clears="//@tracks.4" directions="//@tracks.4/@directedTracks.0"/>
+  <controlTable signal="//@signals.5" route="R3695" clears="//@tracks.25" directions="//@tracks.25/@directedTracks.0"/>
+  <controlTable signal="//@signals.13" route="R3699" clears="//@tracks.27" directions="//@tracks.27/@directedTracks.1"/>
+  <controlTable signal="//@signals.14" route="R3698" clears="//@tracks.27" directions="//@tracks.27/@directedTracks.0"/>
+  <controlTable signal="//@signals.10" route="R3691" clears="//@tracks.1 //@tracks.24" directions="//@tracks.1/@directedTracks.1 //@tracks.24/@directedTracks.1"/>
+  <controlTable signal="//@signals.0" route="R3690" normals="//@points.6" reverses="//@points.0 //@points.1" clears="//@tracks.47 //@tracks.36 //@tracks.38 //@tracks.14 //@tracks.16 //@tracks.12 //@tracks.13 //@tracks.32" directions="//@tracks.14/@directedTracks.1 //@tracks.36/@directedTracks.0 //@tracks.16/@directedTracks.0 //@tracks.38/@directedTracks.0 //@tracks.12/@directedTracks.0 //@tracks.47/@directedTracks.0 //@tracks.13/@directedTracks.0 //@tracks.32/@directedTracks.1"/>
+  <controlTable signal="//@signals.7" route="R3925" normals="//@points.2 //@points.3" clears="//@tracks.39 //@tracks.41 //@tracks.0 //@tracks.5 //@tracks.28 //@tracks.8" directions="//@tracks.0/@directedTracks.1 //@tracks.39/@directedTracks.0 //@tracks.5/@directedTracks.0 //@tracks.41/@directedTracks.1 //@tracks.28/@directedTracks.1 //@tracks.8/@directedTracks.0"/>
+  <controlTable signal="//@signals.7" route="R3924" normals="//@points.2" reverses="//@points.3 //@points.8" clears="//@tracks.39 //@tracks.42 //@tracks.52 //@tracks.0 //@tracks.5 //@tracks.6 //@tracks.10 //@tracks.4" directions="//@tracks.0/@directedTracks.1 //@tracks.39/@directedTracks.0 //@tracks.5/@directedTracks.0 //@tracks.42/@directedTracks.1 //@tracks.6/@directedTracks.1 //@tracks.52/@directedTracks.1 //@tracks.10/@directedTracks.0 //@tracks.4/@directedTracks.1"/>
+  <controlTable signal="//@signals.12" route="R3923" normals="//@points.5" reverses="//@points.4 //@points.7" clears="//@tracks.45 //@tracks.44 //@tracks.50 //@tracks.19 //@tracks.34 //@tracks.23 //@tracks.29 //@tracks.20 //@tracks.18" directions="//@tracks.19/@directedTracks.0 //@tracks.45/@directedTracks.0 //@tracks.34/@directedTracks.1 //@tracks.44/@directedTracks.1 //@tracks.23/@directedTracks.0 //@tracks.50/@directedTracks.0 //@tracks.29/@directedTracks.1 //@tracks.20/@directedTracks.1 //@tracks.18/@directedTracks.1"/>
+  <controlTable signal="//@signals.12" route="R3922" normals="//@points.5 //@points.4" clears="//@tracks.45 //@tracks.43 //@tracks.19 //@tracks.34 //@tracks.30 //@tracks.17" directions="//@tracks.19/@directedTracks.0 //@tracks.45/@directedTracks.0 //@tracks.34/@directedTracks.1 //@tracks.43/@directedTracks.1 //@tracks.30/@directedTracks.0 //@tracks.17/@directedTracks.1"/>
+  <controlTable signal="//@signals.1" route="R3686" normals="//@points.6" reverses="//@points.1 //@points.0" clears="//@tracks.47 //@tracks.38 //@tracks.36 //@tracks.13 //@tracks.12 //@tracks.16 //@tracks.14 //@tracks.26" directions="//@tracks.13/@directedTracks.1 //@tracks.47/@directedTracks.1 //@tracks.12/@directedTracks.1 //@tracks.38/@directedTracks.1 //@tracks.16/@directedTracks.1 //@tracks.36/@directedTracks.1 //@tracks.14/@directedTracks.0 //@tracks.26/@directedTracks.1"/>
+  <controlTable signal="//@signals.1" route="R3685" normals="//@points.6 //@points.0" reverses="//@points.1" clears="//@tracks.47 //@tracks.35 //@tracks.38 //@tracks.13 //@tracks.12 //@tracks.16 //@tracks.15 //@tracks.4" directions="//@tracks.13/@directedTracks.1 //@tracks.47/@directedTracks.1 //@tracks.12/@directedTracks.1 //@tracks.38/@directedTracks.1 //@tracks.16/@directedTracks.1 //@tracks.35/@directedTracks.1 //@tracks.15/@directedTracks.1 //@tracks.4/@directedTracks.0"/>
+  <controlTable signal="//@signals.1" route="R3684" normals="//@points.6 //@points.1" clears="//@tracks.47 //@tracks.37 //@tracks.13 //@tracks.12 //@tracks.11 //@tracks.27" directions="//@tracks.13/@directedTracks.1 //@tracks.47/@directedTracks.1 //@tracks.12/@directedTracks.1 //@tracks.37/@directedTracks.1 //@tracks.11/@directedTracks.1 //@tracks.27/@directedTracks.1"/>
+  <controlTable signal="//@signals.1" route="R3683" reverses="//@points.6" clears="//@tracks.48 //@tracks.13 //@tracks.22 //@tracks.25" directions="//@tracks.13/@directedTracks.1 //@tracks.48/@directedTracks.1 //@tracks.22/@directedTracks.1 //@tracks.25/@directedTracks.1"/>
+  <controlTable signal="//@signals.14" route="R3921" normals="//@points.8" reverses="//@points.3 //@points.2 //@points.5 //@points.4 //@points.7" clears="//@tracks.51 //@tracks.42 //@tracks.40 //@tracks.46 //@tracks.44 //@tracks.50 //@tracks.21 //@tracks.9 //@tracks.3 //@tracks.6 //@tracks.5 //@tracks.2 //@tracks.34 //@tracks.23 //@tracks.29 //@tracks.20 //@tracks.18" directions="//@tracks.21/@directedTracks.0 //@tracks.9/@directedTracks.0 //@tracks.3/@directedTracks.1 //@tracks.51/@directedTracks.0 //@tracks.6/@directedTracks.0 //@tracks.42/@directedTracks.0 //@tracks.5/@directedTracks.1 //@tracks.40/@directedTracks.1 //@tracks.2/@directedTracks.1 //@tracks.46/@directedTracks.0 //@tracks.34/@directedTracks.1 //@tracks.44/@directedTracks.1 //@tracks.23/@directedTracks.0 //@tracks.50/@directedTracks.0 //@tracks.29/@directedTracks.1 //@tracks.20/@directedTracks.1 //@tracks.18/@directedTracks.1"/>
+  <controlTable signal="//@signals.4" route="R3689" normals="//@points.0 //@points.6" reverses="//@points.1" clears="//@tracks.35 //@tracks.47 //@tracks.38 //@tracks.15 //@tracks.16 //@tracks.12 //@tracks.13 //@tracks.32" directions="//@tracks.15/@directedTracks.0 //@tracks.35/@directedTracks.0 //@tracks.16/@directedTracks.0 //@tracks.38/@directedTracks.0 //@tracks.12/@directedTracks.0 //@tracks.47/@directedTracks.0 //@tracks.13/@directedTracks.0 //@tracks.32/@directedTracks.1"/>
+  <controlTable signal="//@signals.14" route="R3920" normals="//@points.8 //@points.4" reverses="//@points.3 //@points.2 //@points.5" clears="//@tracks.51 //@tracks.43 //@tracks.42 //@tracks.40 //@tracks.46 //@tracks.21 //@tracks.9 //@tracks.3 //@tracks.6 //@tracks.5 //@tracks.2 //@tracks.34 //@tracks.30 //@tracks.17" directions="//@tracks.21/@directedTracks.0 //@tracks.9/@directedTracks.0 //@tracks.3/@directedTracks.1 //@tracks.51/@directedTracks.0 //@tracks.6/@directedTracks.0 //@tracks.42/@directedTracks.0 //@tracks.5/@directedTracks.1 //@tracks.40/@directedTracks.1 //@tracks.2/@directedTracks.1 //@tracks.46/@directedTracks.0 //@tracks.34/@directedTracks.1 //@tracks.43/@directedTracks.1 //@tracks.30/@directedTracks.0 //@tracks.17/@directedTracks.1"/>
+  <controlTable signal="//@signals.9" route="R3688" reverses="//@points.6" clears="//@tracks.48 //@tracks.22 //@tracks.13 //@tracks.32" directions="//@tracks.22/@directedTracks.0 //@tracks.48/@directedTracks.0 //@tracks.13/@directedTracks.0 //@tracks.32/@directedTracks.1"/>
+  <controlTable signal="//@signals.13" route="R3687" normals="//@points.1 //@points.6" clears="//@tracks.37 //@tracks.47 //@tracks.11 //@tracks.12 //@tracks.13 //@tracks.32" directions="//@tracks.11/@directedTracks.0 //@tracks.37/@directedTracks.0 //@tracks.12/@directedTracks.0 //@tracks.47/@directedTracks.0 //@tracks.13/@directedTracks.0 //@tracks.32/@directedTracks.1"/>
+  <controlTable signal="//@signals.15" route="R3682" clears="//@tracks.21 //@tracks.27" directions="//@tracks.21/@directedTracks.1 //@tracks.27/@directedTracks.0"/>
+  <controlTable signal="//@signals.2" route="R3681" normals="//@points.8" reverses="//@points.7 //@points.4 //@points.5 //@points.2 //@points.3" clears="//@tracks.51 //@tracks.50 //@tracks.44 //@tracks.46 //@tracks.40 //@tracks.42 //@tracks.29 //@tracks.23 //@tracks.34 //@tracks.2 //@tracks.5 //@tracks.6 //@tracks.3 //@tracks.9" directions="//@tracks.29/@directedTracks.0 //@tracks.50/@directedTracks.1 //@tracks.23/@directedTracks.1 //@tracks.44/@directedTracks.0 //@tracks.34/@directedTracks.0 //@tracks.46/@directedTracks.1 //@tracks.2/@directedTracks.0 //@tracks.40/@directedTracks.0 //@tracks.5/@directedTracks.0 //@tracks.42/@directedTracks.1 //@tracks.6/@directedTracks.1 //@tracks.51/@directedTracks.1 //@tracks.3/@directedTracks.0 //@tracks.9/@directedTracks.1"/>
+  <controlTable signal="//@signals.3" route="R3680" normals="//@points.4 //@points.8" reverses="//@points.5 //@points.2 //@points.3" clears="//@tracks.43 //@tracks.51 //@tracks.46 //@tracks.40 //@tracks.42 //@tracks.30 //@tracks.34 //@tracks.2 //@tracks.5 //@tracks.6 //@tracks.3 //@tracks.9" directions="//@tracks.30/@directedTracks.1 //@tracks.43/@directedTracks.0 //@tracks.34/@directedTracks.0 //@tracks.46/@directedTracks.1 //@tracks.2/@directedTracks.0 //@tracks.40/@directedTracks.0 //@tracks.5/@directedTracks.0 //@tracks.42/@directedTracks.1 //@tracks.6/@directedTracks.1 //@tracks.51/@directedTracks.1 //@tracks.3/@directedTracks.0 //@tracks.9/@directedTracks.1"/>
+  <controlTable signal="//@signals.7" route="R3919" normals="//@points.2 //@points.8" reverses="//@points.3" clears="//@tracks.39 //@tracks.51 //@tracks.42 //@tracks.0 //@tracks.5 //@tracks.6 //@tracks.3 //@tracks.9" directions="//@tracks.0/@directedTracks.1 //@tracks.39/@directedTracks.0 //@tracks.5/@directedTracks.0 //@tracks.42/@directedTracks.1 //@tracks.6/@directedTracks.1 //@tracks.51/@directedTracks.1 //@tracks.3/@directedTracks.0 //@tracks.9/@directedTracks.1"/>
+  <releaseTable route="R3914" point="//@points.7" unoccupiedTrack="//@tracks.49" occupiedTrack="//@tracks.29"/>
+  <releaseTable route="R3918" point="//@points.8" unoccupiedTrack="//@tracks.52" occupiedTrack="//@tracks.6"/>
+  <releaseTable route="R3918" point="//@points.3" unoccupiedTrack="//@tracks.42" occupiedTrack="//@tracks.5"/>
+  <releaseTable route="R3918" point="//@points.2" unoccupiedTrack="//@tracks.40" occupiedTrack="//@tracks.2"/>
+  <releaseTable route="R3918" point="//@points.5" unoccupiedTrack="//@tracks.46" occupiedTrack="//@tracks.34"/>
+  <releaseTable route="R3918" point="//@points.4" unoccupiedTrack="//@tracks.44" occupiedTrack="//@tracks.23"/>
+  <releaseTable route="R3918" point="//@points.7" unoccupiedTrack="//@tracks.50" occupiedTrack="//@tracks.29"/>
+  <releaseTable route="R3917" point="//@points.8" unoccupiedTrack="//@tracks.52" occupiedTrack="//@tracks.6"/>
+  <releaseTable route="R3917" point="//@points.3" unoccupiedTrack="//@tracks.42" occupiedTrack="//@tracks.5"/>
+  <releaseTable route="R3917" point="//@points.2" unoccupiedTrack="//@tracks.40" occupiedTrack="//@tracks.2"/>
+  <releaseTable route="R3917" point="//@points.5" unoccupiedTrack="//@tracks.46" occupiedTrack="//@tracks.34"/>
+  <releaseTable route="R3917" point="//@points.4" unoccupiedTrack="//@tracks.43" occupiedTrack="//@tracks.30"/>
+  <releaseTable route="R3916" point="//@points.3" unoccupiedTrack="//@tracks.41" occupiedTrack="//@tracks.5"/>
+  <releaseTable route="R3916" point="//@points.2" unoccupiedTrack="//@tracks.40" occupiedTrack="//@tracks.2"/>
+  <releaseTable route="R3916" point="//@points.5" unoccupiedTrack="//@tracks.46" occupiedTrack="//@tracks.34"/>
+  <releaseTable route="R3916" point="//@points.4" unoccupiedTrack="//@tracks.44" occupiedTrack="//@tracks.23"/>
+  <releaseTable route="R3916" point="//@points.7" unoccupiedTrack="//@tracks.50" occupiedTrack="//@tracks.29"/>
+  <releaseTable route="R3915" point="//@points.3" unoccupiedTrack="//@tracks.41" occupiedTrack="//@tracks.5"/>
+  <releaseTable route="R3915" point="//@points.2" unoccupiedTrack="//@tracks.40" occupiedTrack="//@tracks.2"/>
+  <releaseTable route="R3915" point="//@points.5" unoccupiedTrack="//@tracks.46" occupiedTrack="//@tracks.34"/>
+  <releaseTable route="R3915" point="//@points.4" unoccupiedTrack="//@tracks.43" occupiedTrack="//@tracks.30"/>
+  <releaseTable route="R3690" point="//@points.0" unoccupiedTrack="//@tracks.36" occupiedTrack="//@tracks.16"/>
+  <releaseTable route="R3690" point="//@points.1" unoccupiedTrack="//@tracks.38" occupiedTrack="//@tracks.12"/>
+  <releaseTable route="R3690" point="//@points.6" unoccupiedTrack="//@tracks.47" occupiedTrack="//@tracks.13"/>
+  <releaseTable route="R3925" point="//@points.2" unoccupiedTrack="//@tracks.39" occupiedTrack="//@tracks.5"/>
+  <releaseTable route="R3925" point="//@points.3" unoccupiedTrack="//@tracks.41" occupiedTrack="//@tracks.28"/>
+  <releaseTable route="R3924" point="//@points.2" unoccupiedTrack="//@tracks.39" occupiedTrack="//@tracks.5"/>
+  <releaseTable route="R3924" point="//@points.3" unoccupiedTrack="//@tracks.42" occupiedTrack="//@tracks.6"/>
+  <releaseTable route="R3924" point="//@points.8" unoccupiedTrack="//@tracks.52" occupiedTrack="//@tracks.10"/>
+  <releaseTable route="R3923" point="//@points.5" unoccupiedTrack="//@tracks.45" occupiedTrack="//@tracks.34"/>
+  <releaseTable route="R3923" point="//@points.4" unoccupiedTrack="//@tracks.44" occupiedTrack="//@tracks.23"/>
+  <releaseTable route="R3923" point="//@points.7" unoccupiedTrack="//@tracks.50" occupiedTrack="//@tracks.29"/>
+  <releaseTable route="R3922" point="//@points.5" unoccupiedTrack="//@tracks.45" occupiedTrack="//@tracks.34"/>
+  <releaseTable route="R3922" point="//@points.4" unoccupiedTrack="//@tracks.43" occupiedTrack="//@tracks.30"/>
+  <releaseTable route="R3686" point="//@points.6" unoccupiedTrack="//@tracks.47" occupiedTrack="//@tracks.12"/>
+  <releaseTable route="R3686" point="//@points.1" unoccupiedTrack="//@tracks.38" occupiedTrack="//@tracks.16"/>
+  <releaseTable route="R3686" point="//@points.0" unoccupiedTrack="//@tracks.36" occupiedTrack="//@tracks.14"/>
+  <releaseTable route="R3685" point="//@points.6" unoccupiedTrack="//@tracks.47" occupiedTrack="//@tracks.12"/>
+  <releaseTable route="R3685" point="//@points.1" unoccupiedTrack="//@tracks.38" occupiedTrack="//@tracks.16"/>
+  <releaseTable route="R3685" point="//@points.0" unoccupiedTrack="//@tracks.35" occupiedTrack="//@tracks.15"/>
+  <releaseTable route="R3684" point="//@points.6" unoccupiedTrack="//@tracks.47" occupiedTrack="//@tracks.12"/>
+  <releaseTable route="R3684" point="//@points.1" unoccupiedTrack="//@tracks.37" occupiedTrack="//@tracks.11"/>
+  <releaseTable route="R3683" point="//@points.6" unoccupiedTrack="//@tracks.48" occupiedTrack="//@tracks.22"/>
+  <releaseTable route="R3921" point="//@points.8" unoccupiedTrack="//@tracks.51" occupiedTrack="//@tracks.6"/>
+  <releaseTable route="R3921" point="//@points.3" unoccupiedTrack="//@tracks.42" occupiedTrack="//@tracks.5"/>
+  <releaseTable route="R3921" point="//@points.2" unoccupiedTrack="//@tracks.40" occupiedTrack="//@tracks.2"/>
+  <releaseTable route="R3921" point="//@points.5" unoccupiedTrack="//@tracks.46" occupiedTrack="//@tracks.34"/>
+  <releaseTable route="R3921" point="//@points.4" unoccupiedTrack="//@tracks.44" occupiedTrack="//@tracks.23"/>
+  <releaseTable route="R3921" point="//@points.7" unoccupiedTrack="//@tracks.50" occupiedTrack="//@tracks.29"/>
+  <releaseTable route="R3689" point="//@points.0" unoccupiedTrack="//@tracks.35" occupiedTrack="//@tracks.16"/>
+  <releaseTable route="R3689" point="//@points.1" unoccupiedTrack="//@tracks.38" occupiedTrack="//@tracks.12"/>
+  <releaseTable route="R3689" point="//@points.6" unoccupiedTrack="//@tracks.47" occupiedTrack="//@tracks.13"/>
+  <releaseTable route="R3920" point="//@points.8" unoccupiedTrack="//@tracks.51" occupiedTrack="//@tracks.6"/>
+  <releaseTable route="R3920" point="//@points.3" unoccupiedTrack="//@tracks.42" occupiedTrack="//@tracks.5"/>
+  <releaseTable route="R3920" point="//@points.2" unoccupiedTrack="//@tracks.40" occupiedTrack="//@tracks.2"/>
+  <releaseTable route="R3920" point="//@points.5" unoccupiedTrack="//@tracks.46" occupiedTrack="//@tracks.34"/>
+  <releaseTable route="R3920" point="//@points.4" unoccupiedTrack="//@tracks.43" occupiedTrack="//@tracks.30"/>
+  <releaseTable route="R3688" point="//@points.6" unoccupiedTrack="//@tracks.48" occupiedTrack="//@tracks.13"/>
+  <releaseTable route="R3687" point="//@points.1" unoccupiedTrack="//@tracks.37" occupiedTrack="//@tracks.12"/>
+  <releaseTable route="R3687" point="//@points.6" unoccupiedTrack="//@tracks.47" occupiedTrack="//@tracks.13"/>
+  <releaseTable route="R3681" point="//@points.7" unoccupiedTrack="//@tracks.50" occupiedTrack="//@tracks.23"/>
+  <releaseTable route="R3681" point="//@points.4" unoccupiedTrack="//@tracks.44" occupiedTrack="//@tracks.34"/>
+  <releaseTable route="R3681" point="//@points.5" unoccupiedTrack="//@tracks.46" occupiedTrack="//@tracks.2"/>
+  <releaseTable route="R3681" point="//@points.2" unoccupiedTrack="//@tracks.40" occupiedTrack="//@tracks.5"/>
+  <releaseTable route="R3681" point="//@points.3" unoccupiedTrack="//@tracks.42" occupiedTrack="//@tracks.6"/>
+  <releaseTable route="R3681" point="//@points.8" unoccupiedTrack="//@tracks.51" occupiedTrack="//@tracks.3"/>
+  <releaseTable route="R3680" point="//@points.4" unoccupiedTrack="//@tracks.43" occupiedTrack="//@tracks.34"/>
+  <releaseTable route="R3680" point="//@points.5" unoccupiedTrack="//@tracks.46" occupiedTrack="//@tracks.2"/>
+  <releaseTable route="R3680" point="//@points.2" unoccupiedTrack="//@tracks.40" occupiedTrack="//@tracks.5"/>
+  <releaseTable route="R3680" point="//@points.3" unoccupiedTrack="//@tracks.42" occupiedTrack="//@tracks.6"/>
+  <releaseTable route="R3680" point="//@points.8" unoccupiedTrack="//@tracks.51" occupiedTrack="//@tracks.3"/>
+  <releaseTable route="R3919" point="//@points.2" unoccupiedTrack="//@tracks.39" occupiedTrack="//@tracks.5"/>
+  <releaseTable route="R3919" point="//@points.3" unoccupiedTrack="//@tracks.42" occupiedTrack="//@tracks.6"/>
+  <releaseTable route="R3919" point="//@points.8" unoccupiedTrack="//@tracks.51" occupiedTrack="//@tracks.3"/>
+  <subTrackPlans criticals="//@tracks.4 //@tracks.10 //@tracks.15" tracks="//@tracks.37 //@tracks.51 //@tracks.30 //@tracks.41 //@tracks.13 //@tracks.39 //@tracks.4 //@tracks.38 //@tracks.16 //@tracks.32 //@tracks.43 //@tracks.6 //@tracks.46 //@tracks.47 //@tracks.42 //@tracks.5 //@tracks.52 //@tracks.35 //@tracks.12 //@tracks.15 //@tracks.10 //@tracks.36 //@tracks.2 //@tracks.48 //@tracks.44 //@tracks.0 //@tracks.45 //@tracks.34 //@tracks.54 //@tracks.40 //@tracks.17" connectors="//@connectors.29 //@connectors.30 //@connectors.50 //@connectors.51 //@connectors.10 //@connectors.39 //@connectors.35 //@connectors.36 //@connectors.23 //@connectors.44 //@connectors.32 //@connectors.33 //@connectors.1 //@connectors.2 //@connectors.31 //@connectors.26 //@connectors.24 //@connectors.38 //@connectors.37 //@connectors.41 //@connectors.43 //@connectors.45 //@connectors.52 //@connectors.27 //@connectors.28 //@connectors.34 //@connectors.46 //@connectors.40 //@connectors.21 //@connectors.42 //@connectors.54 //@connectors.11" points="//@points.5 //@points.0 //@points.6 //@points.2 //@points.1 //@points.4 //@points.8 //@points.3" signals="//@signals.6 //@signals.4 //@signals.3 //@signals.1 //@signals.7">
+    <entrances connector="//@connectors.30"/>
+    <entrances connector="//@connectors.51"/>
+    <entrances connector="//@connectors.36"/>
+    <entrances connector="//@connectors.28"/>
+    <entrances connector="//@connectors.46"/>
+    <entrances connector="//@connectors.42"/>
+    <entrances connector="//@connectors.54"/>
+    <entrances connector="//@connectors.24"/>
+    <entrances connector="//@connectors.11"/>
+    <exits connector="//@connectors.30"/>
+    <exits connector="//@connectors.51"/>
+    <exits connector="//@connectors.36"/>
+    <exits connector="//@connectors.28"/>
+    <exits connector="//@connectors.46"/>
+    <exits connector="//@connectors.40"/>
+    <exits connector="//@connectors.42"/>
+    <exits connector="//@connectors.11"/>
+    <exits connector="//@connectors.24"/>
+    <controlTable signal="//@signals.6" route="R3917" normals="//@points.4" reverses="//@points.5 //@points.2 //@points.8 //@points.3" clears="//@tracks.52 //@tracks.30 //@tracks.34 //@tracks.43 //@tracks.10 //@tracks.6 //@tracks.40 //@tracks.46 //@tracks.42 //@tracks.2 //@tracks.5 //@tracks.17" directions="//@tracks.17/@directedTracks.1 //@tracks.46/@directedTracks.0 //@tracks.10/@directedTracks.1 //@tracks.42/@directedTracks.0 //@tracks.43/@directedTracks.1 //@tracks.5/@directedTracks.1 //@tracks.2/@directedTracks.1 //@tracks.34/@directedTracks.1 //@tracks.52/@directedTracks.0 //@tracks.40/@directedTracks.1 //@tracks.30/@directedTracks.0 //@tracks.6/@directedTracks.0"/>
+    <controlTable signal="//@signals.4" route="R3689" normals="//@points.0 //@points.6" reverses="//@points.1" clears="//@tracks.35 //@tracks.38 //@tracks.12 //@tracks.15 //@tracks.16 //@tracks.32 //@tracks.47 //@tracks.13" directions="//@tracks.12/@directedTracks.0 //@tracks.15/@directedTracks.0 //@tracks.38/@directedTracks.0 //@tracks.16/@directedTracks.0 //@tracks.13/@directedTracks.0 //@tracks.35/@directedTracks.0 //@tracks.32/@directedTracks.1 //@tracks.47/@directedTracks.0"/>
+    <controlTable signal="//@signals.4" route="R3696" clears="//@tracks.4" directions="//@tracks.4/@directedTracks.0"/>
+    <controlTable signal="//@signals.3" route="R3680" normals="//@points.4 //@points.8" reverses="//@points.5 //@points.2 //@points.3" clears="//@tracks.51 //@tracks.30 //@tracks.34 //@tracks.43 //@tracks.6 //@tracks.46 //@tracks.40 //@tracks.42 //@tracks.2 //@tracks.5" directions="//@tracks.34/@directedTracks.0 //@tracks.40/@directedTracks.0 //@tracks.30/@directedTracks.1 //@tracks.43/@directedTracks.0 //@tracks.46/@directedTracks.1 //@tracks.5/@directedTracks.0 //@tracks.6/@directedTracks.1 //@tracks.2/@directedTracks.0 //@tracks.42/@directedTracks.1"/>
+    <controlTable signal="//@signals.1" route="R3684" normals="//@points.6 //@points.1" clears="//@tracks.37 //@tracks.12 //@tracks.47 //@tracks.13" directions="//@tracks.12/@directedTracks.1 //@tracks.13/@directedTracks.1 //@tracks.47/@directedTracks.1"/>
+    <controlTable signal="//@signals.6" route="R3918" reverses="//@points.5 //@points.2 //@points.4 //@points.8 //@points.3" clears="//@tracks.52 //@tracks.10 //@tracks.2 //@tracks.44 //@tracks.34 //@tracks.6 //@tracks.40 //@tracks.46 //@tracks.42 //@tracks.5" directions="//@tracks.46/@directedTracks.0 //@tracks.10/@directedTracks.1 //@tracks.40/@directedTracks.1 //@tracks.42/@directedTracks.0 //@tracks.5/@directedTracks.1 //@tracks.2/@directedTracks.1 //@tracks.34/@directedTracks.1 //@tracks.52/@directedTracks.0 //@tracks.6/@directedTracks.0"/>
+    <controlTable signal="//@signals.6" route="R3697" clears="//@tracks.4" directions="//@tracks.4/@directedTracks.1"/>
+    <controlTable signal="//@signals.1" route="R3686" normals="//@points.6" reverses="//@points.0 //@points.1" clears="//@tracks.38 //@tracks.12 //@tracks.16 //@tracks.36 //@tracks.47 //@tracks.13" directions="//@tracks.38/@directedTracks.1 //@tracks.16/@directedTracks.1 //@tracks.12/@directedTracks.1 //@tracks.13/@directedTracks.1 //@tracks.47/@directedTracks.1"/>
+    <controlTable signal="//@signals.7" route="R3925" normals="//@points.2 //@points.3" clears="//@tracks.41 //@tracks.39 //@tracks.5 //@tracks.0" directions="//@tracks.39/@directedTracks.0 //@tracks.0/@directedTracks.1 //@tracks.5/@directedTracks.0"/>
+    <controlTable signal="//@signals.7" route="R3924" normals="//@points.2" reverses="//@points.8 //@points.3" clears="//@tracks.52 //@tracks.6 //@tracks.10 //@tracks.42 //@tracks.39 //@tracks.5 //@tracks.4 //@tracks.0" directions="//@tracks.39/@directedTracks.0 //@tracks.52/@directedTracks.1 //@tracks.4/@directedTracks.1 //@tracks.0/@directedTracks.1 //@tracks.5/@directedTracks.0 //@tracks.6/@directedTracks.1 //@tracks.42/@directedTracks.1 //@tracks.10/@directedTracks.0"/>
+    <controlTable signal="//@signals.7" route="R3919" normals="//@points.2 //@points.8" reverses="//@points.3" clears="//@tracks.51 //@tracks.6 //@tracks.42 //@tracks.39 //@tracks.5 //@tracks.0" directions="//@tracks.39/@directedTracks.0 //@tracks.0/@directedTracks.1 //@tracks.5/@directedTracks.0 //@tracks.6/@directedTracks.1 //@tracks.42/@directedTracks.1"/>
+    <controlTable signal="//@signals.1" route="R3685" normals="//@points.6 //@points.0" reverses="//@points.1" clears="//@tracks.35 //@tracks.38 //@tracks.12 //@tracks.16 //@tracks.15 //@tracks.47 //@tracks.13 //@tracks.4" directions="//@tracks.38/@directedTracks.1 //@tracks.15/@directedTracks.1 //@tracks.4/@directedTracks.0 //@tracks.16/@directedTracks.1 //@tracks.12/@directedTracks.1 //@tracks.35/@directedTracks.1 //@tracks.13/@directedTracks.1 //@tracks.47/@directedTracks.1"/>
+    <controlTable signal="//@signals.1" route="R3683" reverses="//@points.6" clears="//@tracks.48 //@tracks.13" directions="//@tracks.13/@directedTracks.1"/>
+    <releaseTable route="R3918" point="//@points.8" unoccupiedTrack="//@tracks.52" occupiedTrack="//@tracks.6"/>
+    <releaseTable route="R3918" point="//@points.3" unoccupiedTrack="//@tracks.42" occupiedTrack="//@tracks.5"/>
+    <releaseTable route="R3918" point="//@points.2" unoccupiedTrack="//@tracks.40" occupiedTrack="//@tracks.2"/>
+    <releaseTable route="R3918" point="//@points.5" unoccupiedTrack="//@tracks.46" occupiedTrack="//@tracks.34"/>
+    <releaseTable route="R3918" point="//@points.4" unoccupiedTrack="//@tracks.44"/>
+    <releaseTable route="R3917" point="//@points.8" unoccupiedTrack="//@tracks.52" occupiedTrack="//@tracks.6"/>
+    <releaseTable route="R3917" point="//@points.3" unoccupiedTrack="//@tracks.42" occupiedTrack="//@tracks.5"/>
+    <releaseTable route="R3917" point="//@points.2" unoccupiedTrack="//@tracks.40" occupiedTrack="//@tracks.2"/>
+    <releaseTable route="R3917" point="//@points.5" unoccupiedTrack="//@tracks.46" occupiedTrack="//@tracks.34"/>
+    <releaseTable route="R3917" point="//@points.4" unoccupiedTrack="//@tracks.43" occupiedTrack="//@tracks.30"/>
+    <releaseTable route="R3925" point="//@points.2" unoccupiedTrack="//@tracks.39" occupiedTrack="//@tracks.5"/>
+    <releaseTable route="R3925" point="//@points.3" unoccupiedTrack="//@tracks.41"/>
+    <releaseTable route="R3924" point="//@points.2" unoccupiedTrack="//@tracks.39" occupiedTrack="//@tracks.5"/>
+    <releaseTable route="R3924" point="//@points.3" unoccupiedTrack="//@tracks.42" occupiedTrack="//@tracks.6"/>
+    <releaseTable route="R3924" point="//@points.8" unoccupiedTrack="//@tracks.52" occupiedTrack="//@tracks.10"/>
+    <releaseTable route="R3686" point="//@points.6" unoccupiedTrack="//@tracks.47" occupiedTrack="//@tracks.12"/>
+    <releaseTable route="R3686" point="//@points.1" unoccupiedTrack="//@tracks.38" occupiedTrack="//@tracks.16"/>
+    <releaseTable route="R3686" point="//@points.0" unoccupiedTrack="//@tracks.36"/>
+    <releaseTable route="R3685" point="//@points.6" unoccupiedTrack="//@tracks.47" occupiedTrack="//@tracks.12"/>
+    <releaseTable route="R3685" point="//@points.1" unoccupiedTrack="//@tracks.38" occupiedTrack="//@tracks.16"/>
+    <releaseTable route="R3685" point="//@points.0" unoccupiedTrack="//@tracks.35" occupiedTrack="//@tracks.15"/>
+    <releaseTable route="R3684" point="//@points.6" unoccupiedTrack="//@tracks.47" occupiedTrack="//@tracks.12"/>
+    <releaseTable route="R3684" point="//@points.1" unoccupiedTrack="//@tracks.37"/>
+    <releaseTable route="R3683" point="//@points.6" unoccupiedTrack="//@tracks.48"/>
+    <releaseTable route="R3689" point="//@points.0" unoccupiedTrack="//@tracks.35" occupiedTrack="//@tracks.16"/>
+    <releaseTable route="R3689" point="//@points.1" unoccupiedTrack="//@tracks.38" occupiedTrack="//@tracks.12"/>
+    <releaseTable route="R3689" point="//@points.6" unoccupiedTrack="//@tracks.47" occupiedTrack="//@tracks.13"/>
+    <releaseTable route="R3680" point="//@points.4" unoccupiedTrack="//@tracks.43" occupiedTrack="//@tracks.34"/>
+    <releaseTable route="R3680" point="//@points.5" unoccupiedTrack="//@tracks.46" occupiedTrack="//@tracks.2"/>
+    <releaseTable route="R3680" point="//@points.2" unoccupiedTrack="//@tracks.40" occupiedTrack="//@tracks.5"/>
+    <releaseTable route="R3680" point="//@points.3" unoccupiedTrack="//@tracks.42" occupiedTrack="//@tracks.6"/>
+    <releaseTable route="R3680" point="//@points.8" unoccupiedTrack="//@tracks.51"/>
+    <releaseTable route="R3919" point="//@points.2" unoccupiedTrack="//@tracks.39" occupiedTrack="//@tracks.5"/>
+    <releaseTable route="R3919" point="//@points.3" unoccupiedTrack="//@tracks.42" occupiedTrack="//@tracks.6"/>
+    <releaseTable route="R3919" point="//@points.8" unoccupiedTrack="//@tracks.51"/>
+  </subTrackPlans>
+  <subTrackPlans criticals="//@tracks.18 //@tracks.7 //@tracks.20 //@tracks.21 //@tracks.23 //@tracks.29 //@tracks.33 //@tracks.49" tracks="//@tracks.51 //@tracks.41 //@tracks.29 //@tracks.19 //@tracks.8 //@tracks.39 //@tracks.4 //@tracks.49 //@tracks.50 //@tracks.43 //@tracks.6 //@tracks.46 //@tracks.42 //@tracks.7 //@tracks.5 //@tracks.52 //@tracks.10 //@tracks.24 //@tracks.20 //@tracks.2 //@tracks.44 //@tracks.21 //@tracks.27 //@tracks.18 //@tracks.23 //@tracks.3 //@tracks.45 //@tracks.34 //@tracks.9 //@tracks.40 //@tracks.28 //@tracks.33" connectors="//@connectors.50 //@connectors.51 //@connectors.35 //@connectors.36 //@connectors.47 //@connectors.13 //@connectors.42 //@connectors.16 //@connectors.3 //@connectors.4 //@connectors.32 //@connectors.33 //@connectors.1 //@connectors.2 //@connectors.48 //@connectors.49 //@connectors.38 //@connectors.39 //@connectors.37 //@connectors.41 //@connectors.43 //@connectors.7 //@connectors.52 //@connectors.15 //@connectors.14 //@connectors.34 //@connectors.40 //@connectors.6 //@connectors.20 //@connectors.8 //@connectors.12 //@connectors.5 //@connectors.25" points="//@points.7 //@points.5 //@points.2 //@points.4 //@points.8 //@points.3" signals="//@signals.12 //@signals.14 //@signals.6 //@signals.15 //@signals.11 //@signals.2 //@signals.4 //@signals.13 //@signals.8">
+    <entrances connector="//@connectors.33"/>
+    <entrances connector="//@connectors.2"/>
+    <entrances connector="//@connectors.39"/>
+    <entrances connector="//@connectors.15"/>
+    <entrances connector="//@connectors.8"/>
+    <entrances connector="//@connectors.25"/>
+    <entrances connector="//@connectors.3"/>
+    <exits connector="//@connectors.33"/>
+    <exits connector="//@connectors.2"/>
+    <exits connector="//@connectors.39"/>
+    <exits connector="//@connectors.15"/>
+    <exits connector="//@connectors.8"/>
+    <exits connector="//@connectors.12"/>
+    <exits connector="//@connectors.3"/>
+    <controlTable signal="//@signals.12" route="R3922" normals="//@points.5 //@points.4" clears="//@tracks.45 //@tracks.34 //@tracks.43 //@tracks.19" directions="//@tracks.34/@directedTracks.1 //@tracks.45/@directedTracks.0 //@tracks.19/@directedTracks.0"/>
+    <controlTable signal="//@signals.14" route="R3921" normals="//@points.8" reverses="//@points.7 //@points.5 //@points.2 //@points.4 //@points.3" clears="//@tracks.51 //@tracks.29 //@tracks.20 //@tracks.2 //@tracks.44 //@tracks.21 //@tracks.18 //@tracks.3 //@tracks.23 //@tracks.50 //@tracks.34 //@tracks.6 //@tracks.40 //@tracks.46 //@tracks.9 //@tracks.42 //@tracks.5" directions="//@tracks.21/@directedTracks.0 //@tracks.46/@directedTracks.0 //@tracks.18/@directedTracks.1 //@tracks.40/@directedTracks.1 //@tracks.29/@directedTracks.1 //@tracks.44/@directedTracks.1 //@tracks.23/@directedTracks.0 //@tracks.42/@directedTracks.0 //@tracks.3/@directedTracks.1 //@tracks.5/@directedTracks.1 //@tracks.20/@directedTracks.1 //@tracks.2/@directedTracks.1 //@tracks.34/@directedTracks.1 //@tracks.9/@directedTracks.0 //@tracks.50/@directedTracks.0 //@tracks.51/@directedTracks.0 //@tracks.6/@directedTracks.0"/>
+    <controlTable signal="//@signals.6" route="R3917" normals="//@points.4" reverses="//@points.5 //@points.2 //@points.8 //@points.3" clears="//@tracks.52 //@tracks.34 //@tracks.43 //@tracks.10 //@tracks.6 //@tracks.40 //@tracks.46 //@tracks.42 //@tracks.2 //@tracks.5" directions="//@tracks.46/@directedTracks.0 //@tracks.10/@directedTracks.1 //@tracks.42/@directedTracks.0 //@tracks.5/@directedTracks.1 //@tracks.2/@directedTracks.1 //@tracks.34/@directedTracks.1 //@tracks.52/@directedTracks.0 //@tracks.40/@directedTracks.1 //@tracks.6/@directedTracks.0"/>
+    <controlTable signal="//@signals.6" route="R3918" reverses="//@points.7 //@points.5 //@points.2 //@points.4 //@points.8 //@points.3" clears="//@tracks.52 //@tracks.29 //@tracks.10 //@tracks.20 //@tracks.2 //@tracks.44 //@tracks.18 //@tracks.23 //@tracks.50 //@tracks.34 //@tracks.6 //@tracks.40 //@tracks.46 //@tracks.42 //@tracks.5" directions="//@tracks.46/@directedTracks.0 //@tracks.10/@directedTracks.1 //@tracks.18/@directedTracks.1 //@tracks.40/@directedTracks.1 //@tracks.29/@directedTracks.1 //@tracks.44/@directedTracks.1 //@tracks.23/@directedTracks.0 //@tracks.42/@directedTracks.0 //@tracks.5/@directedTracks.1 //@tracks.20/@directedTracks.1 //@tracks.2/@directedTracks.1 //@tracks.34/@directedTracks.1 //@tracks.52/@directedTracks.0 //@tracks.50/@directedTracks.0 //@tracks.6/@directedTracks.0"/>
+    <controlTable signal="//@signals.14" route="R3698" clears="//@tracks.27" directions="//@tracks.27/@directedTracks.0"/>
+    <controlTable signal="//@signals.15" route="R3682" clears="//@tracks.21 //@tracks.27" directions="//@tracks.21/@directedTracks.1 //@tracks.27/@directedTracks.0"/>
+    <controlTable signal="//@signals.14" route="R3920" normals="//@points.4 //@points.8" reverses="//@points.5 //@points.2 //@points.3" clears="//@tracks.51 //@tracks.2 //@tracks.21 //@tracks.3 //@tracks.34 //@tracks.43 //@tracks.6 //@tracks.40 //@tracks.46 //@tracks.9 //@tracks.42 //@tracks.5" directions="//@tracks.21/@directedTracks.0 //@tracks.46/@directedTracks.0 //@tracks.40/@directedTracks.1 //@tracks.42/@directedTracks.0 //@tracks.3/@directedTracks.1 //@tracks.5/@directedTracks.1 //@tracks.2/@directedTracks.1 //@tracks.34/@directedTracks.1 //@tracks.9/@directedTracks.0 //@tracks.51/@directedTracks.0 //@tracks.6/@directedTracks.0"/>
+    <controlTable signal="//@signals.11" route="R3915" normals="//@points.4 //@points.3" reverses="//@points.5 //@points.2" clears="//@tracks.41 //@tracks.34 //@tracks.43 //@tracks.40 //@tracks.46 //@tracks.2 //@tracks.28 //@tracks.5" directions="//@tracks.41/@directedTracks.0 //@tracks.46/@directedTracks.0 //@tracks.28/@directedTracks.0 //@tracks.5/@directedTracks.1 //@tracks.2/@directedTracks.1 //@tracks.34/@directedTracks.1 //@tracks.40/@directedTracks.1"/>
+    <controlTable signal="//@signals.6" route="R3697" clears="//@tracks.4" directions="//@tracks.4/@directedTracks.1"/>
+    <controlTable signal="//@signals.2" route="R3681" normals="//@points.8" reverses="//@points.7 //@points.5 //@points.2 //@points.4 //@points.3" clears="//@tracks.51 //@tracks.29 //@tracks.2 //@tracks.44 //@tracks.23 //@tracks.3 //@tracks.50 //@tracks.34 //@tracks.6 //@tracks.46 //@tracks.40 //@tracks.9 //@tracks.42 //@tracks.5" directions="//@tracks.34/@directedTracks.0 //@tracks.29/@directedTracks.0 //@tracks.3/@directedTracks.0 //@tracks.9/@directedTracks.1 //@tracks.51/@directedTracks.1 //@tracks.5/@directedTracks.0 //@tracks.40/@directedTracks.0 //@tracks.44/@directedTracks.0 //@tracks.50/@directedTracks.1 //@tracks.23/@directedTracks.1 //@tracks.46/@directedTracks.1 //@tracks.6/@directedTracks.1 //@tracks.2/@directedTracks.0 //@tracks.42/@directedTracks.1"/>
+    <controlTable signal="//@signals.4" route="R3696" clears="//@tracks.4" directions="//@tracks.4/@directedTracks.0"/>
+    <controlTable signal="//@signals.13" route="R3699" clears="//@tracks.27" directions="//@tracks.27/@directedTracks.1"/>
+    <controlTable signal="//@signals.12" route="R3923" normals="//@points.5" reverses="//@points.7 //@points.4" clears="//@tracks.18 //@tracks.23 //@tracks.50 //@tracks.45 //@tracks.34 //@tracks.29 //@tracks.19 //@tracks.20 //@tracks.44" directions="//@tracks.20/@directedTracks.1 //@tracks.34/@directedTracks.1 //@tracks.45/@directedTracks.0 //@tracks.18/@directedTracks.1 //@tracks.19/@directedTracks.0 //@tracks.50/@directedTracks.0 //@tracks.29/@directedTracks.1 //@tracks.44/@directedTracks.1 //@tracks.23/@directedTracks.0"/>
+    <controlTable signal="//@signals.11" route="R3916" normals="//@points.3" reverses="//@points.7 //@points.5 //@points.2 //@points.4" clears="//@tracks.41 //@tracks.29 //@tracks.20 //@tracks.2 //@tracks.44 //@tracks.18 //@tracks.23 //@tracks.50 //@tracks.34 //@tracks.40 //@tracks.46 //@tracks.28 //@tracks.5" directions="//@tracks.41/@directedTracks.0 //@tracks.46/@directedTracks.0 //@tracks.28/@directedTracks.0 //@tracks.18/@directedTracks.1 //@tracks.40/@directedTracks.1 //@tracks.29/@directedTracks.1 //@tracks.44/@directedTracks.1 //@tracks.23/@directedTracks.0 //@tracks.5/@directedTracks.1 //@tracks.20/@directedTracks.1 //@tracks.2/@directedTracks.1 //@tracks.34/@directedTracks.1 //@tracks.50/@directedTracks.0"/>
+    <controlTable signal="//@signals.8" route="R3914" normals="//@points.7" clears="//@tracks.49 //@tracks.18 //@tracks.29 //@tracks.20 //@tracks.7" directions="//@tracks.49/@directedTracks.0 //@tracks.20/@directedTracks.1 //@tracks.7/@directedTracks.0 //@tracks.18/@directedTracks.1 //@tracks.29/@directedTracks.1"/>
+    <releaseTable route="R3914" point="//@points.7" unoccupiedTrack="//@tracks.49" occupiedTrack="//@tracks.29"/>
+    <releaseTable route="R3918" point="//@points.8" unoccupiedTrack="//@tracks.52" occupiedTrack="//@tracks.6"/>
+    <releaseTable route="R3918" point="//@points.3" unoccupiedTrack="//@tracks.42" occupiedTrack="//@tracks.5"/>
+    <releaseTable route="R3918" point="//@points.2" unoccupiedTrack="//@tracks.40" occupiedTrack="//@tracks.2"/>
+    <releaseTable route="R3918" point="//@points.5" unoccupiedTrack="//@tracks.46" occupiedTrack="//@tracks.34"/>
+    <releaseTable route="R3918" point="//@points.4" unoccupiedTrack="//@tracks.44" occupiedTrack="//@tracks.23"/>
+    <releaseTable route="R3918" point="//@points.7" unoccupiedTrack="//@tracks.50" occupiedTrack="//@tracks.29"/>
+    <releaseTable route="R3917" point="//@points.8" unoccupiedTrack="//@tracks.52" occupiedTrack="//@tracks.6"/>
+    <releaseTable route="R3917" point="//@points.3" unoccupiedTrack="//@tracks.42" occupiedTrack="//@tracks.5"/>
+    <releaseTable route="R3917" point="//@points.2" unoccupiedTrack="//@tracks.40" occupiedTrack="//@tracks.2"/>
+    <releaseTable route="R3917" point="//@points.5" unoccupiedTrack="//@tracks.46" occupiedTrack="//@tracks.34"/>
+    <releaseTable route="R3917" point="//@points.4" unoccupiedTrack="//@tracks.43"/>
+    <releaseTable route="R3916" point="//@points.3" unoccupiedTrack="//@tracks.41" occupiedTrack="//@tracks.5"/>
+    <releaseTable route="R3916" point="//@points.2" unoccupiedTrack="//@tracks.40" occupiedTrack="//@tracks.2"/>
+    <releaseTable route="R3916" point="//@points.5" unoccupiedTrack="//@tracks.46" occupiedTrack="//@tracks.34"/>
+    <releaseTable route="R3916" point="//@points.4" unoccupiedTrack="//@tracks.44" occupiedTrack="//@tracks.23"/>
+    <releaseTable route="R3916" point="//@points.7" unoccupiedTrack="//@tracks.50" occupiedTrack="//@tracks.29"/>
+    <releaseTable route="R3915" point="//@points.3" unoccupiedTrack="//@tracks.41" occupiedTrack="//@tracks.5"/>
+    <releaseTable route="R3915" point="//@points.2" unoccupiedTrack="//@tracks.40" occupiedTrack="//@tracks.2"/>
+    <releaseTable route="R3915" point="//@points.5" unoccupiedTrack="//@tracks.46" occupiedTrack="//@tracks.34"/>
+    <releaseTable route="R3915" point="//@points.4" unoccupiedTrack="//@tracks.43"/>
+    <releaseTable route="R3923" point="//@points.5" unoccupiedTrack="//@tracks.45" occupiedTrack="//@tracks.34"/>
+    <releaseTable route="R3923" point="//@points.4" unoccupiedTrack="//@tracks.44" occupiedTrack="//@tracks.23"/>
+    <releaseTable route="R3923" point="//@points.7" unoccupiedTrack="//@tracks.50" occupiedTrack="//@tracks.29"/>
+    <releaseTable route="R3922" point="//@points.5" unoccupiedTrack="//@tracks.45" occupiedTrack="//@tracks.34"/>
+    <releaseTable route="R3922" point="//@points.4" unoccupiedTrack="//@tracks.43"/>
+    <releaseTable route="R3921" point="//@points.8" unoccupiedTrack="//@tracks.51" occupiedTrack="//@tracks.6"/>
+    <releaseTable route="R3921" point="//@points.3" unoccupiedTrack="//@tracks.42" occupiedTrack="//@tracks.5"/>
+    <releaseTable route="R3921" point="//@points.2" unoccupiedTrack="//@tracks.40" occupiedTrack="//@tracks.2"/>
+    <releaseTable route="R3921" point="//@points.5" unoccupiedTrack="//@tracks.46" occupiedTrack="//@tracks.34"/>
+    <releaseTable route="R3921" point="//@points.4" unoccupiedTrack="//@tracks.44" occupiedTrack="//@tracks.23"/>
+    <releaseTable route="R3921" point="//@points.7" unoccupiedTrack="//@tracks.50" occupiedTrack="//@tracks.29"/>
+    <releaseTable route="R3920" point="//@points.8" unoccupiedTrack="//@tracks.51" occupiedTrack="//@tracks.6"/>
+    <releaseTable route="R3920" point="//@points.3" unoccupiedTrack="//@tracks.42" occupiedTrack="//@tracks.5"/>
+    <releaseTable route="R3920" point="//@points.2" unoccupiedTrack="//@tracks.40" occupiedTrack="//@tracks.2"/>
+    <releaseTable route="R3920" point="//@points.5" unoccupiedTrack="//@tracks.46" occupiedTrack="//@tracks.34"/>
+    <releaseTable route="R3920" point="//@points.4" unoccupiedTrack="//@tracks.43"/>
+    <releaseTable route="R3681" point="//@points.7" unoccupiedTrack="//@tracks.50" occupiedTrack="//@tracks.23"/>
+    <releaseTable route="R3681" point="//@points.4" unoccupiedTrack="//@tracks.44" occupiedTrack="//@tracks.34"/>
+    <releaseTable route="R3681" point="//@points.5" unoccupiedTrack="//@tracks.46" occupiedTrack="//@tracks.2"/>
+    <releaseTable route="R3681" point="//@points.2" unoccupiedTrack="//@tracks.40" occupiedTrack="//@tracks.5"/>
+    <releaseTable route="R3681" point="//@points.3" unoccupiedTrack="//@tracks.42" occupiedTrack="//@tracks.6"/>
+    <releaseTable route="R3681" point="//@points.8" unoccupiedTrack="//@tracks.51" occupiedTrack="//@tracks.3"/>
+  </subTrackPlans>
+  <subTrackPlans criticals="//@tracks.25 //@tracks.22 //@tracks.31" tracks="//@tracks.31 //@tracks.32 //@tracks.47 //@tracks.22 //@tracks.25 //@tracks.48 //@tracks.13" connectors="//@connectors.22 //@connectors.18 //@connectors.23 //@connectors.24 //@connectors.44 //@connectors.45 //@connectors.46 //@connectors.17" points="//@points.6" signals="//@signals.9 //@signals.1 //@signals.5" terminals="//@terminals.0">
+    <entrances connector="//@connectors.45"/>
+    <entrances connector="//@connectors.24"/>
+    <exits connector="//@connectors.45"/>
+    <exits connector="//@connectors.24"/>
+    <controlTable signal="//@signals.9" route="R3688" reverses="//@points.6" clears="//@tracks.32 //@tracks.22 //@tracks.48 //@tracks.13" directions="//@tracks.22/@directedTracks.0 //@tracks.13/@directedTracks.0 //@tracks.48/@directedTracks.0 //@tracks.32/@directedTracks.1"/>
+    <controlTable signal="//@signals.1" route="R3685" normals="//@points.6" clears="//@tracks.47 //@tracks.13" directions="//@tracks.13/@directedTracks.1"/>
+    <controlTable signal="//@signals.1" route="R3684" normals="//@points.6" clears="//@tracks.47 //@tracks.13" directions="//@tracks.13/@directedTracks.1"/>
+    <controlTable signal="//@signals.5" route="R3695" clears="//@tracks.25" directions="//@tracks.25/@directedTracks.0"/>
+    <controlTable signal="//@signals.1" route="R3686" normals="//@points.6" clears="//@tracks.47 //@tracks.13" directions="//@tracks.13/@directedTracks.1"/>
+    <controlTable signal="//@signals.1" route="R3683" reverses="//@points.6" clears="//@tracks.22 //@tracks.48 //@tracks.13 //@tracks.25" directions="//@tracks.48/@directedTracks.1 //@tracks.22/@directedTracks.1 //@tracks.25/@directedTracks.1 //@tracks.13/@directedTracks.1"/>
+    <releaseTable route="R3686" point="//@points.6" unoccupiedTrack="//@tracks.47"/>
+    <releaseTable route="R3685" point="//@points.6" unoccupiedTrack="//@tracks.47"/>
+    <releaseTable route="R3684" point="//@points.6" unoccupiedTrack="//@tracks.47"/>
+    <releaseTable route="R3683" point="//@points.6" unoccupiedTrack="//@tracks.48" occupiedTrack="//@tracks.22"/>
+    <releaseTable route="R3688" point="//@points.6" unoccupiedTrack="//@tracks.48" occupiedTrack="//@tracks.13"/>
+  </subTrackPlans>
+  <subTrackPlans criticals="//@tracks.27" tracks="//@tracks.21 //@tracks.27 //@tracks.11 //@tracks.37 //@tracks.38 //@tracks.12 //@tracks.32 //@tracks.9 //@tracks.47 //@tracks.13 //@tracks.48" connectors="//@connectors.6 //@connectors.20 //@connectors.8 //@connectors.30 //@connectors.29 //@connectors.31 //@connectors.45 //@connectors.23 //@connectors.24 //@connectors.5 //@connectors.44 //@connectors.46" points="//@points.6 //@points.1" signals="//@signals.14 //@signals.15 //@signals.1 //@signals.13">
+    <entrances connector="//@connectors.31"/>
+    <entrances connector="//@connectors.5"/>
+    <entrances connector="//@connectors.46"/>
+    <entrances connector="//@connectors.24"/>
+    <exits connector="//@connectors.31"/>
+    <exits connector="//@connectors.5"/>
+    <exits connector="//@connectors.46"/>
+    <exits connector="//@connectors.24"/>
+    <controlTable signal="//@signals.14" route="R3921" clears="//@tracks.21 //@tracks.9" directions="//@tracks.21/@directedTracks.0 //@tracks.9/@directedTracks.0"/>
+    <controlTable signal="//@signals.15" route="R3682" clears="//@tracks.21 //@tracks.27" directions="//@tracks.21/@directedTracks.1 //@tracks.27/@directedTracks.0"/>
+    <controlTable signal="//@signals.14" route="R3698" clears="//@tracks.27" directions="//@tracks.27/@directedTracks.0"/>
+    <controlTable signal="//@signals.1" route="R3684" normals="//@points.6 //@points.1" clears="//@tracks.11 //@tracks.27 //@tracks.37 //@tracks.12 //@tracks.47 //@tracks.13" directions="//@tracks.27/@directedTracks.1 //@tracks.11/@directedTracks.1 //@tracks.12/@directedTracks.1 //@tracks.37/@directedTracks.1 //@tracks.13/@directedTracks.1 //@tracks.47/@directedTracks.1"/>
+    <controlTable signal="//@signals.14" route="R3920" clears="//@tracks.21 //@tracks.9" directions="//@tracks.21/@directedTracks.0 //@tracks.9/@directedTracks.0"/>
+    <controlTable signal="//@signals.1" route="R3683" reverses="//@points.6" clears="//@tracks.48 //@tracks.13" directions="//@tracks.13/@directedTracks.1"/>
+    <controlTable signal="//@signals.13" route="R3687" normals="//@points.6 //@points.1" clears="//@tracks.11 //@tracks.37 //@tracks.12 //@tracks.32 //@tracks.47 //@tracks.13" directions="//@tracks.12/@directedTracks.0 //@tracks.13/@directedTracks.0 //@tracks.37/@directedTracks.0 //@tracks.32/@directedTracks.1 //@tracks.11/@directedTracks.0 //@tracks.47/@directedTracks.0"/>
+    <controlTable signal="//@signals.1" route="R3686" normals="//@points.6" reverses="//@points.1" clears="//@tracks.38 //@tracks.12 //@tracks.47 //@tracks.13" directions="//@tracks.12/@directedTracks.1 //@tracks.13/@directedTracks.1 //@tracks.47/@directedTracks.1"/>
+    <controlTable signal="//@signals.13" route="R3699" clears="//@tracks.27" directions="//@tracks.27/@directedTracks.1"/>
+    <controlTable signal="//@signals.1" route="R3685" normals="//@points.6" reverses="//@points.1" clears="//@tracks.38 //@tracks.12 //@tracks.47 //@tracks.13" directions="//@tracks.12/@directedTracks.1 //@tracks.13/@directedTracks.1 //@tracks.47/@directedTracks.1"/>
+    <releaseTable route="R3686" point="//@points.6" unoccupiedTrack="//@tracks.47" occupiedTrack="//@tracks.12"/>
+    <releaseTable route="R3686" point="//@points.1" unoccupiedTrack="//@tracks.38"/>
+    <releaseTable route="R3685" point="//@points.6" unoccupiedTrack="//@tracks.47" occupiedTrack="//@tracks.12"/>
+    <releaseTable route="R3685" point="//@points.1" unoccupiedTrack="//@tracks.38"/>
+    <releaseTable route="R3684" point="//@points.6" unoccupiedTrack="//@tracks.47" occupiedTrack="//@tracks.12"/>
+    <releaseTable route="R3684" point="//@points.1" unoccupiedTrack="//@tracks.37" occupiedTrack="//@tracks.11"/>
+    <releaseTable route="R3683" point="//@points.6" unoccupiedTrack="//@tracks.48"/>
+    <releaseTable route="R3687" point="//@points.1" unoccupiedTrack="//@tracks.37" occupiedTrack="//@tracks.12"/>
+    <releaseTable route="R3687" point="//@points.6" unoccupiedTrack="//@tracks.47" occupiedTrack="//@tracks.13"/>
+  </subTrackPlans>
+  <subTrackPlans criticals="//@tracks.41 //@tracks.39 //@tracks.5 //@tracks.0 //@tracks.2 //@tracks.3 //@tracks.6 //@tracks.9 //@tracks.28 //@tracks.8 //@tracks.51 //@tracks.54" tracks="//@tracks.51 //@tracks.30 //@tracks.41 //@tracks.8 //@tracks.39 //@tracks.4 //@tracks.43 //@tracks.6 //@tracks.46 //@tracks.42 //@tracks.5 //@tracks.52 //@tracks.10 //@tracks.2 //@tracks.44 //@tracks.0 //@tracks.21 //@tracks.27 //@tracks.3 //@tracks.45 //@tracks.34 //@tracks.54 //@tracks.40 //@tracks.9 //@tracks.28 //@tracks.17" connectors="//@connectors.50 //@connectors.51 //@connectors.10 //@connectors.39 //@connectors.35 //@connectors.36 //@connectors.3 //@connectors.4 //@connectors.32 //@connectors.33 //@connectors.1 //@connectors.2 //@connectors.38 //@connectors.37 //@connectors.41 //@connectors.43 //@connectors.52 //@connectors.34 //@connectors.40 //@connectors.21 //@connectors.6 //@connectors.20 //@connectors.8 //@connectors.5 //@connectors.42 //@connectors.54 //@connectors.11" points="//@points.5 //@points.2 //@points.4 //@points.8 //@points.3" signals="//@signals.15 //@signals.11 //@signals.3 //@signals.7 //@signals.6 //@signals.14 //@signals.13 //@signals.4">
+    <entrances connector="//@connectors.2"/>
+    <entrances connector="//@connectors.8"/>
+    <entrances connector="//@connectors.42"/>
+    <entrances connector="//@connectors.3"/>
+    <entrances connector="//@connectors.54"/>
+    <entrances connector="//@connectors.11"/>
+    <exits connector="//@connectors.2"/>
+    <exits connector="//@connectors.40"/>
+    <exits connector="//@connectors.8"/>
+    <exits connector="//@connectors.42"/>
+    <exits connector="//@connectors.11"/>
+    <exits connector="//@connectors.3"/>
+    <controlTable signal="//@signals.15" route="R3682" clears="//@tracks.21 //@tracks.27" directions="//@tracks.21/@directedTracks.1 //@tracks.27/@directedTracks.0"/>
+    <controlTable signal="//@signals.11" route="R3916" normals="//@points.3" reverses="//@points.5 //@points.2 //@points.4" clears="//@tracks.41 //@tracks.2 //@tracks.44 //@tracks.34 //@tracks.40 //@tracks.46 //@tracks.28 //@tracks.5" directions="//@tracks.41/@directedTracks.0 //@tracks.46/@directedTracks.0 //@tracks.28/@directedTracks.0 //@tracks.40/@directedTracks.1 //@tracks.5/@directedTracks.1 //@tracks.2/@directedTracks.1 //@tracks.34/@directedTracks.1"/>
+    <controlTable signal="//@signals.3" route="R3680" normals="//@points.4 //@points.8" reverses="//@points.5 //@points.2 //@points.3" clears="//@tracks.51 //@tracks.30 //@tracks.3 //@tracks.34 //@tracks.43 //@tracks.6 //@tracks.46 //@tracks.40 //@tracks.9 //@tracks.42 //@tracks.2 //@tracks.5" directions="//@tracks.34/@directedTracks.0 //@tracks.40/@directedTracks.0 //@tracks.30/@directedTracks.1 //@tracks.43/@directedTracks.0 //@tracks.3/@directedTracks.0 //@tracks.9/@directedTracks.1 //@tracks.46/@directedTracks.1 //@tracks.51/@directedTracks.1 //@tracks.5/@directedTracks.0 //@tracks.6/@directedTracks.1 //@tracks.2/@directedTracks.0 //@tracks.42/@directedTracks.1"/>
+    <controlTable signal="//@signals.7" route="R3919" normals="//@points.2 //@points.8" reverses="//@points.3" clears="//@tracks.51 //@tracks.3 //@tracks.6 //@tracks.9 //@tracks.42 //@tracks.39 //@tracks.5 //@tracks.0" directions="//@tracks.39/@directedTracks.0 //@tracks.0/@directedTracks.1 //@tracks.3/@directedTracks.0 //@tracks.9/@directedTracks.1 //@tracks.51/@directedTracks.1 //@tracks.5/@directedTracks.0 //@tracks.6/@directedTracks.1 //@tracks.42/@directedTracks.1"/>
+    <controlTable signal="//@signals.6" route="R3697" clears="//@tracks.4" directions="//@tracks.4/@directedTracks.1"/>
+    <controlTable signal="//@signals.14" route="R3921" normals="//@points.8" reverses="//@points.5 //@points.2 //@points.4 //@points.3" clears="//@tracks.51 //@tracks.2 //@tracks.44 //@tracks.21 //@tracks.3 //@tracks.34 //@tracks.6 //@tracks.40 //@tracks.46 //@tracks.9 //@tracks.42 //@tracks.5" directions="//@tracks.21/@directedTracks.0 //@tracks.46/@directedTracks.0 //@tracks.40/@directedTracks.1 //@tracks.42/@directedTracks.0 //@tracks.3/@directedTracks.1 //@tracks.5/@directedTracks.1 //@tracks.2/@directedTracks.1 //@tracks.34/@directedTracks.1 //@tracks.9/@directedTracks.0 //@tracks.51/@directedTracks.0 //@tracks.6/@directedTracks.0"/>
+    <controlTable signal="//@signals.7" route="R3924" normals="//@points.2" reverses="//@points.8 //@points.3" clears="//@tracks.52 //@tracks.6 //@tracks.10 //@tracks.42 //@tracks.39 //@tracks.5 //@tracks.4 //@tracks.0" directions="//@tracks.39/@directedTracks.0 //@tracks.52/@directedTracks.1 //@tracks.4/@directedTracks.1 //@tracks.0/@directedTracks.1 //@tracks.5/@directedTracks.0 //@tracks.6/@directedTracks.1 //@tracks.42/@directedTracks.1 //@tracks.10/@directedTracks.0"/>
+    <controlTable signal="//@signals.6" route="R3918" reverses="//@points.5 //@points.2 //@points.4 //@points.8 //@points.3" clears="//@tracks.52 //@tracks.10 //@tracks.2 //@tracks.44 //@tracks.34 //@tracks.6 //@tracks.40 //@tracks.46 //@tracks.42 //@tracks.5" directions="//@tracks.46/@directedTracks.0 //@tracks.10/@directedTracks.1 //@tracks.40/@directedTracks.1 //@tracks.42/@directedTracks.0 //@tracks.5/@directedTracks.1 //@tracks.2/@directedTracks.1 //@tracks.34/@directedTracks.1 //@tracks.52/@directedTracks.0 //@tracks.6/@directedTracks.0"/>
+    <controlTable signal="//@signals.14" route="R3920" normals="//@points.4 //@points.8" reverses="//@points.5 //@points.2 //@points.3" clears="//@tracks.51 //@tracks.30 //@tracks.2 //@tracks.21 //@tracks.3 //@tracks.34 //@tracks.43 //@tracks.6 //@tracks.40 //@tracks.46 //@tracks.9 //@tracks.42 //@tracks.5 //@tracks.17" directions="//@tracks.17/@directedTracks.1 //@tracks.21/@directedTracks.0 //@tracks.46/@directedTracks.0 //@tracks.43/@directedTracks.1 //@tracks.40/@directedTracks.1 //@tracks.42/@directedTracks.0 //@tracks.3/@directedTracks.1 //@tracks.5/@directedTracks.1 //@tracks.2/@directedTracks.1 //@tracks.34/@directedTracks.1 //@tracks.9/@directedTracks.0 //@tracks.51/@directedTracks.0 //@tracks.30/@directedTracks.0 //@tracks.6/@directedTracks.0"/>
+    <controlTable signal="//@signals.7" route="R3925" normals="//@points.2 //@points.3" clears="//@tracks.41 //@tracks.8 //@tracks.39 //@tracks.28 //@tracks.5 //@tracks.0" directions="//@tracks.39/@directedTracks.0 //@tracks.41/@directedTracks.1 //@tracks.0/@directedTracks.1 //@tracks.28/@directedTracks.1 //@tracks.5/@directedTracks.0 //@tracks.8/@directedTracks.0"/>
+    <controlTable signal="//@signals.6" route="R3917" normals="//@points.4" reverses="//@points.5 //@points.2 //@points.8 //@points.3" clears="//@tracks.52 //@tracks.30 //@tracks.34 //@tracks.43 //@tracks.10 //@tracks.6 //@tracks.40 //@tracks.46 //@tracks.42 //@tracks.2 //@tracks.5 //@tracks.17" directions="//@tracks.17/@directedTracks.1 //@tracks.46/@directedTracks.0 //@tracks.10/@directedTracks.1 //@tracks.42/@directedTracks.0 //@tracks.43/@directedTracks.1 //@tracks.5/@directedTracks.1 //@tracks.2/@directedTracks.1 //@tracks.34/@directedTracks.1 //@tracks.52/@directedTracks.0 //@tracks.40/@directedTracks.1 //@tracks.30/@directedTracks.0 //@tracks.6/@directedTracks.0"/>
+    <controlTable signal="//@signals.11" route="R3915" normals="//@points.4 //@points.3" reverses="//@points.5 //@points.2" clears="//@tracks.30 //@tracks.41 //@tracks.34 //@tracks.43 //@tracks.40 //@tracks.46 //@tracks.2 //@tracks.28 //@tracks.5 //@tracks.17" directions="//@tracks.17/@directedTracks.1 //@tracks.41/@directedTracks.0 //@tracks.46/@directedTracks.0 //@tracks.28/@directedTracks.0 //@tracks.43/@directedTracks.1 //@tracks.5/@directedTracks.1 //@tracks.2/@directedTracks.1 //@tracks.34/@directedTracks.1 //@tracks.40/@directedTracks.1 //@tracks.30/@directedTracks.0"/>
+    <controlTable signal="//@signals.13" route="R3699" clears="//@tracks.27" directions="//@tracks.27/@directedTracks.1"/>
+    <controlTable signal="//@signals.4" route="R3696" clears="//@tracks.4" directions="//@tracks.4/@directedTracks.0"/>
+    <controlTable signal="//@signals.14" route="R3698" clears="//@tracks.27" directions="//@tracks.27/@directedTracks.0"/>
+    <releaseTable route="R3918" point="//@points.8" unoccupiedTrack="//@tracks.52" occupiedTrack="//@tracks.6"/>
+    <releaseTable route="R3918" point="//@points.3" unoccupiedTrack="//@tracks.42" occupiedTrack="//@tracks.5"/>
+    <releaseTable route="R3918" point="//@points.2" unoccupiedTrack="//@tracks.40" occupiedTrack="//@tracks.2"/>
+    <releaseTable route="R3918" point="//@points.5" unoccupiedTrack="//@tracks.46" occupiedTrack="//@tracks.34"/>
+    <releaseTable route="R3918" point="//@points.4" unoccupiedTrack="//@tracks.44"/>
+    <releaseTable route="R3917" point="//@points.8" unoccupiedTrack="//@tracks.52" occupiedTrack="//@tracks.6"/>
+    <releaseTable route="R3917" point="//@points.3" unoccupiedTrack="//@tracks.42" occupiedTrack="//@tracks.5"/>
+    <releaseTable route="R3917" point="//@points.2" unoccupiedTrack="//@tracks.40" occupiedTrack="//@tracks.2"/>
+    <releaseTable route="R3917" point="//@points.5" unoccupiedTrack="//@tracks.46" occupiedTrack="//@tracks.34"/>
+    <releaseTable route="R3917" point="//@points.4" unoccupiedTrack="//@tracks.43" occupiedTrack="//@tracks.30"/>
+    <releaseTable route="R3916" point="//@points.3" unoccupiedTrack="//@tracks.41" occupiedTrack="//@tracks.5"/>
+    <releaseTable route="R3916" point="//@points.2" unoccupiedTrack="//@tracks.40" occupiedTrack="//@tracks.2"/>
+    <releaseTable route="R3916" point="//@points.5" unoccupiedTrack="//@tracks.46" occupiedTrack="//@tracks.34"/>
+    <releaseTable route="R3916" point="//@points.4" unoccupiedTrack="//@tracks.44"/>
+    <releaseTable route="R3915" point="//@points.3" unoccupiedTrack="//@tracks.41" occupiedTrack="//@tracks.5"/>
+    <releaseTable route="R3915" point="//@points.2" unoccupiedTrack="//@tracks.40" occupiedTrack="//@tracks.2"/>
+    <releaseTable route="R3915" point="//@points.5" unoccupiedTrack="//@tracks.46" occupiedTrack="//@tracks.34"/>
+    <releaseTable route="R3915" point="//@points.4" unoccupiedTrack="//@tracks.43" occupiedTrack="//@tracks.30"/>
+    <releaseTable route="R3925" point="//@points.2" unoccupiedTrack="//@tracks.39" occupiedTrack="//@tracks.5"/>
+    <releaseTable route="R3925" point="//@points.3" unoccupiedTrack="//@tracks.41" occupiedTrack="//@tracks.28"/>
+    <releaseTable route="R3924" point="//@points.2" unoccupiedTrack="//@tracks.39" occupiedTrack="//@tracks.5"/>
+    <releaseTable route="R3924" point="//@points.3" unoccupiedTrack="//@tracks.42" occupiedTrack="//@tracks.6"/>
+    <releaseTable route="R3924" point="//@points.8" unoccupiedTrack="//@tracks.52" occupiedTrack="//@tracks.10"/>
+    <releaseTable route="R3921" point="//@points.8" unoccupiedTrack="//@tracks.51" occupiedTrack="//@tracks.6"/>
+    <releaseTable route="R3921" point="//@points.3" unoccupiedTrack="//@tracks.42" occupiedTrack="//@tracks.5"/>
+    <releaseTable route="R3921" point="//@points.2" unoccupiedTrack="//@tracks.40" occupiedTrack="//@tracks.2"/>
+    <releaseTable route="R3921" point="//@points.5" unoccupiedTrack="//@tracks.46" occupiedTrack="//@tracks.34"/>
+    <releaseTable route="R3921" point="//@points.4" unoccupiedTrack="//@tracks.44"/>
+    <releaseTable route="R3920" point="//@points.8" unoccupiedTrack="//@tracks.51" occupiedTrack="//@tracks.6"/>
+    <releaseTable route="R3920" point="//@points.3" unoccupiedTrack="//@tracks.42" occupiedTrack="//@tracks.5"/>
+    <releaseTable route="R3920" point="//@points.2" unoccupiedTrack="//@tracks.40" occupiedTrack="//@tracks.2"/>
+    <releaseTable route="R3920" point="//@points.5" unoccupiedTrack="//@tracks.46" occupiedTrack="//@tracks.34"/>
+    <releaseTable route="R3920" point="//@points.4" unoccupiedTrack="//@tracks.43" occupiedTrack="//@tracks.30"/>
+    <releaseTable route="R3680" point="//@points.4" unoccupiedTrack="//@tracks.43" occupiedTrack="//@tracks.34"/>
+    <releaseTable route="R3680" point="//@points.5" unoccupiedTrack="//@tracks.46" occupiedTrack="//@tracks.2"/>
+    <releaseTable route="R3680" point="//@points.2" unoccupiedTrack="//@tracks.40" occupiedTrack="//@tracks.5"/>
+    <releaseTable route="R3680" point="//@points.3" unoccupiedTrack="//@tracks.42" occupiedTrack="//@tracks.6"/>
+    <releaseTable route="R3680" point="//@points.8" unoccupiedTrack="//@tracks.51" occupiedTrack="//@tracks.3"/>
+    <releaseTable route="R3919" point="//@points.2" unoccupiedTrack="//@tracks.39" occupiedTrack="//@tracks.5"/>
+    <releaseTable route="R3919" point="//@points.3" unoccupiedTrack="//@tracks.42" occupiedTrack="//@tracks.6"/>
+    <releaseTable route="R3919" point="//@points.8" unoccupiedTrack="//@tracks.51" occupiedTrack="//@tracks.3"/>
+  </subTrackPlans>
+  <subTrackPlans criticals="//@tracks.45 //@tracks.43 //@tracks.34 //@tracks.30 //@tracks.17" tracks="//@tracks.51 //@tracks.30 //@tracks.41 //@tracks.19 //@tracks.8 //@tracks.39 //@tracks.4 //@tracks.43 //@tracks.6 //@tracks.46 //@tracks.42 //@tracks.5 //@tracks.52 //@tracks.10 //@tracks.24 //@tracks.2 //@tracks.44 //@tracks.21 //@tracks.27 //@tracks.3 //@tracks.45 //@tracks.34 //@tracks.9 //@tracks.40 //@tracks.28 //@tracks.17" connectors="//@connectors.50 //@connectors.51 //@connectors.10 //@connectors.39 //@connectors.35 //@connectors.36 //@connectors.42 //@connectors.16 //@connectors.3 //@connectors.4 //@connectors.32 //@connectors.33 //@connectors.1 //@connectors.2 //@connectors.38 //@connectors.37 //@connectors.41 //@connectors.43 //@connectors.52 //@connectors.15 //@connectors.34 //@connectors.40 //@connectors.6 //@connectors.20 //@connectors.8 //@connectors.5 //@connectors.11" points="//@points.5 //@points.2 //@points.4 //@points.8 //@points.3" signals="//@signals.12 //@signals.4 //@signals.14 //@signals.11 //@signals.13 //@signals.15 //@signals.3 //@signals.6">
+    <entrances connector="//@connectors.33"/>
+    <entrances connector="//@connectors.2"/>
+    <entrances connector="//@connectors.15"/>
+    <entrances connector="//@connectors.8"/>
+    <entrances connector="//@connectors.3"/>
+    <entrances connector="//@connectors.11"/>
+    <exits connector="//@connectors.33"/>
+    <exits connector="//@connectors.2"/>
+    <exits connector="//@connectors.15"/>
+    <exits connector="//@connectors.40"/>
+    <exits connector="//@connectors.8"/>
+    <exits connector="//@connectors.11"/>
+    <exits connector="//@connectors.3"/>
+    <controlTable signal="//@signals.12" route="R3922" normals="//@points.5 //@points.4" clears="//@tracks.30 //@tracks.45 //@tracks.34 //@tracks.43 //@tracks.19 //@tracks.17" directions="//@tracks.17/@directedTracks.1 //@tracks.43/@directedTracks.1 //@tracks.34/@directedTracks.1 //@tracks.45/@directedTracks.0 //@tracks.19/@directedTracks.0 //@tracks.30/@directedTracks.0"/>
+    <controlTable signal="//@signals.4" route="R3696" clears="//@tracks.4" directions="//@tracks.4/@directedTracks.0"/>
+    <controlTable signal="//@signals.14" route="R3698" clears="//@tracks.27" directions="//@tracks.27/@directedTracks.0"/>
+    <controlTable signal="//@signals.14" route="R3920" normals="//@points.4 //@points.8" reverses="//@points.5 //@points.2 //@points.3" clears="//@tracks.51 //@tracks.30 //@tracks.2 //@tracks.21 //@tracks.3 //@tracks.34 //@tracks.43 //@tracks.6 //@tracks.40 //@tracks.46 //@tracks.9 //@tracks.42 //@tracks.5 //@tracks.17" directions="//@tracks.17/@directedTracks.1 //@tracks.21/@directedTracks.0 //@tracks.46/@directedTracks.0 //@tracks.43/@directedTracks.1 //@tracks.40/@directedTracks.1 //@tracks.42/@directedTracks.0 //@tracks.3/@directedTracks.1 //@tracks.5/@directedTracks.1 //@tracks.2/@directedTracks.1 //@tracks.34/@directedTracks.1 //@tracks.9/@directedTracks.0 //@tracks.51/@directedTracks.0 //@tracks.30/@directedTracks.0 //@tracks.6/@directedTracks.0"/>
+    <controlTable signal="//@signals.11" route="R3916" normals="//@points.3" reverses="//@points.5 //@points.2 //@points.4" clears="//@tracks.41 //@tracks.2 //@tracks.44 //@tracks.34 //@tracks.40 //@tracks.46 //@tracks.28 //@tracks.5" directions="//@tracks.41/@directedTracks.0 //@tracks.46/@directedTracks.0 //@tracks.28/@directedTracks.0 //@tracks.40/@directedTracks.1 //@tracks.5/@directedTracks.1 //@tracks.2/@directedTracks.1 //@tracks.34/@directedTracks.1"/>
+    <controlTable signal="//@signals.13" route="R3699" clears="//@tracks.27" directions="//@tracks.27/@directedTracks.1"/>
+    <controlTable signal="//@signals.15" route="R3682" clears="//@tracks.21 //@tracks.27" directions="//@tracks.21/@directedTracks.1 //@tracks.27/@directedTracks.0"/>
+    <controlTable signal="//@signals.3" route="R3680" normals="//@points.4 //@points.8" reverses="//@points.5 //@points.2 //@points.3" clears="//@tracks.51 //@tracks.30 //@tracks.3 //@tracks.34 //@tracks.43 //@tracks.6 //@tracks.46 //@tracks.40 //@tracks.9 //@tracks.42 //@tracks.2 //@tracks.5" directions="//@tracks.34/@directedTracks.0 //@tracks.40/@directedTracks.0 //@tracks.30/@directedTracks.1 //@tracks.43/@directedTracks.0 //@tracks.3/@directedTracks.0 //@tracks.9/@directedTracks.1 //@tracks.46/@directedTracks.1 //@tracks.51/@directedTracks.1 //@tracks.5/@directedTracks.0 //@tracks.6/@directedTracks.1 //@tracks.2/@directedTracks.0 //@tracks.42/@directedTracks.1"/>
+    <controlTable signal="//@signals.12" route="R3923" normals="//@points.5" reverses="//@points.4" clears="//@tracks.45 //@tracks.34 //@tracks.19 //@tracks.44" directions="//@tracks.34/@directedTracks.1 //@tracks.45/@directedTracks.0 //@tracks.19/@directedTracks.0"/>
+    <controlTable signal="//@signals.11" route="R3915" normals="//@points.4 //@points.3" reverses="//@points.5 //@points.2" clears="//@tracks.30 //@tracks.41 //@tracks.34 //@tracks.43 //@tracks.40 //@tracks.46 //@tracks.2 //@tracks.28 //@tracks.5 //@tracks.17" directions="//@tracks.17/@directedTracks.1 //@tracks.41/@directedTracks.0 //@tracks.46/@directedTracks.0 //@tracks.28/@directedTracks.0 //@tracks.43/@directedTracks.1 //@tracks.5/@directedTracks.1 //@tracks.2/@directedTracks.1 //@tracks.34/@directedTracks.1 //@tracks.40/@directedTracks.1 //@tracks.30/@directedTracks.0"/>
+    <controlTable signal="//@signals.14" route="R3921" normals="//@points.8" reverses="//@points.5 //@points.2 //@points.4 //@points.3" clears="//@tracks.51 //@tracks.2 //@tracks.44 //@tracks.21 //@tracks.3 //@tracks.34 //@tracks.6 //@tracks.40 //@tracks.46 //@tracks.9 //@tracks.42 //@tracks.5" directions="//@tracks.21/@directedTracks.0 //@tracks.46/@directedTracks.0 //@tracks.40/@directedTracks.1 //@tracks.42/@directedTracks.0 //@tracks.3/@directedTracks.1 //@tracks.5/@directedTracks.1 //@tracks.2/@directedTracks.1 //@tracks.34/@directedTracks.1 //@tracks.9/@directedTracks.0 //@tracks.51/@directedTracks.0 //@tracks.6/@directedTracks.0"/>
+    <controlTable signal="//@signals.6" route="R3917" normals="//@points.4" reverses="//@points.5 //@points.2 //@points.8 //@points.3" clears="//@tracks.52 //@tracks.30 //@tracks.34 //@tracks.43 //@tracks.10 //@tracks.6 //@tracks.40 //@tracks.46 //@tracks.42 //@tracks.2 //@tracks.5 //@tracks.17" directions="//@tracks.17/@directedTracks.1 //@tracks.46/@directedTracks.0 //@tracks.10/@directedTracks.1 //@tracks.42/@directedTracks.0 //@tracks.43/@directedTracks.1 //@tracks.5/@directedTracks.1 //@tracks.2/@directedTracks.1 //@tracks.34/@directedTracks.1 //@tracks.52/@directedTracks.0 //@tracks.40/@directedTracks.1 //@tracks.30/@directedTracks.0 //@tracks.6/@directedTracks.0"/>
+    <controlTable signal="//@signals.6" route="R3697" clears="//@tracks.4" directions="//@tracks.4/@directedTracks.1"/>
+    <controlTable signal="//@signals.6" route="R3918" reverses="//@points.5 //@points.2 //@points.4 //@points.8 //@points.3" clears="//@tracks.52 //@tracks.10 //@tracks.2 //@tracks.44 //@tracks.34 //@tracks.6 //@tracks.40 //@tracks.46 //@tracks.42 //@tracks.5" directions="//@tracks.46/@directedTracks.0 //@tracks.10/@directedTracks.1 //@tracks.40/@directedTracks.1 //@tracks.42/@directedTracks.0 //@tracks.5/@directedTracks.1 //@tracks.2/@directedTracks.1 //@tracks.34/@directedTracks.1 //@tracks.52/@directedTracks.0 //@tracks.6/@directedTracks.0"/>
+    <releaseTable route="R3918" point="//@points.8" unoccupiedTrack="//@tracks.52" occupiedTrack="//@tracks.6"/>
+    <releaseTable route="R3918" point="//@points.3" unoccupiedTrack="//@tracks.42" occupiedTrack="//@tracks.5"/>
+    <releaseTable route="R3918" point="//@points.2" unoccupiedTrack="//@tracks.40" occupiedTrack="//@tracks.2"/>
+    <releaseTable route="R3918" point="//@points.5" unoccupiedTrack="//@tracks.46" occupiedTrack="//@tracks.34"/>
+    <releaseTable route="R3918" point="//@points.4" unoccupiedTrack="//@tracks.44"/>
+    <releaseTable route="R3917" point="//@points.8" unoccupiedTrack="//@tracks.52" occupiedTrack="//@tracks.6"/>
+    <releaseTable route="R3917" point="//@points.3" unoccupiedTrack="//@tracks.42" occupiedTrack="//@tracks.5"/>
+    <releaseTable route="R3917" point="//@points.2" unoccupiedTrack="//@tracks.40" occupiedTrack="//@tracks.2"/>
+    <releaseTable route="R3917" point="//@points.5" unoccupiedTrack="//@tracks.46" occupiedTrack="//@tracks.34"/>
+    <releaseTable route="R3917" point="//@points.4" unoccupiedTrack="//@tracks.43" occupiedTrack="//@tracks.30"/>
+    <releaseTable route="R3916" point="//@points.3" unoccupiedTrack="//@tracks.41" occupiedTrack="//@tracks.5"/>
+    <releaseTable route="R3916" point="//@points.2" unoccupiedTrack="//@tracks.40" occupiedTrack="//@tracks.2"/>
+    <releaseTable route="R3916" point="//@points.5" unoccupiedTrack="//@tracks.46" occupiedTrack="//@tracks.34"/>
+    <releaseTable route="R3916" point="//@points.4" unoccupiedTrack="//@tracks.44"/>
+    <releaseTable route="R3915" point="//@points.3" unoccupiedTrack="//@tracks.41" occupiedTrack="//@tracks.5"/>
+    <releaseTable route="R3915" point="//@points.2" unoccupiedTrack="//@tracks.40" occupiedTrack="//@tracks.2"/>
+    <releaseTable route="R3915" point="//@points.5" unoccupiedTrack="//@tracks.46" occupiedTrack="//@tracks.34"/>
+    <releaseTable route="R3915" point="//@points.4" unoccupiedTrack="//@tracks.43" occupiedTrack="//@tracks.30"/>
+    <releaseTable route="R3923" point="//@points.5" unoccupiedTrack="//@tracks.45" occupiedTrack="//@tracks.34"/>
+    <releaseTable route="R3923" point="//@points.4" unoccupiedTrack="//@tracks.44"/>
+    <releaseTable route="R3922" point="//@points.5" unoccupiedTrack="//@tracks.45" occupiedTrack="//@tracks.34"/>
+    <releaseTable route="R3922" point="//@points.4" unoccupiedTrack="//@tracks.43" occupiedTrack="//@tracks.30"/>
+    <releaseTable route="R3921" point="//@points.8" unoccupiedTrack="//@tracks.51" occupiedTrack="//@tracks.6"/>
+    <releaseTable route="R3921" point="//@points.3" unoccupiedTrack="//@tracks.42" occupiedTrack="//@tracks.5"/>
+    <releaseTable route="R3921" point="//@points.2" unoccupiedTrack="//@tracks.40" occupiedTrack="//@tracks.2"/>
+    <releaseTable route="R3921" point="//@points.5" unoccupiedTrack="//@tracks.46" occupiedTrack="//@tracks.34"/>
+    <releaseTable route="R3921" point="//@points.4" unoccupiedTrack="//@tracks.44"/>
+    <releaseTable route="R3920" point="//@points.8" unoccupiedTrack="//@tracks.51" occupiedTrack="//@tracks.6"/>
+    <releaseTable route="R3920" point="//@points.3" unoccupiedTrack="//@tracks.42" occupiedTrack="//@tracks.5"/>
+    <releaseTable route="R3920" point="//@points.2" unoccupiedTrack="//@tracks.40" occupiedTrack="//@tracks.2"/>
+    <releaseTable route="R3920" point="//@points.5" unoccupiedTrack="//@tracks.46" occupiedTrack="//@tracks.34"/>
+    <releaseTable route="R3920" point="//@points.4" unoccupiedTrack="//@tracks.43" occupiedTrack="//@tracks.30"/>
+    <releaseTable route="R3680" point="//@points.4" unoccupiedTrack="//@tracks.43" occupiedTrack="//@tracks.34"/>
+    <releaseTable route="R3680" point="//@points.5" unoccupiedTrack="//@tracks.46" occupiedTrack="//@tracks.2"/>
+    <releaseTable route="R3680" point="//@points.2" unoccupiedTrack="//@tracks.40" occupiedTrack="//@tracks.5"/>
+    <releaseTable route="R3680" point="//@points.3" unoccupiedTrack="//@tracks.42" occupiedTrack="//@tracks.6"/>
+    <releaseTable route="R3680" point="//@points.8" unoccupiedTrack="//@tracks.51" occupiedTrack="//@tracks.3"/>
+  </subTrackPlans>
+  <subTrackPlans criticals="//@tracks.47 //@tracks.32 //@tracks.13 //@tracks.12 //@tracks.11 //@tracks.16 //@tracks.14 //@tracks.26 //@tracks.37 //@tracks.35" tracks="//@tracks.11 //@tracks.35 //@tracks.37 //@tracks.12 //@tracks.14 //@tracks.15 //@tracks.36 //@tracks.48 //@tracks.13 //@tracks.4 //@tracks.27 //@tracks.38 //@tracks.16 //@tracks.26 //@tracks.32 //@tracks.47 //@tracks.22 //@tracks.25" connectors="//@connectors.30 //@connectors.8 //@connectors.26 //@connectors.27 //@connectors.29 //@connectors.45 //@connectors.9 //@connectors.28 //@connectors.2 //@connectors.44 //@connectors.46 //@connectors.23 //@connectors.1 //@connectors.20 //@connectors.31 //@connectors.19 //@connectors.24 //@connectors.17 //@connectors.18" points="//@points.6 //@points.0 //@points.1" signals="//@signals.14 //@signals.4 //@signals.1 //@signals.5 //@signals.6 //@signals.9 //@signals.13 //@signals.0">
+    <entrances connector="//@connectors.1"/>
+    <entrances connector="//@connectors.20"/>
+    <entrances connector="//@connectors.18"/>
+    <entrances connector="//@connectors.19"/>
+    <entrances connector="//@connectors.24"/>
+    <exits connector="//@connectors.1"/>
+    <exits connector="//@connectors.20"/>
+    <exits connector="//@connectors.18"/>
+    <exits connector="//@connectors.24"/>
+    <exits connector="//@connectors.19"/>
+    <controlTable signal="//@signals.14" route="R3698" clears="//@tracks.27" directions="//@tracks.27/@directedTracks.0"/>
+    <controlTable signal="//@signals.4" route="R3696" clears="//@tracks.4" directions="//@tracks.4/@directedTracks.0"/>
+    <controlTable signal="//@signals.1" route="R3684" normals="//@points.6 //@points.1" clears="//@tracks.11 //@tracks.27 //@tracks.37 //@tracks.12 //@tracks.47 //@tracks.13" directions="//@tracks.27/@directedTracks.1 //@tracks.11/@directedTracks.1 //@tracks.12/@directedTracks.1 //@tracks.37/@directedTracks.1 //@tracks.13/@directedTracks.1 //@tracks.47/@directedTracks.1"/>
+    <controlTable signal="//@signals.1" route="R3686" normals="//@points.6" reverses="//@points.0 //@points.1" clears="//@tracks.38 //@tracks.12 //@tracks.14 //@tracks.16 //@tracks.26 //@tracks.36 //@tracks.47 //@tracks.13" directions="//@tracks.38/@directedTracks.1 //@tracks.36/@directedTracks.1 //@tracks.16/@directedTracks.1 //@tracks.12/@directedTracks.1 //@tracks.13/@directedTracks.1 //@tracks.14/@directedTracks.0 //@tracks.47/@directedTracks.1 //@tracks.26/@directedTracks.1"/>
+    <controlTable signal="//@signals.1" route="R3683" reverses="//@points.6" clears="//@tracks.22 //@tracks.48 //@tracks.13 //@tracks.25" directions="//@tracks.48/@directedTracks.1 //@tracks.22/@directedTracks.1 //@tracks.25/@directedTracks.1 //@tracks.13/@directedTracks.1"/>
+    <controlTable signal="//@signals.5" route="R3695" clears="//@tracks.25" directions="//@tracks.25/@directedTracks.0"/>
+    <controlTable signal="//@signals.6" route="R3697" clears="//@tracks.4" directions="//@tracks.4/@directedTracks.1"/>
+    <controlTable signal="//@signals.9" route="R3688" reverses="//@points.6" clears="//@tracks.32 //@tracks.22 //@tracks.48 //@tracks.13" directions="//@tracks.22/@directedTracks.0 //@tracks.13/@directedTracks.0 //@tracks.48/@directedTracks.0 //@tracks.32/@directedTracks.1"/>
+    <controlTable signal="//@signals.13" route="R3699" clears="//@tracks.27" directions="//@tracks.27/@directedTracks.1"/>
+    <controlTable signal="//@signals.13" route="R3687" normals="//@points.6 //@points.1" clears="//@tracks.11 //@tracks.37 //@tracks.12 //@tracks.32 //@tracks.47 //@tracks.13" directions="//@tracks.12/@directedTracks.0 //@tracks.13/@directedTracks.0 //@tracks.37/@directedTracks.0 //@tracks.32/@directedTracks.1 //@tracks.11/@directedTracks.0 //@tracks.47/@directedTracks.0"/>
+    <controlTable signal="//@signals.1" route="R3685" normals="//@points.6 //@points.0" reverses="//@points.1" clears="//@tracks.35 //@tracks.38 //@tracks.12 //@tracks.16 //@tracks.15 //@tracks.47 //@tracks.13 //@tracks.4" directions="//@tracks.38/@directedTracks.1 //@tracks.15/@directedTracks.1 //@tracks.4/@directedTracks.0 //@tracks.16/@directedTracks.1 //@tracks.12/@directedTracks.1 //@tracks.35/@directedTracks.1 //@tracks.13/@directedTracks.1 //@tracks.47/@directedTracks.1"/>
+    <controlTable signal="//@signals.4" route="R3689" normals="//@points.0 //@points.6" reverses="//@points.1" clears="//@tracks.35 //@tracks.38 //@tracks.12 //@tracks.15 //@tracks.16 //@tracks.32 //@tracks.47 //@tracks.13" directions="//@tracks.12/@directedTracks.0 //@tracks.15/@directedTracks.0 //@tracks.38/@directedTracks.0 //@tracks.16/@directedTracks.0 //@tracks.13/@directedTracks.0 //@tracks.35/@directedTracks.0 //@tracks.32/@directedTracks.1 //@tracks.47/@directedTracks.0"/>
+    <controlTable signal="//@signals.0" route="R3690" normals="//@points.6" reverses="//@points.0 //@points.1" clears="//@tracks.38 //@tracks.14 //@tracks.12 //@tracks.16 //@tracks.32 //@tracks.36 //@tracks.47 //@tracks.13" directions="//@tracks.12/@directedTracks.0 //@tracks.38/@directedTracks.0 //@tracks.16/@directedTracks.0 //@tracks.14/@directedTracks.1 //@tracks.13/@directedTracks.0 //@tracks.36/@directedTracks.0 //@tracks.32/@directedTracks.1 //@tracks.47/@directedTracks.0"/>
+    <releaseTable route="R3690" point="//@points.0" unoccupiedTrack="//@tracks.36" occupiedTrack="//@tracks.16"/>
+    <releaseTable route="R3690" point="//@points.1" unoccupiedTrack="//@tracks.38" occupiedTrack="//@tracks.12"/>
+    <releaseTable route="R3690" point="//@points.6" unoccupiedTrack="//@tracks.47" occupiedTrack="//@tracks.13"/>
+    <releaseTable route="R3686" point="//@points.6" unoccupiedTrack="//@tracks.47" occupiedTrack="//@tracks.12"/>
+    <releaseTable route="R3686" point="//@points.1" unoccupiedTrack="//@tracks.38" occupiedTrack="//@tracks.16"/>
+    <releaseTable route="R3686" point="//@points.0" unoccupiedTrack="//@tracks.36" occupiedTrack="//@tracks.14"/>
+    <releaseTable route="R3685" point="//@points.6" unoccupiedTrack="//@tracks.47" occupiedTrack="//@tracks.12"/>
+    <releaseTable route="R3685" point="//@points.1" unoccupiedTrack="//@tracks.38" occupiedTrack="//@tracks.16"/>
+    <releaseTable route="R3685" point="//@points.0" unoccupiedTrack="//@tracks.35" occupiedTrack="//@tracks.15"/>
+    <releaseTable route="R3684" point="//@points.6" unoccupiedTrack="//@tracks.47" occupiedTrack="//@tracks.12"/>
+    <releaseTable route="R3684" point="//@points.1" unoccupiedTrack="//@tracks.37" occupiedTrack="//@tracks.11"/>
+    <releaseTable route="R3683" point="//@points.6" unoccupiedTrack="//@tracks.48" occupiedTrack="//@tracks.22"/>
+    <releaseTable route="R3689" point="//@points.0" unoccupiedTrack="//@tracks.35" occupiedTrack="//@tracks.16"/>
+    <releaseTable route="R3689" point="//@points.1" unoccupiedTrack="//@tracks.38" occupiedTrack="//@tracks.12"/>
+    <releaseTable route="R3689" point="//@points.6" unoccupiedTrack="//@tracks.47" occupiedTrack="//@tracks.13"/>
+    <releaseTable route="R3688" point="//@points.6" unoccupiedTrack="//@tracks.48" occupiedTrack="//@tracks.13"/>
+    <releaseTable route="R3687" point="//@points.1" unoccupiedTrack="//@tracks.37" occupiedTrack="//@tracks.12"/>
+    <releaseTable route="R3687" point="//@points.6" unoccupiedTrack="//@tracks.47" occupiedTrack="//@tracks.13"/>
+  </subTrackPlans>
+  <subTrackPlans criticals="//@tracks.53 //@tracks.24 //@tracks.1 //@tracks.19" tracks="//@tracks.30 //@tracks.45 //@tracks.34 //@tracks.43 //@tracks.24 //@tracks.19 //@tracks.46 //@tracks.1 //@tracks.17 //@tracks.44 //@tracks.53" connectors="//@connectors.10 //@connectors.39 //@connectors.41 //@connectors.42 //@connectors.38 //@connectors.15 //@connectors.16 //@connectors.43 //@connectors.0 //@connectors.11 //@connectors.40 //@connectors.53" points="//@points.5 //@points.4" signals="//@signals.12 //@signals.10 //@signals.3">
+    <entrances connector="//@connectors.43"/>
+    <entrances connector="//@connectors.53"/>
+    <entrances connector="//@connectors.11"/>
+    <exits connector="//@connectors.43"/>
+    <exits connector="//@connectors.40"/>
+    <exits connector="//@connectors.11"/>
+    <controlTable signal="//@signals.12" route="R3922" normals="//@points.5 //@points.4" clears="//@tracks.30 //@tracks.45 //@tracks.34 //@tracks.43 //@tracks.19 //@tracks.17" directions="//@tracks.17/@directedTracks.1 //@tracks.43/@directedTracks.1 //@tracks.34/@directedTracks.1 //@tracks.45/@directedTracks.0 //@tracks.19/@directedTracks.0 //@tracks.30/@directedTracks.0"/>
+    <controlTable signal="//@signals.10" route="R3691" clears="//@tracks.24 //@tracks.1" directions="//@tracks.1/@directedTracks.1 //@tracks.24/@directedTracks.1"/>
+    <controlTable signal="//@signals.3" route="R3680" normals="//@points.4" reverses="//@points.5" clears="//@tracks.30 //@tracks.34 //@tracks.43 //@tracks.46" directions="//@tracks.34/@directedTracks.0 //@tracks.30/@directedTracks.1 //@tracks.43/@directedTracks.0"/>
+    <controlTable signal="//@signals.12" route="R3923" normals="//@points.5" reverses="//@points.4" clears="//@tracks.45 //@tracks.34 //@tracks.19 //@tracks.44" directions="//@tracks.34/@directedTracks.1 //@tracks.45/@directedTracks.0 //@tracks.19/@directedTracks.0"/>
+    <releaseTable route="R3923" point="//@points.5" unoccupiedTrack="//@tracks.45" occupiedTrack="//@tracks.34"/>
+    <releaseTable route="R3923" point="//@points.4" unoccupiedTrack="//@tracks.44"/>
+    <releaseTable route="R3922" point="//@points.5" unoccupiedTrack="//@tracks.45" occupiedTrack="//@tracks.34"/>
+    <releaseTable route="R3922" point="//@points.4" unoccupiedTrack="//@tracks.43" occupiedTrack="//@tracks.30"/>
+    <releaseTable route="R3680" point="//@points.4" unoccupiedTrack="//@tracks.43" occupiedTrack="//@tracks.34"/>
+    <releaseTable route="R3680" point="//@points.5" unoccupiedTrack="//@tracks.46"/>
+  </subTrackPlans>
+</uk.ac.swanseacoventry.cmt.ontrack:TrackPlan>
