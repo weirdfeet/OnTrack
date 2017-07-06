@@ -61,12 +61,12 @@
   <controlTable signal="//@signals.1" route="R5074" reverses="//@points.0" clears="//@tracks.5 //@tracks.2 //@tracks.3" directions="//@tracks.2/@directedTracks.1 //@tracks.5/@directedTracks.0 //@tracks.3/@directedTracks.0"/>
   <releaseTable route="R5072" point="//@points.0" unoccupiedTrack="//@tracks.4" occupiedTrack="//@tracks.3"/>
   <releaseTable route="R5074" point="//@points.0" unoccupiedTrack="//@tracks.5" occupiedTrack="//@tracks.3"/>
-  <subTrackPlans criticals="//@tracks.0 //@tracks.8" tracks="//@tracks.0 //@tracks.8" connectors="//@connectors.0 //@connectors.1 //@connectors.10" signals="//@signals.0">
+  <subTrackPlans criticals="//@tracks.0 //@tracks.8" tracks="//@tracks.0 //@tracks.8" connectors="//@connectors.0 //@connectors.1 //@connectors.10" signals="//@signals.0" verificationTime=" 54" verificationStates=" 0m0.218s" verificationResult=" Passed">
     <entrances connector="//@connectors.10"/>
     <exits connector="//@connectors.1"/>
     <controlTable signal="//@signals.0" route="R5073" clears="//@tracks.0" directions="//@tracks.0/@directedTracks.1"/>
   </subTrackPlans>
-  <subTrackPlans criticals="//@tracks.3 //@tracks.1 //@tracks.2 //@tracks.4 //@tracks.6 //@tracks.7" tracks="//@tracks.7 //@tracks.1 //@tracks.2 //@tracks.4 //@tracks.3 //@tracks.6 //@tracks.5" connectors="//@connectors.9 //@connectors.2 //@connectors.6 //@connectors.3 //@connectors.7 //@connectors.5 //@connectors.4 //@connectors.8" points="//@points.0" signals="//@signals.2 //@signals.1">
+  <subTrackPlans criticals="//@tracks.3 //@tracks.1 //@tracks.2 //@tracks.4 //@tracks.6 //@tracks.7" tracks="//@tracks.7 //@tracks.1 //@tracks.2 //@tracks.4 //@tracks.3 //@tracks.6 //@tracks.5" connectors="//@connectors.9 //@connectors.2 //@connectors.6 //@connectors.3 //@connectors.7 //@connectors.5 //@connectors.4 //@connectors.8" points="//@points.0" signals="//@signals.2 //@signals.1" verificationTime=" 184" verificationStates=" 0m0.335s" verificationResult=" Passed">
     <entrances connector="//@connectors.9"/>
     <entrances connector="//@connectors.8"/>
     <exits connector="//@connectors.4"/>

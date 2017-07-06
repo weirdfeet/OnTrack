@@ -58,7 +58,7 @@
     <styles xmi:type="notation:FontStyle" xmi:id="_YEo5DGF-EeeLS7YTcWZVqQ" fontName="Segoe UI"/>
     <styles xmi:type="notation:LineStyle" xmi:id="_YEo5DWF-EeeLS7YTcWZVqQ"/>
     <element xmi:type="uk.ac.swanseacoventry.cmt.ontrack:Connector" href="Huntingdon.ontrack#//@connectors.5"/>
-    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_YEo5DmF-EeeLS7YTcWZVqQ" x="690" y="281"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_YEo5DmF-EeeLS7YTcWZVqQ" x="520" y="250"/>
   </children>
   <children xmi:type="notation:Node" xmi:id="_YEpf8mF-EeeLS7YTcWZVqQ" type="2001">
     <children xmi:type="notation:DecorationNode" xmi:id="_YEpf92F-EeeLS7YTcWZVqQ" type="5001">
@@ -248,7 +248,7 @@
     <styles xmi:type="notation:FontStyle" xmi:id="_YErVamF-EeeLS7YTcWZVqQ" fontName="Segoe UI"/>
     <styles xmi:type="notation:LineStyle" xmi:id="_YErVa2F-EeeLS7YTcWZVqQ"/>
     <element xmi:type="uk.ac.swanseacoventry.cmt.ontrack:Connector" href="Huntingdon.ontrack#//@connectors.24"/>
-    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_YErVbGF-EeeLS7YTcWZVqQ" x="88" y="381"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_YErVbGF-EeeLS7YTcWZVqQ" x="88" y="375"/>
   </children>
   <children xmi:type="notation:Node" xmi:id="_YErVb2F-EeeLS7YTcWZVqQ" type="2001">
     <children xmi:type="notation:DecorationNode" xmi:id="_YErVdGF-EeeLS7YTcWZVqQ" type="5001">
@@ -278,7 +278,7 @@
     <styles xmi:type="notation:FontStyle" xmi:id="_YEr8XWF-EeeLS7YTcWZVqQ" fontName="Segoe UI"/>
     <styles xmi:type="notation:LineStyle" xmi:id="_YEr8XmF-EeeLS7YTcWZVqQ"/>
     <element xmi:type="uk.ac.swanseacoventry.cmt.ontrack:Connector" href="Huntingdon.ontrack#//@connectors.27"/>
-    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_YEr8X2F-EeeLS7YTcWZVqQ" x="691" y="281"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_YEr8X2F-EeeLS7YTcWZVqQ" x="621" y="265"/>
   </children>
   <children xmi:type="notation:Node" xmi:id="_YEr8aWF-EeeLS7YTcWZVqQ" type="2001">
     <children xmi:type="notation:DecorationNode" xmi:id="_YEr8bmF-EeeLS7YTcWZVqQ" type="5001">
@@ -408,7 +408,7 @@
     <styles xmi:type="notation:FontStyle" xmi:id="_YEtKWWF-EeeLS7YTcWZVqQ" fontName="Segoe UI"/>
     <styles xmi:type="notation:LineStyle" xmi:id="_YEtKWmF-EeeLS7YTcWZVqQ"/>
     <element xmi:type="uk.ac.swanseacoventry.cmt.ontrack:Connector" href="Huntingdon.ontrack#//@connectors.40"/>
-    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_YEtKW2F-EeeLS7YTcWZVqQ" x="460" y="281"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_YEtKW2F-EeeLS7YTcWZVqQ" x="460" y="55"/>
   </children>
   <children xmi:type="notation:Node" xmi:id="_YEtKXmF-EeeLS7YTcWZVqQ" type="2001">
     <children xmi:type="notation:DecorationNode" xmi:id="_YEtKY2F-EeeLS7YTcWZVqQ" type="5001">
@@ -428,7 +428,7 @@
     <styles xmi:type="notation:FontStyle" xmi:id="_YEtKZ2F-EeeLS7YTcWZVqQ" fontName="Segoe UI"/>
     <styles xmi:type="notation:LineStyle" xmi:id="_YEtKaGF-EeeLS7YTcWZVqQ"/>
     <element xmi:type="uk.ac.swanseacoventry.cmt.ontrack:Connector" href="Huntingdon.ontrack#//@connectors.42"/>
-    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_YEtKaWF-EeeLS7YTcWZVqQ" x="560" y="381"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_YEtKaWF-EeeLS7YTcWZVqQ" x="580" y="405"/>
   </children>
   <children xmi:type="notation:Node" xmi:id="_YEtKbGF-EeeLS7YTcWZVqQ" type="2001">
     <children xmi:type="notation:DecorationNode" xmi:id="_YEtKcWF-EeeLS7YTcWZVqQ" type="5001">
@@ -818,7 +818,7 @@
       <layoutConstraint xmi:type="notation:Location" xmi:id="_YEu_p2F-EeeLS7YTcWZVqQ" y="5"/>
     </children>
     <element xmi:type="uk.ac.swanseacoventry.cmt.ontrack:Signal" href="Huntingdon.ontrack#//@signals.9"/>
-    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_YEu_pWF-EeeLS7YTcWZVqQ" x="681" y="181"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_YEu_pWF-EeeLS7YTcWZVqQ" x="681" y="180"/>
   </children>
   <children xmi:type="notation:Shape" xmi:id="_YEu_qGF-EeeLS7YTcWZVqQ" type="2002" fontName="Segoe UI">
     <children xmi:type="notation:DecorationNode" xmi:id="_YEu_qmF-EeeLS7YTcWZVqQ" type="5002">
@@ -1184,7 +1184,7 @@
   </edges>
   <edges xmi:type="notation:Connector" xmi:id="_YGBY8GF-EeeLS7YTcWZVqQ" type="4005" source="_YEtKZWF-EeeLS7YTcWZVqQ" target="_YEtKbGF-EeeLS7YTcWZVqQ">
     <children xmi:type="notation:DecorationNode" xmi:id="_YGBY82F-EeeLS7YTcWZVqQ" type="6002">
-      <layoutConstraint xmi:type="notation:Location" xmi:id="_YGBY9GF-EeeLS7YTcWZVqQ" y="40"/>
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_YGBY9GF-EeeLS7YTcWZVqQ" x="6" y="40"/>
     </children>
     <styles xmi:type="notation:FontStyle" xmi:id="_YGBY8WF-EeeLS7YTcWZVqQ" fontName="Segoe UI"/>
     <element xmi:type="uk.ac.swanseacoventry.cmt.ontrack:Track" href="Huntingdon.ontrack#//@tracks.53"/>
@@ -1640,7 +1640,7 @@
   </edges>
   <edges xmi:type="notation:Connector" xmi:id="_ZMeqsGF-EeeLS7YTcWZVqQ" type="4001" source="_YGCnEGF-EeeLS7YTcWZVqQ" target="_YGBY8GF-EeeLS7YTcWZVqQ">
     <children xmi:type="notation:DecorationNode" xmi:id="_ZMeqs2F-EeeLS7YTcWZVqQ" type="6001">
-      <layoutConstraint xmi:type="notation:Location" xmi:id="_ZMeqtGF-EeeLS7YTcWZVqQ" y="40"/>
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_ZMeqtGF-EeeLS7YTcWZVqQ" x="-32" y="19"/>
     </children>
     <styles xmi:type="notation:FontStyle" xmi:id="_ZMeqsWF-EeeLS7YTcWZVqQ" fontName="Segoe UI"/>
     <element xmi:type="uk.ac.swanseacoventry.cmt.ontrack:Point" href="Huntingdon.ontrack#//@points.3"/>
@@ -1720,7 +1720,7 @@
   </edges>
   <edges xmi:type="notation:Connector" xmi:id="_ZMhuAmF-EeeLS7YTcWZVqQ" type="4001" source="_YGX-QGF-EeeLS7YTcWZVqQ" target="_YGWwIGF-EeeLS7YTcWZVqQ">
     <children xmi:type="notation:DecorationNode" xmi:id="_ZMhuBWF-EeeLS7YTcWZVqQ" type="6001">
-      <layoutConstraint xmi:type="notation:Location" xmi:id="_ZMhuBmF-EeeLS7YTcWZVqQ" y="40"/>
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_ZMhuBmF-EeeLS7YTcWZVqQ" x="-14" y="-54"/>
     </children>
     <styles xmi:type="notation:FontStyle" xmi:id="_ZMhuA2F-EeeLS7YTcWZVqQ" fontName="Segoe UI"/>
     <element xmi:type="uk.ac.swanseacoventry.cmt.ontrack:Point" href="Huntingdon.ontrack#//@points.11"/>

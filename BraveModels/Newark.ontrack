@@ -476,7 +476,7 @@
   <releaseTable route="R4010" point="//@points.6" unoccupiedTrack="//@tracks.39" occupiedTrack="//@tracks.10"/>
   <releaseTable route="R4010" point="//@points.7" unoccupiedTrack="//@tracks.42" occupiedTrack="//@tracks.15"/>
   <releaseTable route="R4010" point="//@points.2" unoccupiedTrack="//@tracks.31" occupiedTrack="//@tracks.9"/>
-  <subTrackPlans criticals="//@tracks.1 //@tracks.4 //@tracks.20" tracks="//@tracks.35 //@tracks.36 //@tracks.44 //@tracks.6 //@tracks.21 //@tracks.20 //@tracks.1 //@tracks.19 //@tracks.2 //@tracks.12 //@tracks.34 //@tracks.38 //@tracks.37 //@tracks.4 //@tracks.33" connectors="//@connectors.31 //@connectors.32 //@connectors.33 //@connectors.44 //@connectors.15 //@connectors.6 //@connectors.7 //@connectors.35 //@connectors.2 //@connectors.29 //@connectors.0 //@connectors.5 //@connectors.34 //@connectors.28 //@connectors.36 //@connectors.30" points="//@points.5 //@points.3 //@points.4" signals="//@signals.7 //@signals.3 //@signals.2">
+  <subTrackPlans criticals="//@tracks.1 //@tracks.4 //@tracks.20" tracks="//@tracks.35 //@tracks.36 //@tracks.44 //@tracks.6 //@tracks.21 //@tracks.20 //@tracks.1 //@tracks.19 //@tracks.2 //@tracks.12 //@tracks.34 //@tracks.38 //@tracks.37 //@tracks.4 //@tracks.33" connectors="//@connectors.31 //@connectors.32 //@connectors.33 //@connectors.44 //@connectors.15 //@connectors.6 //@connectors.7 //@connectors.35 //@connectors.2 //@connectors.29 //@connectors.0 //@connectors.5 //@connectors.34 //@connectors.28 //@connectors.36 //@connectors.30" points="//@points.5 //@points.3 //@points.4" signals="//@signals.7 //@signals.3 //@signals.2" verificationTime=" 118390" verificationStates=" 0m5.612s" verificationResult=" Passed">
     <entrances connector="//@connectors.30"/>
     <entrances connector="//@connectors.44"/>
     <entrances connector="//@connectors.7"/>
@@ -560,7 +560,7 @@
     <releaseTable route="R3984" point="//@points.5" unoccupiedTrack="//@tracks.37" occupiedTrack="//@tracks.19"/>
     <releaseTable route="R3984" point="//@points.3" unoccupiedTrack="//@tracks.34"/>
   </subTrackPlans>
-  <subTrackPlans criticals="//@tracks.3" tracks="//@tracks.3 //@tracks.2 //@tracks.35 //@tracks.36 //@tracks.44" connectors="//@connectors.32 //@connectors.1 //@connectors.31 //@connectors.15 //@connectors.33 //@connectors.44" points="//@points.4" signals="//@signals.7">
+  <subTrackPlans criticals="//@tracks.3" tracks="//@tracks.3 //@tracks.2 //@tracks.35 //@tracks.36 //@tracks.44" connectors="//@connectors.32 //@connectors.1 //@connectors.31 //@connectors.15 //@connectors.33 //@connectors.44" points="//@points.4" signals="//@signals.7" verificationTime=" 1212" verificationStates=" 0m0.470s" verificationResult=" Passed">
     <entrances connector="//@connectors.33"/>
     <entrances connector="//@connectors.44"/>
     <exits connector="//@connectors.33"/>
@@ -588,7 +588,7 @@
     <releaseTable route="R4013" point="//@points.4" unoccupiedTrack="//@tracks.35" occupiedTrack="//@tracks.3"/>
     <releaseTable route="R3980" point="//@points.4" unoccupiedTrack="//@tracks.36"/>
   </subTrackPlans>
-  <subTrackPlans criticals="//@tracks.5 //@tracks.7 //@tracks.17" tracks="//@tracks.42 //@tracks.36 //@tracks.44 //@tracks.43 //@tracks.7 //@tracks.26 //@tracks.2 //@tracks.12 //@tracks.39 //@tracks.0 //@tracks.37 //@tracks.33 //@tracks.13 //@tracks.35 //@tracks.11 //@tracks.6 //@tracks.21 //@tracks.19 //@tracks.5 //@tracks.27 //@tracks.40 //@tracks.10 //@tracks.34 //@tracks.17 //@tracks.38 //@tracks.41 //@tracks.28" connectors="//@connectors.40 //@connectors.42 //@connectors.31 //@connectors.33 //@connectors.44 //@connectors.15 //@connectors.43 //@connectors.18 //@connectors.20 //@connectors.4 //@connectors.11 //@connectors.13 //@connectors.36 //@connectors.37 //@connectors.38 //@connectors.19 //@connectors.34 //@connectors.35 //@connectors.28 //@connectors.29 //@connectors.32 //@connectors.39 //@connectors.30 //@connectors.6 //@connectors.7 //@connectors.3 //@connectors.41 //@connectors.21" points="//@points.5 //@points.6 //@points.0 //@points.3 //@points.7 //@points.4" signals="//@signals.3 //@signals.10 //@signals.8 //@signals.7 //@signals.1 //@signals.5 //@signals.9">
+  <subTrackPlans criticals="//@tracks.5 //@tracks.7 //@tracks.17" tracks="//@tracks.42 //@tracks.36 //@tracks.44 //@tracks.43 //@tracks.7 //@tracks.26 //@tracks.2 //@tracks.12 //@tracks.39 //@tracks.0 //@tracks.37 //@tracks.33 //@tracks.13 //@tracks.35 //@tracks.11 //@tracks.6 //@tracks.21 //@tracks.19 //@tracks.5 //@tracks.27 //@tracks.40 //@tracks.10 //@tracks.34 //@tracks.17 //@tracks.38 //@tracks.41 //@tracks.28" connectors="//@connectors.40 //@connectors.42 //@connectors.31 //@connectors.33 //@connectors.44 //@connectors.15 //@connectors.43 //@connectors.18 //@connectors.20 //@connectors.4 //@connectors.11 //@connectors.13 //@connectors.36 //@connectors.37 //@connectors.38 //@connectors.19 //@connectors.34 //@connectors.35 //@connectors.28 //@connectors.29 //@connectors.32 //@connectors.39 //@connectors.30 //@connectors.6 //@connectors.7 //@connectors.3 //@connectors.41 //@connectors.21" points="//@points.5 //@points.6 //@points.0 //@points.3 //@points.7 //@points.4" signals="//@signals.3 //@signals.10 //@signals.8 //@signals.7 //@signals.1 //@signals.5 //@signals.9" verificationTime=" 12941280" verificationStates=" 22m59.462s" verificationResult=" Failed">
     <entrances connector="//@connectors.42"/>
     <entrances connector="//@connectors.13"/>
     <entrances connector="//@connectors.21"/>
@@ -750,7 +750,7 @@
     <releaseTable route="R4010" point="//@points.6" unoccupiedTrack="//@tracks.39" occupiedTrack="//@tracks.10"/>
     <releaseTable route="R4010" point="//@points.7" unoccupiedTrack="//@tracks.42"/>
   </subTrackPlans>
-  <subTrackPlans criticals="//@tracks.24 //@tracks.14 //@tracks.8 //@tracks.23" tracks="//@tracks.15 //@tracks.42 //@tracks.36 //@tracks.44 //@tracks.31 //@tracks.43 //@tracks.26 //@tracks.2 //@tracks.12 //@tracks.39 //@tracks.0 //@tracks.9 //@tracks.37 //@tracks.33 //@tracks.13 //@tracks.35 //@tracks.23 //@tracks.11 //@tracks.32 //@tracks.6 //@tracks.14 //@tracks.21 //@tracks.19 //@tracks.8 //@tracks.24 //@tracks.27 //@tracks.40 //@tracks.10 //@tracks.34 //@tracks.38 //@tracks.41 //@tracks.28" connectors="//@connectors.25 //@connectors.42 //@connectors.40 //@connectors.31 //@connectors.33 //@connectors.44 //@connectors.15 //@connectors.26 //@connectors.43 //@connectors.18 //@connectors.11 //@connectors.13 //@connectors.36 //@connectors.37 //@connectors.38 //@connectors.19 //@connectors.10 //@connectors.34 //@connectors.35 //@connectors.28 //@connectors.29 //@connectors.32 //@connectors.16 //@connectors.21 //@connectors.39 //@connectors.30 //@connectors.27 //@connectors.6 //@connectors.7 //@connectors.8 //@connectors.9 //@connectors.20 //@connectors.41" points="//@points.5 //@points.6 //@points.0 //@points.3 //@points.7 //@points.2 //@points.4" signals="//@signals.9 //@signals.8 //@signals.7 //@signals.3 //@signals.4 //@signals.6 //@signals.10">
+  <subTrackPlans criticals="//@tracks.24 //@tracks.14 //@tracks.8 //@tracks.23" tracks="//@tracks.15 //@tracks.42 //@tracks.36 //@tracks.44 //@tracks.31 //@tracks.43 //@tracks.26 //@tracks.2 //@tracks.12 //@tracks.39 //@tracks.0 //@tracks.9 //@tracks.37 //@tracks.33 //@tracks.13 //@tracks.35 //@tracks.23 //@tracks.11 //@tracks.32 //@tracks.6 //@tracks.14 //@tracks.21 //@tracks.19 //@tracks.8 //@tracks.24 //@tracks.27 //@tracks.40 //@tracks.10 //@tracks.34 //@tracks.38 //@tracks.41 //@tracks.28" connectors="//@connectors.25 //@connectors.42 //@connectors.40 //@connectors.31 //@connectors.33 //@connectors.44 //@connectors.15 //@connectors.26 //@connectors.43 //@connectors.18 //@connectors.11 //@connectors.13 //@connectors.36 //@connectors.37 //@connectors.38 //@connectors.19 //@connectors.10 //@connectors.34 //@connectors.35 //@connectors.28 //@connectors.29 //@connectors.32 //@connectors.16 //@connectors.21 //@connectors.39 //@connectors.30 //@connectors.27 //@connectors.6 //@connectors.7 //@connectors.8 //@connectors.9 //@connectors.20 //@connectors.41" points="//@points.5 //@points.6 //@points.0 //@points.3 //@points.7 //@points.2 //@points.4" signals="//@signals.9 //@signals.8 //@signals.7 //@signals.3 //@signals.4 //@signals.6 //@signals.10" verificationTime=" 38107628" verificationStates=" 64m3.805s" verificationResult=" Failed">
     <entrances connector="//@connectors.13"/>
     <entrances connector="//@connectors.27"/>
     <entrances connector="//@connectors.20"/>
@@ -938,7 +938,7 @@
     <releaseTable route="R4010" point="//@points.7" unoccupiedTrack="//@tracks.42" occupiedTrack="//@tracks.15"/>
     <releaseTable route="R4010" point="//@points.2" unoccupiedTrack="//@tracks.31" occupiedTrack="//@tracks.9"/>
   </subTrackPlans>
-  <subTrackPlans criticals="//@tracks.26 //@tracks.13 //@tracks.18" tracks="//@tracks.42 //@tracks.15 //@tracks.22 //@tracks.32 //@tracks.30 //@tracks.14 //@tracks.31 //@tracks.26 //@tracks.18 //@tracks.5 //@tracks.10 //@tracks.40 //@tracks.39 //@tracks.25 //@tracks.17 //@tracks.9 //@tracks.41 //@tracks.29 //@tracks.45 //@tracks.13" connectors="//@connectors.40 //@connectors.42 //@connectors.25 //@connectors.27 //@connectors.24 //@connectors.22 //@connectors.10 //@connectors.8 //@connectors.26 //@connectors.11 //@connectors.13 //@connectors.14 //@connectors.3 //@connectors.4 //@connectors.37 //@connectors.39 //@connectors.38 //@connectors.17 //@connectors.41 //@connectors.23 //@connectors.45" points="//@points.6 //@points.7 //@points.2 //@points.1" signals="//@signals.8 //@signals.9 //@signals.1 //@signals.0 //@signals.4" terminals="//@terminals.1">
+  <subTrackPlans criticals="//@tracks.26 //@tracks.13 //@tracks.18" tracks="//@tracks.42 //@tracks.15 //@tracks.22 //@tracks.32 //@tracks.30 //@tracks.14 //@tracks.31 //@tracks.26 //@tracks.18 //@tracks.5 //@tracks.10 //@tracks.40 //@tracks.39 //@tracks.25 //@tracks.17 //@tracks.9 //@tracks.41 //@tracks.29 //@tracks.45 //@tracks.13" connectors="//@connectors.40 //@connectors.42 //@connectors.25 //@connectors.27 //@connectors.24 //@connectors.22 //@connectors.10 //@connectors.8 //@connectors.26 //@connectors.11 //@connectors.13 //@connectors.14 //@connectors.3 //@connectors.4 //@connectors.37 //@connectors.39 //@connectors.38 //@connectors.17 //@connectors.41 //@connectors.23 //@connectors.45" points="//@points.6 //@points.7 //@points.2 //@points.1" signals="//@signals.8 //@signals.9 //@signals.1 //@signals.0 //@signals.4" terminals="//@terminals.1" verificationTime=" 145299" verificationStates=" 0m6.657s" verificationResult=" Failed">
     <entrances connector="//@connectors.8"/>
     <entrances connector="//@connectors.4"/>
     <entrances connector="//@connectors.39"/>
@@ -1012,7 +1012,7 @@
     <releaseTable route="R4010" point="//@points.7" unoccupiedTrack="//@tracks.42" occupiedTrack="//@tracks.15"/>
     <releaseTable route="R4010" point="//@points.2" unoccupiedTrack="//@tracks.31" occupiedTrack="//@tracks.9"/>
   </subTrackPlans>
-  <subTrackPlans criticals="//@tracks.41 //@tracks.39 //@tracks.10 //@tracks.2 //@tracks.6 //@tracks.9 //@tracks.31 //@tracks.15 //@tracks.37 //@tracks.33 //@tracks.19 //@tracks.11 //@tracks.12 //@tracks.21 //@tracks.35 //@tracks.44" tracks="//@tracks.42 //@tracks.15 //@tracks.36 //@tracks.44 //@tracks.31 //@tracks.26 //@tracks.2 //@tracks.12 //@tracks.39 //@tracks.25 //@tracks.9 //@tracks.37 //@tracks.29 //@tracks.33 //@tracks.45 //@tracks.13 //@tracks.22 //@tracks.35 //@tracks.11 //@tracks.32 //@tracks.30 //@tracks.6 //@tracks.14 //@tracks.21 //@tracks.19 //@tracks.5 //@tracks.40 //@tracks.10 //@tracks.34 //@tracks.17 //@tracks.38 //@tracks.41" connectors="//@connectors.40 //@connectors.42 //@connectors.25 //@connectors.31 //@connectors.33 //@connectors.44 //@connectors.15 //@connectors.26 //@connectors.11 //@connectors.13 //@connectors.36 //@connectors.37 //@connectors.38 //@connectors.17 //@connectors.22 //@connectors.10 //@connectors.34 //@connectors.35 //@connectors.23 //@connectors.28 //@connectors.29 //@connectors.45 //@connectors.27 //@connectors.24 //@connectors.32 //@connectors.39 //@connectors.30 //@connectors.6 //@connectors.7 //@connectors.8 //@connectors.3 //@connectors.4 //@connectors.41" points="//@points.5 //@points.6 //@points.3 //@points.7 //@points.2 //@points.4 //@points.1" signals="//@signals.7 //@signals.3 //@signals.4 //@signals.8 //@signals.1 //@signals.0 //@signals.9">
+  <subTrackPlans criticals="//@tracks.41 //@tracks.39 //@tracks.10 //@tracks.2 //@tracks.6 //@tracks.9 //@tracks.31 //@tracks.15 //@tracks.37 //@tracks.33 //@tracks.19 //@tracks.11 //@tracks.12 //@tracks.21 //@tracks.35 //@tracks.44" tracks="//@tracks.42 //@tracks.15 //@tracks.36 //@tracks.44 //@tracks.31 //@tracks.26 //@tracks.2 //@tracks.12 //@tracks.39 //@tracks.25 //@tracks.9 //@tracks.37 //@tracks.29 //@tracks.33 //@tracks.45 //@tracks.13 //@tracks.22 //@tracks.35 //@tracks.11 //@tracks.32 //@tracks.30 //@tracks.6 //@tracks.14 //@tracks.21 //@tracks.19 //@tracks.5 //@tracks.40 //@tracks.10 //@tracks.34 //@tracks.17 //@tracks.38 //@tracks.41" connectors="//@connectors.40 //@connectors.42 //@connectors.25 //@connectors.31 //@connectors.33 //@connectors.44 //@connectors.15 //@connectors.26 //@connectors.11 //@connectors.13 //@connectors.36 //@connectors.37 //@connectors.38 //@connectors.17 //@connectors.22 //@connectors.10 //@connectors.34 //@connectors.35 //@connectors.23 //@connectors.28 //@connectors.29 //@connectors.45 //@connectors.27 //@connectors.24 //@connectors.32 //@connectors.39 //@connectors.30 //@connectors.6 //@connectors.7 //@connectors.8 //@connectors.3 //@connectors.4 //@connectors.41" points="//@points.5 //@points.6 //@points.3 //@points.7 //@points.2 //@points.4 //@points.1" signals="//@signals.7 //@signals.3 //@signals.4 //@signals.8 //@signals.1 //@signals.0 //@signals.9" verificationTime=" 17028" verificationStates=" 0m35.089s" verificationResult=" Failed">
     <entrances connector="//@connectors.13"/>
     <entrances connector="//@connectors.23"/>
     <entrances connector="//@connectors.8"/>
@@ -1235,7 +1235,7 @@
     <releaseTable route="R4010" point="//@points.7" unoccupiedTrack="//@tracks.42" occupiedTrack="//@tracks.15"/>
     <releaseTable route="R4010" point="//@points.2" unoccupiedTrack="//@tracks.31" occupiedTrack="//@tracks.9"/>
   </subTrackPlans>
-  <subTrackPlans criticals="//@tracks.43 //@tracks.27 //@tracks.0" tracks="//@tracks.27 //@tracks.24 //@tracks.23 //@tracks.0 //@tracks.43 //@tracks.28 //@tracks.7 //@tracks.5" connectors="//@connectors.19 //@connectors.20 //@connectors.16 //@connectors.9 //@connectors.21 //@connectors.18 //@connectors.43 //@connectors.4 //@connectors.3" points="//@points.0" signals="//@signals.10 //@signals.1 //@signals.5 //@signals.6">
+  <subTrackPlans criticals="//@tracks.43 //@tracks.27 //@tracks.0" tracks="//@tracks.27 //@tracks.24 //@tracks.23 //@tracks.0 //@tracks.43 //@tracks.28 //@tracks.7 //@tracks.5" connectors="//@connectors.19 //@connectors.20 //@connectors.16 //@connectors.9 //@connectors.21 //@connectors.18 //@connectors.43 //@connectors.4 //@connectors.3" points="//@points.0" signals="//@signals.10 //@signals.1 //@signals.5 //@signals.6" verificationTime=" 1050" verificationStates=" 0m0.493s" verificationResult=" Failed">
     <entrances connector="//@connectors.9"/>
     <entrances connector="//@connectors.3"/>
     <entrances connector="//@connectors.43"/>
@@ -1251,7 +1251,7 @@
     <releaseTable route="R4012" point="//@points.0" unoccupiedTrack="//@tracks.28" occupiedTrack="//@tracks.23"/>
     <releaseTable route="R4011" point="//@points.0" unoccupiedTrack="//@tracks.27" occupiedTrack="//@tracks.7"/>
   </subTrackPlans>
-  <subTrackPlans criticals="//@tracks.45 //@tracks.29 //@tracks.25 //@tracks.16 //@tracks.22" tracks="//@tracks.16 //@tracks.15 //@tracks.42 //@tracks.36 //@tracks.44 //@tracks.31 //@tracks.26 //@tracks.2 //@tracks.12 //@tracks.39 //@tracks.25 //@tracks.37 //@tracks.29 //@tracks.33 //@tracks.45 //@tracks.13 //@tracks.22 //@tracks.35 //@tracks.11 //@tracks.30 //@tracks.32 //@tracks.6 //@tracks.21 //@tracks.19 //@tracks.40 //@tracks.10 //@tracks.34 //@tracks.38 //@tracks.41" connectors="//@connectors.12 //@connectors.23 //@connectors.25 //@connectors.42 //@connectors.40 //@connectors.31 //@connectors.33 //@connectors.44 //@connectors.15 //@connectors.26 //@connectors.11 //@connectors.13 //@connectors.36 //@connectors.37 //@connectors.38 //@connectors.17 //@connectors.22 //@connectors.34 //@connectors.35 //@connectors.28 //@connectors.29 //@connectors.45 //@connectors.27 //@connectors.24 //@connectors.32 //@connectors.39 //@connectors.30 //@connectors.6 //@connectors.7 //@connectors.41" points="//@points.5 //@points.6 //@points.3 //@points.7 //@points.2 //@points.4 //@points.1" signals="//@signals.9 //@signals.7 //@signals.3 //@signals.8 //@signals.0" terminals="//@terminals.0">
+  <subTrackPlans criticals="//@tracks.45 //@tracks.29 //@tracks.25 //@tracks.16 //@tracks.22" tracks="//@tracks.16 //@tracks.15 //@tracks.42 //@tracks.36 //@tracks.44 //@tracks.31 //@tracks.26 //@tracks.2 //@tracks.12 //@tracks.39 //@tracks.25 //@tracks.37 //@tracks.29 //@tracks.33 //@tracks.45 //@tracks.13 //@tracks.22 //@tracks.35 //@tracks.11 //@tracks.30 //@tracks.32 //@tracks.6 //@tracks.21 //@tracks.19 //@tracks.40 //@tracks.10 //@tracks.34 //@tracks.38 //@tracks.41" connectors="//@connectors.12 //@connectors.23 //@connectors.25 //@connectors.42 //@connectors.40 //@connectors.31 //@connectors.33 //@connectors.44 //@connectors.15 //@connectors.26 //@connectors.11 //@connectors.13 //@connectors.36 //@connectors.37 //@connectors.38 //@connectors.17 //@connectors.22 //@connectors.34 //@connectors.35 //@connectors.28 //@connectors.29 //@connectors.45 //@connectors.27 //@connectors.24 //@connectors.32 //@connectors.39 //@connectors.30 //@connectors.6 //@connectors.7 //@connectors.41" points="//@points.5 //@points.6 //@points.3 //@points.7 //@points.2 //@points.4 //@points.1" signals="//@signals.9 //@signals.7 //@signals.3 //@signals.8 //@signals.0" terminals="//@terminals.0" verificationTime=" 4260280" verificationStates=" 5m14.196s" verificationResult=" Failed">
     <entrances connector="//@connectors.26"/>
     <entrances connector="//@connectors.13"/>
     <entrances connector="//@connectors.41"/>
@@ -1453,4 +1453,335 @@
     <releaseTable route="R4010" point="//@points.7" unoccupiedTrack="//@tracks.42" occupiedTrack="//@tracks.15"/>
     <releaseTable route="R4010" point="//@points.2" unoccupiedTrack="//@tracks.31"/>
   </subTrackPlans>
+  <simulations name="Newark_ENTRY_0_TCN11298_TC3573 loaded @ 06/07/2017 15:11:56">
+    <steps name="move">
+      <parameters>OFFTRACK</parameters>
+      <parameters>TC3532</parameters>
+    </steps>
+    <steps name="setRoute">
+      <parameters>R4016</parameters>
+    </steps>
+    <steps name="setRoute">
+      <parameters>RE__79</parameters>
+    </steps>
+    <steps name="move">
+      <parameters>OFFTRACK</parameters>
+      <parameters>ENTRY_0</parameters>
+    </steps>
+    <steps name="move">
+      <parameters>TC3532</parameters>
+      <parameters>TC3552</parameters>
+    </steps>
+    <steps name="move">
+      <parameters>TC3552</parameters>
+      <parameters>TCN11298</parameters>
+    </steps>
+    <steps name="move">
+      <parameters>TCN11298</parameters>
+      <parameters>TC3573</parameters>
+    </steps>
+    <steps name="move">
+      <parameters>TC3573</parameters>
+      <parameters>ENTRY_0</parameters>
+    </steps>
+    <steps name="collided">
+      <parameters>ENTRY_0</parameters>
+    </steps>
+  </simulations>
+  <simulations name="Newark_ENTRY_2_TCN11222_TC3517_AND_MORE loaded @ 06/07/2017 15:11:56">
+    <steps name="switch">
+      <parameters>N11222</parameters>
+    </steps>
+    <steps name="switch">
+      <parameters>N11221</parameters>
+    </steps>
+    <steps name="switch">
+      <parameters>N11214</parameters>
+    </steps>
+    <steps name="setRoute">
+      <parameters>R3992</parameters>
+    </steps>
+    <steps name="move">
+      <parameters>OFFTRACK</parameters>
+      <parameters>TC3495</parameters>
+    </steps>
+    <steps name="move">
+      <parameters>TC3495</parameters>
+      <parameters>TC3497</parameters>
+    </steps>
+    <steps name="move">
+      <parameters>TC3497</parameters>
+      <parameters>TCN11206</parameters>
+    </steps>
+    <steps name="move">
+      <parameters>TCN11206</parameters>
+      <parameters>TC3510</parameters>
+    </steps>
+    <steps name="move">
+      <parameters>TC3510</parameters>
+      <parameters>TCN11214</parameters>
+    </steps>
+    <steps name="move">
+      <parameters>TCN11214</parameters>
+      <parameters>TC3513</parameters>
+    </steps>
+    <steps name="move">
+      <parameters>TC3513</parameters>
+      <parameters>TCN11221</parameters>
+    </steps>
+    <steps name="move">
+      <parameters>TCN11221</parameters>
+      <parameters>TC3514</parameters>
+    </steps>
+    <steps name="setRoute">
+      <parameters>RE__81</parameters>
+    </steps>
+    <steps name="move">
+      <parameters>TC3514</parameters>
+      <parameters>TCN11222</parameters>
+    </steps>
+    <steps name="move">
+      <parameters>OFFTRACK</parameters>
+      <parameters>ENTRY_2</parameters>
+    </steps>
+    <steps name="move">
+      <parameters>TCN11222</parameters>
+      <parameters>TC3517</parameters>
+    </steps>
+    <steps name="move">
+      <parameters>TC3517</parameters>
+      <parameters>ENTRY_2</parameters>
+    </steps>
+    <steps name="collided">
+      <parameters>ENTRY_2</parameters>
+    </steps>
+  </simulations>
+  <simulations name="Newark_TC3495_TC3497_TC3496 loaded @ 06/07/2017 15:11:56">
+    <steps name="setRoute">
+      <parameters>R4155</parameters>
+    </steps>
+    <steps name="move">
+      <parameters>OFFTRACK</parameters>
+      <parameters>TC3532</parameters>
+    </steps>
+    <steps name="move">
+      <parameters>TC3532</parameters>
+      <parameters>TC3512</parameters>
+    </steps>
+    <steps name="setRoute">
+      <parameters>R4155</parameters>
+    </steps>
+    <steps name="move">
+      <parameters>TC3512</parameters>
+      <parameters>TCN11214</parameters>
+    </steps>
+    <steps name="move">
+      <parameters>OFFTRACK</parameters>
+      <parameters>TC3532</parameters>
+    </steps>
+    <steps name="move">
+      <parameters>TC3532</parameters>
+      <parameters>TC3512</parameters>
+    </steps>
+    <steps name="move">
+      <parameters>TCN11214</parameters>
+      <parameters>TC3510</parameters>
+    </steps>
+    <steps name="move">
+      <parameters>TC3512</parameters>
+      <parameters>TCN11214</parameters>
+    </steps>
+    <steps name="move">
+      <parameters>TC3510</parameters>
+      <parameters>TCN11206</parameters>
+    </steps>
+    <steps name="move">
+      <parameters>TCN11214</parameters>
+      <parameters>TC3510</parameters>
+    </steps>
+    <steps name="move">
+      <parameters>TCN11206</parameters>
+      <parameters>TC3497</parameters>
+    </steps>
+    <steps name="move">
+      <parameters>TC3510</parameters>
+      <parameters>TCN11206</parameters>
+    </steps>
+    <steps name="move">
+      <parameters>TCN11206</parameters>
+      <parameters>TC3497</parameters>
+    </steps>
+    <steps name="collided">
+      <parameters>TC3497</parameters>
+    </steps>
+  </simulations>
+  <simulations name="Newark_TC3532_TC3552_TC3512 loaded @ 06/07/2017 15:11:56">
+    <steps name="move">
+      <parameters>OFFTRACK</parameters>
+      <parameters>TC3495</parameters>
+    </steps>
+    <steps name="setRoute">
+      <parameters>R3974</parameters>
+    </steps>
+    <steps name="move">
+      <parameters>TC3495</parameters>
+      <parameters>TC3497</parameters>
+    </steps>
+    <steps name="move">
+      <parameters>TC3497</parameters>
+      <parameters>TCN11206</parameters>
+    </steps>
+    <steps name="setRoute">
+      <parameters>R4011</parameters>
+    </steps>
+    <steps name="move">
+      <parameters>TCN11206</parameters>
+      <parameters>TC3510</parameters>
+    </steps>
+    <steps name="move">
+      <parameters>TC3510</parameters>
+      <parameters>TCN11214</parameters>
+    </steps>
+    <steps name="setRoute">
+      <parameters>RE__79</parameters>
+    </steps>
+    <steps name="move">
+      <parameters>TCN11214</parameters>
+      <parameters>TC3512</parameters>
+    </steps>
+    <steps name="move">
+      <parameters>OFFTRACK</parameters>
+      <parameters>ENTRY_0</parameters>
+    </steps>
+    <steps name="move">
+      <parameters>ENTRY_0</parameters>
+      <parameters>TC3573</parameters>
+    </steps>
+    <steps name="move">
+      <parameters>TC3573</parameters>
+      <parameters>TCN11298</parameters>
+    </steps>
+    <steps name="move">
+      <parameters>TCN11298</parameters>
+      <parameters>TC3552</parameters>
+    </steps>
+    <steps name="move">
+      <parameters>TC3552</parameters>
+      <parameters>TC3532</parameters>
+    </steps>
+    <steps name="move">
+      <parameters>TC3512</parameters>
+      <parameters>TC3532</parameters>
+    </steps>
+    <steps name="collided">
+      <parameters>TC3532</parameters>
+    </steps>
+  </simulations>
+  <simulations name="Newark_TC3555_TC3535_TC3554_AND_MORE loaded @ 06/07/2017 15:11:56">
+    <steps name="switch">
+      <parameters>N11214</parameters>
+    </steps>
+    <steps name="move">
+      <parameters>OFFTRACK</parameters>
+      <parameters>TC3495</parameters>
+    </steps>
+    <steps name="setRoute">
+      <parameters>R4010</parameters>
+    </steps>
+    <steps name="move">
+      <parameters>TC3495</parameters>
+      <parameters>TC3497</parameters>
+    </steps>
+    <steps name="move">
+      <parameters>TC3497</parameters>
+      <parameters>TCN11206</parameters>
+    </steps>
+    <steps name="move">
+      <parameters>TCN11206</parameters>
+      <parameters>TC3510</parameters>
+    </steps>
+    <steps name="move">
+      <parameters>TC3510</parameters>
+      <parameters>TCN11214</parameters>
+    </steps>
+    <steps name="move">
+      <parameters>TCN11214</parameters>
+      <parameters>TC3513</parameters>
+    </steps>
+    <steps name="move">
+      <parameters>TC3513</parameters>
+      <parameters>TCN11221</parameters>
+    </steps>
+    <steps name="move">
+      <parameters>TCN11221</parameters>
+      <parameters>TC3537</parameters>
+    </steps>
+    <steps name="switch">
+      <parameters>N11298</parameters>
+    </steps>
+    <steps name="setRoute">
+      <parameters>R4012</parameters>
+    </steps>
+    <steps name="setRoute">
+      <parameters>RE__79</parameters>
+    </steps>
+    <steps name="move">
+      <parameters>OFFTRACK</parameters>
+      <parameters>ENTRY_0</parameters>
+    </steps>
+    <steps name="move">
+      <parameters>ENTRY_0</parameters>
+      <parameters>TC3573</parameters>
+    </steps>
+    <steps name="move">
+      <parameters>TC3573</parameters>
+      <parameters>TCN11298</parameters>
+    </steps>
+    <steps name="move">
+      <parameters>TCN11298</parameters>
+      <parameters>TC3575</parameters>
+    </steps>
+    <steps name="move">
+      <parameters>TC3575</parameters>
+      <parameters>TC3555</parameters>
+    </steps>
+    <steps name="move">
+      <parameters>TC3555</parameters>
+      <parameters>TC3554</parameters>
+    </steps>
+    <steps name="move">
+      <parameters>TC3537</parameters>
+      <parameters>TC3535</parameters>
+    </steps>
+    <steps name="move">
+      <parameters>TC3535</parameters>
+      <parameters>TC3554</parameters>
+    </steps>
+    <steps name="collided">
+      <parameters>TC3554</parameters>
+    </steps>
+  </simulations>
+  <simulations name="Newark_TCN11214_TCN11206_TC3510_AND_MORE loaded @ 06/07/2017 15:11:56">
+    <steps name="setRoute">
+      <parameters>R4155</parameters>
+    </steps>
+    <steps name="move">
+      <parameters>OFFTRACK</parameters>
+      <parameters>TC3532</parameters>
+    </steps>
+    <steps name="move">
+      <parameters>TC3532</parameters>
+      <parameters>TC3512</parameters>
+    </steps>
+    <steps name="move">
+      <parameters>TC3512</parameters>
+      <parameters>TCN11214</parameters>
+    </steps>
+    <steps name="switch">
+      <parameters>N11214</parameters>
+    </steps>
+    <steps name="derailed">
+      <parameters>N11214</parameters>
+    </steps>
+  </simulations>
 </uk.ac.swanseacoventry.cmt.ontrack:TrackPlan>
