@@ -38,6 +38,8 @@ import org.eclipse.ui.IEditorPart;
 import org.eclipse.ui.IWorkbenchPage;
 import org.eclipse.ui.IWorkbenchPartReference;
 import org.eclipse.ui.part.ViewPart;
+import org.eclipse.ui.plugin.AbstractUIPlugin;
+
 import uk.ac.swanseacoventry.cmt.ontrack.ControlTableItem;
 import uk.ac.swanseacoventry.cmt.ontrack.Point;
 import uk.ac.swanseacoventry.cmt.ontrack.Signal;
@@ -58,6 +60,7 @@ public class SimulationViewer extends ViewPart {
 	private Simulation currentSimulation;
 	private Hashtable<Track, Color> highLighted;
 	private Action btnSims;
+	private SimulationMenu menu = null;
 
 	public SimulationViewer() {
 		super();
@@ -117,6 +120,7 @@ public class SimulationViewer extends ViewPart {
 		if (diagramEditPart == null)
 			return;
 		TrackPlan trackplan = (TrackPlan) ((View) diagramEditPart.getModel()).getElement();
+
 		refreshSimulationActions(trackplan);
 
 		registerActivatedListener();
@@ -179,15 +183,24 @@ public class SimulationViewer extends ViewPart {
 
 	void createToolBar() {
 		IToolBarManager mgr = getViewSite().getActionBars().getToolBarManager();
+		mgr.add(new Action("Refresh",
+				AbstractUIPlugin.imageDescriptorFromPlugin("org.eclipse.ui.ide", "icons/full/elcl16/refresh_nav.png")) {
+			public void run() {
+				DiagramEditPart diagramEditPart = Util.getDiagramEP();
+				if (diagramEditPart == null)
+					return;
+
+				TrackPlan trackplan = (TrackPlan) ((View) diagramEditPart.getModel()).getElement();
+				refreshSimulationActions(trackplan);
+			}
+		});
 		mgr.add(btnSims = new Action("Simulations", IAction.AS_DROP_DOWN_MENU) {
 			{
 				// setImageDescriptor(AbstractUIPlugin.imageDescriptorFromPlugin("org.eclipse.ui",
 				// "icons/full/etool16/editor_area.png"));
-				DiagramEditPart diagramEditPart = Util.getDiagramEP();
-				if (diagramEditPart != null) {
-					TrackPlan trackplan = (TrackPlan) ((View) diagramEditPart.getModel()).getElement();
-					this.setMenuCreator(new SimulationMenu(SimulationViewer.this, this, trackplan));
-				}
+				menu = new SimulationMenu(SimulationViewer.this);
+				this.setMenuCreator(menu);
+				menu.SetAction(this);
 			}
 
 			public void run() {
@@ -201,21 +214,7 @@ public class SimulationViewer extends ViewPart {
 			
 		});
 
-		mgr.add(new Action("Restart") { // ,
-										// AbstractUIPlugin.imageDescriptorFromPlugin("org.eclipse.ui",
-										// "icons/full/elcl16/trash.png")){
-			public void run() {
-				if (table.getItemCount() <= 0)
-					return;
-				table.setSelection(0);
-				TableItem item = table.getItem(0);
-				if (item.getData() == null)
-					item.setData(calculateDiplay(null, item));
-				selectTableItem(item);
-			}
-		});
-
-		mgr.add(new Action("Play to") { // ,
+		mgr.add(new Action("Play") { // ,
 										// AbstractUIPlugin.imageDescriptorFromPlugin("org.eclipse.ui",
 										// "icons/full/elcl16/trash.png")){
 			public void run() {
@@ -231,6 +230,23 @@ public class SimulationViewer extends ViewPart {
 						selectTableItem(item);
 					}
 					last = item;
+				}
+			}
+		});
+
+		mgr.add(new Action("Play all") { // ,
+			// AbstractUIPlugin.imageDescriptorFromPlugin("org.eclipse.ui",
+			// "icons/full/elcl16/trash.png")){
+			public void run() {
+				if (table.getItemCount() <= 0)
+					return;
+				for (int i = 0; i <= table.getItemCount(); i++) {
+					table.setSelection(i);
+					TableItem item = table.getItem(i);
+					if (item.getData() == null) {
+						item.setData(calculateDiplay(i>0 ? table.getItem(i-1) : null, item));
+						selectTableItem(item);
+					}
 				}
 			}
 		});
@@ -280,49 +296,47 @@ public class SimulationViewer extends ViewPart {
 			}
 		});
 
-		mgr.add(new Action("Add") { // ,
+		mgr.add(new Action("Load") { // ,
 									// AbstractUIPlugin.imageDescriptorFromPlugin("org.eclipse.ui",
 									// "icons/full/elcl16/trash.png")){
 			public void run() {
-				FileDialog dialog = new FileDialog(table.getShell(), SWT.OPEN);
+				FileDialog dialog = new FileDialog(table.getShell(), SWT.OPEN | SWT.MULTI);
 				dialog.setFilterExtensions(new String[] { "*.txt" });
-				String result = dialog.open();
-
-				boolean collectTrace = false;
-				String trace = "";
-				BufferedReader br;
-				try {
-					br = new BufferedReader(new FileReader(result));
-					String line = br.readLine();
-
-					while (line != null) {
-						if (line.trim().startsWith("Implementation Debug:"))
-							collectTrace = true;
-						if (collectTrace)
-							trace += line.trim();
-						if (line.trim().startsWith("Error Event:"))
-							collectTrace = false;
-						line = br.readLine();
-					}
-					br.close();
-				} catch(Exception e) {
+				if (dialog.open()!=null) {
+					String[] results = dialog.getFileNames();
 					
-				}
-
-				if (!trace.isEmpty()) {
-					ArrayList<String[]> ce = Util.extractFDRCounterExample(trace);
-					DiagramEditPart diagramEditPart = Util.getDiagramEP();
-					if (diagramEditPart != null) {
-						File f = new File(result);
-						String name = f.getName();
-						int lastDot = name.lastIndexOf(".");
-						if (lastDot >= 0)
-							name = name.substring(0, lastDot);
-						SimpleDateFormat dateformat = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
-						name += " loaded @ " + dateformat.format(new java.util.Date());
-						CompoundCommand cc = new CompoundCommand();
-						cc.add(new ICommandProxy(new SimulationAddCommand(diagramEditPart, name, ce)));
-						cc.execute();
+					for(String result : results) {
+						String trace = "";
+						BufferedReader br;
+						try {
+							br = new BufferedReader(new FileReader(dialog.getFilterPath() + File.separator + result));
+							String line = br.readLine();
+		
+							while (line != null) {
+								trace += line.trim();
+								line = br.readLine();
+							}
+							br.close();
+						} catch(Exception e) {
+							
+						}
+		
+						if (!trace.isEmpty()) {
+							ArrayList<String[]> ce = Util.extractFDRCounterExample(trace);
+							DiagramEditPart diagramEditPart = Util.getDiagramEP();
+							if (diagramEditPart != null) {
+								File f = new File(result);
+								String name = f.getName();
+								int lastDot = name.lastIndexOf(".");
+								if (lastDot >= 0)
+									name = name.substring(0, lastDot);
+								SimpleDateFormat dateformat = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
+								name += " loaded @ " + dateformat.format(new java.util.Date());
+								CompoundCommand cc = new CompoundCommand();
+								cc.add(new ICommandProxy(new SimulationAddCommand(diagramEditPart, name, ce)));
+								cc.execute();
+							}
+						}
 					}
 				}
 			}
@@ -408,15 +422,16 @@ public class SimulationViewer extends ViewPart {
 
 	class SimulationMenu implements IMenuCreator, SelectionListener {
 		private Menu simMenu;
-		private TrackPlan trackplan;
 		private SimulationViewer viewer;
 		private Action btn;
+		
+		public void SetAction(Action act) {
+			btn = act;
+		}
 
-		public SimulationMenu(SimulationViewer parent, Action btn, TrackPlan plan) {
+		public SimulationMenu(SimulationViewer parent) {
 			super();
 			this.viewer = parent;
-			trackplan = plan;
-			this.btn =btn;
 		}
 
 		@Override
@@ -426,16 +441,32 @@ public class SimulationViewer extends ViewPart {
 			simMenu = null;
 		}
 
+		public void reloadSimulations() {
+			if (simMenu==null) return;
+			
+			// clear the currently loaded sims
+			while(simMenu.getItemCount() > 0) {
+				simMenu.getItem(0).dispose();
+			}
+			
+			DiagramEditPart diagramEditPart = Util.getDiagramEP();
+			if (diagramEditPart != null) {
+				TrackPlan trackplan = (TrackPlan) ((View) diagramEditPart.getModel()).getElement();
+			// reload them
+				for (Simulation sim : trackplan.getSimulations()) {
+					MenuItem sim1 = new MenuItem(simMenu, SWT.PUSH);
+					String name = sim.getName() == null ? "No name" : sim.getName();
+					sim1.setText(name);
+					sim1.setData(sim);
+					sim1.addSelectionListener(this);
+				}
+			}
+		}
+		
 		@Override
 		public Menu getMenu(Control parent) {
 			simMenu = new Menu(parent);
-			for (Simulation sim : trackplan.getSimulations()) {
-				MenuItem sim1 = new MenuItem(simMenu, SWT.PUSH);
-				String name = sim.getName() == null ? "No name" : sim.getName();
-				sim1.setText(name);
-				sim1.setData(sim);
-				sim1.addSelectionListener(this);
-			}
+			reloadSimulations();
 			return simMenu;
 		}
 
@@ -470,6 +501,8 @@ public class SimulationViewer extends ViewPart {
 	}
 
 	void refreshSimulationActions(TrackPlan trackplan) {
+		menu.reloadSimulations();
+		
 		table.removeAll();
 		if (currentSimulation == null)
 			return;

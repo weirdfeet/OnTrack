@@ -3,6 +3,7 @@ package uk.ac.swanseacoventry.cmt.ontrack.diagram.view;
 
 import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
@@ -26,6 +27,7 @@ import org.eclipse.swt.events.DisposeListener;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Event;
+import org.eclipse.swt.widgets.FileDialog;
 import org.eclipse.swt.widgets.Listener;
 import org.eclipse.swt.widgets.MessageBox;
 import org.eclipse.swt.widgets.Table;
@@ -362,39 +364,101 @@ public class CSPTableViewer extends ViewPart {
 
 		 // running FDR3 at a remote server via ssh
 		 // there are 2 steps: 1. upload models, 2. run refines on each model
-		 mgr.add(new Action("RMC"){
-			 public void run(){
-				System.out.println("Remote model checking");
+//		 mgr.add(new Action("RMC"){
+//			 public void run(){
+//				System.out.println("Remote model checking");
+//				DiagramEditPart diagramEditPart = Util.getDiagramEP();
+//				if (diagramEditPart==null) return;
+//				
+//				RemoteFDR3Helper remote = new RemoteFDR3Helper();
+//				remote.display = Display.getDefault();
+//
+//				for(TableItem item : table.getSelection()){
+//					remote.tableItems.add(item);
+//					Object tp = item.getData();
+//					if (tp instanceof TrackPlan){
+//						if (!fullModelPath.equals("")){
+//							// callFDR3(fullModelPath);
+//							System.out.println("Model check: " + fullModelPath);
+//							remote.modelFolders.add(fullModelPath);
+//						}
+//					} else if (tp instanceof SubTrackPlan) {
+//						if (modelPaths.containsKey(tp)){
+//							// callFDR3(modelPaths.get(tp));
+//							System.out.println("Model check: " + modelPaths.get(tp));
+//							remote.modelFolders.add(modelPaths.get(tp));
+//						}
+//					}
+//				}
+//				
+//				Thread t = new Thread(remote);
+//				t.start();
+//					
+//			 }
+//		 });
+			mgr.add(new Action("Load") { // ,
+				// AbstractUIPlugin.imageDescriptorFromPlugin("org.eclipse.ui",
+				// "icons/full/elcl16/trash.png")){
+			public void run() {
 				DiagramEditPart diagramEditPart = Util.getDiagramEP();
-				if (diagramEditPart==null) return;
-				
-				RemoteFDR3Helper remote = new RemoteFDR3Helper();
-				remote.display = Display.getDefault();
+				TrackPlan trackplan = (TrackPlan)((View)diagramEditPart.getModel()).getElement();
 
-				for(TableItem item : table.getSelection()){
-					remote.tableItems.add(item);
-					Object tp = item.getData();
-					if (tp instanceof TrackPlan){
-						if (!fullModelPath.equals("")){
-							// callFDR3(fullModelPath);
-							System.out.println("Model check: " + fullModelPath);
-							remote.modelFolders.add(fullModelPath);
+				FileDialog dialog = new FileDialog(table.getShell(), SWT.OPEN);
+				dialog.setFilterExtensions(new String[] { "*.txt" });
+				String result = dialog.open();
+
+				BufferedReader br;
+				try {
+					br = new BufferedReader(new FileReader(result));
+					String line = br.readLine();
+					line = br.readLine(); // ignore the first line
+					while (line != null) {
+						SubTrackPlan subTP = null;
+						Track track = null;
+						String[] subs = null;
+
+						if (!line.equals("Full")) {
+							subs = line.split(",");
+							String first = subs[0].split("_")[0];
+							if (first.equals("ENTRY"))
+								first += "_" + subs[0].split("_")[1];							
+	
+							for(Track t : trackplan.getTracks()) {
+								if (t.getName().equals(first)) {
+									track = t;
+									break;
+								}
+							}
+	
+							if (track!=null)
+								for(SubTrackPlan stp : trackplan.getSubTrackPlans()) {
+									if (stp.getCriticals().contains(track)) {
+										subTP = stp;
+										break;
+									}
+								}
 						}
-					} else if (tp instanceof SubTrackPlan) {
-						if (modelPaths.containsKey(tp)){
-							// callFDR3(modelPaths.get(tp));
-							System.out.println("Model check: " + modelPaths.get(tp));
-							remote.modelFolders.add(modelPaths.get(tp));
+						
+						if (!line.equals("Full") || subTP!=null) {
+							CompoundCommand cc = new CompoundCommand();
+							cc.add(new ICommandProxy(new VerificationResultUpdateCommand(diagramEditPart, subTP, subs[5], subs[6], subs[7])));
+							cc.execute();
 						}
+						
+						line = br.readLine();
 					}
+					
+					br.close();
+				} catch (Exception e) {
+
 				}
 				
-				Thread t = new Thread(remote);
-				t.start();
-					
-			 }
-		 });
+				refreshCSPTableFrom(trackplan);
 
+			}
+		});
+
+	}
 		 
 		 //		 mgr.add(new Action("Init"){
 //			 public void run(){
@@ -456,7 +520,7 @@ public class CSPTableViewer extends ViewPart {
 //				refresReleaseTableFrom(trackplan);
 //			 }
 //		 });
-	}
+//	}
 	
 	void registerActivatedListener(){
 		Util.getActivePage().addPartListener(new PartListener2Impl(){
