@@ -1,0 +1,79 @@
+-- id in normal or reverse Tables of rID
+UnlockedPointRouteBehaveAlph(id,rID) = union({|switch.id,setRoute.rID,cancelRoute.rID|},{|move.rls, hangMove.rls | rls <- releaseTable(rID,id) |})
+UnlockedPointRouteBehave(id,rID) =  -- switch, releasePoint, setRoute, cancelRoute
+  (switch.id -> UnlockedPointRouteBehave(id,rID))
+  []
+  (setRoute.rID ->
+    if member(id,union(normalTable(rID),reverseTable(rID))) then
+      LockedPointRouteBehave(id,rID)
+    else
+      UnlockedPointRouteBehave(id,rID))
+  []
+  ([] rls : releaseTable(rID,id) @ move.rls -> UnlockedPointRouteBehave(id,rID))
+  []
+  ([] rls : releaseTable(rID,id) @ hangMove.rls -> UnlockedPointRouteBehave(id,rID))
+
+LockedPointRouteBehave(id,rID) =  -- switch, releasePoint, setRoute, cancelRoute
+  (setRoute.rID -> LockedPointRouteBehave(id,rID))
+  []
+  (cancelRoute.rID -> UnlockedPointRouteBehave(id,rID))
+  []
+  ([] rls : releaseTable(rID,id) @ move.rls -> UnlockedPointRouteBehave(id,rID))
+  []
+  ([] rls : releaseTable(rID,id) @ hangMove.rls -> UnlockedPointRouteBehave(id,rID))
+
+PointRouteBehaveAlph(id) = Union({UnlockedPointRouteBehaveAlph(id,rID) | rID : RouteID})
+PointRouteBehave(id) = || rID : RouteID @ [ UnlockedPointRouteBehaveAlph(id,rID) ] UnlockedPointRouteBehave(id,rID)
+
+NormalPointBehaveAlph(id) = union({| switch.id, setRoute, ranthru.id |},
+                            { m.pointAt(id).t,  
+                              m.t.pointAt(id) | m <- {move, hangMove}, t <- {normalNext(id), reverseNext(id), commonNext(id)} })
+NormalPointBehave(id) =
+  (switch.id -> ReversePointBehave(id))
+  []
+  ([] m : {move,hangMove}, t : {normalNext(id), commonNext(id)}, m1 : { m.pointAt(id).t, m.t.pointAt(id)} @ m1 -> NormalPointBehave(id))
+  []
+  ([] m : {move,hangMove}, t : {reverseNext(id)}, m1 : { m.t.pointAt(id)} @ m1 -> ranthru.id -> NormalPointBehave(id))
+  []
+  ([] rID : RouteID @ not(member(id,reverseTable(rID))) & setRoute.rID -> NormalPointBehave(id))
+
+ReversePointBehave(id) =
+  (switch.id -> NormalPointBehave(id))
+  []
+  ([] m : {move,hangMove}, t : {reverseNext(id), commonNext(id)}, m1 : { m.pointAt(id).t, m.t.pointAt(id)} @ m1 -> ReversePointBehave(id))
+  []
+  ([] m : {move,hangMove}, t : {normalNext(id)}, m1 : { m.t.pointAt(id)} @ m1 -> ranthru.id -> ReversePointBehave(id))
+  []
+  ([] rID : RouteID @ not(member(id,normalTable(rID))) & setRoute.rID -> ReversePointBehave(id))
+  
+UnoccupiedPointAlpha(id) = {| switch.id, derailed.id, move.t.pointAt(id), move.pointAt(id).t, hangMove.t.pointAt(id), hangMove.pointAt(id).t| t <- diff(TrackID,{pointAt(id)}) |}
+UnoccupiedPoint(id) = 
+  ([] t : diff(TrackID,{pointAt(id)}) @ move.t.pointAt(id) -> OccupiedPoint(id))
+  []
+  ([] t : diff(TrackID,{pointAt(id)}) @ move.pointAt(id).t -> UnoccupiedPoint(id))
+  []
+  ([] t : diff(TrackID,{pointAt(id)}) @ hangMove.t.pointAt(id) -> OccupiedPoint(id))
+  []
+  ([] t : diff(TrackID,{pointAt(id)}) @ hangMove.pointAt(id).t -> UnoccupiedPoint(id))
+  []
+  (switch.id -> UnoccupiedPoint(id))
+
+OccupiedPoint(id) = 
+  ([] t : diff(TrackID,{pointAt(id)}) @ move.t.pointAt(id) -> OccupiedPoint(id))
+  []
+  ([] t : diff(TrackID,{pointAt(id)}) @ move.pointAt(id).t -> UnoccupiedPoint(id))
+  []
+  ([] t : diff(TrackID,{pointAt(id)}) @ hangMove.t.pointAt(id) -> OccupiedPoint(id))
+  []
+  ([] t : diff(TrackID,{pointAt(id)}) @ hangMove.pointAt(id).t -> UnoccupiedPoint(id))
+  []
+  (switch.id -> derailed.id -> OccupiedPoint(id))
+  
+UnoccupiedNormalPointBehaveAlpha(id) = union(NormalPointBehaveAlph(id), UnoccupiedPointAlpha(id))
+UnoccupiedNormalPointBehave(id) = NormalPointBehave(id) [ NormalPointBehaveAlph(id) || UnoccupiedPointAlpha(id) ] UnoccupiedPoint(id)
+
+PointBehaveAlpha(id) = union(UnoccupiedNormalPointBehaveAlpha(id), PointRouteBehaveAlph(id))
+PointBehave(id) = UnoccupiedNormalPointBehave(id) [ UnoccupiedNormalPointBehaveAlpha(id) || PointRouteBehaveAlph(id) ] PointRouteBehave(id)
+
+Points = || id : PointID @ [PointBehaveAlpha(id)] PointBehave(id)
+PointsAlpha = Union({PointBehaveAlpha(id) | id : PointID})
