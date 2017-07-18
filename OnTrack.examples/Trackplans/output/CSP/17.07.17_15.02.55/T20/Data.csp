@@ -1,0 +1,80 @@
+
+-- generating datatypes
+datatype TrackID = OFFTRACK | B20 | T20 | T11 | T12 | T13 | B13 | T30 | B30
+datatype PointID = PT11 | PT12
+datatype SignalID = SE__1 | SE__18 | SE__22 | MB20 | MB21 | MB12 | MB13 | MB30 | MB31
+datatype RouteID = RE__1 | RE__18 | RE__22 | R3 | R11 | R12 | R10 | R5 | R7 | R4 | R8 | R6
+-- end generating datatypes
+
+--generating sets
+TrackConfig = { (B20, OFFTRACK, T20), (T20, B20, T11), (T11, T12, OFFTRACK), (T11, T12, T20), (T12, T11, T13), (T12, T11, T30), (T13, T12, B13), (B13, T13, OFFTRACK), (T30, T12, B30), (B30, T30, OFFTRACK) }
+EntryTrack = { T11, B20, B13, B30 }
+ExitTrack = { T11, B20, B13, B30 }
+EntryRoute = { RE__1, RE__18, RE__22 }
+EntryRouteSignal = { SE__1, SE__18, SE__22 }
+Terminal = {  }
+Critical = { T20 }
+-- end generating sets
+
+-- generating functions
+overlapped = false
+pointAt(PT11) = T11
+pointAt(PT12) = T12
+normalNext(PT11) = OFFTRACK
+normalNext(PT12) = T13
+reverseNext(PT11) = T20
+reverseNext(PT12) = T30
+commonNext(PT11) = T12
+commonNext(PT12) = T11
+signalAt(MB20) = B20.T20
+signalAt(MB21) = T20.B20
+signalAt(MB12) = T13.B13
+signalAt(MB13) = B13.T13
+signalAt(MB30) = T30.B30
+signalAt(MB31) = B30.T30
+signalAt(SE__1) = OFFTRACK.B20
+signalAt(SE__18) = OFFTRACK.B13
+signalAt(SE__22) = OFFTRACK.B30
+signal(R3) = MB13
+signal(R11) = MB21
+signal(R12) = MB30
+signal(R10) = MB12
+signal(R5) = MB20
+signal(R7) = MB31
+signal(R4) = MB13
+signal(R8) = MB31
+signal(R6) = MB20
+signal(RE__1) = SE__1
+signal(RE__18) = SE__18
+signal(RE__22) = SE__22
+ctrlTable(R3) = ({ PT12, PT11 }, {  }, { T11, T12, T13 }, { T13.B13.T12, T12.T13.T11 })
+ctrlTable(R11) = ({  }, {  }, { B20 }, { B20.T20.OFFTRACK })
+ctrlTable(R12) = ({  }, {  }, { B30 }, { B30.T30.OFFTRACK })
+ctrlTable(R10) = ({  }, {  }, { B13 }, { B13.T13.OFFTRACK })
+ctrlTable(R5) = ({ PT12 }, { PT11 }, { T11, T12, T20, T13 }, { T11.T20.T12, T13.T12.B13, T20.B20.T11, T12.T11.T13 })
+ctrlTable(R7) = ({ PT11 }, { PT12 }, { T12, T11, T30 }, { T30.B30.T12, T12.T30.T11 })
+ctrlTable(R4) = ({ PT12 }, { PT11 }, { T11, T12, T20, T13 }, { T20.T11.B20, T13.B13.T12, T12.T13.T11, T11.T12.T20 })
+ctrlTable(R8) = ({  }, { PT12, PT11 }, { T12, T11, T20, T30 }, { T30.B30.T12, T20.T11.B20, T12.T30.T11, T11.T12.T20 })
+ctrlTable(R6) = ({  }, { PT12, PT11 }, { T12, T11, T20, T30 }, { T11.T20.T12, T20.B20.T11, T30.T12.B30, T12.T11.T30 })
+ctrlTable(RE__1) = ({  }, {  }, { B20 }, { B20.OFFTRACK.T20 })
+ctrlTable(RE__18) = ({  }, {  }, { B13 }, { B13.OFFTRACK.T13 })
+ctrlTable(RE__22) = ({  }, {  }, { B30 }, { B30.OFFTRACK.T30 })
+releaseTable(R3, PT11) = ({ T11.OFFTRACK })
+releaseTable(R4, PT11) = ({ T11.T20 })
+releaseTable(R5, PT11) = ({ T11.T12 })
+releaseTable(R6, PT11) = ({ T11.T12 })
+releaseTable(R7, PT11) = ({ T11.OFFTRACK })
+releaseTable(R8, PT11) = ({ T11.T20 })
+releaseTable(R3, PT12) = ({ T12.T11 })
+releaseTable(R4, PT12) = ({ T12.T11 })
+releaseTable(R5, PT12) = ({ T12.T13 })
+releaseTable(R6, PT12) = ({ T12.T30 })
+releaseTable(R7, PT12) = ({ T12.T11 })
+releaseTable(R8, PT12) = ({ T12.T11 })
+-- end generating function
+releaseTable(_,_) = {}
+
+
+
+
+
