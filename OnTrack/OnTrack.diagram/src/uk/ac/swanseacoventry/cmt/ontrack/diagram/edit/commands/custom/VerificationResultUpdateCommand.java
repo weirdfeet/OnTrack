@@ -24,7 +24,7 @@ public class VerificationResultUpdateCommand extends AbstractTransactionalComman
 	private String states;
 	private String result;
 	
-	public VerificationResultUpdateCommand(IGraphicalEditPart ep, SubTrackPlan subplan, String time, String states, String result) {
+	public VerificationResultUpdateCommand(IGraphicalEditPart ep, SubTrackPlan subplan, String states, String time, String result) {
 		super(ep.getEditingDomain(),"compute-covering",null);
 		trackplanEP = (DiagramEditPart)ep;
 		trackplan = (TrackPlan)((View)trackplanEP.getModel()).getElement();

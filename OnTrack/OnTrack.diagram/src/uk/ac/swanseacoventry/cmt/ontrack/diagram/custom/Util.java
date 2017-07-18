@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Hashtable;
 import java.util.List;
 
+import org.eclipse.core.runtime.IPath;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.gef.EditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.DiagramEditPart;
@@ -11,10 +12,12 @@ import org.eclipse.gmf.runtime.diagram.ui.resources.editor.parts.DiagramDocument
 import org.eclipse.gmf.runtime.emf.core.util.EMFCoreUtil;
 import org.eclipse.swt.graphics.Color;
 import org.eclipse.ui.IEditorPart;
+import org.eclipse.ui.IEditorInput;
 import org.eclipse.ui.IWorkbench;
 import org.eclipse.ui.IWorkbenchPage;
 import org.eclipse.ui.IWorkbenchWindow;
 import org.eclipse.ui.PlatformUI;
+import org.eclipse.ui.part.FileEditorInput;
 
 import uk.ac.swanseacoventry.cmt.ontrack.Track;
 import uk.ac.swanseacoventry.cmt.ontrack.diagram.edit.parts.TrackEditPart;
@@ -109,6 +112,23 @@ public class Util {
 		}
 		
 		return ret;
+	}
+	
+	public static String getActiveFile(){
+		IEditorPart ep = getEditorPart();
+		if (ep!=null) {
+			IEditorInput ei = ep.getEditorInput();
+			if (ei!=null) {
+				IPath path = ((FileEditorInput)ei).getPath();
+				if (path!=null) {
+					int c = path.segmentCount();
+					String name = path.segment(c-1);
+					int dot = name.lastIndexOf(".");
+					return dot>=0 ? name.substring(0, dot) : name;
+				}
+			}
+		}
+		return null;
 	}
 
 }

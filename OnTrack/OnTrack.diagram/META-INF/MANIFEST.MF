@@ -46,7 +46,9 @@ Require-Bundle: org.eclipse.core.runtime,
  org.eclipse.emf.validation;visibility:=reexport,
  org.eclipse.gmf.runtime.notation;visibility:=reexport,
  org.eclipse.emf.ecoretools;bundle-version="3.1.0",
- org.eclipse.ui
+ org.eclipse.ui,
+ org.eclipse.ui.workbench,
+ org.eclipse.equinox.registry
 Bundle-ActivationPolicy: lazy
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Import-Package: uk.ac.swanseacoventry.cmt.ontrack.dsl2csp,

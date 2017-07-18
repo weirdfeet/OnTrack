@@ -3,6 +3,8 @@ package uk.ac.swanseacoventry.cmt.ontrack.railimporter;
 
 import java.io.File;
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.StandardCopyOption;
 import java.util.ArrayDeque;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -314,9 +316,11 @@ public class TopologyCalculator {
 		//buildTopologicalRoutes();
 		
 		ResourceSet resourceSet = new ResourceSetImpl(); 
+		
+		String tempFile = System.getProperty("java.io.tmpdir") + File.separator + "temp_imported_ontrack.xmi";
 
 		resourceSet.getResourceFactoryRegistry().getExtensionToFactoryMap().put("xmi", new  XMIResourceFactoryImpl());		
-		Resource myModel = resourceSet.createResource(URI.createFileURI( outputFile )); // + ".xmi"));
+		Resource myModel = resourceSet.createResource(URI.createFileURI( tempFile ));
 		
 		ArrayDeque<Node> queue = new ArrayDeque<Node>();
 
@@ -626,14 +630,17 @@ public class TopologyCalculator {
 		
 		try {
 			myModel.save(null);
+			File f = new File(tempFile);
+			File output_file = new File(outputFile);
+			Files.move(f.toPath(), output_file.toPath(), StandardCopyOption.REPLACE_EXISTING);
+			return output_file;
+			
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		File f = new File(outputFile);
-//		File newf = new File(outputFile);
-//		f.renameTo(newf);
-		return f; // newf;
+		
+		return null; 
 		
 	}
 	
