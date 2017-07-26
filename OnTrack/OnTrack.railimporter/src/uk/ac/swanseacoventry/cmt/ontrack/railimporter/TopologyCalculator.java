@@ -1,8 +1,11 @@
 package uk.ac.swanseacoventry.cmt.ontrack.railimporter;
 
 
+import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.nio.file.Files;
 import java.nio.file.StandardCopyOption;
 import java.util.ArrayDeque;
@@ -71,6 +74,53 @@ public class TopologyCalculator {
 
 	int conNum = 1;
 	TrackPlan barkston = OntrackFactory.eINSTANCE.createTrackPlan(); // barkston was named due to historic reason, should rename to trackplan
+	
+	private void saveConnectorPositions(String outputFile){
+		StringBuilder sb = new StringBuilder();
+		sb.append(createdConnectors.size());
+		sb.append("\n");
+		for(Node n : createdConnectors.keySet()){
+			Connector c = createdConnectors.get(n);
+			sb.append(c.getId());
+			sb.append(",");
+			sb.append(n.getLocationX());
+			sb.append(",");
+			sb.append(n.getLocationY());
+			sb.append("\n");
+		}
+		sb.append(createdPoints.size());
+		sb.append("\n");
+		for(Point n : createdPoints.keySet()){
+			uk.ac.swanseacoventry.cmt.ontrack.Point p = createdPoints.get(n);
+			sb.append(p.getName());
+			sb.append(",");
+			sb.append(n.getLocationX());
+			sb.append(",");
+			sb.append(n.getLocationY());
+			sb.append("\n");
+		}
+		sb.append(createdCrossings.size());
+		sb.append("\n");
+		for(Diamond n : createdCrossings.keySet()){
+			uk.ac.swanseacoventry.cmt.ontrack.Crossing p = createdCrossings.get(n);
+			sb.append(p.getName());
+			sb.append(",");
+			sb.append(n.getLocationX());
+			sb.append(",");
+			sb.append(n.getLocationY());
+			sb.append("\n");
+		}
+		PrintWriter f;
+		try {
+			f = new PrintWriter(outputFile);
+			f.print(sb.toString());
+			f.close();
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+	}
 	
 	uk.ac.swanseacoventry.cmt.ontrack.Signal getOnTrackSignal(Signal n){
 		uk.ac.swanseacoventry.cmt.ontrack.Signal s = createdSignals.get(n);
@@ -633,6 +683,7 @@ public class TopologyCalculator {
 			File f = new File(tempFile);
 			File output_file = new File(outputFile);
 			Files.move(f.toPath(), output_file.toPath(), StandardCopyOption.REPLACE_EXISTING);
+			saveConnectorPositions(inputFile+ ".layout");
 			return output_file;
 			
 		} catch (IOException e) {
