@@ -57,6 +57,8 @@ import uk.ac.swanseacoventry.cmt.ontrack.diagram.edit.parts.ExitEditPart;
 import uk.ac.swanseacoventry.cmt.ontrack.diagram.edit.parts.SignalConnectorEditPart;
 import uk.ac.swanseacoventry.cmt.ontrack.diagram.edit.parts.SignalEditPart;
 import uk.ac.swanseacoventry.cmt.ontrack.diagram.edit.parts.SignalTrackEditPart;
+import uk.ac.swanseacoventry.cmt.ontrack.diagram.edit.parts.TerminalConnectorEditPart;
+import uk.ac.swanseacoventry.cmt.ontrack.diagram.edit.parts.TerminalEditPart;
 import uk.ac.swanseacoventry.cmt.ontrack.diagram.edit.parts.TrackEditPart;
 
 public class TopoAbstractViewer extends ViewPart {
@@ -460,13 +462,23 @@ public class TopoAbstractViewer extends ViewPart {
 								cc.execute();
 							}
 						}
+						if (ep instanceof TerminalEditPart) {
+							TerminalEditPart tep = (TerminalEditPart)ep;
+							TerminalConnectorEditPart tcep = (TerminalConnectorEditPart)tep.getSourceConnections().get(0);
+							ConnectorEditPart c1 = (ConnectorEditPart) tcep.getTarget();
+							if (c1!=null) {
+								CompoundCommand cc = new CompoundCommand();
+								cc.add(new ICommandProxy(new ConnectorUpdateLocationCommand(tep, 
+										c1.getLocation().x, 
+										c1.getLocation().y, false)));
+								cc.execute();
+							}
+						}
 					}
 					for(Object ep : diagramEditPart.getChildren()){
 						if (ep instanceof SignalEditPart) {
 							SignalEditPart cep = (SignalEditPart)ep;
 							Signal sig = (Signal)((View)cep.getModel()).getElement();
-							if (sig.getName().equals("N10819")) 
-								System.out.println("Break here");
 							SignalConnectorEditPart scep = null;
 							SignalTrackEditPart step = null;
 							if (cep.getSourceConnections().get(0) instanceof SignalConnectorEditPart) { // assume that signalep has only two connectors
