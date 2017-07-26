@@ -2,7 +2,6 @@
 package uk.ac.swanseacoventry.cmt.ontrack.diagram.edit.commands.custom;
 
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.Hashtable;
 
 import org.eclipse.core.commands.ExecutionException;
@@ -17,10 +16,7 @@ import org.eclipse.gmf.runtime.notation.View;
 import uk.ac.swanseacoventry.cmt.ontrack.Connector;
 import uk.ac.swanseacoventry.cmt.ontrack.ControlTableItem;
 import uk.ac.swanseacoventry.cmt.ontrack.DirectedTrack;
-import uk.ac.swanseacoventry.cmt.ontrack.Entrance;
-import uk.ac.swanseacoventry.cmt.ontrack.Exit;
 import uk.ac.swanseacoventry.cmt.ontrack.ReleaseTableItem;
-import uk.ac.swanseacoventry.cmt.ontrack.SubTrackPlan;
 import uk.ac.swanseacoventry.cmt.ontrack.Track;
 import uk.ac.swanseacoventry.cmt.ontrack.TrackPlan;
 
@@ -135,7 +131,7 @@ public class TrackPlanApplyTopoAbstractionCommand extends AbstractTransactionalC
 			c2.getTrack2s().add(t);
 			
 			trackplan.getTracks().removeAll(list);
-			HashSet<Connector> emptyCons = new HashSet<Connector>();
+			// HashSet<Connector> emptyCons = new HashSet<Connector>();
 			for(Track deletedTrack : list){
 				if (deletedTrack.getC1()!=null) trackplan.getConnectors().remove(deletedTrack.getC1());
 				if (deletedTrack.getC2()!=null) trackplan.getConnectors().remove(deletedTrack.getC2());

@@ -1,10 +1,6 @@
 package uk.ac.swanseacoventry.cmt.ontrack.abs.covering;
 
-import java.util.ArrayList;
 import java.util.HashSet;
-import java.util.Hashtable;
-import java.util.Set;
-
 import org.eclipse.emf.common.util.EList;
 
 import uk.ac.swanseacoventry.cmt.ontrack.ControlTableItem;

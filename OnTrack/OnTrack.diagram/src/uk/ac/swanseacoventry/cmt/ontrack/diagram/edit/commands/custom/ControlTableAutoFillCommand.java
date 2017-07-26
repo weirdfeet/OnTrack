@@ -2,8 +2,6 @@ package uk.ac.swanseacoventry.cmt.ontrack.diagram.edit.commands.custom;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.HashSet;
-
 import org.eclipse.core.commands.ExecutionException;
 import org.eclipse.core.runtime.IAdaptable;
 import org.eclipse.core.runtime.IProgressMonitor;
@@ -13,13 +11,10 @@ import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
 import org.eclipse.gmf.runtime.emf.commands.core.command.AbstractTransactionalCommand;
 import org.eclipse.gmf.runtime.notation.View;
 
-import uk.ac.swanseacoventry.cmt.ontrack.Connector;
 import uk.ac.swanseacoventry.cmt.ontrack.ControlTableItem;
 import uk.ac.swanseacoventry.cmt.ontrack.DirectedTrack;
 import uk.ac.swanseacoventry.cmt.ontrack.Point;
-import uk.ac.swanseacoventry.cmt.ontrack.Signal;
 import uk.ac.swanseacoventry.cmt.ontrack.TopoRoute;
-import uk.ac.swanseacoventry.cmt.ontrack.Track;
 import uk.ac.swanseacoventry.cmt.ontrack.TrackPlan;
 
 public class ControlTableAutoFillCommand extends AbstractTransactionalCommand {

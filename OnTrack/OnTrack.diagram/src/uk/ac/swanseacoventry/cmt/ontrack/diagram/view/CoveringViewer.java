@@ -2,9 +2,6 @@ package uk.ac.swanseacoventry.cmt.ontrack.diagram.view;
 
 import java.util.ArrayList;
 import java.util.HashSet;
-import java.util.Hashtable;
-import java.util.Set;
-
 import org.eclipse.gef.commands.CompoundCommand;
 import org.eclipse.gmf.runtime.diagram.ui.commands.ICommandProxy;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.DiagramEditPart;

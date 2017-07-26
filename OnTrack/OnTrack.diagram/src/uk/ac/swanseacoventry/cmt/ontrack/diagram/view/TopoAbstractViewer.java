@@ -1,10 +1,7 @@
 package uk.ac.swanseacoventry.cmt.ontrack.diagram.view;
 
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.Hashtable;
-import java.util.Set;
-
 import org.eclipse.gef.commands.CompoundCommand;
 import org.eclipse.gmf.runtime.diagram.ui.commands.ICommandProxy;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.DiagramEditPart;
@@ -32,14 +29,11 @@ import uk.ac.swanseacoventry.cmt.ontrack.Connector;
 import uk.ac.swanseacoventry.cmt.ontrack.ControlTableItem;
 import uk.ac.swanseacoventry.cmt.ontrack.Point;
 import uk.ac.swanseacoventry.cmt.ontrack.Signal;
-import uk.ac.swanseacoventry.cmt.ontrack.SubTrackPlan;
 import uk.ac.swanseacoventry.cmt.ontrack.Track;
 import uk.ac.swanseacoventry.cmt.ontrack.TrackPlan;
 import uk.ac.swanseacoventry.cmt.ontrack.diagram.custom.Util;
 import uk.ac.swanseacoventry.cmt.ontrack.diagram.edit.commands.custom.TrackPlanApplyTopoAbstractionCommand;
 import uk.ac.swanseacoventry.cmt.ontrack.diagram.edit.commands.custom.TrackPlanCoveringClearCommand;
-import uk.ac.swanseacoventry.cmt.ontrack.diagram.edit.commands.custom.TrackPlanCoveringCollapseCommand;
-import uk.ac.swanseacoventry.cmt.ontrack.diagram.edit.commands.custom.TrackPlanCoveringComputeCommand;
 import uk.ac.swanseacoventry.cmt.ontrack.diagram.view.listeners.PartListener2Impl;
 
 public class TopoAbstractViewer extends ViewPart {
@@ -86,7 +80,7 @@ public class TopoAbstractViewer extends ViewPart {
 		
 		DiagramEditPart diagramEditPart = Util.getDiagramEP();
 		if (diagramEditPart==null) return;
-		TrackPlan trackplan = (TrackPlan)((View)diagramEditPart.getModel()).getElement();
+		// TrackPlan trackplan = (TrackPlan)((View)diagramEditPart.getModel()).getElement();
 		
 		registerActivatedListener();
 
@@ -157,7 +151,8 @@ public class TopoAbstractViewer extends ViewPart {
 					DiagramEditPart diagramEditPart = Util.getDiagramEP();
 					if (diagramEditPart==null) return;
 
-					TrackPlan trackplan = (TrackPlan)((View)diagramEditPart.getModel()).getElement();
+					// TrackPlan trackplan = (TrackPlan)((View)diagramEditPart.getModel()).getElement();
+					refreshTopoAbsTable();
 			 }
 		 });
 		 mgr.add(new Action("Calculate", AbstractUIPlugin.imageDescriptorFromPlugin("org.eclipse.ui.browser", "icons/clcl16/nav_go.gif")){
@@ -236,7 +231,7 @@ public class TopoAbstractViewer extends ViewPart {
 				cc.add(new ICommandProxy(new TrackPlanApplyTopoAbstractionCommand(diagramEditPart, topoAbs)));
 				cc.execute();
 				
-				TrackPlan trackplan = (TrackPlan)((View)diagramEditPart.getModel()).getElement();
+				// TrackPlan trackplan = (TrackPlan)((View)diagramEditPart.getModel()).getElement();
 
 			 }
 		 });
@@ -288,12 +283,12 @@ public class TopoAbstractViewer extends ViewPart {
 				if (editor == null) return;
 				
 				
-				if (! (editor instanceof DiagramDocumentEditor)) return;
+				// if (! (editor instanceof DiagramDocumentEditor)) return;
 				
-				DiagramDocumentEditor diagramEditor = (DiagramDocumentEditor) editor;
-				DiagramEditPart diagramEditPart = diagramEditor.getDiagramEditPart();
+				// DiagramDocumentEditor diagramEditor = (DiagramDocumentEditor) editor;
+				// DiagramEditPart diagramEditPart = diagramEditor.getDiagramEditPart();
 				
-				TrackPlan trackplan = (TrackPlan)((View)diagramEditPart.getModel()).getElement();
+				// TrackPlan trackplan = (TrackPlan)((View)diagramEditPart.getModel()).getElement();
 				
 			}
 

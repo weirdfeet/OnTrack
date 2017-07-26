@@ -10,8 +10,6 @@ import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
 import org.eclipse.gmf.runtime.emf.commands.core.command.AbstractTransactionalCommand;
 import org.eclipse.gmf.runtime.notation.View;
 
-import uk.ac.swanseacoventry.cmt.ontrack.Entrance;
-import uk.ac.swanseacoventry.cmt.ontrack.Exit;
 import uk.ac.swanseacoventry.cmt.ontrack.SubTrackPlan;
 import uk.ac.swanseacoventry.cmt.ontrack.TrackPlan;
 

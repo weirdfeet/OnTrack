@@ -11,7 +11,6 @@ import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
 import org.eclipse.gmf.runtime.emf.commands.core.command.AbstractTransactionalCommand;
 import org.eclipse.gmf.runtime.notation.View;
 
-import uk.ac.swanseacoventry.cmt.ontrack.ControlTableItem;
 import uk.ac.swanseacoventry.cmt.ontrack.OntrackFactory;
 import uk.ac.swanseacoventry.cmt.ontrack.Simulation;
 import uk.ac.swanseacoventry.cmt.ontrack.SimulationAction;
