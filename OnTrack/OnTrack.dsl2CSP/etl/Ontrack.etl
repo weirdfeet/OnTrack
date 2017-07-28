@@ -2,6 +2,11 @@
 // This program provides operations that can be used by ETL files that import it
 ////////
 
+operation Collection intersection(c : Collection) : Collection {
+	var A = self;
+	var B = c;
+	return A.excludingAll(A.excludingAll(B));
+}
 
 ////////
 // creates a new CSP!SET and adds it to the main CSP!CSPScript
@@ -58,20 +63,6 @@ operation newCSPTypedItem(n) : CSP!TypedItem {
 
 }
 
-operation newFunc0Arg1Out(fn,fd) : CSP!ProcessAssignment {
-	var f = new CSP!ProcessAssignment;
-
-	var lhs = new CSP!ProcessID;
-	lhs.name = fn;
-
-	var rhs = new CSP!ProcessID;
-	rhs.name = fd;
-
-	f.processID = lhs;
-	f.processExpression = rhs;
-	return f;	
-}
-
 operation newFunc1Arg1Out(fn,fa,fd) : CSP!ProcessAssignment {
 	var f = new CSP!ProcessAssignment;
 
@@ -119,6 +110,22 @@ operation newFunc1Arg1SetOut(fn, fp, fs) : CSP!ProcessAssignment {
 	return f;	
 }
 
+operation newFunc2Arg1SetOut(fn, fp1, fp2, fs) : CSP!ProcessAssignment {
+	var f = new CSP!ProcessAssignment;
+	
+	var lhs = new CSP!ProcessID;
+	lhs.name = fn;
+	lhs.parameterList = newCSP2Tuple(newCSPTypedItem(fp1),newCSPTypedItem(fp2));
+
+	var rhs = new CSP!ProcessID;
+	rhs.name = "";
+	rhs.parameterList = newCSP1Tuple(fs);
+
+	f.processID = lhs;
+	f.processExpression = rhs;
+	return f;	
+}
+
 operation newFunc1Arg3SetOut(fn, fp, fs1, fs2, fs3) : CSP!ProcessAssignment {
 	var f = new CSP!ProcessAssignment;
 	
@@ -129,6 +136,22 @@ operation newFunc1Arg3SetOut(fn, fp, fs1, fs2, fs3) : CSP!ProcessAssignment {
 	var rhs = new CSP!ProcessID;
 	rhs.name = "";
 	rhs.parameterList = newCSP3Tuple(fs1,fs2,fs3);
+
+	f.processID = lhs;
+	f.processExpression = rhs;
+	return f;	
+}
+
+operation newFunc1Arg4SetOut(fn, fp, fs1, fs2, fs3, fs4) : CSP!ProcessAssignment {
+	var f = new CSP!ProcessAssignment;
+	
+	var lhs = new CSP!ProcessID;
+	lhs.name = fn;
+	lhs.parameterList = newCSP1Tuple(newCSPTypedItem(fp));
+
+	var rhs = new CSP!ProcessID;
+	rhs.name = "";
+	rhs.parameterList = newCSP4Tuple(fs1,fs2,fs3,fs4);
 
 	f.processID = lhs;
 	f.processExpression = rhs;
@@ -173,6 +196,12 @@ operation newCSPSetItem(name) : CSP!SETElement {
 	var sei = new CSP!TypedItem;
 	sei.name = name;
 	se.item = sei;
+	return se;
+}
+
+operation newCSPSetItemFromTypedItem(item) : CSP!SETElement {
+	var se = new CSP!SETElement;
+	se.item = item;
 	return se;
 }
 
@@ -273,3 +302,27 @@ operation safetrack!Track getName() : String {
 			tname = self.crossing2.track1.name;
 		return tname;
 }
+
+operation safetrack!DirectedTrack oppositeConnector() : safetrack!Connector {
+	var c = self.connector;
+	var t = self.track;
+	if (t.c1==c)
+		return t.c2;
+	else 
+		return t.c1;
+}
+
+operation newFunc0Arg1Out(fn,fd) : CSP!ProcessAssignment {
+	var f = new CSP!ProcessAssignment;
+
+	var lhs = new CSP!ProcessID;
+	lhs.name = fn;
+
+	var rhs = new CSP!ProcessID;
+	rhs.name = fd;
+
+	f.processID = lhs;
+	f.processExpression = rhs;
+	return f;	
+}
+

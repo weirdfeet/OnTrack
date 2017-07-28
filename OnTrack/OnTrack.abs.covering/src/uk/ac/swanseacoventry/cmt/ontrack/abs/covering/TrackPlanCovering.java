@@ -206,6 +206,8 @@ public class TrackPlanCovering  {
 			subControlTable.add(new OwnControlTableItem(cti.getRoute(), cti.getSignal(), cti.getNormals(), cti.getReverses(), cti.getClears(), cti.getDirections()));
 		}
 
+		
+		
 		// project the control table on the region, get set of releasing tracks
 		HashSet<Track> coneReleasingTracks = new HashSet<Track>();
 		for(OwnControlTableItem octi : subControlTable){
@@ -248,6 +250,7 @@ public class TrackPlanCovering  {
 		
 		// signal and control table
 		// routes
+		// bug 27/7: entry signal of the sub has no route (possible design error), it is not included in the sub
 		HashSet<String> coneRoutes = new HashSet<String>();
 		for(OwnControlTableItem octi : subControlTable){
 			if (coneSignals.contains(octi.signal) &&
@@ -257,9 +260,6 @@ public class TrackPlanCovering  {
 					 !octi.directions.isEmpty())) {
 				subpl.getSignals().add(octi.signal);
 				coneRoutes.add(octi.name);
-//			}
-//			if (!octi.normals.isEmpty() ||
-//					 !octi.reverses.isEmpty()){
 				ControlTableItem cti = OntrackFactory.eINSTANCE.createControlTableItem();
 				cti.setSignal(octi.signal);
 				cti.setRoute(octi.name);
@@ -270,6 +270,21 @@ public class TrackPlanCovering  {
 				subpl.getControlTable().add(cti);
 			}
 		}
+		
+		// fix of bug 27/7: add signal that has no route, this is potential deadlock
+		for(Signal s : coneSignals){
+			boolean found = false;
+			for(ControlTableItem cti : trackplan.getControlTable()){
+				if (cti.getSignal()==s) {
+					found = true;
+					break;
+				}
+			}
+			if (!found) {
+				subpl.getSignals().add(s);
+			}
+		}
+		
 		
 		// determine entries, exits, terminal
 		for(Track t : coneTracks){

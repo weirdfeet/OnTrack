@@ -240,7 +240,7 @@ public class SimulationViewer extends ViewPart {
 			public void run() {
 				if (table.getItemCount() <= 0)
 					return;
-				for (int i = 0; i <= table.getItemCount(); i++) {
+				for (int i = 0; i < table.getItemCount(); i++) {
 					table.setSelection(i);
 					TableItem item = table.getItem(i);
 					if (item.getData() == null) {

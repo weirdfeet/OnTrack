@@ -239,7 +239,7 @@ public class CSPTableViewer extends ViewPart {
 			String fdr3path = getFDR3();
 			if (fdr3path.endsWith(".app"))
 				fdr3path += "/Contents/MacOS/refines";
-			String[] cmd = { fdr3path, "Railway.csp" };
+			String[] cmd = { fdr3path, "-f", "plain", "Railway.csp" };
 			ProcessBuilder pb = new ProcessBuilder(cmd);
 			File workingDir = new File(path);
 			pb.directory(workingDir);
@@ -347,7 +347,7 @@ public class CSPTableViewer extends ViewPart {
 				if (diagramEditPart == null)
 					return;
 				TrackPlan trackplan = (TrackPlan) ((View) diagramEditPart.getModel()).getElement();
-
+				
 				for (TableItem item : table.getSelection()) {
 					Object tp = item.getData();
 					if (tp instanceof TrackPlan) {
@@ -357,7 +357,9 @@ public class CSPTableViewer extends ViewPart {
 							cc.add(new ICommandProxy(
 									new VerificationResultUpdateCommand(diagramEditPart, null, rs[0], rs[1], rs[2])));
 							cc.execute();
-							refreshCSPTableFrom(trackplan);
+							// refreshCSPTableFrom(trackplan);
+							item.setText(8, rs[2]);
+							table.getParent().layout();
 						}
 					} else if (tp instanceof SubTrackPlan) {
 						if (modelPaths.containsKey(tp)) {
@@ -366,7 +368,9 @@ public class CSPTableViewer extends ViewPart {
 							cc.add(new ICommandProxy(new VerificationResultUpdateCommand(diagramEditPart,
 									(SubTrackPlan) tp, rs[0], rs[1], rs[2])));
 							cc.execute();
-							refreshCSPTableFrom(trackplan);
+							item.setText(8, rs[2]);
+							table.getParent().layout();
+							// refreshCSPTableFrom(trackplan);
 						}
 					}
 				}
