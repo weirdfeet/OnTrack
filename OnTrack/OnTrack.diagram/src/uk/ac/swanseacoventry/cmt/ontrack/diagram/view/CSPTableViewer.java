@@ -324,7 +324,7 @@ public class CSPTableViewer extends ViewPart {
 						// Util.getEditorPart().doSave(((WorkbenchWindow)Util.getWorkbenchWindow()).getStatusLineManager().getProgressMonitor());
 						generateForTrackPlan(trackplan);
 					} else if (tp instanceof SubTrackPlan) {
-						// save the submodel to a file
+						// save the sub-model to a file
 						TrackPlan trackplan = (TrackPlan) ((View) diagramEditPart.getModel()).getElement();
 						CompoundCommand cc = new CompoundCommand();
 						cc.add(new ICommandProxy(new TrackPlanSelectSubCommand(diagramEditPart, (SubTrackPlan) tp)));
@@ -341,7 +341,7 @@ public class CSPTableViewer extends ViewPart {
 				DiagramEditPart diagramEditPart = Util.getDiagramEP();
 				if (diagramEditPart == null)
 					return;
-				TrackPlan trackplan = (TrackPlan) ((View) diagramEditPart.getModel()).getElement();
+//				TrackPlan trackplan = (TrackPlan) ((View) diagramEditPart.getModel()).getElement();
 				
 				for (TableItem item : table.getSelection()) {
 					Object tp = item.getData();
@@ -568,7 +568,7 @@ public class CSPTableViewer extends ViewPart {
 				
 				// create output folders
 				IPath outputPath = projectPath.append("output");
-				boolean ret = new File(outputPath.toOSString()).mkdir();
+				new File(outputPath.toOSString()).mkdir();
 				outputPath = outputPath.append("results.txt");
 				return outputPath.toOSString();
 			}
