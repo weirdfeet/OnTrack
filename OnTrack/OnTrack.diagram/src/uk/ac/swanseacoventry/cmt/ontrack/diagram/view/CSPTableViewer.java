@@ -198,21 +198,18 @@ public class CSPTableViewer extends ViewPart {
 		}
 	}
 
-	protected String generateForTrackPlan(TrackPlan tp, boolean exp) {
+	protected String generateForTrackPlan(TrackPlan tp) {
 		// exp = false; // uncomment to use Xu's modelling
-		DSL2CSP tool = new DSL2CSP(tp, exp);
+		DSL2CSP tool = new DSL2CSP(tp);
 		tool.generateCSP("Railway.csp");
-		if (exp) {
-			tool.generateCSP("Data.csp");
-			tool.generateCSP("RailEvent.csp");
-			tool.generateCSP("Util.csp");
-			tool.generateCSP("Track.csp");
-			tool.generateCSP("Point.csp");
-			tool.generateCSP("Signal.csp");
-			tool.generateCSP("Train.csp");
-			tool.generateCSP("Safety.csp");
-			// tool.generateCSP("Railway.csp");
-		}
+		tool.generateCSP("Data.csp");
+		tool.generateCSP("RailEvent.csp");
+		tool.generateCSP("Util.csp");
+		tool.generateCSP("Track.csp");
+		tool.generateCSP("Point.csp");
+		tool.generateCSP("Signal.csp");
+		tool.generateCSP("Train.csp");
+		tool.generateCSP("Safety.csp");
 		String generatedModelPath = tool.getOutputFolder();
 		if (tp.getSelectedSubTrackPlan() != null)
 			modelPaths.put(tp.getSelectedSubTrackPlan(), generatedModelPath);
@@ -297,8 +294,6 @@ public class CSPTableViewer extends ViewPart {
 		return ret;
 	}
 
-	boolean experimental = true;
-
 	void createToolBar() {
 		IToolBarManager mgr = getViewSite().getActionBars().getToolBarManager();
 		mgr.add(new Action("Refresh",
@@ -327,15 +322,15 @@ public class CSPTableViewer extends ViewPart {
 						cc.add(new ICommandProxy(new TrackPlanSelectSubCommand(diagramEditPart, null)));
 						cc.execute();
 						// Util.getEditorPart().doSave(((WorkbenchWindow)Util.getWorkbenchWindow()).getStatusLineManager().getProgressMonitor());
-						generateForTrackPlan(trackplan, experimental);
-					} else if (tp instanceof SubTrackPlan && experimental) {
+						generateForTrackPlan(trackplan);
+					} else if (tp instanceof SubTrackPlan) {
 						// save the submodel to a file
 						TrackPlan trackplan = (TrackPlan) ((View) diagramEditPart.getModel()).getElement();
 						CompoundCommand cc = new CompoundCommand();
 						cc.add(new ICommandProxy(new TrackPlanSelectSubCommand(diagramEditPart, (SubTrackPlan) tp)));
 						cc.execute();
 						// Util.getEditorPart().doSave(((WorkbenchWindow)Util.getWorkbenchWindow()).getStatusLineManager().getProgressMonitor());
-						generateForTrackPlan(trackplan, experimental);
+						generateForTrackPlan(trackplan);
 					}
 				}
 

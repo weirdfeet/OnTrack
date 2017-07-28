@@ -96,49 +96,14 @@ public class DSL2CSP {
 	 */
 	SubTrackPlan subplan;
 	TrackPlan trackplan;
-	boolean experimental;
 	boolean overlap;
 	String SafetyAssertions;
-	public DSL2CSP(TrackPlan tp, boolean exp) {
+	public DSL2CSP(TrackPlan tp) {
 		subplan = tp.getSelectedSubTrackPlan();
-		experimental = exp;
 		overlap = tp.isOverlapped();
 		trackplan = tp;
 		
-		if (exp) {
-			ETL_SOURCE_DIR += "exp/";
-			TEMPLATES_DIR += "exp2/";
-		}
-		
-		if (experimental){
-			SafetyAssertions = "";
-//			if (subplan==null) {
-//				SafetyAssertions += "assert NoCollision [T= System \\ diff(Events,NoCollisionAlpha)\n";
-//				SafetyAssertions += "assert NoDerailment [T= System \\ diff(Events,NoDerailmentAlpha)\n";
-//				SafetyAssertions += "assert NoRunThru [T= System \\ diff(Events,NoRunThruAlpha)	\n";			
-//			} else {
-//				HashSet<Track> ts = new HashSet<Track>();
-//				ts.addAll(subplan.getCriticals());
-//				for(Track t : ts){
-//					if (t.getPointReverse()!=null) continue;
-//					if (t.getCrossing2()!=null) continue;
-//					SafetyAssertions += "assert NoCollisionTrack(" + t.getName() + ") [T= System \\ diff(Events,NoCollisionTrackAlpha(" + t.getName() + "))\n";
-//				}
-//				for(Track t : ts){
-//					if (t.getPointNormal()==null) continue;
-//					SafetyAssertions += "assert NoDerailmentPoint(" + t.getPointNormal().getName() + ") [T= System \\ diff(Events,NoDerailmentPointAlpha(" + t.getPointNormal().getName() + "))\n";
-//					SafetyAssertions += "assert NoRunThruPoint(" + t.getPointNormal().getName() + ") [T= System \\ diff(Events,NoRunThruPointAlpha(" + t.getPointNormal().getName() + "))\n";
-//				}
-//			}
-		}
-		else {
-			SafetyAssertions = "";
-			if (subplan!=null) {
-				SafetyAssertions += "NoLocalCollision= move?en!focustrack -> move!focustrack?ex -> NoLocalCollision\n";
-				SafetyAssertions += "assert NoLocalCollision [T= FullSystem \\ union({| setRoute,cancelRoute,switch,hangMove,pullover,derail,perror,serror, turnAround|}, {move.en.ex | en <- UnitID, ex <- UnitID, en!=focustrack and ex!=focustrack})";
-			}
-
-		}
+		SafetyAssertions = "";
 		
 		// create input model
 		SAFETRACK_MODEL = trackplan.eResource().getURI().toString();
