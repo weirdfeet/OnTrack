@@ -9,15 +9,28 @@ TrainBehave(id,cp,pp) =
   []
   ([] np : next(cp,pp) @ np!=OFFTRACK & move.cp.np -> TrainBehave(id,np,cp))
   []
-  ([] np : next(cp,pp) @ np!=OFFTRACK & hangMove.cp.np -> STOP)
+  ([] np : next(cp,pp) @ overlapped and cp!=OFFTRACK and np!=OFFTRACK & hangMove.cp.np -> HangTrainBehave(id,np))
   []
   (member(OFFTRACK,next(cp,pp)) and member(cp,Terminal) & turnAround.cp -> TrainBehave(id,cp,OFFTRACK))
   []
   ([] rID : RouteID @ not(member(cp,clearTable(rID))) &
     setRoute.rID -> TrainBehave(id,cp,pp))
   []
-  ([] rID : RouteID @ signalAt1(signal(rID))!=cp or signalAt2(signal(rID))==pp &
+  ([] rID : RouteID @ signalAt1(signal(rID))!=cp & -- or signalAt2(signal(rID))==pp &
     cancelRoute.rID -> TrainBehave(id,cp,pp))
+  []
+  (collided?t -> STOP)
+  []
+  (derailed?p -> STOP)
+  []
+  (ranthru?p -> STOP)
+  
+HangTrainBehave(id,cp) = 
+  ([] rID : RouteID @ not(member(cp,clearTable(rID))) &
+    setRoute.rID -> HangTrainBehave(id,cp))
+  []
+  ([] rID : RouteID @ signalAt1(signal(rID))!=cp & -- or signalAt2(signal(rID))==pp &
+    cancelRoute.rID -> HangTrainBehave(id,cp))
   []
   (collided?t -> STOP)
   []

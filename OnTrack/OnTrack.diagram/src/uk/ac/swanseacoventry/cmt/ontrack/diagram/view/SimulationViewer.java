@@ -374,7 +374,7 @@ public class SimulationViewer extends ViewPart {
 					break;
 				}
 			}
-		} else if (action.equals("move")) {
+		} else if (action.equals("move")||action.equals("hangMove")) {
 			Track t1 = null;
 			Track t2 = null;
 			for (Track t : trackplan.getTracks()) {

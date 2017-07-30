@@ -1,5 +1,6 @@
 package uk.ac.swanseacoventry.cmt.ontrack.diagram.edit.commands.custom;
 
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Stack;
@@ -19,6 +20,7 @@ import uk.ac.swanseacoventry.cmt.ontrack.Exit;
 import uk.ac.swanseacoventry.cmt.ontrack.OntrackFactory;
 import uk.ac.swanseacoventry.cmt.ontrack.Signal;
 import uk.ac.swanseacoventry.cmt.ontrack.TopoRoute;
+import uk.ac.swanseacoventry.cmt.ontrack.Track;
 import uk.ac.swanseacoventry.cmt.ontrack.TrackPlan;
 import uk.ac.swanseacoventry.cmt.ontrack.impl.TopoRouteImpl;
 
@@ -67,8 +69,9 @@ public class TopoRoutesInitCommand extends AbstractTransactionalCommand {
 		// initialise PTR
 		for(Signal s : tp.getSignals()){
 			TopoRoute r = OntrackFactory.eINSTANCE.createTopoRoute();
-			DirectedTrack dt = s.getDirectedTrack();
-			r.getDirectedTracks().add(dt);
+			DirectedTrack dt = null;
+			if (s.getTrack()!=null) dt = s.getDirectedTrack();
+			if (dt!=null) r.getDirectedTracks().add(dt);
 			r.setStartSignal(s);
 			PTR.push(r);
 		}
@@ -77,23 +80,38 @@ public class TopoRoutesInitCommand extends AbstractTransactionalCommand {
 		while(!PTR.isEmpty()) {
 			TopoRoute r = (TopoRoute)PTR.pop();
 			
-			DirectedTrack dt = r.getDirectedTracks().get(r.getDirectedTracks().size() - 1);
-			Signal se = dt.getSignal();
-			if (se!=null && se!=r.getStartSignal() && r.getEndSignal()==null) r.setEndSignal(se);
-			HashSet<Exit> es = new HashSet<Exit>();
-			es.addAll(dt.getConnector().getExits());
-			es.retainAll(trackplan.getExits());
-			if (dt.getConnector().getTerminal()!=null || 
-					es.size() > 0 || 
-					(se!=r.getStartSignal() && trackplan.isOverlapped() && se!=r.getEndSignal()) ||
-					(se!=r.getStartSignal() && !trackplan.isOverlapped() && r.getEndSignal()!=null)
-					) {
-				if (dt.getTrack().getPointReverse()==null || dt.getTrack().getCrossing2()==null)
-					TR.push(r);
-				continue;
+			DirectedTrack dt = null;
+			if (!r.getDirectedTracks().isEmpty()) dt = r.getDirectedTracks().get(r.getDirectedTracks().size() - 1);
+			Signal se = null; 
+			if (dt!=null) {
+				se = dt.getSignal();
+				if (se!=null && se!=r.getStartSignal() && r.getEndSignal()==null) r.setEndSignal(se);
+				HashSet<Exit> es = new HashSet<Exit>();
+				es.addAll(dt.getConnector().getExits());
+				es.retainAll(trackplan.getExits());
+				if (dt.getConnector().getTerminal()!=null || 
+						es.size() > 0 || 
+						(se!=r.getStartSignal() && trackplan.isOverlapped() && se!=r.getEndSignal()) ||
+						(se!=r.getStartSignal() && !trackplan.isOverlapped() && r.getEndSignal()!=null)
+						) {
+					if (dt.getTrack().getPointReverse()==null || dt.getTrack().getCrossing2()==null)
+						TR.push(r);
+					continue;
+				}
 			}
 				
-			List<DirectedTrack> nexts = dt.getNexts();
+			List<DirectedTrack> nexts = null;
+			
+			if (dt!=null) {
+				nexts = dt.getNexts();
+			}
+			else {
+				nexts = new ArrayList<DirectedTrack>();
+				for(Track t : r.getStartSignal().getConnector().getTracks()) {
+					nexts.add(t.getDirectedTrackByConnector(r.getStartSignal().getConnector(), true));
+				}
+			}
+				
 			boolean first = true;
 			for(DirectedTrack n : nexts){
 				if (!r.getDirectedTracks().contains(n)){ // not allow cycle

@@ -87,7 +87,7 @@ public class ErrorDetectionHelper {
 	}
 
 	public static boolean errorSignalDirectionDetected(Signal s, Connector c) {
-		return s.getTrack()!=null && (s.getTrack().getC1()==c || s.getTrack().getC2()==c);
+		return s.getTrack()!=null ? (s.getTrack().getC1()==c || s.getTrack().getC2()==c) : !s.getConnector().getEntrances().isEmpty();
 	}
 
 	public static boolean errorTrackDetected(Connector c) {

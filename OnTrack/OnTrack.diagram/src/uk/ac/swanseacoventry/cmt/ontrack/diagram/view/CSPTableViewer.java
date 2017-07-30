@@ -353,8 +353,11 @@ public class CSPTableViewer extends ViewPart {
 									new VerificationResultUpdateCommand(diagramEditPart, null, rs[0], rs[1], rs[2])));
 							cc.execute();
 							// refreshCSPTableFrom(trackplan);
+							item.setText(6, rs[0]);
+							item.setText(7, rs[1]);
 							item.setText(8, rs[2]);
-							table.getParent().layout();
+							table.redraw();
+							table.update();
 						}
 					} else if (tp instanceof SubTrackPlan) {
 						if (modelPaths.containsKey(tp)) {
@@ -363,9 +366,11 @@ public class CSPTableViewer extends ViewPart {
 							cc.add(new ICommandProxy(new VerificationResultUpdateCommand(diagramEditPart,
 									(SubTrackPlan) tp, rs[0], rs[1], rs[2])));
 							cc.execute();
+							item.setText(6, rs[0]);
+							item.setText(7, rs[1]);
 							item.setText(8, rs[2]);
-							table.getParent().layout();
-							// refreshCSPTableFrom(trackplan);
+							table.redraw();
+							table.update();
 						}
 					}
 				}
@@ -691,7 +696,8 @@ public class CSPTableViewer extends ViewPart {
 				Integer.toString(trackplan.getPoints().size()), Integer.toString(trackplan.getCrossings().size()),
 				Integer.toString(trackplan.getSignals().size()),
 				Integer.toString(routes) + (hroutes > 0 ? "(" + Integer.toString(hroutes) + ")" : ""),
-				trackplan.getVerificationTime(), trackplan.getVerificationStates(),
+				trackplan.getVerificationStates(),
+				trackplan.getVerificationTime(), 
 				trackplan.getVerificationResult() });
 		tit.setData(trackplan);
 

@@ -480,31 +480,31 @@ public class TopoAbstractViewer extends ViewPart {
 							SignalEditPart cep = (SignalEditPart)ep;
 							Signal sig = (Signal)((View)cep.getModel()).getElement();
 							SignalConnectorEditPart scep = null;
-							SignalTrackEditPart step = null;
+							// SignalTrackEditPart step = null;
 							if (cep.getSourceConnections().get(0) instanceof SignalConnectorEditPart) { // assume that signalep has only two connectors
 								// one for track and one for connector
 								scep = (SignalConnectorEditPart) cep.getSourceConnections().get(0);
-								step = (SignalTrackEditPart) cep.getSourceConnections().get(1);
+								// step = (SignalTrackEditPart) cep.getSourceConnections().get(1);
 							} 
 							else {
 								scep = (SignalConnectorEditPart) cep.getSourceConnections().get(1);
-								step = (SignalTrackEditPart) cep.getSourceConnections().get(0);
+								// step = (SignalTrackEditPart) cep.getSourceConnections().get(0);
 							}
 							ConnectorEditPart c1 = (ConnectorEditPart)scep.getTarget();
-							TrackEditPart t = (TrackEditPart)step.getTarget();
-							ConnectorEditPart c2 = (ConnectorEditPart) (t.getSource() == c1 ? t.getTarget() : t.getSource());
-							org.eclipse.draw2d.geometry.Point p1 = c1.getLocation();
-							org.eclipse.draw2d.geometry.Point p2 = c2.getLocation();
-							org.eclipse.draw2d.geometry.Point p = p1.getTranslated(-p2.x, -p2.y);
-							p.transpose();
-							p.setX(-p.x);
-							double ratio = 100.0/Math.sqrt(p.x*p.x + p.y*p.y); 
-							p.setX((int) (p.x * ratio));
-							p.setY((int) (p.y * ratio));
-							p = p1.getTranslated(p);
+							// TrackEditPart t = (TrackEditPart)step.getTarget();
+							// ConnectorEditPart c2 = (ConnectorEditPart) (t.getSource() == c1 ? t.getTarget() : t.getSource());
+							// org.eclipse.draw2d.geometry.Point p1 = c1.getLocation();
+							// org.eclipse.draw2d.geometry.Point p2 = c2.getLocation();
+//							org.eclipse.draw2d.geometry.Point p = p1.getTranslated(-p2.x, -p2.y);
+//							p.transpose();
+//							p.setX(-p.x);
+//							double ratio = 100.0/Math.sqrt(p.x*p.x + p.y*p.y); 
+//							p.setX((int) (p.x * ratio));
+//							p.setY((int) (p.y * ratio));
+//							p = p1.getTranslated(p);
 //							int id = con.getId();
 							CompoundCommand cc = new CompoundCommand();
-							cc.add(new ICommandProxy(new ConnectorUpdateLocationCommand(cep, p.x, p.y, false)));
+							cc.add(new ICommandProxy(new ConnectorUpdateLocationCommand(cep, c1.getLocation().x, c1.getLocation().y, false)));
 							cc.execute();
 						}
 					}

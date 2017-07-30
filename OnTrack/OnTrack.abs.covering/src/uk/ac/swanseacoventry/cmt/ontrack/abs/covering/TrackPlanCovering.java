@@ -196,7 +196,8 @@ public class TrackPlanCovering  {
 		
 		// compute signals within entryCone
 		for(Track t : coneTracks){
-			coneSignals.addAll(t.getSignals());
+			coneSignals.addAll(t.getC1().getSignals());
+			coneSignals.addAll(t.getC2().getSignals());
 		}
 		
 		

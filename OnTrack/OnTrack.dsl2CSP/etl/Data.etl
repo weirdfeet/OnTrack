@@ -216,6 +216,7 @@ to f : CSP!ProcessAssignment {
 	var nf = newFunc1Arg1Out("commonNext",p.name,t.name);
 	functions.add(nf);
 }
+
 rule transformEntryTrack
 transform e : safetrack!Entrance
 to se : CSP!SETElement, ti:CSP!TypedItem{
@@ -225,12 +226,15 @@ to se : CSP!SETElement, ti:CSP!TypedItem{
 	delete se;
 	delete ti;
 
+	/*
 	if (e.connector.entrances.intersection(trackplan.entrances).notEmpty()) {
 		RouteID.items.add(newCSPDatatypeItem("RE__" + e.connector.id.toString()));
 		EntryRoute.item.add(newCSPSetItem("RE__" + e.connector.id.toString()));
 		SignalID.items.add(newCSPDatatypeItem("SE__" + e.connector.id.toString()));
 		EntryRouteSignal.item.add(newCSPSetItem("SE__" + e.connector.id.toString()));
 	}
+    */
+
 	EntryTrack.item.add(newCSPSetItem(e.connector.findFirstTrack(plan).name));	
 }
 
@@ -268,12 +272,16 @@ to d : CSP!DatatypeItem {
 
 	SignalID.items.add(newCSPDatatypeItem(s.name));
 
-	var t1 = s.connector.findFirstDiffTrack(plan,s.track); if (not t1.isDefined()) t1=offTrack;
+	var t0 = s.track; 
+	var t1 = s.connector.findFirstDiffTrack(plan,t0);
+	if (not t0.isDefined() or not plan.tracks.includes(t0)) t0=offTrack; 
+	if (not t1.isDefined() or not plan.tracks.includes(t1)) t1=offTrack;
 
-	var sat = newFunc1Arg1Out("signalAt",s.name,s.track.name + "." + t1.name);
+	var sat = newFunc1Arg1Out("signalAt",s.name,t0.name + "." + t1.name);
 	functions.add(sat);
 }
 
+/* 
 rule transformEntrySignalAt
 transform e : safetrack!Entrance
 to f : CSP!ProcessAssignment{
@@ -285,6 +293,7 @@ to f : CSP!ProcessAssignment{
 	var sat = newFunc1Arg1Out("signalAt","SE__" + e.connector.id.toString(),offTrack.name + "." + e.connector.findFirstTrack(plan).name);
 	functions.add(sat);
 }
+*/
 
 rule transformRouteIDWithSignal
 transform cti : safetrack!ControlTableItem
@@ -301,6 +310,7 @@ to d : CSP!DatatypeItem {
 	functions.add(sig);
 }
 
+/*
 rule transformEntryRouteSignal
 transform e : safetrack!Entrance
 to f : CSP!ProcessAssignment{
@@ -312,6 +322,7 @@ to f : CSP!ProcessAssignment{
 	var sat = newFunc1Arg1Out("signal","RE__" + e.connector.id.toString(),"SE__" + e.connector.id.toString());
 	functions.add(sat);
 }
+*/
 
 rule transformControlTable
 transform cti : safetrack!ControlTableItem
@@ -351,6 +362,7 @@ to f : CSP!ProcessAssignment {
 	functions.add(nf);
 }
 
+/*
 rule transformEntryControlTable
 transform e : safetrack!Entrance
 to f : CSP!ProcessAssignment {
@@ -389,6 +401,7 @@ to f : CSP!ProcessAssignment {
 	var nf = newFunc1Arg4SetOut("ctrlTable","RE__" + e.connector.id.toString(),normalSet, reverseSet, clearSet, directionSet);
 	functions.add(nf);
 }
+*/
 
 rule transformReleaseTable
 transform p : safetrack!Point

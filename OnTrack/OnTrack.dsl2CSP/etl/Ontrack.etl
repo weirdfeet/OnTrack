@@ -231,8 +231,10 @@ operation safetrack!Connector findFirstTrack(plan) : safetrack!Track {
 }
 
 operation safetrack!Connector findFirstDiffTrack(plan,track) : safetrack!Track {
-	if (track.pointReverse.isDefined()) track = track.pointReverse.normalTrack;
-	if (track.crossing2.isDefined()) track=track.crossing2.track1;
+    if (track.isDefined()) {
+		if (track.pointReverse.isDefined()) track = track.pointReverse.normalTrack;
+		if (track.crossing2.isDefined()) track=track.crossing2.track1;
+	}
 	for(t in self.track1s) {
 		if (t.pointReverse.isDefined()) t = t.pointReverse.normalTrack;
 		if (t.crossing2.isDefined()) t=t.crossing2.track1;

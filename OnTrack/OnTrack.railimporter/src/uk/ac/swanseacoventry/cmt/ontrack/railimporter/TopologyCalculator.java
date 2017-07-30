@@ -580,35 +580,35 @@ public class TopologyCalculator {
 		    barkston.getControlTable().add(ct);
 		}
 		
-		// add entry track
-		int entryCount = 0;
-		for(String entrySignal : entrySignals){
-			Signal braves = (Signal)rp.getNodes().get(entrySignal);
-			uk.ac.swanseacoventry.cmt.ontrack.Signal s = createdSignals.get(braves);
-			
-			Track entry = OntrackFactory.eINSTANCE.createTrack();
-			entry.setName("ENTRY_" + (entryCount++));
-			barkston.getTracks().add(entry);
-			Connector ec = OntrackFactory.eINSTANCE.createConnector();
-			ec.setId(conNum++);
-			barkston.getConnectors().add(ec);
-			
-			Connector c = getOnTrackConnector(braves);
-			
-			s.setTrack(entry);
-			
-			entry.setC1(ec);
-			entry.setC2(c);
-			entry.getSignals().add(s);
-			
-			ec.getTrack1s().add(entry);
-			c.getTrack2s().add(entry);		
-			
-		}
+		// add entry track: no more needed after removing entry track 29/7 
+//		int entryCount = 0;
+//		for(String entrySignal : entrySignals){
+//			Signal braves = (Signal)rp.getNodes().get(entrySignal);
+//			uk.ac.swanseacoventry.cmt.ontrack.Signal s = createdSignals.get(braves);
+//			
+//			Track entry = OntrackFactory.eINSTANCE.createTrack();
+//			entry.setName("ENTRY_" + (entryCount++));
+//			barkston.getTracks().add(entry);
+//			Connector ec = OntrackFactory.eINSTANCE.createConnector();
+//			ec.setId(conNum++);
+//			barkston.getConnectors().add(ec);
+//			
+//			Connector c = getOnTrackConnector(braves);
+//			
+//			s.setTrack(entry);
+//			
+//			entry.setC1(ec);
+//			entry.setC2(c);
+//			entry.getSignals().add(s);
+//			
+//			ec.getTrack1s().add(entry);
+//			c.getTrack2s().add(entry);		
+//			
+//		}
 		
 		for(ControlTableItem cti : barkston.getControlTable()){
-			Track t = cti.getSignal().getTrack();
-			Connector c = t.getC1() == cti.getSignal().getConnector() ? t.getC2() : t.getC1();
+			//Track t = cti.getSignal().getTrack();
+			Connector c = cti.getSignal().getConnector(); // t.getC1() == cti.getSignal().getConnector() ? t.getC2() : t.getC1();
 			if (c.getTracks().size() <= 1 && c.getEntrances().size() <= 0){
 				Entrance ent = OntrackFactory.eINSTANCE.createEntrance();
 				ent.setConnector(c);
