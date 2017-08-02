@@ -42,6 +42,7 @@ import uk.ac.swanseacoventry.cmt.ontrack.ControlTableItem;
 import uk.ac.swanseacoventry.cmt.ontrack.DirectedTrack;
 import uk.ac.swanseacoventry.cmt.ontrack.OntrackPackage;
 import uk.ac.swanseacoventry.cmt.ontrack.Point;
+import uk.ac.swanseacoventry.cmt.ontrack.ReleaseTableItem;
 import uk.ac.swanseacoventry.cmt.ontrack.Signal;
 import uk.ac.swanseacoventry.cmt.ontrack.Track;
 import uk.ac.swanseacoventry.cmt.ontrack.TrackPlan;
@@ -53,6 +54,7 @@ import uk.ac.swanseacoventry.cmt.ontrack.diagram.edit.commands.custom.ControlTab
 import uk.ac.swanseacoventry.cmt.ontrack.diagram.edit.commands.custom.ControlTableDirectionClearCommand;
 import uk.ac.swanseacoventry.cmt.ontrack.diagram.edit.commands.custom.ControlTableInitCommand;
 import uk.ac.swanseacoventry.cmt.ontrack.diagram.edit.commands.custom.ControlTableUpdateItemCommand;
+import uk.ac.swanseacoventry.cmt.ontrack.diagram.edit.commands.custom.ReleaseTableDelItemCommand;
 import uk.ac.swanseacoventry.cmt.ontrack.diagram.view.listeners.PartListener2Impl;
 
 public class ControlTableViewer extends ViewPart {
@@ -430,15 +432,20 @@ public class ControlTableViewer extends ViewPart {
 			 public void run(){
 				DiagramEditPart diagramEditPart = Util.getDiagramEP();
 				if (diagramEditPart==null) return;
+				TrackPlan trackplan = (TrackPlan)((View)diagramEditPart.getModel()).getElement();
 				
 				for(TableItem item : table.getSelection()){
+					ControlTableItem cti = (ControlTableItem)item.getData();
 					CompoundCommand cc = new CompoundCommand();
-					cc.add(new ICommandProxy(new ControlTableDelItemCommand(diagramEditPart,(ControlTableItem)item.getData())));
+					cc.add(new ICommandProxy(new ControlTableDelItemCommand(diagramEditPart,cti)));
+					for(ReleaseTableItem rti : trackplan.getReleaseTable()){
+						if (rti.getRoute().equals(cti.getRoute())){
+							cc.add(new ICommandProxy(new ReleaseTableDelItemCommand(diagramEditPart,rti)));
+						}
+					}
 					cc.execute();
 				}
 				
-				TrackPlan trackplan = (TrackPlan)((View)diagramEditPart.getModel()).getElement();
-
 				refreshControlTableFrom(trackplan);
 			 }
 		 });
@@ -479,6 +486,28 @@ public class ControlTableViewer extends ViewPart {
 				TrackPlan trackplan = (TrackPlan)((View)diagramEditPart.getModel()).getElement();
 
 				refreshControlTableFrom(trackplan);
+			 }
+		 });
+		 mgr.add(new Action("Check"){
+			 public void run(){
+				DiagramEditPart diagramEditPart = Util.getDiagramEP();
+				if (diagramEditPart==null) return;
+				
+				TrackPlan trackplan = (TrackPlan)((View)diagramEditPart.getModel()).getElement();
+				
+				for(ControlTableItem cti : trackplan.getControlTable()){
+					Track signalTrack = cti.getSignal().getTrack();
+					if (signalTrack!=null) {
+						for (Track t : cti.getClears()){
+							if (t.getName().equals(signalTrack.getName())) {
+								System.out.println("WARNING: Route " + cti.getRoute() + " and signal " + cti.getSignal().getName() + " are not compatible!");
+							}
+						}
+					}
+				}
+				
+
+				// refreshControlTableFrom(trackplan);
 			 }
 		 });
 	}

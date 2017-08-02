@@ -196,6 +196,7 @@ public class TopologyCalculator {
 	Crossing getOnTrackCrossing(Diamond n){
 		Crossing p = createdCrossings.get(n);
 		if (p==null) {
+			
 			p = OntrackFactory.eINSTANCE.createCrossing();
 			p.setName(n.getName());
 			barkston.getCrossings().add(p);
@@ -214,7 +215,9 @@ public class TopologyCalculator {
 			Connector c3 = getOnTrackConnector(getEndNodeOfDiamond(n, tc, branchEnterPath));
 			Connector c4 = getOnTrackConnector(getEndNodeOfDiamond(n, tc, branchExitPath));
 
-			Track mt = getOnTrackTrack(tc); // main track
+			Track mt = OntrackFactory.eINSTANCE.createTrack(); // main track
+			mt.setName(crossingTrackName);
+			barkston.getTracks().add(mt);
 
 			Track bt = OntrackFactory.eINSTANCE.createTrack(); // branch track
 			bt.setName(crossingTrackName);
@@ -232,21 +235,20 @@ public class TopologyCalculator {
 			c2.getTrack2s().add(mt);
 			c3.getTrack1s().add(bt);
 			c4.getTrack2s().add(bt);
+			
+			// add the main track as representation of the track circuit of the crossing
+			createdTracks.put(tc, mt);
 		}
 		return p;
 	}
 
 	private Node getEndNodeOfDiamond(Node n, TrackCircuit tc, Path path) {
-		while(path!=null && tc.getPaths().contains(path)){
-			Node next = path.getStartNode() == n ? path.getEndNode() : path.getStartNode();
-			if (next.getPaths().size()==2) {
-				Path path0 = rp.getPaths().get(next.getPaths().get(0));
-				Path path1 = rp.getPaths().get(next.getPaths().get(1));
+		while(!tc.endNodes.contains(n) && path!=null && tc.getPaths().contains(path)){
+			n = path.getStartNode() == n ? path.getEndNode() : path.getStartNode();
+			if (n.getPaths().size()==2) {
+				Path path0 = rp.getPaths().get(n.getPaths().get(0));
+				Path path1 = rp.getPaths().get(n.getPaths().get(1));
 				path = path0 == path ? path1 : path0;
-				n = next;
-			}
-			else {
-				path = null;
 			}
 		}
 		return n;
@@ -255,14 +257,18 @@ public class TopologyCalculator {
 	uk.ac.swanseacoventry.cmt.ontrack.Track getOnTrackTrack(TrackCircuit tc){
 		uk.ac.swanseacoventry.cmt.ontrack.Track t = createdTracks.get(tc);
 		if (t==null) {
+			for(Node n : tc.endNodes){
+				getOnTrackConnector(n);
+			}
+			if (tc.numberOfCrossings>=1 || tc.numberOfPoints>2) return null;
+			
 			t = OntrackFactory.eINSTANCE.createTrack();
 			t.setName(tc.getName());
 			barkston.getTracks().add(t);
 			createdTracks.put(tc, t);
 			
-			Connector c1 = getOnTrackConnector(tc.startNode);
-			Connector c2 = getOnTrackConnector(tc.endNode);
-			
+			Connector c1 = getOnTrackConnector(tc.endNodes.get(0));
+			Connector c2 = getOnTrackConnector(tc.endNodes.get(1));
 			t.setC1(c1);
 			t.setC2(c2);
 			c1.getTrack1s().add(t);
@@ -333,6 +339,12 @@ public class TopologyCalculator {
 			t.setC2(newCon);
 			newCon.getTrack2s().add(t);
 			oldCon.getTrack2s().remove(t);
+		}
+		for(Node n : createdConnectors.keySet()){
+			Connector c = createdConnectors.get(n);
+			if (c==oldCon) {
+				createdConnectors.put(n, newCon);
+			}
 		}
 	}
 	
@@ -470,6 +482,7 @@ public class TopologyCalculator {
 		// node that we need to connect their connectors later
 		for(Node n : visited){
 			if (n instanceof Point){
+						
 				Point bravep = (Point)n;	
 				uk.ac.swanseacoventry.cmt.ontrack.Point  p = getOnTrackPoint(bravep);
 				Path enterPath = rp.getPaths().get(bravep.getEnterPath());
@@ -573,7 +586,13 @@ public class TopologyCalculator {
 			
 			for(TrackCircuit t : r.getTrackCircuits()){
 				Track tr = createdTracks.get(t);
-				if (tr!=null) ct.getClears().add(tr);
+				if (tr!=null) {
+					ct.getClears().add(tr);
+					if (tr.getCrossing()!=null){
+						ct.getClears().add(tr.getCrossing().getTrack1());
+						ct.getClears().add(tr.getCrossing().getTrack2());
+					}
+				}
 			}
 			
 			ct.setSignal(getOnTrackSignal(r.getSignal()));
@@ -671,6 +690,18 @@ public class TopologyCalculator {
 				ex.setConnector(c);
 				c.getExits().add(ex);
 				barkston.getExits().add(ex);
+			}
+		}
+		
+		// finally, check for any route/signal that are not compatible
+		for(ControlTableItem cti : barkston.getControlTable()){
+			Track signalTrack = cti.getSignal().getTrack();
+			if (signalTrack!=null) {
+				for (Track t : cti.getClears()){
+					if (t.getName().equals(signalTrack.getName())) {
+						System.out.println("WARNING: Route " + cti.getRoute() + " and signal " + cti.getSignal().getName() + " are not compatible!");
+					}
+				}
 			}
 		}
 		

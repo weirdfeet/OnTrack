@@ -491,6 +491,7 @@ public class TopoAbstractViewer extends ViewPart {
 								// step = (SignalTrackEditPart) cep.getSourceConnections().get(0);
 							}
 							ConnectorEditPart c1 = (ConnectorEditPart)scep.getTarget();
+							// Connector c1element = (Connector)((View)c1.getModel()).getElement();
 							// TrackEditPart t = (TrackEditPart)step.getTarget();
 							// ConnectorEditPart c2 = (ConnectorEditPart) (t.getSource() == c1 ? t.getTarget() : t.getSource());
 							// org.eclipse.draw2d.geometry.Point p1 = c1.getLocation();
@@ -503,8 +504,18 @@ public class TopoAbstractViewer extends ViewPart {
 //							p.setY((int) (p.y * ratio));
 //							p = p1.getTranslated(p);
 //							int id = con.getId();
+							int x = 0;
+							int y = 0;
+//							if (ht.get(c1element.getId())!=null) {
+//								x = ht.get(c1element.getId()).x;
+//								y = ht.get(c1element.getId()).y;
+//							}
+//							else {
+								x = c1.getLocation().x;
+								y = c1.getLocation().y;
+//							}
 							CompoundCommand cc = new CompoundCommand();
-							cc.add(new ICommandProxy(new ConnectorUpdateLocationCommand(cep, c1.getLocation().x, c1.getLocation().y, false)));
+							cc.add(new ICommandProxy(new ConnectorUpdateLocationCommand(cep, x, y, false)));
 							cc.execute();
 						}
 					}
