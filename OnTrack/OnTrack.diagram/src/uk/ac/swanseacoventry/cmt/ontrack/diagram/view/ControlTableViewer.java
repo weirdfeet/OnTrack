@@ -1,6 +1,8 @@
 package uk.ac.swanseacoventry.cmt.ontrack.diagram.view;
 
+import java.awt.Color;
 import java.util.ArrayList;
+import java.util.Hashtable;
 
 import javax.swing.JOptionPane;
 
@@ -15,7 +17,9 @@ import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.jface.action.Action;
 import org.eclipse.jface.action.IAction;
 import org.eclipse.jface.action.IToolBarManager;
+import org.eclipse.jface.dialogs.InputDialog;
 import org.eclipse.jface.viewers.LabelProvider;
+import org.eclipse.jface.window.Window;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.custom.TableEditor;
 import org.eclipse.swt.events.DisposeEvent;
@@ -25,6 +29,7 @@ import org.eclipse.swt.events.ModifyListener;
 //import org.eclipse.swt.graphics.Point;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Control;
+import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Event;
 import org.eclipse.swt.widgets.Listener;
 import org.eclipse.swt.widgets.Table;
@@ -38,6 +43,7 @@ import org.eclipse.ui.dialogs.ElementListSelectionDialog;
 import org.eclipse.ui.part.ViewPart;
 import org.eclipse.ui.plugin.AbstractUIPlugin;
 
+import uk.ac.swanseacoventry.cmt.ontrack.Connector;
 import uk.ac.swanseacoventry.cmt.ontrack.ControlTableItem;
 import uk.ac.swanseacoventry.cmt.ontrack.DirectedTrack;
 import uk.ac.swanseacoventry.cmt.ontrack.OntrackPackage;
@@ -493,15 +499,71 @@ public class ControlTableViewer extends ViewPart {
 				DiagramEditPart diagramEditPart = Util.getDiagramEP();
 				if (diagramEditPart==null) return;
 				
-				TrackPlan trackplan = (TrackPlan)((View)diagramEditPart.getModel()).getElement();
+				// TrackPlan trackplan = (TrackPlan)((View)diagramEditPart.getModel()).getElement();
 				
-				for(ControlTableItem cti : trackplan.getControlTable()){
+				for(TableItem ti : table.getItems()) {
+				    ControlTableItem cti  = (ControlTableItem)ti.getData();
 					Track signalTrack = cti.getSignal().getTrack();
 					if (signalTrack!=null) {
 						for (Track t : cti.getClears()){
 							if (t.getName().equals(signalTrack.getName())) {
 								System.out.println("WARNING: Route " + cti.getRoute() + " and signal " + cti.getSignal().getName() + " are not compatible!");
+								ti.setBackground(Display.getCurrent().getSystemColor(SWT.COLOR_RED));
 							}
+						}
+					}
+					Hashtable<Connector, Integer> conCounter = new Hashtable<Connector, Integer>();
+					for(DirectedTrack dt : cti.getDirections()){
+						if (conCounter.get(dt.getConnector())==null) 
+							conCounter.put(dt.getConnector(), 0);
+						conCounter.put(dt.getConnector(), conCounter.get(dt.getConnector()) + 1);
+						if (conCounter.get(dt.getOppositeConnector())==null) 
+							conCounter.put(dt.getOppositeConnector(), 0);
+						conCounter.put(dt.getOppositeConnector(), conCounter.get(dt.getOppositeConnector()) + 1);
+					}
+					int c1 = 0;
+					for(Connector c : conCounter.keySet()){
+						if (conCounter.get(c)==1) 
+							c1 += 1;
+					}
+					if (c1 != 2) {
+						System.out.println("WARNING: Route " + cti.getRoute() + " has a wrong directions configuration!");
+						ti.setBackground(Display.getCurrent().getSystemColor(SWT.COLOR_YELLOW));
+					}
+					for(Track t : cti.getClears()) {
+						boolean found = false;
+						for(DirectedTrack dt : cti.getDirections()) {
+							if (t.getName().equals(dt.getTrack().getName())) {
+								found = true;
+								break;
+							}
+						}
+						if (!found) {
+							System.out.println("WARNING: Route " + cti.getRoute() + " has a wrong directions configuration!");
+							ti.setBackground(Display.getCurrent().getSystemColor(SWT.COLOR_YELLOW));
+							break;
+						}
+					}
+					
+				}
+				
+
+				// refreshControlTableFrom(trackplan);
+			 }
+		 });
+
+		 mgr.add(new Action("HiLi"){
+			 public void run(){
+				DiagramEditPart diagramEditPart = Util.getDiagramEP();
+				if (diagramEditPart==null) return;
+				
+				InputDialog dialog = new InputDialog(table.getShell(), "Enter a route name", "Route to highlight", "", null);
+				if (dialog.open()==Window.OK) {
+					String route = dialog.getValue();
+					for(TableItem ti : table.getItems()) {
+					    ControlTableItem cti  = (ControlTableItem)ti.getData();
+					    if (route.equals(cti.getRoute())) {
+							ti.setBackground(Display.getCurrent().getSystemColor(SWT.COLOR_GREEN));
 						}
 					}
 				}
