@@ -637,6 +637,12 @@
          description="%update.diagram.description"
          id="uk.ac.swanseacoventry.cmt.ontrack.diagram.updateDiagram"
          name="%update.diagram.name"/>
+      <command
+            defaultHandler="uk.ac.swanseacoventry.cmt.ontrack.diagram.automaticLayout.GraphDrawingHandler"
+            description="Automatically layout tracks"
+            id="uk.ac.swanseacoventry.cmt.ontrack.diagram.automaticLayout"
+            name="Layout">
+      </command>
    </extension>
    
    <extension point="org.eclipse.ui.bindings" id="update-cmd-binding">
@@ -664,6 +670,14 @@
                   </iterate></with>
                </and>
             </visibleWhen>
+         </command>
+      </menuContribution>
+      <menuContribution
+            allPopups="false"
+            locationURI="popup:org.eclipse.gmf.runtime.diagram.ui.DiagramEditorContextMenu">
+         <command
+               commandId="uk.ac.swanseacoventry.cmt.ontrack.diagram.automaticLayout"
+               style="push">
          </command>
       </menuContribution>
    </extension>

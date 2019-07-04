@@ -42,6 +42,7 @@ Require-Bundle: org.eclipse.core.runtime,
  OnTrack.abs.covering;bundle-version="1.0.0",
  OnTrack.dsl2CSPB;bundle-version="1.0.0",
  OnTrack.dsl2CSP;bundle-version="1.0.0",
+ OnTrack.graphdrawer;bundle-version="1.0.0",
  org.eclipse.ocl.ecore;visibility:=reexport,
  org.eclipse.emf.validation;visibility:=reexport,
  org.eclipse.gmf.runtime.notation;visibility:=reexport,
@@ -52,4 +53,4 @@ Require-Bundle: org.eclipse.core.runtime,
 Bundle-ActivationPolicy: lazy
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Import-Package: uk.ac.swanseacoventry.cmt.ontrack.dsl2csp,
- uk.ac.swanseacoventry.cmt.ontrack.railimporter
+ uk.ac.swanseacoventry.cmt.ontrack.railimporter 

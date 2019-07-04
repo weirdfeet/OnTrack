@@ -1,0 +1,11 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Graphdrawer
+Bundle-ClassPath: ., lib/fastutil-8.2.2.jar
+Bundle-SymbolicName: OnTrack.graphdrawer
+Bundle-Version: 1.0.0.qualifier
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Export-Package: click.nullpointer.tplayout,
+ click.nullpointer.tplayout.graph,
+ click.nullpointer.tplayout.implementations,
+ click.nullpointer.tplayout.util
