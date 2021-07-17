@@ -308,31 +308,35 @@ public class TopologyCalculator {
         ts.add(t);
     }
 
-    void parseBoundary(String filename) throws IOException {
-
-        entrySignals.clear();
-        exitSignals.clear();
+    /**
+     * Import the entry and exit signals from a CSV file.
+     * @param filename The CSV file containing the boundaries of this track plan
+     * @throws IOException
+     */
+    private void parseBoundaries(String filename) throws IOException {
+        this.entrySignals.clear();
+        this.exitSignals.clear();
 
         File f = new File(filename);
         Scanner scanner = new Scanner(f);
 
-        // read the list of entry signal node names
+        // read the list of entry signal node names (before the first #)
         String line = scanner.nextLine();
         String data = line.split("#", -1)[0];
         String[] parts = data.split(",");
         for (String p : parts)
-            entrySignals.add(p.trim());
+            this.entrySignals.add(p.trim());
 
-        // read the list of exit signal node names
+        // read the list of exit signal node names (before the first #)
         line = scanner.nextLine();
         data = line.split("#", -1)[0];
         parts = data.split(",");
         for (String p : parts)
-            exitSignals.add(p.trim());
+            this.exitSignals.add(p.trim());
 
-        // output result for debuging
-        System.out.println("Entry signals to import: " + String.join(", ", entrySignals));
-        System.out.println("Exit signals to import: " + String.join(", ", exitSignals));
+        // output result for debugging
+        System.out.println("Entry signals to import: " + String.join(", ", this.entrySignals));
+        System.out.println("Exit signals to import: " + String.join(", ", this.exitSignals));
 
         // Do not forget to close the scanner
         scanner.close();
@@ -763,8 +767,7 @@ public class TopologyCalculator {
             String routesFilename = inputFolder + File.separator + "Routes.csv";
             this.rp.parseRoutes(routesFilename);
 
-            String boundaryFilename = boundaryFile;
-            parseBoundary(boundaryFilename);
+            parseBoundaries(boundaryFile);
         } catch (IOException e) {
             System.err.println("Failed to read the Brave CSV files.");
             System.exit(1);
