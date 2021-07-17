@@ -31,32 +31,52 @@ public class TrackCircuit {
 	    this.paths.addAll(ps);
 	}
 	
+	/**
+	 * Update the data to represent end nodes attached to this track circuit.
+	 */
 	public void computeEndNodes() {
-		if (computed) return;
-		HashMap<Node,Integer> counter = new HashMap<Node,Integer>();
-		for(Path p : paths){
+		if (this.computed) return;
+
+		// Go through all paths of this TC and count how many times each node occurs.
+		HashMap<Node,Integer> nodeCounter = new HashMap<Node,Integer>();
+		for(Path p : this.paths){
+		    Node startNode = p.getStartNode();
+		    Node endNode = p.getEndNode();
+		    
 			// initialising
-			if (!counter.containsKey(p.getStartNode())) counter.put(p.getStartNode(), 0);
-			if (!counter.containsKey(p.getEndNode())) counter.put(p.getEndNode(), 0);
+			if (!nodeCounter.containsKey(startNode)) {
+			    nodeCounter.put(startNode, 0);
+			}
+			if (!nodeCounter.containsKey(endNode)) {
+			    nodeCounter.put(endNode, 0);
+			}
 			
 			// counting
-			counter.put(p.getStartNode(), counter.get(p.getStartNode()) + 1);
-			counter.put(p.getEndNode(), counter.get(p.getEndNode()) + 1);
+			Integer startNodeCount = nodeCounter.get(startNode);
+			Integer endNodeCount = nodeCounter.get(endNode);
+			nodeCounter.put(startNode, startNodeCount + 1);
+			nodeCounter.put(endNode, endNodeCount + 1);
 		}
-		for(Node n : counter.keySet()){
-			if (n instanceof Point) numberOfPoints++;
-			if (n instanceof Diamond) numberOfCrossings++;
-			if (counter.get(n)==1) {
-				endNodes.add(n);
+
+		for(Node n : nodeCounter.keySet()){
+		    // Keep counts of special node types
+			if (n instanceof Point) this.numberOfPoints++;
+			if (n instanceof Diamond) this.numberOfCrossings++;
+			
+			// If a node only occurs once, it is an end node.
+			if (nodeCounter.get(n)==1) {
+				this.endNodes.add(n);
 			}
 		}
-		if (numberOfCrossings>1) {
-			System.out.println("WARNING: Track circuit " + this.name + " has more than one crossings! Importing may be incorrect!");
+
+		if (numberOfCrossings > 1) {
+			System.out.println("WARNING: Track circuit " + this.name + " has more than one crossing! Importing may be incorrect!");
 		}
-		if (numberOfPoints>2) {
+		if (numberOfPoints > 2) {
 			System.out.println("WARNING: Track circuit " + this.name + " has more than two points attached! Importing may be incorrect!");
 		}
-		computed = true;
+
+		this.computed = true;
 	}
 	
 	@Override
