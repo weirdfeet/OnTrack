@@ -24,7 +24,11 @@ public class TrackCircuit {
 	}
 	
 	public ArrayList<Path> getPaths() {
-		return paths;
+		return this.paths;
+	}
+	
+	public void addPaths(ArrayList<Path> ps) {
+	    this.paths.addAll(ps);
 	}
 	
 	public void computeEndNodes() {
@@ -54,6 +58,7 @@ public class TrackCircuit {
 		}
 		computed = true;
 	}
+	
 	@Override
 	public String toString(){
 		StringBuilder result = new StringBuilder();

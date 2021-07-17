@@ -4,6 +4,16 @@ import java.util.ArrayList;
 
 public class Path
 {
+	private String name;
+	private Node startNode;
+	private Node endNode;
+	private double length;
+	private double speedLimitUp;
+	private double speedLimitDown;
+	private double gradient;
+	private ArrayList<TrackCircuit> tracks = new ArrayList<TrackCircuit>();
+	
+	
 	public void setStartNode(Node startNode) {
 		this.startNode = startNode;
 	}
@@ -28,18 +38,13 @@ public class Path
 		this.gradient = gradient;
 	}
 
-	private String name;
-	private Node startNode;
-	private Node endNode;
-	private double length;
-	private double speedLimitUp;
-	private double speedLimitDown;
-	private double gradient;
-	private ArrayList<TrackCircuit> tracks = new ArrayList<TrackCircuit>();
 	public ArrayList<TrackCircuit> getTracks() {
-		return tracks;
+		return this.tracks;
 	}	
 	
+	public void addTrack(TrackCircuit t) {
+	    this.tracks.add(t);
+	}
 	
 	public Path(String name){
 		this.name = name;
