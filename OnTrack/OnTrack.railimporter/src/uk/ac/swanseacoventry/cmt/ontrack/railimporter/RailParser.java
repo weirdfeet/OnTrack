@@ -278,7 +278,7 @@ public class RailParser {
             p.setGradient(Double.valueOf(parts[6].trim()));
             
             this.paths.put(p.getName(), p);
-            System.out.println("Adding: " + p.toString());
+            System.out.println("Adding: " + p);
         }
 
         // Do not forget to close the scanner
@@ -286,6 +286,11 @@ public class RailParser {
 
     }
 
+    /**
+     * Import all tracks from a file.
+     * @param filename Path to the Brave CSV file for track circuits.
+     * @throws IOException when things go wrong
+     */
     public void parseTracks(String filename) throws IOException {
         File f = new File(filename);
         Scanner scanner = new Scanner(f);
@@ -320,6 +325,11 @@ public class RailParser {
         scanner.close();
     }
 
+    /**
+     * Import all routes from a file.
+     * @param filename Path to the Brave CSV file for routes
+     * @throws IOException
+     */
     public void parseRoutes(String filename) throws IOException {
         File f = new File(filename);
         Scanner scanner = new Scanner(f);
@@ -335,45 +345,53 @@ public class RailParser {
             // r.setOverlaps();
 
             if (r != null) {
-                routes.put(r.getName(), r);
-                System.out.println("Adding: " + r.toString());
+                this.routes.put(r.getName(), r);
+                System.out.println("Adding: " + r);
             }
-
         }
+
         // Do not forget to close the scanner
         scanner.close();
     }
 
-    public Route parseRoute(String line) {
-
+    /**
+     * Construct a {@link Route} from a row of CSV.
+     * @param line Contents of a row in the routes CSV file
+     * @return The route specified by the CSV row, or {@code null} if the route contains a signal or TC that
+     * is not in the data we have parsed.
+     */
+    private Route parseRoute(String line) {
         String[] parts = line.split(DELIMITER, -1);
 
         // int signalPosition = lookupNode(parts[2].trim());
 
-        Signal sig = (Signal) nodes.get(parts[2].trim());
+        String sigName = parts[2].trim();
+        Signal sig = (Signal) this.nodes.get(sigName);
 
-        Route.RouteBuilder r = new Route.RouteBuilder(parts[0].trim(), sig);
+        String routeName = parts[0].trim();
+        Route.RouteBuilder r = new Route.RouteBuilder(routeName, sig);
 
         for (int i = 3; i < parts.length - 9; i++) {
             String s = parts[i].trim();
-            if (s.contains("NORMAL")) {
-                Point p = (Point) nodes.get(s.split(" ")[0].trim());
+            if (s.contains("NORMAL") || s.contains("REVERSE")) {
+                String[] pointParts = s.split(" ");
+                String pointName = pointParts[0].trim();
+                String pointPosition = pointParts[1].trim();
+                Point p = (Point) this.nodes.get(pointName);
+
                 if (p != null) {
-                    r.addNormalPoint(p);
+                    if (pointPosition.equals("NORMAL")) {
+                        r.addNormalPoint(p);
+                    } else {
+                        r.addReversePoint(p);
+                    }
                 } else {
                     return null;
                 }
-            } else if (s.contains("REVERSE")) {
-                Point p = (Point) nodes.get(s.split(" ")[0].trim());
-                if (p != null) {
-                    r.addReversePoint(p);
-                } else {
-                    return null;
-                }
-            }
-            // No overlaps so ok to assume all just in route
-            else if (s.contains("TC")) {
-                TrackCircuit tc = tracks.get(s);
+            } else if (s.contains("TC")) {
+                // No overlaps so ok to assume all just in route
+                TrackCircuit tc = this.tracks.get(s);
+
                 if (tc != null) {
                     r.addTrackCircuit(tc);
                 } else {
@@ -381,6 +399,7 @@ public class RailParser {
                 }
             }
         }
+
         int clearTime = Integer.parseInt(parts[parts.length - 4].trim());
         r.setClearTime(clearTime);
         return r.createRoute();
