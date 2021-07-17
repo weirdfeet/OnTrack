@@ -252,6 +252,11 @@ public class RailParser {
 //		
 //	}
 
+    /**
+     * Import all paths from a file.
+     * @param filename Path to the Brave CSV file for paths
+     * @throws IOException when things go wrong
+     */
     public void parsePaths(String filename) throws IOException {
         File f = new File(filename);
         Scanner scanner = new Scanner(f);
@@ -271,7 +276,8 @@ public class RailParser {
             p.setSpeedLimitUp(Double.valueOf(parts[4].trim()));
             p.setSpeedLimitDown(Double.valueOf(parts[5].trim()));
             p.setGradient(Double.valueOf(parts[6].trim()));
-            paths.put(p.getName(), p);
+            
+            this.paths.put(p.getName(), p);
             System.out.println("Adding: " + p.toString());
         }
 
@@ -290,18 +296,26 @@ public class RailParser {
             line = scanner.nextLine();
             String[] parts = line.split(DELIMITER, -1);
 
-            TrackCircuit t = new TrackCircuit(parts[0].trim());
-            t.getPaths().addAll(extractPaths(parts[1].trim()));
+            String name = parts[0].trim();
+            String pathsStr = parts[1].trim();
+            TrackCircuit t = new TrackCircuit(name);
+            ArrayList<Path> paths = extractPaths(pathsStr);
+            t.addPaths(paths);
 
-            for (Path p : t.getPaths()) {
-                p.getTracks().add(t);
+            /*
+             * The paths file doesn't specify tracks within each path, so we
+             * add the new track to each of its paths.
+             */
+            for (Path p : paths) {
+                p.addTrack(t);
             }
 
             t.computeEndNodes();
 
-            tracks.put(t.getName(), t);
-            System.out.println("Adding: " + t.toString());
+            tracks.put(name, t);
+            System.out.println("Adding: " + t);
         }
+
         // Do not forget to close the scanner
         scanner.close();
     }
@@ -372,6 +386,14 @@ public class RailParser {
         return r.createRoute();
     }
 
+    /**
+     * Convert a string describing paths associated with a track circuit to a list of {@link Path}s.
+     * A warning is printed if a non-existent path name is specified.
+     * 
+     * @param pathString A string in the following format: <BR>
+     * {@code <track-circuit-name>:Paths = <path1> <path2> ...}
+     * @return A list containing the constructed paths
+     */
     public ArrayList<Path> extractPaths(String pathString) {
         ArrayList<Path> result = new ArrayList<Path>();
 
