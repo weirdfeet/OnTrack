@@ -189,7 +189,7 @@ public class RailParser {
             
             if (pathsCols != null)
                 for (int i = pathsCols.first; i <= pathsCols.second; i++)
-                    n.getPaths().add(parts[i]);
+                    n.addPath(parts[i]);
 
             this.nodes.put(n.getName(), n);
             System.out.println("Adding: " + n);

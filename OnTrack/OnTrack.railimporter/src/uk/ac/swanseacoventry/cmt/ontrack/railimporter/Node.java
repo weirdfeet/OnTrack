@@ -7,6 +7,10 @@ public class Node
 	public ArrayList<String> getPaths() {
 		return paths;
 	}
+	
+	public void addPath(String p) {
+	    this.paths.add(p);
+	}
 
 
 	public String getLocationX() {
