@@ -80,10 +80,9 @@ public class TopologyCalculator {
     // HashMap<Point, HashSet<ControlTableItem>>();
 
     int conNum = 1;
-    TrackPlan barkston = OntrackFactory.eINSTANCE.createTrackPlan(); // barkston was named due to
-                                                                     // historic reason, should
-                                                                     // rename to trackplan
-
+    TrackPlan trackPlan = OntrackFactory.eINSTANCE.createTrackPlan(); 
+    
+    
     private void saveConnectorPositions(String outputFile) {
         StringBuilder sb = new StringBuilder();
         sb.append(createdConnectors.size());
@@ -136,7 +135,7 @@ public class TopologyCalculator {
         if (s == null) {
             s = OntrackFactory.eINSTANCE.createSignal();
             s.setName(n.getName());
-            barkston.getSignals().add(s);
+            trackPlan.getSignals().add(s);
             createdSignals.put(n, s);
         }
 
@@ -152,7 +151,7 @@ public class TopologyCalculator {
         if (c == null) {
             c = OntrackFactory.eINSTANCE.createConnector();
             c.setId(conNum++);
-            barkston.getConnectors().add(c);
+            trackPlan.getConnectors().add(c);
             createdConnectors.put(n, c);
         }
         return c;
@@ -163,28 +162,28 @@ public class TopologyCalculator {
         if (p == null) {
             p = OntrackFactory.eINSTANCE.createPoint();
             p.setName(n.getName());
-            barkston.getPoints().add(p);
+            trackPlan.getPoints().add(p);
             createdPoints.put(n, p);
 
             String pointTrackName = "TC" + n.getName();
 
             Connector c1 = OntrackFactory.eINSTANCE.createConnector();
             c1.setId(conNum++);
-            barkston.getConnectors().add(c1);
+            trackPlan.getConnectors().add(c1);
             Connector c2 = OntrackFactory.eINSTANCE.createConnector();
             c2.setId(conNum++);
-            barkston.getConnectors().add(c2);
+            trackPlan.getConnectors().add(c2);
             Connector c3 = OntrackFactory.eINSTANCE.createConnector();
             c3.setId(conNum++);
-            barkston.getConnectors().add(c3);
+            trackPlan.getConnectors().add(c3);
 
             Track nt = OntrackFactory.eINSTANCE.createTrack();
             nt.setName(pointTrackName);
-            barkston.getTracks().add(nt);
+            trackPlan.getTracks().add(nt);
 
             Track rt = OntrackFactory.eINSTANCE.createTrack();
             rt.setName(pointTrackName);
-            barkston.getTracks().add(rt);
+            trackPlan.getTracks().add(rt);
 
             p.setNormalTrack(nt);
             p.setReverseTrack(rt);
@@ -208,7 +207,7 @@ public class TopologyCalculator {
 
             p = OntrackFactory.eINSTANCE.createCrossing();
             p.setName(n.getName());
-            barkston.getCrossings().add(p);
+            trackPlan.getCrossings().add(p);
             createdCrossings.put(n, p);
 
             Path mainEnterPath = rp.getPaths().get(n.getMainEnter());
@@ -226,11 +225,11 @@ public class TopologyCalculator {
 
             Track mt = OntrackFactory.eINSTANCE.createTrack(); // main track
             mt.setName(crossingTrackName);
-            barkston.getTracks().add(mt);
+            trackPlan.getTracks().add(mt);
 
             Track bt = OntrackFactory.eINSTANCE.createTrack(); // branch track
             bt.setName(crossingTrackName);
-            barkston.getTracks().add(bt);
+            trackPlan.getTracks().add(bt);
 
             p.setTrack1(mt);
             p.setTrack2(bt);
@@ -274,7 +273,7 @@ public class TopologyCalculator {
 
             t = OntrackFactory.eINSTANCE.createTrack();
             t.setName(tc.getName());
-            barkston.getTracks().add(t);
+            trackPlan.getTracks().add(t);
             createdTracks.put(tc, t);
 
             Connector c1 = getOnTrackConnector(tc.endNodes.get(0));
@@ -391,15 +390,17 @@ public class TopologyCalculator {
 
         importTracks(visitedNodes);
 
-        for (TrackCircuit tc : createdTracks.keySet()) {
+        for (TrackCircuit tc : this.createdTracks.keySet()) {
             double length = 0;
+            // TODO what exactly is a path?
             for (Path p : tc.getPaths())
                 length += p.getLength();
             System.out.println(tc.getName() + " : " + length + " m.");
         }
 
-        System.out.println("Num of Imported Tracks: " + createdTracks.size());
+        System.out.println("Num of Imported Tracks: " + this.createdTracks.size());
 
+        // TODO: You are here ~dedbepole
         // expand all point point nodes to points and add their two corresponding tracks
         // node that we need to connect their connectors later
         for (Node n : visitedNodes) {
@@ -470,7 +471,7 @@ public class TopologyCalculator {
                         .createTerminal();
                 ter.setConnector(c);
                 c.setTerminal(ter);
-                barkston.getTerminals().add(ter);
+                trackPlan.getTerminals().add(ter);
             }
         }
 
@@ -522,7 +523,7 @@ public class TopologyCalculator {
             }
 
             ct.setSignal(getOnTrackSignal(r.getSignal()));
-            barkston.getControlTable().add(ct);
+            trackPlan.getControlTable().add(ct);
         }
 
         // add entry track: no more needed after removing entry track 29/7
@@ -551,7 +552,7 @@ public class TopologyCalculator {
 //			
 //		}
 
-        for (ControlTableItem cti : barkston.getControlTable()) {
+        for (ControlTableItem cti : trackPlan.getControlTable()) {
             // Track t = cti.getSignal().getTrack();
             Connector c = cti.getSignal().getConnector(); // t.getC1() ==
                                                           // cti.getSignal().getConnector() ?
@@ -560,11 +561,11 @@ public class TopologyCalculator {
                 Entrance ent = OntrackFactory.eINSTANCE.createEntrance();
                 ent.setConnector(c);
                 c.getEntrances().add(ent);
-                barkston.getEntrances().add(ent);
+                trackPlan.getEntrances().add(ent);
             }
         }
 
-        for (Track t : barkston.getTracks()) {
+        for (Track t : trackPlan.getTracks()) {
             DirectedTrack dt1 = OntrackFactory.eINSTANCE.createDirectedTrack();
             dt1.setTrack(t);
             dt1.setConnector(t.getC1());
@@ -577,21 +578,21 @@ public class TopologyCalculator {
 
         // remove connectors that has no attached tracks
         HashSet<Connector> emptyConnectors = new HashSet<Connector>();
-        for (Connector c : barkston.getConnectors()) {
+        for (Connector c : trackPlan.getConnectors()) {
             if (c.getTracks().isEmpty()) {
                 emptyConnectors.add(c);
             }
         }
-        barkston.getConnectors().removeAll(emptyConnectors);
+        trackPlan.getConnectors().removeAll(emptyConnectors);
 
-        for (Connector c : barkston.getConnectors()) {
+        for (Connector c : trackPlan.getConnectors()) {
             if (c.getTracks().size() > 1)
                 continue;
         }
 
         // finally, generate release table, brave data have no such thing
         // generate exits
-        for (ControlTableItem cti : barkston.getControlTable()) {
+        for (ControlTableItem cti : trackPlan.getControlTable()) {
             ArrayList<DirectedTrack> directions = cti.guessDirections();
             for (DirectedTrack dt : directions) {
                 Track t = dt.getTrack();
@@ -606,7 +607,7 @@ public class TopologyCalculator {
                             rti.setPoint(t.getPoint());
                             rti.setUnoccupiedTrack(t);
                             rti.setOccupiedTrack(pt);
-                            barkston.getReleaseTable().add(rti);
+                            trackPlan.getReleaseTable().add(rti);
                         }
                     }
                 }
@@ -622,12 +623,12 @@ public class TopologyCalculator {
                 Exit ex = OntrackFactory.eINSTANCE.createExit();
                 ex.setConnector(c);
                 c.getExits().add(ex);
-                barkston.getExits().add(ex);
+                trackPlan.getExits().add(ex);
             }
         }
 
         // finally, check for any route/signal that are not compatible
-        for (ControlTableItem cti : barkston.getControlTable()) {
+        for (ControlTableItem cti : trackPlan.getControlTable()) {
             Track signalTrack = cti.getSignal().getTrack();
             if (signalTrack != null) {
                 for (Track t : cti.getClears()) {
@@ -640,7 +641,7 @@ public class TopologyCalculator {
         }
 
         EList<EObject> ModelObjects = new BasicEList<EObject>();
-        ModelObjects.add(barkston);
+        ModelObjects.add(trackPlan);
         myModel.getContents().addAll(ModelObjects);
 
         try {
