@@ -1,6 +1,5 @@
 package uk.ac.swanseacoventry.cmt.ontrack.railimporter;
 
-import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -380,30 +379,15 @@ public class TopologyCalculator {
                 new XMIResourceFactoryImpl());
         Resource myModel = resourceSet.createResource(URI.createFileURI(tempFile));
 
-        ArrayDeque<Node> queue = new ArrayDeque<Node>();
-        HashSet<Node> visited = new HashSet<Node>(); // nodes in the region
+        ArrayDeque<Node> nodesToProcess = new ArrayDeque<Node>();
         HashSet<String> boundarySignals = new HashSet<String>(); // node surrounding the region
         boundarySignals.addAll(this.entrySignals);
         boundarySignals.addAll(this.exitSignals);
 
-        HashSet<String> ignorePaths = computeIgnoredPaths(queue);
+        HashSet<String> ignorePaths = computeIgnoredPaths(nodesToProcess);
 
-        while (!queue.isEmpty()) {
-            Node n = queue.pop();
-            visited.add(n);
-            for (String p : n.getPaths()) {
-                if (!ignorePaths.contains(p)) {
-                    Path path = rp.getPaths().get(p);
-                    Node nextNode = path.getStartNode() == n ? path.getEndNode()
-                            : path.getStartNode();
-                    if (!visited.contains(nextNode)) {
-                        queue.add(nextNode);
-                    }
-                }
-            }
-        }
-
-        System.out.println("Num of Nodes imported: " + visited.size());
+        HashSet<Node> visited = visitNodes(nodesToProcess, ignorePaths);
+        System.out.println("Number of Nodes imported: " + visited.size());
 
         // collect all paths to import; it must start and end with a visited node
         HashMap<String, Path> importedPaths = new HashMap<String, Path>();
@@ -696,7 +680,8 @@ public class TopologyCalculator {
     }
 
     /**
-     * Import data from Brave CSV files.
+     * Import data from Brave CSV files. <br><br>
+     * <b> Side effect: </b> Populates data inside the {@link RailParser}
      * 
      * @param boundaryFile Path to a file describing the boundaries of a track plan
      */
@@ -731,12 +716,14 @@ public class TopologyCalculator {
     }
     
     /**
-     * calculate paths not to be used in the searching for nodes in the region, 
-     * which are before then entry signals and after the exit signals.
-     * @param processedNodes A queue for us to keep track of the nodes we've visited
+     * Calculate paths not to be used in the searching for nodes in the region, 
+     * which are before then entry signals and after the exit signals. <br><br>
+     * <b> Side effect: </b> Populates the queue passed as parameter.
+     * 
+     * @param nodesToProcess A queue for us to keep track of the nodes we need to process
      * @return A set containing the names of ignored paths
      */
-    private HashSet<String> computeIgnoredPaths(ArrayDeque<Node> processedNodes) {
+    private HashSet<String> computeIgnoredPaths(ArrayDeque<Node> nodesToProcess) {
         HashSet<String> ignorePaths = new HashSet<String>(); // forbidden paths when BFS
 
         for (String signalName : this.entrySignals) {
@@ -747,7 +734,7 @@ public class TopologyCalculator {
                 String[] pair = spair.split(":");
                 node = rp.getNodes().get(pair[0]);
                 ignorePaths.add(pair[1]);
-                processedNodes.add(node);
+                nodesToProcess.add(node);
             } else {
                 if (!(node instanceof Signal))
                     System.err.println(
@@ -757,7 +744,7 @@ public class TopologyCalculator {
                 Signal sig = (Signal) node;
                 String beforePath = sig.getDirPath();
                 ignorePaths.add(beforePath);
-                processedNodes.add(node);
+                nodesToProcess.add(node);
             }
         }
 
@@ -770,7 +757,7 @@ public class TopologyCalculator {
                 for (String p : node.getPaths())
                     if (!p.equals(pair[1]))
                         ignorePaths.add(p);
-                processedNodes.add(node);
+                nodesToProcess.add(node);
             } else {
                 if (!(node instanceof Signal))
                     System.err.println(
@@ -782,10 +769,45 @@ public class TopologyCalculator {
                 for (String p : node.getPaths())
                     if (!p.equals(beforePath))
                         ignorePaths.add(p);
-                processedNodes.add(node);
+                nodesToProcess.add(node);
             }
         }
         
         return ignorePaths;
+    }
+    
+    /**
+     * Starting from the entry/exit signals, perform a BFS to visit all nodes within the track plan.
+     * <br><br>
+     * <b> Side effect: </b> {@code nodesToProcess} gets updated as we work through the nodes, and
+     * eventually becomes empty.
+     * 
+     * @param nodesToProcess A queue for us to keep track of nodes we still need to visit. It should
+     * contain just the entry and exit signals when passed.
+     * @param ignoredPaths Contains paths leading to or originating from nodes that are outside the
+     * track plan, and thus won't be visited.
+     * @return A set containing all nodes in the track plan, including entry/exit signals.
+     */
+    private HashSet<Node> visitNodes(ArrayDeque<Node> nodesToProcess, HashSet<String> ignoredPaths) {
+        HashSet<Node> visited = new HashSet<Node>(); // nodes in the region
+        
+        while (!nodesToProcess.isEmpty()) {
+            Node node = nodesToProcess.pop();
+            visited.add(node);
+            
+            for (String pathname : node.getPaths()) {
+                if (!ignoredPaths.contains(pathname)) {
+                    Path path = this.rp.getPaths().get(pathname);
+                    Node nextNode = path.getStartNode() == node ? 
+                            path.getEndNode() : path.getStartNode();
+                    
+                    if (!visited.contains(nextNode)) {
+                        nodesToProcess.add(nextNode);
+                    }
+                }
+            }
+        }
+        
+        return visited;
     }
 }
