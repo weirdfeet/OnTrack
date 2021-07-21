@@ -381,56 +381,12 @@ public class TopologyCalculator {
         Resource myModel = resourceSet.createResource(URI.createFileURI(tempFile));
 
         ArrayDeque<Node> queue = new ArrayDeque<Node>();
-
         HashSet<Node> visited = new HashSet<Node>(); // nodes in the region
         HashSet<String> boundarySignals = new HashSet<String>(); // node surrounding the region
-        boundarySignals.addAll(entrySignals);
-        boundarySignals.addAll(exitSignals);
+        boundarySignals.addAll(this.entrySignals);
+        boundarySignals.addAll(this.exitSignals);
 
-        // calculate paths not to be used in the searching for nodes in the region,
-        // they are before then entry signals and after the exit signals
-        HashSet<String> ignorePaths = new HashSet<String>(); // forbidden paths when BFS
-        for (String s : entrySignals) {
-            Node n = rp.getNodes().get(s);
-            if (n == null) {
-                String spair = s.substring(1, s.length() - 1);
-                String[] pair = spair.split(":");
-                n = rp.getNodes().get(pair[0]);
-                ignorePaths.add(pair[1]);
-                queue.add(n);
-            } else {
-                if (!(n instanceof Signal))
-                    System.out.println(
-                            "Node " + n.getName() + " is not an entry signal! Import will fail!");
-                Signal sig = (Signal) n;
-                String beforePath = sig.getDirPath();
-                ignorePaths.add(beforePath);
-                queue.add(n);
-            }
-        }
-
-        for (String s : exitSignals) {
-            Node n = rp.getNodes().get(s);
-            if (n == null) {
-                String spair = s.substring(1, s.length() - 1);
-                String[] pair = spair.split(":");
-                n = rp.getNodes().get(pair[0]);
-                for (String p : n.getPaths())
-                    if (!p.equals(pair[1]))
-                        ignorePaths.add(p);
-                queue.add(n);
-            } else {
-                if (!(n instanceof Signal))
-                    System.out.println(
-                            "Node " + n.getName() + " is not an exit signal! Import will fail!");
-                Signal sig = (Signal) n;
-                String beforePath = sig.getDirPath();
-                for (String p : n.getPaths())
-                    if (!p.equals(beforePath))
-                        ignorePaths.add(p);
-                queue.add(n);
-            }
-        }
+        HashSet<String> ignorePaths = computeIgnoredPaths(queue);
 
         while (!queue.isEmpty()) {
             Node n = queue.pop();
@@ -772,5 +728,60 @@ public class TopologyCalculator {
             System.err.println("Failed to read the Brave CSV files.");
             System.exit(1);
         }
+    }
+    
+    /**
+     * calculate paths not to be used in the searching for nodes in the region, 
+     * which are before then entry signals and after the exit signals.
+     * @param visitedNodes A queue for us to keep track of the nodes we've visited
+     * @return A set containing the names of ignored paths
+     */
+    private HashSet<String> computeIgnoredPaths(ArrayDeque<Node> visitedNodes) {
+        HashSet<String> ignorePaths = new HashSet<String>(); // forbidden paths when BFS
+
+        for (String s : this.entrySignals) {
+            Node n = this.rp.getNodes().get(s);
+            if (n == null) {
+                // TODO: no idea what this branch does
+                String spair = s.substring(1, s.length() - 1);
+                String[] pair = spair.split(":");
+                n = rp.getNodes().get(pair[0]);
+                ignorePaths.add(pair[1]);
+                visitedNodes.add(n);
+            } else {
+                if (!(n instanceof Signal))
+                    System.err.println(
+                            "Node " + n.getName() + " is not an entry signal! Import will fail!");
+                Signal sig = (Signal) n;
+                String beforePath = sig.getDirPath();
+                ignorePaths.add(beforePath);
+                visitedNodes.add(n);
+            }
+        }
+
+        for (String s : exitSignals) {
+            Node n = rp.getNodes().get(s);
+            if (n == null) {
+                String spair = s.substring(1, s.length() - 1);
+                String[] pair = spair.split(":");
+                n = rp.getNodes().get(pair[0]);
+                for (String p : n.getPaths())
+                    if (!p.equals(pair[1]))
+                        ignorePaths.add(p);
+                visitedNodes.add(n);
+            } else {
+                if (!(n instanceof Signal))
+                    System.err.println(
+                            "Node " + n.getName() + " is not an exit signal! Import will fail!");
+                Signal sig = (Signal) n;
+                String beforePath = sig.getDirPath();
+                for (String p : n.getPaths())
+                    if (!p.equals(beforePath))
+                        ignorePaths.add(p);
+                visitedNodes.add(n);
+            }
+        }
+        
+        return ignorePaths;
     }
 }
