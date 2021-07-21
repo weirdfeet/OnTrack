@@ -386,30 +386,10 @@ public class TopologyCalculator {
 
         HashSet<String> ignorePaths = computeIgnoredPaths(nodesToProcess);
 
-        HashSet<Node> visited = visitNodes(nodesToProcess, ignorePaths);
-        System.out.println("Number of Nodes imported: " + visited.size());
+        HashSet<Node> visitedNodes = visitNodes(nodesToProcess, ignorePaths);
+        System.out.println("Number of Nodes imported: " + visitedNodes.size());
 
-        // collect all paths to import; it must start and end with a visited node
-        HashMap<String, Path> importedPaths = new HashMap<String, Path>();
-        for (Node n : visited) {
-            for (String pname : n.getPaths()) {
-                Path p = rp.getPaths().get(pname);
-                if (!visited.contains(p.getStartNode()))
-                    continue;
-                if (!visited.contains(p.getEndNode()))
-                    continue;
-                importedPaths.put(pname, p);
-            }
-        }
-
-        // collect all track circuits to import; it must contains at least a path in
-        // importedPaths
-        for (String p : importedPaths.keySet()) {
-            Path path = importedPaths.get(p);
-            for (TrackCircuit t : path.getTracks()) {
-                getOnTrackTrack(t);
-            }
-        }
+        importTracks(visitedNodes);
 
         for (TrackCircuit tc : createdTracks.keySet()) {
             double length = 0;
@@ -422,7 +402,7 @@ public class TopologyCalculator {
 
         // expand all point point nodes to points and add their two corresponding tracks
         // node that we need to connect their connectors later
-        for (Node n : visited) {
+        for (Node n : visitedNodes) {
             if (n instanceof Point) {
 
                 Point bravep = (Point) n;
@@ -499,7 +479,7 @@ public class TopologyCalculator {
         for (String rname : rp.getRoutes().keySet()) {
             Route r = rp.getRoutes().get(rname);
             Signal s = r.getSignal();
-            if (!visited.contains(s) || exitSignals.contains(s.getName()))
+            if (!visitedNodes.contains(s) || exitSignals.contains(s.getName()))
                 continue;
             importedRoutes.put(rname, r);
         }
@@ -515,7 +495,7 @@ public class TopologyCalculator {
             ct.setRoute(r.getName());
 
             for (Point pn : nPoints) {
-                if (visited.contains(pn)) {
+                if (visitedNodes.contains(pn)) {
                     uk.ac.swanseacoventry.cmt.ontrack.Point p = getOnTrackPoint(pn);
                     ct.getNormals().add(p);
                     ct.getClears().add(p.getNormalTrack());
@@ -523,7 +503,7 @@ public class TopologyCalculator {
             }
 
             for (Point pn : rPoints) {
-                if (visited.contains(pn)) {
+                if (visitedNodes.contains(pn)) {
                     uk.ac.swanseacoventry.cmt.ontrack.Point p = getOnTrackPoint(pn);
                     ct.getReverses().add(p);
                     ct.getClears().add(p.getReverseTrack());
@@ -809,5 +789,40 @@ public class TopologyCalculator {
         }
         
         return visited;
+    }
+    
+    /**
+     * Import all track circuits in the plan as proper {@link Track}s.<br><br>
+     * 
+     * <b> Side effect: </b> Modifies the internal collection of {@link Track} objects.
+     * 
+     * @param nodes Should contain all nodes in the track plan, including boundary signals.
+     */
+    private void importTracks(HashSet<Node> nodes) {
+        // collect all paths to import; it must start and end with a visited node
+        HashMap<String, Path> importedPaths = new HashMap<String, Path>();
+        for (Node node : nodes) {
+            for (String pathName : node.getPaths()) {
+                Path path = this.rp.getPaths().get(pathName);
+                Node startNode = path.getStartNode();
+                Node endNode = path.getEndNode();
+                
+                boolean shouldImport = 
+                        nodes.contains(startNode) || nodes.contains(endNode);
+                if (shouldImport) {
+                    importedPaths.put(pathName, path);
+                }
+            }
+        }
+
+        // collect all track circuits to import; it must contains at least a path in
+        // importedPaths
+        for (String pathName : importedPaths.keySet()) {
+            Path path = importedPaths.get(pathName);
+
+            for (TrackCircuit t : path.getTracks()) {
+                getOnTrackTrack(t);
+            }
+        }
     }
 }
