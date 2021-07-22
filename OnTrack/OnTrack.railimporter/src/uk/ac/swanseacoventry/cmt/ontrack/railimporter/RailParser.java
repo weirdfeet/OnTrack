@@ -12,7 +12,7 @@ import java.util.regex.Pattern;
 /// nice menu options!
 /// Exception when nodes not found not null!
 /// All tostring consistent
-/// good builder constructirs...
+/// good builder constructors...
 /// Check all parses create valid objects
 
 public class RailParser {
