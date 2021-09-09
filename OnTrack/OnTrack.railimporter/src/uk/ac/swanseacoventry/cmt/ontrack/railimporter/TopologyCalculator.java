@@ -579,7 +579,7 @@ public class TopologyCalculator {
         // remove connectors that has no attached tracks
         HashSet<Connector> emptyConnectors = new HashSet<Connector>();
         for (Connector c : trackPlan.getConnectors()) {
-            if (c.getTracks().isEmpty()) {
+            if (c.getTracks().isEmpty() & c.getSignals().isEmpty() ) {
                 emptyConnectors.add(c);
             }
         }

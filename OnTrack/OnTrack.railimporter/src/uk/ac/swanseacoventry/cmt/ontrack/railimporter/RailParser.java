@@ -346,7 +346,7 @@ public class RailParser {
 
             if (r != null) {
                 this.routes.put(r.getName(), r);
-                System.out.println("Adding: " + r);
+                System.out.println("Adding: " + r.getName());
             }
         }
 
@@ -400,7 +400,9 @@ public class RailParser {
             }
         }
 
-        int clearTime = Integer.parseInt(parts[parts.length - 4].trim());
+        //hack for Haerbin as timees changes to float.
+        //int clearTime = Integer.parseInt(parts[parts.length - 4].trim());
+        int clearTime = 120;
         r.setClearTime(clearTime);
         return r.createRoute();
     }
