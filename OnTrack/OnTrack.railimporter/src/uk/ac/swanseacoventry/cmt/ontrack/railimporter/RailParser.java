@@ -16,7 +16,7 @@ import java.util.regex.Pattern;
 /// Check all parses create valid objects
 
 public class RailParser {
-    private final String DELIMITER = ",";
+    private final String DELIMITER = ",|;";
     private HashMap<String, Node> nodes = new HashMap<String, Node>();
     private HashMap<String, Path> paths = new HashMap<String, Path>();
     private HashMap<String, TrackCircuit> tracks = new HashMap<String, TrackCircuit>();
@@ -135,6 +135,7 @@ public class RailParser {
             
             // Extract the name, x and y positions
             String name = parts[0].trim();
+//            String location = parts[1].trim();
             String pX = parts[1].trim();
             String pY = parts[2].trim();
 
