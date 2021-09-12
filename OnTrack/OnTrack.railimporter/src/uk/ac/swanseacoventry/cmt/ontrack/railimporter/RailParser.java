@@ -268,7 +268,8 @@ public class RailParser {
             line = scanner.nextLine();
             String[] parts = line.split(DELIMITER, -1);
 
-            Path p = new Path(parts[0].trim());
+            String pathName = parts[0].trim();
+            Path p = new Path(pathName);
             Node startNode = nodes.get(parts[1].trim());
             Node endNode = nodes.get(parts[2].trim());
             p.setStartNode(startNode);
