@@ -57,7 +57,7 @@ public class Point extends Node
 		result.append(exitPath);
 		result.append(", Branch path: ");
 		result.append(branchPath);
-		result.append(", Swith time: ");
+		result.append(", Switch time: ");
 		result.append(switchTime);
 		return result;
 	}
