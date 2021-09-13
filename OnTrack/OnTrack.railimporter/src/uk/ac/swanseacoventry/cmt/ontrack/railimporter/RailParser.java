@@ -28,8 +28,8 @@ public class RailParser {
 
     }
 
-    public HashMap<String, Node> getNodes() {
-        return nodes;
+    public Node getNode(String name) {
+        return this.nodes.get(name);
     }
 
     public void setNodes(HashMap<String, Node> nodes) {
@@ -47,8 +47,8 @@ public class RailParser {
         this.paths = paths;
     }
 
-    public HashMap<String, TrackCircuit> getTracks() {
-        return tracks;
+    public TrackCircuit getTrack(String name) {
+        return this.tracks.get(name);
     }
 
     public void setTracks(HashMap<String, TrackCircuit> tracks) {
@@ -57,6 +57,10 @@ public class RailParser {
 
     public HashMap<String, Route> getRoutes() {
         return routes;
+    }
+    
+    public Route getRoute(String name) {
+        return this.routes.get(name);
     }
 
     public void setRoutes(HashMap<String, Route> routes) {

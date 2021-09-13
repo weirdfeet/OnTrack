@@ -214,7 +214,7 @@ public class TopologyCalculator {
             Path mainExitPath = rp.getPath(n.getMainExit());
             Path branchEnterPath = rp.getPath(n.getBranchEnter());
             Path branchExitPath = rp.getPath(n.getBranchExit());
-            TrackCircuit tc = mainEnterPath.getTracks().get(0);
+            TrackCircuit tc = mainEnterPath.getTrack(0);
 
             String crossingTrackName = tc.getName();
 
@@ -419,7 +419,7 @@ public class TopologyCalculator {
                 tracks.addAll(c.getTracks());
                 for (Track t : tracks) {
                     String tname = t.getName();
-                    TrackCircuit tc = rp.getTracks().get(tname);
+                    TrackCircuit tc = rp.getTrack(tname);
                     if (tc.getPaths().contains(enterPath)) {
                         replaceTrackConnector(t, c, p.getNormalTrack().getC1());
                     } else if (tc.getPaths().contains(exitPath)) {
@@ -443,7 +443,7 @@ public class TopologyCalculator {
                 tracks.addAll(c.getTracks());
                 for (Track t : tracks) {
                     String tname = t.getName();
-                    TrackCircuit tc = rp.getTracks().get(tname);
+                    TrackCircuit tc = rp.getTrack(tname);
                     if (tc.getPaths().contains(mainEnter)) {
                         replaceTrackConnector(t, c, p.getTrack1().getC1());
                     } else if (tc.getPaths().contains(mainExit)) {
@@ -459,7 +459,7 @@ public class TopologyCalculator {
                     Signal braves = (Signal) n;
                     uk.ac.swanseacoventry.cmt.ontrack.Signal s = getOnTrackSignal(braves);
                     Path beforePath = rp.getPath(braves.getDirPath());
-                    Track t = createdTracks.get(beforePath.getTracks().get(0));
+                    Track t = createdTracks.get(beforePath.getTrack(0));
                     if (t != null) {
                         s.setTrack(t);
                         t.getSignals().add(s);
@@ -478,7 +478,7 @@ public class TopologyCalculator {
         // collect all routes to import; it must have its signal in visited
         HashMap<String, Route> importedRoutes = new HashMap<String, Route>();
         for (String rname : rp.getRoutes().keySet()) {
-            Route r = rp.getRoutes().get(rname);
+            Route r = rp.getRoute(rname);
             Signal s = r.getSignal();
             if (!visitedNodes.contains(s) || exitSignals.contains(s.getName()))
                 continue;
@@ -708,12 +708,12 @@ public class TopologyCalculator {
         HashSet<String> ignorePaths = new HashSet<String>(); // forbidden paths when BFS
 
         for (String signalName : this.entrySignals) {
-            Node node = this.rp.getNodes().get(signalName);
+            Node node = this.rp.getNode(signalName);
             if (node == null) {
                 // TODO: no idea what this branch does
                 String spair = signalName.substring(1, signalName.length() - 1);
                 String[] pair = spair.split(":");
-                node = rp.getNodes().get(pair[0]);
+                node = rp.getNode(pair[0]);
                 ignorePaths.add(pair[1]);
                 nodesToProcess.add(node);
             } else {
@@ -730,11 +730,11 @@ public class TopologyCalculator {
         }
 
         for (String signalName : exitSignals) {
-            Node node = rp.getNodes().get(signalName);
+            Node node = rp.getNode(signalName);
             if (node == null) {
                 String spair = signalName.substring(1, signalName.length() - 1);
                 String[] pair = spair.split(":");
-                node = rp.getNodes().get(pair[0]);
+                node = rp.getNode(pair[0]);
                 for (String p : node.getPaths())
                     if (!p.equals(pair[1]))
                         ignorePaths.add(p);

@@ -42,6 +42,10 @@ public class Path
 		return this.tracks;
 	}	
 	
+	public TrackCircuit getTrack(int index) {
+	    return this.tracks.get(index);
+	}
+	
 	public void addTrack(TrackCircuit t) {
 	    this.tracks.add(t);
 	}
