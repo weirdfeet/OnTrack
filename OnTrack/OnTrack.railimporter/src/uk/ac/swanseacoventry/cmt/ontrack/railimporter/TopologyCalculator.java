@@ -210,10 +210,10 @@ public class TopologyCalculator {
             trackPlan.getCrossings().add(p);
             createdCrossings.put(n, p);
 
-            Path mainEnterPath = rp.getPaths().get(n.getMainEnter());
-            Path mainExitPath = rp.getPaths().get(n.getMainExit());
-            Path branchEnterPath = rp.getPaths().get(n.getBranchEnter());
-            Path branchExitPath = rp.getPaths().get(n.getBranchExit());
+            Path mainEnterPath = rp.getPath(n.getMainEnter());
+            Path mainExitPath = rp.getPath(n.getMainExit());
+            Path branchEnterPath = rp.getPath(n.getBranchEnter());
+            Path branchExitPath = rp.getPath(n.getBranchExit());
             TrackCircuit tc = mainEnterPath.getTracks().get(0);
 
             String crossingTrackName = tc.getName();
@@ -253,9 +253,9 @@ public class TopologyCalculator {
     private Node getEndNodeOfDiamond(Node n, TrackCircuit tc, Path path) {
         while (!tc.endNodes.contains(n) && path != null && tc.getPaths().contains(path)) {
             n = path.getStartNode() == n ? path.getEndNode() : path.getStartNode();
-            if (n.getPaths().size() == 2) {
-                Path path0 = rp.getPaths().get(n.getPaths().get(0));
-                Path path1 = rp.getPaths().get(n.getPaths().get(1));
+            if (n.numPaths() == 2) {
+                Path path0 = rp.getPath(n.getPathByIndex(0));
+                Path path1 = rp.getPath(n.getPathByIndex(1));
                 path = path0 == path ? path1 : path0;
             }
         }
@@ -408,9 +408,9 @@ public class TopologyCalculator {
 
                 Point bravep = (Point) n;
                 uk.ac.swanseacoventry.cmt.ontrack.Point p = getOnTrackPoint(bravep);
-                Path enterPath = rp.getPaths().get(bravep.getEnterPath());
-                Path exitPath = rp.getPaths().get(bravep.getExitPath());
-                Path branchPath = rp.getPaths().get(bravep.getBranchPath());
+                Path enterPath = this.rp.getPath(bravep.getEnterPath());
+                Path exitPath = this.rp.getPath(bravep.getExitPath());
+                Path branchPath = this.rp.getPath(bravep.getBranchPath());
 
                 // replace the connector of surrounding tracks of this point with the connectors
                 // of the point
@@ -431,10 +431,10 @@ public class TopologyCalculator {
             } else if (n instanceof Diamond) {
                 Diamond bravep = (Diamond) n;
                 Crossing p = getOnTrackCrossing(bravep);
-                Path mainEnter = rp.getPaths().get(bravep.getMainEnter());
-                Path mainExit = rp.getPaths().get(bravep.getMainExit());
-                Path branchEnter = rp.getPaths().get(bravep.getBranchEnter());
-                Path branchExit = rp.getPaths().get(bravep.getBranchExit());
+                Path mainEnter = rp.getPath(bravep.getMainEnter());
+                Path mainExit = rp.getPath(bravep.getMainExit());
+                Path branchEnter = rp.getPath(bravep.getBranchEnter());
+                Path branchExit = rp.getPath(bravep.getBranchExit());
 
                 // replace the connector of surrounding tracks of this point with the connectors
                 // of the point
@@ -458,7 +458,7 @@ public class TopologyCalculator {
                 if (!exitSignals.contains(n.getName())) { // exit signals are not added in
                     Signal braves = (Signal) n;
                     uk.ac.swanseacoventry.cmt.ontrack.Signal s = getOnTrackSignal(braves);
-                    Path beforePath = rp.getPaths().get(braves.getDirPath());
+                    Path beforePath = rp.getPath(braves.getDirPath());
                     Track t = createdTracks.get(beforePath.getTracks().get(0));
                     if (t != null) {
                         s.setTrack(t);
@@ -778,7 +778,7 @@ public class TopologyCalculator {
             
             for (String pathname : node.getPaths()) {
                 if (!ignoredPaths.contains(pathname)) {
-                    Path path = this.rp.getPaths().get(pathname);
+                    Path path = this.rp.getPath(pathname);
                     Node nextNode = path.getStartNode() == node ? 
                             path.getEndNode() : path.getStartNode();
                     
@@ -804,7 +804,7 @@ public class TopologyCalculator {
         HashMap<String, Path> importedPaths = new HashMap<String, Path>();
         for (Node node : nodes) {
             for (String pathName : node.getPaths()) {
-                Path path = this.rp.getPaths().get(pathName);
+                Path path = this.rp.getPath(pathName);
                 Node startNode = path.getStartNode();
                 Node endNode = path.getEndNode();
                 

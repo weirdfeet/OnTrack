@@ -8,6 +8,17 @@ public class Node
 		return paths;
 	}
 	
+	/**
+	 * @return Name of the path at the given index.
+	 */
+	public String getPathByIndex(int index) {
+	    return this.paths.get(index);
+	}
+	
+	public int numPaths() {
+	    return this.paths.size();
+	}
+	
 	public void addPath(String p) {
 	    this.paths.add(p);
 	}

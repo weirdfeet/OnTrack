@@ -36,8 +36,11 @@ public class RailParser {
         this.nodes = nodes;
     }
 
-    public HashMap<String, Path> getPaths() {
-        return paths;
+    /**
+     * @return A path with the given name.
+     */
+    public Path getPath(String name) {
+        return this.paths.get(name);
     }
 
     public void setPaths(HashMap<String, Path> paths) {
