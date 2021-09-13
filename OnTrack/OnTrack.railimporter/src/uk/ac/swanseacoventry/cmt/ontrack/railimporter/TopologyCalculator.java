@@ -85,10 +85,10 @@ public class TopologyCalculator {
     
     private void saveConnectorPositions(String outputFile) {
         StringBuilder sb = new StringBuilder();
-        sb.append(createdConnectors.size());
+        sb.append(this.createdConnectors.size());
         sb.append("\n");
-        for (Node n : createdConnectors.keySet()) {
-            Connector c = createdConnectors.get(n);
+        for (Node n : this.createdConnectors.keySet()) {
+            Connector c = this.createdConnectors.get(n);
             sb.append(c.getId());
             sb.append(",");
             sb.append(n.getLocationX());
@@ -96,10 +96,10 @@ public class TopologyCalculator {
             sb.append(n.getLocationY());
             sb.append("\n");
         }
-        sb.append(createdPoints.size());
+        sb.append(this.createdPoints.size());
         sb.append("\n");
-        for (Point n : createdPoints.keySet()) {
-            uk.ac.swanseacoventry.cmt.ontrack.Point p = createdPoints.get(n);
+        for (Point n : this.createdPoints.keySet()) {
+            uk.ac.swanseacoventry.cmt.ontrack.Point p = this.createdPoints.get(n);
             sb.append(p.getName());
             sb.append(",");
             sb.append(n.getLocationX());
@@ -107,10 +107,10 @@ public class TopologyCalculator {
             sb.append(n.getLocationY());
             sb.append("\n");
         }
-        sb.append(createdCrossings.size());
+        sb.append(this.createdCrossings.size());
         sb.append("\n");
-        for (Diamond n : createdCrossings.keySet()) {
-            uk.ac.swanseacoventry.cmt.ontrack.Crossing p = createdCrossings.get(n);
+        for (Diamond n : this.createdCrossings.keySet()) {
+            uk.ac.swanseacoventry.cmt.ontrack.Crossing p = this.createdCrossings.get(n);
             sb.append(p.getName());
             sb.append(",");
             sb.append(n.getLocationX());
@@ -131,12 +131,12 @@ public class TopologyCalculator {
     }
 
     uk.ac.swanseacoventry.cmt.ontrack.Signal getOnTrackSignal(Signal n) {
-        uk.ac.swanseacoventry.cmt.ontrack.Signal s = createdSignals.get(n);
+        uk.ac.swanseacoventry.cmt.ontrack.Signal s = this.createdSignals.get(n);
         if (s == null) {
             s = OntrackFactory.eINSTANCE.createSignal();
             s.setName(n.getName());
             trackPlan.getSignals().add(s);
-            createdSignals.put(n, s);
+            this.createdSignals.put(n, s);
         }
 
         Connector c = getOnTrackConnector(n);
@@ -147,23 +147,23 @@ public class TopologyCalculator {
     }
 
     uk.ac.swanseacoventry.cmt.ontrack.Connector getOnTrackConnector(Node n) {
-        Connector c = createdConnectors.get(n);
+        Connector c = this.createdConnectors.get(n);
         if (c == null) {
             c = OntrackFactory.eINSTANCE.createConnector();
             c.setId(conNum++);
             trackPlan.getConnectors().add(c);
-            createdConnectors.put(n, c);
+            this.createdConnectors.put(n, c);
         }
         return c;
     }
 
     uk.ac.swanseacoventry.cmt.ontrack.Point getOnTrackPoint(Point n) {
-        uk.ac.swanseacoventry.cmt.ontrack.Point p = createdPoints.get(n);
+        uk.ac.swanseacoventry.cmt.ontrack.Point p = this.createdPoints.get(n);
         if (p == null) {
             p = OntrackFactory.eINSTANCE.createPoint();
             p.setName(n.getName());
             trackPlan.getPoints().add(p);
-            createdPoints.put(n, p);
+            this.createdPoints.put(n, p);
 
             String pointTrackName = "TC" + n.getName();
 
@@ -202,13 +202,13 @@ public class TopologyCalculator {
     }
 
     Crossing getOnTrackCrossing(Diamond n) {
-        Crossing p = createdCrossings.get(n);
+        Crossing p = this.createdCrossings.get(n);
         if (p == null) {
 
             p = OntrackFactory.eINSTANCE.createCrossing();
             p.setName(n.getName());
             trackPlan.getCrossings().add(p);
-            createdCrossings.put(n, p);
+            this.createdCrossings.put(n, p);
 
             Path mainEnterPath = rp.getPath(n.getMainEnter());
             Path mainExitPath = rp.getPath(n.getMainExit());
@@ -245,7 +245,7 @@ public class TopologyCalculator {
             c4.getTrack2s().add(bt);
 
             // add the main track as representation of the track circuit of the crossing
-            createdTracks.put(tc, mt);
+            this.createdTracks.put(tc, mt);
         }
         return p;
     }
@@ -263,7 +263,7 @@ public class TopologyCalculator {
     }
 
     uk.ac.swanseacoventry.cmt.ontrack.Track getOnTrackTrack(TrackCircuit tc) {
-        uk.ac.swanseacoventry.cmt.ontrack.Track t = createdTracks.get(tc);
+        uk.ac.swanseacoventry.cmt.ontrack.Track t = this.createdTracks.get(tc);
         if (t == null) {
             for (Node n : tc.endNodes) {
                 getOnTrackConnector(n);
@@ -274,7 +274,7 @@ public class TopologyCalculator {
             t = OntrackFactory.eINSTANCE.createTrack();
             t.setName(tc.getName());
             trackPlan.getTracks().add(t);
-            createdTracks.put(tc, t);
+            this.createdTracks.put(tc, t);
 
             Connector c1 = getOnTrackConnector(tc.endNodes.get(0));
             Connector c2 = getOnTrackConnector(tc.endNodes.get(1));
@@ -350,10 +350,10 @@ public class TopologyCalculator {
             newCon.getTrack2s().add(t);
             oldCon.getTrack2s().remove(t);
         }
-        for (Node n : createdConnectors.keySet()) {
-            Connector c = createdConnectors.get(n);
+        for (Node n : this.createdConnectors.keySet()) {
+            Connector c = this.createdConnectors.get(n);
             if (c == oldCon) {
-                createdConnectors.put(n, newCon);
+                this.createdConnectors.put(n, newCon);
             }
         }
     }
@@ -400,34 +400,13 @@ public class TopologyCalculator {
 
         System.out.println("Num of Imported Tracks: " + this.createdTracks.size());
 
-        // TODO: You are here ~dedbepole
         // expand all point point nodes to points and add their two corresponding tracks
         // node that we need to connect their connectors later
         for (Node n : visitedNodes) {
             if (n instanceof Point) {
-
-                Point bravep = (Point) n;
-                uk.ac.swanseacoventry.cmt.ontrack.Point p = getOnTrackPoint(bravep);
-                Path enterPath = this.rp.getPath(bravep.getEnterPath());
-                Path exitPath = this.rp.getPath(bravep.getExitPath());
-                Path branchPath = this.rp.getPath(bravep.getBranchPath());
-
-                // replace the connector of surrounding tracks of this point with the connectors
-                // of the point
-                Connector c = getOnTrackConnector(bravep);
-                ArrayList<Track> tracks = new ArrayList<Track>();
-                tracks.addAll(c.getTracks());
-                for (Track t : tracks) {
-                    String tname = t.getName();
-                    TrackCircuit tc = rp.getTrack(tname);
-                    if (tc.getPaths().contains(enterPath)) {
-                        replaceTrackConnector(t, c, p.getNormalTrack().getC1());
-                    } else if (tc.getPaths().contains(exitPath)) {
-                        replaceTrackConnector(t, c, p.getNormalTrack().getC2());
-                    } else if (tc.getPaths().contains(branchPath)) {
-                        replaceTrackConnector(t, c, p.getReverseTrack().getC2());
-                    }
-                }
+                Point bravePoint = (Point) n;
+                // TODO: You are here ~dedbepole
+                convertPoint(bravePoint);
             } else if (n instanceof Diamond) {
                 Diamond bravep = (Diamond) n;
                 Crossing p = getOnTrackCrossing(bravep);
@@ -459,7 +438,7 @@ public class TopologyCalculator {
                     Signal braves = (Signal) n;
                     uk.ac.swanseacoventry.cmt.ontrack.Signal s = getOnTrackSignal(braves);
                     Path beforePath = rp.getPath(braves.getDirPath());
-                    Track t = createdTracks.get(beforePath.getTrack(0));
+                    Track t = this.createdTracks.get(beforePath.getTrack(0));
                     if (t != null) {
                         s.setTrack(t);
                         t.getSignals().add(s);
@@ -512,7 +491,7 @@ public class TopologyCalculator {
             }
 
             for (TrackCircuit t : r.getTrackCircuits()) {
-                Track tr = createdTracks.get(t);
+                Track tr = this.createdTracks.get(t);
                 if (tr != null) {
                     ct.getClears().add(tr);
                     if (tr.getCrossing() != null) {
@@ -825,5 +804,37 @@ public class TopologyCalculator {
                 getOnTrackTrack(t);
             }
         }
+    }
+    
+    /**
+     * Convert a Brave {@link Point} to an OnTrack {@link uk.ac.swanseacoventry.cmt.ontrack.Point}.
+     * <br><br>
+     * <b> Side effects: </b> [TODO] unknown
+     * 
+     * @param bravePoint the point in the brave representation.
+     */
+    private void convertPoint(Point bravePoint) {
+            uk.ac.swanseacoventry.cmt.ontrack.Point otPoint = getOnTrackPoint(bravePoint);
+            Path enterPath = this.rp.getPath(bravePoint.getEnterPath());
+            Path exitPath = this.rp.getPath(bravePoint.getExitPath());
+            Path branchPath = this.rp.getPath(bravePoint.getBranchPath());
+
+            // replace the connector of surrounding tracks of this point with the connectors
+            // of the point
+            Connector c = getOnTrackConnector(bravePoint);
+            ArrayList<Track> otTracks = new ArrayList<Track>();
+            // TODO BUG: c doesn't have any tracks!
+            otTracks.addAll(c.getTracks());
+            for (Track otTrack : otTracks) {
+                String tname = otTrack.getName();
+                TrackCircuit braveTrack = rp.getTrack(tname);
+                if (braveTrack.getPaths().contains(enterPath)) {
+                    replaceTrackConnector(otTrack, c, otPoint.getNormalTrack().getC1());
+                } else if (braveTrack.getPaths().contains(exitPath)) {
+                    replaceTrackConnector(otTrack, c, otPoint.getNormalTrack().getC2());
+                } else if (braveTrack.getPaths().contains(branchPath)) {
+                    replaceTrackConnector(otTrack, c, otPoint.getReverseTrack().getC2());
+                }
+            }
     }
 }
