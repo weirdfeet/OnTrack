@@ -158,12 +158,12 @@ public class TopologyCalculator {
     }
 
     uk.ac.swanseacoventry.cmt.ontrack.Point getOnTrackPoint(Point n) {
-        uk.ac.swanseacoventry.cmt.ontrack.Point p = this.createdPoints.get(n);
-        if (p == null) {
-            p = OntrackFactory.eINSTANCE.createPoint();
-            p.setName(n.getName());
-            trackPlan.getPoints().add(p);
-            this.createdPoints.put(n, p);
+        uk.ac.swanseacoventry.cmt.ontrack.Point otPoint = this.createdPoints.get(n);
+        if (otPoint == null) {
+            otPoint = OntrackFactory.eINSTANCE.createPoint();
+            otPoint.setName(n.getName());
+            trackPlan.getPoints().add(otPoint);
+            this.createdPoints.put(n, otPoint);
 
             String pointTrackName = "TC" + n.getName();
 
@@ -177,28 +177,28 @@ public class TopologyCalculator {
             c3.setId(conNum++);
             trackPlan.getConnectors().add(c3);
 
-            Track nt = OntrackFactory.eINSTANCE.createTrack();
-            nt.setName(pointTrackName);
-            trackPlan.getTracks().add(nt);
+            Track normalOtTrack = OntrackFactory.eINSTANCE.createTrack();
+            normalOtTrack.setName(pointTrackName);
+            trackPlan.getTracks().add(normalOtTrack);
 
-            Track rt = OntrackFactory.eINSTANCE.createTrack();
-            rt.setName(pointTrackName);
-            trackPlan.getTracks().add(rt);
+            Track reverseOtTrack = OntrackFactory.eINSTANCE.createTrack();
+            reverseOtTrack.setName(pointTrackName);
+            trackPlan.getTracks().add(reverseOtTrack);
 
-            p.setNormalTrack(nt);
-            p.setReverseTrack(rt);
-            nt.setPointNormal(p);
-            nt.setC1(c1);
-            nt.setC2(c2);
-            rt.setPointReverse(p);
-            rt.setC1(c1);
-            rt.setC2(c3);
-            c1.getTrack1s().add(nt);
-            c1.getTrack1s().add(rt);
-            c2.getTrack2s().add(nt);
-            c3.getTrack2s().add(rt);
+            otPoint.setNormalTrack(normalOtTrack);
+            otPoint.setReverseTrack(reverseOtTrack);
+            normalOtTrack.setPointNormal(otPoint);
+            normalOtTrack.setC1(c1);
+            normalOtTrack.setC2(c2);
+            reverseOtTrack.setPointReverse(otPoint);
+            reverseOtTrack.setC1(c1);
+            reverseOtTrack.setC2(c3);
+            c1.getTrack1s().add(normalOtTrack);
+            c1.getTrack1s().add(reverseOtTrack);
+            c2.getTrack2s().add(normalOtTrack);
+            c3.getTrack2s().add(reverseOtTrack);
         }
-        return p;
+        return otPoint;
     }
 
     Crossing getOnTrackCrossing(Diamond n) {
@@ -265,6 +265,8 @@ public class TopologyCalculator {
     uk.ac.swanseacoventry.cmt.ontrack.Track getOnTrackTrack(TrackCircuit tc) {
         uk.ac.swanseacoventry.cmt.ontrack.Track t = this.createdTracks.get(tc);
         if (t == null) {
+            // TODO BUG: In the Haerbin model, endNodes does not include the node at the diverging
+            // point of a point
             for (Node n : tc.endNodes) {
                 getOnTrackConnector(n);
             }
@@ -821,19 +823,20 @@ public class TopologyCalculator {
 
             // replace the connector of surrounding tracks of this point with the connectors
             // of the point
-            Connector c = getOnTrackConnector(bravePoint);
+            Connector otPointConnector = getOnTrackConnector(bravePoint);
             ArrayList<Track> otTracks = new ArrayList<Track>();
-            // TODO BUG: c doesn't have any tracks!
-            otTracks.addAll(c.getTracks());
+            // TODO BUG: otPointConnector doesn't have any tracks! They should have been added
+            // by getOnTrackTrack()
+            otTracks.addAll(otPointConnector.getTracks());
             for (Track otTrack : otTracks) {
                 String tname = otTrack.getName();
                 TrackCircuit braveTrack = rp.getTrack(tname);
                 if (braveTrack.getPaths().contains(enterPath)) {
-                    replaceTrackConnector(otTrack, c, otPoint.getNormalTrack().getC1());
+                    replaceTrackConnector(otTrack, otPointConnector, otPoint.getNormalTrack().getC1());
                 } else if (braveTrack.getPaths().contains(exitPath)) {
-                    replaceTrackConnector(otTrack, c, otPoint.getNormalTrack().getC2());
+                    replaceTrackConnector(otTrack, otPointConnector, otPoint.getNormalTrack().getC2());
                 } else if (braveTrack.getPaths().contains(branchPath)) {
-                    replaceTrackConnector(otTrack, c, otPoint.getReverseTrack().getC2());
+                    replaceTrackConnector(otTrack, otPointConnector, otPoint.getReverseTrack().getC2());
                 }
             }
     }
