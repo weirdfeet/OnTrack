@@ -816,28 +816,28 @@ public class TopologyCalculator {
      * @param bravePoint the point in the brave representation.
      */
     private void convertPoint(Point bravePoint) {
-            uk.ac.swanseacoventry.cmt.ontrack.Point otPoint = getOnTrackPoint(bravePoint);
-            Path enterPath = this.rp.getPath(bravePoint.getEnterPath());
-            Path exitPath = this.rp.getPath(bravePoint.getExitPath());
-            Path branchPath = this.rp.getPath(bravePoint.getBranchPath());
+        uk.ac.swanseacoventry.cmt.ontrack.Point otPoint = getOnTrackPoint(bravePoint);
+        Path enterPath = this.rp.getPath(bravePoint.getEnterPath());
+        Path exitPath = this.rp.getPath(bravePoint.getExitPath());
+        Path branchPath = this.rp.getPath(bravePoint.getBranchPath());
 
-            // replace the connector of surrounding tracks of this point with the connectors
-            // of the point
-            Connector otPointConnector = getOnTrackConnector(bravePoint);
-            ArrayList<Track> otTracks = new ArrayList<Track>();
-            // TODO BUG: otPointConnector doesn't have any tracks! They should have been added
-            // by getOnTrackTrack()
-            otTracks.addAll(otPointConnector.getTracks());
-            for (Track otTrack : otTracks) {
-                String tname = otTrack.getName();
-                TrackCircuit braveTrack = rp.getTrack(tname);
-                if (braveTrack.getPaths().contains(enterPath)) {
-                    replaceTrackConnector(otTrack, otPointConnector, otPoint.getNormalTrack().getC1());
-                } else if (braveTrack.getPaths().contains(exitPath)) {
-                    replaceTrackConnector(otTrack, otPointConnector, otPoint.getNormalTrack().getC2());
-                } else if (braveTrack.getPaths().contains(branchPath)) {
-                    replaceTrackConnector(otTrack, otPointConnector, otPoint.getReverseTrack().getC2());
-                }
+        // replace the connector of surrounding tracks of this point with the connectors
+        // of the point
+        Connector otPointConnector = getOnTrackConnector(bravePoint);
+        ArrayList<Track> otTracks = new ArrayList<Track>();
+        // TODO BUG: otPointConnector doesn't have any tracks! They should have been added
+        // by getOnTrackTrack()
+        otTracks.addAll(otPointConnector.getTracks());
+        for (Track otTrack : otTracks) {
+            String tname = otTrack.getName();
+            TrackCircuit braveTrack = rp.getTrack(tname);
+            if (braveTrack.getPaths().contains(enterPath)) {
+                replaceTrackConnector(otTrack, otPointConnector, otPoint.getNormalTrack().getC1());
+            } else if (braveTrack.getPaths().contains(exitPath)) {
+                replaceTrackConnector(otTrack, otPointConnector, otPoint.getNormalTrack().getC2());
+            } else if (braveTrack.getPaths().contains(branchPath)) {
+                replaceTrackConnector(otTrack, otPointConnector, otPoint.getReverseTrack().getC2());
             }
+        }
     }
 }
