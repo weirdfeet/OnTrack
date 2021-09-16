@@ -34,6 +34,7 @@ import uk.ac.swanseacoventry.cmt.ontrack.TrackPlan;
 
 public class TopologyCalculator {
     RailParser rp = new RailParser();
+    private static final boolean HAERBIN_MODE = true;
     ArrayList<String> entrySignals = new ArrayList<String>();
     ArrayList<String> exitSignals = new ArrayList<String>();
 
@@ -157,46 +158,94 @@ public class TopologyCalculator {
         return c;
     }
 
-    uk.ac.swanseacoventry.cmt.ontrack.Point getOnTrackPoint(Point n) {
-        uk.ac.swanseacoventry.cmt.ontrack.Point otPoint = this.createdPoints.get(n);
+    private uk.ac.swanseacoventry.cmt.ontrack.Point getOnTrackPoint(final Point bravePoint) {
+        uk.ac.swanseacoventry.cmt.ontrack.Point otPoint = this.createdPoints.get(bravePoint);
         if (otPoint == null) {
-            otPoint = OntrackFactory.eINSTANCE.createPoint();
-            otPoint.setName(n.getName());
-            trackPlan.getPoints().add(otPoint);
-            this.createdPoints.put(n, otPoint);
+            if (HAERBIN_MODE) {
+                Path enterPath = this.rp.getPath(bravePoint.getEnterPath());
+                Path branchPath = this.rp.getPath(bravePoint.getBranchPath());
 
-            String pointTrackName = "TC" + n.getName();
+                if (!enterPath.getTracks().equals(branchPath.getTracks())) {
+                    throw new IllegalArgumentException("Haerbin mode enabled but representation of point is incorrect");
+                }
 
-            Connector c1 = OntrackFactory.eINSTANCE.createConnector();
-            c1.setId(conNum++);
-            trackPlan.getConnectors().add(c1);
-            Connector c2 = OntrackFactory.eINSTANCE.createConnector();
-            c2.setId(conNum++);
-            trackPlan.getConnectors().add(c2);
-            Connector c3 = OntrackFactory.eINSTANCE.createConnector();
-            c3.setId(conNum++);
-            trackPlan.getConnectors().add(c3);
+                otPoint = OntrackFactory.eINSTANCE.createPoint();
+                otPoint.setName(bravePoint.getName());
+                trackPlan.getPoints().add(otPoint);
+                this.createdPoints.put(bravePoint, otPoint);
 
-            Track normalOtTrack = OntrackFactory.eINSTANCE.createTrack();
-            normalOtTrack.setName(pointTrackName);
-            trackPlan.getTracks().add(normalOtTrack);
+                Track normalTrack = this.createdTracks.get(enterPath.getTrack(0));
+                String pointTrackName = normalTrack.getName();
 
-            Track reverseOtTrack = OntrackFactory.eINSTANCE.createTrack();
-            reverseOtTrack.setName(pointTrackName);
-            trackPlan.getTracks().add(reverseOtTrack);
+                normalTrack.setName(pointTrackName);
+                Track reverseTrack = OntrackFactory.eINSTANCE.createTrack();
+                reverseTrack.setName(pointTrackName);
+                trackPlan.getTracks().add(reverseTrack);
 
-            otPoint.setNormalTrack(normalOtTrack);
-            otPoint.setReverseTrack(reverseOtTrack);
-            normalOtTrack.setPointNormal(otPoint);
-            normalOtTrack.setC1(c1);
-            normalOtTrack.setC2(c2);
-            reverseOtTrack.setPointReverse(otPoint);
-            reverseOtTrack.setC1(c1);
-            reverseOtTrack.setC2(c3);
-            c1.getTrack1s().add(normalOtTrack);
-            c1.getTrack1s().add(reverseOtTrack);
-            c2.getTrack2s().add(normalOtTrack);
-            c3.getTrack2s().add(reverseOtTrack);
+                otPoint.setNormalTrack(normalTrack);
+                otPoint.setReverseTrack(reverseTrack);
+                normalTrack.setPointNormal(otPoint);
+                reverseTrack.setPointReverse(otPoint);
+                
+                Connector c1 = normalTrack.getC1();
+                Connector c2 = normalTrack.getC2();
+                // Some functional magic to get the connector at the other (outer) end of branchPath
+                Connector c3 = branchPath.getTrack(0).endNodes
+                        .stream().filter(
+                            node -> (!getOnTrackConnector(node).equals(c1)) 
+                                    && (!getOnTrackConnector(node).equals(c2))
+                        )
+                        .map(node -> getOnTrackConnector(node))
+                        .findFirst().get();
+                        
+                normalTrack.setC1(c1);
+                normalTrack.setC2(c2);
+                reverseTrack.setC1(c1);
+                reverseTrack.setC2(c3);
+                
+                c1.getTrack1s().add(normalTrack);
+                c1.getTrack1s().add(reverseTrack);
+                c2.getTrack2s().add(normalTrack);
+                c3.getTrack2s().add(reverseTrack);
+            } else {
+                otPoint = OntrackFactory.eINSTANCE.createPoint();
+                otPoint.setName(bravePoint.getName());
+                trackPlan.getPoints().add(otPoint);
+                this.createdPoints.put(bravePoint, otPoint);
+
+                String pointTrackName = "TC" + bravePoint.getName();
+
+                Connector c1 = OntrackFactory.eINSTANCE.createConnector();
+                c1.setId(conNum++);
+                trackPlan.getConnectors().add(c1);
+                Connector c2 = OntrackFactory.eINSTANCE.createConnector();
+                c2.setId(conNum++);
+                trackPlan.getConnectors().add(c2);
+                Connector c3 = OntrackFactory.eINSTANCE.createConnector();
+                c3.setId(conNum++);
+                trackPlan.getConnectors().add(c3);
+
+                Track normalOtTrack = OntrackFactory.eINSTANCE.createTrack();
+                normalOtTrack.setName(pointTrackName);
+                trackPlan.getTracks().add(normalOtTrack);
+
+                Track reverseOtTrack = OntrackFactory.eINSTANCE.createTrack();
+                reverseOtTrack.setName(pointTrackName);
+                trackPlan.getTracks().add(reverseOtTrack);
+
+                otPoint.setNormalTrack(normalOtTrack);
+                otPoint.setReverseTrack(reverseOtTrack);
+                normalOtTrack.setPointNormal(otPoint);
+                normalOtTrack.setC1(c1);
+                normalOtTrack.setC2(c2);
+                reverseOtTrack.setPointReverse(otPoint);
+                reverseOtTrack.setC1(c1);
+                reverseOtTrack.setC2(c3);
+                c1.getTrack1s().add(normalOtTrack);
+                c1.getTrack1s().add(reverseOtTrack);
+                c2.getTrack2s().add(normalOtTrack);
+                c3.getTrack2s().add(reverseOtTrack);
+            }
         }
         return otPoint;
     }
@@ -265,8 +314,6 @@ public class TopologyCalculator {
     uk.ac.swanseacoventry.cmt.ontrack.Track getOnTrackTrack(TrackCircuit tc) {
         uk.ac.swanseacoventry.cmt.ontrack.Track t = this.createdTracks.get(tc);
         if (t == null) {
-            // TODO BUG: In the Haerbin model, endNodes does not include the node at the diverging
-            // point of a point
             for (Node n : tc.endNodes) {
                 getOnTrackConnector(n);
             }
@@ -394,7 +441,6 @@ public class TopologyCalculator {
 
         for (TrackCircuit tc : this.createdTracks.keySet()) {
             double length = 0;
-            // TODO what exactly is a path?
             for (Path p : tc.getPaths())
                 length += p.getLength();
             System.out.println(tc.getName() + " : " + length + " m.");
@@ -408,7 +454,11 @@ public class TopologyCalculator {
             if (n instanceof Point) {
                 Point bravePoint = (Point) n;
                 // TODO: You are here ~dedbepole
-                convertPoint(bravePoint);
+                if (HAERBIN_MODE) {
+                    convertHaerbinPoint(bravePoint);
+                } else {
+                    convertPoint(bravePoint);
+                }
             } else if (n instanceof Diamond) {
                 Diamond bravep = (Diamond) n;
                 Crossing p = getOnTrackCrossing(bravep);
@@ -811,7 +861,7 @@ public class TopologyCalculator {
     /**
      * Convert a Brave {@link Point} to an OnTrack {@link uk.ac.swanseacoventry.cmt.ontrack.Point}.
      * <br><br>
-     * <b> Side effects: </b> [TODO] unknown
+     * <b> Side effects: </b> ask Phil
      * 
      * @param bravePoint the point in the brave representation.
      */
@@ -825,9 +875,8 @@ public class TopologyCalculator {
         // of the point
         Connector otPointConnector = getOnTrackConnector(bravePoint);
         ArrayList<Track> otTracks = new ArrayList<Track>();
-        // TODO BUG: otPointConnector doesn't have any tracks! They should have been added
-        // by getOnTrackTrack()
         otTracks.addAll(otPointConnector.getTracks());
+
         for (Track otTrack : otTracks) {
             String tname = otTrack.getName();
             TrackCircuit braveTrack = rp.getTrack(tname);
@@ -839,5 +888,9 @@ public class TopologyCalculator {
                 replaceTrackConnector(otTrack, otPointConnector, otPoint.getReverseTrack().getC2());
             }
         }
+    }
+    
+    private void convertHaerbinPoint(Point bravePoint) {
+        getOnTrackPoint(bravePoint);
     }
 }
